@@ -289,14 +289,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="记录支出" id="ZgA-wS-tiT"/>
+                    <navigationItem key="navigationItem" title="记录支出" id="ZgA-wS-tiT">
+                        <barButtonItem key="rightBarButtonItem" title="完成" style="plain" id="hRp-KO-3of">
+                            <connections>
+                                <action selector="finishRecord:" destination="ap5-3Z-xyO" id="GDr-vX-o8r"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addrTextField" destination="zXc-hb-4Cw" id="Qto-te-eQP"/>
                         <outlet property="brandTextField" destination="2KI-il-l37" id="tVx-Ja-1ym"/>
                         <outlet property="catagoryPickerView" destination="uOd-Ax-aYA" id="p5t-KS-3p3"/>
                         <outlet property="commentTextView" destination="avv-1h-aFq" id="KLZ-vj-bGX"/>
+                        <outlet property="payNavigationItem" destination="ZgA-wS-tiT" id="DsM-2D-OUi"/>
                         <outlet property="payTextField" destination="6fz-kl-kf7" id="85K-yR-SqL"/>
                         <outlet property="phoneTextField" destination="zP9-Pf-J49" id="HJv-H3-dQw"/>
+                        <outlet property="rightBarButton" destination="hRp-KO-3of" id="cVe-jB-BTG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3h-bB-WSp" userLabel="First Responder" sceneMemberID="firstResponder"/>
