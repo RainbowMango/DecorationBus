@@ -17,6 +17,7 @@
 		9B37A9ED19EEB57A0097F88D /* DecorationStewardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9EC19EEB57A0097F88D /* DecorationStewardTests.swift */; };
 		9B4A14291A051A3300141346 /* PayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A14281A051A3300141346 /* PayTableViewCell.swift */; };
 		9B7AE51819F00A8900459F28 /* index01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AE51719F00A8900459F28 /* index01.jpg */; };
+		9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */; };
 		9BDEB2141A03D36B00C1542B /* RecordPayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDEB2131A03D36B00C1542B /* RecordPayModel.swift */; };
 		9BDEB2161A03D6F400C1542B /* ModifyBudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDEB2151A03D6F400C1542B /* ModifyBudgetModel.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		9B37A9EC19EEB57A0097F88D /* DecorationStewardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationStewardTests.swift; sourceTree = "<group>"; };
 		9B4A14281A051A3300141346 /* PayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayTableViewCell.swift; path = ../PayTableViewCell.swift; sourceTree = "<group>"; };
 		9B7AE51719F00A8900459F28 /* index01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = index01.jpg; sourceTree = "<group>"; };
+		9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPayViewController.swift; sourceTree = "<group>"; };
 		9BDEB2131A03D36B00C1542B /* RecordPayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPayModel.swift; sourceTree = "<group>"; };
 		9BDEB2151A03D6F400C1542B /* ModifyBudgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyBudgetModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +95,7 @@
 				9BDEB2131A03D36B00C1542B /* RecordPayModel.swift */,
 				9BDEB2151A03D6F400C1542B /* ModifyBudgetModel.swift */,
 				9B37A9DA19EEB57A0097F88D /* Main.storyboard */,
+				9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */,
 				9B4A14281A051A3300141346 /* PayTableViewCell.swift */,
 				9B2E41E41A0109E200F97C4C /* RecordPayTableViewController.swift */,
 				9B37A9D819EEB57A0097F88D /* ViewController.swift */,
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */,
 				9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */,
 				9BDEB2141A03D36B00C1542B /* RecordPayModel.swift in Sources */,
 				9BDEB2161A03D6F400C1542B /* ModifyBudgetModel.swift in Sources */,
