@@ -1,6 +1,8 @@
 //
 //  RecordPayViewController.swift
 //  DecorationSteward
+//  
+//  记录支出View Controller
 //
 //  Created by ruby on 14-11-9.
 //  Copyright (c) 2014年 ruby. All rights reserved.
@@ -36,13 +38,20 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         // Dispose of any resources that can be recreated.
     }
     
-    // 用户完成输入后收起键盘
+    // 用户完成textField输入后收起键盘
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         println("textFieldShouldReturn() 用户点击‘Done’收起键盘")
         return true
     }
 
+    // 用户首次开始输输入时清空原内容
+    func textViewDidBeginEditing(textView: UITextView) {
+        if self.commentTextView.text == "<点击输入备注>" {
+            self.commentTextView.text = nil
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
