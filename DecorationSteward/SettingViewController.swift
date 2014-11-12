@@ -48,8 +48,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         switch indexPath.row {
         case 0:
-            //self.navigationController?.pushViewController(CatagoryPrimeMangeViewController(), animated: true)
-            println("暂未实现")
+            println("didSelectRowAtIndexPath: 转入类别管理view")
+            performSegueWithIdentifier("CatagoryPrime", sender: self.view)
         case 1:
             println("暂未实现")
         case 2:
@@ -58,4 +58,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             println("不存在该cell index")
         }
     }
+    /*
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "CatagoryPrime" {
+            var destination = segue.destinationViewController as CatagoryPrimeMangeViewController
+        }
+    }
+*/
 }
