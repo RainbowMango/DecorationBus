@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--装修管家-->
@@ -227,67 +228,108 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="支出金额" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toc-hB-1JL">
-                                <rect key="frame" x="0.0" y="73" width="116" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支出金额" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toc-hB-1JL">
+                                <rect key="frame" x="20" y="82" width="68" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="商家" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfW-PX-dMU">
-                                <rect key="frame" x="0.0" y="122" width="116" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商家" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfW-PX-dMU">
+                                <rect key="frame" x="20" y="122" width="34" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="商家电话" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbT-TA-Rhg">
-                                <rect key="frame" x="0.0" y="169" width="116" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商家电话" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbT-TA-Rhg">
+                                <rect key="frame" x="20" y="169" width="68" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="商家地址" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvH-41-YDR">
-                                <rect key="frame" x="0.0" y="220" width="116" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商家地址" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvH-41-YDR">
+                                <rect key="frame" x="20" y="220" width="68" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="备注" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEj-ow-YK0">
-                                <rect key="frame" x="0.0" y="270" width="116" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEj-ow-YK0">
+                                <rect key="frame" x="20" y="270" width="34" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uOd-Ax-aYA">
-                                <rect key="frame" x="-27" y="389" width="600" height="162"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6fz-kl-kf7">
+                                <rect key="frame" x="364" y="73" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="MPy-yW-9Ex"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="商家或品牌" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2KI-il-l37">
+                                <rect key="frame" x="364" y="112" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="商家电话" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zP9-Pf-J49">
+                                <rect key="frame" x="364" y="153" width="200" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="WlU-hH-lPc"/>
+                                    <constraint firstAttribute="width" constant="200" id="yJ9-mK-REP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="商家地址" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zXc-hb-4Cw">
+                                <rect key="frame" x="364" y="197" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uOd-Ax-aYA">
+                                <rect key="frame" x="140" y="389" width="320" height="162"/>
                             </pickerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6fz-kl-kf7">
-                                <rect key="frame" x="146" y="73" width="175" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="商家或品牌" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2KI-il-l37">
-                                <rect key="frame" x="146" y="113" width="175" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="商家电话" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zP9-Pf-J49">
-                                <rect key="frame" x="146" y="160" width="175" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="商家地址" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zXc-hb-4Cw">
-                                <rect key="frame" x="146" y="211" width="175" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="&lt;点击输入备注>" translatesAutoresizingMaskIntoConstraints="NO" id="avv-1h-aFq">
-                                <rect key="frame" x="146" y="270" width="175" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWb-e0-YpF">
+                                <rect key="frame" x="121" y="265" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="pwq-hO-Eca"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zXc-hb-4Cw" firstAttribute="top" secondItem="zP9-Pf-J49" secondAttribute="bottom" constant="13" id="0aQ-Qg-azV"/>
+                            <constraint firstItem="fbT-TA-Rhg" firstAttribute="top" secondItem="iQe-2X-2IE" secondAttribute="top" constant="169" id="13H-ci-RJi"/>
+                            <constraint firstItem="zP9-Pf-J49" firstAttribute="top" secondItem="2KI-il-l37" secondAttribute="bottom" constant="11" id="294-b1-LUJ"/>
+                            <constraint firstItem="zP9-Pf-J49" firstAttribute="trailing" secondItem="zXc-hb-4Cw" secondAttribute="trailing" id="2jG-BA-ETX"/>
+                            <constraint firstItem="6zk-0c-urB" firstAttribute="top" secondItem="gWb-e0-YpF" secondAttribute="bottom" constant="158" id="3JE-bm-N94"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zP9-Pf-J49" secondAttribute="trailing" constant="20" id="6Br-1W-WPq"/>
+                            <constraint firstItem="MfW-PX-dMU" firstAttribute="leading" secondItem="iQe-2X-2IE" secondAttribute="leading" constant="20" id="7sW-3Y-i9B"/>
+                            <constraint firstItem="6fz-kl-kf7" firstAttribute="top" secondItem="iQe-2X-2IE" secondAttribute="top" constant="73" id="BbB-O9-ytc"/>
+                            <constraint firstItem="zP9-Pf-J49" firstAttribute="leading" secondItem="2KI-il-l37" secondAttribute="leading" id="IHK-td-gWN"/>
+                            <constraint firstAttribute="trailing" secondItem="zXc-hb-4Cw" secondAttribute="trailing" constant="20" id="IhC-qo-ZDP"/>
+                            <constraint firstItem="2KI-il-l37" firstAttribute="trailing" secondItem="6fz-kl-kf7" secondAttribute="trailing" id="Jh3-tC-zrX"/>
+                            <constraint firstAttribute="trailing" secondItem="6fz-kl-kf7" secondAttribute="trailing" constant="20" id="LK7-pN-AHl"/>
+                            <constraint firstItem="CvH-41-YDR" firstAttribute="top" secondItem="iQe-2X-2IE" secondAttribute="top" constant="220" id="Mpb-sv-xIT"/>
+                            <constraint firstItem="gWb-e0-YpF" firstAttribute="top" secondItem="gEj-ow-YK0" secondAttribute="top" constant="-5" id="VYd-5P-1hu"/>
+                            <constraint firstItem="2KI-il-l37" firstAttribute="leading" secondItem="6fz-kl-kf7" secondAttribute="leading" id="dOE-5K-GSe"/>
+                            <constraint firstItem="uOd-Ax-aYA" firstAttribute="top" secondItem="zXc-hb-4Cw" secondAttribute="bottom" constant="162" id="eJH-DB-1oB"/>
+                            <constraint firstItem="toc-hB-1JL" firstAttribute="bottom" secondItem="6fz-kl-kf7" secondAttribute="bottom" id="exE-4e-Kgd"/>
+                            <constraint firstItem="fbT-TA-Rhg" firstAttribute="leading" secondItem="iQe-2X-2IE" secondAttribute="leading" constant="20" id="mud-xR-5DH"/>
+                            <constraint firstItem="gWb-e0-YpF" firstAttribute="leading" secondItem="gEj-ow-YK0" secondAttribute="trailing" constant="67" id="reO-uK-tZs"/>
+                            <constraint firstAttribute="trailing" secondItem="zP9-Pf-J49" secondAttribute="trailing" constant="20" id="tE7-It-bzp"/>
+                            <constraint firstItem="toc-hB-1JL" firstAttribute="leading" secondItem="iQe-2X-2IE" secondAttribute="leading" constant="20" id="tQQ-Yg-4o2"/>
+                            <constraint firstItem="gEj-ow-YK0" firstAttribute="leading" secondItem="iQe-2X-2IE" secondAttribute="leading" constant="20" id="tTh-uq-j0r"/>
+                            <constraint firstItem="2KI-il-l37" firstAttribute="top" secondItem="6fz-kl-kf7" secondAttribute="bottom" constant="9" id="uia-ve-eV9"/>
+                            <constraint firstItem="gEj-ow-YK0" firstAttribute="top" secondItem="iQe-2X-2IE" secondAttribute="top" constant="270" id="vrm-k3-aj7"/>
+                            <constraint firstItem="CvH-41-YDR" firstAttribute="leading" secondItem="iQe-2X-2IE" secondAttribute="leading" constant="20" id="w20-hq-qIB"/>
+                            <constraint firstItem="zP9-Pf-J49" firstAttribute="leading" secondItem="zXc-hb-4Cw" secondAttribute="leading" id="x2F-pT-sUt"/>
+                            <constraint firstItem="MfW-PX-dMU" firstAttribute="top" secondItem="iQe-2X-2IE" secondAttribute="top" constant="122" id="ybE-II-Kwo"/>
+                            <constraint firstAttribute="centerX" secondItem="uOd-Ax-aYA" secondAttribute="centerX" id="ydj-sM-Tfh"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="记录支出" id="ZgA-wS-tiT">
                         <barButtonItem key="rightBarButtonItem" title="完成" style="plain" id="hRp-KO-3of">
@@ -300,7 +342,7 @@
                         <outlet property="addrTextField" destination="zXc-hb-4Cw" id="Qto-te-eQP"/>
                         <outlet property="brandTextField" destination="2KI-il-l37" id="tVx-Ja-1ym"/>
                         <outlet property="catagoryPickerView" destination="uOd-Ax-aYA" id="p5t-KS-3p3"/>
-                        <outlet property="commentTextView" destination="avv-1h-aFq" id="KLZ-vj-bGX"/>
+                        <outlet property="commentTextView" destination="gWb-e0-YpF" id="oQS-Xb-oi7"/>
                         <outlet property="payNavigationItem" destination="ZgA-wS-tiT" id="DsM-2D-OUi"/>
                         <outlet property="payTextField" destination="6fz-kl-kf7" id="85K-yR-SqL"/>
                         <outlet property="phoneTextField" destination="zP9-Pf-J49" id="HJv-H3-dQw"/>
