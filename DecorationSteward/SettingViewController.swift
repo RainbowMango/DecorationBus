@@ -51,7 +51,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             println("didSelectRowAtIndexPath: 转入类别管理view")
             performSegueWithIdentifier("CatagoryPrime", sender: self.view)
         case 1:
-            println("暂未实现")
+            println("didSelectRowAtIndexPath: 转入收集反馈view")
+            performSegueWithIdentifier("feedback", sender: self.view)
         case 2:
             println("暂未实现")
         default:

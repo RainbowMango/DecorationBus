@@ -15,6 +15,7 @@
 		9B37A9E119EEB57A0097F88D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B37A9DF19EEB57A0097F88D /* LaunchScreen.xib */; };
 		9B37A9ED19EEB57A0097F88D /* DecorationStewardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9EC19EEB57A0097F88D /* DecorationStewardTests.swift */; };
 		9B7AE51819F00A8900459F28 /* index01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AE51719F00A8900459F28 /* index01.jpg */; };
+		9B985BFD1A178F96009F4435 /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */; };
 		9BCEAA301A1212B3002EE82C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA2F1A1212B3002EE82C /* SettingViewController.swift */; };
 		9BCEAA321A122571002EE82C /* CatagoryPrimeMangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */; };
 		9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */; };
@@ -44,6 +45,7 @@
 		9B37A9EB19EEB57A0097F88D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B37A9EC19EEB57A0097F88D /* DecorationStewardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationStewardTests.swift; sourceTree = "<group>"; };
 		9B7AE51719F00A8900459F28 /* index01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = index01.jpg; sourceTree = "<group>"; };
+		9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 		9BCEAA2F1A1212B3002EE82C /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryPrimeMangeViewController.swift; sourceTree = "<group>"; };
 		9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryMinorManageViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				9B37A9D319EEB57A0097F88D /* AppDelegate.swift */,
 				9B37A9DA19EEB57A0097F88D /* Main.storyboard */,
 				9BCEAA2F1A1212B3002EE82C /* SettingViewController.swift */,
+				9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */,
 				9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */,
 				9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */,
 				9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */,
@@ -234,6 +237,7 @@
 				9BCEAA301A1212B3002EE82C /* SettingViewController.swift in Sources */,
 				9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */,
 				9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */,
+				9B985BFD1A178F96009F4435 /* FeedBackViewController.swift in Sources */,
 				9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */,
 				9B37A9D719EEB57A0097F88D /* DecorationSteward.xcdatamodeld in Sources */,
 				9B37A9D419EEB57A0097F88D /* AppDelegate.swift in Sources */,
