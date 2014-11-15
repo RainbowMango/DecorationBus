@@ -462,6 +462,7 @@
                     <connections>
                         <outlet property="settingTableView" destination="asq-8s-RI8" id="jsx-69-lgv"/>
                         <segue destination="mfL-mJ-UWW" kind="show" identifier="CatagoryPrime" id="y2n-2Z-s2b"/>
+                        <segue destination="DPa-PE-TNl" kind="push" identifier="aboutme" id="Iy7-cW-ehr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJf-rY-N76" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -631,6 +632,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSj-gf-rGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2276" y="2937"/>
+        </scene>
+        <!--关于装修管家-->
+        <scene sceneID="PLG-KN-HXv">
+            <objects>
+                <viewController id="DPa-PE-TNl" customClass="AboutMeViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Add-ih-krh"/>
+                        <viewControllerLayoutGuide type="bottom" id="FQG-pn-k8Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zYc-Sj-Lob">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本号：1.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXv-F8-2PL">
+                                <rect key="frame" x="20" y="80" width="560" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.86765558769999995" blue="0.69125505070000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ndo-uS-mfq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮箱：qdurenhongcai@163.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdc-uL-v4N">
+                                <rect key="frame" x="20" y="130" width="560" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.86765558769999995" blue="0.69125505070000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4OG-6q-8gs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BXv-F8-2PL" secondAttribute="trailing" constant="20" id="2vg-gj-W6x"/>
+                            <constraint firstItem="Cdc-uL-v4N" firstAttribute="top" secondItem="zYc-Sj-Lob" secondAttribute="top" constant="130" id="4sH-9o-iej"/>
+                            <constraint firstItem="BXv-F8-2PL" firstAttribute="leading" secondItem="zYc-Sj-Lob" secondAttribute="leading" constant="20" id="9CI-QF-gl4"/>
+                            <constraint firstAttribute="trailing" secondItem="Cdc-uL-v4N" secondAttribute="trailing" constant="20" id="QCO-vn-kBV"/>
+                            <constraint firstItem="BXv-F8-2PL" firstAttribute="top" secondItem="zYc-Sj-Lob" secondAttribute="top" constant="80" id="sy7-6X-q7F"/>
+                            <constraint firstItem="Cdc-uL-v4N" firstAttribute="leading" secondItem="zYc-Sj-Lob" secondAttribute="leading" constant="20" id="wRJ-dU-yL2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="关于装修管家" id="HjC-0I-doq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FUj-wI-VVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2289" y="3656"/>
         </scene>
     </scenes>
 </document>
