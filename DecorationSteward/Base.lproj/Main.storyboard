@@ -18,6 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lLp-4L-B29">
+                                <rect key="frame" x="0.0" y="64" width="600" height="200"/>
+                                <color key="backgroundColor" red="0.79296875" green="0.52507313471547834" blue="0.14654947417023664" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="e0m-Hd-LV9"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支出总额：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ooz-UF-0eD">
                                 <rect key="frame" x="20" y="83" width="150" height="15"/>
                                 <constraints>
@@ -47,8 +54,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wu7-AA-a5x">
-                                <rect key="frame" x="20" y="268" width="335" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.66115237309999997" blue="0.18740535820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="20" y="308" width="335" height="30"/>
+                                <color key="backgroundColor" red="0.80929432744565211" green="0.53588329857808814" blue="0.14956662306820492" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="335" id="iy7-3p-UTC"/>
                                 </constraints>
@@ -62,8 +69,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90S-x2-9Rz">
-                                <rect key="frame" x="20" y="340" width="335" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.66115237309999997" blue="0.18740535820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="20" y="380" width="335" height="30"/>
+                                <color key="backgroundColor" red="0.81235139266304346" green="0.53790756853415556" blue="0.1501316028358349" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="335" id="Nl7-Zh-sg5"/>
                                 </constraints>
@@ -81,13 +88,16 @@
                         <constraints>
                             <constraint firstItem="8rg-ex-zHI" firstAttribute="top" secondItem="I3l-Sz-b6n" secondAttribute="bottom" constant="19" id="4Mr-XV-qfH"/>
                             <constraint firstItem="8rg-ex-zHI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="6Cd-gm-p4J"/>
-                            <constraint firstItem="wXG-Dm-oxy" firstAttribute="top" secondItem="Wu7-AA-a5x" secondAttribute="bottom" constant="253" id="7Fb-uK-XWT"/>
+                            <constraint firstItem="lLp-4L-B29" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="64" id="71V-oH-xAF"/>
+                            <constraint firstItem="wXG-Dm-oxy" firstAttribute="top" secondItem="Wu7-AA-a5x" secondAttribute="bottom" constant="213" id="7Fb-uK-XWT"/>
                             <constraint firstItem="Ooz-UF-0eD" firstAttribute="trailing" secondItem="I3l-Sz-b6n" secondAttribute="trailing" id="85j-Wa-cGZ"/>
                             <constraint firstItem="90S-x2-9Rz" firstAttribute="centerY" secondItem="Wu7-AA-a5x" secondAttribute="centerY" constant="72" id="8yz-WT-zDd"/>
                             <constraint firstItem="Ooz-UF-0eD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="BPu-Sv-vQ5"/>
                             <constraint firstItem="8rg-ex-zHI" firstAttribute="leading" secondItem="Wu7-AA-a5x" secondAttribute="leading" id="C6J-Ye-yjs"/>
                             <constraint firstItem="I3l-Sz-b6n" firstAttribute="top" secondItem="Ooz-UF-0eD" secondAttribute="bottom" constant="15" id="Uvc-1i-9Hg"/>
                             <constraint firstItem="I3l-Sz-b6n" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Y2h-XR-Ewi"/>
+                            <constraint firstAttribute="trailing" secondItem="lLp-4L-B29" secondAttribute="trailing" id="cF7-cA-rn8"/>
+                            <constraint firstItem="lLp-4L-B29" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="oYc-2A-Miz"/>
                             <constraint firstItem="I3l-Sz-b6n" firstAttribute="trailing" secondItem="8rg-ex-zHI" secondAttribute="trailing" id="vya-Rt-0wl"/>
                             <constraint firstItem="Ooz-UF-0eD" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="83" id="zM3-fi-hq2"/>
                             <constraint firstItem="90S-x2-9Rz" firstAttribute="centerX" secondItem="Wu7-AA-a5x" secondAttribute="centerX" id="zQ2-g3-dlb"/>
