@@ -64,7 +64,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="record:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="fko-PP-ZUX"/>
                                     <segue destination="ap5-3Z-xyO" kind="push" id="TO4-D7-Ubh"/>
                                 </connections>
                             </button>
@@ -79,7 +78,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="record:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GCy-j3-CK6"/>
                                     <segue destination="dBf-rc-8W8" kind="push" id="2BV-zk-a5X"/>
                                 </connections>
                             </button>
@@ -105,9 +103,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="装修管家" id="KZC-Dl-ino"/>
                     <connections>
-                        <outlet property="paid" destination="Ooz-UF-0eD" id="bgr-dQ-4ts"/>
-                        <outlet property="paying" destination="I3l-Sz-b6n" id="FZM-ap-viR"/>
-                        <outlet property="total" destination="8rg-ex-zHI" id="bzd-SW-Qgn"/>
+                        <outlet property="leftBudget" destination="I3l-Sz-b6n" id="ShU-X5-dWR"/>
+                        <outlet property="totalBudget" destination="8rg-ex-zHI" id="idt-Ft-2Fd"/>
+                        <outlet property="totalPaid" destination="Ooz-UF-0eD" id="1bH-9d-wlY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
