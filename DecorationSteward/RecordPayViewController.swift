@@ -28,12 +28,12 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         initView()
         
         // 设置空间的代理到本Controller，也可以在IB中连线
-//        self.payTextField.delegate = self
-//        self.brandTextField.delegate = self
-//        self.phoneTextField.delegate = self
-//        self.addrTextField.delegate = self
-//        self.commentTextView.delegate = self
-//        self.catagoryPickerView.delegate = self
+        self.moneyTextField.delegate = self
+        self.categoryTextField.delegate = self
+        self.shopTextField.delegate = self
+        self.phoneTextField.delegate = self
+        self.addrTextField.delegate = self
+        self.commentTextView.delegate = self
         
     }
 
@@ -57,11 +57,16 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         return true
     }
 
+    // 手势控制-点击空白处收起键盘
+    @IBAction func tapGesture(sender: AnyObject) {
+        self.view.endEditing(true)
+    }
+    
     // 用户首次开始输输入时清空原内容
     func textViewDidBeginEditing(textView: UITextView) {
-//        if self.commentTextView.text == "<点击输入备注>" {
-//            self.commentTextView.text = nil
-//        }
+        if self.commentTextView.text == "点击输入备注" {
+            self.commentTextView.text = nil
+        }
     }
     
     // 用户完成表单输入
