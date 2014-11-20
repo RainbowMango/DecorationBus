@@ -22,6 +22,7 @@
 		9BCEAA321A122571002EE82C /* CatagoryPrimeMangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */; };
 		9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */; };
 		9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */; };
+		9BE945F01A1E2BAD0095ACBD /* OrderItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryPrimeMangeViewController.swift; sourceTree = "<group>"; };
 		9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryMinorManageViewController.swift; sourceTree = "<group>"; };
 		9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPayViewController.swift; sourceTree = "<group>"; };
+		9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */,
 				9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */,
 				9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */,
+				9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */,
 				9B37A9D819EEB57A0097F88D /* ViewController.swift */,
 				9B37A9DD19EEB57A0097F88D /* Images.xcassets */,
 				9B37A9DF19EEB57A0097F88D /* LaunchScreen.xib */,
@@ -252,6 +255,7 @@
 				9BCEAA301A1212B3002EE82C /* SettingViewController.swift in Sources */,
 				9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */,
 				9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */,
+				9BE945F01A1E2BAD0095ACBD /* OrderItemDataModel.swift in Sources */,
 				9B985BFD1A178F96009F4435 /* FeedBackViewController.swift in Sources */,
 				9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */,
 				9B37A9D719EEB57A0097F88D /* DecorationSteward.xcdatamodeld in Sources */,
