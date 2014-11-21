@@ -38,7 +38,7 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         self.commentTextView.delegate = self
         
         // 从userDefault中读取所有的order
-        getOrdesFromUserDefault()
+        self.orders = OrderArchiver().getOrdesFromUserDefault()
     }
 
     func initView() {
@@ -49,6 +49,7 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         self.commentTextView.layer.borderWidth = 1
         self.commentTextView.layer.borderColor = UIColor.grayColor().CGColor
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -89,7 +90,7 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         orders.append(orderItem)
         
         // 将订单信息写入UserDefaults
-        saveOrdersToUserDefault()
+        OrderArchiver().saveOrdersToUserDefault(self.orders)
         
         println("金额：\(orderItem.money)")
         println("类别：\(orderItem.category)")
@@ -97,21 +98,5 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         println("电话：\(orderItem.phone)")
         println("地址：\(orderItem.addr)")
         println("备注：\(orderItem.comment)")
-    }
-
-    // 序列化存储orders
-    func saveOrdersToUserDefault() {
-        var userDefault: NSUserDefaults = NSUserDefaults()
-        var archivedOrders = NSKeyedArchiver.archivedDataWithRootObject(orders)
-        userDefault.setObject(archivedOrders, forKey: "orders")
-        println("saveOrdersToUserDefault() count = \(self.orders.count)")
-    }
-    
-    // 序列化获取orders
-    func getOrdesFromUserDefault() {
-        var userDefault: NSUserDefaults = NSUserDefaults()
-        var encodedOrders: NSData = userDefault.objectForKey("orders") as NSData
-        self.orders = NSKeyedUnarchiver.unarchiveObjectWithData(encodedOrders) as Array<OrderItem>
-        println("getOrdesFromUserDefault() count = \(self.orders.count)")
     }
 }
