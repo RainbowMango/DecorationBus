@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initCategory()
         getSummaryData()
     }
 
@@ -50,6 +51,15 @@ class ViewController: UIViewController {
         }
     }
     
+    func initCategory() {
+        var categoryDic = CategoryArchiver().getCategoryFromUserDefault()
+        if categoryDic.isEmpty {
+            categoryDic = CategoryDataModel().categoryDic
+            CategoryArchiver().saveCategoryToUserDefault(categoryDic)
+            
+            println("initCategory() count: \(categoryDic.count)")
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

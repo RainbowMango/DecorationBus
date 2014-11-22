@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9B34AAFC1A1FA33100013C39 /* OrderArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFB1A1FA33100013C39 /* OrderArchiver.swift */; };
+		9B34AAFE1A20B98500013C39 /* CategoryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFD1A20B98500013C39 /* CategoryDataModel.swift */; };
+		9B34AB001A20BB8000013C39 /* CategoryArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFF1A20BB8000013C39 /* CategoryArchiver.swift */; };
 		9B37A9D419EEB57A0097F88D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9D319EEB57A0097F88D /* AppDelegate.swift */; };
 		9B37A9D719EEB57A0097F88D /* DecorationSteward.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9D519EEB57A0097F88D /* DecorationSteward.xcdatamodeld */; };
 		9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9D819EEB57A0097F88D /* ViewController.swift */; };
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		9B34AAFB1A1FA33100013C39 /* OrderArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderArchiver.swift; sourceTree = "<group>"; };
+		9B34AAFD1A20B98500013C39 /* CategoryDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDataModel.swift; sourceTree = "<group>"; };
+		9B34AAFF1A20BB8000013C39 /* CategoryArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryArchiver.swift; sourceTree = "<group>"; };
 		9B37A9CE19EEB57A0097F88D /* DecorationSteward.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecorationSteward.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B37A9D219EEB57A0097F88D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B37A9D319EEB57A0097F88D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 				9B4FB0191A1B94E8005A6BF1 /* pictures */,
 				9B37A9D319EEB57A0097F88D /* AppDelegate.swift */,
 				9B37A9DA19EEB57A0097F88D /* Main.storyboard */,
+				9B37A9D819EEB57A0097F88D /* ViewController.swift */,
 				9B985BFE1A179525009F4435 /* AboutMeViewController.swift */,
 				9BCEAA2F1A1212B3002EE82C /* SettingViewController.swift */,
 				9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */,
@@ -110,7 +115,8 @@
 				9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */,
 				9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */,
 				9B34AAFB1A1FA33100013C39 /* OrderArchiver.swift */,
-				9B37A9D819EEB57A0097F88D /* ViewController.swift */,
+				9B34AAFD1A20B98500013C39 /* CategoryDataModel.swift */,
+				9B34AAFF1A20BB8000013C39 /* CategoryArchiver.swift */,
 				9B37A9DD19EEB57A0097F88D /* Images.xcassets */,
 				9B37A9DF19EEB57A0097F88D /* LaunchScreen.xib */,
 				9B37A9D519EEB57A0097F88D /* DecorationSteward.xcdatamodeld */,
@@ -258,12 +264,14 @@
 				9BCEAA301A1212B3002EE82C /* SettingViewController.swift in Sources */,
 				9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */,
 				9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */,
+				9B34AAFE1A20B98500013C39 /* CategoryDataModel.swift in Sources */,
 				9B34AAFC1A1FA33100013C39 /* OrderArchiver.swift in Sources */,
 				9BE945F01A1E2BAD0095ACBD /* OrderItemDataModel.swift in Sources */,
 				9B985BFD1A178F96009F4435 /* FeedBackViewController.swift in Sources */,
 				9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */,
 				9B37A9D719EEB57A0097F88D /* DecorationSteward.xcdatamodeld in Sources */,
 				9B37A9D419EEB57A0097F88D /* AppDelegate.swift in Sources */,
+				9B34AB001A20BB8000013C39 /* CategoryArchiver.swift in Sources */,
 				9B985BFF1A179525009F4435 /* AboutMeViewController.swift in Sources */,
 				9BCEAA321A122571002EE82C /* CatagoryPrimeMangeViewController.swift in Sources */,
 			);
