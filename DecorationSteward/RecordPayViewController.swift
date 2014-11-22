@@ -28,6 +28,8 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     var categorys: Dictionary<String, Array<String>> = Dictionary<String, Array<String>>()
     var firstCategoryArray: Array<String>!
     var secondCategoryArray: Array<String>!
+    var firstSelectedString: String!
+    var secondSelectedString: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +53,8 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         // 设置类别滚动轴
         self.firstCategoryArray = Array(self.categorys.keys)
         self.secondCategoryArray = self.categorys[self.firstCategoryArray[0]]
+        self.firstSelectedString = self.firstCategoryArray[0]
+        self.secondSelectedString = self.secondCategoryArray[0]
     }
 
     func initView() {
@@ -142,6 +146,7 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
             self.categoryPickerView.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 216)
         }
         UIView.animateWithDuration(0.3, animations: inAnimation)
+        updateCategoryField(self.firstSelectedString, secondCategory: self.secondSelectedString)
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -170,13 +175,25 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         return nil
     }
     
+    func updateCategoryField(firstCategory: String, secondCategory: String) {
+        self.categoryTextField.text = firstCategory + "-" + secondCategory
+    }
+    
     // pickerView联动
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if 0 == component {
             self.secondCategoryArray = self.categorys[self.firstCategoryArray[row]]
             self.categoryPickerView.selectedRowInComponent(1)
             self.categoryPickerView.reloadComponent(1)
+            self.categoryPickerView.selectRow(0, inComponent: 1, animated: true)
+            self.firstSelectedString = self.firstCategoryArray[row]
+            self.secondSelectedString = self.secondCategoryArray[0]
         }
+        else if 1 == component {
+            self.secondSelectedString = self.secondCategoryArray[row]
+        }
+        
+        updateCategoryField(self.firstSelectedString, secondCategory: self.secondSelectedString)
     }
     
     // 点击textField弹出PickerView
