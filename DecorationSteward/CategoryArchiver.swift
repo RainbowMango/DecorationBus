@@ -31,6 +31,7 @@ class CategoryArchiver {
     func saveCategoryToUserDefault(category: Dictionary<String, Array<String>>) -> Void {
         var archivedOrders = NSKeyedArchiver.archivedDataWithRootObject(category)
         userDefault.setObject(archivedOrders, forKey: userDefaultKey)
+        userDefault.synchronize()
         println("saveCategoryToUserDefault() count = \(category.count)")
     }
 }

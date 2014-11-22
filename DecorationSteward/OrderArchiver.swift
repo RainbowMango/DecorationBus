@@ -26,6 +26,7 @@ class OrderArchiver {
     func saveOrdersToUserDefault(orders: Array<OrderItem>) -> Void {
         var archivedOrders = NSKeyedArchiver.archivedDataWithRootObject(orders)
         userDefault.setObject(archivedOrders, forKey: ordersKey)
+        userDefault.synchronize()
         println("saveOrdersToUserDefault() count = \(orders.count)")
     }
 }
