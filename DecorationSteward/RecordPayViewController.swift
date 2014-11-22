@@ -26,6 +26,8 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     
     var orders: Array<OrderItem> = Array<OrderItem>()
     var categorys: Dictionary<String, Array<String>> = Dictionary<String, Array<String>>()
+    var firstCategoryArray: Array<String>!
+    var secondCategoryArray: Array<String>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +46,11 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         self.orders = OrderArchiver().getOrdesFromUserDefault()
         
         // 从userDefault中读取所有的类别
-        self.categorys["A"] = ["A-01", "A-02", "A-03", "A-04", "A-05"]
-        self.categorys["B"] = ["B-01", "B-02", "B-03", "B-04", "B-05"]
-        self.categorys["C"] = ["C-01", "C-02", "C-03", "C-04", "C-05"]
-        self.categorys["D"] = ["D-01", "D-02", "D-03", "D-04", "D-05"]
+        self.categorys = CategoryArchiver().getCategoryFromUserDefault()
+        
+        // 设置类别滚动轴
+        self.firstCategoryArray = Array(self.categorys.keys)
+        self.secondCategoryArray = self.categorys[self.firstCategoryArray[0]]
     }
 
     func initView() {
@@ -147,19 +150,36 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if(0 == component) {
-            return self.categorys.count;
+            return self.firstCategoryArray.count;
         }
         else if(1 == component) {
-            return self.categorys.count
+            return self.secondCategoryArray.count
         }
     
         return 0
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return "Hello"
+        if 0 == component {
+            return self.firstCategoryArray[row]
+        }
+        else if 1 == component {
+            return self.secondCategoryArray[row]
+        }
+        
+        return nil
     }
     
+    // pickerView联动
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if 0 == component {
+            self.secondCategoryArray = self.categorys[self.firstCategoryArray[row]]
+            self.categoryPickerView.selectedRowInComponent(1)
+            self.categoryPickerView.reloadComponent(1)
+        }
+    }
+    
+    // 点击textField弹出PickerView
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         if textField.tag == 100 {
             popView(self)
