@@ -87,6 +87,10 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         // Dispose of any resources that can be recreated.
     }
     
+    func updateCategoryField(firstCategory: String, secondCategory: String) {
+        self.categoryTextField.text = firstCategory + "-" + secondCategory
+    }
+    
     // 用户完成textField输入后收起键盘
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -149,6 +153,8 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         updateCategoryField(self.firstSelectedString, secondCategory: self.secondSelectedString)
     }
     
+    // MARK: pickerView dataSource
+    
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -164,6 +170,9 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         return 0
     }
     
+    //MARK: pickerView Delegete
+    
+    // 设置每列显示值
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         if 0 == component {
             return self.firstCategoryArray[row]
@@ -173,10 +182,6 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         }
         
         return nil
-    }
-    
-    func updateCategoryField(firstCategory: String, secondCategory: String) {
-        self.categoryTextField.text = firstCategory + "-" + secondCategory
     }
     
     // pickerView联动
@@ -195,6 +200,9 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         
         updateCategoryField(self.firstSelectedString, secondCategory: self.secondSelectedString)
     }
+    
+    
+    //MARK: -textFieldDelegate
     
     // 点击textField弹出PickerView
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
