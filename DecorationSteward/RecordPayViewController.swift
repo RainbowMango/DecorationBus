@@ -150,7 +150,6 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
             self.categoryPickerView.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 216)
         }
         UIView.animateWithDuration(0.3, animations: inAnimation)
-        updateCategoryField(self.firstSelectedString, secondCategory: self.secondSelectedString)
     }
     
     // MARK: pickerView dataSource
@@ -207,6 +206,7 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     // 点击textField弹出PickerView
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         if textField.tag == 100 {
+            self.view.endEditing(true)
             popView(self)
             return false
         }
