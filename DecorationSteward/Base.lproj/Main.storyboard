@@ -275,6 +275,10 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Y20-px-mbC" appends="YES" id="1zX-vI-5fp"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="新增预算" id="afM-am-xMT"/>
@@ -289,6 +293,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mAk-1w-gd2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Y20-px-mbC">
+                    <connections>
+                        <action selector="tapGesture:" destination="dBf-rc-8W8" id="Rre-pH-2tL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1510" y="-27"/>
         </scene>
