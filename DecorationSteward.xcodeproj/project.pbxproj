@@ -19,6 +19,7 @@
 		9B37A9ED19EEB57A0097F88D /* DecorationStewardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9EC19EEB57A0097F88D /* DecorationStewardTests.swift */; };
 		9B4FB0181A1B94DA005A6BF1 /* index.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B4FB0171A1B94DA005A6BF1 /* index.jpg */; };
 		9B7AE51819F00A8900459F28 /* index01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AE51719F00A8900459F28 /* index01.jpg */; };
+		9B97DCC91A235933006A94C0 /* RecordBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCC81A235933006A94C0 /* RecordBudgetViewController.swift */; };
 		9B985BFD1A178F96009F4435 /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */; };
 		9B985BFF1A179525009F4435 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B985BFE1A179525009F4435 /* AboutMeViewController.swift */; };
 		9BA7E9321A2211580041B40B /* ShowPayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7E9311A2211580041B40B /* ShowPayListViewController.swift */; };
@@ -56,6 +57,7 @@
 		9B37A9EC19EEB57A0097F88D /* DecorationStewardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationStewardTests.swift; sourceTree = "<group>"; };
 		9B4FB0171A1B94DA005A6BF1 /* index.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = index.jpg; sourceTree = "<group>"; };
 		9B7AE51719F00A8900459F28 /* index01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = index01.jpg; sourceTree = "<group>"; };
+		9B97DCC81A235933006A94C0 /* RecordBudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordBudgetViewController.swift; sourceTree = "<group>"; };
 		9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 		9B985BFE1A179525009F4435 /* AboutMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
 		9BA7E9311A2211580041B40B /* ShowPayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowPayListViewController.swift; path = ../ShowPayListViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */,
 				9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */,
 				9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */,
+				9B97DCC81A235933006A94C0 /* RecordBudgetViewController.swift */,
 				9BA7E9311A2211580041B40B /* ShowPayListViewController.swift */,
 				9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */,
 				9B34AAFB1A1FA33100013C39 /* OrderArchiver.swift */,
@@ -266,6 +269,7 @@
 			files = (
 				9BA7E9321A2211580041B40B /* ShowPayListViewController.swift in Sources */,
 				9BCEAA301A1212B3002EE82C /* SettingViewController.swift in Sources */,
+				9B97DCC91A235933006A94C0 /* RecordBudgetViewController.swift in Sources */,
 				9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */,
 				9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */,
 				9B34AAFE1A20B98500013C39 /* CategoryDataModel.swift in Sources */,
