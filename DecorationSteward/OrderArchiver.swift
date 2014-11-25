@@ -15,8 +15,12 @@ class OrderArchiver {
     // 序列化获取orders
     func getOrdesFromUserDefault() -> Array<OrderItem> {
         
-        var encodedOrders: NSData = userDefault.objectForKey(ordersKey) as NSData
-        var orders = NSKeyedUnarchiver.unarchiveObjectWithData(encodedOrders) as Array<OrderItem>
+        var encodedOrders: NSData? = userDefault.objectForKey(ordersKey) as? NSData
+        if nil == encodedOrders {
+            return Array<OrderItem>()
+        }
+        
+        var orders = NSKeyedUnarchiver.unarchiveObjectWithData(encodedOrders!) as Array<OrderItem>
         println("getOrdesFromUserDefault() count = \(orders.count)")
         
         return orders
