@@ -9,7 +9,7 @@
 import UIKit
 
 class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var primeCatagory = ["类别一","类别二","类别三"]
+    var primeCatagory: Array<String>!
     
     @IBOutlet weak var primeCatagoryTableView: UITableView!
     
@@ -19,6 +19,10 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
         // 设置tableView代理和数据源，否则无法显示，也可以在IB中连线
         self.primeCatagoryTableView.delegate = self
         self.primeCatagoryTableView.dataSource = self
+        
+        // 动态获取类别
+        var categoryDic = CategoryArchiver().getCategoryFromUserDefault()
+        self.primeCatagory = Array(categoryDic.keys)
     }
 
     override func didReceiveMemoryWarning() {
