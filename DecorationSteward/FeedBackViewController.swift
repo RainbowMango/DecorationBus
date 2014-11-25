@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class FeedBackViewController: UIViewController {
+class FeedBackViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var feedbackTextView: UITextView!
     
@@ -22,6 +23,15 @@ class FeedBackViewController: UIViewController {
     
     @IBAction func DoneButton(sender: AnyObject) {
         println("DoneButton() 用户反馈: \(self.feedbackTextView.text)")
+        
+        // 发送邮件
+        var mailController = MFMailComposeViewController()
+        mailController.mailComposeDelegate = self
+        
+        mailController.setToRecipients(["qdurenhongcai@163.com"])
+        mailController.setSubject("Test Subject")
+        mailController.setMessageBody("Test Body", isHTML: true)
+        self.presentViewController(mailController, animated: true, completion: nil)
     }
 
     /*
