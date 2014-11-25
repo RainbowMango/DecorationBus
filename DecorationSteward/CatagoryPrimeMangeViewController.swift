@@ -39,6 +39,14 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
         
         return cell
     }
+    
+    // 设定选中时的动作
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("didSelectRowAtIndexPath() \(self.primeCatagory[indexPath.row])")
+        
+        performSegueWithIdentifier("toMinorCategory", sender: self.view)
+        //传递选中内容给下个view
+    }
     /*
     // MARK: - Navigation
 
