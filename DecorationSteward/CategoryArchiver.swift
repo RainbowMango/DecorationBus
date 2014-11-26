@@ -50,4 +50,18 @@ class CategoryArchiver {
         categoryDic.updateValue(minorCategoryArray, forKey: prime)
         saveCategoryToUserDefault(categoryDic)
     }
+    
+    // 删除子类
+    func deleteMinorCategory(prime: String, minor: String) -> Void {
+        var categoryDic = getCategoryFromUserDefault()
+        var minorCategoryArray = categoryDic[prime]!
+        
+        for (index, value) in enumerate(minorCategoryArray) {
+            if value == minor {
+                minorCategoryArray.removeAtIndex(index)
+            }
+        }
+        categoryDic.updateValue(minorCategoryArray, forKey: prime)
+        saveCategoryToUserDefault(categoryDic)
+    }
 }

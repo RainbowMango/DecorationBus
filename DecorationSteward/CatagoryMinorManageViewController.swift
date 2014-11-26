@@ -44,6 +44,20 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
         
         return cell
     }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    // 滑动删除子类
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            println("Delete \(self.minorCategorys[indexPath.row])")
+            CategoryArchiver().deleteMinorCategory(self.primeCategorySelected, minor: self.minorCategorys[indexPath.row])
+            self.minorCategorys.removeAtIndex(indexPath.row)
+            minorCategoryTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
 
     // MARK: - Navigation
 
