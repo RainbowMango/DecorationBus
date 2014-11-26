@@ -34,4 +34,10 @@ class CategoryArchiver {
         userDefault.synchronize()
         println("saveCategoryToUserDefault() count = \(category.count)")
     }
+    
+    // 根据大类获取响应子类
+    func getMinorCategoryByPrime(prime: String) -> Array<String> {
+        var categoryDic = getCategoryFromUserDefault()
+        return categoryDic[prime]!
+    }
 }

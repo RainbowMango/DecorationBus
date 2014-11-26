@@ -55,10 +55,8 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // 向下个页面传值标准做法
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "toMinorCategory" {
             println("将要转入toMinorCategory页面")
             
