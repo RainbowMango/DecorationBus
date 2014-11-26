@@ -56,6 +56,7 @@ class CategoryArchiver {
         var categoryDic = getCategoryFromUserDefault()
         var minorCategoryArray = categoryDic[prime]!
         
+        // 当数组中有多个重复项目时删除失败因为下标越界
         for (index, value) in enumerate(minorCategoryArray) {
             if value == minor {
                 minorCategoryArray.removeAtIndex(index)
