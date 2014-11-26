@@ -10,12 +10,12 @@ import UIKit
 
 class CatagoryMinorManageViewController: UIViewController {
 
-    var primeCategory: String = String()
+    var primeCategorySelected: String = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("viewDidLoad(), primeCategory = \(primeCategory)")
+        println("viewDidLoad(), primeCategory = \(primeCategorySelected)")
 
         // Do any additional setup after loading the view.
     }

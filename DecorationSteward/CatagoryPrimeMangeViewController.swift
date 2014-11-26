@@ -10,6 +10,7 @@ import UIKit
 
 class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var primeCatagory: Array<String>!
+    var primeCategorySelected: String = String()
     
     @IBOutlet weak var primeCatagoryTableView: UITableView!
     
@@ -48,17 +49,22 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("didSelectRowAtIndexPath() \(self.primeCatagory[indexPath.row])")
         
+        self.primeCategorySelected = self.primeCatagory[indexPath.row]
         performSegueWithIdentifier("toMinorCategory", sender: self.view)
-        //传递选中内容给下个view
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "toMinorCategory" {
+            println("将要转入toMinorCategory页面")
+            
+            var destinationView: CatagoryMinorManageViewController = segue.destinationViewController as CatagoryMinorManageViewController
+            destinationView.setValue(self.primeCategorySelected, forKey: "primeCategorySelected")
+        }
     }
-    */
 
 }
