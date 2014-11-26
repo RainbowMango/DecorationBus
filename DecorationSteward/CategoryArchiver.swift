@@ -40,4 +40,14 @@ class CategoryArchiver {
         var categoryDic = getCategoryFromUserDefault()
         return categoryDic[prime]!
     }
+    
+    // 新增子类
+    func addMinorCategory(prime: String, minor: String) -> Void {
+        var categoryDic = getCategoryFromUserDefault()
+        var minorCategoryArray = categoryDic[prime]!
+        
+        minorCategoryArray.append(minor)
+        categoryDic.updateValue(minorCategoryArray, forKey: prime)
+        saveCategoryToUserDefault(categoryDic)
+    }
 }

@@ -12,6 +12,8 @@ class CategoryMinorAddViewController: UIViewController {
 
     @IBOutlet weak var newMinorCategoryTextField: UITextField!
     
+    var primeCategorySelected: String = String() // 获取前个页面的大类名
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +34,20 @@ class CategoryMinorAddViewController: UIViewController {
 
     func barButtonClicked() {
         println("barButtonClicked")
+        if self.newMinorCategoryTextField.text.isEmpty {
+            // 弹出Alert
+            showAlert()
+            return
+        }
+        
+        CategoryArchiver().addMinorCategory(self.primeCategorySelected, minor: self.newMinorCategoryTextField.text)
+    }
+    
+    func showAlert() -> Void {
+        var alertController = UIAlertController(title: "空值", message: "请输入正确的子类名", preferredStyle: UIAlertControllerStyle.Alert)
+        var okAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.Default, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation
