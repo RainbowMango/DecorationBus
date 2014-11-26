@@ -526,9 +526,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zr7-yU-abG">
-                                <rect key="frame" x="0.0" y="64" width="320" height="532"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zr7-yU-abG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="325"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="325" id="Zkf-kW-6S5"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="minorCategoryCell" id="6zj-p9-ExK">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -538,8 +541,38 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMM-3s-P3N">
+                                <rect key="frame" x="20" y="483" width="280" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.66115237309999997" blue="0.18740535820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="删除大类">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g79-8A-ycZ">
+                                <rect key="frame" x="20" y="443" width="280" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.66115237309999997" blue="0.18740535820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="新增子类">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="XKE-nz-Er4" kind="push" identifier="addMinorCategory" id="3bJ-MO-GaG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="KMM-3s-P3N" secondAttribute="bottom" constant="55" id="0Km-3p-nPA"/>
+                            <constraint firstAttribute="bottom" secondItem="g79-8A-ycZ" secondAttribute="bottom" constant="95" id="5uh-Kj-mjM"/>
+                            <constraint firstAttribute="trailing" secondItem="g79-8A-ycZ" secondAttribute="trailing" constant="20" id="9mi-Ya-CJr"/>
+                            <constraint firstAttribute="centerX" secondItem="zr7-yU-abG" secondAttribute="centerX" id="9t7-Cm-SDu"/>
+                            <constraint firstItem="zr7-yU-abG" firstAttribute="top" secondItem="jn9-Sw-bl5" secondAttribute="top" id="GSR-7z-l0A"/>
+                            <constraint firstAttribute="trailing" secondItem="KMM-3s-P3N" secondAttribute="trailing" constant="20" id="Is9-sA-8Af"/>
+                            <constraint firstItem="g79-8A-ycZ" firstAttribute="leading" secondItem="jn9-Sw-bl5" secondAttribute="leading" constant="20" id="PRY-94-0OU"/>
+                            <constraint firstItem="zr7-yU-abG" firstAttribute="leading" secondItem="jn9-Sw-bl5" secondAttribute="leading" id="RdN-7V-P3h"/>
+                            <constraint firstAttribute="trailing" secondItem="zr7-yU-abG" secondAttribute="trailing" id="SPM-iA-jDd"/>
+                            <constraint firstItem="zr7-yU-abG" firstAttribute="leading" secondItem="jn9-Sw-bl5" secondAttribute="leading" id="Spl-Af-G8I"/>
+                            <constraint firstItem="KMM-3s-P3N" firstAttribute="leading" secondItem="jn9-Sw-bl5" secondAttribute="leading" constant="20" id="kaD-pa-QHZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="子类管理" id="rHm-4d-99x"/>
                     <connections>
@@ -549,6 +582,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wh-DM-jkQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1826" y="1942"/>
+        </scene>
+        <!--新增子类-->
+        <scene sceneID="Aqr-yE-Oob">
+            <objects>
+                <viewController id="XKE-nz-Er4" customClass="CategoryMinorAddViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aQG-IT-52q"/>
+                        <viewControllerLayoutGuide type="bottom" id="g8o-wr-9D6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ptt-bP-8Rv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h2J-c0-xov">
+                                <rect key="frame" x="0.0" y="85" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h2J-c0-xov" firstAttribute="leading" secondItem="Ptt-bP-8Rv" secondAttribute="leading" id="2dn-K8-JJy"/>
+                            <constraint firstAttribute="trailing" secondItem="h2J-c0-xov" secondAttribute="trailing" id="2xk-DM-Xpn"/>
+                            <constraint firstItem="h2J-c0-xov" firstAttribute="top" secondItem="Ptt-bP-8Rv" secondAttribute="top" constant="85" id="vSX-hJ-b3p"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="新增子类" id="QMk-Dd-Odp"/>
+                    <connections>
+                        <outlet property="newMinorCategoryTextField" destination="h2J-c0-xov" id="rEf-nd-NPa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M7v-PB-qPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2213" y="1942"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="51y-Ip-rB5">
