@@ -46,6 +46,10 @@ class CategoryArchiver {
         var categoryDic = getCategoryFromUserDefault()
         var minorCategoryArray = categoryDic[prime]!
         
+        // 过滤重复数据
+        if contains(minorCategoryArray, minor) {
+            return
+        }
         minorCategoryArray.append(minor)
         categoryDic.updateValue(minorCategoryArray, forKey: prime)
         saveCategoryToUserDefault(categoryDic)
@@ -56,10 +60,10 @@ class CategoryArchiver {
         var categoryDic = getCategoryFromUserDefault()
         var minorCategoryArray = categoryDic[prime]!
         
-        // 当数组中有多个重复项目时删除失败因为下标越界
         for (index, value) in enumerate(minorCategoryArray) {
             if value == minor {
                 minorCategoryArray.removeAtIndex(index)
+                break
             }
         }
         categoryDic.updateValue(minorCategoryArray, forKey: prime)
