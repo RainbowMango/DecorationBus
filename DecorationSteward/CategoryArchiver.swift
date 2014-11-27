@@ -74,4 +74,11 @@ class CategoryArchiver {
         categoryDic.updateValue(minorCategoryArray, forKey: prime)
         saveCategoryToUserDefault(categoryDic)
     }
+    
+    // 新增大类
+    func addPrimeCategory(prime: String) -> Void {
+        var categoryDic = getCategoryFromUserDefault()
+        categoryDic[prime] = Array<String>()
+        saveCategoryToUserDefault(categoryDic)
+    }
 }

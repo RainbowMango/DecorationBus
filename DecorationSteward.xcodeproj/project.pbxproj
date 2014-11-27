@@ -11,6 +11,7 @@
 		9B34AAFC1A1FA33100013C39 /* OrderArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFB1A1FA33100013C39 /* OrderArchiver.swift */; };
 		9B34AAFE1A20B98500013C39 /* CategoryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFD1A20B98500013C39 /* CategoryDataModel.swift */; };
 		9B34AB001A20BB8000013C39 /* CategoryArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFF1A20BB8000013C39 /* CategoryArchiver.swift */; };
+		9B35492C1A276C510083E0B6 /* CategoryPrimeAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B35492B1A276C510083E0B6 /* CategoryPrimeAddViewController.swift */; };
 		9B37A9D419EEB57A0097F88D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9D319EEB57A0097F88D /* AppDelegate.swift */; };
 		9B37A9D719EEB57A0097F88D /* DecorationSteward.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9D519EEB57A0097F88D /* DecorationSteward.xcdatamodeld */; };
 		9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9D819EEB57A0097F88D /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 		9B34AAFB1A1FA33100013C39 /* OrderArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderArchiver.swift; sourceTree = "<group>"; };
 		9B34AAFD1A20B98500013C39 /* CategoryDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDataModel.swift; sourceTree = "<group>"; };
 		9B34AAFF1A20BB8000013C39 /* CategoryArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryArchiver.swift; sourceTree = "<group>"; };
+		9B35492B1A276C510083E0B6 /* CategoryPrimeAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPrimeAddViewController.swift; sourceTree = "<group>"; };
 		9B37A9CE19EEB57A0097F88D /* DecorationSteward.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecorationSteward.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B37A9D219EEB57A0097F88D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B37A9D319EEB57A0097F88D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				9B4FB0191A1B94E8005A6BF1 /* pictures */,
 				9B37A9D319EEB57A0097F88D /* AppDelegate.swift */,
 				9B37A9DA19EEB57A0097F88D /* Main.storyboard */,
+				9B35492B1A276C510083E0B6 /* CategoryPrimeAddViewController.swift */,
 				9B1467E11A260A3B00ACD417 /* CategoryMinorAddViewController.swift */,
 				9B37A9D819EEB57A0097F88D /* ViewController.swift */,
 				9B985BFE1A179525009F4435 /* AboutMeViewController.swift */,
@@ -293,6 +296,7 @@
 				9B1467E21A260A3C00ACD417 /* CategoryMinorAddViewController.swift in Sources */,
 				9B97DCC91A235933006A94C0 /* RecordBudgetViewController.swift in Sources */,
 				9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */,
+				9B35492C1A276C510083E0B6 /* CategoryPrimeAddViewController.swift in Sources */,
 				9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */,
 				9B34AAFE1A20B98500013C39 /* CategoryDataModel.swift in Sources */,
 				9B34AAFC1A1FA33100013C39 /* OrderArchiver.swift in Sources */,

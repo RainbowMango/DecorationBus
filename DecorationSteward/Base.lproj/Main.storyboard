@@ -502,14 +502,39 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jjJ-kV-oOM">
+                                <rect key="frame" x="0.0" y="429" width="320" height="90"/>
+                                <color key="backgroundColor" red="1" green="0.66115237309999997" blue="0.18740535820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="32u-Jg-pPI"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lh-jm-df7">
+                                <rect key="frame" x="40" y="459" width="240" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal" title="新增大类">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ywQ-Gh-viB" kind="push" id="wIf-lX-9mT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7nF-3V-Ldl" firstAttribute="top" secondItem="SQ2-b3-lGy" secondAttribute="top" id="0Hw-a3-j7Z"/>
+                            <constraint firstItem="8lh-jm-df7" firstAttribute="leading" secondItem="SQ2-b3-lGy" secondAttribute="leading" constant="40" id="176-Yt-lae"/>
                             <constraint firstItem="1e4-bY-SO4" firstAttribute="top" secondItem="7nF-3V-Ldl" secondAttribute="bottom" constant="191" id="1yG-qL-9kP"/>
+                            <constraint firstAttribute="trailing" secondItem="jjJ-kV-oOM" secondAttribute="trailing" id="Fv4-TX-2lQ"/>
                             <constraint firstAttribute="centerX" secondItem="7nF-3V-Ldl" secondAttribute="centerX" id="I8g-5p-T17"/>
+                            <constraint firstItem="jjJ-kV-oOM" firstAttribute="leading" secondItem="SQ2-b3-lGy" secondAttribute="leading" id="O76-bd-GgL"/>
+                            <constraint firstItem="jjJ-kV-oOM" firstAttribute="centerX" secondItem="8lh-jm-df7" secondAttribute="centerX" id="XAY-oQ-wHM"/>
+                            <constraint firstAttribute="bottom" secondItem="jjJ-kV-oOM" secondAttribute="bottom" constant="49" id="cN5-jb-Iiq"/>
                             <constraint firstItem="7nF-3V-Ldl" firstAttribute="leading" secondItem="SQ2-b3-lGy" secondAttribute="leading" id="eyd-ZH-10X"/>
+                            <constraint firstItem="jjJ-kV-oOM" firstAttribute="centerY" secondItem="8lh-jm-df7" secondAttribute="centerY" id="j2h-D3-p6n"/>
                             <constraint firstAttribute="trailing" secondItem="7nF-3V-Ldl" secondAttribute="trailing" id="tQr-OO-gDa"/>
+                            <constraint firstAttribute="trailing" secondItem="8lh-jm-df7" secondAttribute="trailing" constant="40" id="xop-6t-5J2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="类别管理" id="00C-ei-Y39"/>
@@ -588,7 +613,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wh-DM-jkQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1846" y="2026"/>
+            <point key="canvasLocation" x="1918" y="1722"/>
         </scene>
         <!--新增子类-->
         <scene sceneID="Aqr-yE-Oob">
@@ -622,7 +647,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7v-PB-qPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2289" y="2026"/>
+            <point key="canvasLocation" x="2417" y="1722"/>
+        </scene>
+        <!--新增大类-->
+        <scene sceneID="2Sf-TB-pOs">
+            <objects>
+                <viewController id="ywQ-Gh-viB" customClass="CategoryPrimeAddViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tWj-Hv-Ban"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kh9-Fc-SpI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pzO-nb-zip">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G9X-IU-JiB">
+                                <rect key="frame" x="0.0" y="83" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="G9X-IU-JiB" firstAttribute="top" secondItem="pzO-nb-zip" secondAttribute="top" constant="83" id="ERV-V7-S3M"/>
+                            <constraint firstItem="G9X-IU-JiB" firstAttribute="leading" secondItem="pzO-nb-zip" secondAttribute="leading" id="Pze-8w-C12"/>
+                            <constraint firstAttribute="trailing" secondItem="G9X-IU-JiB" secondAttribute="trailing" id="vZB-t8-H23"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="新增大类" id="vyG-js-Otu"/>
+                    <connections>
+                        <outlet property="newPrimeCategoryTextField" destination="G9X-IU-JiB" id="6ht-rQ-Ps0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g0k-Qs-oIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1918" y="2431"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="51y-Ip-rB5">
