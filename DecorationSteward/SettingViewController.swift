@@ -27,6 +27,21 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    // 初始化软件
+    @IBAction func initSoftware(sender: AnyObject) {
+        //TODO：弹出Alert提示用户
+        println("软件初始化")
+        
+//        // 清除自定义类别表
+//        CategoryArchiver().initCategoryInUserDefault()
+//        
+//        // 清除预算
+//        BudgetArchiver().removeAllBudgets()
+//        
+//        // 清除订单
+//        OrderArchiver().removeAllOrders()
+    }
+    
     // 设置显示cell的数目
     // TODO：改方法会被调用两次，使显示的sell数目是预期的两倍
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

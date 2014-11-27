@@ -35,6 +35,11 @@ class CategoryArchiver {
         println("saveCategoryToUserDefault() count = \(category.count)")
     }
     
+    // 初始化类别表, 用于用户首次使用软件和用户选择初始化软件
+    func initCategoryInUserDefault() -> Void {
+        saveCategoryToUserDefault(CategoryDataModel().categoryDic)
+    }
+    
     // 根据大类获取响应子类
     func getMinorCategoryByPrime(prime: String) -> Array<String> {
         var categoryDic = getCategoryFromUserDefault()

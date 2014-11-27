@@ -51,12 +51,11 @@ class ViewController: UIViewController {
         }
     }
     
+    // 初始化类别列表，
     func initCategory() {
         var categoryDic = CategoryArchiver().getCategoryFromUserDefault()
         if categoryDic.isEmpty {
-            categoryDic = CategoryDataModel().categoryDic
-            CategoryArchiver().saveCategoryToUserDefault(categoryDic)
-            
+            CategoryArchiver().initCategoryInUserDefault()
             println("initCategory() count: \(categoryDic.count)")
         }
     }

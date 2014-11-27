@@ -33,4 +33,11 @@ class OrderArchiver {
         userDefault.synchronize()
         println("saveOrdersToUserDefault() count = \(orders.count)")
     }
+    
+    // 清除所有订单
+    func removeAllOrders() -> Void {
+        var currentItems = getOrdesFromUserDefault()
+        currentItems.removeAll(keepCapacity: true)
+        saveOrdersToUserDefault(currentItems)
+    }
 }

@@ -33,4 +33,10 @@ class BudgetArchiver {
         userDefault.synchronize()
         println("saveBudgetsToUserDefault() count = \(budgets.count)")
     }
+    
+    func removeAllBudgets() -> Void {
+        var currentBudgets = getBudgetsFromUserDefault()
+        currentBudgets.removeAll(keepCapacity: true)
+        saveBudgetsToUserDefault(currentBudgets)
+    }
 }
