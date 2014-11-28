@@ -558,6 +558,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K3i-Vo-S1Y">
+                                <rect key="frame" x="0.0" y="429" width="320" height="90"/>
+                                <color key="backgroundColor" red="1" green="0.66115237309999997" blue="0.18740535820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="N6M-nD-Ao7"/>
+                                </constraints>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zr7-yU-abG">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="325"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -573,17 +580,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMM-3s-P3N">
-                                <rect key="frame" x="20" y="483" width="280" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.66115237309999997" blue="0.18740535820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="删除大类">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g79-8A-ycZ">
-                                <rect key="frame" x="20" y="443" width="280" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.66115237309999997" blue="0.18740535820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="40" y="459" width="240" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="新增子类">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -593,17 +594,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="KMM-3s-P3N" secondAttribute="bottom" constant="55" id="0Km-3p-nPA"/>
-                            <constraint firstAttribute="bottom" secondItem="g79-8A-ycZ" secondAttribute="bottom" constant="95" id="5uh-Kj-mjM"/>
-                            <constraint firstAttribute="trailing" secondItem="g79-8A-ycZ" secondAttribute="trailing" constant="20" id="9mi-Ya-CJr"/>
                             <constraint firstAttribute="centerX" secondItem="zr7-yU-abG" secondAttribute="centerX" id="9t7-Cm-SDu"/>
+                            <constraint firstItem="g79-8A-ycZ" firstAttribute="leading" secondItem="jn9-Sw-bl5" secondAttribute="leading" constant="40" id="ExO-hH-oc9"/>
+                            <constraint firstAttribute="trailing" secondItem="g79-8A-ycZ" secondAttribute="trailing" constant="40" id="FXs-8x-YFT"/>
                             <constraint firstItem="zr7-yU-abG" firstAttribute="top" secondItem="jn9-Sw-bl5" secondAttribute="top" id="GSR-7z-l0A"/>
-                            <constraint firstAttribute="trailing" secondItem="KMM-3s-P3N" secondAttribute="trailing" constant="20" id="Is9-sA-8Af"/>
-                            <constraint firstItem="g79-8A-ycZ" firstAttribute="leading" secondItem="jn9-Sw-bl5" secondAttribute="leading" constant="20" id="PRY-94-0OU"/>
+                            <constraint firstAttribute="trailing" secondItem="K3i-Vo-S1Y" secondAttribute="trailing" id="KE1-aZ-R8z"/>
                             <constraint firstItem="zr7-yU-abG" firstAttribute="leading" secondItem="jn9-Sw-bl5" secondAttribute="leading" id="RdN-7V-P3h"/>
                             <constraint firstAttribute="trailing" secondItem="zr7-yU-abG" secondAttribute="trailing" id="SPM-iA-jDd"/>
+                            <constraint firstAttribute="bottom" secondItem="K3i-Vo-S1Y" secondAttribute="bottom" constant="49" id="Sag-st-vMg"/>
                             <constraint firstItem="zr7-yU-abG" firstAttribute="leading" secondItem="jn9-Sw-bl5" secondAttribute="leading" id="Spl-Af-G8I"/>
-                            <constraint firstItem="KMM-3s-P3N" firstAttribute="leading" secondItem="jn9-Sw-bl5" secondAttribute="leading" constant="20" id="kaD-pa-QHZ"/>
+                            <constraint firstItem="K3i-Vo-S1Y" firstAttribute="leading" secondItem="jn9-Sw-bl5" secondAttribute="leading" id="bxC-M9-WCE"/>
+                            <constraint firstItem="K3i-Vo-S1Y" firstAttribute="centerX" secondItem="g79-8A-ycZ" secondAttribute="centerX" id="pni-K7-s82"/>
+                            <constraint firstItem="K3i-Vo-S1Y" firstAttribute="centerY" secondItem="g79-8A-ycZ" secondAttribute="centerY" id="qcd-Ta-i64"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="子类管理" id="rHm-4d-99x"/>
