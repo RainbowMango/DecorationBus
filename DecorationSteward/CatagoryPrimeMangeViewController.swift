@@ -53,6 +53,20 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
         performSegueWithIdentifier("toMinorCategory", sender: self.view)
     }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    // 滑动删cell
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            println("Delete \(self.primeCatagory[indexPath.row])")
+            CategoryArchiver().deletePrimeCategory(self.primeCatagory[indexPath.row])
+            self.primeCatagory.removeAtIndex(indexPath.row)
+            primeCatagoryTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+    
     // MARK: - Navigation
 
     // 向下个页面传值标准做法

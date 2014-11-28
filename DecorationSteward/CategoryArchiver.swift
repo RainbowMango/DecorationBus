@@ -81,4 +81,11 @@ class CategoryArchiver {
         categoryDic[prime] = Array<String>()
         saveCategoryToUserDefault(categoryDic)
     }
+    
+    // 删除大类
+    func deletePrimeCategory(prime: String) -> Void {
+        var categoryDic = getCategoryFromUserDefault()
+        categoryDic[prime] = nil
+        saveCategoryToUserDefault(categoryDic)
+    }
 }
