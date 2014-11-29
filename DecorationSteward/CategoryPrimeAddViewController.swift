@@ -41,6 +41,9 @@ class CategoryPrimeAddViewController: UIViewController {
         }
         
         CategoryArchiver().addPrimeCategory(self.newPrimeCategoryTextField.text)
+        
+        // 记录后返回到上层
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func showAlert() -> Void {

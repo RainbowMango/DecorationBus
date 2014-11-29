@@ -135,6 +135,9 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         println("电话：\(orderItem.phone)")
         println("地址：\(orderItem.addr)")
         println("备注：\(orderItem.comment)")
+        
+        // 记录后返回到上层
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func popView(sender: AnyObject) {

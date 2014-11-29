@@ -111,6 +111,9 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
         println("电话：\(budgetItem.phone)")
         println("地址：\(budgetItem.addr)")
         println("备注：\(budgetItem.comment)")
+        
+        // 记录后返回到上层
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func updateCategoryField(firstCategory: String, secondCategory: String) {
