@@ -53,11 +53,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wu7-AA-a5x">
-                                <rect key="frame" x="20" y="276" width="335" height="30"/>
+                                <rect key="frame" x="20" y="288" width="280" height="30"/>
                                 <color key="backgroundColor" red="0.80929432744565211" green="0.53588329857808814" blue="0.14956662306820492" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="335" id="iy7-3p-UTC"/>
-                                </constraints>
                                 <state key="normal" title="记录支出">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -67,11 +64,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90S-x2-9Rz">
-                                <rect key="frame" x="20" y="348" width="335" height="30"/>
+                                <rect key="frame" x="20" y="348" width="280" height="30"/>
                                 <color key="backgroundColor" red="0.81235139266304346" green="0.53790756853415556" blue="0.1501316028358349" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="335" id="Nl7-Zh-sg5"/>
-                                </constraints>
                                 <state key="normal" title="新增预算">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -83,21 +77,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="90S-x2-9Rz" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="12O-Vj-2Qp"/>
                             <constraint firstItem="8rg-ex-zHI" firstAttribute="top" secondItem="I3l-Sz-b6n" secondAttribute="bottom" constant="19" id="4Mr-XV-qfH"/>
                             <constraint firstItem="8rg-ex-zHI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="6Cd-gm-p4J"/>
                             <constraint firstItem="lLp-4L-B29" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="64" id="71V-oH-xAF"/>
-                            <constraint firstItem="wXG-Dm-oxy" firstAttribute="top" secondItem="Wu7-AA-a5x" secondAttribute="bottom" constant="213" id="7Fb-uK-XWT"/>
+                            <constraint firstAttribute="trailing" secondItem="90S-x2-9Rz" secondAttribute="trailing" constant="20" id="7u8-JO-syp"/>
                             <constraint firstItem="Ooz-UF-0eD" firstAttribute="trailing" secondItem="I3l-Sz-b6n" secondAttribute="trailing" id="85j-Wa-cGZ"/>
-                            <constraint firstItem="90S-x2-9Rz" firstAttribute="centerY" secondItem="Wu7-AA-a5x" secondAttribute="centerY" constant="72" id="8yz-WT-zDd"/>
                             <constraint firstItem="Ooz-UF-0eD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="BPu-Sv-vQ5"/>
-                            <constraint firstItem="8rg-ex-zHI" firstAttribute="leading" secondItem="Wu7-AA-a5x" secondAttribute="leading" id="C6J-Ye-yjs"/>
+                            <constraint firstAttribute="bottom" secondItem="90S-x2-9Rz" secondAttribute="bottom" constant="190" id="Ciq-JP-N8I"/>
+                            <constraint firstAttribute="trailing" secondItem="Wu7-AA-a5x" secondAttribute="trailing" constant="20" id="Usy-a3-opB"/>
                             <constraint firstItem="I3l-Sz-b6n" firstAttribute="top" secondItem="Ooz-UF-0eD" secondAttribute="bottom" constant="15" id="Uvc-1i-9Hg"/>
                             <constraint firstItem="I3l-Sz-b6n" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Y2h-XR-Ewi"/>
+                            <constraint firstAttribute="bottom" secondItem="Wu7-AA-a5x" secondAttribute="bottom" constant="250" id="ZiB-IK-lpt"/>
                             <constraint firstAttribute="trailing" secondItem="lLp-4L-B29" secondAttribute="trailing" id="cF7-cA-rn8"/>
                             <constraint firstItem="lLp-4L-B29" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="oYc-2A-Miz"/>
+                            <constraint firstItem="Wu7-AA-a5x" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="vld-rq-rVy"/>
                             <constraint firstItem="I3l-Sz-b6n" firstAttribute="trailing" secondItem="8rg-ex-zHI" secondAttribute="trailing" id="vya-Rt-0wl"/>
                             <constraint firstItem="Ooz-UF-0eD" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="83" id="zM3-fi-hq2"/>
-                            <constraint firstItem="90S-x2-9Rz" firstAttribute="centerX" secondItem="Wu7-AA-a5x" secondAttribute="centerX" id="zQ2-g3-dlb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="装修管家" id="KZC-Dl-ino"/>
