@@ -48,16 +48,15 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     // 设置cell内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
-        cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
         cell.textLabel.text = self.orders[indexPath.row].category + "   " + self.orders[indexPath.row].money
         
         return cell
     }
     
-//    // 设置section数量
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 1
-//    }
+    // 设置section数量
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
     
     // 设定选中时的动作
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

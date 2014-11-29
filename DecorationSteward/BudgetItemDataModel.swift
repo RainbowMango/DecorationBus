@@ -9,6 +9,10 @@
 import Foundation
 
 class BudgetItem: NSObject, NSCoding{
+    
+    // 展现形式
+    var showList: Array<String> = Array<String>()
+    
     override init() {
     }
     
@@ -28,6 +32,17 @@ class BudgetItem: NSObject, NSCoding{
         aCoder.encodeObject(self.phone, forKey: "phone")
         aCoder.encodeObject(self.addr, forKey: "addr")
         aCoder.encodeObject(self.comment, forKey: "comment")
+    }
+    
+    func getShowList() -> Array<String> {
+        self.showList.append("金额： \(self.money)")
+        self.showList.append("类别： \(self.category)")
+        self.showList.append("商家： \(self.shop)")
+        self.showList.append("电话： \(self.phone)")
+        self.showList.append("地址： \(self.addr)")
+        self.showList.append("备注： \(self.comment)")
+        
+        return self.showList
     }
     
     var money: String = ""
