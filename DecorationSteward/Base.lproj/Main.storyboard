@@ -317,7 +317,7 @@
             </objects>
             <point key="canvasLocation" x="1510" y="-667"/>
         </scene>
-        <!--支出明细-->
+        <!--支出列表-->
         <scene sceneID="cf7-no-5AT">
             <objects>
                 <viewController id="htx-Fr-6nI" customClass="ShowPayListViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
@@ -330,12 +330,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FyV-c4-L9z">
-                                <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="payCell" id="335-dT-qUH">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="payCell" id="335-dT-qUH">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="335-dT-qUH" id="eyE-Zk-w3e">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Xqp-Hm-9lJ" kind="push" identifier="toShowDetailPay" id="hC5-jY-w0q"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="支出列表" id="iwb-m5-FvZ"/>
+                    <connections>
+                        <outlet property="deTailTableView" destination="FyV-c4-L9z" id="NHD-MM-J4s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cvF-pr-AyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="912" y="722"/>
+        </scene>
+        <!--支出明细-->
+        <scene sceneID="G7f-KO-Pon">
+            <objects>
+                <viewController id="Xqp-Hm-9lJ" customClass="ShowPayDetailViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cu2-1v-xAT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ef8-e8-Sf8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mhf-gj-lFR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TrN-yW-K1h">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="330"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="payDetailCell" id="9aY-Qe-f93">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9aY-Qe-f93" id="gsj-yj-pJB">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -344,14 +383,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="支出明细" id="iwb-m5-FvZ"/>
+                    <navigationItem key="navigationItem" title="支出明细" id="XBo-kH-ldA"/>
                     <connections>
-                        <outlet property="deTailTableView" destination="FyV-c4-L9z" id="NHD-MM-J4s"/>
+                        <outlet property="detailTableView" destination="TrN-yW-K1h" id="B9F-63-45k"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cvF-pr-AyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ecO-0X-ov0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="912" y="722"/>
+            <point key="canvasLocation" x="1320" y="722"/>
         </scene>
         <!--预算明细-->
         <scene sceneID="ZnP-wH-fCS">

@@ -29,17 +29,6 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: Init functions
     
@@ -65,8 +54,35 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
         return cell
     }
     
-    // 设置section数量
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+//    // 设置section数量
+//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return 1
+//    }
+    
+    // 设定选中时的动作
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("didSelectRowAtIndexPath() \(indexPath.row)")
+        
+        //performSegueWithIdentifier("toShowDetailPay", sender: self.view)
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    // MARK: - Navigation
+    
+    // 向下个页面传值标准做法
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toShowDetailPay" {
+            println("将要转入toShowDetailPay页面")
+            
+            // 获得选中cell元素
+            var selectedIndex: NSIndexPath = self.deTailTableView.indexPathForSelectedRow()!
+            var orderItem = self.orders[selectedIndex.row]
+            
+            var destinationView: ShowPayDetailViewController = segue.destinationViewController as ShowPayDetailViewController
+            destinationView.setValue(orderItem, forKey: "orderItem")
+        }
     }
 }
