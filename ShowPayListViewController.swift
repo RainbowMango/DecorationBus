@@ -48,7 +48,7 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     // 设置cell内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = self.orders[indexPath.row].category + "   " + self.orders[indexPath.row].money
+        cell.textLabel.text = self.orders[indexPath.row].category + "   \(self.orders[indexPath.row].money)"
         
         return cell
     }

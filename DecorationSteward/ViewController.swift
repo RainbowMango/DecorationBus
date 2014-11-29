@@ -18,37 +18,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         initCategory()
-        getSummaryData()
+        setSummaryData()
     }
 
     // 从userDefault中读取汇总数据
-    func getSummaryData() {
-        var userDefault: NSUserDefaults = NSUserDefaults()
-        var summaryData: String?
+    func setSummaryData() {
+        var budgetSum = BudgetArchiver().getBudgetsSum()
+        var orderSum = OrderArchiver().getOrderSum()
         
-        summaryData = userDefault.stringForKey("totalPaid")
-        if(nil == summaryData) {
-            totalPaid!.text = "支出总额：0.00"
-        }
-        else {
-            totalPaid!.text = "支出总额：\(summaryData)"
-        }
-        
-        summaryData = userDefault.stringForKey("leftBudget")
-        if(nil == summaryData) {
-            leftBudget!.text = "预算余额：0.00"
-        }
-        else {
-            leftBudget!.text = "预算余额：\(summaryData)"
-        }
-        
-        summaryData = userDefault.stringForKey("totalBudget")
-        if(nil == summaryData) {
-            totalBudget!.text = "预算总额：0.00"
-        }
-        else {
-            totalBudget!.text = "预算总额：\(summaryData)"
-        }
+        totalPaid!.text = "支出总额：\(orderSum)"
+        leftBudget!.text = "预算余额：\(budgetSum - orderSum)"
+        totalBudget!.text = "预算总额：\(budgetSum)"
     }
     
     // 初始化类别列表，

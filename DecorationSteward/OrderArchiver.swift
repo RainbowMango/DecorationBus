@@ -14,7 +14,6 @@ class OrderArchiver {
     
     // 序列化获取orders
     func getOrdesFromUserDefault() -> Array<OrderItem> {
-        
         var encodedOrders: NSData? = userDefault.objectForKey(ordersKey) as? NSData
         if nil == encodedOrders {
             return Array<OrderItem>()
@@ -39,5 +38,17 @@ class OrderArchiver {
         var currentItems = getOrdesFromUserDefault()
         currentItems.removeAll(keepCapacity: true)
         saveOrdersToUserDefault(currentItems)
+    }
+    
+    // 获取订单总额
+    func getOrderSum() -> Float {
+        var orders = getOrdesFromUserDefault()
+        var total: Float = 0.00
+        
+        for order in orders {
+            total += order.money
+        }
+        
+        return total
     }
 }

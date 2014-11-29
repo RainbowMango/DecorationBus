@@ -17,7 +17,7 @@ class OrderItem: NSObject, NSCoding{
     }
 
     required init(coder aDecoder: NSCoder) {
-        self.money = aDecoder.decodeObjectForKey("money") as String
+        self.money = aDecoder.decodeFloatForKey("money") as Float
         self.category = aDecoder.decodeObjectForKey("category") as String
         self.shop = aDecoder.decodeObjectForKey("shop") as String
         self.phone = aDecoder.decodeObjectForKey("phone") as String
@@ -26,7 +26,7 @@ class OrderItem: NSObject, NSCoding{
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.money, forKey: "money")
+        aCoder.encodeFloat(self.money, forKey: "money")
         aCoder.encodeObject(self.category, forKey: "category")
         aCoder.encodeObject(self.shop, forKey: "shop")
         aCoder.encodeObject(self.phone, forKey: "phone")
@@ -45,7 +45,7 @@ class OrderItem: NSObject, NSCoding{
         return self.showList
     }
     
-    var money: String = ""
+    var money: Float = 0.00
     var category: String = ""
     var shop: String = ""
     var phone: String = ""

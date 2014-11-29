@@ -14,7 +14,6 @@ class BudgetArchiver {
     
     // 序列化获取budgets
     func getBudgetsFromUserDefault() -> Array<BudgetItem> {
-        
         var encodedBudgets: NSData? = userDefault.objectForKey(budgetKey) as? NSData
         if nil == encodedBudgets {
             return Array<BudgetItem>()
@@ -38,5 +37,17 @@ class BudgetArchiver {
         var currentBudgets = getBudgetsFromUserDefault()
         currentBudgets.removeAll(keepCapacity: true)
         saveBudgetsToUserDefault(currentBudgets)
+    }
+    
+    // 累加所有预算
+    func getBudgetsSum() -> Float {
+        var budgets = getBudgetsFromUserDefault()
+        var total: Float = 0.00
+        
+        for budget in budgets {
+            total = total + budget.money
+        }
+        
+        return total
     }
 }

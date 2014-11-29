@@ -117,7 +117,7 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         
         // 取得表单信息
         var orderItem = OrderItem()
-        orderItem.money = self.moneyTextField.text
+        orderItem.money = (self.moneyTextField.text as NSString).floatValue
         orderItem.category = self.categoryTextField.text
         orderItem.shop = self.shopTextField.text
         orderItem.phone = self.phoneTextField.text

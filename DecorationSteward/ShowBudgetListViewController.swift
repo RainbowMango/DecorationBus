@@ -49,7 +49,7 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     // 设置cell内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = self.budgets[indexPath.row].category + "   " + self.budgets[indexPath.row].money
+        cell.textLabel.text = self.budgets[indexPath.row].category + "   \(self.budgets[indexPath.row].money)"
         
         return cell
     }

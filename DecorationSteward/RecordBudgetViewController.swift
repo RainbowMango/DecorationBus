@@ -93,7 +93,7 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
         
         // 取得表单信息
         var budgetItem = BudgetItem()
-        budgetItem.money = self.moneyTextField.text
+        budgetItem.money = (self.moneyTextField.text as NSString).floatValue
         budgetItem.category = self.categoryTextField.text
         budgetItem.shop = self.shopTextField.text
         budgetItem.phone = self.phoneTextField.text

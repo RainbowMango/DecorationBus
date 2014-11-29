@@ -14,8 +14,6 @@ class CategoryArchiver {
     
     // 序列化获取category dictionary
     func getCategoryFromUserDefault() -> Dictionary<String, Array<String>> {
-        
-        println(userDefault)
         var encodedCategorys: NSData? = userDefault.objectForKey(userDefaultKey) as? NSData
         if nil == encodedCategorys {
             return Dictionary<String, Array<String>>()
