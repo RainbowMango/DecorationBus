@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var minorCategoryTableView: UITableView!
     
@@ -20,16 +20,26 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.minorCategorys = CategoryArchiver().getMinorCategoryByPrime(self.primeCategorySelected)
-        println("Get minor categorys: \(self.minorCategorys)")
+        getMinorCategory()
         
         self.minorCategoryTableView.dataSource = self
         self.minorCategoryTableView.delegate = self
+        self.navigationController?.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getMinorCategory() -> Void {
+        self.minorCategorys = CategoryArchiver().getMinorCategoryByPrime(self.primeCategorySelected)
+    }
+    
+    // 导航返回时重新加载数据
+    func reloadData() -> Void {
+        getMinorCategory()
+        self.minorCategoryTableView.reloadData()
     }
     
     // MARK: - Table view data source protocol
@@ -70,5 +80,9 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
             destinationView.setValue(self.primeCategorySelected, forKey: "primeCategorySelected")
         }
     }
-
+    
+    // 导航回来时刷新数据
+    func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
+        reloadData()
+    }
 }

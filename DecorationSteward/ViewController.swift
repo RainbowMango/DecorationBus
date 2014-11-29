@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITabBarControllerDelegate {
+class ViewController: UIViewController, UITabBarControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var totalPaid: UILabel!
     @IBOutlet weak var leftBudget: UILabel!
@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
         super.viewDidLoad()
         
         self.tabBarController?.delegate = self
+        self.navigationController?.delegate = self
         initCategory()
         setSummaryData()
     }
@@ -47,6 +48,11 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     
     // tab bar 切换时重新加载数据
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        setSummaryData()
+    }
+    
+    // 导航回来时刷新数据
+    func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
         setSummaryData()
     }
 }

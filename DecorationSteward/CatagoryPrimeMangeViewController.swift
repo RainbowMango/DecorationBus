@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     var primeCatagory: Array<String>!
     var primeCategorySelected: String = String()
     
@@ -21,14 +21,26 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
         self.primeCatagoryTableView.delegate = self
         self.primeCatagoryTableView.dataSource = self
         
-        // 动态获取类别
-        var categoryDic = CategoryArchiver().getCategoryFromUserDefault()
-        self.primeCatagory = Array(categoryDic.keys)
+        // 设置navigationController代理以响应导航返回事件
+        self.navigationController?.delegate = self
+        
+        getPrimeCategory()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getPrimeCategory() -> Void {
+        var categoryDic = CategoryArchiver().getCategoryFromUserDefault()
+        self.primeCatagory = Array(categoryDic.keys)
+    }
+    
+    // 导航返回时重新加载数据
+    func reloadData() -> Void {
+        getPrimeCategory()
+        self.primeCatagoryTableView.reloadData()
     }
     
     // 设置显示cell的数目
@@ -78,5 +90,9 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
             destinationView.setValue(self.primeCategorySelected, forKey: "primeCategorySelected")
         }
     }
-
+    
+    // 导航回来时刷新数据
+    func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
+        reloadData()
+    }
 }
