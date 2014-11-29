@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITabBarControllerDelegate {
 
     @IBOutlet weak var totalPaid: UILabel!
     @IBOutlet weak var leftBudget: UILabel!
@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarController?.delegate = self
         initCategory()
         setSummaryData()
     }
@@ -42,6 +43,11 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // tab bar 切换时重新加载数据
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        setSummaryData()
     }
 }
 
