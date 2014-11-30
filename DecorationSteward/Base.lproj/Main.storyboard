@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lLp-4L-B29">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="index.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lLp-4L-B29">
                                 <rect key="frame" x="0.0" y="64" width="320" height="180"/>
                                 <color key="backgroundColor" red="0.79296875" green="0.52507313471547834" blue="0.14654947417023664" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -54,9 +54,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wu7-AA-a5x">
                                 <rect key="frame" x="20" y="358" width="280" height="30"/>
-                                <color key="backgroundColor" red="0.80929432744565211" green="0.53588329857808814" blue="0.14956662306820492" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.70980392156862748" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="记录支出">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.89411764705882346" green="0.45882352941176469" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -65,9 +65,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90S-x2-9Rz">
                                 <rect key="frame" x="20" y="408" width="280" height="30"/>
-                                <color key="backgroundColor" red="0.81235139266304346" green="0.53790756853415556" blue="0.1501316028358349" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.70980392156862748" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="新增预算">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.89411764705882346" green="0.45882352941176469" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -754,7 +754,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Aoz-Ce-F30">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.60771030200620313" blue="0.052664751614439731" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="lOY-36-jSd" kind="relationship" relationship="viewControllers" id="cqy-8J-XKt"/>
@@ -937,6 +937,9 @@
             <point key="canvasLocation" x="416" y="1429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="index.jpg" width="320" height="180"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
