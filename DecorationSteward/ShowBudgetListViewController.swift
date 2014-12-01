@@ -18,6 +18,7 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         println("viewDidLoad() \(self)")
         super.viewDidLoad()
+        setViewColor()
         
         initTableView()
         
@@ -28,6 +29,11 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // view配色方案
+    func setViewColor() -> Void {
+        self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
     }
     
     // MARK: Init functions

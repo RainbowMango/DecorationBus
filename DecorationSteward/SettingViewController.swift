@@ -16,7 +16,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setViewColor()
         // 设置tableView代理和数据源，否则无法显示，也可以在IB中连线
         settingTableView.delegate = self
         settingTableView.dataSource = self
@@ -25,6 +25,12 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // view配色方案
+    //TODO: 改配色方案无效
+    func setViewColor() -> Void {
+        self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
     }
     
     // 初始化软件

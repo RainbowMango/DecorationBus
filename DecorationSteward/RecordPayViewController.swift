@@ -33,7 +33,8 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setViewColor()
+        
         initView()
         
         // 设置空间的代理到本Controller，也可以在IB中连线
@@ -55,6 +56,11 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         self.secondCategoryArray = self.categorys[self.firstCategoryArray[0]]
         self.firstSelectedString = self.firstCategoryArray[0]
         self.secondSelectedString = self.secondCategoryArray[0]
+    }
+    
+    // view配色方案
+    func setViewColor() -> Void {
+        self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
     }
 
     func initView() {

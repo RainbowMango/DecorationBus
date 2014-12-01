@@ -28,6 +28,7 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setViewColor()
 
         initBarButton()
         initTextFields()
@@ -50,6 +51,11 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // view配色方案
+    func setViewColor() -> Void {
+        self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
     }
     
     func initView() {

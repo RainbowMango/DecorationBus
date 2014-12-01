@@ -16,13 +16,18 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setViewColor()
         self.tabBarController?.delegate = self
         self.navigationController?.delegate = self
         initCategory()
         setSummaryData()
     }
 
+    // view配色方案
+    func setViewColor() -> Void {
+        self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
+    }
+    
     // 从userDefault中读取汇总数据
     func setSummaryData() {
         var budgetSum = BudgetArchiver().getBudgetsSum()
