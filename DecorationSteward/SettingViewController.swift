@@ -28,18 +28,18 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // 初始化软件
-    @IBAction func initSoftware(sender: AnyObject) {
+    @IBAction func deleteAllUserData(sender: AnyObject) {
         //TODO：弹出Alert提示用户
         println("软件初始化")
         
-//        // 清除自定义类别表
-//        CategoryArchiver().initCategoryInUserDefault()
-//        
-//        // 清除预算
-//        BudgetArchiver().removeAllBudgets()
-//        
-//        // 清除订单
-//        OrderArchiver().removeAllOrders()
+        // 清除自定义类别表
+        CategoryArchiver().initCategoryInUserDefault()
+        
+        // 清除预算
+        BudgetArchiver().removeAllBudgets()
+        
+        // 清除订单
+        OrderArchiver().removeAllOrders()
     }
     
     // 设置显示cell的数目
