@@ -130,6 +130,22 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         orderItem.addr = self.addrTextField.text
         orderItem.comment = self.commentTextView.text
         
+        // 数据稽核
+        if orderItem.money.isZero {
+            var alertController = UIAlertController(title: "空值", message: "请输入正确的金额", preferredStyle: UIAlertControllerStyle.Alert)
+            var okAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.Default, handler: nil)
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            return
+        }
+        if orderItem.category.isEmpty {
+            var alertController = UIAlertController(title: "空值", message: "请选择一个类别", preferredStyle: UIAlertControllerStyle.Alert)
+            var okAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.Default, handler: nil)
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            return
+        }
+        
         orders.append(orderItem)
         
         // 将订单信息写入UserDefaults
