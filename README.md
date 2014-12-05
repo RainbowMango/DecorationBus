@@ -33,18 +33,22 @@
 * 缺陷修复：设置页面点击“软件初始化”按钮导致crash
 
 ###如何参与开发
-1. 首先fork我的项目
-2. 把fork过去的项目也就是你的项目clone到你的本地
-3. 在命令行运行 git branch develop 来创建一个新分支
-4. 运行 git checkout develop 来切换到新分支
-5. 运行 git remote add upstream git@github.com:RainbowMango/DecorationSteward.git 把我的库添加为远端库
-6. 运行 git remote update更新
-7. 运行 git fetch upstream gh-pages 拉取我的库的更新到本地
-8. 运行 git rebase upstream/gh-pages 将我的更新合并到你的分支
-
-这是一个初始化流程，只需要做一遍就行，之后请一直在develop分支进行修改。
-如果修改过程中我的库有了更新，请重复6、7、8步。
-修改之后，首先push到你的库，然后登录GitHub，在你的库的首页可以看到一个 pull request 按钮，点击它，填写一些说明信息，然后提交即可。
+1. 首先在gitHub上fork我的项目
+2. 配置ssh-key: <https://help.github.com/articles/generating-ssh-keys/>
+3. 配置终端git:  
+   `git config --global user.name "your user name"`  
+   `git config --global user.email "your email address"`  
+   `git remote add upstream https://github.com/RainbowMango/DecorationSteward.git`  
+4. 把fork过去的项目也就是你的项目clone到你的本地
+5. 获取我的更新  
+   `git fetch upstream`   
+   `git merge upstream/master`  
+   `git push`
+6. 开始开发新的功能并提交到自己的仓库  
+   `git commit -m "xxx"`
+   `git push`
+7. 在gitHub上发起Pull Request 等待我来处理
+8. 重复5，6，7开发新的功能。
 
 ###参与者
 * penny  产品经理
