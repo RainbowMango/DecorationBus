@@ -13,10 +13,13 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
     var primeCategorySelected: String = String()
     
     @IBOutlet weak var primeCatagoryTableView: UITableView!
+    @IBOutlet weak var addPrimeCategoryButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setViewColor()
+        
         // 设置tableView代理和数据源，否则无法显示，也可以在IB中连线
         self.primeCatagoryTableView.delegate = self
         self.primeCatagoryTableView.dataSource = self
@@ -25,6 +28,12 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
         self.navigationController?.delegate = self
         
         getPrimeCategory()
+    }
+    
+    // view配色方案
+    func setViewColor() -> Void {
+        self.addPrimeCategoryButton.backgroundColor = ColorScheme().buttonBackgroundColor
+        self.addPrimeCategoryButton.titleLabel?.textColor = ColorScheme().buttonTextColor
     }
 
     override func didReceiveMemoryWarning() {
