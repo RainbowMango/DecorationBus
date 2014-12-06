@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate {
+class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var minorCategoryTableView: UITableView = UITableView()
     
@@ -21,8 +21,6 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
         self.addTableView()
         
         getMinorCategory()
-        
-        self.navigationController?.delegate = self
     }
     
     func addTableView() {
@@ -89,10 +87,5 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
             var destinationView: CategoryMinorAddViewController = segue.destinationViewController as CategoryMinorAddViewController
             destinationView.setValue(self.primeCategorySelected, forKey: "primeCategorySelected")
         }
-    }
-    
-    // 导航回来时刷新数据
-    func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
-        //reloadData()
     }
 }

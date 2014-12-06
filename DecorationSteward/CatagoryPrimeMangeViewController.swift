@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
+class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var primeCatagory: Array<String>!
     var primeCategorySelected: String = String()
     
@@ -23,9 +23,6 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
         // 设置tableView代理和数据源，否则无法显示，也可以在IB中连线
         self.primeCatagoryTableView.delegate = self
         self.primeCatagoryTableView.dataSource = self
-        
-        // 设置navigationController代理以响应导航返回事件
-        self.navigationController?.delegate = self
         
         getPrimeCategory()
     }
@@ -98,10 +95,5 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
             var destinationView: CatagoryMinorManageViewController = segue.destinationViewController as CatagoryMinorManageViewController
             destinationView.setValue(self.primeCategorySelected, forKey: "primeCategorySelected")
         }
-    }
-    
-    // 导航回来时刷新数据
-    func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
-        reloadData()
     }
 }
