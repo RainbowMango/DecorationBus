@@ -14,6 +14,9 @@
 		9B1E5BE81A2B5E1100615842 /* index@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE51A2B5E1100615842 /* index@2x.jpg */; };
 		9B1E5BE91A2B5E1100615842 /* index@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE61A2B5E1100615842 /* index@3x.jpg */; };
 		9B1E5BF91A2CA0C800615842 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E5BF81A2CA0C800615842 /* ColorScheme.swift */; };
+		9B1FF5271A33480700FAA985 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1FF5241A33480700FAA985 /* Icon-76.png */; };
+		9B1FF5281A33480700FAA985 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1FF5251A33480700FAA985 /* Icon-76@2x.png */; };
+		9B1FF5291A33480700FAA985 /* Icon-76@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1FF5261A33480700FAA985 /* Icon-76@3x.png */; };
 		9B34AAFC1A1FA33100013C39 /* OrderArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFB1A1FA33100013C39 /* OrderArchiver.swift */; };
 		9B34AAFE1A20B98500013C39 /* CategoryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFD1A20B98500013C39 /* CategoryDataModel.swift */; };
 		9B34AB001A20BB8000013C39 /* CategoryArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFF1A20BB8000013C39 /* CategoryArchiver.swift */; };
@@ -59,6 +62,9 @@
 		9B1E5BE51A2B5E1100615842 /* index@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "index@2x.jpg"; path = "pictures/index@2x.jpg"; sourceTree = "<group>"; };
 		9B1E5BE61A2B5E1100615842 /* index@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "index@3x.jpg"; path = "pictures/index@3x.jpg"; sourceTree = "<group>"; };
 		9B1E5BF81A2CA0C800615842 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorScheme.swift; path = colorScheme/ColorScheme.swift; sourceTree = "<group>"; };
+		9B1FF5241A33480700FAA985 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "icons/Icon-76.png"; sourceTree = "<group>"; };
+		9B1FF5251A33480700FAA985 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "icons/Icon-76@2x.png"; sourceTree = "<group>"; };
+		9B1FF5261A33480700FAA985 /* Icon-76@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@3x.png"; path = "icons/Icon-76@3x.png"; sourceTree = "<group>"; };
 		9B34AAFB1A1FA33100013C39 /* OrderArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderArchiver.swift; sourceTree = "<group>"; };
 		9B34AAFD1A20B98500013C39 /* CategoryDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDataModel.swift; sourceTree = "<group>"; };
 		9B34AAFF1A20BB8000013C39 /* CategoryArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryArchiver.swift; sourceTree = "<group>"; };
@@ -120,6 +126,9 @@
 		9B1E5BE31A2B5DAD00615842 /* pictures */ = {
 			isa = PBXGroup;
 			children = (
+				9B1FF5241A33480700FAA985 /* Icon-76.png */,
+				9B1FF5251A33480700FAA985 /* Icon-76@2x.png */,
+				9B1FF5261A33480700FAA985 /* Icon-76@3x.png */,
 				9B1E5BE41A2B5E1100615842 /* index.jpg */,
 				9B1E5BE51A2B5E1100615842 /* index@2x.jpg */,
 				9B1E5BE61A2B5E1100615842 /* index@3x.jpg */,
@@ -304,9 +313,12 @@
 			files = (
 				9B1E5BE81A2B5E1100615842 /* index@2x.jpg in Resources */,
 				9B1E5BE71A2B5E1100615842 /* index.jpg in Resources */,
+				9B1FF5291A33480700FAA985 /* Icon-76@3x.png in Resources */,
 				9B37A9DC19EEB57A0097F88D /* Main.storyboard in Resources */,
+				9B1FF5271A33480700FAA985 /* Icon-76.png in Resources */,
 				9B37A9E119EEB57A0097F88D /* LaunchScreen.xib in Resources */,
 				9B1E5BE91A2B5E1100615842 /* index@3x.jpg in Resources */,
+				9B1FF5281A33480700FAA985 /* Icon-76@2x.png in Resources */,
 				9B37A9DE19EEB57A0097F88D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
