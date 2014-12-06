@@ -805,23 +805,7 @@
                     <view key="view" contentMode="scaleToFill" id="hVZ-mz-S4N">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="&lt;点击输入>" translatesAutoresizingMaskIntoConstraints="NO" id="FiG-cZ-YIm">
-                                <rect key="frame" x="10" y="10" width="300" height="300"/>
-                                <color key="backgroundColor" red="1" green="0.86765558773610674" blue="0.69125505069449278" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="p70-ZF-i4n"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
-                            </textView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="FiG-cZ-YIm" firstAttribute="leading" secondItem="hVZ-mz-S4N" secondAttribute="leading" constant="10" id="2wz-HY-WNi"/>
-                            <constraint firstAttribute="trailing" secondItem="FiG-cZ-YIm" secondAttribute="trailing" constant="10" id="KCh-zx-aO6"/>
-                            <constraint firstItem="FiG-cZ-YIm" firstAttribute="top" secondItem="hVZ-mz-S4N" secondAttribute="top" constant="10" id="xUK-EK-nbS"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="提交反馈" id="ut8-Ed-tGZ">
                         <barButtonItem key="rightBarButtonItem" title="确定" id="HNZ-6J-3E6">
@@ -830,9 +814,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="feedbackTextView" destination="FiG-cZ-YIm" id="bHY-xY-oze"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSj-gf-rGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
