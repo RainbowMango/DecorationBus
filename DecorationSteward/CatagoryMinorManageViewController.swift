@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CategoryMinorAddViewControllerDelegate {
 
     @IBOutlet weak var minorCategoryTableView: UITableView!
     
@@ -41,7 +41,7 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
         self.minorCategorys = CategoryArchiver().getMinorCategoryByPrime(self.primeCategorySelected)
     }
     
-    // 导航返回时重新加载数据
+    // 重新加载数据
     func reloadData() -> Void {
         getMinorCategory()
         self.minorCategoryTableView.reloadData()
@@ -83,6 +83,16 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
     
             var destinationView: CategoryMinorAddViewController = segue.destinationViewController as CategoryMinorAddViewController
             destinationView.setValue(self.primeCategorySelected, forKey: "primeCategorySelected")
+            destinationView.setValue(self, forKey: "parentView")
         }
+    }
+    
+    func CategoryMinorAddView(categoryAdded: String) -> Void {
+        // 没有数据变化不执行动作
+        if categoryAdded.isEmpty {
+            return
+        }
+        
+        self.reloadData()
     }
 }

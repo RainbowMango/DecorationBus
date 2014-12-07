@@ -13,6 +13,8 @@ class CategoryMinorAddViewController: UIViewController {
     @IBOutlet weak var newMinorCategoryTextField: UITextField!
     
     var primeCategorySelected: String = String() // 获取前个页面的大类名
+    var parentView: CatagoryMinorManageViewController?
+    var delegate: CategoryMinorAddViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,11 @@ class CategoryMinorAddViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         initBarButton()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.delegate = parentView
+        self.delegate?.CategoryMinorAddView(self.newMinorCategoryTextField.text)
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,4 +69,8 @@ class CategoryMinorAddViewController: UIViewController {
     }
     */
 
+}
+
+protocol CategoryMinorAddViewControllerDelegate {
+    func CategoryMinorAddView(categoryAdded: String) -> Void
 }
