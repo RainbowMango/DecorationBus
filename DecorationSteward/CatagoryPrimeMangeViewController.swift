@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CategoryPrimeAddViewControllerDelegate {
     var primeCatagory: Array<String>!
     var primeCategorySelected: String = String()
     
@@ -89,11 +89,26 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
 
     // 向下个页面传值标准做法
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toMinorCategory" {
-            println("将要转入toMinorCategory页面")
-            
-            var destinationView: CatagoryMinorManageViewController = segue.destinationViewController as CatagoryMinorManageViewController
+        var segueIdentifier: String = segue.identifier!
+        
+        switch segueIdentifier {
+        case "toMinorCategory":
+            var destinationView = segue.destinationViewController as CatagoryMinorManageViewController
             destinationView.setValue(self.primeCategorySelected, forKey: "primeCategorySelected")
+        case "toPrimeAddSegue":
+            var destinationView = segue.destinationViewController as CategoryPrimeAddViewController
+            destinationView.setValue(self, forKey: "parentView")
+        default:
+            println("Warning: 未定义的segue")
         }
+    }
+    
+    func CategoryPrimeAddView(categoryAdded: String) -> Void {
+        // 没有数据变化不执行动作
+        if categoryAdded.isEmpty {
+            return
+        }
+        
+        self.reloadData()
     }
 }

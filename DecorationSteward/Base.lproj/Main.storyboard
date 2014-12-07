@@ -577,7 +577,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ywQ-Gh-viB" kind="push" id="wIf-lX-9mT"/>
+                                    <segue destination="ywQ-Gh-viB" kind="push" identifier="toPrimeAddSegue" id="wIf-lX-9mT"/>
                                 </connections>
                             </button>
                         </subviews>

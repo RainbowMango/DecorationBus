@@ -12,12 +12,20 @@ class CategoryPrimeAddViewController: UIViewController {
     
     @IBOutlet weak var newPrimeCategoryTextField: UITextField!
     
+    var parentView: CatagoryPrimeMangeViewController?
+    var delegate: CategoryPrimeAddViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
         initBarButton()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.delegate = parentView
+        self.delegate?.CategoryPrimeAddView(self.newPrimeCategoryTextField.text)
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,4 +72,9 @@ class CategoryPrimeAddViewController: UIViewController {
     }
     */
 
+}
+
+// 定义代理，用于向前个view传值
+protocol CategoryPrimeAddViewControllerDelegate {
+    func CategoryPrimeAddView(categoryAdded: String) -> Void
 }

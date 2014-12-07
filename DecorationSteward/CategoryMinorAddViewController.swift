@@ -71,6 +71,7 @@ class CategoryMinorAddViewController: UIViewController {
 
 }
 
+// 定义代理，用于向前个view传值
 protocol CategoryMinorAddViewControllerDelegate {
     func CategoryMinorAddView(categoryAdded: String) -> Void
 }
