@@ -472,7 +472,9 @@
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thU-IN-5xe">
                                 <rect key="frame" x="20" y="438" width="280" height="30"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.70980392160000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="软件初始化">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
