@@ -10,7 +10,7 @@ import UIKit
 
 class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var minorCategoryTableView: UITableView = UITableView()
+    @IBOutlet weak var minorCategoryTableView: UITableView!
     
     var primeCategorySelected: String = String() // 前个页面选中的大类名，本界面据此显示响应小类名
     var minorCategorys: Array<String> = Array<String>()
@@ -24,9 +24,6 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
     }
     
     func addTableView() {
-        let tableViewFrame = CGRectMake(0, 60, self.view.frame.width, self.view.frame.height)
-        self.minorCategoryTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.Plain)
-        
         self.minorCategoryTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: self.cellReuseIdentifier)
         
         self.minorCategoryTableView.dataSource = self
