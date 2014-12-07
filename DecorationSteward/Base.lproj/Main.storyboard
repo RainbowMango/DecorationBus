@@ -464,12 +464,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JaE-33-3c0">
-                                <rect key="frame" x="0.0" y="10" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="设置" id="L7W-tL-ZQL"/>
-                                </items>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thU-IN-5xe">
                                 <rect key="frame" x="20" y="438" width="280" height="30"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.70980392160000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -521,10 +515,6 @@
                             <constraint firstAttribute="centerX" secondItem="thU-IN-5xe" secondAttribute="centerX" id="DVb-50-pQN"/>
                             <constraint firstAttribute="trailing" secondItem="thU-IN-5xe" secondAttribute="trailing" constant="20" id="Lv6-sh-nkx"/>
                             <constraint firstAttribute="bottom" secondItem="thU-IN-5xe" secondAttribute="bottom" constant="100" id="MRP-8J-jpN"/>
-                            <constraint firstItem="JaE-33-3c0" firstAttribute="leading" secondItem="Sl9-9c-CT2" secondAttribute="leading" id="NAy-SQ-hOP"/>
-                            <constraint firstItem="JaE-33-3c0" firstAttribute="top" secondItem="Sl9-9c-CT2" secondAttribute="top" constant="10" id="Wkn-eT-pRb"/>
-                            <constraint firstAttribute="centerX" secondItem="JaE-33-3c0" secondAttribute="centerX" id="ZyZ-KP-iy5"/>
-                            <constraint firstAttribute="trailing" secondItem="JaE-33-3c0" secondAttribute="trailing" id="bff-7q-eHz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="yg8-F9-ucY"/>
