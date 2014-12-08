@@ -737,11 +737,11 @@
             </objects>
             <point key="canvasLocation" x="-25.600000000000001" y="877.55999999999995"/>
         </scene>
-        <!--预算-->
+        <!--首页-->
         <scene sceneID="p91-xA-5Tz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lOY-36-jSd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="预算" id="mFy-Ia-cgK"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="home.png" id="mFy-Ia-cgK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n2c-Xn-ba1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -760,7 +760,7 @@
         <scene sceneID="eM5-Fz-Hak">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sku-lQ-Ena" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="设置" id="L2W-G5-bqU"/>
+                    <tabBarItem key="tabBarItem" title="设置" image="settings.png" id="L2W-G5-bqU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dIW-E8-iNG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -823,7 +823,7 @@
         <scene sceneID="juN-mg-07h">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uvw-p2-L0t" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="支出明细" id="OTj-6B-EQi"/>
+                    <tabBarItem key="tabBarItem" title="支出明细" image="list.png" id="OTj-6B-EQi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LlM-UP-MZL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -842,7 +842,7 @@
         <scene sceneID="wbl-TB-gK5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xyg-T5-9mL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="预算明细" id="Vnd-Lm-in5"/>
+                    <tabBarItem key="tabBarItem" title="预算明细" image="list.png" id="Vnd-Lm-in5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AdK-vO-Lz5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -859,7 +859,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="home.png" width="40" height="40"/>
         <image name="index.jpg" width="320" height="180"/>
+        <image name="list.png" width="40" height="40"/>
+        <image name="settings.png" width="40" height="40"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
