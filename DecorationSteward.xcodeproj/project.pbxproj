@@ -37,6 +37,10 @@
 		9B8032BF1A35C246005BA828 /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8032B61A35C246005BA828 /* settings@3x.png */; };
 		9B8032C31A35CB76005BA828 /* PointMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8032C11A35CB76005BA828 /* PointMessageViewController.swift */; };
 		9B8032C41A35CB76005BA828 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8032C21A35CB76005BA828 /* SpinnerViewController.swift */; };
+		9B8032C81A35D76A005BA828 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8032C51A35D76A005BA828 /* Default.png */; };
+		9B8032C91A35D76A005BA828 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8032C61A35D76A005BA828 /* Default@2x.png */; };
+		9B8032CA1A35D76A005BA828 /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8032C71A35D76A005BA828 /* Default@3x.png */; };
+		9B8032CC1A35DB2B005BA828 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8032CB1A35DB2B005BA828 /* Default~iphone.png */; };
 		9B97DCC91A235933006A94C0 /* RecordBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCC81A235933006A94C0 /* RecordBudgetViewController.swift */; };
 		9B97DCCC1A236161006A94C0 /* BudgetItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCCB1A236161006A94C0 /* BudgetItemDataModel.swift */; };
 		9B97DCCE1A2361AA006A94C0 /* BudgetArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCCD1A2361AA006A94C0 /* BudgetArchiver.swift */; };
@@ -98,6 +102,10 @@
 		9B8032B61A35C246005BA828 /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@3x.png"; path = "pictures/settings@3x.png"; sourceTree = "<group>"; };
 		9B8032C11A35CB76005BA828 /* PointMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointMessageViewController.swift; sourceTree = "<group>"; };
 		9B8032C21A35CB76005BA828 /* SpinnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		9B8032C51A35D76A005BA828 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = pictures/Default.png; sourceTree = "<group>"; };
+		9B8032C61A35D76A005BA828 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "pictures/Default@2x.png"; sourceTree = "<group>"; };
+		9B8032C71A35D76A005BA828 /* Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@3x.png"; path = "pictures/Default@3x.png"; sourceTree = "<group>"; };
+		9B8032CB1A35DB2B005BA828 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~iphone.png"; path = "pictures/Default~iphone.png"; sourceTree = "<group>"; };
 		9B97DCC81A235933006A94C0 /* RecordBudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordBudgetViewController.swift; sourceTree = "<group>"; };
 		9B97DCCB1A236161006A94C0 /* BudgetItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetItemDataModel.swift; sourceTree = "<group>"; };
 		9B97DCCD1A2361AA006A94C0 /* BudgetArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetArchiver.swift; sourceTree = "<group>"; };
@@ -135,6 +143,10 @@
 		9B1E5BE31A2B5DAD00615842 /* pictures */ = {
 			isa = PBXGroup;
 			children = (
+				9B8032CB1A35DB2B005BA828 /* Default~iphone.png */,
+				9B8032C51A35D76A005BA828 /* Default.png */,
+				9B8032C61A35D76A005BA828 /* Default@2x.png */,
+				9B8032C71A35D76A005BA828 /* Default@3x.png */,
 				9B8032AE1A35C246005BA828 /* home.png */,
 				9B8032AF1A35C246005BA828 /* home@2x.png */,
 				9B8032B01A35C246005BA828 /* home@3x.png */,
@@ -349,6 +361,10 @@
 				9B8032BA1A35C246005BA828 /* list.png in Resources */,
 				9B37A9DC19EEB57A0097F88D /* Main.storyboard in Resources */,
 				9B8032BF1A35C246005BA828 /* settings@3x.png in Resources */,
+				9B8032C81A35D76A005BA828 /* Default.png in Resources */,
+				9B8032C91A35D76A005BA828 /* Default@2x.png in Resources */,
+				9B8032CC1A35DB2B005BA828 /* Default~iphone.png in Resources */,
+				9B8032CA1A35D76A005BA828 /* Default@3x.png in Resources */,
 				9B1FF5271A33480700FAA985 /* Icon-76.png in Resources */,
 				9B37A9E119EEB57A0097F88D /* LaunchScreen.xib in Resources */,
 				9B8032B71A35C246005BA828 /* home.png in Resources */,
