@@ -58,7 +58,7 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     // 设置cell内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = self.orders[indexPath.row].category + "   \(self.orders[indexPath.row].money)"
+        cell.textLabel?.text = self.orders[indexPath.row].category + "   \(self.orders[indexPath.row].money)"
         
         return cell
     }
@@ -78,6 +78,30 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+//        let editAction = UITableViewRowAction(style: .Default, title: "编辑") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+//              }
+      //  editAction.backgroundColor = UIColor.lightGrayColor()
+        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) in
+            
+            self.orders.removeAtIndex(indexPath.row)
+            self.deTailTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+              OrderArchiver().saveOrdersToUserDefault(self.orders)
+        }
+        
+        
+        return [deleteAction]
+    }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete{
+            self.orders.removeAtIndex(indexPath.row)
+        }
+        self.deTailTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        OrderArchiver().saveOrdersToUserDefault(orders)
+           }
+
+    
+    
     
     // MARK: - Navigation
     
