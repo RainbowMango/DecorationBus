@@ -80,6 +80,23 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
         return true
     }
     
+    // 添加滑动按钮
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        // 添加删除按钮
+        let deleteClosure = { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            self.budgets.removeAtIndex(indexPath.row)
+            self.deTailTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            BudgetArchiver().saveBudgetsToUserDefault(self.budgets)
+        }
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "删除", handler: deleteClosure)
+        
+        return [deleteAction]
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        return
+    }
+    
     // MARK: - Navigation
     
     // 向下个页面传值标准做法
