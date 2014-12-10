@@ -487,56 +487,44 @@
                                     <action selector="deleteAllUserData:" destination="GSu-jP-p3Q" eventType="touchUpInside" id="wvJ-Sq-i9w"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="asq-8s-RI8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="asq-8s-RI8">
                                 <rect key="frame" x="0.0" y="64" width="320" height="154"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="154" id="cYt-Uj-Wsi"/>
+                                </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="eGe-mg-OAz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingItemCell" id="eGe-mg-OAz">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eGe-mg-OAz" id="xXu-ja-sOi">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Z0N-cZ-epa" kind="push" identifier="CatagoryPrime" id="tl0-fT-mft"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="lV8-Jw-4H2">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lV8-Jw-4H2" id="jWd-QS-3OS">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="nFx-M7-WZB" kind="push" identifier="feedback" id="N8N-ez-S1R"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="VZ6-CR-NC1">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VZ6-CR-NC1" id="4Ew-wv-ACb">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="DPa-PE-TNl" kind="push" identifier="aboutme" id="uKR-SR-1LZ"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="asq-8s-RI8" firstAttribute="leading" secondItem="Sl9-9c-CT2" secondAttribute="leading" id="7he-ld-frC"/>
                             <constraint firstItem="thU-IN-5xe" firstAttribute="leading" secondItem="Sl9-9c-CT2" secondAttribute="leading" constant="20" id="AQT-XG-T4r"/>
                             <constraint firstAttribute="centerX" secondItem="thU-IN-5xe" secondAttribute="centerX" id="DVb-50-pQN"/>
                             <constraint firstAttribute="trailing" secondItem="thU-IN-5xe" secondAttribute="trailing" constant="20" id="Lv6-sh-nkx"/>
                             <constraint firstAttribute="bottom" secondItem="thU-IN-5xe" secondAttribute="bottom" constant="100" id="MRP-8J-jpN"/>
+                            <constraint firstItem="asq-8s-RI8" firstAttribute="top" secondItem="Sl9-9c-CT2" secondAttribute="top" constant="64" id="QkR-pR-bVi"/>
+                            <constraint firstAttribute="trailing" secondItem="asq-8s-RI8" secondAttribute="trailing" id="TV8-BS-R6L"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="yg8-F9-ucY"/>
                     <connections>
                         <outlet property="settingTableView" destination="asq-8s-RI8" id="jsx-69-lgv"/>
+                        <segue destination="Z0N-cZ-epa" kind="push" identifier="CatagoryPrime" id="oCA-FQ-QkR"/>
+                        <segue destination="nFx-M7-WZB" kind="push" identifier="feedback" id="xOC-Ns-Gjy"/>
+                        <segue destination="DPa-PE-TNl" kind="push" identifier="aboutme" id="uLK-qy-4Lh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJf-rY-N76" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="912" y="2670"/>
+            <point key="canvasLocation" x="928" y="3435"/>
         </scene>
         <!--类别管理-->
         <scene sceneID="oQP-Dj-Egl">
