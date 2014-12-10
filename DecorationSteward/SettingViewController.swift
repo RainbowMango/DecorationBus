@@ -28,7 +28,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // view配色方案
-    //TODO: 改配色方案无效
     func setViewColor() -> Void {
         self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
     }
@@ -88,6 +87,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
     // 设置显示cell的数目
     // TODO：改方法会被调用两次，使显示的sell数目是预期的两倍
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

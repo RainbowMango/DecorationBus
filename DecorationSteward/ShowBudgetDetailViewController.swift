@@ -37,7 +37,6 @@ class ShowBudgetDetailViewController: UIViewController, UITableViewDataSource, U
     // MARK: -TableView data source
     
     // 每个section显示行数
-    // TODO: 需要在OrderIte类中增加方法，返回需要展现的list
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.budgetItem.getShowList().count
     }
