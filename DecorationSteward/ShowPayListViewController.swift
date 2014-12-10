@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShowPayListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate {
+class ShowPayListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var deTailTableView: UITableView!
     
@@ -22,8 +22,12 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
         
         initTableView()
         reloadData()
-        
-        self.tabBarController?.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        println("viewWillAppear: \(self)")
+        reloadData()
+        self.deTailTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,11 +114,5 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
             var destinationView: ShowPayDetailViewController = segue.destinationViewController as ShowPayDetailViewController
             destinationView.setValue(orderItem, forKey: "orderItem")
         }
-    }
-    
-    // tab bar切换时重新加载数据
-    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        reloadData()
-        self.deTailTableView.reloadData()
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate {
+class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var deTailTableView: UITableView!
     
@@ -23,7 +23,12 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
         initTableView()
         
         reloadData()
-        self.tabBarController?.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        println("viewWillAppear: \(self)")
+        reloadData()
+        self.deTailTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -111,11 +116,5 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
             var destinationView: ShowBudgetDetailViewController = segue.destinationViewController as ShowBudgetDetailViewController
             destinationView.setValue(budgetItem, forKey: "budgetItem")
         }
-    }
-    
-    // tab bar切换时重新加载数据
-    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        reloadData()
-        self.deTailTableView.reloadData()
     }
 }
