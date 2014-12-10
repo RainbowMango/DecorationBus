@@ -35,17 +35,57 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // 初始化软件
     @IBAction func deleteAllUserData(sender: AnyObject) {
-        //TODO：弹出Alert提示用户
-        println("软件初始化")
+        // 初始化类别列表
+        let initCategoryClosure = { (action: UIAlertAction!) -> Void in
+            println("initCategory")
+            CategoryArchiver().initCategoryInUserDefault()
+        }
+        var initCategoryAction = UIAlertAction(title: "初始化类别表", style: UIAlertActionStyle.Destructive, handler: initCategoryClosure)
         
-        // 清除自定义类别表
-        CategoryArchiver().initCategoryInUserDefault()
+        // 清空订单
+        let initOrdersClosure = { (action: UIAlertAction!) -> Void in
+            println("initOrdersClosure")
+            OrderArchiver().removeAllOrders()
+        }
+        var initOrderAction = UIAlertAction(title: "初始化订单", style: UIAlertActionStyle.Destructive, handler: initOrdersClosure)
         
-        // 清除预算
-        BudgetArchiver().removeAllBudgets()
+        // 清空预算
+        let initBudgetClosure = { (action: UIAlertAction!) -> Void in
+            println("initBudgetClosure")
+            BudgetArchiver().removeAllBudgets()
+        }
+        var initBudgetAction = UIAlertAction(title: "初始化预算", style: UIAlertActionStyle.Destructive, handler: initBudgetClosure)
         
-        // 清除订单
-        OrderArchiver().removeAllOrders()
+        // 全部初始化
+        let initAllClosure = { (action: UIAlertAction!) -> Void in
+            println("initAllClosure")
+            initCategoryClosure(action)
+            initOrdersClosure(action)
+            initBudgetClosure(action)
+        }
+        var initAllAction = UIAlertAction(title: "全部初始化", style: UIAlertActionStyle.Destructive, handler: initAllClosure)
+        
+        // 取消
+        let cancelClosure = { (action: UIAlertAction!) -> Void in
+            println("cancelColsure")
+        }
+        var cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: cancelClosure)
+        
+        // 添加动作
+        var alertController = UIAlertController(title: "提醒", message: "数据删除后不可恢复", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        alertController.addAction(cancelAction)
+        alertController.addAction(initCategoryAction)
+        alertController.addAction(initOrderAction)
+        alertController.addAction(initBudgetAction)
+        alertController.addAction(initAllAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func showAlert() -> Void {
+        var alertController = UIAlertController(title: "空值", message: "请输入正确的子类名", preferredStyle: UIAlertControllerStyle.Alert)
+        var okAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.Default, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     // 设置显示cell的数目
