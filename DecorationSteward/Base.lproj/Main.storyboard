@@ -381,7 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecO-0X-ov0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="722"/>
+            <point key="canvasLocation" x="1510" y="715"/>
         </scene>
         <!--预算列表-->
         <scene sceneID="ZnP-wH-fCS">
@@ -426,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tqB-6G-ENv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="920" y="1429"/>
+            <point key="canvasLocation" x="912" y="1429"/>
         </scene>
         <!--预算明细-->
         <scene sceneID="HSh-dR-phj">
@@ -462,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7nM-VW-yeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="1429"/>
+            <point key="canvasLocation" x="1510" y="1429"/>
         </scene>
         <!--设置-->
         <scene sceneID="f6V-1d-qNg">
@@ -524,7 +524,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJf-rY-N76" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928" y="3435"/>
+            <point key="canvasLocation" x="912" y="2848"/>
         </scene>
         <!--类别管理-->
         <scene sceneID="oQP-Dj-Egl">
@@ -592,7 +592,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CW8-Nj-Oar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1414" y="2046"/>
+            <point key="canvasLocation" x="1510" y="2134"/>
         </scene>
         <!--子类管理-->
         <scene sceneID="3ky-sG-f5d">
@@ -644,7 +644,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wh-DM-jkQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918" y="1722"/>
+            <point key="canvasLocation" x="2164" y="1754"/>
         </scene>
         <!--新增子类-->
         <scene sceneID="Aqr-yE-Oob">
@@ -678,7 +678,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7v-PB-qPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2417" y="1722"/>
+            <point key="canvasLocation" x="2797" y="1754"/>
         </scene>
         <!--新增大类-->
         <scene sceneID="2Sf-TB-pOs">
@@ -712,7 +712,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g0k-Qs-oIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918" y="2431"/>
+            <point key="canvasLocation" x="2164" y="2421"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="51y-Ip-rB5">
@@ -771,7 +771,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6iF-kZ-6Dk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="416" y="2670"/>
+            <point key="canvasLocation" x="416" y="2848"/>
         </scene>
         <!--提交反馈-->
         <scene sceneID="462-PI-4US">
@@ -796,7 +796,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSj-gf-rGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1414" y="2670"/>
+            <point key="canvasLocation" x="1510" y="2848"/>
         </scene>
         <!--关于装修管家-->
         <scene sceneID="PLG-KN-HXv">
@@ -815,7 +815,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUj-wI-VVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1414" y="3311"/>
+            <point key="canvasLocation" x="1510" y="3599"/>
         </scene>
         <!--支出明细-->
         <scene sceneID="juN-mg-07h">
