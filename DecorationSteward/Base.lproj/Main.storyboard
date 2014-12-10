@@ -554,14 +554,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="377"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="kH3-p5-Wny">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="primeCategoryCell" id="kH3-p5-Wny">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kH3-p5-Wny" id="0Ol-Sh-ile">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="4lK-y8-U8X" kind="push" identifier="toMinorCategory" id="d1h-C6-JdK"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -602,6 +599,7 @@
                     <connections>
                         <outlet property="addPrimeCategoryButton" destination="8lh-jm-df7" id="CKh-1n-DM6"/>
                         <outlet property="primeCatagoryTableView" destination="7nF-3V-Ldl" id="hVh-cp-Lwv"/>
+                        <segue destination="4lK-y8-U8X" kind="push" identifier="toMinorCategory" id="ZSB-ZQ-dy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CW8-Nj-Oar" userLabel="First Responder" sceneMemberID="firstResponder"/>
