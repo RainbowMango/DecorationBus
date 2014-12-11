@@ -45,7 +45,7 @@
    `git merge upstream/master`  
    `git push`
 6. 开始开发新的功能并提交到自己的仓库  
-   `git commit -m "xxx"`
+   `git commit -m "xxx"`  
    `git push`
 7. 在gitHub上发起Pull Request 等待我来处理
 8. 重复5，6，7开发新的功能。
