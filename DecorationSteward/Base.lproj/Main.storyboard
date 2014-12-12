@@ -276,7 +276,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="记录支出" id="ZgA-wS-tiT">
-                        <barButtonItem key="rightBarButtonItem" title="完成" style="plain" id="hRp-KO-3of">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="hRp-KO-3of">
                             <connections>
                                 <action selector="finishRecord:" destination="ap5-3Z-xyO" id="yvO-1O-oJ5"/>
                             </connections>
