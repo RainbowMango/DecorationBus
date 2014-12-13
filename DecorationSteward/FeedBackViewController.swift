@@ -11,11 +11,12 @@ import MessageUI
 
 class FeedBackViewController: UIViewController, MFMailComposeViewControllerDelegate,UIScrollViewDelegate,UITextViewDelegate
 {
+    @IBOutlet weak var feedbackScrollView_: UIScrollView!
     
     var deviceHeight:CGFloat = 0.0;
     var feedbackTextView_ = UITextView();
     var placeholderLabel_ = UILabel();
-    let feedbackScrollView_ = UIScrollView();
+    //let feedbackScrollView_ = UIScrollView();
     let pointMessageView_ = PointMessageViewController();
     
     override func viewDidLoad()
@@ -49,8 +50,8 @@ class FeedBackViewController: UIViewController, MFMailComposeViewControllerDeleg
         var mailController = MFMailComposeViewController()
         mailController.mailComposeDelegate = self
         
-        mailController.setToRecipients(["plng322@163.com"])
-        mailController.setSubject("Test Subject")
+        mailController.setToRecipients(["qdurenhongcai@163.com"])
+        mailController.setSubject("来自用户的珍贵反馈")
         mailController.setMessageBody(feedbackTextView_.text, isHTML: false)
         self.presentViewController(mailController, animated: true, completion: nil)
     }
@@ -75,17 +76,8 @@ class FeedBackViewController: UIViewController, MFMailComposeViewControllerDeleg
     //添加ScrollView
     func addFeedBackScrollview()
     {
-        let viewSize:CGSize = self.view.frame.size;
-        let viewHeight:CGFloat = viewSize.height;
-        let viewWidth:CGFloat = viewSize.width;
-        
-        let feedBackScrollviewRect:CGRect = CGRectMake(0,0,viewWidth,viewHeight-deviceHeight);
-        feedbackScrollView_.frame = feedBackScrollviewRect;
         feedbackScrollView_.delegate = self;
-        feedbackScrollView_.contentSize = CGSizeMake(viewWidth, viewHeight-deviceHeight+1);
         feedbackScrollView_.backgroundColor = UIColor.clearColor();
-        
-        self.view.addSubview(feedbackScrollView_);
     }
     
     //添加TextView

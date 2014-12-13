@@ -784,7 +784,20 @@
                     <view key="view" contentMode="scaleToFill" id="hVZ-mz-S4N">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHg-gp-B46">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="TxB-y9-lin"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FHg-gp-B46" secondAttribute="trailing" id="L4b-yU-rpz"/>
+                            <constraint firstItem="FHg-gp-B46" firstAttribute="leading" secondItem="hVZ-mz-S4N" secondAttribute="leading" id="t8F-SQ-173"/>
+                            <constraint firstItem="FHg-gp-B46" firstAttribute="top" secondItem="hVZ-mz-S4N" secondAttribute="top" id="v50-E9-q0i"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="提交反馈" id="ut8-Ed-tGZ">
                         <barButtonItem key="rightBarButtonItem" title="确定" id="HNZ-6J-3E6">
@@ -793,6 +806,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="feedbackScrollView_" destination="FHg-gp-B46" id="GHM-1h-tUe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSj-gf-rGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
