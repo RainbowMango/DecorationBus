@@ -86,8 +86,8 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     // 添加滑动按钮
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            OrderArchiver().saveOrdersToUserDefault(self.orders)
             self.orders.removeAtIndex(indexPath.row)
+            OrderArchiver().saveOrdersToUserDefault(self.orders)
             self.deTailTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
