@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate {
 
     @IBOutlet weak var settingTableView: UITableView!
     
@@ -33,59 +33,25 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
     }
     
-    // 初始化软件
+    // 点击初始化按钮弹出提醒
     @IBAction func deleteAllUserData(sender: AnyObject) {
-        // 初始化类别列表
-        let initCategoryClosure = { (action: UIAlertAction!) -> Void in
-            println("initCategory")
-            CategoryArchiver().initCategoryInUserDefault()
-        }
-        var initCategoryAction = UIAlertAction(title: "初始化类别表", style: UIAlertActionStyle.Destructive, handler: initCategoryClosure)
-        
-        // 清空订单
-        let initOrdersClosure = { (action: UIAlertAction!) -> Void in
-            println("initOrdersClosure")
-            OrderArchiver().removeAllOrders()
-        }
-        var initOrderAction = UIAlertAction(title: "初始化订单", style: UIAlertActionStyle.Destructive, handler: initOrdersClosure)
-        
-        // 清空预算
-        let initBudgetClosure = { (action: UIAlertAction!) -> Void in
-            println("initBudgetClosure")
-            BudgetArchiver().removeAllBudgets()
-        }
-        var initBudgetAction = UIAlertAction(title: "初始化预算", style: UIAlertActionStyle.Destructive, handler: initBudgetClosure)
-        
-        // 全部初始化
-        let initAllClosure = { (action: UIAlertAction!) -> Void in
-            println("initAllClosure")
-            initCategoryClosure(action)
-            initOrdersClosure(action)
-            initBudgetClosure(action)
-        }
-        var initAllAction = UIAlertAction(title: "全部初始化", style: UIAlertActionStyle.Destructive, handler: initAllClosure)
-        
-        // 取消
-        let cancelClosure = { (action: UIAlertAction!) -> Void in
-            println("cancelColsure")
-        }
-        var cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: cancelClosure)
-        
-        // 添加动作
-        var alertController = UIAlertController(title: "提醒", message: "数据删除后不可恢复", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        alertController.addAction(cancelAction)
-        alertController.addAction(initCategoryAction)
-        alertController.addAction(initOrderAction)
-        alertController.addAction(initBudgetAction)
-        alertController.addAction(initAllAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        var alertView = UIAlertView(title: "软件初始化", message: "这将删除所有数据和自定义类别，确定继续吗？", delegate: self, cancelButtonTitle: "取消")
+        alertView.addButtonWithTitle("确定")
+        alertView.show()
     }
     
-    func showAlert() -> Void {
-        var alertController = UIAlertController(title: "空值", message: "请输入正确的子类名", preferredStyle: UIAlertControllerStyle.Alert)
-        var okAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.Default, handler: nil)
-        alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+    // AlerView动作
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        switch alertView.buttonTitleAtIndex(buttonIndex) {
+        case "确定":
+            CategoryArchiver().initCategoryInUserDefault()
+            OrderArchiver().removeAllOrders()
+            BudgetArchiver().removeAllBudgets()
+        case "取消":
+            println("用户取消")
+        default:
+            println("未定义动作：\(alertView.buttonTitleAtIndex(buttonIndex))")
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
