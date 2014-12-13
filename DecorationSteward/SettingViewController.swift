@@ -76,6 +76,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("选中cell with index\(indexPath.row)")
         
+        self.settingTableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.row {
         case 0:
             println("didSelectRowAtIndexPath: 转入类别管理view")

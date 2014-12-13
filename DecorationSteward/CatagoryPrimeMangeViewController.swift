@@ -67,7 +67,9 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
     
     // 设定选中时的动作
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("didSelectRowAtIndexPath() \(self.primeCatagory[indexPath.row])")
+        
+        // 取消选中状态
+        self.primeCatagoryTableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         self.primeCategorySelected = self.primeCatagory[indexPath.row]
         performSegueWithIdentifier("toMinorCategory", sender: self.view)
