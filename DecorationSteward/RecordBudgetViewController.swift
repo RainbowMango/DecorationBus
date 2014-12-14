@@ -224,7 +224,7 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
     
     // 点击textField弹出PickerView
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        moveUpViewIfNeeded(textField)
+        KeyboardAccessory().moveUpViewIfNeeded(textField, view: self.view)
         
         if textField.tag == 100 {
             self.view.endEditing(true)
@@ -236,39 +236,16 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        restoreViewPositionIfNeeded()
+        KeyboardAccessory().restoreViewPositionIfNeeded(self.view)
     }
     
-    // 如果键盘遮挡输入框则将view上移
-    func moveUpViewIfNeeded(textField: UITextField) -> Void {
-        let keyboradHeight: CGFloat = 270
-        
-        // 取得当前输入框距离底部的距离
-        let fieldBottomYPosition = textField.frame.origin.y + textField.frame.size.height
-        let fieldBottomSpace = self.view.frame.height - fieldBottomYPosition
-        
-        // 判断是否需要上移view防止键盘遮挡, 暂定键盘高度为270
-        if fieldBottomSpace < keyboradHeight {
-            let offset = keyboradHeight - fieldBottomSpace // 需要向上偏移量
-            
-            // 上移view
-            func animation() {
-                self.view.frame.origin.y -= offset
-            }
-            UIView.animateWithDuration(0.3, animations: animation)
-        }
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        KeyboardAccessory().moveUpViewIfNeeded(textView, view: self.view)
+        return true
     }
     
-    // 恢复view位置
-    func restoreViewPositionIfNeeded() -> Void {
-        if self.view.frame.origin.y == 0 {
-            return
-        }
-        
-        func animation() {
-            self.view.frame.origin.y = 0
-        }
-        
-        UIView.animateWithDuration(0.3, animations: animation)
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        KeyboardAccessory().restoreViewPositionIfNeeded(self.view)
+        return true
     }
 }

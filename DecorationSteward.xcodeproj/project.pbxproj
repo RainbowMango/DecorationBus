@@ -46,6 +46,7 @@
 		9B97DCD01A237385006A94C0 /* ShowBudgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCCF1A237385006A94C0 /* ShowBudgetListViewController.swift */; };
 		9B985BFD1A178F96009F4435 /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */; };
 		9B985BFF1A179525009F4435 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B985BFE1A179525009F4435 /* AboutMeViewController.swift */; };
+		9BA6B0481A3DD261003BC35E /* KeyboardAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6B0471A3DD261003BC35E /* KeyboardAccessory.swift */; };
 		9BBB6F161A38997400E1FFE9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB6F151A38997400E1FFE9 /* Default-568h@2x.png */; };
 		9BC288D31A2964CC005728D5 /* ShowPayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC288D21A2964CC005728D5 /* ShowPayDetailViewController.swift */; };
 		9BC288D51A29E041005728D5 /* ShowBudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC288D41A29E041005728D5 /* ShowBudgetDetailViewController.swift */; };
@@ -111,6 +112,7 @@
 		9B97DCCF1A237385006A94C0 /* ShowBudgetListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowBudgetListViewController.swift; sourceTree = "<group>"; };
 		9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 		9B985BFE1A179525009F4435 /* AboutMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
+		9BA6B0471A3DD261003BC35E /* KeyboardAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAccessory.swift; sourceTree = "<group>"; };
 		9BBB6F151A38997400E1FFE9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "pictures/Default-568h@2x.png"; sourceTree = "<group>"; };
 		9BC288D21A2964CC005728D5 /* ShowPayDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPayDetailViewController.swift; sourceTree = "<group>"; };
 		9BC288D41A29E041005728D5 /* ShowBudgetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowBudgetDetailViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			children = (
 				9B8032C11A35CB76005BA828 /* PointMessageViewController.swift */,
 				9B8032C21A35CB76005BA828 /* SpinnerViewController.swift */,
+				9BA6B0471A3DD261003BC35E /* KeyboardAccessory.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				9BCEAA301A1212B3002EE82C /* SettingViewController.swift in Sources */,
 				9B97DCD01A237385006A94C0 /* ShowBudgetListViewController.swift in Sources */,
 				9B1467E21A260A3C00ACD417 /* CategoryMinorAddViewController.swift in Sources */,
+				9BA6B0481A3DD261003BC35E /* KeyboardAccessory.swift in Sources */,
 				9B97DCC91A235933006A94C0 /* RecordBudgetViewController.swift in Sources */,
 				9B8032C41A35CB76005BA828 /* SpinnerViewController.swift in Sources */,
 				9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */,
