@@ -62,10 +62,6 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
         // 设置textFiled tag以便于区分
         self.categoryTextField.tag = 100
         
-        // 设置textView边框
-        self.commentTextView.layer.borderWidth = 1
-        self.commentTextView.layer.borderColor = UIColor.grayColor().CGColor
-        
         //设置pickerView
         var toolbar: UIToolbar = UIToolbar()
         self.categoryPickerView = UIPickerView()
