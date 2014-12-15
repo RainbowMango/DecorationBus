@@ -47,6 +47,8 @@
 		9B985BFD1A178F96009F4435 /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */; };
 		9B985BFF1A179525009F4435 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B985BFE1A179525009F4435 /* AboutMeViewController.swift */; };
 		9BA6B0481A3DD261003BC35E /* KeyboardAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6B0471A3DD261003BC35E /* KeyboardAccessory.swift */; };
+		9BA6B04A1A3F07C4003BC35E /* Default-375w-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA6B0491A3F07C4003BC35E /* Default-375w-667h@2x.png */; };
+		9BA6B04C1A3F07D2003BC35E /* Default-414w-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA6B04B1A3F07D2003BC35E /* Default-414w-736h@3x.png */; };
 		9BBB6F161A38997400E1FFE9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB6F151A38997400E1FFE9 /* Default-568h@2x.png */; };
 		9BC288D31A2964CC005728D5 /* ShowPayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC288D21A2964CC005728D5 /* ShowPayDetailViewController.swift */; };
 		9BC288D51A29E041005728D5 /* ShowBudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC288D41A29E041005728D5 /* ShowBudgetDetailViewController.swift */; };
@@ -113,6 +115,8 @@
 		9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 		9B985BFE1A179525009F4435 /* AboutMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
 		9BA6B0471A3DD261003BC35E /* KeyboardAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAccessory.swift; sourceTree = "<group>"; };
+		9BA6B0491A3F07C4003BC35E /* Default-375w-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-375w-667h@2x.png"; path = "pictures/Default-375w-667h@2x.png"; sourceTree = "<group>"; };
+		9BA6B04B1A3F07D2003BC35E /* Default-414w-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-414w-736h@3x.png"; path = "pictures/Default-414w-736h@3x.png"; sourceTree = "<group>"; };
 		9BBB6F151A38997400E1FFE9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "pictures/Default-568h@2x.png"; sourceTree = "<group>"; };
 		9BC288D21A2964CC005728D5 /* ShowPayDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPayDetailViewController.swift; sourceTree = "<group>"; };
 		9BC288D41A29E041005728D5 /* ShowBudgetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowBudgetDetailViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 		9B1E5BE31A2B5DAD00615842 /* pictures */ = {
 			isa = PBXGroup;
 			children = (
+				9BA6B04B1A3F07D2003BC35E /* Default-414w-736h@3x.png */,
+				9BA6B0491A3F07C4003BC35E /* Default-375w-667h@2x.png */,
 				9BBB6F151A38997400E1FFE9 /* Default-568h@2x.png */,
 				9B8032C51A35D76A005BA828 /* Default.png */,
 				9B8032C61A35D76A005BA828 /* Default@2x.png */,
@@ -360,6 +366,7 @@
 				9B1E5BE71A2B5E1100615842 /* index.jpg in Resources */,
 				9B8032B91A35C246005BA828 /* home@3x.png in Resources */,
 				9B8032BE1A35C246005BA828 /* settings@2x.png in Resources */,
+				9BA6B04A1A3F07C4003BC35E /* Default-375w-667h@2x.png in Resources */,
 				9B8032BC1A35C246005BA828 /* list@3x.png in Resources */,
 				9B1FF5291A33480700FAA985 /* Icon-76@3x.png in Resources */,
 				9B8032BA1A35C246005BA828 /* list.png in Resources */,
@@ -373,6 +380,7 @@
 				9B8032B71A35C246005BA828 /* home.png in Resources */,
 				9B1E5BE91A2B5E1100615842 /* index@3x.jpg in Resources */,
 				9B1FF5281A33480700FAA985 /* Icon-76@2x.png in Resources */,
+				9BA6B04C1A3F07D2003BC35E /* Default-414w-736h@3x.png in Resources */,
 				9B37A9DE19EEB57A0097F88D /* Images.xcassets in Resources */,
 				9B8032B81A35C246005BA828 /* home@2x.png in Resources */,
 			);
