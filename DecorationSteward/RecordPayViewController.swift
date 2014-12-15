@@ -11,7 +11,8 @@
 import UIKit
 
 class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    let CategoryTextFieldTag = 100
+    
     @IBOutlet weak var payNavigationItem: UINavigationItem!
     @IBOutlet weak var rightBarButton: UIBarButtonItem!
     
@@ -34,8 +35,12 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewColor()
+        addPickerView()
+        // 设置Navigation right bar item
+        self.rightBarButton.title = "完成"
         
-        initView()
+        // 设置textFiled tag以便于区分
+        self.categoryTextField.tag = CategoryTextFieldTag
         
         // 设置空间的代理到本Controller，也可以在IB中连线
         self.moneyTextField.delegate = self
@@ -62,17 +67,16 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     func setViewColor() -> Void {
         self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
     }
-
-    func initView() {
-        // 设置Navigation right bar item
-        self.rightBarButton.title = "完成"
-        
-        // 设置textFiled tag以便于区分
-        self.categoryTextField.tag = 100
-        
-        //设置pickerView
-        var toolbar: UIToolbar = UIToolbar()
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func addPickerView() -> Void {
         self.categoryPickerView = UIPickerView()
+    
+        var toolbar: UIToolbar = UIToolbar()
         
         var doneBarButton: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "inView:")
         var toolbarArray = [doneBarButton]
@@ -82,11 +86,7 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         self.categoryPickerView.dataSource = self
         self.categoryPickerView.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 216)
         self.view.addSubview(self.categoryPickerView)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     func updateCategoryField(firstCategory: String, secondCategory: String) {
@@ -226,7 +226,7 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         KeyboardAccessory().moveUpViewIfNeeded(textField, view: self.view)
         
-        if textField.tag == 100 {
+        if textField.tag == CategoryTextFieldTag {
             self.view.endEditing(true)
             popView(self)
             return false
