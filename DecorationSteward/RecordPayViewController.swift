@@ -91,6 +91,7 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         println("点击确定按钮")
     }
     
+    // 更新输入框内容
     func updateCategoryField(firstCategory: String, secondCategory: String) {
         self.categoryTextField.text = firstCategory + "-" + secondCategory
     }
@@ -158,7 +159,7 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    func popView(sender: AnyObject) {
+    func popPickerView(sender: AnyObject) {
         func popAnimation() {
             self.categoryPickerView.frame = CGRectMake(0, self.view.frame.height - 226, self.view.frame.width, 216)
         }
@@ -228,9 +229,11 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         KeyboardAccessory().moveUpViewIfNeeded(textField, view: self.view)
         
+        // 如果是类别输入框则弹出picker, 且自动更新输入框
         if textField.tag == CategoryTextFieldTag {
             self.view.endEditing(true)
-            popView(self)
+            popPickerView(self)
+            updateCategoryField(self.firstSelectedString, secondCategory: self.secondSelectedString)
             return false
         }
         

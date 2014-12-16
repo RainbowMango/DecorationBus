@@ -9,7 +9,8 @@
 import UIKit
 
 class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    let CategoryTextFieldTag = 100
+    
     @IBOutlet weak var moneyTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var shopTextField: UITextField!
@@ -35,7 +36,7 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
         initTextFields()
         
         // 设置textFiled tag以便于区分
-        self.categoryTextField.tag = 100
+        self.categoryTextField.tag = CategoryTextFieldTag
         
         // 从userDefault中读取所有的budgets
         self.budgets = BudgetArchiver().getBudgetsFromUserDefault()
@@ -228,9 +229,11 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         KeyboardAccessory().moveUpViewIfNeeded(textField, view: self.view)
         
-        if textField.tag == 100 {
+        // 如果是类别输入框则弹出picker, 且自动更新输入框
+        if textField.tag == CategoryTextFieldTag {
             self.view.endEditing(true)
             popView(self)
+            updateCategoryField(self.firstSelectedString, secondCategory: self.secondSelectedString)
             return false
         }
         
