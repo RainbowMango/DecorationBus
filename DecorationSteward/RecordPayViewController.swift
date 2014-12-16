@@ -74,19 +74,32 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     }
     
     func addPickerView() -> Void {
-        self.categoryPickerView = UIPickerView()
-    
-        var toolbar: UIToolbar = UIToolbar()
+        self.categoryPickerView = UIPickerView(frame: CGRectMake(0, self.view.frame.height, self.view.frame.width, 216))
+        self.categoryPickerView.backgroundColor = ColorScheme().pickerViewBackgroundColor
         
-        var doneBarButton: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "inView:")
-        var toolbarArray = [doneBarButton]
+        // 创建toolbar
+        var cancleButtonItem = UIBarButtonItem(title: "取消", style: UIBarButtonItemStyle.Plain, target: self, action: "clickCancelButtonItem:")
+        var flexibleButtionItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        var okButtonItem: UIBarButtonItem = UIBarButtonItem(title: "确定", style: UIBarButtonItemStyle.Plain, target: self, action: "clickOkButtonItem:")
+        var toolbarArray = [cancleButtonItem, flexibleButtionItem, okButtonItem]
+        var toolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, self.view.frame.width, 44)) // Hard code tool bar height 44
+        toolbar.barStyle = UIBarStyle.BlackTranslucent
         toolbar.setItems(toolbarArray, animated: true)
-        self.categoryPickerView.addSubview(toolbar)
+        
         self.categoryPickerView.delegate = self
         self.categoryPickerView.dataSource = self
-        self.categoryPickerView.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 216)
+        
+        self.categoryPickerView.addSubview(toolbar)
         self.view.addSubview(self.categoryPickerView)
 
+    }
+    
+    func clickCancelButtonItem(sender: AnyObject) {
+        println("点击取消按钮")
+    }
+    
+    func clickOkButtonItem(sender: AnyObject) {
+        println("点击确定按钮")
     }
     
     func updateCategoryField(firstCategory: String, secondCategory: String) {
