@@ -237,6 +237,7 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
             return false
         }
         
+        inPickerView(self) // pickerView可能还未收起，显式收起
         return true
     }
     
