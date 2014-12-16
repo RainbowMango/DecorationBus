@@ -14,5 +14,5 @@ class ColorScheme {
     var buttonBackgroundColor = UIColor(red: 204/255, green: 181/255, blue: 135/255, alpha: 1.0)
     var buttonTextColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
     var textFieldBackgroundColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1.0)
-    var pickerViewBackgroundColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1.0)
+    var pickerViewBackgroundColor = UIColor(red: 204/255, green: 181/255, blue: 135/255, alpha: 1.0)
 }

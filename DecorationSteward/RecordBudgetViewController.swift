@@ -59,21 +59,10 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
         self.categoryPickerView = UIPickerView(frame: CGRectMake(0, self.view.frame.height, self.view.frame.width, 216))
         self.categoryPickerView.backgroundColor = ColorScheme().pickerViewBackgroundColor
         
-        // 创建toolbar
-        var cancleButtonItem = UIBarButtonItem(title: "取消", style: UIBarButtonItemStyle.Plain, target: self, action: "clickCancelButtonItem:")
-        var flexibleButtionItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        var okButtonItem: UIBarButtonItem = UIBarButtonItem(title: "确定", style: UIBarButtonItemStyle.Plain, target: self, action: "clickOkButtonItem:")
-        var toolbarArray = [cancleButtonItem, flexibleButtionItem, okButtonItem]
-        var toolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, self.view.frame.width, 44)) // Hard code tool bar height 44
-        toolbar.barStyle = UIBarStyle.BlackTranslucent
-        toolbar.setItems(toolbarArray, animated: true)
-        
         self.categoryPickerView.delegate = self
         self.categoryPickerView.dataSource = self
         
-        self.categoryPickerView.addSubview(toolbar)
         self.view.addSubview(self.categoryPickerView)
-        
     }
     
     func clickCancelButtonItem(sender: AnyObject) {
