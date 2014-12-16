@@ -106,7 +106,7 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     // 手势控制-点击空白处收起键盘
     @IBAction func tapGesture(sender: AnyObject) {
         self.view.endEditing(true)
-        inView(self)
+        inPickerView(self)
     }
     
     // 用户首次开始输输入时清空原内容
@@ -167,7 +167,7 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         UIView.animateWithDuration(0.3, animations: popAnimation)
     }
     
-    func inView(sender: AnyObject) {
+    func inPickerView(sender: AnyObject) {
         func inAnimation() {
             self.categoryPickerView.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 216)
         }
