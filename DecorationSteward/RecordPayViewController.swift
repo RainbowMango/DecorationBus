@@ -227,8 +227,6 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     
     // 点击textField弹出PickerView
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        KeyboardAccessory().moveUpViewIfNeeded(textField, view: self.view)
-        
         // 如果是类别输入框则弹出picker, 且自动更新输入框
         if textField.tag == CategoryTextFieldTag {
             self.view.endEditing(true)
@@ -242,6 +240,16 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         return true
     }
     
+    // 真正开始编辑时恢复视图到初始位置
+    func textFieldDidBeginEditing(textField: UITextField) {
+        KeyboardAccessory().moveUpViewIfNeeded(textField, view: self.view)
+    }
+    
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        return true
+    }
+    
+    // 结束编辑时恢复视图到初始位置
     func textFieldDidEndEditing(textField: UITextField) {
         KeyboardAccessory().restoreViewPositionIfNeeded(self.view)
     }
