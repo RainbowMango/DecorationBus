@@ -10,6 +10,7 @@ import UIKit
 
 class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     let CategoryTextFieldTag = 100
+    let commentTextViewPlaceholder = "点击输入备注"
     
     @IBOutlet weak var moneyTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
@@ -103,7 +104,12 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
         budgetItem.shop = self.shopTextField.text
         budgetItem.phone = self.phoneTextField.text
         budgetItem.addr = self.addrTextField.text
-        budgetItem.comment = self.commentTextView.text
+        
+        // 如果用户没有输入备注，则忽略备注项，使用默认值
+        if self.commentTextView.text != self.commentTextViewPlaceholder
+        {
+            budgetItem.comment = self.commentTextView.text
+        }
         
         // 数据稽核
         if budgetItem.money.isZero {
@@ -150,13 +156,6 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
     @IBAction func tapGesture(sender: AnyObject) {
         self.view.endEditing(true)
         inPickerView(self)
-    }
-    
-    // 用户首次开始输输入时清空原内容
-    func textViewDidBeginEditing(textView: UITextView) {
-        if self.commentTextView.text == "点击输入备注" {
-            self.commentTextView.text = nil
-        }
     }
     
     func popView(sender: AnyObject) {
@@ -253,13 +252,34 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
         KeyboardAccessory().restoreViewPositionIfNeeded(self.view)
     }
     
+    //MARK: -UITextViewDelegate
+    
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-        KeyboardAccessory().moveUpViewIfNeeded(textView, view: self.view)
         return true
     }
     
+    // 用户首次开始输输入时清空原内容
+    func textViewDidBeginEditing(textView: UITextView) {
+        KeyboardAccessory().moveUpViewIfNeeded(textView, view: self.view)
+        
+        // 用户开始输入时，如果内容是placeholder，则清除
+        if self.commentTextView.text == self.commentTextViewPlaceholder {
+            self.commentTextView.text = ""
+            self.commentTextView.textColor = UIColor.blackColor()
+        }
+    }
+    
     func textViewShouldEndEditing(textView: UITextView) -> Bool {
-        KeyboardAccessory().restoreViewPositionIfNeeded(self.view)
         return true
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        KeyboardAccessory().restoreViewPositionIfNeeded(self.view)
+        
+        // 用户结束输入时，如果内容为空，则将填入placeholder
+        if self.commentTextView.text.isEmpty {
+            self.commentTextView.text = self.commentTextViewPlaceholder
+            self.commentTextView.textColor = UIColor.lightGrayColor()
+        }
     }
 }
