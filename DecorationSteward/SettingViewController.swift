@@ -12,7 +12,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var settingTableView: UITableView!
     
-    var settingItems = ["修改类别", "提交反馈", "关于装修管家"]
+    var settingItems = ["修改类别", "提交反馈", "关于装修助手"]
     var cellReuseIdentifier: String = "settingItemCell"
     
     override func viewDidLoad() {

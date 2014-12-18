@@ -81,7 +81,7 @@ class AboutMeViewController: UIViewController
         copyrightLabel.font = UIFont.systemFontOfSize(12.0);
         copyrightLabel.backgroundColor = UIColor.clearColor();
         copyrightLabel.textColor = UIColor(red: 15.0/255.0, green: 15.0/255.0, blue: 15.0/255.0, alpha: 1.0);
-        copyrightLabel.text = "Copyright ©｜装修管家,版权所有";
+        copyrightLabel.text = "Copyright ©｜装修助手,版权所有";
         
         self.view.addSubview(emailLabel);
         self.view.addSubview(copyrightLabel);
