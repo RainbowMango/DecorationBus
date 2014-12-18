@@ -16,11 +16,10 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     var orders: Array<OrderItem> = OrderArchiver().getOrdesFromUserDefault()
     
     override func viewDidLoad() {
-        println("viewDidLoad() \(self)")
         super.viewDidLoad()
         setViewColor()
         
-        initTableView()
+        setTableView()
         reloadData()
     }
     
@@ -43,9 +42,12 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: Init functions
     
     // 初始化table view
-    func initTableView() {
+    func setTableView() {
         self.deTailTableView.dataSource = self
         self.deTailTableView.delegate = self
+        
+        // 删除table下面多于空白cell
+        self.deTailTableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
     func reloadData() -> Void {

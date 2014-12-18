@@ -16,11 +16,10 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     var budgets: Array<BudgetItem> = BudgetArchiver().getBudgetsFromUserDefault()
     
     override func viewDidLoad() {
-        println("viewDidLoad() \(self)")
         super.viewDidLoad()
         setViewColor()
         
-        initTableView()
+        setTableView()
         
         reloadData()
     }
@@ -43,10 +42,13 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     
     // MARK: Init functions
     
-    // 初始化table view
-    func initTableView() {
+    // 设置UITableView
+    func setTableView() {
         self.deTailTableView.dataSource = self
         self.deTailTableView.delegate = self
+        
+        // 删除table下面多于空白cell
+        self.deTailTableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
     func reloadData() -> Void {
