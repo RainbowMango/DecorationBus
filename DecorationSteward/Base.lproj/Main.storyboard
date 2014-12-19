@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--装修助手-->
+        <!--装修巴士-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,7 +85,7 @@
                             <constraint firstItem="Wu7-AA-a5x" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="vld-rq-rVy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="装修助手" id="KZC-Dl-ino"/>
+                    <navigationItem key="navigationItem" title="装修巴士" id="KZC-Dl-ino"/>
                     <connections>
                         <outlet property="leftBudget" destination="I3l-Sz-b6n" id="ShU-X5-dWR"/>
                         <outlet property="totalBudget" destination="8rg-ex-zHI" id="idt-Ft-2Fd"/>
@@ -840,7 +840,7 @@
             </objects>
             <point key="canvasLocation" x="1510" y="2848"/>
         </scene>
-        <!--关于装修助手-->
+        <!--关于装修巴士-->
         <scene sceneID="PLG-KN-HXv">
             <objects>
                 <viewController id="DPa-PE-TNl" customClass="AboutMeViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
@@ -853,7 +853,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="关于装修助手" id="HjC-0I-doq"/>
+                    <navigationItem key="navigationItem" title="关于装修巴士" id="HjC-0I-doq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUj-wI-VVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
