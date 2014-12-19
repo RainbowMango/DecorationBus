@@ -1,11 +1,11 @@
 #装修助手
 
 ###简介
-装修助手旨在深入到装修过程中的各个环节，减轻装修业主负担。  
+装修巴士旨在深入到装修过程中的各个环节，减轻装修业主负担。  
 
 只有经历过装修的业主才能明白装修过程中的艰辛、迷茫和幸福。预算、设计、施工、建材选购及后续保修等事项都让业主操碎了心。
 
-装修管家的宗旨是“让装修变得简单”
+装修巴士的宗旨是“让装修变得简单”
 
 本IOS应用使用全新的swift语言，一切刚刚开始，欢迎加入~
 
@@ -38,7 +38,7 @@
 3. 配置终端git:  
    `git config --global user.name "your user name"`  
    `git config --global user.email "your email address"`  
-   `git remote add upstream https://github.com/RainbowMango/DecorationSteward.git`  
+   `git remote add upstream https://github.com/RainbowMango/DecorationBus.git`  
 4. 把fork过去的项目也就是你的项目clone到你的本地
 5. 获取我的更新  
    `git fetch upstream`   

@@ -8,7 +8,7 @@
         <!--装修巴士-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="DecorationBus" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uON-0C-oHK"/>
                         <viewControllerLayoutGuide type="bottom" id="wXG-Dm-oxy"/>
@@ -99,7 +99,7 @@
         <!--新增预算-->
         <scene sceneID="bIK-Vo-Kqe">
             <objects>
-                <viewController id="dBf-rc-8W8" customClass="RecordBudgetViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dBf-rc-8W8" customClass="RecordBudgetViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ppZ-GV-IWY"/>
                         <viewControllerLayoutGuide type="bottom" id="StJ-oV-THK"/>
@@ -212,7 +212,7 @@
         <!--记录支出-->
         <scene sceneID="aSk-mg-KoZ">
             <objects>
-                <viewController id="ap5-3Z-xyO" customClass="RecordPayViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ap5-3Z-xyO" customClass="RecordPayViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6aQ-S0-cBD"/>
                         <viewControllerLayoutGuide type="bottom" id="6zk-0c-urB"/>
@@ -331,7 +331,7 @@
         <!--支出列表-->
         <scene sceneID="cf7-no-5AT">
             <objects>
-                <viewController id="htx-Fr-6nI" customClass="ShowPayListViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="htx-Fr-6nI" customClass="ShowPayListViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lE8-hC-env"/>
                         <viewControllerLayoutGuide type="bottom" id="qxS-1D-daw"/>
@@ -376,7 +376,7 @@
         <!--支出明细-->
         <scene sceneID="G7f-KO-Pon">
             <objects>
-                <viewController id="Xqp-Hm-9lJ" customClass="ShowPayDetailViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Xqp-Hm-9lJ" customClass="ShowPayDetailViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cu2-1v-xAT"/>
                         <viewControllerLayoutGuide type="bottom" id="Ef8-e8-Sf8"/>
@@ -412,7 +412,7 @@
         <!--预算列表-->
         <scene sceneID="ZnP-wH-fCS">
             <objects>
-                <viewController id="lnE-Pa-tv0" customClass="ShowBudgetListViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lnE-Pa-tv0" customClass="ShowBudgetListViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uRh-7m-aZ2"/>
                         <viewControllerLayoutGuide type="bottom" id="HyN-Yn-Edj"/>
@@ -457,7 +457,7 @@
         <!--预算明细-->
         <scene sceneID="HSh-dR-phj">
             <objects>
-                <viewController id="c4h-oY-ZbT" customClass="ShowBudgetDetailViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="c4h-oY-ZbT" customClass="ShowBudgetDetailViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ekC-rH-Fyq"/>
                         <viewControllerLayoutGuide type="bottom" id="3ec-YB-RR1"/>
@@ -493,7 +493,7 @@
         <!--设置-->
         <scene sceneID="f6V-1d-qNg">
             <objects>
-                <viewController id="GSu-jP-p3Q" customClass="SettingViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GSu-jP-p3Q" customClass="SettingViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ozX-69-DV1"/>
                         <viewControllerLayoutGuide type="bottom" id="ddd-bH-9Ls"/>
@@ -555,7 +555,7 @@
         <!--类别管理-->
         <scene sceneID="oQP-Dj-Egl">
             <objects>
-                <viewController id="Z0N-cZ-epa" customClass="CatagoryPrimeMangeViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Z0N-cZ-epa" customClass="CatagoryPrimeMangeViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S82-l4-kfD"/>
                         <viewControllerLayoutGuide type="bottom" id="1e4-bY-SO4"/>
@@ -623,7 +623,7 @@
         <!--子类管理-->
         <scene sceneID="3ky-sG-f5d">
             <objects>
-                <viewController title="子类管理" id="4lK-y8-U8X" customClass="CatagoryMinorManageViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="子类管理" id="4lK-y8-U8X" customClass="CatagoryMinorManageViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fNX-4t-I49"/>
                         <viewControllerLayoutGuide type="bottom" id="eAf-Il-TsV"/>
@@ -675,7 +675,7 @@
         <!--新增子类-->
         <scene sceneID="Aqr-yE-Oob">
             <objects>
-                <viewController id="XKE-nz-Er4" customClass="CategoryMinorAddViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XKE-nz-Er4" customClass="CategoryMinorAddViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aQG-IT-52q"/>
                         <viewControllerLayoutGuide type="bottom" id="g8o-wr-9D6"/>
@@ -709,7 +709,7 @@
         <!--新增大类-->
         <scene sceneID="2Sf-TB-pOs">
             <objects>
-                <viewController id="ywQ-Gh-viB" customClass="CategoryPrimeAddViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ywQ-Gh-viB" customClass="CategoryPrimeAddViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tWj-Hv-Ban"/>
                         <viewControllerLayoutGuide type="bottom" id="Kh9-Fc-SpI"/>
@@ -802,7 +802,7 @@
         <!--提交反馈-->
         <scene sceneID="462-PI-4US">
             <objects>
-                <viewController id="nFx-M7-WZB" customClass="FeedBackViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nFx-M7-WZB" customClass="FeedBackViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dah-1J-oZe"/>
                         <viewControllerLayoutGuide type="bottom" id="1Zv-wN-R52"/>
@@ -843,7 +843,7 @@
         <!--关于装修巴士-->
         <scene sceneID="PLG-KN-HXv">
             <objects>
-                <viewController id="DPa-PE-TNl" customClass="AboutMeViewController" customModule="DecorationSteward" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DPa-PE-TNl" customClass="AboutMeViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Add-ih-krh"/>
                         <viewControllerLayoutGuide type="bottom" id="FQG-pn-k8Q"/>
