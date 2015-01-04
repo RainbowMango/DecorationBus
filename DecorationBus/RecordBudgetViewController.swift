@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     let CategoryTextFieldTag = 100
@@ -136,6 +137,23 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
         println("电话：\(budgetItem.phone)")
         println("地址：\(budgetItem.addr)")
         println("备注：\(budgetItem.comment)")
+        
+        // 将订单信息写入coreData
+        let appDelegate = UIApplication.sharedApplication().delegate  as? AppDelegate
+        let managedObjectContext = appDelegate?.managedObjectContext
+        let entity = NSEntityDescription.entityForName("Budget", inManagedObjectContext: managedObjectContext!)
+        let order = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
+        order.setValue((self.moneyTextField.text as NSString).floatValue, forKey: "money")
+        order.setValue(self.categoryTextField.text, forKey: "primeCategory")
+        order.setValue(self.categoryTextField.text, forKey: "minorCategory")
+        order.setValue(self.shopTextField.text as NSString, forKey: "shop")
+        order.setValue(self.phoneTextField.text, forKey: "phone")
+        order.setValue(self.addrTextField.text, forKey: "address")
+        order.setValue(self.commentTextView.text, forKey: "comments")
+        var error: NSError?
+        if false == managedObjectContext!.save(&error) {
+            println("写入失败: \(error), \(error!.userInfo)")
+        }
         
         // 记录后返回到上层
         self.navigationController?.popViewControllerAnimated(true)
