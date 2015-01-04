@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     @IBOutlet weak var totalBudget: UILabel!
     
     var orders_ = [NSManagedObject]()
+    var budgets_ = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,10 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         self.tabBarController?.delegate = self
         self.navigationController?.delegate = self
         initCategory()
-        setSummaryData()
     }
     
     override func viewDidAppear(animated: Bool) {
-        orders_ = getOrders()
+        setSummaryData()
     }
 
     // view配色方案
@@ -35,14 +35,37 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
     }
     
-    // 从userDefault中读取汇总数据
+    // 设置汇总数据
     func setSummaryData() {
-        var budgetSum = BudgetArchiver().getBudgetsSum()
-        var orderSum = OrderArchiver().getOrderSum()
+        orders_ = getOrders()
+        budgets_ = getBudgets()
+        
+        let orderSum = getOrderSum()
+        let budgetSum = getBudgetSum()
         
         totalPaid!.text = "支出总额：\(orderSum)"
         leftBudget!.text = "预算余额：\(budgetSum - orderSum)"
         totalBudget!.text = "预算总额：\(budgetSum)"
+    }
+    
+    // 获取订单金额汇总
+    func getOrderSum() -> Float {
+        var sum: Float = 0.00
+        for item in orders_ {
+            sum += item.valueForKey("money") as Float
+        }
+        
+        return sum
+    }
+    
+    // 获取预算金额汇总
+    func getBudgetSum() -> Float {
+        var sum: Float = 0.00
+        for item in budgets_ {
+            sum += item.valueForKey("money") as Float
+        }
+        
+        return sum
     }
     
     // 从CoreData中读取所有订单
@@ -51,6 +74,23 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         let managedObjectContext = appDelegate!.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Order")
+        
+        var error: NSError?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        if fetchResult == nil {
+            println("获取数据失败: \(error), \(error!.userInfo)")
+            return [NSManagedObject]()
+        }
+        
+        return fetchResult!
+    }
+    
+    // 从CoreData中读取所有预算
+    func getBudgets() -> [NSManagedObject] {
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Budget")
         
         var error: NSError?
         let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
