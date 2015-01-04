@@ -17,11 +17,13 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     var orders: Array<OrderItem> = OrderArchiver().getOrdesFromUserDefault()
     
     var orders_ = [NSManagedObject]()
+    var managedObjectContext_: NSManagedObjectContext?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewColor()
         
+        initManagedObjectContext()
         setTableView()
         reloadData()
     }
@@ -41,6 +43,11 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     func setViewColor() -> Void {
         self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
     }
+    
+    func initManagedObjectContext() {
+        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        managedObjectContext_ = appDelegate!.managedObjectContext
+    }
 
     // MARK: Init functions
     
@@ -59,13 +66,10 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     
     // 从CoreData中读取所有订单
     func getOrders() -> [NSManagedObject] {
-        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        let managedObjectContext = appDelegate!.managedObjectContext
-        
         let fetchRequest = NSFetchRequest(entityName: "Order")
         
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        let fetchResult = managedObjectContext_!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
         if fetchResult == nil {
             println("获取数据失败: \(error), \(error!.userInfo)")
             return [NSManagedObject]()
@@ -78,14 +82,16 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     
     // 每个section显示行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("显示行数: \(self.orders.count)")
-        return self.orders.count
+        return orders_.count
     }
     
     // 设置cell内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = self.orders[indexPath.row].category + "   \(self.orders[indexPath.row].money)"
+        let primeCategory = orders_[indexPath.row].valueForKey("primeCategory") as String
+        let minorCategory = orders_[indexPath.row].valueForKey("minorCategory") as String
+        let money         = orders_[indexPath.row].valueForKey("money") as Float
+        cell.textLabel.text = "\(primeCategory)-\(minorCategory)   \(money)"
         
         return cell
     }
@@ -109,8 +115,13 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     // 添加滑动按钮
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            self.orders.removeAtIndex(indexPath.row)
-            OrderArchiver().saveOrdersToUserDefault(self.orders)
+            managedObjectContext_!.deleteObject(orders_[indexPath.row])
+            orders_.removeAtIndex(indexPath.row)
+            var error: NSError?
+            if false == managedObjectContext_!.save(&error) {
+                println("写入失败: \(error), \(error!.userInfo)")
+            }
+
             self.deTailTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
