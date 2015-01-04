@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ShowPayListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -14,6 +15,8 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     
     var cellReuseIdentifier: String = "payCell"
     var orders: Array<OrderItem> = OrderArchiver().getOrdesFromUserDefault()
+    
+    var orders_ = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +27,7 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     override func viewWillAppear(animated: Bool) {
-        println("viewWillAppear: \(self)")
+        orders_ = getOrders()
         reloadData()
         self.deTailTableView.reloadData()
     }
@@ -53,6 +56,24 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     func reloadData() -> Void {
         orders = OrderArchiver().getOrdesFromUserDefault()
     }
+    
+    // 从CoreData中读取所有订单
+    func getOrders() -> [NSManagedObject] {
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Order")
+        
+        var error: NSError?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        if fetchResult == nil {
+            println("获取数据失败: \(error), \(error!.userInfo)")
+            return [NSManagedObject]()
+        }
+        
+        return fetchResult!
+    }
+    
     // MARK: -TableView data source
     
     // 每个section显示行数

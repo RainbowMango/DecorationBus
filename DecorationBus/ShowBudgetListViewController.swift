@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -14,6 +15,7 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     
     var cellReuseIdentifier: String = "budgetCell"
     var budgets: Array<BudgetItem> = BudgetArchiver().getBudgetsFromUserDefault()
+    var budgets_ = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,7 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     override func viewWillAppear(animated: Bool) {
-        println("viewWillAppear: \(self)")
+        budgets_ = getBudgets()
         reloadData()
         self.deTailTableView.reloadData()
     }
@@ -53,6 +55,23 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     
     func reloadData() -> Void {
         budgets = BudgetArchiver().getBudgetsFromUserDefault()
+    }
+    
+    // 从CoreData中读取所有预算
+    func getBudgets() -> [NSManagedObject] {
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Budget")
+        
+        var error: NSError?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        if fetchResult == nil {
+            println("获取数据失败: \(error), \(error!.userInfo)")
+            return [NSManagedObject]()
+        }
+        
+        return fetchResult!
     }
     
     // MARK: -TableView data source
