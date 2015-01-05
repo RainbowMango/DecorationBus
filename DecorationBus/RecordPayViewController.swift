@@ -27,7 +27,6 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
     
     var categoryPickerView: UIPickerView!
     
-    var orders: Array<OrderItem> = Array<OrderItem>()
     var categorys: Dictionary<String, Array<String>> = Dictionary<String, Array<String>>()
     var firstCategoryArray: Array<String>!
     var secondCategoryArray: Array<String>!
@@ -51,9 +50,6 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
         self.phoneTextField.delegate = self
         self.addrTextField.delegate = self
         self.commentTextView.delegate = self
-        
-        // 从userDefault中读取所有的order
-        self.orders = OrderArchiver().getOrdesFromUserDefault()
         
         // 从userDefault中读取所有的类别
         self.categorys = CategoryArchiver().getCategoryFromUserDefault()
@@ -143,18 +139,12 @@ class RecordPayViewController: UIViewController, UITextFieldDelegate, UITextView
             return
         }
         
-        orders.append(orderItem)
-        
-        // 将订单信息写入UserDefaults
-        OrderArchiver().saveOrdersToUserDefault(self.orders)
-        
         println("金额：\(orderItem.money)")
         println("类别：\(orderItem.category)")
         println("商家：\(orderItem.shop)")
         println("电话：\(orderItem.phone)")
         println("地址：\(orderItem.addr)")
         println("备注：\(orderItem.comment)")
-        
         
         // 将订单信息写入coreData
         let appDelegate = UIApplication.sharedApplication().delegate  as? AppDelegate

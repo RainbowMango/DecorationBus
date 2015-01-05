@@ -21,8 +21,6 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
     @IBOutlet weak var commentTextView: UITextView!
     
     var categoryPickerView: UIPickerView!
-    
-    var budgets: Array<BudgetItem> = Array<BudgetItem>()
     var categorys: Dictionary<String, Array<String>> = Dictionary<String, Array<String>>()
     var firstCategoryArray: Array<String>!
     var secondCategoryArray: Array<String>!
@@ -39,9 +37,6 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
         
         // 设置textFiled tag以便于区分
         self.categoryTextField.tag = CategoryTextFieldTag
-        
-        // 从userDefault中读取所有的budgets
-        self.budgets = BudgetArchiver().getBudgetsFromUserDefault()
         
         // 从userDefault中读取所有的类别
         self.categorys = CategoryArchiver().getCategoryFromUserDefault()
@@ -125,11 +120,6 @@ class RecordBudgetViewController: UIViewController, UITextFieldDelegate, UITextV
             
             return
         }
-        
-        self.budgets.append(budgetItem)
-        
-        // 将订单信息写入UserDefaults
-        BudgetArchiver().saveBudgetsToUserDefault(self.budgets)
         
         println("金额：\(budgetItem.money)")
         println("类别：\(budgetItem.category)")
