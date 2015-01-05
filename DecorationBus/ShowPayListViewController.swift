@@ -14,7 +14,6 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var deTailTableView: UITableView!
     
     var cellReuseIdentifier: String = "payCell"
-    var orders: Array<OrderItem> = OrderArchiver().getOrdesFromUserDefault()
     
     var orders_ = [NSManagedObject]()
     var managedObjectContext_: NSManagedObjectContext?
@@ -25,18 +24,15 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
         
         initManagedObjectContext()
         setTableView()
-        reloadData()
     }
     
     override func viewWillAppear(animated: Bool) {
         orders_ = getOrders()
-        reloadData()
         self.deTailTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // view配色方案
@@ -58,10 +54,6 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
         
         // 删除table下面多于空白cell
         self.deTailTableView.tableFooterView = UIView(frame: CGRectZero)
-    }
-    
-    func reloadData() -> Void {
-        orders = OrderArchiver().getOrdesFromUserDefault()
     }
     
     // 从CoreData中读取所有订单
@@ -104,8 +96,6 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     // 设定选中时的动作
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("didSelectRowAtIndexPath() \(indexPath.row)")
-        
-        //performSegueWithIdentifier("toShowDetailPay", sender: self.view)
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -131,14 +121,25 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     // 向下个页面传值标准做法
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toShowDetailPay" {
-            println("将要转入toShowDetailPay页面")
-            
             // 获得选中cell元素
             var selectedIndex: NSIndexPath = self.deTailTableView.indexPathForSelectedRow()!
-            var orderItem = self.orders[selectedIndex.row]
+            var selectedItem = orders_[selectedIndex.row]
+            var money: Float  = selectedItem.valueForKey("money")          as Float
+            var primeCategory = selectedItem.valueForKey("primeCategory")  as String
+            var minorCategory = selectedItem.valueForKey("minorCategory")  as String
+            var shop          = selectedItem.valueForKey("shop")           as String
+            var phone         = selectedItem.valueForKey("phone")          as String
+            var address       = selectedItem.valueForKey("address")        as String
+            var comments      = selectedItem.valueForKey("comments")       as String
             
             var destinationView: ShowPayDetailViewController = segue.destinationViewController as ShowPayDetailViewController
-            destinationView.setValue(orderItem, forKey: "orderItem")
+            destinationView.setValue(money,         forKey: "money_")
+            destinationView.setValue(primeCategory, forKey: "primeCategory_")
+            destinationView.setValue(minorCategory, forKey: "minorCategory_")
+            destinationView.setValue(shop,          forKey: "shop_")
+            destinationView.setValue(phone,         forKey: "phone_")
+            destinationView.setValue(address,       forKey: "address_")
+            destinationView.setValue(comments,      forKey: "comments_")
         }
     }
 }
