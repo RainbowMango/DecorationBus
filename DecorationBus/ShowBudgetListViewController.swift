@@ -14,21 +14,19 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var deTailTableView: UITableView!
     
     var cellReuseIdentifier: String = "budgetCell"
-    var budgets: Array<BudgetItem> = BudgetArchiver().getBudgetsFromUserDefault()
+    var managedObjectContext_: NSManagedObjectContext?
     var budgets_ = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewColor()
         
+        initManagedObjectContext()
         setTableView()
-        
-        reloadData()
     }
     
     override func viewWillAppear(animated: Bool) {
         budgets_ = getBudgets()
-        reloadData()
         self.deTailTableView.reloadData()
     }
     
@@ -42,6 +40,11 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
         self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
     }
     
+    func initManagedObjectContext() {
+        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        managedObjectContext_ = appDelegate!.managedObjectContext
+    }
+    
     // MARK: Init functions
     
     // 设置UITableView
@@ -51,10 +54,6 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
         
         // 删除table下面多于空白cell
         self.deTailTableView.tableFooterView = UIView(frame: CGRectZero)
-    }
-    
-    func reloadData() -> Void {
-        budgets = BudgetArchiver().getBudgetsFromUserDefault()
     }
     
     // 从CoreData中读取所有预算
@@ -78,14 +77,17 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     
     // 每个section显示行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("显示行数: \(self.budgets.count)")
-        return self.budgets.count
+        return budgets_.count
     }
     
     // 设置cell内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = self.budgets[indexPath.row].category + "   \(self.budgets[indexPath.row].money)"
+        
+        let primeCategory = budgets_[indexPath.row].valueForKey("primeCategory") as String
+        let minorCategory = budgets_[indexPath.row].valueForKey("minorCategory") as String
+        let money         = budgets_[indexPath.row].valueForKey("money") as Float
+        cell.textLabel.text = "\(primeCategory)-\(minorCategory)   \(money)"
         
         return cell
     }
@@ -98,8 +100,6 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     // 设定选中时的动作
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("didSelectRowAtIndexPath() \(indexPath.row)")
-        
-        //performSegueWithIdentifier("toShowDetailBudget", sender: self.view)
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -108,9 +108,14 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     
     // 添加滑动按钮
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        self.budgets.removeAtIndex(indexPath.row)
+        managedObjectContext_!.deleteObject(budgets_[indexPath.row])
+        budgets_.removeAtIndex(indexPath.row)
+        var error: NSError?
+        if false == managedObjectContext_!.save(&error) {
+            println("写入失败: \(error), \(error!.userInfo)")
+        }
+        
         self.deTailTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-        BudgetArchiver().saveBudgetsToUserDefault(self.budgets)
     }
     
     // MARK: - Navigation
@@ -118,14 +123,25 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     // 向下个页面传值标准做法
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toShowDetailBudget" {
-            println("将要转入toShowDetailBudget页面")
-            
             // 获得选中cell元素
             var selectedIndex: NSIndexPath = self.deTailTableView.indexPathForSelectedRow()!
-            var budgetItem = self.budgets[selectedIndex.row]
+            var selectedItem = budgets_[selectedIndex.row]
+            var money: Float  = selectedItem.valueForKey("money")          as Float
+            var primeCategory = selectedItem.valueForKey("primeCategory")  as String
+            var minorCategory = selectedItem.valueForKey("minorCategory")  as String
+            var shop          = selectedItem.valueForKey("shop")           as String
+            var phone         = selectedItem.valueForKey("phone")          as String
+            var address       = selectedItem.valueForKey("address")        as String
+            var comments      = selectedItem.valueForKey("comments")       as String
             
             var destinationView: ShowBudgetDetailViewController = segue.destinationViewController as ShowBudgetDetailViewController
-            destinationView.setValue(budgetItem, forKey: "budgetItem")
+            destinationView.setValue(money,         forKey: "money_")
+            destinationView.setValue(primeCategory, forKey: "primeCategory_")
+            destinationView.setValue(minorCategory, forKey: "minorCategory_")
+            destinationView.setValue(shop,          forKey: "shop_")
+            destinationView.setValue(phone,         forKey: "phone_")
+            destinationView.setValue(address,       forKey: "address_")
+            destinationView.setValue(comments,      forKey: "comments_")
         }
     }
 }
