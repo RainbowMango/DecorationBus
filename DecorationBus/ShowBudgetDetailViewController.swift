@@ -53,19 +53,19 @@ class ShowBudgetDetailViewController: UIViewController, UITableViewDataSource, U
         
         switch indexPath.row {
         case 0:
-            cell.textLabel.text = "金额： \(money_)"
+            cell.textLabel!.text = "金额： \(money_)"
         case 1:
-            cell.textLabel.text = "类别： \(primeCategory_)-\(minorCategory_)"
+            cell.textLabel!.text = "类别： \(primeCategory_)-\(minorCategory_)"
         case 2:
-            cell.textLabel.text = "商家： \(shop_)"
+            cell.textLabel!.text = "商家： \(shop_)"
         case 3:
-            cell.textLabel.text = "电话： \(phone_)"
+            cell.textLabel!.text = "电话： \(phone_)"
         case 4:
-            cell.textLabel.text = "地址： \(address_)"
+            cell.textLabel!.text = "地址： \(address_)"
         case 5:
-            cell.textLabel.text = "备注： \(comments_)"
+            cell.textLabel!.text = "备注： \(comments_)"
         default:
-            cell.textLabel.text = ""
+            cell.textLabel!.text = ""
         }
         
         return cell

@@ -60,7 +60,7 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
     // 设置每个cell的内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = self.primeCatagory[indexPath.row]
+        cell.textLabel!.text = self.primeCatagory[indexPath.row]
         
         return cell
     }

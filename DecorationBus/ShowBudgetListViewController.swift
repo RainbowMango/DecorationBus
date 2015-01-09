@@ -87,7 +87,7 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
         let primeCategory = budgets_[indexPath.row].valueForKey("primeCategory") as String
         let minorCategory = budgets_[indexPath.row].valueForKey("minorCategory") as String
         let money         = budgets_[indexPath.row].valueForKey("money") as Float
-        cell.textLabel.text = "\(primeCategory)-\(minorCategory)   \(money)"
+        cell.textLabel!.text = "\(primeCategory)-\(minorCategory)   \(money)"
         
         return cell
     }

@@ -55,7 +55,7 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = self.minorCategorys[indexPath.row]
+        cell.textLabel!.text = self.minorCategorys[indexPath.row]
         
         return cell
     }

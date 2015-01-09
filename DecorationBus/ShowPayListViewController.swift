@@ -83,7 +83,7 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
         let primeCategory = orders_[indexPath.row].valueForKey("primeCategory") as String
         let minorCategory = orders_[indexPath.row].valueForKey("minorCategory") as String
         let money         = orders_[indexPath.row].valueForKey("money") as Float
-        cell.textLabel.text = "\(primeCategory)-\(minorCategory)   \(money)"
+        cell.textLabel!.text = "\(primeCategory)-\(minorCategory)   \(money)"
         
         return cell
     }
