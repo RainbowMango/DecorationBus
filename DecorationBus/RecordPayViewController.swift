@@ -327,12 +327,66 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
     /// MARK: Actions
     
     func submit(_: UIBarButtonItem!) {
+        //取得表单信息
+        var money:      Float  = 0.0
+        if let val = self.form.sections[0].rows[0].value {
+            money = (val as NSString).floatValue
+        }
+        else {
+            var alertView = UIAlertView(title: "空值", message: "请输入正确的金额", delegate: self, cancelButtonTitle: "好的")
+            alertView.show()
+            return
+        }
         
-        let message = self.form.formValues().description
+        var category:   String = ""
+        if let val = self.form.sections[0].rows[1].value {
+            category = val as String
+        }
+        else {
+            var alertView = UIAlertView(title: "空值", message: "请选择一个类别", delegate: self, cancelButtonTitle: "好的")
+            alertView.show()
+            return
+        }
         
-        let alert: UIAlertView = UIAlertView(title: "Form output", message: message, delegate: nil, cancelButtonTitle: "OK")
+        var shop:       String = ""
+        if let val = self.form.sections[1].rows[0].value {
+            shop = val as String
+        }
         
-        alert.show()
+        var phone:      String = ""
+        if let val = self.form.sections[1].rows[1].value {
+            phone = val as String
+        }
+        
+        var address:    String = ""
+        if let val = self.form.sections[1].rows[2].value {
+            address = val as String
+        }
+        
+        var comments:   String = ""
+        if let val = self.form.sections[1].rows[3].value {
+            comments = val as String
+        }
+        
+        // 将订单信息写入coreData
+        let appDelegate = UIApplication.sharedApplication().delegate  as? AppDelegate
+        let managedObjectContext = appDelegate?.managedObjectContext
+        let entity = NSEntityDescription.entityForName("Order", inManagedObjectContext: managedObjectContext!)
+        let order = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
+        order.setValue(money, forKey: "money")
+        order.setValue(category, forKey: "primeCategory")
+        order.setValue(category, forKey: "minorCategory")
+        order.setValue(shop, forKey: "shop")
+        order.setValue(phone, forKey: "phone")
+        order.setValue(address, forKey: "address")
+        order.setValue(comments, forKey: "comments")
+        var error: NSError?
+        if false == managedObjectContext!.save(&error) {
+            println("写入失败: \(error), \(error!.userInfo)")
+        }
+
+        // 记录后返回到上层
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     /// MARK: Private interface
