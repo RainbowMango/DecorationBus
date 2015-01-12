@@ -38,6 +38,7 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     // view配色方案
     func setViewColor() -> Void {
         self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
+        self.view.backgroundColor = ColorScheme().viewBackgroundColor
     }
     
     func initManagedObjectContext() {

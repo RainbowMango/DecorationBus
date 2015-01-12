@@ -33,6 +33,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     // view配色方案
     func setViewColor() -> Void {
         self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
+        self.view.backgroundColor = ColorScheme().viewBackgroundColor
     }
     
     // 设置汇总数据

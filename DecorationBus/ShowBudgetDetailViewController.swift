@@ -23,7 +23,7 @@ class ShowBudgetDetailViewController: UIViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setViewColor()
         initTableView()
     }
     
@@ -38,6 +38,12 @@ class ShowBudgetDetailViewController: UIViewController, UITableViewDataSource, U
     func initTableView() {
         self.detailTableView.dataSource = self
         self.detailTableView.delegate = self
+    }
+    
+    // view配色方案
+    func setViewColor() -> Void {
+        self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
+        self.view.backgroundColor = ColorScheme().viewBackgroundColor
     }
     
     // MARK: -TableView data source

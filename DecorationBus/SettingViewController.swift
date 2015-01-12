@@ -31,6 +31,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     // view配色方案
     func setViewColor() -> Void {
         self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
+        self.view.backgroundColor = ColorScheme().viewBackgroundColor
     }
     
     // 点击初始化按钮弹出提醒
