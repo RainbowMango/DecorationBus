@@ -306,9 +306,15 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         static let commentsTag = "comments"
         static let button = "button"
     }
+    var categorys_: Dictionary<String, Array<String>>!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
+        // 从userDefault中读取所有的类别
+        categorys_ = CategoryArchiver().getCategoryFromUserDefault()
+        
+        // 加载表单
         self.loadForm()
     }
     
@@ -339,48 +345,43 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         
         let section1 = FormSectionDescriptor()
         
+        // 金额表单
         var row: FormRowDescriptor! = FormRowDescriptor(tag: Static.moneyTag, rowType: .Number, title: "金额")
         row.cellConfiguration = ["textField.placeholder" : "0.00", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section1.addRow(row)
+        section1.headerTitle = "必填项目"
         
-        row = FormRowDescriptor(tag: Static.categories, rowType: .Picker, title: "类别")
-        row.options = ["F", "M", "U"]
-        row.titleFormatter = { value in
-            switch( value ) {
-            case "F":
-                return "Female"
-            case "M":
-                return "Male"
-            case "U":
-                return "I'd rather not to say"
-            default:
-                return nil
-            }
-        }
+        // 类别表单
+        row = FormRowDescriptor(tag: Static.categories, rowType: FormRowType.TwoComponentPicker, title: "类别")
+        row.cellConfiguration = ["valueLabel.text" : "点击选择类别"]
+        row.pickerDatasourceWithTwoComponent = categorys_
         section1.addRow(row)
-        
-        row = FormRowDescriptor(tag: Static.shopTag, rowType: .Name, title: "商家")
-        row.cellConfiguration = ["textField.placeholder" : "商家或品牌", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
-        section1.addRow(row)
-        
-        row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "电话")
-        row.cellConfiguration = ["textField.placeholder" : "商家电话", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
-        section1.addRow(row)
-        
-        row = FormRowDescriptor(tag: Static.addrTag, rowType: .Name, title: "地址")
-        row.cellConfiguration = ["textField.placeholder" : "商家地址", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
-        section1.addRow(row)
-        
-        row = FormRowDescriptor(tag: Static.commentsTag, rowType: .MultilineText, title: "备注")
-        section1.addRow(row)
-        
         
         let section2 = FormSectionDescriptor()
         
-        row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: "Dismiss")
+        row = FormRowDescriptor(tag: Static.shopTag, rowType: .Name, title: "商家")
+        row.cellConfiguration = ["textField.placeholder" : "商家或品牌", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section2.addRow(row)
         
-        form.sections = [section1, section2]
+        row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "电话")
+        row.cellConfiguration = ["textField.placeholder" : "商家电话", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        section2.addRow(row)
+        
+        row = FormRowDescriptor(tag: Static.addrTag, rowType: .Name, title: "地址")
+        row.cellConfiguration = ["textField.placeholder" : "商家地址", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        section2.addRow(row)
+        
+        row = FormRowDescriptor(tag: Static.commentsTag, rowType: .MultilineText, title: "备注")
+        section2.addRow(row)
+        section2.headerTitle = "选填项目(提醒：记录越详细后期使用越方便~)"
+        
+        
+        let section3 = FormSectionDescriptor()
+        
+        row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: "Dismiss")
+        section3.addRow(row)
+        
+        form.sections = [section1, section2, section3]
         
         self.form = form
     }

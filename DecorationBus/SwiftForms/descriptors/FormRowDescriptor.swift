@@ -27,6 +27,7 @@ enum FormRowType {
     case BooleanCheck
     case SegmentedControl
     case Picker
+    case TwoComponentPicker
     case Date
     case Time
     case DateAndTime
@@ -70,6 +71,9 @@ class FormRowDescriptor: NSObject {
     var titleFormatter: TitleFormatter!
     var selectorControllerClass: AnyClass!
     var allowsMultipleSelection = false
+    
+    /*picker datasource with two component*/
+    var pickerDatasourceWithTwoComponent: Dictionary<String, Array<String>>!
     
     var showInputToolbar = false
     var dateFormatter: NSDateFormatter!

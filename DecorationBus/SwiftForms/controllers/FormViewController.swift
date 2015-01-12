@@ -199,6 +199,7 @@ class FormViewController : UITableViewController {
             Static.defaultCellClasses[FormRowType.BooleanCheck] = FormCheckCell.self
             Static.defaultCellClasses[FormRowType.SegmentedControl] = FormSegmentedControlCell.self
             Static.defaultCellClasses[FormRowType.Picker] = FormPickerCell.self
+            Static.defaultCellClasses[FormRowType.TwoComponentPicker] = FormTwoComponentPickerCell.self
             Static.defaultCellClasses[FormRowType.Date] = FormDateCell.self
             Static.defaultCellClasses[FormRowType.Time] = FormDateCell.self
             Static.defaultCellClasses[FormRowType.DateAndTime] = FormDateCell.self

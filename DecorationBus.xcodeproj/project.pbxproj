@@ -33,6 +33,7 @@
 		9B24919E1A5D683700990BA6 /* FormDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B24918C1A5D683700990BA6 /* FormDescriptor.swift */; };
 		9B24919F1A5D683700990BA6 /* FormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B24918D1A5D683700990BA6 /* FormRowDescriptor.swift */; };
 		9B2491A01A5D683700990BA6 /* FormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B24918E1A5D683700990BA6 /* FormSectionDescriptor.swift */; };
+		9B2D7B881A63E82800D829EF /* FormTwoComponentPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D7B871A63E82800D829EF /* FormTwoComponentPickerCell.swift */; };
 		9B34AAFC1A1FA33100013C39 /* OrderArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFB1A1FA33100013C39 /* OrderArchiver.swift */; };
 		9B34AAFE1A20B98500013C39 /* CategoryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFD1A20B98500013C39 /* CategoryDataModel.swift */; };
 		9B34AB001A20BB8000013C39 /* CategoryArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFF1A20BB8000013C39 /* CategoryArchiver.swift */; };
@@ -115,6 +116,7 @@
 		9B24918C1A5D683700990BA6 /* FormDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDescriptor.swift; sourceTree = "<group>"; };
 		9B24918D1A5D683700990BA6 /* FormRowDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormRowDescriptor.swift; sourceTree = "<group>"; };
 		9B24918E1A5D683700990BA6 /* FormSectionDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSectionDescriptor.swift; sourceTree = "<group>"; };
+		9B2D7B871A63E82800D829EF /* FormTwoComponentPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTwoComponentPickerCell.swift; sourceTree = "<group>"; };
 		9B34AAFB1A1FA33100013C39 /* OrderArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderArchiver.swift; sourceTree = "<group>"; };
 		9B34AAFD1A20B98500013C39 /* CategoryDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDataModel.swift; sourceTree = "<group>"; };
 		9B34AAFF1A20BB8000013C39 /* CategoryArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryArchiver.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				9B24917F1A5D683700990BA6 /* FormCheckCell.swift */,
 				9B2491801A5D683700990BA6 /* FormDateCell.swift */,
 				9B2491811A5D683700990BA6 /* FormPickerCell.swift */,
+				9B2D7B871A63E82800D829EF /* FormTwoComponentPickerCell.swift */,
 				9B2491821A5D683700990BA6 /* FormSegmentedControlCell.swift */,
 				9B2491831A5D683700990BA6 /* FormSelectorCell.swift */,
 				9B2491841A5D683700990BA6 /* FormSwitchCell.swift */,
@@ -501,6 +504,7 @@
 				9B2491931A5D683700990BA6 /* FormCheckCell.swift in Sources */,
 				9B2491981A5D683700990BA6 /* FormSwitchCell.swift in Sources */,
 				9B2491901A5D683700990BA6 /* FormTitleCell.swift in Sources */,
+				9B2D7B881A63E82800D829EF /* FormTwoComponentPickerCell.swift in Sources */,
 				9B24919A1A5D683700990BA6 /* FormTextViewCell.swift in Sources */,
 				9B24919E1A5D683700990BA6 /* FormDescriptor.swift in Sources */,
 				9B24919B1A5D683700990BA6 /* FormOptionsSelectorController.swift in Sources */,
