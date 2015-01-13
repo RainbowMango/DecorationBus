@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9B1467E21A260A3C00ACD417 /* CategoryMinorAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1467E11A260A3B00ACD417 /* CategoryMinorAddViewController.swift */; };
+		9B151A691A6559D200498ED2 /* ShowDetailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B151A681A6559D200498ED2 /* ShowDetailListTableViewController.swift */; };
+		9B151A6B1A655AFA00498ED2 /* PrimeCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B151A6A1A655AFA00498ED2 /* PrimeCategoryTableViewCell.swift */; };
 		9B1E5BE71A2B5E1100615842 /* index.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE41A2B5E1100615842 /* index.jpg */; };
 		9B1E5BE81A2B5E1100615842 /* index@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE51A2B5E1100615842 /* index@2x.jpg */; };
 		9B1E5BE91A2B5E1100615842 /* index@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE61A2B5E1100615842 /* index@3x.jpg */; };
@@ -91,6 +93,8 @@
 
 /* Begin PBXFileReference section */
 		9B1467E11A260A3B00ACD417 /* CategoryMinorAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryMinorAddViewController.swift; sourceTree = "<group>"; };
+		9B151A681A6559D200498ED2 /* ShowDetailListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailListTableViewController.swift; sourceTree = "<group>"; };
+		9B151A6A1A655AFA00498ED2 /* PrimeCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimeCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		9B1E5BE41A2B5E1100615842 /* index.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = index.jpg; path = pictures/index.jpg; sourceTree = "<group>"; };
 		9B1E5BE51A2B5E1100615842 /* index@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "index@2x.jpg"; path = "pictures/index@2x.jpg"; sourceTree = "<group>"; };
 		9B1E5BE61A2B5E1100615842 /* index@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "index@3x.jpg"; path = "pictures/index@3x.jpg"; sourceTree = "<group>"; };
@@ -184,6 +188,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B151A6C1A655B1100498ED2 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				9B151A6A1A655AFA00498ED2 /* PrimeCategoryTableViewCell.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
 		9B1E5BE31A2B5DAD00615842 /* pictures */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +311,7 @@
 		9B37A9D019EEB57A0097F88D /* DecorationBus */ = {
 			isa = PBXGroup;
 			children = (
+				9B151A6C1A655B1100498ED2 /* CustomCell */,
 				9B2491781A5D683700990BA6 /* SwiftForms */,
 				9B8032C01A35CB76005BA828 /* Interface */,
 				9B1E5BFA1A2CA0D200615842 /* colorScheme */,
@@ -306,6 +319,7 @@
 				9B97DCCA1A23610B006A94C0 /* dataModel */,
 				9B37A9D319EEB57A0097F88D /* AppDelegate.swift */,
 				9B37A9DA19EEB57A0097F88D /* Main.storyboard */,
+				9B151A681A6559D200498ED2 /* ShowDetailListTableViewController.swift */,
 				9BC288D41A29E041005728D5 /* ShowBudgetDetailViewController.swift */,
 				9BC288D21A2964CC005728D5 /* ShowPayDetailViewController.swift */,
 				9B35492B1A276C510083E0B6 /* CategoryPrimeAddViewController.swift */,
@@ -498,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BCEAA301A1212B3002EE82C /* SettingViewController.swift in Sources */,
+				9B151A691A6559D200498ED2 /* ShowDetailListTableViewController.swift in Sources */,
 				9B97DCD01A237385006A94C0 /* ShowBudgetListViewController.swift in Sources */,
 				9B1467E21A260A3C00ACD417 /* CategoryMinorAddViewController.swift in Sources */,
 				9BA6B0481A3DD261003BC35E /* KeyboardAccessory.swift in Sources */,
@@ -511,6 +526,7 @@
 				9B97DCC91A235933006A94C0 /* RecordBudgetViewController.swift in Sources */,
 				9B24919D1A5D683700990BA6 /* FormViewController.swift in Sources */,
 				9B8032C41A35CB76005BA828 /* SpinnerViewController.swift in Sources */,
+				9B151A6B1A655AFA00498ED2 /* PrimeCategoryTableViewCell.swift in Sources */,
 				9B2491911A5D683700990BA6 /* FormValueCell.swift in Sources */,
 				9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */,
 				9B2491921A5D683700990BA6 /* FormButtonCell.swift in Sources */,
