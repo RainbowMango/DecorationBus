@@ -670,7 +670,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = DecorationBus;
-				PROVISIONING_PROFILE = "0e3693f5-3c4c-4f90-a367-10b6933b68c2";
+				PROVISIONING_PROFILE = "1795b6a1-eb02-47eb-8da0-a1857d9fc73d";
 			};
 			name = Debug;
 		};
@@ -684,7 +684,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = DecorationBus;
-				PROVISIONING_PROFILE = "0e3693f5-3c4c-4f90-a367-10b6933b68c2";
+				PROVISIONING_PROFILE = "1795b6a1-eb02-47eb-8da0-a1857d9fc73d";
 			};
 			name = Release;
 		};
