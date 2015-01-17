@@ -36,7 +36,7 @@ class ShowDetailListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 1
+        return 2
     }
 
     
@@ -45,6 +45,8 @@ class ShowDetailListTableViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             cell = tableView.dequeueReusableCellWithIdentifier("PrimeCategoryTableViewCell", forIndexPath: indexPath) as UITableViewCell
+        case 1:
+            cell = tableView.dequeueReusableCellWithIdentifier("MinorCategoryTableViewCell", forIndexPath: indexPath) as UITableViewCell
         default:
             cell = UITableViewCell()
         }
