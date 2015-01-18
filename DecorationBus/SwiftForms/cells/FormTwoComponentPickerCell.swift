@@ -53,7 +53,7 @@ class FormTwoComponentPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerV
             row.secondComponentArray_ = row.rowDescriptor.pickerDatasourceWithTwoComponent[row.firstComponentValue_]
             row.secondComponentValue_ = row.secondComponentArray_[0]
             
-            row.rowDescriptor.value = "\(row.firstComponentValue_)-\(row.secondComponentValue_)"
+            row.rowDescriptor.value = [row.firstComponentValue_, row.secondComponentValue_]
             row.valueLabel.text = "\(row.firstComponentValue_)-\(row.secondComponentValue_)"
         }
         
@@ -84,7 +84,8 @@ class FormTwoComponentPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerV
         else {
             secondComponentValue_ = secondComponentArray_[row]
         }
-        rowDescriptor.value = "\(firstComponentValue_)-\(secondComponentValue_)"
+        
+        rowDescriptor.value = [firstComponentValue_, secondComponentValue_]
         valueLabel.text = "\(firstComponentValue_)-\(secondComponentValue_)"
     }
     

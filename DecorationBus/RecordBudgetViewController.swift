@@ -335,9 +335,11 @@ class RecordBudgetViewController: FormViewController, FormViewControllerDelegate
             return
         }
         
-        var category:   String = ""
-        if let val = self.form.sections[0].rows[1].value {
-            category = val as String
+        var primeCategory: String = ""
+        var minorCategory: String = ""
+        if let val = self.form.sections[0].rows[1].value as? Array<String> {
+            primeCategory = val[0]
+            minorCategory = val[1]
         }
         else {
             var alertView = UIAlertView(title: "空值", message: "请选择一个类别", delegate: self, cancelButtonTitle: "好的")
@@ -371,8 +373,8 @@ class RecordBudgetViewController: FormViewController, FormViewControllerDelegate
         let entity = NSEntityDescription.entityForName("Budget", inManagedObjectContext: managedObjectContext!)
         let manageObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
         manageObject.setValue(money, forKey: "money")
-        manageObject.setValue(category, forKey: "primeCategory")
-        manageObject.setValue(category, forKey: "minorCategory")
+        manageObject.setValue(primeCategory, forKey: "primeCategory")
+        manageObject.setValue(minorCategory, forKey: "minorCategory")
         manageObject.setValue(shop, forKey: "shop")
         manageObject.setValue(phone, forKey: "phone")
         manageObject.setValue(address, forKey: "address")

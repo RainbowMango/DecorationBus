@@ -338,9 +338,11 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
             return
         }
         
-        var category:   String = ""
-        if let val = self.form.sections[0].rows[1].value {
-            category = val as String
+        var primeCategory: String = ""
+        var minorCategory: String = ""
+        if let val = self.form.sections[0].rows[1].value as? Array<String> {
+            primeCategory = val[0]
+            minorCategory = val[1]
         }
         else {
             var alertView = UIAlertView(title: "空值", message: "请选择一个类别", delegate: self, cancelButtonTitle: "好的")
@@ -374,8 +376,8 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         let entity = NSEntityDescription.entityForName("Order", inManagedObjectContext: managedObjectContext!)
         let order = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
         order.setValue(money, forKey: "money")
-        order.setValue(category, forKey: "primeCategory")
-        order.setValue(category, forKey: "minorCategory")
+        order.setValue(primeCategory, forKey: "primeCategory")
+        order.setValue(minorCategory, forKey: "minorCategory")
         order.setValue(shop, forKey: "shop")
         order.setValue(phone, forKey: "phone")
         order.setValue(address, forKey: "address")
