@@ -9,6 +9,7 @@
 import UIKit
 
 class ShowDetailListTableViewController: UITableViewController {
+    @IBOutlet weak var headerView_: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,19 +42,19 @@ class ShowDetailListTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell!
+        //var cell: UITableViewCell!
         switch indexPath.row {
         case 0:
-            cell = tableView.dequeueReusableCellWithIdentifier("PrimeCategoryTableViewCell", forIndexPath: indexPath) as UITableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier("PrimeCategoryTableViewCell", forIndexPath: indexPath) as PrimeCategoryTableViewCell
+            cell.primeCategoryImageView_.image = UIImage(named: "arrow_down")
+            return cell as UITableViewCell
         case 1:
-            cell = tableView.dequeueReusableCellWithIdentifier("MinorCategoryTableViewCell", forIndexPath: indexPath) as UITableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier("MinorCategoryTableViewCell", forIndexPath: indexPath) as MinorCategoryTableViewCell
+            return cell as UITableViewCell
         default:
-            cell = UITableViewCell()
+            var cell = UITableViewCell()
+            return cell
         }
-
-        // Configure the cell...
-
-        return cell
     }
     
 
@@ -92,6 +93,13 @@ class ShowDetailListTableViewController: UITableViewController {
     }
     */
 
+    // MARK: - Table view delegate
+    
+    // 设置表头
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        return headerView_
+    }
     /*
     // MARK: - Navigation
 
