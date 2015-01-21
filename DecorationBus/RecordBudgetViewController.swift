@@ -345,7 +345,7 @@ class RecordBudgetViewController: FormViewController, FormViewControllerDelegate
         }
         
         var comments:   String = ""
-        if let val = self.form.sections[1].rows[3].value {
+        if let val = self.form.sections[1].rows[0].value {
             comments = val as String
         }
         

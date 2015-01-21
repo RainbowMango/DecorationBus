@@ -11,6 +11,9 @@ import UIKit
 class ShowDetailListTableViewController: UITableViewController {
     @IBOutlet weak var headerView_: UIView!
 
+    var orders_ = OrderDataModel().getAllOrders()
+    var budgets_ = BudgetDataModel().getAllBudgets()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +22,13 @@ class ShowDetailListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        for item in orders_ {
+            println(item.valueForKey("primeCategory") as String)
+            println(item.valueForKey("minorCategory") as String)
+        }
     }
 
     override func didReceiveMemoryWarning() {

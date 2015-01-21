@@ -13,6 +13,8 @@
 		9B151A701A6A9CA100498ED2 /* MinorCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B151A6F1A6A9CA100498ED2 /* MinorCategoryTableViewCell.swift */; };
 		9B151A9E1A6ABC8800498ED2 /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B151A9C1A6ABC8800498ED2 /* arrow_down.png */; };
 		9B151A9F1A6ABC8800498ED2 /* arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B151A9D1A6ABC8800498ED2 /* arrow_right.png */; };
+		9B151AA41A6FEA3200498ED2 /* OrderDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B151AA31A6FEA3200498ED2 /* OrderDataModel.swift */; };
+		9B151AA61A6FEC0000498ED2 /* BudgetDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B151AA51A6FEC0000498ED2 /* BudgetDataModel.swift */; };
 		9B1E5BE71A2B5E1100615842 /* index.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE41A2B5E1100615842 /* index.jpg */; };
 		9B1E5BE81A2B5E1100615842 /* index@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE51A2B5E1100615842 /* index@2x.jpg */; };
 		9B1E5BE91A2B5E1100615842 /* index@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE61A2B5E1100615842 /* index@3x.jpg */; };
@@ -101,6 +103,8 @@
 		9B151A6F1A6A9CA100498ED2 /* MinorCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinorCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		9B151A9C1A6ABC8800498ED2 /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
 		9B151A9D1A6ABC8800498ED2 /* arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right.png; sourceTree = "<group>"; };
+		9B151AA31A6FEA3200498ED2 /* OrderDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDataModel.swift; sourceTree = "<group>"; };
+		9B151AA51A6FEC0000498ED2 /* BudgetDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDataModel.swift; sourceTree = "<group>"; };
 		9B1E5BE41A2B5E1100615842 /* index.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = index.jpg; path = pictures/index.jpg; sourceTree = "<group>"; };
 		9B1E5BE51A2B5E1100615842 /* index@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "index@2x.jpg"; path = "pictures/index@2x.jpg"; sourceTree = "<group>"; };
 		9B1E5BE61A2B5E1100615842 /* index@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "index@3x.jpg"; path = "pictures/index@3x.jpg"; sourceTree = "<group>"; };
@@ -211,6 +215,15 @@
 			);
 			name = customer01;
 			path = pictures/customer01;
+			sourceTree = "<group>";
+		};
+		9B151AA21A6FEA0700498ED2 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				9B151AA31A6FEA3200498ED2 /* OrderDataModel.swift */,
+				9B151AA51A6FEC0000498ED2 /* BudgetDataModel.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		9B1E5BE31A2B5DAD00615842 /* pictures */ = {
@@ -329,6 +342,7 @@
 		9B37A9D019EEB57A0097F88D /* DecorationBus */ = {
 			isa = PBXGroup;
 			children = (
+				9B151AA21A6FEA0700498ED2 /* DataModel */,
 				9B151A6C1A655B1100498ED2 /* CustomCell */,
 				9B2491781A5D683700990BA6 /* SwiftForms */,
 				9B8032C01A35CB76005BA828 /* Interface */,
@@ -557,6 +571,7 @@
 				9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */,
 				9B24918F1A5D683700990BA6 /* FormBaseCell.swift in Sources */,
 				9B531CB41A583033008067C3 /* DecorationBus.xcdatamodeld in Sources */,
+				9B151AA61A6FEC0000498ED2 /* BudgetDataModel.swift in Sources */,
 				9B34AAFE1A20B98500013C39 /* CategoryDataModel.swift in Sources */,
 				9B34AAFC1A1FA33100013C39 /* OrderArchiver.swift in Sources */,
 				9BE945F01A1E2BAD0095ACBD /* OrderItemDataModel.swift in Sources */,
@@ -575,6 +590,7 @@
 				9B2491961A5D683700990BA6 /* FormSegmentedControlCell.swift in Sources */,
 				9B24919C1A5D683700990BA6 /* FormSelector.swift in Sources */,
 				9B985BFF1A179525009F4435 /* AboutMeViewController.swift in Sources */,
+				9B151AA41A6FEA3200498ED2 /* OrderDataModel.swift in Sources */,
 				9BCEAA321A122571002EE82C /* CatagoryPrimeMangeViewController.swift in Sources */,
 				9BC288D31A2964CC005728D5 /* ShowPayDetailViewController.swift in Sources */,
 				9BC288D51A29E041005728D5 /* ShowBudgetDetailViewController.swift in Sources */,
