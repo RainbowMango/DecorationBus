@@ -27,6 +27,11 @@ class ShowDetailListTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        orders_ = OrderDataModel().getAllOrders()
+        budgets_ = BudgetDataModel().getAllBudgets()
+        primeCategoryDetailList_ = Array<PrimeCategoryDetail>()
+        minorCategoryDetailList_ = Array<MinorCategoryDetail>()
+        
         println("更新类别列表")
         for order in orders_ {
             var newItem = MinorCategoryDetail()

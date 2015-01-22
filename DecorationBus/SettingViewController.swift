@@ -46,8 +46,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch alertView.buttonTitleAtIndex(buttonIndex) {
         case "确定":
             CategoryArchiver().initCategoryInUserDefault()
-            OrderArchiver().removeAllOrders()
-            BudgetArchiver().removeAllBudgets()
+            //OrderArchiver().removeAllOrders()
+            //BudgetArchiver().removeAllBudgets()
+            OrderDataModel.deleteAll()
+            BudgetDataModel.deleteAll()
         case "取消":
             println("用户取消")
         default:
