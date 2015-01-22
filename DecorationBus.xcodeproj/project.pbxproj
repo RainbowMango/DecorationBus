@@ -15,6 +15,8 @@
 		9B151A9F1A6ABC8800498ED2 /* arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B151A9D1A6ABC8800498ED2 /* arrow_right.png */; };
 		9B151AA41A6FEA3200498ED2 /* OrderDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B151AA31A6FEA3200498ED2 /* OrderDataModel.swift */; };
 		9B151AA61A6FEC0000498ED2 /* BudgetDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B151AA51A6FEC0000498ED2 /* BudgetDataModel.swift */; };
+		9B151AA81A71371D00498ED2 /* MinorCategoryDetailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B151AA71A71371D00498ED2 /* MinorCategoryDetailDataModel.swift */; };
+		9B151AAA1A713F3900498ED2 /* PrimeCategoryDetailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B151AA91A713F3900498ED2 /* PrimeCategoryDetailDataModel.swift */; };
 		9B1E5BE71A2B5E1100615842 /* index.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE41A2B5E1100615842 /* index.jpg */; };
 		9B1E5BE81A2B5E1100615842 /* index@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE51A2B5E1100615842 /* index@2x.jpg */; };
 		9B1E5BE91A2B5E1100615842 /* index@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE61A2B5E1100615842 /* index@3x.jpg */; };
@@ -105,6 +107,8 @@
 		9B151A9D1A6ABC8800498ED2 /* arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right.png; sourceTree = "<group>"; };
 		9B151AA31A6FEA3200498ED2 /* OrderDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDataModel.swift; sourceTree = "<group>"; };
 		9B151AA51A6FEC0000498ED2 /* BudgetDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDataModel.swift; sourceTree = "<group>"; };
+		9B151AA71A71371D00498ED2 /* MinorCategoryDetailDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinorCategoryDetailDataModel.swift; sourceTree = "<group>"; };
+		9B151AA91A713F3900498ED2 /* PrimeCategoryDetailDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimeCategoryDetailDataModel.swift; sourceTree = "<group>"; };
 		9B1E5BE41A2B5E1100615842 /* index.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = index.jpg; path = pictures/index.jpg; sourceTree = "<group>"; };
 		9B1E5BE51A2B5E1100615842 /* index@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "index@2x.jpg"; path = "pictures/index@2x.jpg"; sourceTree = "<group>"; };
 		9B1E5BE61A2B5E1100615842 /* index@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "index@3x.jpg"; path = "pictures/index@3x.jpg"; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				9B151AA31A6FEA3200498ED2 /* OrderDataModel.swift */,
+				9B151AA71A71371D00498ED2 /* MinorCategoryDetailDataModel.swift */,
+				9B151AA91A713F3900498ED2 /* PrimeCategoryDetailDataModel.swift */,
 				9B151AA51A6FEC0000498ED2 /* BudgetDataModel.swift */,
 			);
 			path = DataModel;
@@ -555,6 +561,7 @@
 				9B2491901A5D683700990BA6 /* FormTitleCell.swift in Sources */,
 				9B2D7B881A63E82800D829EF /* FormTwoComponentPickerCell.swift in Sources */,
 				9B24919A1A5D683700990BA6 /* FormTextViewCell.swift in Sources */,
+				9B151AAA1A713F3900498ED2 /* PrimeCategoryDetailDataModel.swift in Sources */,
 				9B24919E1A5D683700990BA6 /* FormDescriptor.swift in Sources */,
 				9B24919B1A5D683700990BA6 /* FormOptionsSelectorController.swift in Sources */,
 				9B97DCC91A235933006A94C0 /* RecordBudgetViewController.swift in Sources */,
@@ -594,6 +601,7 @@
 				9BCEAA321A122571002EE82C /* CatagoryPrimeMangeViewController.swift in Sources */,
 				9BC288D31A2964CC005728D5 /* ShowPayDetailViewController.swift in Sources */,
 				9BC288D51A29E041005728D5 /* ShowBudgetDetailViewController.swift in Sources */,
+				9B151AA81A71371D00498ED2 /* MinorCategoryDetailDataModel.swift in Sources */,
 				9B2491941A5D683700990BA6 /* FormDateCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

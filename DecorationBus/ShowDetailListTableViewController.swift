@@ -10,9 +10,11 @@ import UIKit
 
 class ShowDetailListTableViewController: UITableViewController {
     @IBOutlet weak var headerView_: UIView!
-
+    
     var orders_ = OrderDataModel().getAllOrders()
     var budgets_ = BudgetDataModel().getAllBudgets()
+    var primeCategoryDetailList_ = Array<PrimeCategoryDetail>()
+    var minorCategoryDetailList_ = Array<MinorCategoryDetail>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +27,29 @@ class ShowDetailListTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        for item in orders_ {
-            println(item.valueForKey("primeCategory") as String)
-            println(item.valueForKey("minorCategory") as String)
+        println("更新类别列表")
+        for order in orders_ {
+            var newItem = MinorCategoryDetail()
+            newItem.primeCategory_ = order.valueForKey("primeCategory") as String
+            newItem.minorCategory_ = order.valueForKey("minorCategory") as String
+            newItem.orderMoney_    = order.valueForKey("money")         as Float
+            
+            MinorCategoryDetail.mergeToDetailList(&minorCategoryDetailList_, newItem: newItem)
         }
+        for budget in budgets_ {
+            var newItem = MinorCategoryDetail()
+            newItem.primeCategory_ = budget.valueForKey("primeCategory") as String
+            newItem.minorCategory_ = budget.valueForKey("minorCategory") as String
+            newItem.budgetMoney_   = budget.valueForKey("money")         as Float
+            MinorCategoryDetail.mergeToDetailList(&minorCategoryDetailList_, newItem: newItem)
+        }
+        
+        primeCategoryDetailList_ = PrimeCategoryDetail.getPrimeCategoryDetailList(minorCategoryDetailList_)
+        
+        println("orders_.count = \(orders_.count)")
+        println("budgets_.count = \(budgets_.count)")
+        println("minorCategoryDetailList_.count = \(minorCategoryDetailList_.count)")
+        println("primeCategoryDetailList_.count = \(primeCategoryDetailList_.count)")
     }
 
     override func didReceiveMemoryWarning() {
