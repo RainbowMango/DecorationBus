@@ -55,6 +55,9 @@ class ShowDetailListTableViewController: UITableViewController {
         println("budgets_.count = \(budgets_.count)")
         println("minorCategoryDetailList_.count = \(minorCategoryDetailList_.count)")
         println("primeCategoryDetailList_.count = \(primeCategoryDetailList_.count)")
+        
+        //刷新tableView
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,26 +74,19 @@ class ShowDetailListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 2
+        return primeCategoryDetailList_.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //var cell: UITableViewCell!
-        switch indexPath.row {
-        case 0:
-            var cell = tableView.dequeueReusableCellWithIdentifier("PrimeCategoryTableViewCell", forIndexPath: indexPath) as PrimeCategoryTableViewCell
-            cell.primeCategoryImageView_.image = UIImage(named: "arrow_down")
-            return cell as UITableViewCell
-        case 1:
-            var cell = tableView.dequeueReusableCellWithIdentifier("MinorCategoryTableViewCell", forIndexPath: indexPath) as MinorCategoryTableViewCell
-            return cell as UITableViewCell
-        default:
-            var cell = UITableViewCell()
-            return cell
-        }
+        var cell = tableView.dequeueReusableCellWithIdentifier("PrimeCategoryTableViewCell", forIndexPath: indexPath) as PrimeCategoryTableViewCell
+        
+        cell.categoryLabel_.text  = primeCategoryDetailList_[indexPath.row].primeCategory_
+        cell.budgetSumLabel_.text = "\(primeCategoryDetailList_[indexPath.row].budgetMoney_)"
+        cell.spendSumLabel_.text  = "\(primeCategoryDetailList_[indexPath.row].orderMoney_)"
+        cell.remainSumLabel_.text = "\(primeCategoryDetailList_[indexPath.row].budgetMoney_ - primeCategoryDetailList_[indexPath.row].orderMoney_)"
+        
+        return cell as UITableViewCell
     }
     
 
