@@ -15,6 +15,7 @@ class ShowDetailListTableViewController: UITableViewController {
     var budgets_ = BudgetDataModel().getAllBudgets()
     var primeCategoryDetailList_ = Array<PrimeCategoryDetail>()
     var minorCategoryDetailList_ = Array<MinorCategoryDetail>()
+    var tableViewCellArray_ = Array<Dictionary<String, String>>() // table view cell 列表
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,9 @@ class ShowDetailListTableViewController: UITableViewController {
         println("minorCategoryDetailList_.count = \(minorCategoryDetailList_.count)")
         println("primeCategoryDetailList_.count = \(primeCategoryDetailList_.count)")
         
+        //初始化cell数组
+        initCellArray()
+        
         //刷新tableView
         self.tableView.reloadData()
     }
@@ -65,6 +69,17 @@ class ShowDetailListTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    //将prime类别表转至cell array
+    func initCellArray() {
+        tableViewCellArray_.removeAll(keepCapacity: true)
+        for item in primeCategoryDetailList_ {
+            var dic = ["cellType":"prime", "isAttached":"false"]
+            dic["primeCategory"] = item.primeCategory_
+            dic["minorCategory"] = ""
+            tableViewCellArray_.append(dic)
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -74,19 +89,32 @@ class ShowDetailListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return primeCategoryDetailList_.count
+        return tableViewCellArray_.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("PrimeCategoryTableViewCell", forIndexPath: indexPath) as PrimeCategoryTableViewCell
+        if tableViewCellArray_[indexPath.row]["cellType"] == "prime" { //展示prime cell
+            var cell = tableView.dequeueReusableCellWithIdentifier("PrimeCategoryTableViewCell", forIndexPath: indexPath) as PrimeCategoryTableViewCell
+            
+            // 配置cell
+            return cell
+        }
+        else if tableViewCellArray_[indexPath.row]["cellType"] == "minor" { // 展示minor cell
+            var cell = tableView.dequeueReusableCellWithIdentifier("MinorCategoryTableViewCell", forIndexPath: indexPath) as MinorCategoryTableViewCell
+            
+            // 配置cell
+            return cell
+        }
         
-        cell.categoryLabel_.text  = primeCategoryDetailList_[indexPath.row].primeCategory_
-        cell.budgetSumLabel_.text = "\(primeCategoryDetailList_[indexPath.row].budgetMoney_)"
-        cell.spendSumLabel_.text  = "\(primeCategoryDetailList_[indexPath.row].orderMoney_)"
-        cell.remainSumLabel_.text = "\(primeCategoryDetailList_[indexPath.row].budgetMoney_ - primeCategoryDetailList_[indexPath.row].orderMoney_)"
         
-        return cell as UITableViewCell
+//        cell.categoryLabel_.text  = primeCategoryDetailList_[indexPath.row].primeCategory_
+//        cell.budgetSumLabel_.text = "\(primeCategoryDetailList_[indexPath.row].budgetMoney_)"
+//        cell.spendSumLabel_.text  = "\(primeCategoryDetailList_[indexPath.row].orderMoney_)"
+//        cell.remainSumLabel_.text = "\(primeCategoryDetailList_[indexPath.row].budgetMoney_ - primeCategoryDetailList_[indexPath.row].orderMoney_)"
+        
+//        return cell as UITableViewCell
+        return UITableViewCell()
     }
     
 
