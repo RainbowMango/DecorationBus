@@ -95,12 +95,73 @@ class ShowDetailListTableViewController: UITableViewController {
     func configMinorCell(inout cell: MinorCategoryTableViewCell, primeCategory: String, minorCategory: String) -> Void {
         for item in minorCategoryDetailList_ {
             if item.primeCategory_ == primeCategory && item.minorCategory_ == minorCategory {
-                cell.categoryLabel_.text  = primeCategory
+                cell.categoryLabel_.text  = minorCategory
                 cell.budgetLabel_.text = "\(item.budgetMoney_)"
                 cell.spendLabel_.text  = "\(item.orderMoney_)"
                 cell.remainLabel_.text = "\(item.budgetMoney_ - item.orderMoney_)"
             }
         }
+    }
+    
+    func getAddedMinorCellCount(primeCategory: String) -> Int {
+        var count: Int = 0
+        
+        for item in tableViewCellArray_ {
+            if item["primeCategory"] == primeCategory && item["cellType"] == "minor" {
+                count++
+            }
+        }
+        
+        return count
+    }
+    
+    func getRemovedMinorCellCount(primeCategory: String, minorCategory: String) -> Int {
+        var count: Int = 0
+        
+        for item in tableViewCellArray_ {
+            if item["primeCategory"] == primeCategory && item["minorCategory"] == minorCategory {
+                count++
+            }
+        }
+        
+        return count
+    }
+    
+    func getWillBeAddedCells(primeCategory: String) -> [Dictionary<String, String>]{
+        var dic = ["cellType":"minor", "isAttached":"false", "primeCategory":primeCategory]
+        var dicArray = Array<Dictionary<String, String>>()
+        
+        for item in minorCategoryDetailList_ {
+            if item.primeCategory_ == primeCategory {
+                dic["minorCategory"] = item.minorCategory_
+                dicArray.append(dic)
+            }
+        }
+        
+        return dicArray
+    }
+    
+    func getAddingPaths(basePath: NSIndexPath, addingCount: Int) -> [NSIndexPath] {
+        var indexPathArray = Array<NSIndexPath>()
+        var startRow = basePath.row + 1
+        
+        for var i = 0; i < addingCount; i++ {
+            var indexPath = NSIndexPath(forRow: startRow + i, inSection: basePath.section)
+            indexPathArray.append(indexPath)
+        }
+        
+        return indexPathArray
+    }
+    
+    func getWillBeRemovedPaths(startPath: NSIndexPath, removeCount: Int) -> [NSIndexPath] {
+        var indexPathArray = Array<NSIndexPath>()
+        var indexPath = startPath
+        for var i = 0; i < removeCount; i++ {
+            indexPath.row + i
+            indexPathArray.append(indexPath)
+        }
+        
+        return indexPathArray
     }
     
     // MARK: - Table view data source
@@ -138,7 +199,101 @@ class ShowDetailListTableViewController: UITableViewController {
         return UITableViewCell()
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // 获取NSIndexPath列表
+        func getindexPathArray(basePath: NSIndexPath, count: Int) -> [NSIndexPath] {
+            var indexPathArray = Array<NSIndexPath>()
+            var startRow = basePath.row + 1
+            
+            for var i = 0; i < count; i++ {
+                var newPath = NSIndexPath(forRow: startRow + i, inSection: basePath.section)
+                indexPathArray.append(newPath)
+                println("增加/删除cell: \(newPath.row)")
+            }
+            
+            return indexPathArray
+        }
+        
+        //删除特定主类目下所有子类目cell
+        func removeMinorCells(primeCategory: String) ->Void {
+            var removeIndexArray = Array<Int>()
+            var removeCount = 0
+            
+            //获得将要删除的下标列表
+            for (index, value) in enumerate(tableViewCellArray_) {
+                if value["cellType"] == "minor" && value["primeCategory"] == primeCategory{
+                    removeIndexArray.append(index)
+                }
+            }
+            removeCount = removeIndexArray.count
+            
+            //从cell列表中倒序删除以防止下标越界
+            //var removeIndexReverseArray = removeIndexArray.reverse()
+            while(removeIndexArray.count > 0)
+            {
+                var removeIndex = removeIndexArray.removeLast()
+                println("tableViewCellArray_ 删除下标: \(removeIndex), 元素: \(tableViewCellArray_[removeIndex])")
+                tableViewCellArray_.removeAtIndex(removeIndex)
+                //removeIndexArray.removeLast()
+            }
+//            for (index, value) in enumerate(removeIndexReverseArray) {
+//                println("tableViewCellArray_ 删除下标: \(index), 元素: \(tableViewCellArray_[index])")
+//                tableViewCellArray_.removeAtIndex(index)
+//            }
+            
+            //从table view中删除
+            var indexPaths = getindexPathArray(indexPath, removeCount)
+            println("删除cell: \(indexPaths)")
+            tableView.beginUpdates()
+            tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle)
+            tableView.endUpdates()
+        }
+        
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        var selectedPrimeCategory = tableViewCellArray_[indexPath.row]["primeCategory"]
+        var selectedMinorCategory = tableViewCellArray_[indexPath.row]["minorCategory"]
+        
+        if tableViewCellArray_[indexPath.row]["cellType"] == "prime" {
+            if tableViewCellArray_[indexPath.row]["isAttached"] == "true" { // 收起
+                // 改变状态
+                var cellAttr = tableViewCellArray_[indexPath.row]
+                cellAttr.updateValue("false", forKey: "isAttached")
+                tableViewCellArray_[indexPath.row] = cellAttr
+                
+                // 删除下拉菜单
+                removeMinorCells(selectedPrimeCategory!)
+                
+                // 动态删除cell
+//                var path = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
+//                tableView.beginUpdates()
+//                var removedCount = getRemovedMinorCellCount(selectedPrimeCategory!, minorCategory: selectedMinorCategory!)
+//                var indexPaths = getWillBeRemovedPaths(path, removeCount: removedCount)
+//                tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle)
+//                tableView.endUpdates()
+            }
+            else if tableViewCellArray_[indexPath.row]["isAttached"] == "false" { // 展开
+                // 改变状态
+                var cellAttr = tableViewCellArray_[indexPath.row]
+                cellAttr.updateValue("true", forKey: "isAttached")
+                tableViewCellArray_[indexPath.row] = cellAttr
 
+                // 添加下拉菜单
+                var addedArray = getWillBeAddedCells(selectedPrimeCategory!)
+                for addedItem in addedArray {
+                    tableViewCellArray_.insert(addedItem, atIndex: indexPath.row + 1)
+                }
+                
+                // 动态增加cell
+                var addingCount = getAddedMinorCellCount(selectedPrimeCategory!)
+                var indexPaths  = getindexPathArray(indexPath, addingCount)
+                tableView.beginUpdates()
+                tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle)
+                self.tableView.endUpdates()
+            }
+        }
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
