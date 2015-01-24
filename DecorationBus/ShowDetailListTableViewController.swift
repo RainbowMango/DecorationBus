@@ -80,6 +80,29 @@ class ShowDetailListTableViewController: UITableViewController {
         }
     }
     
+    func configPrimeCell(inout cell: PrimeCategoryTableViewCell, primeCategory: String) -> Void
+    {
+        for item in primeCategoryDetailList_ {
+            if item.primeCategory_ == primeCategory {
+                cell.categoryLabel_.text  = primeCategory
+                cell.budgetSumLabel_.text = "\(item.budgetMoney_)"
+                cell.spendSumLabel_.text  = "\(item.orderMoney_)"
+                cell.remainSumLabel_.text = "\(item.budgetMoney_ - item.orderMoney_)"
+            }
+        }
+    }
+    
+    func configMinorCell(inout cell: MinorCategoryTableViewCell, primeCategory: String, minorCategory: String) -> Void {
+        for item in minorCategoryDetailList_ {
+            if item.primeCategory_ == primeCategory && item.minorCategory_ == minorCategory {
+                cell.categoryLabel_.text  = primeCategory
+                cell.budgetLabel_.text = "\(item.budgetMoney_)"
+                cell.spendLabel_.text  = "\(item.orderMoney_)"
+                cell.remainLabel_.text = "\(item.budgetMoney_ - item.orderMoney_)"
+            }
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -98,22 +121,20 @@ class ShowDetailListTableViewController: UITableViewController {
             var cell = tableView.dequeueReusableCellWithIdentifier("PrimeCategoryTableViewCell", forIndexPath: indexPath) as PrimeCategoryTableViewCell
             
             // 配置cell
+            configPrimeCell(&cell, primeCategory: tableViewCellArray_[indexPath.row]["primeCategory"]!)
+            
             return cell
         }
         else if tableViewCellArray_[indexPath.row]["cellType"] == "minor" { // 展示minor cell
             var cell = tableView.dequeueReusableCellWithIdentifier("MinorCategoryTableViewCell", forIndexPath: indexPath) as MinorCategoryTableViewCell
             
             // 配置cell
+            let primeCategory = tableViewCellArray_[indexPath.row]["primeCategory"]
+            let minorCategory = tableViewCellArray_[indexPath.row]["minorCategory"]
+            configMinorCell(&cell, primeCategory: primeCategory!, minorCategory: minorCategory!)
             return cell
         }
         
-        
-//        cell.categoryLabel_.text  = primeCategoryDetailList_[indexPath.row].primeCategory_
-//        cell.budgetSumLabel_.text = "\(primeCategoryDetailList_[indexPath.row].budgetMoney_)"
-//        cell.spendSumLabel_.text  = "\(primeCategoryDetailList_[indexPath.row].orderMoney_)"
-//        cell.remainSumLabel_.text = "\(primeCategoryDetailList_[indexPath.row].budgetMoney_ - primeCategoryDetailList_[indexPath.row].orderMoney_)"
-        
-//        return cell as UITableViewCell
         return UITableViewCell()
     }
     
