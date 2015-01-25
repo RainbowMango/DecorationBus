@@ -80,55 +80,6 @@ class ShowDetailListTableViewController: UITableViewController {
         }
     }
     
-    func configPrimeCell(inout cell: PrimeCategoryTableViewCell, primeCategory: String) -> Void
-    {
-        for item in primeCategoryDetailList_ {
-            if item.primeCategory_ == primeCategory {
-                cell.categoryLabel_.text  = primeCategory
-                cell.budgetSumLabel_.text = "\(item.budgetMoney_)"
-                cell.spendSumLabel_.text  = "\(item.orderMoney_)"
-                cell.remainSumLabel_.text = "\(item.budgetMoney_ - item.orderMoney_)"
-            }
-        }
-    }
-    
-    func configMinorCell(inout cell: MinorCategoryTableViewCell, primeCategory: String, minorCategory: String) -> Void {
-        for item in minorCategoryDetailList_ {
-            if item.primeCategory_ == primeCategory && item.minorCategory_ == minorCategory {
-                cell.categoryLabel_.text  = minorCategory
-                cell.budgetLabel_.text = "\(item.budgetMoney_)"
-                cell.spendLabel_.text  = "\(item.orderMoney_)"
-                cell.remainLabel_.text = "\(item.budgetMoney_ - item.orderMoney_)"
-            }
-        }
-    }
-    
-    func getAddedMinorCellCount(primeCategory: String) -> Int {
-        var count: Int = 0
-        
-        for item in tableViewCellArray_ {
-            if item["primeCategory"] == primeCategory && item["cellType"] == "minor" {
-                count++
-            }
-        }
-        
-        return count
-    }
-    
-    func getWillBeAddedCells(primeCategory: String) -> [Dictionary<String, String>]{
-        var dic = ["cellType":"minor", "isAttached":"false", "primeCategory":primeCategory]
-        var dicArray = Array<Dictionary<String, String>>()
-        
-        for item in minorCategoryDetailList_ {
-            if item.primeCategory_ == primeCategory {
-                dic["minorCategory"] = item.minorCategory_
-                dicArray.append(dic)
-            }
-        }
-        
-        return dicArray
-    }
-    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -143,11 +94,59 @@ class ShowDetailListTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        func updateIndicatorImage(inout cell: PrimeCategoryTableViewCell) -> Void {
+            var currentCell = tableViewCellArray_[indexPath.row]
+            
+            if currentCell["cellType"] != "prime" {
+                return
+            }
+            
+            if currentCell["isAttached"] == "true" {
+                cell.launchIndicatorImageView_.image = UIImage(named: "arrow_down.png")
+            }
+            else {
+                cell.launchIndicatorImageView_.image = UIImage(named: "arrow_right.png")
+            }
+        }
+        
+        func configPrimeCell(inout cell: PrimeCategoryTableViewCell, primeCategory: String) -> Void
+        {
+            for item in primeCategoryDetailList_ {
+                if item.primeCategory_ == primeCategory {
+                    cell.categoryLabel_.text  = primeCategory
+                    cell.budgetSumLabel_.text = "\(item.budgetMoney_)"
+                    cell.spendSumLabel_.text  = "\(item.orderMoney_)"
+                    cell.remainSumLabel_.text = "\(item.budgetMoney_ - item.orderMoney_)"
+                    break
+                }
+            }
+            
+            // 更新指示图标
+            if tableViewCellArray_[indexPath.row]["isAttached"] == "true" {
+                cell.launchIndicatorImageView_.image = UIImage(named: "arrow_down.png")
+            }
+            else {
+                cell.launchIndicatorImageView_.image = UIImage(named: "arrow_right.png")
+            }
+        }
+        
+        func configMinorCell(inout cell: MinorCategoryTableViewCell, primeCategory: String, minorCategory: String) -> Void {
+            for item in minorCategoryDetailList_ {
+                if item.primeCategory_ == primeCategory && item.minorCategory_ == minorCategory {
+                    cell.categoryLabel_.text  = minorCategory
+                    cell.budgetLabel_.text = "\(item.budgetMoney_)"
+                    cell.spendLabel_.text  = "\(item.orderMoney_)"
+                    cell.remainLabel_.text = "\(item.budgetMoney_ - item.orderMoney_)"
+                }
+            }
+        }
+        
         if tableViewCellArray_[indexPath.row]["cellType"] == "prime" { //展示prime cell
             var cell = tableView.dequeueReusableCellWithIdentifier("PrimeCategoryTableViewCell", forIndexPath: indexPath) as PrimeCategoryTableViewCell
             
             // 配置cell
-            configPrimeCell(&cell, primeCategory: tableViewCellArray_[indexPath.row]["primeCategory"]!)
+            configPrimeCell(&cell, tableViewCellArray_[indexPath.row]["primeCategory"]!)
             
             return cell
         }
@@ -157,7 +156,7 @@ class ShowDetailListTableViewController: UITableViewController {
             // 配置cell
             let primeCategory = tableViewCellArray_[indexPath.row]["primeCategory"]
             let minorCategory = tableViewCellArray_[indexPath.row]["minorCategory"]
-            configMinorCell(&cell, primeCategory: primeCategory!, minorCategory: minorCategory!)
+            configMinorCell(&cell, primeCategory!, minorCategory!)
             return cell
         }
         
@@ -179,6 +178,28 @@ class ShowDetailListTableViewController: UITableViewController {
             return indexPathArray
         }
         
+        //增加特定主类目下所有子类目cell
+        func addMinorCells(primeCategory: String, baseIndexPath: NSIndexPath) -> Void {
+            var dic = ["cellType":"minor", "isAttached":"false", "primeCategory":primeCategory]
+            var addCount = 0
+
+            //添加子类目cell到列表
+            for minorItem in minorCategoryDetailList_ {
+                if minorItem.primeCategory_ == primeCategory {
+                    dic["minorCategory"] = minorItem.minorCategory_
+                    tableViewCellArray_.insert(dic, atIndex: baseIndexPath.row + 1)
+                    addCount++
+                }
+            }
+            
+            // 动态增加cell
+            var indexPaths  = getindexPathArray(indexPath, addCount)
+            tableView.beginUpdates()
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+            tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle)
+            self.tableView.endUpdates()
+        }
+        
         //删除特定主类目下所有子类目cell
         func removeMinorCells(primeCategory: String) ->Void {
             var removeIndexArray = Array<Int>()
@@ -198,6 +219,7 @@ class ShowDetailListTableViewController: UITableViewController {
             //从table view中删除
             var indexPaths = getindexPathArray(indexPath, removeIndexArray.count)
             tableView.beginUpdates()
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
             tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle)
             tableView.endUpdates()
         }
@@ -208,33 +230,19 @@ class ShowDetailListTableViewController: UITableViewController {
         var selectedMinorCategory = tableViewCellArray_[indexPath.row]["minorCategory"]
         
         if tableViewCellArray_[indexPath.row]["cellType"] == "prime" {
-            if tableViewCellArray_[indexPath.row]["isAttached"] == "true" { // 收起
+            if tableViewCellArray_[indexPath.row]["isAttached"] == "false" { // 展开
                 // 改变状态
-                var cellAttr = tableViewCellArray_[indexPath.row]
-                cellAttr.updateValue("false", forKey: "isAttached")
-                tableViewCellArray_[indexPath.row] = cellAttr
-                
-                // 删除下拉菜单
-                removeMinorCells(selectedPrimeCategory!)
-            }
-            else if tableViewCellArray_[indexPath.row]["isAttached"] == "false" { // 展开
-                // 改变状态
-                var cellAttr = tableViewCellArray_[indexPath.row]
-                cellAttr.updateValue("true", forKey: "isAttached")
-                tableViewCellArray_[indexPath.row] = cellAttr
+                tableViewCellArray_[indexPath.row].updateValue("true", forKey: "isAttached")
 
-                // 添加下拉菜单
-                var addedArray = getWillBeAddedCells(selectedPrimeCategory!)
-                for addedItem in addedArray {
-                    tableViewCellArray_.insert(addedItem, atIndex: indexPath.row + 1)
-                }
+                // 添加下拉cell
+                addMinorCells(selectedPrimeCategory!, indexPath)
+            }
+            else if tableViewCellArray_[indexPath.row]["isAttached"] == "true" { // 收起
+                // 改变状态
+                tableViewCellArray_[indexPath.row].updateValue("false", forKey: "isAttached")
                 
-                // 动态增加cell
-                var addingCount = getAddedMinorCellCount(selectedPrimeCategory!)
-                var indexPaths  = getindexPathArray(indexPath, addingCount)
-                tableView.beginUpdates()
-                tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle)
-                self.tableView.endUpdates()
+                // 删除下拉cell
+                removeMinorCells(selectedPrimeCategory!)
             }
         }
     }
