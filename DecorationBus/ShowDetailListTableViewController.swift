@@ -245,6 +245,9 @@ class ShowDetailListTableViewController: UITableViewController {
                 removeMinorCells(selectedPrimeCategory!)
             }
         }
+        else if tableViewCellArray_[indexPath.row]["cellType"] == "minor" {
+            performSegueWithIdentifier("showDetailSegue", sender: self.view)
+        }
     }
     /*
     // Override to support conditional editing of the table view.
@@ -266,21 +269,6 @@ class ShowDetailListTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     // MARK: - Table view delegate
     
     // 设置表头
@@ -288,14 +276,15 @@ class ShowDetailListTableViewController: UITableViewController {
         
         return headerView_
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        println("将要跳转")
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }

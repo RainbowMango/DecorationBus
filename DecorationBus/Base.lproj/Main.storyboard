@@ -150,6 +150,41 @@
             </objects>
             <point key="canvasLocation" x="1527" y="-49"/>
         </scene>
+        <!--明细信息-->
+        <scene sceneID="2D3-hP-lJt">
+            <objects>
+                <tableViewController id="lxu-Wx-55b" customClass="ShowDetailTableViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2UU-aA-Fyo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="dum-o9-Zot">
+                            <rect key="frame" x="0.0" y="64" width="320" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="预算"/>
+                                <segment title="支出"/>
+                            </segments>
+                        </segmentedControl>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="EEH-VA-FfC">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EEH-VA-FfC" id="HAN-hT-lVT">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lxu-Wx-55b" id="cZi-zK-PZ6"/>
+                            <outlet property="delegate" destination="lxu-Wx-55b" id="P05-D1-STR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="明细信息" id="iR0-sT-LC4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yg3-xu-Seq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1270" y="721"/>
+        </scene>
         <!--支出列表-->
         <scene sceneID="cf7-no-5AT">
             <objects>
@@ -193,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvF-pr-AyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1527" y="694"/>
+            <point key="canvasLocation" x="1815" y="683"/>
         </scene>
         <!--支出明细-->
         <scene sceneID="G7f-KO-Pon">
@@ -229,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecO-0X-ov0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1897" y="694"/>
+            <point key="canvasLocation" x="2185" y="683"/>
         </scene>
         <!--预算列表-->
         <scene sceneID="ZnP-wH-fCS">
@@ -681,11 +716,11 @@
             </objects>
             <point key="canvasLocation" x="1510" y="3599"/>
         </scene>
-        <!--明细-->
+        <!--装修理财-->
         <scene sceneID="juN-mg-07h">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uvw-p2-L0t" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="明细" image="list.png" id="OTj-6B-EQi"/>
+                    <tabBarItem key="tabBarItem" title="装修理财" image="list.png" id="OTj-6B-EQi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LlM-UP-MZL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -700,7 +735,7 @@
             </objects>
             <point key="canvasLocation" x="416" y="722"/>
         </scene>
-        <!--明细-->
+        <!--汇总信息-->
         <scene sceneID="Spb-vQ-QUG">
             <objects>
                 <tableViewController id="Nd6-8v-j4I" customClass="ShowDetailListTableViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
@@ -915,9 +950,10 @@
                             <outlet property="delegate" destination="Nd6-8v-j4I" id="AZq-Au-KGf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="明细" id="Vpj-4o-nSC"/>
+                    <navigationItem key="navigationItem" title="汇总信息" id="Vpj-4o-nSC"/>
                     <connections>
                         <outlet property="headerView_" destination="Vcq-AR-3fV" id="ToQ-lu-a7p"/>
+                        <segue destination="lxu-Wx-55b" kind="push" identifier="showDetailSegue" id="sV7-YZ-OQy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="522-yy-24S" userLabel="First Responder" sceneMemberID="firstResponder"/>

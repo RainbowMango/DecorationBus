@@ -24,6 +24,7 @@
 		9B1FF5271A33480700FAA985 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1FF5241A33480700FAA985 /* Icon-76.png */; };
 		9B1FF5281A33480700FAA985 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1FF5251A33480700FAA985 /* Icon-76@2x.png */; };
 		9B1FF5291A33480700FAA985 /* Icon-76@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1FF5261A33480700FAA985 /* Icon-76@3x.png */; };
+		9B239BEB1A753035001BF6DA /* ShowDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B239BEA1A753035001BF6DA /* ShowDetailTableViewController.swift */; };
 		9B24918F1A5D683700990BA6 /* FormBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B24917B1A5D683700990BA6 /* FormBaseCell.swift */; };
 		9B2491901A5D683700990BA6 /* FormTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B24917C1A5D683700990BA6 /* FormTitleCell.swift */; };
 		9B2491911A5D683700990BA6 /* FormValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B24917D1A5D683700990BA6 /* FormValueCell.swift */; };
@@ -116,6 +117,7 @@
 		9B1FF5241A33480700FAA985 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "icons/Icon-76.png"; sourceTree = "<group>"; };
 		9B1FF5251A33480700FAA985 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "icons/Icon-76@2x.png"; sourceTree = "<group>"; };
 		9B1FF5261A33480700FAA985 /* Icon-76@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@3x.png"; path = "icons/Icon-76@3x.png"; sourceTree = "<group>"; };
+		9B239BEA1A753035001BF6DA /* ShowDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailTableViewController.swift; sourceTree = "<group>"; };
 		9B24917B1A5D683700990BA6 /* FormBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormBaseCell.swift; sourceTree = "<group>"; };
 		9B24917C1A5D683700990BA6 /* FormTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTitleCell.swift; sourceTree = "<group>"; };
 		9B24917D1A5D683700990BA6 /* FormValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValueCell.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				9B37A9D319EEB57A0097F88D /* AppDelegate.swift */,
 				9B37A9DA19EEB57A0097F88D /* Main.storyboard */,
 				9B151A681A6559D200498ED2 /* ShowDetailListTableViewController.swift */,
+				9B239BEA1A753035001BF6DA /* ShowDetailTableViewController.swift */,
 				9BC288D41A29E041005728D5 /* ShowBudgetDetailViewController.swift */,
 				9BC288D21A2964CC005728D5 /* ShowPayDetailViewController.swift */,
 				9B35492B1A276C510083E0B6 /* CategoryPrimeAddViewController.swift */,
@@ -589,6 +592,7 @@
 				9B1E5BF91A2CA0C800615842 /* ColorScheme.swift in Sources */,
 				9B151A701A6A9CA100498ED2 /* MinorCategoryTableViewCell.swift in Sources */,
 				9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */,
+				9B239BEB1A753035001BF6DA /* ShowDetailTableViewController.swift in Sources */,
 				9B97DCCE1A2361AA006A94C0 /* BudgetArchiver.swift in Sources */,
 				9B37A9D419EEB57A0097F88D /* AppDelegate.swift in Sources */,
 				9B2491A01A5D683700990BA6 /* FormSectionDescriptor.swift in Sources */,
