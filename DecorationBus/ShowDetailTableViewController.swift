@@ -7,47 +7,72 @@
 //
 
 import UIKit
+import CoreData
 
 class ShowDetailTableViewController: UITableViewController {
 
+    @IBOutlet weak var segment_: UISegmentedControl!
+    
+    var primeCategorySelected_: String = String() // 选中的主类别
+    
+    var budgetArray_ = Array<NSManagedObject>()
+    var orderArray_  = Array<NSManagedObject>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        segment_.addTarget(self, action: "segmentChangeHandler", forControlEvents: UIControlEvents.ValueChanged)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // 标签栏变化时刷新table view
+    func segmentChangeHandler() {
+        if segment_.selectedSegmentIndex == 0 {
+            println("选中预算标签，刷新预算列表")
+        }
+        else {
+            println("选中支出标签，刷新支出列表")
+        }
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+        switch segment_.selectedSegmentIndex {
+        case 0:
+            return budgetArray_.count
+        case 1:
+            return orderArray_.count
+        default:
+            return 0
+        }
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SegmentCategoryTableViewCell", forIndexPath: indexPath) as SegmentCategoryTableViewCell
 
         // Configure the cell...
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

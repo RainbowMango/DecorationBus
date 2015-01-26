@@ -224,7 +224,7 @@ class ShowDetailListTableViewController: UITableViewController {
             tableView.endUpdates()
         }
         
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        //self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         var selectedPrimeCategory = tableViewCellArray_[indexPath.row]["primeCategory"]
         var selectedMinorCategory = tableViewCellArray_[indexPath.row]["minorCategory"]
@@ -281,10 +281,15 @@ class ShowDetailListTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("将要跳转")
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showDetailSegue" {
+            // 获得选中cell元素
+            var selectedIndex: NSIndexPath = tableView.indexPathForSelectedRow()!
+            var selectedItem = tableViewCellArray_[selectedIndex.row]
+            var selectedPrimeCategory = selectedItem["primeCategory"]
+            
+            var destinationView = segue.destinationViewController as ShowDetailTableViewController
+            destinationView.setValue(selectedPrimeCategory, forKey: "primeCategorySelected_")
+            println("传递主类别:\(selectedPrimeCategory)到下一个view")
+        }
     }
-
-
 }

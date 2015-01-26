@@ -25,6 +25,7 @@
 		9B1FF5281A33480700FAA985 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1FF5251A33480700FAA985 /* Icon-76@2x.png */; };
 		9B1FF5291A33480700FAA985 /* Icon-76@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1FF5261A33480700FAA985 /* Icon-76@3x.png */; };
 		9B239BEB1A753035001BF6DA /* ShowDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B239BEA1A753035001BF6DA /* ShowDetailTableViewController.swift */; };
+		9B239BED1A7670F2001BF6DA /* SegmentCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B239BEC1A7670F2001BF6DA /* SegmentCategoryTableViewCell.swift */; };
 		9B24918F1A5D683700990BA6 /* FormBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B24917B1A5D683700990BA6 /* FormBaseCell.swift */; };
 		9B2491901A5D683700990BA6 /* FormTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B24917C1A5D683700990BA6 /* FormTitleCell.swift */; };
 		9B2491911A5D683700990BA6 /* FormValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B24917D1A5D683700990BA6 /* FormValueCell.swift */; };
@@ -118,6 +119,7 @@
 		9B1FF5251A33480700FAA985 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "icons/Icon-76@2x.png"; sourceTree = "<group>"; };
 		9B1FF5261A33480700FAA985 /* Icon-76@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@3x.png"; path = "icons/Icon-76@3x.png"; sourceTree = "<group>"; };
 		9B239BEA1A753035001BF6DA /* ShowDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailTableViewController.swift; sourceTree = "<group>"; };
+		9B239BEC1A7670F2001BF6DA /* SegmentCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		9B24917B1A5D683700990BA6 /* FormBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormBaseCell.swift; sourceTree = "<group>"; };
 		9B24917C1A5D683700990BA6 /* FormTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTitleCell.swift; sourceTree = "<group>"; };
 		9B24917D1A5D683700990BA6 /* FormValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValueCell.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			children = (
 				9B151A6A1A655AFA00498ED2 /* PrimeCategoryTableViewCell.swift */,
 				9B151A6F1A6A9CA100498ED2 /* MinorCategoryTableViewCell.swift */,
+				9B239BEC1A7670F2001BF6DA /* SegmentCategoryTableViewCell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				9B985BFF1A179525009F4435 /* AboutMeViewController.swift in Sources */,
 				9B151AA41A6FEA3200498ED2 /* OrderDataModel.swift in Sources */,
 				9BCEAA321A122571002EE82C /* CatagoryPrimeMangeViewController.swift in Sources */,
+				9B239BED1A7670F2001BF6DA /* SegmentCategoryTableViewCell.swift in Sources */,
 				9BC288D31A2964CC005728D5 /* ShowPayDetailViewController.swift in Sources */,
 				9BC288D51A29E041005728D5 /* ShowBudgetDetailViewController.swift in Sources */,
 				9B151AA81A71371D00498ED2 /* MinorCategoryDetailDataModel.swift in Sources */,

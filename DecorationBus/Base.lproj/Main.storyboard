@@ -167,11 +167,51 @@
                             </segments>
                         </segmentedControl>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="EEH-VA-FfC">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentCategoryTableViewCell" id="EEH-VA-FfC" customClass="SegmentCategoryTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EEH-VA-FfC" id="HAN-hT-lVT">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="效果图" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-03-gcj">
+                                            <rect key="frame" x="10" y="5" width="130" height="33.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyP-WC-MV2">
+                                            <rect key="frame" x="150" y="11" width="20" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="S55-Gk-lfv"/>
+                                                <constraint firstAttribute="height" constant="20.5" id="c5R-dP-qB3"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plo-fB-6sd">
+                                            <rect key="frame" x="180" y="5" width="130" height="33.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="z3z-03-gcj" firstAttribute="top" secondItem="HAN-hT-lVT" secondAttribute="top" constant="5" id="88y-uf-cXV"/>
+                                        <constraint firstItem="Plo-fB-6sd" firstAttribute="top" secondItem="HAN-hT-lVT" secondAttribute="top" constant="5" id="DpI-Zj-ueX"/>
+                                        <constraint firstAttribute="centerY" secondItem="eyP-WC-MV2" secondAttribute="centerY" id="LKb-47-hkd"/>
+                                        <constraint firstAttribute="trailing" secondItem="Plo-fB-6sd" secondAttribute="trailing" constant="10" id="QGh-nh-7ag"/>
+                                        <constraint firstAttribute="bottom" secondItem="Plo-fB-6sd" secondAttribute="bottom" constant="5" id="WmB-hC-LBk"/>
+                                        <constraint firstItem="Plo-fB-6sd" firstAttribute="leading" secondItem="eyP-WC-MV2" secondAttribute="trailing" constant="10" id="X93-MU-lD1"/>
+                                        <constraint firstItem="z3z-03-gcj" firstAttribute="leading" secondItem="HAN-hT-lVT" secondAttribute="leading" constant="10" id="blY-vn-6Iz"/>
+                                        <constraint firstAttribute="centerX" secondItem="eyP-WC-MV2" secondAttribute="centerX" id="mGw-F5-flt"/>
+                                        <constraint firstAttribute="bottom" secondItem="z3z-03-gcj" secondAttribute="bottom" constant="5" id="nB2-qx-50C"/>
+                                        <constraint firstItem="eyP-WC-MV2" firstAttribute="leading" secondItem="z3z-03-gcj" secondAttribute="trailing" constant="10" id="qiA-gu-YNv"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="categoryLabel_" destination="z3z-03-gcj" id="Mqx-h2-5R9"/>
+                                    <outlet property="moneyLable_" destination="Plo-fB-6sd" id="PK5-HN-uel"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -180,6 +220,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="明细信息" id="iR0-sT-LC4"/>
+                    <connections>
+                        <outlet property="segment_" destination="dum-o9-Zot" id="vxH-NN-12q"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yg3-xu-Seq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
