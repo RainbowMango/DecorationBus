@@ -31,7 +31,10 @@ class ShowDetailTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
+        budgetArray_ = BudgetDataModel.getBudgetsByPrimeCategory(primeCategorySelected_)
+        orderArray_ = OrderDataModel.getOrdersByPrimeCategory(primeCategorySelected_)
+        segment_.setTitle("预算(\(budgetArray_.count))", forSegmentAtIndex: 0)
+        segment_.setTitle("支出(\(orderArray_.count))", forSegmentAtIndex: 1)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,12 +44,7 @@ class ShowDetailTableViewController: UITableViewController {
     
     // 标签栏变化时刷新table view
     func segmentChangeHandler() {
-        if segment_.selectedSegmentIndex == 0 {
-            println("选中预算标签，刷新预算列表")
-        }
-        else {
-            println("选中支出标签，刷新支出列表")
-        }
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -69,7 +67,15 @@ class ShowDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SegmentCategoryTableViewCell", forIndexPath: indexPath) as SegmentCategoryTableViewCell
 
-        // Configure the cell...
+        var cellData: NSManagedObject!
+        if (segment_.selectedSegmentIndex == 0) {
+            cellData = budgetArray_[indexPath.row]
+        } else {
+            cellData = orderArray_[indexPath.row]
+        }
+        
+        cell.categoryLabel_.text = (cellData.valueForKey("minorCategory")  as String)
+        cell.moneyLable_.text    = (cellData.valueForKey("money") as Float).description
 
         return cell
     }

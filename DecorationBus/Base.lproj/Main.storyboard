@@ -167,7 +167,7 @@
                             </segments>
                         </segmentedControl>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentCategoryTableViewCell" id="EEH-VA-FfC" customClass="SegmentCategoryTableViewCell" customModule="DecorationBus" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentCategoryTableViewCell" rowHeight="44" id="EEH-VA-FfC" customClass="SegmentCategoryTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EEH-VA-FfC" id="HAN-hT-lVT">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -178,7 +178,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyP-WC-MV2">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyP-WC-MV2">
                                             <rect key="frame" x="150" y="11" width="20" height="20.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="S55-Gk-lfv"/>

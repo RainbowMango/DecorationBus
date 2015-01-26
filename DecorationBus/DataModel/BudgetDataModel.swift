@@ -11,6 +11,21 @@ import UIKit
 import CoreData
 
 class BudgetDataModel {
+    class func getBudgetsByPrimeCategory(primeCategory: String) -> [NSManagedObject] {
+        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        var managedObjectContext = appDelegate!.managedObjectContext
+        var fetchRequest = NSFetchRequest(entityName: "Budget")
+        fetchRequest.predicate = NSPredicate(format: "primeCategory = %@", primeCategory)
+        var error: NSError?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        if fetchResult == nil {
+            println("获取数据失败: \(error), \(error!.userInfo)")
+            return [NSManagedObject]()
+        }
+        
+        return fetchResult!
+    }
+    
     func getAllBudgets() -> [NSManagedObject] {
         var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         var managedObjectContext = appDelegate!.managedObjectContext
