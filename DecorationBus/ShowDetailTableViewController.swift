@@ -14,6 +14,7 @@ class ShowDetailTableViewController: UITableViewController {
     @IBOutlet weak var segment_: UISegmentedControl!
     
     var primeCategorySelected_: String = String() // 选中的主类别
+    var minorCategorySelected_: String = String() // 选中的子类别
     
     var budgetArray_ = Array<NSManagedObject>()
     var orderArray_  = Array<NSManagedObject>()
@@ -31,8 +32,9 @@ class ShowDetailTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        budgetArray_ = BudgetDataModel.getBudgetsByPrimeCategory(primeCategorySelected_)
-        orderArray_ = OrderDataModel.getOrdersByPrimeCategory(primeCategorySelected_)
+        budgetArray_ = BudgetDataModel.getBudgets(primeCategorySelected_, minorCategory: minorCategorySelected_)
+        orderArray_ = OrderDataModel.getOrders(primeCategorySelected_, minorCategory: minorCategorySelected_)
+        self.navigationItem.title = primeCategorySelected_
         segment_.setTitle("预算(\(budgetArray_.count))", forSegmentAtIndex: 0)
         segment_.setTitle("支出(\(orderArray_.count))", forSegmentAtIndex: 1)
     }

@@ -286,10 +286,12 @@ class ShowDetailListTableViewController: UITableViewController {
             var selectedIndex: NSIndexPath = tableView.indexPathForSelectedRow()!
             var selectedItem = tableViewCellArray_[selectedIndex.row]
             var selectedPrimeCategory = selectedItem["primeCategory"]
+            var selectedMinorCategory = selectedItem["minorCategory"]
             
             var destinationView = segue.destinationViewController as ShowDetailTableViewController
             destinationView.setValue(selectedPrimeCategory, forKey: "primeCategorySelected_")
-            println("传递主类别:\(selectedPrimeCategory)到下一个view")
+            destinationView.setValue(selectedMinorCategory, forKey: "minorCategorySelected_")
+            println("传递主类别:\(selectedPrimeCategory), 子类别: \(selectedMinorCategory)到下一个view")
         }
     }
 }
