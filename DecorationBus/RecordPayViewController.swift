@@ -308,7 +308,7 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
     }
     var categorys_: Dictionary<String, Array<String>>!
     
-    //var toBeModifyItem_: NSManagedObject = NSManagedObject()
+    var toBeModifyItem_: NSManagedObject!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -324,6 +324,10 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         super.viewDidLoad()
         self.delegate = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .Bordered, target: self, action: "submit:")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        println("viewWillAppear")
     }
     
     /// MARK: Actions

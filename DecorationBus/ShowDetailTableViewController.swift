@@ -124,7 +124,7 @@ class ShowDetailTableViewController: UITableViewController {
             var selectedItem = budgetArray_[selectedIndex.row]
             
             var destinationView = segue.destinationViewController as RecordBudgetViewController
-            //destinationView.setValue(selectedItem, forKey: "toBeModifyItem_")
+            destinationView.setValue(selectedItem, forKey: "toBeModifyItem_")
         }
         else if segue.identifier == "modifyOrderSegue" {
             // 获得选中cell元素
@@ -132,7 +132,7 @@ class ShowDetailTableViewController: UITableViewController {
             var selectedItem = orderArray_[selectedIndex.row]
             
             var destinationView = segue.destinationViewController as RecordPayViewController
-            //destinationView.setValue(selectedItem, forKey: "toBeModifyItem_")
+            destinationView.setValue(selectedItem, forKey: "toBeModifyItem_")
         }
     }
 

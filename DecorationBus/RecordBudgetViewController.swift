@@ -302,7 +302,7 @@ class RecordBudgetViewController: FormViewController, FormViewControllerDelegate
     }
     var categorys_: Dictionary<String, Array<String>>!
     
-    //var toBeModifyItem_ = NSManagedObject()
+    var toBeModifyItem_: NSManagedObject!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
