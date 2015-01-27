@@ -309,6 +309,7 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
     var categorys_: Dictionary<String, Array<String>>!
     
     var toBeModifyItem_: NSManagedObject!
+    var modifyFlag_ = false
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -327,7 +328,18 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        println("viewWillAppear")
+        if(modifyFlag_) {
+            var prime = toBeModifyItem_.valueForKey("primeCategory") as String
+            var minor = toBeModifyItem_.valueForKey("minorCategory") as String
+            var money = toBeModifyItem_.valueForKey("money")         as Float
+            var shop  = toBeModifyItem_.valueForKey("shop")          as String
+            var address = toBeModifyItem_.valueForKey("address")     as String
+            var comments = toBeModifyItem_.valueForKey("comments")     as String
+            
+            //TODO: 设置初始值，暂未生效
+            self.form.sections[0].rows[0].value = money
+            self.form.sections[0].rows[1].value = [prime, minor]
+        }
     }
     
     /// MARK: Actions
