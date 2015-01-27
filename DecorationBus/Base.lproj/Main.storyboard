@@ -121,7 +121,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXe-po-ngE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1527" y="-722"/>
+            <point key="canvasLocation" x="1757" y="-682"/>
         </scene>
         <!--Record Budget View Controller-->
         <scene sceneID="Xlt-06-2Eq">
@@ -148,7 +148,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9f-aH-TMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1527" y="-49"/>
+            <point key="canvasLocation" x="1757" y="-41"/>
         </scene>
         <!--明细信息-->
         <scene sceneID="2D3-hP-lJt">
@@ -222,6 +222,8 @@
                     <navigationItem key="navigationItem" title="明细信息" id="iR0-sT-LC4"/>
                     <connections>
                         <outlet property="segment_" destination="dum-o9-Zot" id="vxH-NN-12q"/>
+                        <segue destination="EWi-Rl-O3G" kind="push" identifier="modifyOrderSegue" id="8Pm-ew-up5"/>
+                        <segue destination="abh-RE-Qua" kind="push" identifier="modifyBudgetSegue" id="GEv-yq-UPu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yg3-xu-Seq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1035,4 +1037,8 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="GEv-yq-UPu"/>
+        <segue reference="8Pm-ew-up5"/>
+    </inferredMetricsTieBreakers>
 </document>

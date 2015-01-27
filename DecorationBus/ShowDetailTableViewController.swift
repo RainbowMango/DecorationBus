@@ -81,7 +81,18 @@ class ShowDetailTableViewController: UITableViewController {
 
         return cell
     }
-
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch segment_.selectedSegmentIndex {
+        case 0:
+            performSegueWithIdentifier("modifyBudgetSegue", sender: self.view)
+        case 1:
+            performSegueWithIdentifier("modifyOrderSegue", sender: self.view)
+        default:
+            return
+        }
+    }
+        
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -102,29 +113,28 @@ class ShowDetailTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "modifyBudgetSegue" {
+            // 获得选中cell元素
+            var selectedIndex: NSIndexPath = tableView.indexPathForSelectedRow()!
+            var selectedItem = budgetArray_[selectedIndex.row]
+            
+            var destinationView = segue.destinationViewController as RecordBudgetViewController
+            //destinationView.setValue(selectedItem, forKey: "toBeModifyItem_")
+        }
+        else if segue.identifier == "modifyOrderSegue" {
+            // 获得选中cell元素
+            var selectedIndex: NSIndexPath = tableView.indexPathForSelectedRow()!
+            var selectedItem = orderArray_[selectedIndex.row]
+            
+            var destinationView = segue.destinationViewController as RecordPayViewController
+            //destinationView.setValue(selectedItem, forKey: "toBeModifyItem_")
+        }
     }
-    */
+
 
 }
