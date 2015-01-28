@@ -77,12 +77,23 @@ class FormViewController : UITableViewController {
     }
     
     func setValue(value: NSObject, forTag tag: String) {
+
+        // comment as bugs
+//        var sectionIndex = 0
+//        var rowIndex = 0
+//        
+//        for section in form.sections {
+//            for row in section.rows {
+//                if row.tag == tag {
+//                    println()
+//                }
+//                ++rowIndex
+//            }
+//            ++sectionIndex
+//        }
         
-        var sectionIndex = 0
-        var rowIndex = 0
-        
-        for section in form.sections {
-            for row in section.rows {
+        for(sectionIndex, section) in enumerate(form.sections) {
+            for(rowIndex, row) in enumerate(section.rows) {
                 if row.tag == tag {
                     row.value = value
                     if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: rowIndex, inSection: sectionIndex)) as? FormBaseCell {
@@ -90,9 +101,7 @@ class FormViewController : UITableViewController {
                     }
                     return
                 }
-                ++rowIndex
             }
-            ++sectionIndex
         }
     }
     
