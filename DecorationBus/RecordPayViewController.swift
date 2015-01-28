@@ -333,12 +333,18 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
             var minor = toBeModifyItem_.valueForKey("minorCategory") as String
             var money = toBeModifyItem_.valueForKey("money")         as Float
             var shop  = toBeModifyItem_.valueForKey("shop")          as String
+            var phone  = toBeModifyItem_.valueForKey("phone")        as String
             var address = toBeModifyItem_.valueForKey("address")     as String
-            var comments = toBeModifyItem_.valueForKey("comments")     as String
+            var comments = toBeModifyItem_.valueForKey("comments")   as String
+            var category = [prime, minor]
             
             //TODO: 设置初始值，暂未生效
-            self.form.sections[0].rows[0].value = money
-            self.form.sections[0].rows[1].value = [prime, minor]
+            self.setValue(money.description, forTag: Static.moneyTag)
+            self.setValue([prime, minor], forTag: Static.categories)
+            self.setValue(shop, forTag: Static.shopTag)
+            self.setValue(phone, forTag: Static.phoneTag)
+            self.setValue(address, forTag: Static.addrTag)
+            self.setValue(comments, forTag: Static.commentsTag)
         }
     }
     
@@ -427,7 +433,7 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         
         // 类别表单
         row = FormRowDescriptor(tag: Static.categories, rowType: FormRowType.TwoComponentPicker, title: "类别")
-        row.cellConfiguration = ["valueLabel.text" : "点击选择类别"]
+        //row.cellConfiguration = ["valueLabel.text" : "点击选择类别"]
         row.pickerDatasourceWithTwoComponent = categorys_
         section1.addRow(row)
         

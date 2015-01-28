@@ -39,7 +39,10 @@ class FormTwoComponentPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerV
         titleLabel.text = rowDescriptor.title
         
         if rowDescriptor.value != nil {
-            valueLabel.text = rowDescriptor.titleForOptionValue(rowDescriptor.value)
+            //valueLabel.text = rowDescriptor.titleForOptionValue(rowDescriptor.value)
+            let value = rowDescriptor.value as Array<String>
+            valueLabel.text = "\(value[0])-\(value[1])"
+            rowDescriptor.value = nil
         }
     }
     
