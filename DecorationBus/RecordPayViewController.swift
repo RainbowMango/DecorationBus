@@ -327,7 +327,29 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .Bordered, target: self, action: "submit:")
     }
     
-    override func viewWillAppear(animated: Bool) {
+//    // 实现改方法后会导致表单无法正常上下滑动以致键盘遮挡控件
+//    override func viewWillAppear(animated: Bool) {
+//        if(modifyFlag_) {
+//            var prime = toBeModifyItem_.valueForKey("primeCategory") as String
+//            var minor = toBeModifyItem_.valueForKey("minorCategory") as String
+//            var money = toBeModifyItem_.valueForKey("money")         as Float
+//            var shop  = toBeModifyItem_.valueForKey("shop")          as String
+//            var phone  = toBeModifyItem_.valueForKey("phone")        as String
+//            var address = toBeModifyItem_.valueForKey("address")     as String
+//            var comments = toBeModifyItem_.valueForKey("comments")   as String
+//            var category = [prime, minor]
+//            
+//            //TODO: 设置初始值，暂未生效
+//            self.setValue(money.description, forTag: Static.moneyTag)
+//            self.setValue([prime, minor], forTag: Static.categories)
+//            self.setValue(shop, forTag: Static.shopTag)
+//            self.setValue(phone, forTag: Static.phoneTag)
+//            self.setValue(address, forTag: Static.addrTag)
+//            self.setValue(comments, forTag: Static.commentsTag)
+//        }
+//    }
+    
+    override func viewDidAppear(animated: Bool) {
         if(modifyFlag_) {
             var prime = toBeModifyItem_.valueForKey("primeCategory") as String
             var minor = toBeModifyItem_.valueForKey("minorCategory") as String
@@ -338,7 +360,6 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
             var comments = toBeModifyItem_.valueForKey("comments")   as String
             var category = [prime, minor]
             
-            //TODO: 设置初始值，暂未生效
             self.setValue(money.description, forTag: Static.moneyTag)
             self.setValue([prime, minor], forTag: Static.categories)
             self.setValue(shop, forTag: Static.shopTag)
