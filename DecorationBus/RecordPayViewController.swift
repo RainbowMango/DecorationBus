@@ -140,25 +140,17 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         order_.phone_           = phone
         order_.addr_            = address
         order_.comments_        = comments
-        order_.makeUniqueID()
+        
         println(order_.description())
         
-        // 将订单信息写入coreData
-        let appDelegate = UIApplication.sharedApplication().delegate  as? AppDelegate
-        let managedObjectContext = appDelegate?.managedObjectContext
-        let entity = NSEntityDescription.entityForName("Order", inManagedObjectContext: managedObjectContext!)
-        let order = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
-        order.setValue(money, forKey: "money")
-        order.setValue(primeCategory, forKey: "primeCategory")
-        order.setValue(minorCategory, forKey: "minorCategory")
-        order.setValue(shop, forKey: "shop")
-        order.setValue(phone, forKey: "phone")
-        order.setValue(address, forKey: "address")
-        order.setValue(comments, forKey: "comments")
-        var error: NSError?
-        if false == managedObjectContext!.save(&error) {
-            println("写入失败: \(error), \(error!.userInfo)")
+        // 如果是修改记录不重新生成ID，直接修改，否则生成ID并保存
+        if modifyFlag_ {
+            
+        }else {
+            order_.makeUniqueID()
+            OrderDataModel.saveRecord(order_)
         }
+        
 
         // 记录后返回到上层
         self.navigationController?.popViewControllerAnimated(true)
