@@ -11,7 +11,7 @@ import Foundation
 /*
 订单信息，与数据库模型保持一致
 */
-class OrderRecord {
+class OrderRecord: NSObject {
     var id_             : String    = String() //20150129205403
     var money_          : Float     = Float()
     var primeCategory_  : String    = String()
@@ -22,7 +22,7 @@ class OrderRecord {
     var comments_       : String    = String()
     
     // 所有数据成员初始化为空
-    init() {
+    override init() {
         id_             = ""
         money_          = 0.00
         primeCategory_  = ""

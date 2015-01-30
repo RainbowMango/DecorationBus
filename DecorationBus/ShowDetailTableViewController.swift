@@ -17,7 +17,7 @@ class ShowDetailTableViewController: UITableViewController {
     var minorCategorySelected_: String = String() // 选中的子类别
     
     var budgetArray_ = Array<NSManagedObject>()
-    var orderArray_  = Array<NSManagedObject>()
+    var orderArray_  = Array<OrderRecord>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class ShowDetailTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         budgetArray_ = BudgetDataModel.getBudgets(primeCategorySelected_, minorCategory: minorCategorySelected_)
-        orderArray_ = OrderDataModel.getOrders(primeCategorySelected_, minorCategory: minorCategorySelected_)
+        orderArray_ = OrderDataModel.getRecordsByCategory(primeCategorySelected_, minorCategory: minorCategorySelected_)
         self.navigationItem.title = primeCategorySelected_
         segment_.setTitle("预算(\(budgetArray_.count))", forSegmentAtIndex: 0)
         segment_.setTitle("支出(\(orderArray_.count))", forSegmentAtIndex: 1)
@@ -73,13 +73,14 @@ class ShowDetailTableViewController: UITableViewController {
         var cellData: NSManagedObject!
         if (segment_.selectedSegmentIndex == 0) {
             cellData = budgetArray_[indexPath.row]
+            cell.categoryLabel_.text = (cellData.valueForKey("minorCategory")  as String)
+            cell.moneyLable_.text    = (cellData.valueForKey("money") as Float).description
         } else {
-            cellData = orderArray_[indexPath.row]
+            var record = orderArray_[indexPath.row]
+            cell.categoryLabel_.text = record.minorCategory_
+            cell.moneyLable_.text    = record.money_.description
         }
         
-        cell.categoryLabel_.text = (cellData.valueForKey("minorCategory")  as String)
-        cell.moneyLable_.text    = (cellData.valueForKey("money") as Float).description
-
         return cell
     }
     
@@ -134,7 +135,7 @@ class ShowDetailTableViewController: UITableViewController {
             var selectedItem = orderArray_[selectedIndex.row]
             
             var destinationView = segue.destinationViewController as RecordPayViewController
-            destinationView.setValue(selectedItem, forKey: "toBeModifyItem_")
+            destinationView.setValue(selectedItem, forKey: "order_")
             destinationView.setValue(true, forKey: "modifyFlag_")
         }
     }

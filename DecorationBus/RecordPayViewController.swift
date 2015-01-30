@@ -9,7 +9,6 @@
 //
 
 import UIKit
-import CoreData
 
 class RecordPayViewController: FormViewController, FormViewControllerDelegate {
     
@@ -25,8 +24,6 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
     var categorys_: Dictionary<String, Array<String>>!
     
     var order_: OrderRecord = OrderRecord()
-    
-    var toBeModifyItem_: NSManagedObject!
     var modifyFlag_ = false
     
     required init(coder aDecoder: NSCoder) {
@@ -47,46 +44,17 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
     
 //    // 实现改方法后会导致表单无法正常上下滑动以致键盘遮挡控件
 //    override func viewWillAppear(animated: Bool) {
-//        if(modifyFlag_) {
-//            var prime = toBeModifyItem_.valueForKey("primeCategory") as String
-//            var minor = toBeModifyItem_.valueForKey("minorCategory") as String
-//            var money = toBeModifyItem_.valueForKey("money")         as Float
-//            var shop  = toBeModifyItem_.valueForKey("shop")          as String
-//            var phone  = toBeModifyItem_.valueForKey("phone")        as String
-//            var address = toBeModifyItem_.valueForKey("address")     as String
-//            var comments = toBeModifyItem_.valueForKey("comments")   as String
-//            var category = [prime, minor]
-//            
-//            //TODO: 设置初始值，暂未生效
-//            self.setValue(money.description, forTag: Static.moneyTag)
-//            self.setValue([prime, minor], forTag: Static.categories)
-//            self.setValue(shop, forTag: Static.shopTag)
-//            self.setValue(phone, forTag: Static.phoneTag)
-//            self.setValue(address, forTag: Static.addrTag)
-//            self.setValue(comments, forTag: Static.commentsTag)
-//        }
 //    }
     
     override func viewDidAppear(animated: Bool) {
         if(modifyFlag_) {
-            var id    = toBeModifyItem_.valueForKey("id")            as String
-            var prime = toBeModifyItem_.valueForKey("primeCategory") as String
-            var minor = toBeModifyItem_.valueForKey("minorCategory") as String
-            var money = toBeModifyItem_.valueForKey("money")         as Float
-            var shop  = toBeModifyItem_.valueForKey("shop")          as String
-            var phone  = toBeModifyItem_.valueForKey("phone")        as String
-            var address = toBeModifyItem_.valueForKey("address")     as String
-            var comments = toBeModifyItem_.valueForKey("comments")   as String
-            var category = [prime, minor]
-            
-            order_.id_ = id
-            
-            self.setValue(money.description, forTag: Static.moneyTag)
-            self.setValue([prime, minor], forTag: Static.categories)
-            self.setValue(shop, forTag: Static.shopTag)
-            self.setValue(phone, forTag: Static.phoneTag)
-            self.setValue(address, forTag: Static.addrTag)
-            self.setValue(comments, forTag: Static.commentsTag)
+            // 将原值填入表单
+            self.setValue(order_.money_.description, forTag: Static.moneyTag)
+            self.setValue([order_.primeCategory_, order_.minorCategory_], forTag: Static.categories)
+            self.setValue(order_.shop_, forTag: Static.shopTag)
+            self.setValue(order_.phone_, forTag: Static.phoneTag)
+            self.setValue(order_.addr_, forTag: Static.addrTag)
+            self.setValue(order_.comments_, forTag: Static.commentsTag)
         }
     }
     

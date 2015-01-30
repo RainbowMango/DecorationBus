@@ -57,6 +57,44 @@ class OrderDataModel {
         return fetchResult!
     }
     
+    /*
+    从数据库对象中读取记录
+    */
+    class func getRecordByManagedObject(manageObj: NSManagedObject) -> OrderRecord {
+        var record = OrderRecord()
+        record.id_              = manageObj.valueForKey("id")               as String
+        record.money_           = manageObj.valueForKey("money")            as Float
+        record.primeCategory_   = manageObj.valueForKey("primeCategory")    as String
+        record.minorCategory_   = manageObj.valueForKey("minorCategory")    as String
+        record.shop_            = manageObj.valueForKey("shop")             as String
+        record.phone_           = manageObj.valueForKey("phone")            as String
+        record.addr_            = manageObj.valueForKey("address")          as String
+        record.comments_        = manageObj.valueForKey("comments")         as String
+        
+        return record
+    }
+    
+    class func getRecordsByCategory(primeCategory: String, minorCategory: String) -> [OrderRecord] {
+        var records = Array<OrderRecord>()
+        
+        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        var managedObjectContext = appDelegate!.managedObjectContext
+        var fetchRequest = NSFetchRequest(entityName: "Order")
+        fetchRequest.predicate = NSPredicate(format: "primeCategory = %@ AND minorCategory = %@", primeCategory, minorCategory)
+        var error: NSError?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        if fetchResult == nil {
+            println("获取数据失败: \(error), \(error!.userInfo)")
+            return records
+        }
+        
+        for result in fetchResult! {
+            records.append(getRecordByManagedObject(result))
+        }
+        
+        return records
+    }
+    
     // 删除所有数据，成功true, 失败false
     class func deleteAll() -> Bool {
         var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
