@@ -37,6 +37,7 @@ class ShowDetailTableViewController: UITableViewController {
         self.navigationItem.title = primeCategorySelected_
         segment_.setTitle("预算(\(budgetArray_.count))", forSegmentAtIndex: 0)
         segment_.setTitle("支出(\(orderArray_.count))", forSegmentAtIndex: 1)
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
