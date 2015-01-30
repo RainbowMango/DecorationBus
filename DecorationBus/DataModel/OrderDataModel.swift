@@ -75,6 +75,9 @@ class OrderDataModel {
         return true
     }
     
+    /*
+    保存一条记录
+    */
     class func saveRecord(record: OrderRecord) -> Bool {
         let appDelegate = UIApplication.sharedApplication().delegate  as? AppDelegate
         let managedObjectContext = appDelegate?.managedObjectContext
@@ -97,27 +100,37 @@ class OrderDataModel {
         return true
     }
     
+    /*
+    更新单条记录
+    */
     class func updateRecord(record: OrderRecord) -> Bool {
         var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         var managedObjectContext = appDelegate!.managedObjectContext
         var fetchRequest = NSFetchRequest(entityName: "Order")
         fetchRequest.predicate = NSPredicate(format: "id = %@", record.id_)
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        var fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
         if fetchResult == nil {
             println("获取数据失败: \(error), \(error!.userInfo)")
             return false
         }
         
+        assert(fetchResult!.count == 1, "发现多条数据拥有同一ID")
+        
         // 更新数据
-//        fetchResult!.setValue(record.id_, forKey: "id")
-//        fetchResult!.setValue(record.money_, forKey: "money")
-//        fetchResult!.setValue(record.primeCategory_, forKey: "primeCategory")
-//        fetchResult!.setValue(record.minorCategory_, forKey: "minorCategory")
-//        fetchResult!.setValue(record.shop_, forKey: "shop")
-//        fetchResult!.setValue(record.phone_, forKey: "phone")
-//        fetchResult!.setValue(record.addr_, forKey: "address")
-//        fetchResult!.setValue(record.comments_, forKey: "comments")
+        var newRecord = fetchResult![0]
+        newRecord.setValue(record.money_, forKey: "money")
+        newRecord.setValue(record.primeCategory_, forKey: "primeCategory")
+        newRecord.setValue(record.minorCategory_, forKey: "minorCategory")
+        newRecord.setValue(record.shop_, forKey: "shop")
+        newRecord.setValue(record.phone_, forKey: "phone")
+        newRecord.setValue(record.addr_, forKey: "address")
+        newRecord.setValue(record.comments_, forKey: "comments")
+        if false == managedObjectContext!.save(&error) {
+            println("写入失败: \(error), \(error!.userInfo)")
+            return false
+        }
+        
         return true
     }
 }

@@ -69,6 +69,7 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         if(modifyFlag_) {
+            var id    = toBeModifyItem_.valueForKey("id")            as String
             var prime = toBeModifyItem_.valueForKey("primeCategory") as String
             var minor = toBeModifyItem_.valueForKey("minorCategory") as String
             var money = toBeModifyItem_.valueForKey("money")         as Float
@@ -77,6 +78,8 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
             var address = toBeModifyItem_.valueForKey("address")     as String
             var comments = toBeModifyItem_.valueForKey("comments")   as String
             var category = [prime, minor]
+            
+            order_.id_ = id
             
             self.setValue(money.description, forTag: Static.moneyTag)
             self.setValue([prime, minor], forTag: Static.categories)
@@ -145,7 +148,7 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         
         // 如果是修改记录不重新生成ID，直接修改，否则生成ID并保存
         if modifyFlag_ {
-            
+            OrderDataModel.updateRecord(order_)
         }else {
             order_.makeUniqueID()
             OrderDataModel.saveRecord(order_)
