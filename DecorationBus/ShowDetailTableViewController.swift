@@ -16,7 +16,7 @@ class ShowDetailTableViewController: UITableViewController {
     var primeCategorySelected_: String = String() // 选中的主类别
     var minorCategorySelected_: String = String() // 选中的子类别
     
-    var budgetArray_ = Array<NSManagedObject>()
+    var budgetArray_ = Array<BudgetRecord>()
     var orderArray_  = Array<OrderRecord>()
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class ShowDetailTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        budgetArray_ = BudgetDataModel.getBudgets(primeCategorySelected_, minorCategory: minorCategorySelected_)
+        budgetArray_ = BudgetDataModel.getRecordsByCategory(primeCategorySelected_, minorCategory: minorCategorySelected_)
         orderArray_ = OrderDataModel.getRecordsByCategory(primeCategorySelected_, minorCategory: minorCategorySelected_)
         self.navigationItem.title = primeCategorySelected_
         segment_.setTitle("预算(\(budgetArray_.count))", forSegmentAtIndex: 0)
@@ -72,9 +72,9 @@ class ShowDetailTableViewController: UITableViewController {
 
         var cellData: NSManagedObject!
         if (segment_.selectedSegmentIndex == 0) {
-            cellData = budgetArray_[indexPath.row]
-            cell.categoryLabel_.text = (cellData.valueForKey("minorCategory")  as String)
-            cell.moneyLable_.text    = (cellData.valueForKey("money") as Float).description
+            var record = budgetArray_[indexPath.row]
+            cell.categoryLabel_.text = record.minorCategory_
+            cell.moneyLable_.text    = record.money_.description
         } else {
             var record = orderArray_[indexPath.row]
             cell.categoryLabel_.text = record.minorCategory_
@@ -126,7 +126,7 @@ class ShowDetailTableViewController: UITableViewController {
             var selectedItem = budgetArray_[selectedIndex.row]
             
             var destinationView = segue.destinationViewController as RecordBudgetViewController
-            destinationView.setValue(selectedItem, forKey: "toBeModifyItem_")
+            destinationView.setValue(selectedItem, forKey: "budget_")
             destinationView.setValue(true, forKey: "modifyFlag_")
         }
         else if segue.identifier == "modifyOrderSegue" {
