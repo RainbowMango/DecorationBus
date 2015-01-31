@@ -19,6 +19,8 @@ class ShowDetailListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setViewColor()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -63,6 +65,12 @@ class ShowDetailListTableViewController: UITableViewController {
         
         //刷新tableView
         self.tableView.reloadData()
+    }
+    
+    // view配色方案
+    func setViewColor() -> Void {
+        self.navigationController?.navigationBar.backgroundColor = ColorScheme().navigationBarBackgroundColor
+        self.view.backgroundColor = ColorScheme().viewBackgroundColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -119,6 +127,15 @@ class ShowDetailListTableViewController: UITableViewController {
                     cell.budgetSumLabel_.text = "\(item.budgetMoney_)"
                     cell.spendSumLabel_.text  = "\(item.orderMoney_)"
                     cell.remainSumLabel_.text = "\(item.budgetMoney_ - item.orderMoney_)"
+                    
+                    // 余额为负显示红色，否则为绿色
+                    if (item.budgetMoney_ - item.orderMoney_) >= 0 {
+                        cell.remainSumLabel_.textColor = UIColor.greenColor()
+                    }
+                    else {
+                        cell.remainSumLabel_.textColor = UIColor.redColor()
+                    }
+                    
                     break
                 }
             }
@@ -139,6 +156,14 @@ class ShowDetailListTableViewController: UITableViewController {
                     cell.budgetLabel_.text = "\(item.budgetMoney_)"
                     cell.spendLabel_.text  = "\(item.orderMoney_)"
                     cell.remainLabel_.text = "\(item.budgetMoney_ - item.orderMoney_)"
+                    
+                    // 余额为负显示红色，否则为绿色
+                    if (item.budgetMoney_ - item.orderMoney_) >= 0 {
+                        cell.remainLabel_.textColor = UIColor.greenColor()
+                    }
+                    else {
+                        cell.remainLabel_.textColor = UIColor.redColor()
+                    }
                 }
             }
         }
