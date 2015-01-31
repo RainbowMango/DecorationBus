@@ -11,8 +11,8 @@ import UIKit
 class ShowDetailListTableViewController: UITableViewController {
     @IBOutlet weak var headerView_: UIView!
     
-    var orders_ = OrderDataModel().getAllOrders()
-    var budgets_ = BudgetDataModel().getAllBudgets()
+    var orders_: Array<OrderRecord>!
+    var budgets_: Array<BudgetRecord>!
     var primeCategoryDetailList_ = Array<PrimeCategoryDetail>()
     var minorCategoryDetailList_ = Array<MinorCategoryDetail>()
     var tableViewCellArray_ = Array<Dictionary<String, String>>() // table view cell 列表
@@ -28,25 +28,26 @@ class ShowDetailListTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        orders_ = OrderDataModel().getAllOrders()
-        budgets_ = BudgetDataModel().getAllBudgets()
+        orders_ = OrderDataModel.getAll()
+        budgets_ = BudgetDataModel.getAll()
         primeCategoryDetailList_ = Array<PrimeCategoryDetail>()
         minorCategoryDetailList_ = Array<MinorCategoryDetail>()
         
         println("更新类别列表")
         for order in orders_ {
             var newItem = MinorCategoryDetail()
-            newItem.primeCategory_ = order.valueForKey("primeCategory") as String
-            newItem.minorCategory_ = order.valueForKey("minorCategory") as String
-            newItem.orderMoney_    = order.valueForKey("money")         as Float
+            newItem.primeCategory_ = order.primeCategory_
+            newItem.minorCategory_ = order.minorCategory_
+            newItem.orderMoney_    = order.money_
             
             MinorCategoryDetail.mergeToDetailList(&minorCategoryDetailList_, newItem: newItem)
         }
         for budget in budgets_ {
             var newItem = MinorCategoryDetail()
-            newItem.primeCategory_ = budget.valueForKey("primeCategory") as String
-            newItem.minorCategory_ = budget.valueForKey("minorCategory") as String
-            newItem.budgetMoney_   = budget.valueForKey("money")         as Float
+            newItem.primeCategory_ = budget.primeCategory_
+            newItem.minorCategory_ = budget.minorCategory_
+            newItem.budgetMoney_   = budget.money_
+            
             MinorCategoryDetail.mergeToDetailList(&minorCategoryDetailList_, newItem: newItem)
         }
         

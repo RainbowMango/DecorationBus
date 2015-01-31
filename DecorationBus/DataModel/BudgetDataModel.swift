@@ -41,22 +41,6 @@ class BudgetDataModel {
         return fetchResult!
     }
     
-    func getAllBudgets() -> [NSManagedObject] {
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
-        
-        let fetchRequest = NSFetchRequest(entityName: "Budget")
-        
-        var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
-        if fetchResult == nil {
-            println("获取数据失败: \(error), \(error!.userInfo)")
-            return [NSManagedObject]()
-        }
-        
-        return fetchResult!
-    }
-    
     /*
     从数据库对象中读取记录
     */
@@ -78,6 +62,31 @@ class BudgetDataModel {
         var managedObjectContext = appDelegate!.managedObjectContext
         var fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@ AND minorCategory = %@", primeCategory, minorCategory)
+        var error: NSError?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        if fetchResult == nil {
+            println("获取数据失败: \(error), \(error!.userInfo)")
+            return records
+        }
+        
+        for result in fetchResult! {
+            records.append(getRecordByManagedObject(result))
+        }
+        
+        return records
+    }
+    
+    /*
+    获取所有数据列表
+    */
+    class func getAll() -> Array<BudgetRecord> {
+        var records = Array<BudgetRecord>()
+        
+        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        var managedObjectContext = appDelegate!.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Budget")
+        
         var error: NSError?
         let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
         if fetchResult == nil {
