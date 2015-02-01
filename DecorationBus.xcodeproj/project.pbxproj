@@ -84,6 +84,8 @@
 		9BC288D31A2964CC005728D5 /* ShowPayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC288D21A2964CC005728D5 /* ShowPayDetailViewController.swift */; };
 		9BC288D51A29E041005728D5 /* ShowBudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC288D41A29E041005728D5 /* ShowBudgetDetailViewController.swift */; };
 		9BC401BA1A7CB3CF00FDF4D6 /* BudgetRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC401B91A7CB3CF00FDF4D6 /* BudgetRecord.swift */; };
+		9BC401BC1A7E5ADC00FDF4D6 /* Category.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BC401BB1A7E5ADC00FDF4D6 /* Category.plist */; };
+		9BC401BE1A7E638400FDF4D6 /* CategoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC401BD1A7E638400FDF4D6 /* CategoryHandler.swift */; };
 		9BCC42581A3483CA00978841 /* ShowPayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCC42571A3483CA00978841 /* ShowPayListViewController.swift */; };
 		9BCEAA301A1212B3002EE82C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA2F1A1212B3002EE82C /* SettingViewController.swift */; };
 		9BCEAA321A122571002EE82C /* CatagoryPrimeMangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */; };
@@ -184,6 +186,8 @@
 		9BC288D21A2964CC005728D5 /* ShowPayDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPayDetailViewController.swift; sourceTree = "<group>"; };
 		9BC288D41A29E041005728D5 /* ShowBudgetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowBudgetDetailViewController.swift; sourceTree = "<group>"; };
 		9BC401B91A7CB3CF00FDF4D6 /* BudgetRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetRecord.swift; sourceTree = "<group>"; };
+		9BC401BB1A7E5ADC00FDF4D6 /* Category.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Category.plist; sourceTree = "<group>"; };
+		9BC401BD1A7E638400FDF4D6 /* CategoryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryHandler.swift; sourceTree = "<group>"; };
 		9BCC42571A3483CA00978841 /* ShowPayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPayListViewController.swift; sourceTree = "<group>"; };
 		9BCEAA2F1A1212B3002EE82C /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryPrimeMangeViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 				9B151AA71A71371D00498ED2 /* MinorCategoryDetailDataModel.swift */,
 				9B151AA91A713F3900498ED2 /* PrimeCategoryDetailDataModel.swift */,
 				9B151AA51A6FEC0000498ED2 /* BudgetDataModel.swift */,
+				9BC401BD1A7E638400FDF4D6 /* CategoryHandler.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				9B37A9D219EEB57A0097F88D /* Info.plist */,
+				9BC401BB1A7E5ADC00FDF4D6 /* Category.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -530,6 +536,7 @@
 				9B8032BE1A35C246005BA828 /* settings@2x.png in Resources */,
 				9BA6B04A1A3F07C4003BC35E /* Default-375w-667h@2x.png in Resources */,
 				9B8032BC1A35C246005BA828 /* list@3x.png in Resources */,
+				9BC401BC1A7E5ADC00FDF4D6 /* Category.plist in Resources */,
 				9B1FF5291A33480700FAA985 /* Icon-76@3x.png in Resources */,
 				9B8032BA1A35C246005BA828 /* list.png in Resources */,
 				9B37A9DC19EEB57A0097F88D /* Main.storyboard in Resources */,
@@ -605,6 +612,7 @@
 				9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */,
 				9B239BEB1A753035001BF6DA /* ShowDetailTableViewController.swift in Sources */,
 				9B97DCCE1A2361AA006A94C0 /* BudgetArchiver.swift in Sources */,
+				9BC401BE1A7E638400FDF4D6 /* CategoryHandler.swift in Sources */,
 				9B37A9D419EEB57A0097F88D /* AppDelegate.swift in Sources */,
 				9B2491A01A5D683700990BA6 /* FormSectionDescriptor.swift in Sources */,
 				9B8032C31A35CB76005BA828 /* PointMessageViewController.swift in Sources */,

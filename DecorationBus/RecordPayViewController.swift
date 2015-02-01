@@ -30,7 +30,7 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         super.init(coder: aDecoder)
         
         // 从userDefault中读取所有的类别
-        categorys_ = CategoryArchiver().getCategoryFromUserDefault()
+        categorys_ = CategoryHandler().getList()
         
         // 加载表单
         self.loadForm()

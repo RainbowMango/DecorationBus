@@ -82,7 +82,12 @@ class FormTwoComponentPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerV
             self.picker.reloadComponent(1)
             self.picker.selectRow(0, inComponent: 1, animated: true)
             firstComponentValue_ = firstComponentArray_[row]
-            secondComponentValue_ = secondComponentArray_[0]
+            if(secondComponentArray_.count == 0) {
+                secondComponentValue_ = String()
+            }
+            else {
+                secondComponentValue_ = secondComponentArray_[0]
+            }
         }
         else {
             secondComponentValue_ = secondComponentArray_[row]
