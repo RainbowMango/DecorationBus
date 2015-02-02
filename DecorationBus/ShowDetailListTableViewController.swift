@@ -123,6 +123,7 @@ class ShowDetailListTableViewController: UITableViewController {
         {
             for item in primeCategoryDetailList_ {
                 if item.primeCategory_ == primeCategory {
+                    cell.primeCategoryImageView_.image = UIImage(named: CategoryHandler().getIcon(primeCategory))
                     cell.categoryLabel_.text  = primeCategory
                     cell.budgetSumLabel_.text = "\(item.budgetMoney_)"
                     cell.spendSumLabel_.text  = "\(item.orderMoney_)"

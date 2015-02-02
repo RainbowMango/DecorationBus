@@ -6,7 +6,7 @@
 		<key>PrimeDesc</key>
 		<string>装修服务</string>
 		<key>PrimeIcon</key>
-		<string></string>
+		<string>DecorationService</string>
 		<key>MinorDesc</key>
 		<array>
 			<string>设计费</string>
@@ -21,7 +21,7 @@
 		<key>PrimeDesc</key>
 		<string>水电工程</string>
 		<key>PrimeIcon</key>
-		<string></string>
+		<string>WaterElectricity</string>
 		<key>MinorDesc</key>
 		<array>
 			<string>电线</string>
@@ -38,7 +38,7 @@
 		<key>PrimeDesc</key>
 		<string>厨房工程</string>
 		<key>PrimeIcon</key>
-		<string></string>
+		<string>Kitchen</string>
 		<key>MinorDesc</key>
 		<array>
 			<string>整体橱柜</string>
@@ -58,7 +58,7 @@
 		<key>PrimeDesc</key>
 		<string>卫浴工程</string>
 		<key>PrimeIcon</key>
-		<string></string>
+		<string>Bathroom</string>
 		<key>MinorDesc</key>
 		<array>
 			<string>浴缸</string>
@@ -77,7 +77,7 @@
 		<key>PrimeDesc</key>
 		<string>灯具照明</string>
 		<key>PrimeIcon</key>
-		<string></string>
+		<string>Light</string>
 		<key>MinorDesc</key>
 		<array>
 			<string>吊灯</string>
@@ -92,7 +92,7 @@
 		<key>PrimeDesc</key>
 		<string>地面墙面</string>
 		<key>PrimeIcon</key>
-		<string></string>
+		<string>Floor</string>
 		<key>MinorDesc</key>
 		<array>
 			<string>地板</string>
@@ -110,7 +110,7 @@
 		<key>PrimeDesc</key>
 		<string>门窗工程</string>
 		<key>PrimeIcon</key>
-		<string></string>
+		<string>Window</string>
 		<key>MinorDesc</key>
 		<array>
 			<string>室内房门</string>
@@ -130,7 +130,7 @@
 		<key>PrimeDesc</key>
 		<string>成品家具</string>
 		<key>PrimeIcon</key>
-		<string></string>
+		<string>Furniture</string>
 		<key>MinorDesc</key>
 		<array>
 			<string>沙发</string>
@@ -154,7 +154,7 @@
 		<key>PrimeDesc</key>
 		<string>摆件配饰</string>
 		<key>PrimeIcon</key>
-		<string></string>
+		<string>Artwork</string>
 		<key>MinorDesc</key>
 		<array>
 			<string>床上用品</string>

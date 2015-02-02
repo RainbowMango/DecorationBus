@@ -11,6 +11,7 @@ import Foundation
 class CategoryHandler: NSObject {
     var resourceFile: String = "Category"
     var resourceType: String = "plist"
+    var defaultIcon : String = "Unknow"
     
     /*读取类别名列表*/
     func getList() -> Dictionary<String, Array<String>> {
@@ -29,10 +30,20 @@ class CategoryHandler: NSObject {
     }
     
     /*
-    读取主类别图标,读取不到则返回空值
+    读取主类别图标,读取不到则返回默认图标
     */
     func getIcon(primeCategory: String) -> String {
-        return String()
+        var plistPath = NSBundle.mainBundle().pathForResource(resourceFile, ofType: resourceType)
+        var plistArry = NSArray(contentsOfFile: plistPath!)
+        assert(plistArry != nil, "获取类别列表失败")
+        
+        for entry in plistArry! {
+            if primeCategory == entry["PrimeDesc"] as String {
+                return entry["PrimeIcon"] as String
+            }
+        }
+        
+        return defaultIcon
     }
     
     /*
