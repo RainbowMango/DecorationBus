@@ -83,7 +83,8 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             println("Delete \(self.primeCatagory[indexPath.row])")
-            CategoryArchiver().deletePrimeCategory(self.primeCatagory[indexPath.row])
+            //CategoryArchiver().deletePrimeCategory(self.primeCatagory[indexPath.row])
+            CategoryHandler().removePrimeCategory(self.primeCatagory[indexPath.row])
             self.primeCatagory.removeAtIndex(indexPath.row)
             primeCatagoryTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
