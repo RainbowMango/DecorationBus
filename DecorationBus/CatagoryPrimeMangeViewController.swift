@@ -41,8 +41,7 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
     }
     
     func getPrimeCategory() -> Void {
-        var categoryDic = CategoryArchiver().getCategoryFromUserDefault()
-        self.primeCatagory = Array(categoryDic.keys)
+        self.primeCatagory = CategoryHandler().getPrimeCategory()
     }
     
     // 导航返回时重新加载数据

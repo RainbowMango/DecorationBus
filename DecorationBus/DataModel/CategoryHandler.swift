@@ -29,6 +29,39 @@ class CategoryHandler: NSObject {
         return result
     }
     
+    /*读取主类别列表*/
+    func getPrimeCategory() -> Array<String> {
+        var result = Array<String>()
+        var plistPath = NSBundle.mainBundle().pathForResource(resourceFile, ofType: resourceType)
+        var plistArry = NSArray(contentsOfFile: plistPath!)
+        assert(plistArry != nil, "获取类别列表失败")
+        
+        for entry in plistArry! {
+            var prime = entry["PrimeDesc"] as String
+            result.append(prime)
+        }
+        
+        return result
+    }
+    
+    /*读取子类别列表*/
+    func getPrimeCategory(primeCategory: String) -> Array<String> {
+        var result = Array<String>()
+        var plistPath = NSBundle.mainBundle().pathForResource(resourceFile, ofType: resourceType)
+        var plistArry = NSArray(contentsOfFile: plistPath!)
+        assert(plistArry != nil, "获取类别列表失败")
+        
+        for entry in plistArry! {
+            var prime = entry["PrimeDesc"] as String
+            if primeCategory == prime {
+                return entry["MinorDesc"] as Array<String>
+            }
+            
+        }
+        
+        return result
+    }
+    
     /*
     读取主类别图标,读取不到则返回默认图标
     */
