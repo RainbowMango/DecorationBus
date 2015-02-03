@@ -48,7 +48,7 @@ class CategoryPrimeAddViewController: UIViewController {
             return
         }
         
-        CategoryArchiver().addPrimeCategory(self.newPrimeCategoryTextField.text)
+        CategoryHandler().addPrimeCategory(self.newPrimeCategoryTextField.text)
         
         // 记录后返回到上层
         self.navigationController?.popViewControllerAnimated(true)

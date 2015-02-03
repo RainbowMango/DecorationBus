@@ -103,13 +103,15 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         return fetchResult!
     }
     
-    // 初始化类别列表，
+    // 初始化类别列表，程序启动时拷贝资源文件到沙盒
     func initCategory() {
         var categoryDic = CategoryArchiver().getCategoryFromUserDefault()
         if categoryDic.isEmpty {
             CategoryArchiver().initCategoryInUserDefault()
             println("initCategory() count: \(categoryDic.count)")
         }
+        
+        CategoryHandler().copyFileToSandbox()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

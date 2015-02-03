@@ -16,8 +16,7 @@ class CategoryHandler: NSObject {
     /*读取类别名列表*/
     func getList() -> Dictionary<String, Array<String>> {
         var result = Dictionary<String, Array<String>>()
-        var plistPath = NSBundle.mainBundle().pathForResource(resourceFile, ofType: resourceType)
-        var plistArry = NSArray(contentsOfFile: plistPath!)
+        var plistArry = NSArray(contentsOfFile: getSandboxFile())
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
@@ -32,8 +31,7 @@ class CategoryHandler: NSObject {
     /*读取主类别列表*/
     func getPrimeCategory() -> Array<String> {
         var result = Array<String>()
-        var plistPath = NSBundle.mainBundle().pathForResource(resourceFile, ofType: resourceType)
-        var plistArry = NSArray(contentsOfFile: plistPath!)
+        var plistArry = NSArray(contentsOfFile: getSandboxFile())
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
@@ -47,8 +45,7 @@ class CategoryHandler: NSObject {
     /*读取子类别列表*/
     func getPrimeCategory(primeCategory: String) -> Array<String> {
         var result = Array<String>()
-        var plistPath = NSBundle.mainBundle().pathForResource(resourceFile, ofType: resourceType)
-        var plistArry = NSArray(contentsOfFile: plistPath!)
+        var plistArry = NSArray(contentsOfFile: getSandboxFile())
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
@@ -66,8 +63,7 @@ class CategoryHandler: NSObject {
     读取主类别图标,读取不到则返回默认图标
     */
     func getIcon(primeCategory: String) -> String {
-        var plistPath = NSBundle.mainBundle().pathForResource(resourceFile, ofType: resourceType)
-        var plistArry = NSArray(contentsOfFile: plistPath!)
+        var plistArry = NSArray(contentsOfFile: getSandboxFile())
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
@@ -90,13 +86,26 @@ class CategoryHandler: NSObject {
     新增主类别
     */
     func addPrimeCategory(category: String) -> Bool {
-        return true
+        var plistFile = getSandboxFile()
+        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        assert(plistArry != nil, "获取类别列表失败")
+        
+        var newItem = NSMutableDictionary()
+        newItem.setObject(category, forKey: "PrimeDesc")
+        newItem.setObject("Unknow", forKey: "PrimeIcon")
+        newItem.setObject(Array<String>(), forKey: "MinorDesc")
+        
+        plistArry!.addObject(newItem)
+        
+        var rc = plistArry!.writeToFile(plistFile, atomically: true)
+        assert(rc, "写文件失败")
+        return rc
     }
     
     /*删除主类别*/
     func removePrimeCategory(category: String) -> Bool {
-        var plistPath = NSBundle.mainBundle().pathForResource(resourceFile, ofType: resourceType)
-        var plistArry = NSMutableArray(contentsOfFile: plistPath!)
+        var plistFile = getSandboxFile()
+        var plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取类别列表失败")
         
         for (index, entry) in enumerate(plistArry!) {
@@ -106,12 +115,7 @@ class CategoryHandler: NSObject {
             }
         }
         
-        var sandboxPaths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as Array<NSString>
-        assert(sandboxPaths.count > 0, "获取沙盒目录失败")
-        var sandboxPath = sandboxPaths[0]
-        var fileName = sandboxPath.stringByAppendingPathComponent("\(resourceFile).plist")
-        
-        var rc = plistArry!.writeToFile(fileName, atomically: true)
+        var rc = plistArry!.writeToFile(plistFile, atomically: true)
         assert(rc, "写文件失败")
         return rc
     }
@@ -121,13 +125,6 @@ class CategoryHandler: NSObject {
     */
     func addMinorCategory(primeCategory: String, minorCategory: String) -> Bool {
         return true
-    }
-    
-    /*获取document目录*/
-    func getDocumentDirectory() -> String {
-        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as Array<String>
-        assert(directories.count > 0, "获取document目录失败")
-        return directories[0]
     }
     
     // MARK: -- 沙盒文件处理
@@ -159,8 +156,15 @@ class CategoryHandler: NSObject {
     /*获取document目录中plist文件*/
     func getSandboxFile() -> String {
         var docPath = getDocumentDirectory()
-        docPath.stringByAppendingPathComponent("\(resourceFile).plist")
+        var file = docPath.stringByAppendingPathComponent("\(resourceFile).plist")
         
-        return docPath
+        return file
+    }
+    
+    /*获取document目录*/
+    func getDocumentDirectory() -> String {
+        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as Array<String>
+        assert(directories.count > 0, "获取document目录失败")
+        return directories[0]
     }
 }
