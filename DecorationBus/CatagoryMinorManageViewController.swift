@@ -38,7 +38,7 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
     }
     
     func getMinorCategory() -> Void {
-        self.minorCategorys = CategoryArchiver().getMinorCategoryByPrime(self.primeCategorySelected)
+        self.minorCategorys = CategoryHandler().getMinorCategory(self.primeCategorySelected)
     }
     
     // 重新加载数据
@@ -68,7 +68,7 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             println("Delete \(self.minorCategorys[indexPath.row])")
-            CategoryArchiver().deleteMinorCategory(self.primeCategorySelected, minor: self.minorCategorys[indexPath.row])
+            CategoryHandler().removeMinorCategory(self.primeCategorySelected, minorCategory: self.minorCategorys[indexPath.row])
             self.minorCategorys.removeAtIndex(indexPath.row)
             minorCategoryTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }

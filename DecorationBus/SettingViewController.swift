@@ -45,9 +45,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         switch alertView.buttonTitleAtIndex(buttonIndex) {
         case "确定":
-            CategoryArchiver().initCategoryInUserDefault()
+            //CategoryArchiver().initCategoryInUserDefault()
             //OrderArchiver().removeAllOrders()
             //BudgetArchiver().removeAllBudgets()
+            CategoryHandler().copyFileToSandbox()
             OrderDataModel.deleteAll()
             BudgetDataModel.deleteAll()
         case "取消":

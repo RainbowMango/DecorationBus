@@ -47,7 +47,7 @@ class CategoryMinorAddViewController: UIViewController {
             return
         }
         
-        CategoryArchiver().addMinorCategory(self.primeCategorySelected, minor: self.newMinorCategoryTextField.text)
+        CategoryHandler().addMinorCategory(self.primeCategorySelected, minorCategory: self.newMinorCategoryTextField.text)
         
         // 记录后返回到上层
         self.navigationController?.popViewControllerAnimated(true)
