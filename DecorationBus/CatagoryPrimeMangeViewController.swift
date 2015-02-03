@@ -61,6 +61,7 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
         cell.textLabel!.text = self.primeCatagory[indexPath.row]
+        cell.imageView?.image = UIImage(named: CategoryHandler().getIcon(self.primeCatagory[indexPath.row]))
         
         return cell
     }
