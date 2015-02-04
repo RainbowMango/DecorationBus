@@ -126,22 +126,14 @@ class CategoryHandler: NSObject {
     func addMinorCategory(primeCategory: String, minorCategory: String) -> Bool {
         var plistFile = getSandboxFile()
         var plistArry = NSMutableArray(contentsOfFile: plistFile)
-        var modifyItem: NSMutableDictionary!
         assert(plistArry != nil, "获取类别列表失败")
         
         for (index, entry) in enumerate(plistArry!) {
             if primeCategory == entry["PrimeDesc"] as String {
-                modifyItem = plistArry![index] as NSMutableDictionary
-                plistArry!.removeObjectAtIndex(index)
+                (entry["MinorDesc"] as NSMutableArray).addObject(minorCategory)
                 break
             }
         }
-        
-        var minorList = modifyItem["MinorDesc"] as Array<String>
-        minorList.append(minorCategory)
-        
-        modifyItem.setObject(minorList, forKey: "MinorDesc")
-        plistArry!.addObject(modifyItem)
         
         var rc = plistArry!.writeToFile(plistFile, atomically: true)
         assert(rc, "写文件失败")
@@ -154,27 +146,14 @@ class CategoryHandler: NSObject {
     func removeMinorCategory(primeCategory: String, minorCategory: String) -> Bool {
         var plistFile = getSandboxFile()
         var plistArry = NSMutableArray(contentsOfFile: plistFile)
-        var modifyItem: NSMutableDictionary!
         assert(plistArry != nil, "获取类别列表失败")
         
         for (index, entry) in enumerate(plistArry!) {
             if primeCategory == entry["PrimeDesc"] as String {
-                modifyItem = plistArry![index] as NSMutableDictionary
-                plistArry!.removeObjectAtIndex(index)
+                (entry["MinorDesc"] as NSMutableArray).removeObject(minorCategory)
                 break
             }
         }
-        
-        var minorList = modifyItem["MinorDesc"] as Array<String>
-        for (index, entry) in enumerate(minorList) {
-            if entry == minorCategory {
-                minorList.removeAtIndex(index)
-                break
-            }
-        }
-        
-        modifyItem.setObject(minorList, forKey: "MinorDesc")
-        plistArry!.addObject(modifyItem)
         
         var rc = plistArry!.writeToFile(plistFile, atomically: true)
         assert(rc, "写文件失败")
