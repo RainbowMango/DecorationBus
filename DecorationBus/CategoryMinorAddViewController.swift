@@ -54,10 +54,8 @@ class CategoryMinorAddViewController: UIViewController {
     }
     
     func showAlert() -> Void {
-        var alertController = UIAlertController(title: "空值", message: "请输入正确的子类名", preferredStyle: UIAlertControllerStyle.Alert)
-        var okAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.Default, handler: nil)
-        alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        var alertView = UIAlertView(title: "空值", message: "请输入正确的子类名", delegate: self, cancelButtonTitle: "好的")
+        alertView.show()
     }
     /*
     // MARK: - Navigation
