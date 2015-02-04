@@ -354,7 +354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tqB-6G-ENv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="912" y="1429"/>
+            <point key="canvasLocation" x="1815" y="1311"/>
         </scene>
         <!--预算明细-->
         <scene sceneID="HSh-dR-phj">
@@ -390,7 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7nM-VW-yeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1510" y="1429"/>
+            <point key="canvasLocation" x="2185" y="1311"/>
         </scene>
         <!--设置-->
         <scene sceneID="f6V-1d-qNg">
@@ -1005,11 +1005,11 @@
             </objects>
             <point key="canvasLocation" x="867" y="721"/>
         </scene>
-        <!--预算明细-->
+        <!--留影机-->
         <scene sceneID="wbl-TB-gK5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xyg-T5-9mL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="预算明细" image="list.png" id="Vnd-Lm-in5"/>
+                    <tabBarItem key="tabBarItem" title="留影机" image="list.png" id="Vnd-Lm-in5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AdK-vO-Lz5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1017,12 +1017,39 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="lnE-Pa-tv0" kind="relationship" relationship="rootViewController" id="aSe-5r-bSC"/>
+                        <segue destination="RFX-Lz-Le1" kind="relationship" relationship="rootViewController" id="os0-Po-vlP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hiD-0X-XGs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="416" y="1429"/>
+            <point key="canvasLocation" x="416" y="1435"/>
+        </scene>
+        <!--留影机-->
+        <scene sceneID="RFy-yv-hZ8">
+            <objects>
+                <tableViewController id="RFX-Lz-Le1" customClass="EverPhotoTableViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="anF-61-q1x">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="vvF-3v-77t">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vvF-3v-77t" id="DNW-af-rPJ">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RFX-Lz-Le1" id="X0z-iH-cpB"/>
+                            <outlet property="delegate" destination="RFX-Lz-Le1" id="TGC-rg-prB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="留影机" id="R6f-DM-hxd"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7kk-tt-cvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="867" y="1429"/>
         </scene>
     </scenes>
     <resources>

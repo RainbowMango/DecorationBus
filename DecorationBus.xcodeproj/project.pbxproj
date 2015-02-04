@@ -77,6 +77,10 @@
 		9B97DCD01A237385006A94C0 /* ShowBudgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCCF1A237385006A94C0 /* ShowBudgetListViewController.swift */; };
 		9B985BFD1A178F96009F4435 /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */; };
 		9B985BFF1A179525009F4435 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B985BFE1A179525009F4435 /* AboutMeViewController.swift */; };
+		9B9E1ACC1A82556B006D816F /* EverPhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9E1ACB1A82556B006D816F /* EverPhotoTableViewController.swift */; };
+		9B9E1AD01A826427006D816F /* Album.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B9E1ACD1A826427006D816F /* Album.png */; };
+		9B9E1AD11A826427006D816F /* Album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B9E1ACE1A826427006D816F /* Album@2x.png */; };
+		9B9E1AD21A826427006D816F /* Album@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B9E1ACF1A826427006D816F /* Album@3x.png */; };
 		9BA6B0481A3DD261003BC35E /* KeyboardAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6B0471A3DD261003BC35E /* KeyboardAccessory.swift */; };
 		9BA6B04A1A3F07C4003BC35E /* Default-375w-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA6B0491A3F07C4003BC35E /* Default-375w-667h@2x.png */; };
 		9BA6B04C1A3F07D2003BC35E /* Default-414w-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA6B04B1A3F07D2003BC35E /* Default-414w-736h@3x.png */; };
@@ -209,6 +213,10 @@
 		9B97DCCF1A237385006A94C0 /* ShowBudgetListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowBudgetListViewController.swift; sourceTree = "<group>"; };
 		9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 		9B985BFE1A179525009F4435 /* AboutMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
+		9B9E1ACB1A82556B006D816F /* EverPhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverPhotoTableViewController.swift; sourceTree = "<group>"; };
+		9B9E1ACD1A826427006D816F /* Album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Album.png; sourceTree = "<group>"; };
+		9B9E1ACE1A826427006D816F /* Album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Album@2x.png"; sourceTree = "<group>"; };
+		9B9E1ACF1A826427006D816F /* Album@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Album@3x.png"; sourceTree = "<group>"; };
 		9BA6B0471A3DD261003BC35E /* KeyboardAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAccessory.swift; sourceTree = "<group>"; };
 		9BA6B0491A3F07C4003BC35E /* Default-375w-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-375w-667h@2x.png"; path = "pictures/Default-375w-667h@2x.png"; sourceTree = "<group>"; };
 		9BA6B04B1A3F07D2003BC35E /* Default-414w-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-414w-736h@3x.png"; path = "pictures/Default-414w-736h@3x.png"; sourceTree = "<group>"; };
@@ -288,6 +296,9 @@
 			isa = PBXGroup;
 			children = (
 				9B151A9C1A6ABC8800498ED2 /* arrow_down.png */,
+				9B9E1ACD1A826427006D816F /* Album.png */,
+				9B9E1ACE1A826427006D816F /* Album@2x.png */,
+				9B9E1ACF1A826427006D816F /* Album@3x.png */,
 				9B151A9D1A6ABC8800498ED2 /* arrow_right.png */,
 			);
 			name = customer01;
@@ -434,6 +445,7 @@
 				9B97DCCA1A23610B006A94C0 /* dataModel */,
 				9B37A9D319EEB57A0097F88D /* AppDelegate.swift */,
 				9B37A9DA19EEB57A0097F88D /* Main.storyboard */,
+				9B9E1ACB1A82556B006D816F /* EverPhotoTableViewController.swift */,
 				9B151A681A6559D200498ED2 /* ShowDetailListTableViewController.swift */,
 				9B239BEA1A753035001BF6DA /* ShowDetailTableViewController.swift */,
 				9BC288D41A29E041005728D5 /* ShowBudgetDetailViewController.swift */,
@@ -644,8 +656,10 @@
 				9BA6B04A1A3F07C4003BC35E /* Default-375w-667h@2x.png in Resources */,
 				9B8032BC1A35C246005BA828 /* list@3x.png in Resources */,
 				9BC401BC1A7E5ADC00FDF4D6 /* Category.plist in Resources */,
+				9B9E1AD21A826427006D816F /* Album@3x.png in Resources */,
 				9B1FF5291A33480700FAA985 /* Icon-76@3x.png in Resources */,
 				9B8032BA1A35C246005BA828 /* list.png in Resources */,
+				9B9E1AD01A826427006D816F /* Album.png in Resources */,
 				9B37A9DC19EEB57A0097F88D /* Main.storyboard in Resources */,
 				9BC401E31A7FAA1000FDF4D6 /* Artwork@2x.png in Resources */,
 				9B8032BF1A35C246005BA828 /* settings@3x.png in Resources */,
@@ -665,6 +679,7 @@
 				9B8032B71A35C246005BA828 /* home.png in Resources */,
 				9BC401EA1A7FAA1000FDF4D6 /* DecorationService@3x.png in Resources */,
 				9BC401F61A7FAA1000FDF4D6 /* Light@3x.png in Resources */,
+				9B9E1AD11A826427006D816F /* Album@2x.png in Resources */,
 				9B1E5BE91A2B5E1100615842 /* index@3x.jpg in Resources */,
 				9BC401F91A7FAA1000FDF4D6 /* Unknow@3x.png in Resources */,
 				9BC401F11A7FAA1000FDF4D6 /* Kitchen.png in Resources */,
@@ -741,6 +756,7 @@
 				9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */,
 				9B239BEB1A753035001BF6DA /* ShowDetailTableViewController.swift in Sources */,
 				9B97DCCE1A2361AA006A94C0 /* BudgetArchiver.swift in Sources */,
+				9B9E1ACC1A82556B006D816F /* EverPhotoTableViewController.swift in Sources */,
 				9BC401BE1A7E638400FDF4D6 /* CategoryHandler.swift in Sources */,
 				9B37A9D419EEB57A0097F88D /* AppDelegate.swift in Sources */,
 				9B2491A01A5D683700990BA6 /* FormSectionDescriptor.swift in Sources */,
