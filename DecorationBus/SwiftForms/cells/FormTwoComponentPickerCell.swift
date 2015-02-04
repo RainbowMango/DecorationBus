@@ -42,7 +42,6 @@ class FormTwoComponentPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerV
             //valueLabel.text = rowDescriptor.titleForOptionValue(rowDescriptor.value)
             let value = rowDescriptor.value as Array<String>
             valueLabel.text = "\(value[0])-\(value[1])"
-            rowDescriptor.value = nil
         }
     }
     
@@ -50,7 +49,7 @@ class FormTwoComponentPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerV
         let row = selectedRow as FormTwoComponentPickerCell
         
         /*Initialize component array and selected value for first time selected */
-        if(row.rowDescriptor.value == nil) {
+        if(row.firstComponentArray_ == nil) {
             row.firstComponentArray_ = Array(row.rowDescriptor.pickerDatasourceWithTwoComponent.keys)
             row.firstComponentValue_ = row.firstComponentArray_[0]
             row.secondComponentArray_ = row.rowDescriptor.pickerDatasourceWithTwoComponent[row.firstComponentValue_]

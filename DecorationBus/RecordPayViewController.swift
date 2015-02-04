@@ -145,7 +145,7 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         
         // 类别表单
         row = FormRowDescriptor(tag: Static.categories, rowType: FormRowType.TwoComponentPicker, title: "类别")
-        //row.cellConfiguration = ["valueLabel.text" : "点击选择类别"]
+        row.cellConfiguration = ["valueLabel.text" : "点击选择类别"]
         row.pickerDatasourceWithTwoComponent = categorys_
         section1.addRow(row)
         
