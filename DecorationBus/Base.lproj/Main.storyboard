@@ -780,7 +780,7 @@
             </objects>
             <point key="canvasLocation" x="416" y="722"/>
         </scene>
-        <!--汇总信息-->
+        <!--装修理财-->
         <scene sceneID="Spb-vQ-QUG">
             <objects>
                 <tableViewController id="Nd6-8v-j4I" customClass="ShowDetailListTableViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
@@ -861,7 +861,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="YKH-GK-ZLB"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -870,7 +870,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="GAg-Cx-zup"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -879,7 +879,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="xuD-NS-TBl"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -888,7 +888,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="ygn-zV-Op3"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -934,7 +934,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="117" id="14T-cD-Lqt"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -943,7 +943,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="qLV-ia-0rK"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -952,7 +952,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="6Uf-QX-TNh"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -961,7 +961,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="uKH-1Q-PI1"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -995,7 +995,7 @@
                             <outlet property="delegate" destination="Nd6-8v-j4I" id="AZq-Au-KGf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="汇总信息" id="Vpj-4o-nSC"/>
+                    <navigationItem key="navigationItem" title="装修理财" id="Vpj-4o-nSC"/>
                     <connections>
                         <outlet property="headerView_" destination="Vcq-AR-3fV" id="ToQ-lu-a7p"/>
                         <segue destination="lxu-Wx-55b" kind="push" identifier="showDetailSegue" id="sV7-YZ-OQy"/>

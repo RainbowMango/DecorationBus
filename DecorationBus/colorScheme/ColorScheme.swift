@@ -17,5 +17,6 @@ class ColorScheme {
     var pickerViewBackgroundColor = UIColor(red: 204/255, green: 181/255, blue: 135/255, alpha: 1.0)
     
     //View背景色
-    var viewBackgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1.0)
+    //var viewBackgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1.0)
+    var viewBackgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1.0)
 }
