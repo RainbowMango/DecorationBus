@@ -35,14 +35,19 @@ class ShowDetailTableViewController: UITableViewController {
         budgetArray_ = BudgetDataModel.getRecordsByCategory(primeCategorySelected_, minorCategory: minorCategorySelected_)
         orderArray_ = OrderDataModel.getRecordsByCategory(primeCategorySelected_, minorCategory: minorCategorySelected_)
         self.navigationItem.title = primeCategorySelected_
-        segment_.setTitle("预算(\(budgetArray_.count))", forSegmentAtIndex: 0)
-        segment_.setTitle("支出(\(orderArray_.count))", forSegmentAtIndex: 1)
+        reloadSegmentTitle()
         tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /*设置segment标题*/
+    func reloadSegmentTitle() {
+        segment_.setTitle("预算(\(budgetArray_.count))", forSegmentAtIndex: 0)
+        segment_.setTitle("支出(\(orderArray_.count))", forSegmentAtIndex: 1)
     }
     
     // 标签栏变化时刷新table view
@@ -98,26 +103,33 @@ class ShowDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 44
     }
-        
-    /*
-    // Override to support conditional editing of the table view.
+    
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            switch segment_.selectedSegmentIndex {
+            case 0: // 删除预算
+                let uniqueID = budgetArray_[indexPath.row].id_
+                BudgetDataModel.removeRecord(uniqueID)
+                budgetArray_.removeAtIndex(indexPath.row)
+            case 1: // 删除订单
+                let uniqueID = orderArray_[indexPath.row].id_
+                OrderDataModel.removeRecord(uniqueID)
+                orderArray_.removeAtIndex(indexPath.row)
+            default:
+                return
+            }
+            
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            
+            // 跟新segment标题
+            reloadSegmentTitle()
+        }
     }
-    */
 
     
     // MARK: - Navigation

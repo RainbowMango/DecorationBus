@@ -142,6 +142,33 @@ class BudgetDataModel {
     }
     
     /*
+    删除单条记录
+    */
+    class func removeRecord(uniqueID: String) -> Bool {
+        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        var managedObjectContext = appDelegate!.managedObjectContext
+        var fetchRequest = NSFetchRequest(entityName: "Budget")
+        fetchRequest.predicate = NSPredicate(format: "id = %@", uniqueID)
+        var error: NSError?
+        var fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        if fetchResult == nil {
+            println("获取数据失败: \(error), \(error!.userInfo)")
+            return false
+        }
+        
+        for result in fetchResult! {
+            managedObjectContext?.deleteObject(result)
+        }
+        let rc = managedObjectContext?.save(&error)
+        if !(rc != nil) {
+            println("删除数据失败: \(error), \(error!.userInfo)")
+            return false
+        }
+        
+        return true
+    }
+    
+    /*
     更新单条记录
     */
     class func updateRecord(record: BudgetRecord) -> Bool {
