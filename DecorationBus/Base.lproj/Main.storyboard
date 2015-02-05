@@ -838,6 +838,19 @@
                                 <constraint firstItem="SPJ-Wq-f26" firstAttribute="top" secondItem="Vcq-AR-3fV" secondAttribute="top" constant="10" id="sRk-g2-PcZ"/>
                             </constraints>
                         </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="25I-WN-v1M">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="快来创建你得预算吧~" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9g-4C-Ghy">
+                                    <rect key="frame" x="0.0" y="11" width="320" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PrimeCategoryTableViewCell" id="BBl-pU-Qgk" customClass="PrimeCategoryTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -998,6 +1011,7 @@
                     <navigationItem key="navigationItem" title="装修理财" id="Vpj-4o-nSC"/>
                     <connections>
                         <outlet property="headerView_" destination="Vcq-AR-3fV" id="ToQ-lu-a7p"/>
+                        <outlet property="tailView_" destination="25I-WN-v1M" id="IOQ-u5-d0d"/>
                         <segue destination="lxu-Wx-55b" kind="push" identifier="showDetailSegue" id="sV7-YZ-OQy"/>
                     </connections>
                 </tableViewController>

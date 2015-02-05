@@ -10,6 +10,7 @@ import UIKit
 
 class ShowDetailListTableViewController: UITableViewController {
     @IBOutlet weak var headerView_: UIView!
+    @IBOutlet weak var tailView_: UIView!
     
     var orders_: Array<OrderRecord>!
     var budgets_: Array<BudgetRecord>!
@@ -302,6 +303,15 @@ class ShowDetailListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         return headerView_
+    }
+    
+    // 设置表尾，仅在无数据时展示
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if tableViewCellArray_.isEmpty {
+            return tailView_
+        }
+        tailView_.frame = CGRectZero
+        return nil
     }
     
     // MARK: - Navigation
