@@ -276,6 +276,10 @@ class ShowDetailListTableViewController: UITableViewController {
             performSegueWithIdentifier("showDetailSegue", sender: self.view)
         }
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
