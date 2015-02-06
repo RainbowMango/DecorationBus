@@ -167,13 +167,16 @@
                             </segments>
                         </segmentedControl>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentCategoryTableViewCell" rowHeight="44" id="EEH-VA-FfC" customClass="SegmentCategoryTableViewCell" customModule="DecorationBus" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentCategoryTableViewCell" id="EEH-VA-FfC" customClass="SegmentCategoryTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EEH-VA-FfC" id="HAN-hT-lVT">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="效果图" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-03-gcj">
-                                            <rect key="frame" x="10" y="5" width="130" height="33.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="效果图" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-03-gcj">
+                                            <rect key="frame" x="10" y="11" width="100" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="u8X-Jj-lPi"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -182,14 +185,17 @@
                                             <rect key="frame" x="150" y="11" width="20" height="20.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="S55-Gk-lfv"/>
-                                                <constraint firstAttribute="height" constant="20.5" id="c5R-dP-qB3"/>
+                                                <constraint firstAttribute="height" constant="20" id="c5R-dP-qB3"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plo-fB-6sd">
-                                            <rect key="frame" x="180" y="5" width="130" height="33.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plo-fB-6sd">
+                                            <rect key="frame" x="210" y="11" width="100" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="sWL-O3-ovw"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -197,7 +203,11 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="centerY" secondItem="eyP-WC-MV2" secondAttribute="centerY" id="LKb-47-hkd"/>
+                                        <constraint firstItem="z3z-03-gcj" firstAttribute="leading" secondItem="HAN-hT-lVT" secondAttribute="leading" constant="10" id="Zoc-UV-na6"/>
+                                        <constraint firstItem="eyP-WC-MV2" firstAttribute="centerY" secondItem="Plo-fB-6sd" secondAttribute="centerY" id="fv1-al-B4v"/>
                                         <constraint firstAttribute="centerX" secondItem="eyP-WC-MV2" secondAttribute="centerX" id="mGw-F5-flt"/>
+                                        <constraint firstAttribute="trailing" secondItem="Plo-fB-6sd" secondAttribute="trailing" constant="10" id="nl1-de-O6Z"/>
+                                        <constraint firstItem="z3z-03-gcj" firstAttribute="centerY" secondItem="eyP-WC-MV2" secondAttribute="centerY" id="yOg-kT-cEy"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
