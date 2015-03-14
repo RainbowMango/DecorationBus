@@ -65,8 +65,10 @@ class EverPhotoTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        var alertView = UIAlertView(title: "敬请期待", message: "你造吗，这是款众多装修业主一起打造的产品，你要不要参与呢~", delegate: self, cancelButtonTitle: "好的")
-        alertView.show()
+//        var alertView = UIAlertView(title: "敬请期待", message: "你造吗，这是款众多装修业主一起打造的产品，你要不要参与呢~", delegate: self, cancelButtonTitle: "好的")
+//        alertView.show()
+        
+        performSegueWithIdentifier("toEverPhotoAlbum", sender: self.view)
     }
     /*
     // Override to support conditional editing of the table view.
