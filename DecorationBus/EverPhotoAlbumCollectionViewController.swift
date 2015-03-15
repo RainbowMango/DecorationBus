@@ -10,7 +10,7 @@ import UIKit
 
 let reuseIdentifier = "EverPhotoCollectionCell"
 
-class EverPhotoAlbumCollectionViewController: UICollectionViewController {
+class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,9 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController {
         // Register cell classes
         //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        // Do any additional setup after loading the view.
+        
+        // 放置添加按钮到导航栏
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加", style: .Bordered, target: self, action: "addPhoto:")
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,4 +94,23 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController {
     }
     */
 
+    func addPhoto(_: UIBarButtonItem!) {
+        println("开始导入图片")
+        var imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        var image: UIImage = info["UIImagePickerControllerOriginalImage"] as UIImage
+        //self.imageView01.image = image
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        println("用户取消")
+    }
 }
