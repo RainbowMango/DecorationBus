@@ -94,17 +94,19 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     }
     */
 
+    /*添加照片，目前只支持从照片库中添加，后期可以扩展到三种方式：照片库、相册和相机*/
     func addPhoto(_: UIBarButtonItem!) {
         println("开始导入图片")
         var imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         var image: UIImage = info["UIImagePickerControllerOriginalImage"] as UIImage
+        println(info.description)
         //self.imageView01.image = image
         
         self.dismissViewControllerAnimated(true, completion: nil)
