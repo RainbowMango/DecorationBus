@@ -12,6 +12,9 @@ class EverPhotoTableViewController: UITableViewController {
 
     var phase_ = ["素颜", "设计", "改造", "水电", "木工", "泥工", "油漆", "墙纸", "软装"]
     var phaseTips_ = ["开始动工前，给您的爱家留个影吧~", "设计图纸存档，方便后期查看哦~", "我的房子我做主，想要几房要房~", "线管走向务必拍照哦，后期打洞洞不小心打到了可不是闹着玩滴~", "除了秀下木工师傅手艺，还能干嘛~", "瓷砖贴上大大提升房主逼格~", "我家的样子开始显现了哦~", "墙纸还是壁画？还是墙纸吧，谁用谁知道~", "哇塞，美得一塌糊涂"]
+    
+    var selectedAlbum: String = String() // 选中特定相册时设置为相册名字，传递到下一个相册
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,6 +67,7 @@ class EverPhotoTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.selectedAlbum = self.phase_[indexPath.row]
         
 //        var alertView = UIAlertView(title: "敬请期待", message: "你造吗，这是款众多装修业主一起打造的产品，你要不要参与呢~", delegate: self, cancelButtonTitle: "好的")
 //        alertView.show()
@@ -105,14 +109,16 @@ class EverPhotoTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toEverPhotoAlbum" {
+            println("将要转入toEverPhotoAlbum页面")
+            
+            var destinationView = segue.destinationViewController as EverPhotoAlbumCollectionViewController
+            destinationView.setValue(self.selectedAlbum, forKey: "albumName")
+        }
     }
-    */
 
 }

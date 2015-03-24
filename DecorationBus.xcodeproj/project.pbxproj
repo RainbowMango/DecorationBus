@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B0CE7AE1AC1A8E200945AE6 /* AlbumHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CE7AD1AC1A8E200945AE6 /* AlbumHandler.swift */; };
 		9B10A0D51A7A5B8F0025BF7E /* OrderRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B10A0D41A7A5B8F0025BF7E /* OrderRecord.swift */; };
 		9B1467E21A260A3C00ACD417 /* CategoryMinorAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1467E11A260A3B00ACD417 /* CategoryMinorAddViewController.swift */; };
 		9B151A691A6559D200498ED2 /* ShowDetailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B151A681A6559D200498ED2 /* ShowDetailListTableViewController.swift */; };
@@ -140,6 +141,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B0CE7AD1AC1A8E200945AE6 /* AlbumHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumHandler.swift; sourceTree = "<group>"; };
 		9B10A0D41A7A5B8F0025BF7E /* OrderRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderRecord.swift; sourceTree = "<group>"; };
 		9B1467E11A260A3B00ACD417 /* CategoryMinorAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryMinorAddViewController.swift; sourceTree = "<group>"; };
 		9B151A681A6559D200498ED2 /* ShowDetailListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailListTableViewController.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				9B151AA91A713F3900498ED2 /* PrimeCategoryDetailDataModel.swift */,
 				9B151AA51A6FEC0000498ED2 /* BudgetDataModel.swift */,
 				9BC401BD1A7E638400FDF4D6 /* CategoryHandler.swift */,
+				9B0CE7AD1AC1A8E200945AE6 /* AlbumHandler.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				9B2491921A5D683700990BA6 /* FormButtonCell.swift in Sources */,
 				9B35492C1A276C510083E0B6 /* CategoryPrimeAddViewController.swift in Sources */,
 				9BCC42581A3483CA00978841 /* ShowPayListViewController.swift in Sources */,
+				9B0CE7AE1AC1A8E200945AE6 /* AlbumHandler.swift in Sources */,
 				9BC401BA1A7CB3CF00FDF4D6 /* BudgetRecord.swift in Sources */,
 				9B2491991A5D683700990BA6 /* FormTextFieldCell.swift in Sources */,
 				9B2491951A5D683700990BA6 /* FormPickerCell.swift in Sources */,

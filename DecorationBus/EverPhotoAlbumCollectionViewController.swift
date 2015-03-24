@@ -12,6 +12,8 @@ let reuseIdentifier = "EverPhotoCollectionCell"
 
 class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    var albumName:String = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -108,6 +110,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         var image: UIImage = info["UIImagePickerControllerOriginalImage"] as UIImage
         println(info.description)
         //self.imageView01.image = image
+        AlbumHandler().saveImageToSandbox(albumName, image: image);
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
