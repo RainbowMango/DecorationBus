@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B0CE7AE1AC1A8E200945AE6 /* AlbumHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CE7AD1AC1A8E200945AE6 /* AlbumHandler.swift */; };
+		9B0CE7B01AC2FA9600945AE6 /* EverAlbum.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B0CE7AF1AC2FA9600945AE6 /* EverAlbum.plist */; };
 		9B10A0D51A7A5B8F0025BF7E /* OrderRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B10A0D41A7A5B8F0025BF7E /* OrderRecord.swift */; };
 		9B1467E21A260A3C00ACD417 /* CategoryMinorAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1467E11A260A3B00ACD417 /* CategoryMinorAddViewController.swift */; };
 		9B151A691A6559D200498ED2 /* ShowDetailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B151A681A6559D200498ED2 /* ShowDetailListTableViewController.swift */; };
@@ -142,6 +143,7 @@
 
 /* Begin PBXFileReference section */
 		9B0CE7AD1AC1A8E200945AE6 /* AlbumHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumHandler.swift; sourceTree = "<group>"; };
+		9B0CE7AF1AC2FA9600945AE6 /* EverAlbum.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EverAlbum.plist; sourceTree = "<group>"; };
 		9B10A0D41A7A5B8F0025BF7E /* OrderRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderRecord.swift; sourceTree = "<group>"; };
 		9B1467E11A260A3B00ACD417 /* CategoryMinorAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryMinorAddViewController.swift; sourceTree = "<group>"; };
 		9B151A681A6559D200498ED2 /* ShowDetailListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailListTableViewController.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 			children = (
 				9B37A9D219EEB57A0097F88D /* Info.plist */,
 				9BC401BB1A7E5ADC00FDF4D6 /* Category.plist */,
+				9B0CE7AF1AC2FA9600945AE6 /* EverAlbum.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				9B1E5BE91A2B5E1100615842 /* index@3x.jpg in Resources */,
 				9BC401F91A7FAA1000FDF4D6 /* Unknow@3x.png in Resources */,
 				9BC401F11A7FAA1000FDF4D6 /* Kitchen.png in Resources */,
+				9B0CE7B01AC2FA9600945AE6 /* EverAlbum.plist in Resources */,
 				9BC402091A7FAC8D00FDF4D6 /* Window.png in Resources */,
 				9B1FF5281A33480700FAA985 /* Icon-76@2x.png in Resources */,
 				9BC401F01A7FAA1000FDF4D6 /* Furniture@3x.png in Resources */,

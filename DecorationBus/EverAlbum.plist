@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>AlbumName</key>
+		<string>AlbumExample</string>
+		<key>ImageList</key>
+		<array>
+			<string>/Users/ruby/Library/Developer/CoreSimulator/Devices/1176A972-4E01-445B-B567-5F2E73BC5DEE/data/Containers/Data/Application/255D8C79-B351-47F5-80EC-AA54E974CE62/Documents/album_example_20150324224919450.png</string>
+		</array>
+	</dict>
+</array>
+</plist>

@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         self.tabBarController?.delegate = self
         self.navigationController?.delegate = self
         initCategory()
+        initAlbum()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -107,6 +108,12 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     func initCategory() {
         CategoryHandler().copyFileToSandbox()
     }
+    
+    // 初始化相册列表，程序启动时拷贝资源文件到沙盒
+    func initAlbum() {
+        AlbumHandler().copyFileToSandbox()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
