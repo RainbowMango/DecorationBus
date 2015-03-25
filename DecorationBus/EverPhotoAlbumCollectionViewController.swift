@@ -110,7 +110,8 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         var image: UIImage = info["UIImagePickerControllerOriginalImage"] as UIImage
         println(info.description)
         //self.imageView01.image = image
-        AlbumHandler().saveImageToSandbox(albumName, image: image);
+        AlbumHandler().saveImageToSandbox(albumName, image: image)
+        println("保存照片到\(albumName)")
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }

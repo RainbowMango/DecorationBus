@@ -23,7 +23,61 @@ class AlbumHandler: NSObject {
         
         UIImagePNGRepresentation(image).writeToFile(imageURL, atomically: true)
         println(imageURL)
+        
+        if !albumExist(albumName) {
+            createAlbum(albumName)
+        }
+        addImageURLToPlist(albumName, imageURL: imageURL)
+        
         return true
+    }
+    
+    /*将图片URL添加到plist文件，前提是相册已经存在*/
+    func addImageURLToPlist(albumName: String, imageURL: String) -> Bool {
+        var plistFile = getSandboxFile()
+        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        assert(plistArry != nil, "获取相册列表失败")
+        
+        for (index, entry) in enumerate(plistArry!) {
+            if albumName == entry["AlbumName"] as String {
+                (entry["ImageList"] as NSMutableArray).addObject(imageURL)
+                break
+            }
+        }
+        
+        var rc = plistArry!.writeToFile(plistFile, atomically: true)
+        assert(rc, "写文件失败")
+        return rc
+    }
+    
+    /*创建相册*/
+    func createAlbum(albumName: String) ->Void {
+        var plistFile = getSandboxFile()
+        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        assert(plistArry != nil, "获取相册列表失败")
+        
+        var newItem = NSMutableDictionary()
+        newItem.setObject(albumName, forKey: "AlbumName")
+        newItem.setObject(Array<String>(), forKey: "ImageList")
+        
+        plistArry!.addObject(newItem)
+        
+        var rc = plistArry!.writeToFile(plistFile, atomically: true)
+        assert(rc, "写文件失败")
+    }
+    
+    /*判断相册是否建立*/
+    func albumExist(albumName: String) -> Bool {
+        var plistArry = NSArray(contentsOfFile: getSandboxFile())
+        assert(plistArry != nil, "获取相册列表失败")
+        
+        for entry in plistArry! {
+            if albumName == entry["AlbumName"] as String {
+                return true
+            }
+        }
+        
+        return false
     }
     
     // MARK: -- 沙盒文件处理
