@@ -50,6 +50,21 @@ class AlbumHandler: NSObject {
         return rc
     }
     
+    /*取得相册中照片数量*/
+    func getImageNumber(albumName: String) -> Int {
+        var plistFile = getSandboxFile()
+        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        assert(plistArry != nil, "获取相册列表失败")
+        
+        for (index, entry) in enumerate(plistArry!) {
+            if albumName == entry["AlbumName"] as String {
+                return (entry["ImageList"] as NSMutableArray).count
+            }
+        }
+        
+        return 0
+    }
+    
     /*创建相册*/
     func createAlbum(albumName: String) ->Void {
         var plistFile = getSandboxFile()
