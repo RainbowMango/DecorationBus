@@ -37,15 +37,18 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         // Dispose of any resources that can be recreated.
     }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "segueImagePlayer" {
+            println("将要转入segueImagePlayer页面")
+            
+            var destinationView = segue.destinationViewController as EverPhotoPlayerViewController
+            let selectedRow = (self.collectionView?.indexPathsForSelectedItems() as Array<NSIndexPath>)[0].row
+            destinationView.setValue(selectedRow, forKey: "curImageIndex")
+            destinationView.setValue(imageURLs, forKey: "imageURLs")
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -79,6 +82,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println("Select section number \(indexPath.section), row number: \(indexPath.row)")
+        performSegueWithIdentifier("segueImagePlayer", sender: self.view)
     }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking

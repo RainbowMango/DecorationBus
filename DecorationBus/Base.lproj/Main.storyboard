@@ -918,10 +918,32 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="留影机相册" id="8Ie-0T-1TC"/>
+                    <connections>
+                        <segue destination="56k-JG-1dj" kind="push" identifier="segueImagePlayer" id="hKK-3f-eg4"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbU-nw-QPA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1270" y="1429"/>
+        </scene>
+        <!--图片浏览器-->
+        <scene sceneID="hm9-3B-qwG">
+            <objects>
+                <viewController id="56k-JG-1dj" customClass="EverPhotoPlayerViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lq7-YE-NPl"/>
+                        <viewControllerLayoutGuide type="bottom" id="3CJ-TQ-3vD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ogv-bA-kLo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="图片浏览器" id="LmW-83-CFw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0nH-4p-Wae" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696" y="1429"/>
         </scene>
     </scenes>
     <resources>

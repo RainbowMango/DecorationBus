@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B0CE7AE1AC1A8E200945AE6 /* AlbumHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CE7AD1AC1A8E200945AE6 /* AlbumHandler.swift */; };
 		9B0CE7B01AC2FA9600945AE6 /* EverAlbum.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B0CE7AF1AC2FA9600945AE6 /* EverAlbum.plist */; };
+		9B0CE7B31AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CE7B21AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift */; };
 		9B10A0D51A7A5B8F0025BF7E /* OrderRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B10A0D41A7A5B8F0025BF7E /* OrderRecord.swift */; };
 		9B1467E21A260A3C00ACD417 /* CategoryMinorAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1467E11A260A3B00ACD417 /* CategoryMinorAddViewController.swift */; };
 		9B151A691A6559D200498ED2 /* ShowDetailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B151A681A6559D200498ED2 /* ShowDetailListTableViewController.swift */; };
@@ -144,6 +145,7 @@
 /* Begin PBXFileReference section */
 		9B0CE7AD1AC1A8E200945AE6 /* AlbumHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumHandler.swift; sourceTree = "<group>"; };
 		9B0CE7AF1AC2FA9600945AE6 /* EverAlbum.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EverAlbum.plist; sourceTree = "<group>"; };
+		9B0CE7B21AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverPhotoPlayerViewController.swift; sourceTree = "<group>"; };
 		9B10A0D41A7A5B8F0025BF7E /* OrderRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderRecord.swift; sourceTree = "<group>"; };
 		9B1467E11A260A3B00ACD417 /* CategoryMinorAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryMinorAddViewController.swift; sourceTree = "<group>"; };
 		9B151A681A6559D200498ED2 /* ShowDetailListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailListTableViewController.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				9B37A9D319EEB57A0097F88D /* AppDelegate.swift */,
 				9B37A9DA19EEB57A0097F88D /* Main.storyboard */,
 				9B6E3DF91AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift */,
+				9B0CE7B21AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift */,
 				9B9E1ACB1A82556B006D816F /* EverPhotoTableViewController.swift */,
 				9B151A681A6559D200498ED2 /* ShowDetailListTableViewController.swift */,
 				9B239BEA1A753035001BF6DA /* ShowDetailTableViewController.swift */,
@@ -754,6 +757,7 @@
 				9B2491951A5D683700990BA6 /* FormPickerCell.swift in Sources */,
 				9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */,
 				9B24918F1A5D683700990BA6 /* FormBaseCell.swift in Sources */,
+				9B0CE7B31AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift in Sources */,
 				9B531CB41A583033008067C3 /* DecorationBus.xcdatamodeld in Sources */,
 				9B151AA61A6FEC0000498ED2 /* BudgetDataModel.swift in Sources */,
 				9B34AAFE1A20B98500013C39 /* CategoryDataModel.swift in Sources */,
