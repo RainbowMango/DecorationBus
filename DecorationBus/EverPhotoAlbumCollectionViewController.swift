@@ -13,6 +13,7 @@ let reuseIdentifier = "EverPhotoCollectionCell"
 class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     var albumName:String = String()
+    var imageURLs: Array<String> = Array<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,9 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         
         // 放置添加按钮到导航栏
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加", style: .Bordered, target: self, action: "addPhoto:")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,20 +50,26 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        //#warning Incomplete method implementation -- Return the number of sections
+        // 取得图片列表
+        self.imageURLs = AlbumHandler().getURLList(albumName)
+        println(self.imageURLs)
+        
         return 1
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return AlbumHandler().getImageNumber(albumName)
+        //return AlbumHandler().getImageNumber(albumName)
+        println("返回当前相册中图片数量\(self.imageURLs.count)")
+        return self.imageURLs.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
     
-        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: "Icon-76")
+        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(contentsOfFile: imageURLs[indexPath.row])
+        println("显示图片:\(imageURLs[indexPath.row])")
         
     
         return cell
@@ -67,6 +77,9 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
 
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        println("Select section number \(indexPath.section), row number: \(indexPath.row)")
+    }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -114,9 +127,13 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         println("保存照片到\(albumName)")
         
         self.dismissViewControllerAnimated(true, completion: nil)
+        
+        /*添加图片后刷新view*/
+        self.collectionView?.reloadData()
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         println("用户取消")
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

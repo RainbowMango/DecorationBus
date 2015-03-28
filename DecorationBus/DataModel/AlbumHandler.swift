@@ -65,6 +65,21 @@ class AlbumHandler: NSObject {
         return 0
     }
     
+    /*取得相册中图片URL列表*/
+    func getURLList(albumName: String) -> Array<String> {
+        var plistFile = getSandboxFile()
+        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        assert(plistArry != nil, "获取相册列表失败")
+        
+        for (index, entry) in enumerate(plistArry!) {
+            if albumName == entry["AlbumName"] as String {
+                return entry["ImageList"] as Array<String>
+            }
+        }
+        
+        return Array<String>()
+    }
+    
     /*创建相册*/
     func createAlbum(albumName: String) ->Void {
         var plistFile = getSandboxFile()
