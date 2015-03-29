@@ -28,19 +28,25 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.scrollview.delegate = self
         // Do any additional setup after loading the view.
     }
 
     override func viewDidAppear(animated: Bool) {
         println("imageURLs: \(self.imageURLs)")
         println("curImageIndex: \(self.curImageIndex)")
-        self.scrollview.delegate = self
         
         loadImage()
         
         //定位到第二个imageView
         self.scrollview.contentOffset = CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0)
     }
+    
+    /*view消失时取消代理，否则仍然会收到代理消息导致crash,原因不明*/
+    override func viewDidDisappear(animated: Bool) {
+        self.scrollview.delegate = nil
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -60,15 +66,34 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func loadImage() -> Void {
+        /*改动思路
+        1. 永远将当前图片放置到中间的imageView
+        1.1 如果只有一张图片，不允许滑动
+        1.2 如果有两张图片
+        1.2.1 如果当前图片是第一张，将第二张图片放到第三个imageView
+        1.2.1.1 向左滑动时归正contentoffset至第二张imageView，即不允许向左滑动
+        1.2.1.2 向右滑动时正常显示不做特殊处理
+        1.3 如果有三张及以上图片时
+        1.3.1 如果当前图片是第一张，处理同1.2.1.1
+        1.3.2 向左滑动时发现当前已经是第一张，处理同1.2.1.1
+        1.3.3 向右滑动时发现当前已经是最后一张，处理同1.2.1.1
+        1.3.4 向右滑动时先显示右边图片，同时将右边图片也放到中间imageView里，再将contentoffset设置到第二张imageView 然后将第一、三个imageView,更新*/
+        
         firstImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex - 1])
         secondImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex])
         thirdImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex + 1])
     }
 
-//    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        println("scrollViewDidScroll: contentOffset = \(scrollview.contentOffset)")
-//    }
-//    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        //println("scrollViewDidScroll: contentOffset = \(scrollview.contentOffset)")
+        if self.scrollview.contentOffset.x > self.view.frame.origin.x {
+            println("向右划")
+        }
+        else {
+            println("向左划")
+        }
+    }
+//
 //    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
 //        println("scrollViewWillBeginDragging")
 //    }
