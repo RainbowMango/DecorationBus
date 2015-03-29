@@ -938,7 +938,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="db9-he-iB1">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" minimumZoomScale="0.5" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="db9-he-iB1">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuw-nd-tEW">
@@ -1001,10 +1001,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="图片浏览器" id="LmW-83-CFw"/>
                     <connections>
+                        <outlet property="firstImageView" destination="T0q-ms-tsW" id="TzW-YW-Afd"/>
                         <outlet property="firstImageViewWidthConstraint" destination="rD7-Z8-1Do" id="9Xc-Yg-Xix"/>
+                        <outlet property="scrollview" destination="db9-he-iB1" id="6yO-Ug-kJa"/>
                         <outlet property="scrollviewWidthConstraint" destination="7xt-D6-sX3" id="28R-Ql-2hy"/>
+                        <outlet property="secondImageView" destination="w2N-hG-Har" id="yki-en-vZq"/>
                         <outlet property="secondImageViewLeadingContraint" destination="Ay3-xs-ZtN" id="5PZ-M7-ywc"/>
                         <outlet property="secondImageViewWidthConstraint" destination="R9U-9B-xbf" id="2iG-XG-xfN"/>
+                        <outlet property="thirdImageView" destination="UDT-4R-6Ov" id="WEh-Le-HNp"/>
                         <outlet property="thirdImageViewLeadingConstraint" destination="bWH-lN-i9i" id="ygy-RM-Vqi"/>
                         <outlet property="thirdImageViewWidthConstraint" destination="luy-jt-UcF" id="Np3-qy-yiz"/>
                     </connections>

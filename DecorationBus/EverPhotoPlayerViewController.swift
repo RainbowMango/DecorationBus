@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EverPhotoPlayerViewController: UIViewController {
+class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
 
     //图片列表以及当前选中的图片index
     var imageURLs: Array<String> = Array<String>()
@@ -21,6 +21,10 @@ class EverPhotoPlayerViewController: UIViewController {
     @IBOutlet weak var thirdImageViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var thirdImageViewWidthConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var scrollview: UIScrollView!
+    @IBOutlet weak var firstImageView: UIImageView!
+    @IBOutlet weak var secondImageView: UIImageView!
+    @IBOutlet weak var thirdImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +34,12 @@ class EverPhotoPlayerViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         println("imageURLs: \(self.imageURLs)")
         println("curImageIndex: \(self.curImageIndex)")
+        self.scrollview.delegate = self
+        
+        loadImage()
+        
+        //定位到第二个imageView
+        self.scrollview.contentOffset = CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,15 +58,26 @@ class EverPhotoPlayerViewController: UIViewController {
         self.thirdImageViewLeadingConstraint.constant = CGRectGetWidth(UIScreen.mainScreen().bounds) * 2
         self.thirdImageViewWidthConstraint.constant = CGRectGetWidth(UIScreen.mainScreen().bounds)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func loadImage() -> Void {
+        firstImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex - 1])
+        secondImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex])
+        thirdImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex + 1])
     }
-    */
 
+//    func scrollViewDidScroll(scrollView: UIScrollView) {
+//        println("scrollViewDidScroll: contentOffset = \(scrollview.contentOffset)")
+//    }
+//    
+//    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+//        println("scrollViewWillBeginDragging")
+//    }
+//    
+//    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        println("scrollViewWillEndDragging")
+//    }
+//    
+//    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        println("scrollViewDidEndDragging")
+//    }
 }
