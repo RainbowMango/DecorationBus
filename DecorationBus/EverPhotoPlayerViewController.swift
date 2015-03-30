@@ -36,7 +36,7 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         println("imageURLs: \(self.imageURLs)")
         println("curImageIndex: \(self.curImageIndex)")
         
-        loadImage()
+        loadImageWhenAppear()
         
         //定位到第二个imageView
         self.scrollview.contentOffset = CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0)
@@ -65,7 +65,8 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         self.thirdImageViewWidthConstraint.constant = CGRectGetWidth(UIScreen.mainScreen().bounds)
     }
     
-    func loadImage() -> Void {
+    /*初次载入图片，永远将当前图片放入第二个imageView，当前图片的前后两张图片分别放入第一三个imageView*/
+    func loadImageWhenAppear() -> Void {
         /*改动思路
         1. 永远将当前图片放置到中间的imageView
         1.1 如果只有一张图片，不允许滑动
@@ -79,9 +80,17 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         1.3.3 向右滑动时发现当前已经是最后一张，处理同1.2.1.1
         1.3.4 向右滑动时先显示右边图片，同时将右边图片也放到中间imageView里，再将contentoffset设置到第二张imageView 然后将第一、三个imageView,更新*/
         
-        firstImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex - 1])
+        // 当前图片是第一张时不载入
+        if curImageIndex > 0 {
+            firstImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex - 1])
+        }
+        
         secondImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex])
-        thirdImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex + 1])
+        
+        // 当前图片是最后一张时不载入
+        if curImageIndex < (imageURLs.count - 1) {
+            thirdImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex + 1])
+        }
     }
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
