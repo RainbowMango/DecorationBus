@@ -93,13 +93,19 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
+    /*检测滑动方向，第一张图片向左滑动时及最后一张图片向右滑动时归正contentOffset*/
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        //println("scrollViewDidScroll: contentOffset = \(scrollview.contentOffset)")
-        if self.scrollview.contentOffset.x > self.view.frame.origin.x {
-            println("向右划")
+        if self.scrollview.contentOffset.x > secondImageView.frame.origin.x {
+            if curImageIndex == imageURLs.count - 1 {
+                self.scrollview.setContentOffset(CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0), animated: false)
+                println("最后一张图片，禁止右划")
+            }
         }
-        else {
-            println("向左划")
+        else if scrollview.contentOffset.x < secondImageView.frame.origin.x{
+            if curImageIndex == 0 {
+                self.scrollview.setContentOffset(CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0), animated: false)
+                println("第一张图片，禁止左划")
+            }
         }
     }
 //
