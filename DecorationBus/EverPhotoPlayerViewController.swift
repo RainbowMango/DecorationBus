@@ -117,7 +117,23 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
 //        println("scrollViewWillEndDragging")
 //    }
 //    
-//    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        println("scrollViewDidEndDragging")
-//    }
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        println("scrollViewDidEndDragging")
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        var pageWidth:CGFloat = scrollview.frame.size.width
+        var pageNumber: Int = Int(floor((scrollView.contentOffset.x - pageWidth/2)/pageWidth)) + 1
+        
+        switch pageNumber {
+        case 0:
+            println("当前显示的是第1页，需要在第二个imageView中加载本图片，并调整contentOffset至第二个ImageView")
+        case 1:
+            println("当前显示的是第2页，不改变")
+        case 2:
+            println("当前显示的是第3页，需要在第二个imageView中加载本图片，并调整contentOffset至第二个ImageView")
+        default:
+            println("Do nothing")
+        }
+    }
 }
