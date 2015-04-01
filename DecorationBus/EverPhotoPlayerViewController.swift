@@ -128,10 +128,16 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         switch pageNumber {
         case 0:
             println("当前显示的是第1页，需要在第二个imageView中加载本图片，并调整contentOffset至第二个ImageView")
+            self.curImageIndex--
+            loadImageWhenAppear()
+            self.scrollview.contentOffset = CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0)
         case 1:
             println("当前显示的是第2页，不改变")
         case 2:
             println("当前显示的是第3页，需要在第二个imageView中加载本图片，并调整contentOffset至第二个ImageView")
+            self.curImageIndex++
+            loadImageWhenAppear()
+            self.scrollview.contentOffset = CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0)
         default:
             println("Do nothing")
         }
