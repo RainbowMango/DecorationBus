@@ -28,6 +28,9 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // 隐藏导航栏
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
         self.scrollview.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -55,9 +58,7 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
     // 动态更新约束以满足不同屏幕尺寸
     override func updateViewConstraints() {
         super.updateViewConstraints() // 更新约束时必须要调用改方法通知本view，否则crash
-        //println("更新约束前scrollview宽度:\(self.scrollviewWidthConstraint.constant)")
         self.scrollviewWidthConstraint.constant = CGRectGetWidth(UIScreen.mainScreen().bounds) * 3
-        //println("更新约束后scrollview宽度:\(self.scrollviewWidthConstraint.constant)")
         self.firstImageViewWidthConstraint.constant = CGRectGetWidth(UIScreen.mainScreen().bounds)
         self.secondImageViewLeadingContraint.constant = CGRectGetWidth(UIScreen.mainScreen().bounds)
         self.secondImageViewWidthConstraint.constant = CGRectGetWidth(UIScreen.mainScreen().bounds)

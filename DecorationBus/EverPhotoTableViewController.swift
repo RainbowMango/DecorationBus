@@ -111,11 +111,8 @@ class EverPhotoTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toEverPhotoAlbum" {
-            println("将要转入toEverPhotoAlbum页面")
-            
             var destinationView = segue.destinationViewController as EverPhotoAlbumCollectionViewController
             destinationView.setValue(self.selectedAlbum, forKey: "albumName")
         }
