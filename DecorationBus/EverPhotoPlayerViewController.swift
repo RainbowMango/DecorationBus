@@ -25,6 +25,9 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var firstImageView: UIImageView!
     @IBOutlet weak var secondImageView: UIImageView!
     @IBOutlet weak var thirdImageView: UIImageView!
+    
+    @IBOutlet var tagGesture: UITapGestureRecognizer!  // 单击手势
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,7 +35,9 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         self.scrollview.delegate = self
-        // Do any additional setup after loading the view.
+        
+        // 单击手势添加到ImageView, 点击显示或隐藏导航栏
+        secondImageView.addGestureRecognizer(tagGesture)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -141,6 +146,17 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
             self.scrollview.contentOffset = CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0)
         default:
             println("Do nothing")
+        }
+    }
+    
+    //单击显示或隐藏导航栏
+    @IBAction func tagAction(sender: AnyObject) {
+        if self.navigationController?.navigationBarHidden == true
+        {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+        else {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
         }
     }
 }

@@ -944,21 +944,21 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuw-nd-tEW">
                                         <rect key="frame" x="0.0" y="0.0" width="960" height="568"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T0q-ms-tsW">
+                                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T0q-ms-tsW">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="320" id="rD7-Z8-1Do"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w2N-hG-Har">
+                                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w2N-hG-Har">
                                                 <rect key="frame" x="320" y="0.0" width="320" height="568"/>
                                                 <color key="backgroundColor" red="1" green="0.1898922224" blue="0.12674094220000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="320" id="R9U-9B-xbf"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UDT-4R-6Ov">
+                                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UDT-4R-6Ov">
                                                 <rect key="frame" x="640" y="0.0" width="320" height="568"/>
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -1008,12 +1008,18 @@
                         <outlet property="secondImageView" destination="w2N-hG-Har" id="yki-en-vZq"/>
                         <outlet property="secondImageViewLeadingContraint" destination="Ay3-xs-ZtN" id="5PZ-M7-ywc"/>
                         <outlet property="secondImageViewWidthConstraint" destination="R9U-9B-xbf" id="2iG-XG-xfN"/>
+                        <outlet property="tagGesture" destination="AxF-pe-ZvG" id="thf-cM-rEV"/>
                         <outlet property="thirdImageView" destination="UDT-4R-6Ov" id="WEh-Le-HNp"/>
                         <outlet property="thirdImageViewLeadingConstraint" destination="bWH-lN-i9i" id="ygy-RM-Vqi"/>
                         <outlet property="thirdImageViewWidthConstraint" destination="luy-jt-UcF" id="Np3-qy-yiz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0nH-4p-Wae" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="AxF-pe-ZvG">
+                    <connections>
+                        <action selector="tagAction:" destination="56k-JG-1dj" id="WO2-V3-VPe"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1696" y="1429"/>
         </scene>
