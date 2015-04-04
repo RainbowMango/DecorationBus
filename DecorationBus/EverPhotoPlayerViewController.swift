@@ -44,6 +44,9 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         
         // 单击手势添加到ImageView, 点击显示或隐藏导航栏
         secondImageView.addGestureRecognizer(tagGesture)
+        
+        // 禁止自动调整, 防止导航出现及隐藏时图片抖动
+        self.automaticallyAdjustsScrollViewInsets = false
     }
 
     override func viewDidAppear(animated: Bool) {
