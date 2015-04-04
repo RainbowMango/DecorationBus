@@ -15,6 +15,10 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
     var curImageIndex: Int = 0
     var albumName: String = String()
     
+    // 声明代理方法，可以监听本页面返回动作
+    var delegate: EverPhotoPlayerViewControllerDelegate?
+    var parentView: EverPhotoAlbumCollectionViewController?
+    
     @IBOutlet weak var scrollviewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var firstImageViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var secondImageViewLeadingContraint: NSLayoutConstraint!
@@ -50,6 +54,11 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         
         //定位到第二个imageView
         self.scrollview.contentOffset = CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.delegate = parentView
+        self.delegate?.currentImageURLs(imageURLs)
     }
     
     /*view消失时取消代理，否则仍然会收到代理消息导致crash,原因不明*/
@@ -183,5 +192,9 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         // 重新装载图片
         loadImage()
     }
-    
+}
+
+// 定义代理，用于向前个view传递最新的图片列表
+protocol EverPhotoPlayerViewControllerDelegate {
+    func currentImageURLs(curImageURLs: Array<String>) -> Void
 }

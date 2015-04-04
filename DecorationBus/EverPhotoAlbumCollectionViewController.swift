@@ -10,7 +10,7 @@ import UIKit
 
 let reuseIdentifier = "EverPhotoCollectionCell"
 
-class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, EverPhotoPlayerViewControllerDelegate {
 
     var albumName:String = String()
     var imageURLs: Array<String> = Array<String>()
@@ -20,6 +20,8 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         
         // 放置添加按钮到导航栏
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加", style: .Bordered, target: self, action: "addPhoto:")
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -39,6 +41,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
             destinationView.setValue(selectedRow, forKey: "curImageIndex")
             destinationView.setValue(imageURLs, forKey: "imageURLs")
             destinationView.setValue(albumName, forKey: "albumName")
+            destinationView.setValue(self, forKey: "parentView")
             
             // 下个view隐藏tabbar, 给予用户更多浏览空间
             self.hidesBottomBarWhenPushed = true
@@ -99,5 +102,13 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func currentImageURLs(curImageURLs: Array<String>) -> Void {
+        if curImageURLs != imageURLs {
+            println("导航回来刷新数据")
+            imageURLs = curImageURLs
+            self.collectionView?.reloadData()
+        }
     }
 }
