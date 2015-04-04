@@ -111,7 +111,7 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         else {
             secondImageView.image = UIImage()
         }
-        
+
         // 当前图片是最后一张时不载入
         if curImageIndex < (imageURLs.count - 1) {
             thirdImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex + 1])
@@ -168,6 +168,15 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         default:
             println("Do nothing")
         }
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return secondImageView as UIView
+    }
+    
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
+        println("缩放比例：\(scale)")
+        println("当前contentsize = \(scrollview.contentOffset)")
     }
     
     //单击显示或隐藏导航栏
