@@ -38,6 +38,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
             let selectedRow = (self.collectionView?.indexPathsForSelectedItems() as Array<NSIndexPath>)[0].row
             destinationView.setValue(selectedRow, forKey: "curImageIndex")
             destinationView.setValue(imageURLs, forKey: "imageURLs")
+            destinationView.setValue(albumName, forKey: "albumName")
             
             // 下个view隐藏tabbar, 给予用户更多浏览空间
             self.hidesBottomBarWhenPushed = true

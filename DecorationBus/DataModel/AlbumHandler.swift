@@ -31,6 +31,23 @@ class AlbumHandler: NSObject {
         return true
     }
     
+    /*
+    删除图片
+    */
+    func removeImageFromSandbox(albumName: String, imageURL: String) -> Bool {
+        removeImageFromPlist(albumName, imageURL: imageURL)
+        
+        let defFileManager = NSFileManager.defaultManager()
+        assert(defFileManager.fileExistsAtPath(imageURL), "文件不存在：\(imageURL)")
+        
+        if !defFileManager.removeItemAtPath(imageURL, error: nil) {
+            println("文件删除失败：\(imageURL)")
+            return false
+        }
+        
+        return true
+    }
+    
     /*将图片URL添加到plist文件，前提是相册已经存在*/
     func addImageURLToPlist(albumName: String, imageURL: String) -> Bool {
         var plistFile = getSandboxFile()
@@ -47,6 +64,27 @@ class AlbumHandler: NSObject {
         var rc = plistArry!.writeToFile(plistFile, atomically: true)
         assert(rc, "写文件失败")
         return rc
+    }
+    
+    /*
+    将图片URL从plist文件中删除
+    */
+    func removeImageFromPlist(albumName: String, imageURL: String) -> Bool {
+        var plistFile = getSandboxFile()
+        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        assert(plistArry != nil, "获取相册列表失败")
+        
+        for (index, entry) in enumerate(plistArry!) {
+            if albumName == entry["AlbumName"] as String {
+                (entry["ImageList"] as NSMutableArray).removeObject(imageURL)
+                break
+            }
+        }
+        
+        var rc = plistArry!.writeToFile(plistFile, atomically: true)
+        assert(rc, "写文件失败")
+        return rc
+        
     }
     
     /*取得相册中照片数量*/

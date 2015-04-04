@@ -999,10 +999,17 @@
                             <constraint firstItem="db9-he-iB1" firstAttribute="top" secondItem="ogv-bA-kLo" secondAttribute="top" id="nbL-xP-Kbo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="图片浏览器" id="LmW-83-CFw"/>
+                    <navigationItem key="navigationItem" title="图片浏览器" id="LmW-83-CFw">
+                        <barButtonItem key="rightBarButtonItem" title="删除" id="YWH-4q-7MK">
+                            <connections>
+                                <action selector="deletePhotho:" destination="56k-JG-1dj" id="5le-IM-ixd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="firstImageView" destination="T0q-ms-tsW" id="TzW-YW-Afd"/>
                         <outlet property="firstImageViewWidthConstraint" destination="rD7-Z8-1Do" id="9Xc-Yg-Xix"/>
+                        <outlet property="removeButton" destination="YWH-4q-7MK" id="c7B-m4-4mg"/>
                         <outlet property="scrollview" destination="db9-he-iB1" id="6yO-Ug-kJa"/>
                         <outlet property="scrollviewWidthConstraint" destination="7xt-D6-sX3" id="28R-Ql-2hy"/>
                         <outlet property="secondImageView" destination="w2N-hG-Har" id="yki-en-vZq"/>

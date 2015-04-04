@@ -13,6 +13,7 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
     //图片列表以及当前选中的图片index
     var imageURLs: Array<String> = Array<String>()
     var curImageIndex: Int = 0
+    var albumName: String = String()
     
     @IBOutlet weak var scrollviewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var firstImageViewWidthConstraint: NSLayoutConstraint!
@@ -27,6 +28,7 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var thirdImageView: UIImageView!
     
     @IBOutlet var tagGesture: UITapGestureRecognizer!  // 单击手势
+    @IBOutlet weak var removeButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +46,7 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         println("imageURLs: \(self.imageURLs)")
         println("curImageIndex: \(self.curImageIndex)")
         
-        loadImageWhenAppear()
+        loadImage()
         
         //定位到第二个imageView
         self.scrollview.contentOffset = CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0)
@@ -72,7 +74,7 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
     }
     
     /*初次载入图片，永远将当前图片放入第二个imageView，当前图片的前后两张图片分别放入第一三个imageView*/
-    func loadImageWhenAppear() -> Void {
+    func loadImage() -> Void {
         /*改动思路
         1. 永远将当前图片放置到中间的imageView
         1.1 如果只有一张图片，不允许滑动
@@ -91,18 +93,31 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
             firstImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex - 1])
         }
         
-        secondImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex])
+        if imageURLs.count > curImageIndex {
+            secondImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex])
+        }
+        else {
+            secondImageView.image = UIImage()
+        }
         
         // 当前图片是最后一张时不载入
         if curImageIndex < (imageURLs.count - 1) {
             thirdImageView.image = UIImage(contentsOfFile: imageURLs[curImageIndex + 1])
+        }
+        
+        // 如果当前相册没有图片，删除按钮不可点击
+        if imageURLs.isEmpty {
+            removeButton.enabled = false
+        }
+        else {
+            removeButton.enabled = true
         }
     }
 
     /*检测滑动方向，第一张图片向左滑动时及最后一张图片向右滑动时归正contentOffset*/
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if self.scrollview.contentOffset.x > secondImageView.frame.origin.x {
-            if curImageIndex == imageURLs.count - 1 {
+            if curImageIndex >= imageURLs.count - 1 {
                 self.scrollview.setContentOffset(CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0), animated: false)
                 println("最后一张图片，禁止右划")
             }
@@ -114,15 +129,7 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-//
-//    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-//        println("scrollViewWillBeginDragging")
-//    }
-//    
-//    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        println("scrollViewWillEndDragging")
-//    }
-//    
+
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         println("scrollViewDidEndDragging")
     }
@@ -134,15 +141,17 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
         switch pageNumber {
         case 0:
             println("当前显示的是第1页，需要在第二个imageView中加载本图片，并调整contentOffset至第二个ImageView")
-            self.curImageIndex--
-            loadImageWhenAppear()
+            if curImageIndex > 0 {
+                curImageIndex--
+            }
+            loadImage()
             self.scrollview.contentOffset = CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0)
         case 1:
             println("当前显示的是第2页，不改变")
         case 2:
             println("当前显示的是第3页，需要在第二个imageView中加载本图片，并调整contentOffset至第二个ImageView")
             self.curImageIndex++
-            loadImageWhenAppear()
+            loadImage()
             self.scrollview.contentOffset = CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0)
         default:
             println("Do nothing")
@@ -159,4 +168,20 @@ class EverPhotoPlayerViewController: UIViewController, UIScrollViewDelegate {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
         }
     }
+    
+    //删除当前图片
+    @IBAction func deletePhotho(sender: AnyObject) {
+        // 删除sandbox图片
+        AlbumHandler().removeImageFromSandbox(albumName, imageURL: imageURLs[curImageIndex])
+        
+        // 更新本controller图片列表
+        imageURLs.removeAtIndex(curImageIndex)
+        if curImageIndex != 0 {
+            curImageIndex--
+        }
+        
+        // 重新装载图片
+        loadImage()
+    }
+    
 }
