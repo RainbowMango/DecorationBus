@@ -140,7 +140,6 @@
 		9BFE55651AD6B603003D8795 /* MWZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE55121AD6B603003D8795 /* MWZoomingScrollView.m */; };
 		9BFE55661AD6B603003D8795 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE55161AD6B603003D8795 /* DACircularProgressView.m */; };
 		9BFE55671AD6B603003D8795 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE55191AD6B603003D8795 /* MBProgressHUD.m */; };
-		9BFE55681AD6B603003D8795 /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE551A1AD6B603003D8795 /* README.mdown */; };
 		9BFE55691AD6B603003D8795 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE551D1AD6B603003D8795 /* NSIndexPath+PSTCollectionViewAdditions.m */; };
 		9BFE556A1AD6B603003D8795 /* PSTCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE551F1AD6B603003D8795 /* PSTCollectionView.m */; };
 		9BFE556B1AD6B603003D8795 /* PSTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE55211AD6B603003D8795 /* PSTCollectionViewCell.m */; };
@@ -155,7 +154,6 @@
 		9BFE55741AD6B603003D8795 /* PSTGridLayoutRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE55351AD6B603003D8795 /* PSTGridLayoutRow.m */; };
 		9BFE55751AD6B603003D8795 /* PSTGridLayoutSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE55371AD6B603003D8795 /* PSTGridLayoutSection.m */; };
 		9BFE55761AD6B603003D8795 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 9BFE55391AD6B603003D8795 /* LICENSE */; };
-		9BFE55771AD6B603003D8795 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE553A1AD6B603003D8795 /* README.md */; };
 		9BFE55781AD6B603003D8795 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE553D1AD6B603003D8795 /* MKAnnotationView+WebCache.m */; };
 		9BFE55791AD6B603003D8795 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE553F1AD6B603003D8795 /* NSData+ImageContentType.m */; };
 		9BFE557A1AD6B603003D8795 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE55411AD6B603003D8795 /* SDImageCache.m */; };
@@ -337,7 +335,6 @@
 		9BFE55161AD6B603003D8795 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		9BFE55181AD6B603003D8795 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		9BFE55191AD6B603003D8795 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		9BFE551A1AD6B603003D8795 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
 		9BFE551C1AD6B603003D8795 /* NSIndexPath+PSTCollectionViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+PSTCollectionViewAdditions.h"; sourceTree = "<group>"; };
 		9BFE551D1AD6B603003D8795 /* NSIndexPath+PSTCollectionViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+PSTCollectionViewAdditions.m"; sourceTree = "<group>"; };
 		9BFE551E1AD6B603003D8795 /* PSTCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTCollectionView.h; sourceTree = "<group>"; };
@@ -367,7 +364,6 @@
 		9BFE55361AD6B603003D8795 /* PSTGridLayoutSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTGridLayoutSection.h; sourceTree = "<group>"; };
 		9BFE55371AD6B603003D8795 /* PSTGridLayoutSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTGridLayoutSection.m; sourceTree = "<group>"; };
 		9BFE55391AD6B603003D8795 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		9BFE553A1AD6B603003D8795 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9BFE553C1AD6B603003D8795 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		9BFE553D1AD6B603003D8795 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		9BFE553E1AD6B603003D8795 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -764,7 +760,6 @@
 			children = (
 				9BFE55181AD6B603003D8795 /* MBProgressHUD.h */,
 				9BFE55191AD6B603003D8795 /* MBProgressHUD.m */,
-				9BFE551A1AD6B603003D8795 /* README.mdown */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -808,7 +803,6 @@
 			isa = PBXGroup;
 			children = (
 				9BFE55391AD6B603003D8795 /* LICENSE */,
-				9BFE553A1AD6B603003D8795 /* README.md */,
 				9BFE553B1AD6B603003D8795 /* SDWebImage */,
 			);
 			path = SDWebImage;
@@ -1079,7 +1073,6 @@
 				9B2491971A5D683700990BA6 /* FormSelectorCell.swift in Sources */,
 				9B24919F1A5D683700990BA6 /* FormRowDescriptor.swift in Sources */,
 				9BFE556F1AD6B603003D8795 /* PSTCollectionViewItemKey.m in Sources */,
-				9BFE55681AD6B603003D8795 /* README.mdown in Sources */,
 				9BFE55721AD6B603003D8795 /* PSTGridLayoutInfo.m in Sources */,
 				9B97DCCC1A236161006A94C0 /* BudgetItemDataModel.swift in Sources */,
 				9BFE55671AD6B603003D8795 /* MBProgressHUD.m in Sources */,
@@ -1094,7 +1087,6 @@
 				9B9E1ACC1A82556B006D816F /* EverPhotoTableViewController.swift in Sources */,
 				9BFE557B1AD6B603003D8795 /* SDWebImageCompat.m in Sources */,
 				9BC401BE1A7E638400FDF4D6 /* CategoryHandler.swift in Sources */,
-				9BFE55771AD6B603003D8795 /* README.md in Sources */,
 				9B37A9D419EEB57A0097F88D /* AppDelegate.swift in Sources */,
 				9B2491A01A5D683700990BA6 /* FormSectionDescriptor.swift in Sources */,
 				9BFE55611AD6B603003D8795 /* MWPhoto.m in Sources */,
