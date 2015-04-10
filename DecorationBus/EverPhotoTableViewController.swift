@@ -15,23 +15,17 @@ class EverPhotoTableViewController: UITableViewController, MWPhotoBrowserDelegat
     
     var selectedAlbum: String = String() // 选中特定相册时设置为相册名字，传递到下一个相册
 
-    var _photos = NSMutableArray()
-    var _thumbs = NSMutableArray()
+    var _photos = NSMutableArray() //图片展示列表
+    var _thumbs = NSMutableArray() //缩略图列表
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setViewColor()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // view配色方案
@@ -43,21 +37,17 @@ class EverPhotoTableViewController: UITableViewController, MWPhotoBrowserDelegat
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return phase_.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
         return 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
 
-        // Configure the cell...
+        // 配置cell，后期可以自定义cell显示每个相册的图片数量以及添加时间
         cell.textLabel?.text = phase_[indexPath.section]
         cell.imageView?.image = UIImage(named: "Album")
 
@@ -72,13 +62,9 @@ class EverPhotoTableViewController: UITableViewController, MWPhotoBrowserDelegat
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.selectedAlbum = self.phase_[indexPath.section]
         
-//        var alertView = UIAlertView(title: "敬请期待", message: "你造吗，这是款众多装修业主一起打造的产品，你要不要参与呢~", delegate: self, cancelButtonTitle: "好的")
-//        alertView.show()
-        
         //performSegueWithIdentifier("toEverPhotoAlbum", sender: self.view)
         
         var photo = MWPhoto()
-        var displayActionButton = true
         var displaySelectionButtons = false
         var displayNavArrows = false
         var enableGrid = true
@@ -106,9 +92,9 @@ class EverPhotoTableViewController: UITableViewController, MWPhotoBrowserDelegat
         
         // Create browser
         var browser = MWPhotoBrowser(delegate: self)
-        browser.displayActionButton = displayActionButton
+        browser.displayActionButton = true  //网格视图右上角分享按钮,默认是
         browser.displayNavArrows = displayNavArrows;
-        browser.displaySelectionButtons = displaySelectionButtons;
+        browser.displaySelectionButtons = displaySelectionButtons //是否显示选择按钮在图片上,默认否
         browser.alwaysShowControls = displaySelectionButtons;
         browser.zoomPhotosToFill = true;
 //        #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
@@ -132,11 +118,6 @@ class EverPhotoTableViewController: UITableViewController, MWPhotoBrowserDelegat
         
         // Deselect
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        // Test reloading of data after delay
-//        double delayInSeconds = 3;
-//        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
     }
 
     // MARK: - Navigation
