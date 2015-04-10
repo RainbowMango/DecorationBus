@@ -10,10 +10,13 @@ import UIKit
 
 let reuseIdentifier = "EverPhotoCollectionCell"
 
-class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, EverPhotoPlayerViewControllerDelegate {
+class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, MWPhotoBrowserDelegate, EverPhotoPlayerViewControllerDelegate {
 
     var albumName:String = String()
     var imageURLs: Array<String> = Array<String>()
+    
+    var _photos = NSMutableArray() //图片展示列表
+    var _thumbs = NSMutableArray() //缩略图列表
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +77,30 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     // MARK: UICollectionViewDelegate
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("segueImagePlayer", sender: self.view)
+        // 添加图片
+        var photo = MWPhoto()
+        _photos.removeAllObjects()
+        for imageURL in imageURLs {
+            var myImage = UIImage(contentsOfFile: imageURL)
+            photo = MWPhoto(image: myImage)
+            photo.caption = ""
+            _photos.addObject(photo)
+        }
+        
+        // Create browser
+        var browser = MWPhotoBrowser(delegate: self)
+        browser.displayActionButton = false  //右上角导航显示分享按钮,默认是
+        browser.displayNavArrows = false
+        browser.displaySelectionButtons = false //是否显示选择按钮在图片上,默认否
+        browser.alwaysShowControls = false
+        browser.zoomPhotosToFill = true;
+        browser.enableGrid = true
+        browser.startOnGrid = false
+        browser.enableSwipeToDismiss = true;
+        browser.setCurrentPhotoIndex(UInt(indexPath.row))
+        
+        // Show
+        self.navigationController?.pushViewController(browser, animated: true)
     }
 
     /*添加照片，目前只支持从照片库中添加，后期可以扩展到三种方式：照片库、相册和相机*/
@@ -110,5 +136,26 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
             imageURLs = curImageURLs
             self.collectionView?.reloadData()
         }
+    }
+    
+    // MARK: MWPhotoBrowserDelegate
+    func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
+        return UInt(_photos.count)
+    }
+    
+    func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
+        if (index < UInt(_photos.count)) {
+            return _photos.objectAtIndex(Int(index)) as MWPhotoProtocol
+        }
+        
+        return nil;
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
+    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+        return UIStatusBarAnimation.None
     }
 }
