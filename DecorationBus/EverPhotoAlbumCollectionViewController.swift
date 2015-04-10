@@ -89,13 +89,14 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         
         // Create browser
         var browser = MWPhotoBrowser(delegate: self)
-        browser.displayActionButton = false  //右上角导航显示分享按钮,默认是
-        browser.displayNavArrows = false
-        browser.displaySelectionButtons = false //是否显示选择按钮在图片上,默认否
-        browser.alwaysShowControls = false
+        browser.displayActionButton = true  //Show action button to allow sharing, copying, etc (defaults to YES)
+        browser.displayNavArrows = true     //Whether to display left and right nav arrows on toolbar (defaults to NO)
+        browser.displaySelectionButtons = true // Whether selection buttons are shown on each image (defaults to NO)
+        browser.zoomPhotosToFill = true // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
+        browser.alwaysShowControls = false // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
         browser.zoomPhotosToFill = true;
-        browser.enableGrid = true
-        browser.startOnGrid = false
+        browser.enableGrid = true // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
+        browser.startOnGrid = false // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
         browser.enableSwipeToDismiss = true;
         browser.setCurrentPhotoIndex(UInt(indexPath.row))
         
