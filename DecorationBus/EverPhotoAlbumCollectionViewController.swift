@@ -152,6 +152,11 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         return nil;
     }
     
+//    // 自定义actionButton点击动作
+//    func photoBrowser(photoBrowser: MWPhotoBrowser!, actionButtonPressedForPhotoAtIndex index: UInt) {
+//        println("actionButtonPressedForPhotoAtIndex")
+//    }
+    
     override func prefersStatusBarHidden() -> Bool {
         return false
     }

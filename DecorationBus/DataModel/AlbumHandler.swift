@@ -110,7 +110,20 @@ class AlbumHandler: NSObject {
         
         for (index, entry) in enumerate(plistArry!) {
             if albumName == entry["AlbumName"] as String {
-                return entry["ImageList"] as Array<String>
+                var originURLs = entry["ImageList"] as Array<String>
+                
+                /*
+                开发环境中每次编译都会生成唯一的ApplicationID,导致图片URL链接失效，为了方便开发添加过滤条件
+                /Users/ruby/Library/Developer/CoreSimulator/Devices/1176A972-4E01-445B-B567-5F2E73BC5DEE/data/Containers/Data/Application/FC090F7E-B48F-4DB3-85DC-F3DEFC423864/Documents/album_素颜_20150412105921597.png
+                */
+                var finalURLs = Array<String>()
+                for item in originURLs {
+                    if(NSFileManager().fileExistsAtPath(item)) {
+                        finalURLs.append(item)
+                    }
+                }
+                
+                return finalURLs
             }
         }
         
