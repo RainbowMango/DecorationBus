@@ -67,11 +67,20 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
-    
-        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(contentsOfFile: imageURLs[indexPath.row])
-    
-        return cell
+//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
+//    
+//        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(contentsOfFile: imageURLs[indexPath.row])
+//    
+//        return cell
+        
+        let photoCell = self.collectionView?.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as CollectionPhotoCell
+        photoCell.photoImageView.image = UIImage(contentsOfFile: imageURLs[indexPath.row])
+        photoCell.photoImageView.alpha = 0
+        UIView.animateWithDuration(0.2, animations: {
+            photoCell.photoImageView.alpha = 1.0
+        })
+        
+        return photoCell;
     }
 
     // MARK: UICollectionViewDelegate
@@ -102,6 +111,11 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         
         // Show
         self.navigationController?.pushViewController(browser, animated: true)
+    }
+    
+    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+        //TODO: 优化cell布局，不同屏幕尺寸下都有合适的cell尺寸与间隔
+        return CGSizeMake(100, 100)
     }
 
     /*添加照片，目前只支持从照片库中添加，后期可以扩展到三种方式：照片库、相册和相机*/

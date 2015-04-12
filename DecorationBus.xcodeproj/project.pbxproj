@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B05F5171ADA18560058EF0B /* CollectionPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B05F5161ADA18560058EF0B /* CollectionPhotoCell.swift */; };
 		9B0CE7AE1AC1A8E200945AE6 /* AlbumHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CE7AD1AC1A8E200945AE6 /* AlbumHandler.swift */; };
 		9B0CE7B01AC2FA9600945AE6 /* EverAlbum.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B0CE7AF1AC2FA9600945AE6 /* EverAlbum.plist */; };
 		9B0CE7B31AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CE7B21AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift */; };
@@ -184,6 +185,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B05F5161ADA18560058EF0B /* CollectionPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPhotoCell.swift; sourceTree = "<group>"; };
 		9B0CE7AD1AC1A8E200945AE6 /* AlbumHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumHandler.swift; sourceTree = "<group>"; };
 		9B0CE7AF1AC2FA9600945AE6 /* EverAlbum.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EverAlbum.plist; sourceTree = "<group>"; };
 		9B0CE7B21AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverPhotoPlayerViewController.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 				9B97DCCA1A23610B006A94C0 /* dataModel */,
 				9B37A9D319EEB57A0097F88D /* AppDelegate.swift */,
 				9B37A9DA19EEB57A0097F88D /* Main.storyboard */,
+				9B05F5161ADA18560058EF0B /* CollectionPhotoCell.swift */,
 				9B6E3DF91AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift */,
 				9B0CE7B21AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift */,
 				9B9E1ACB1A82556B006D816F /* EverPhotoTableViewController.swift */,
@@ -1028,6 +1031,7 @@
 				9B2491931A5D683700990BA6 /* FormCheckCell.swift in Sources */,
 				9BFE556D1AD6B603003D8795 /* PSTCollectionViewData.m in Sources */,
 				9BFE55851AD6B603003D8795 /* UIImageView+HighlightedWebCache.m in Sources */,
+				9B05F5171ADA18560058EF0B /* CollectionPhotoCell.swift in Sources */,
 				9B2491981A5D683700990BA6 /* FormSwitchCell.swift in Sources */,
 				9B2491901A5D683700990BA6 /* FormTitleCell.swift in Sources */,
 				9B2D7B881A63E82800D829EF /* FormTwoComponentPickerCell.swift in Sources */,
