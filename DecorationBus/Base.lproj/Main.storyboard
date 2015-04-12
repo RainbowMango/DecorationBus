@@ -922,7 +922,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="留影机相册" id="8Ie-0T-1TC"/>
                     <connections>
-                        <segue destination="56k-JG-1dj" kind="push" identifier="segueImagePlayer" id="hKK-3f-eg4"/>
+                        <segue destination="5zv-nv-MyO" kind="push" identifier="segueImagePlayer" id="YEw-6z-6Sh"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbU-nw-QPA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -930,108 +930,23 @@
             <point key="canvasLocation" x="1270" y="1429"/>
         </scene>
         <!--图片浏览器-->
-        <scene sceneID="hm9-3B-qwG">
+        <scene sceneID="ORU-1E-JxC">
             <objects>
-                <viewController id="56k-JG-1dj" customClass="EverPhotoPlayerViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5zv-nv-MyO" customClass="EverPhotoPlayerViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lq7-YE-NPl"/>
-                        <viewControllerLayoutGuide type="bottom" id="3CJ-TQ-3vD"/>
+                        <viewControllerLayoutGuide type="top" id="gAN-EH-Xg4"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pq1-4f-PKk"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ogv-bA-kLo">
+                    <view key="view" contentMode="scaleToFill" id="4ev-7v-ZR0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.5" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="db9-he-iB1">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuw-nd-tEW">
-                                        <rect key="frame" x="0.0" y="0.0" width="960" height="568"/>
-                                        <subviews>
-                                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T0q-ms-tsW">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                                <color key="backgroundColor" red="1" green="0.1898922224" blue="0.12674094220000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="320" id="rD7-Z8-1Do"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w2N-hG-Har">
-                                                <rect key="frame" x="320" y="0.0" width="320" height="568"/>
-                                                <color key="backgroundColor" red="1" green="0.66115237309999997" blue="0.18740535820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="320" id="R9U-9B-xbf"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UDT-4R-6Ov">
-                                                <rect key="frame" x="640" y="0.0" width="320" height="568"/>
-                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="320" id="luy-jt-UcF"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="960" id="7xt-D6-sX3"/>
-                                            <constraint firstAttribute="bottom" secondItem="UDT-4R-6Ov" secondAttribute="bottom" id="9jq-sR-16o"/>
-                                            <constraint firstItem="w2N-hG-Har" firstAttribute="leading" secondItem="yuw-nd-tEW" secondAttribute="leading" constant="320" id="Ay3-xs-ZtN"/>
-                                            <constraint firstItem="w2N-hG-Har" firstAttribute="top" secondItem="yuw-nd-tEW" secondAttribute="top" id="KXA-jb-Iym"/>
-                                            <constraint firstItem="T0q-ms-tsW" firstAttribute="leading" secondItem="yuw-nd-tEW" secondAttribute="leading" id="TH4-Oi-LUC"/>
-                                            <constraint firstItem="UDT-4R-6Ov" firstAttribute="top" secondItem="yuw-nd-tEW" secondAttribute="top" id="ViK-5y-N71"/>
-                                            <constraint firstItem="UDT-4R-6Ov" firstAttribute="leading" secondItem="yuw-nd-tEW" secondAttribute="leading" constant="640" id="bWH-lN-i9i"/>
-                                            <constraint firstAttribute="bottom" secondItem="w2N-hG-Har" secondAttribute="bottom" id="jsO-uq-dTT"/>
-                                            <constraint firstAttribute="bottom" secondItem="T0q-ms-tsW" secondAttribute="bottom" id="wDd-57-GXN"/>
-                                            <constraint firstItem="w2N-hG-Har" firstAttribute="leading" secondItem="T0q-ms-tsW" secondAttribute="trailing" id="zAC-y5-8CR"/>
-                                            <constraint firstItem="T0q-ms-tsW" firstAttribute="top" secondItem="yuw-nd-tEW" secondAttribute="top" id="zak-eT-Yaf"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="yuw-nd-tEW" firstAttribute="top" secondItem="db9-he-iB1" secondAttribute="top" id="AEe-aO-Ah8"/>
-                                    <constraint firstAttribute="centerY" secondItem="yuw-nd-tEW" secondAttribute="centerY" id="I0b-l9-rlT"/>
-                                    <constraint firstItem="yuw-nd-tEW" firstAttribute="leading" secondItem="db9-he-iB1" secondAttribute="leading" id="KT6-tP-NbN"/>
-                                    <constraint firstAttribute="bottom" secondItem="yuw-nd-tEW" secondAttribute="bottom" id="qmh-h6-okH"/>
-                                    <constraint firstAttribute="trailing" secondItem="yuw-nd-tEW" secondAttribute="trailing" id="rtf-n5-0Ia"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="db9-he-iB1" secondAttribute="trailing" id="4a7-FC-exr"/>
-                            <constraint firstItem="db9-he-iB1" firstAttribute="leading" secondItem="ogv-bA-kLo" secondAttribute="leading" id="BPN-RJ-AjO"/>
-                            <constraint firstAttribute="bottom" secondItem="db9-he-iB1" secondAttribute="bottom" id="YnV-zz-ACo"/>
-                            <constraint firstItem="db9-he-iB1" firstAttribute="top" secondItem="ogv-bA-kLo" secondAttribute="top" id="nbL-xP-Kbo"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="图片浏览器" id="LmW-83-CFw">
-                        <barButtonItem key="rightBarButtonItem" title="删除" id="YWH-4q-7MK">
-                            <connections>
-                                <action selector="deletePhotho:" destination="56k-JG-1dj" id="5le-IM-ixd"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="firstImageView" destination="T0q-ms-tsW" id="TzW-YW-Afd"/>
-                        <outlet property="firstImageViewWidthConstraint" destination="rD7-Z8-1Do" id="9Xc-Yg-Xix"/>
-                        <outlet property="removeButton" destination="YWH-4q-7MK" id="c7B-m4-4mg"/>
-                        <outlet property="scrollview" destination="db9-he-iB1" id="6yO-Ug-kJa"/>
-                        <outlet property="scrollviewWidthConstraint" destination="7xt-D6-sX3" id="28R-Ql-2hy"/>
-                        <outlet property="secondImageView" destination="w2N-hG-Har" id="yki-en-vZq"/>
-                        <outlet property="secondImageViewLeadingContraint" destination="Ay3-xs-ZtN" id="5PZ-M7-ywc"/>
-                        <outlet property="secondImageViewWidthConstraint" destination="R9U-9B-xbf" id="2iG-XG-xfN"/>
-                        <outlet property="tagGesture" destination="AxF-pe-ZvG" id="thf-cM-rEV"/>
-                        <outlet property="thirdImageView" destination="UDT-4R-6Ov" id="WEh-Le-HNp"/>
-                        <outlet property="thirdImageViewLeadingConstraint" destination="bWH-lN-i9i" id="ygy-RM-Vqi"/>
-                        <outlet property="thirdImageViewWidthConstraint" destination="luy-jt-UcF" id="Np3-qy-yiz"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="图片浏览器" id="dn7-9Y-reW"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0nH-4p-Wae" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="AxF-pe-ZvG">
-                    <connections>
-                        <action selector="tagAction:" destination="56k-JG-1dj" id="WO2-V3-VPe"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WbV-Mw-EBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1696" y="1429"/>
+            <point key="canvasLocation" x="1732" y="1429"/>
         </scene>
     </scenes>
     <resources>

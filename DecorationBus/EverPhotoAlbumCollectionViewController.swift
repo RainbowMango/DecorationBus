@@ -40,6 +40,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segueImagePlayer" {
             var destinationView = segue.destinationViewController as EverPhotoPlayerViewController
+            destinationView.delegate = self
             let selectedRow = (self.collectionView?.indexPathsForSelectedItems() as Array<NSIndexPath>)[0].row
             destinationView.setValue(selectedRow, forKey: "curImageIndex")
             destinationView.setValue(imageURLs, forKey: "imageURLs")
@@ -57,6 +58,15 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         // 取得图片列表
         self.imageURLs = AlbumHandler().getURLList(albumName)
         println(self.imageURLs)
+        
+        var photo = MWPhoto()
+        _photos.removeAllObjects()
+        for imageURL in imageURLs {
+            var myImage = UIImage(contentsOfFile: imageURL)
+            photo = MWPhoto(image: myImage)
+            photo.caption = ""
+            _photos.addObject(photo)
+        }
         
         return 1
     }
@@ -86,31 +96,32 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     // MARK: UICollectionViewDelegate
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        // 添加图片
-        var photo = MWPhoto()
-        _photos.removeAllObjects()
-        for imageURL in imageURLs {
-            var myImage = UIImage(contentsOfFile: imageURL)
-            photo = MWPhoto(image: myImage)
-            photo.caption = ""
-            _photos.addObject(photo)
-        }
-        
-        // Create browser
-        var browser = MWPhotoBrowser(delegate: self)
-        browser.displayActionButton = true  //Show action button to allow sharing, copying, etc (defaults to YES)
-        browser.displayNavArrows = true     //Whether to display left and right nav arrows on toolbar (defaults to NO)
-        browser.displaySelectionButtons = true // Whether selection buttons are shown on each image (defaults to NO)
-        browser.zoomPhotosToFill = true // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
-        browser.alwaysShowControls = false // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
-        browser.zoomPhotosToFill = true;
-        browser.enableGrid = true // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
-        browser.startOnGrid = false // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
-        browser.enableSwipeToDismiss = true;
-        browser.setCurrentPhotoIndex(UInt(indexPath.row))
-        
-        // Show
-        self.navigationController?.pushViewController(browser, animated: true)
+        performSegueWithIdentifier("segueImagePlayer", sender: self.view)
+//        // 添加图片
+//        var photo = MWPhoto()
+//        _photos.removeAllObjects()
+//        for imageURL in imageURLs {
+//            var myImage = UIImage(contentsOfFile: imageURL)
+//            photo = MWPhoto(image: myImage)
+//            photo.caption = ""
+//            _photos.addObject(photo)
+//        }
+//        
+//        // Create browser
+//        var browser = MWPhotoBrowser(delegate: self)
+//        browser.displayActionButton = true  //Show action button to allow sharing, copying, etc (defaults to YES)
+//        browser.displayNavArrows = true     //Whether to display left and right nav arrows on toolbar (defaults to NO)
+//        browser.displaySelectionButtons = true // Whether selection buttons are shown on each image (defaults to NO)
+//        browser.zoomPhotosToFill = true // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
+//        browser.alwaysShowControls = false // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
+//        browser.zoomPhotosToFill = true;
+//        browser.enableGrid = true // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
+//        browser.startOnGrid = false // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
+//        browser.enableSwipeToDismiss = true;
+//        browser.setCurrentPhotoIndex(UInt(indexPath.row))
+//        
+//        // Show
+//        self.navigationController?.pushViewController(browser, animated: true)
     }
     
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
@@ -151,6 +162,15 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
             imageURLs = curImageURLs
             self.collectionView?.reloadData()
         }
+    }
+    
+    func removeImage(index: Int) -> Void {
+        println("收到代理方法：removeImage with index \(index)")
+        // 删除sandbox图片
+        AlbumHandler().removeImageFromSandbox(albumName, imageURL: imageURLs[index])
+        _photos.removeObjectAtIndex(index)
+        
+        self.collectionView?.reloadData()
     }
     
     // MARK: MWPhotoBrowserDelegate
