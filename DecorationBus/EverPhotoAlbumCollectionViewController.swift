@@ -26,6 +26,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         // 将相册名称放入导航栏标题中
         self.navigationItem.title = albumName
         
+        // 使用统一的背景颜色
         self.view.backgroundColor = ColorScheme().viewBackgroundColor
         self.collectionView?.backgroundColor = ColorScheme().viewBackgroundColor
     }
@@ -90,8 +91,9 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     }
     
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-        //TODO: 优化cell布局，不同屏幕尺寸下都有合适的cell尺寸与间隔
-        return CGSizeMake(100, 100)
+        // 每个cell横向间隔为10, 每行放置三个cell
+        let cellEdge = (CGRectGetWidth(UIScreen.mainScreen().bounds) - 20) / 3
+        return CGSizeMake(cellEdge, cellEdge)
     }
 
     /*添加照片，目前只支持从照片库中添加，后期可以扩展到三种方式：照片库、相册和相机*/
