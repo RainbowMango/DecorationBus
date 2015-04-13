@@ -168,6 +168,11 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         println("收到代理方法：removeImage with index \(index)")
         // 删除sandbox图片
         AlbumHandler().removeImageFromSandbox(albumName, imageURL: imageURLs[index])
+        
+        // 从collection列表中删除图片
+        imageURLs.removeAtIndex(index)
+        
+        // 从player列表中删除图片
         _photos.removeObjectAtIndex(index)
         
         self.collectionView?.reloadData()
