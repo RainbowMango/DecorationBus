@@ -20,11 +20,14 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // 放置添加按钮到导航栏
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加", style: .Bordered, target: self, action: "addPhoto:")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Camera, target: self, action: "addPhotoButtonPressed:")
         
+        // 将相册名称放入导航栏标题中
+        self.navigationItem.title = albumName
         
+        self.view.backgroundColor = ColorScheme().viewBackgroundColor
+        self.collectionView?.backgroundColor = ColorScheme().viewBackgroundColor
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -32,11 +35,9 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Navigation
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segueImagePlayer" {
             let selectedRow = (self.collectionView?.indexPathsForSelectedItems() as Array<NSIndexPath>)[0].row
@@ -44,9 +45,6 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
             destinationView.delegate = self
             destinationView.setCurrentPhotoIndex(UInt(selectedRow))
             destinationView.setValue(self, forKey: "parentView")
-            
-            // 下个view隐藏tabbar, 给予用户更多浏览空间
-            self.hidesBottomBarWhenPushed = true
         }
     }
 
@@ -75,12 +73,6 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
-//    
-//        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(contentsOfFile: imageURLs[indexPath.row])
-//    
-//        return cell
-        
         let photoCell = self.collectionView?.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as CollectionPhotoCell
         photoCell.photoImageView.image = UIImage(contentsOfFile: imageURLs[indexPath.row])
         photoCell.photoImageView.alpha = 0
@@ -95,31 +87,6 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("segueImagePlayer", sender: self.view)
-//        // 添加图片
-//        var photo = MWPhoto()
-//        _photos.removeAllObjects()
-//        for imageURL in imageURLs {
-//            var myImage = UIImage(contentsOfFile: imageURL)
-//            photo = MWPhoto(image: myImage)
-//            photo.caption = ""
-//            _photos.addObject(photo)
-//        }
-//        
-//        // Create browser
-//        var browser = MWPhotoBrowser(delegate: self)
-//        browser.displayActionButton = true  //Show action button to allow sharing, copying, etc (defaults to YES)
-//        browser.displayNavArrows = true     //Whether to display left and right nav arrows on toolbar (defaults to NO)
-//        browser.displaySelectionButtons = true // Whether selection buttons are shown on each image (defaults to NO)
-//        browser.zoomPhotosToFill = true // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
-//        browser.alwaysShowControls = false // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
-//        browser.zoomPhotosToFill = true;
-//        browser.enableGrid = true // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
-//        browser.startOnGrid = false // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
-//        browser.enableSwipeToDismiss = true;
-//        browser.setCurrentPhotoIndex(UInt(indexPath.row))
-//        
-//        // Show
-//        self.navigationController?.pushViewController(browser, animated: true)
     }
     
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
@@ -128,7 +95,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     }
 
     /*添加照片，目前只支持从照片库中添加，后期可以扩展到三种方式：照片库、相册和相机*/
-    func addPhoto(_: UIBarButtonItem!) {
+    func addPhotoButtonPressed(_: UIBarButtonItem!) {
         println("开始导入图片")
         var imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -139,10 +106,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         var image: UIImage = info["UIImagePickerControllerOriginalImage"] as UIImage
-        println(info.description)
-        //self.imageView01.image = image
         AlbumHandler().saveImageToSandbox(albumName, image: image)
-        println("保存照片到\(albumName)")
         
         self.dismissViewControllerAnimated(true, completion: nil)
         
@@ -155,7 +119,6 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     }
     
     func EverPhotoPlayerView(willRemoveImage index: UInt) {
-        println("收到代理方法：removeImage with index \(index)")
         // 删除sandbox图片
         AlbumHandler().removeImageFromSandbox(albumName, imageURL: imageURLs[Int(index)])
         
@@ -180,11 +143,6 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         
         return nil;
     }
-    
-//    // 自定义actionButton点击动作
-//    func photoBrowser(photoBrowser: MWPhotoBrowser!, actionButtonPressedForPhotoAtIndex index: UInt) {
-//        println("actionButtonPressedForPhotoAtIndex")
-//    }
     
     override func prefersStatusBarHidden() -> Bool {
         return false
