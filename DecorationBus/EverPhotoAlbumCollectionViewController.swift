@@ -39,12 +39,10 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segueImagePlayer" {
+            let selectedRow = (self.collectionView?.indexPathsForSelectedItems() as Array<NSIndexPath>)[0].row
             var destinationView = segue.destinationViewController as EverPhotoPlayerViewController
             destinationView.delegate = self
-            let selectedRow = (self.collectionView?.indexPathsForSelectedItems() as Array<NSIndexPath>)[0].row
-            destinationView.setValue(selectedRow, forKey: "curImageIndex")
-            destinationView.setValue(imageURLs, forKey: "imageURLs")
-            destinationView.setValue(albumName, forKey: "albumName")
+            destinationView.setCurrentPhotoIndex(UInt(selectedRow))
             destinationView.setValue(self, forKey: "parentView")
             
             // 下个view隐藏tabbar, 给予用户更多浏览空间
@@ -156,24 +154,16 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func currentImageURLs(curImageURLs: Array<String>) -> Void {
-        if curImageURLs != imageURLs {
-            println("导航回来刷新数据")
-            imageURLs = curImageURLs
-            self.collectionView?.reloadData()
-        }
-    }
-    
-    func removeImage(index: Int) -> Void {
+    func EverPhotoPlayerView(willRemoveImage index: UInt) {
         println("收到代理方法：removeImage with index \(index)")
         // 删除sandbox图片
-        AlbumHandler().removeImageFromSandbox(albumName, imageURL: imageURLs[index])
+        AlbumHandler().removeImageFromSandbox(albumName, imageURL: imageURLs[Int(index)])
         
         // 从collection列表中删除图片
-        imageURLs.removeAtIndex(index)
+        imageURLs.removeAtIndex(Int(index))
         
         // 从player列表中删除图片
-        _photos.removeObjectAtIndex(index)
+        _photos.removeObjectAtIndex(Int(index))
         
         self.collectionView?.reloadData()
     }
