@@ -21,11 +21,11 @@ class FormSelectorCell: FormValueCell {
         
         if let selectedValues = rowDescriptor.value as? NSMutableArray { // multiple values
             
-            let indexedSelectedValues = NSSet(array: selectedValues)
+            let indexedSelectedValues = NSSet(array: selectedValues as [AnyObject])
             
             for optionValue in rowDescriptor.options {
                 if indexedSelectedValues.containsObject(optionValue) {
-                    let optionTitle = rowDescriptor.titleForOptionValue(optionValue as NSObject)
+                    let optionTitle = rowDescriptor.titleForOptionValue(optionValue as! NSObject)
                     if title != nil {
                         title = title + ", \(optionTitle)"
                     }
@@ -39,7 +39,7 @@ class FormSelectorCell: FormValueCell {
             title = rowDescriptor.titleForOptionValue(selectedValue)
         }
         
-        if title != nil && countElements(title) > 0 {
+        if title != nil && count(title) > 0 {
             valueLabel.text = title
             valueLabel.textColor = UIColor.blackColor()
         }

@@ -70,7 +70,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     // 设置每个cell的内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel!.text = self.settingItems[indexPath.row]
         
         return cell

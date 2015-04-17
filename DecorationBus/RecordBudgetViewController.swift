@@ -56,7 +56,7 @@ class RecordBudgetViewController: FormViewController, FormViewControllerDelegate
         //取得表单信息
         var money:      Float  = 0.0
         if let val = self.form.sections[0].rows[0].value {
-            money = (val as NSString).floatValue
+            money = (val as! NSString).floatValue
         }
         else {
             var alertView = UIAlertView(title: "空值", message: "请输入正确的金额", delegate: self, cancelButtonTitle: "好的")
@@ -78,7 +78,7 @@ class RecordBudgetViewController: FormViewController, FormViewControllerDelegate
         
         var comments:   String = ""
         if let val = self.form.sections[1].rows[0].value {
-            comments = val as String
+            comments = val as! String
         }
         
         budget_.money_           = money
@@ -86,7 +86,7 @@ class RecordBudgetViewController: FormViewController, FormViewControllerDelegate
         budget_.minorCategory_   = minorCategory
         budget_.comments_        = comments
         
-        println(budget_.description())
+        println(budget_.recordDescription())
         
         // 如果是修改记录不重新生成ID，直接修改，否则生成ID并保存
         if modifyFlag_ {

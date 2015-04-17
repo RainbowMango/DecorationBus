@@ -73,7 +73,7 @@ class ShowDetailTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SegmentCategoryTableViewCell", forIndexPath: indexPath) as SegmentCategoryTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SegmentCategoryTableViewCell", forIndexPath: indexPath) as! SegmentCategoryTableViewCell
 
         var cellData: NSManagedObject!
         if (segment_.selectedSegmentIndex == 0) {
@@ -141,7 +141,7 @@ class ShowDetailTableViewController: UITableViewController {
             var selectedIndex: NSIndexPath = tableView.indexPathForSelectedRow()!
             var selectedItem = budgetArray_[selectedIndex.row]
             
-            var destinationView = segue.destinationViewController as RecordBudgetViewController
+            var destinationView = segue.destinationViewController as! RecordBudgetViewController
             destinationView.setValue(selectedItem, forKey: "budget_")
             destinationView.setValue(true, forKey: "modifyFlag_")
         }
@@ -150,7 +150,7 @@ class ShowDetailTableViewController: UITableViewController {
             var selectedIndex: NSIndexPath = tableView.indexPathForSelectedRow()!
             var selectedItem = orderArray_[selectedIndex.row]
             
-            var destinationView = segue.destinationViewController as RecordPayViewController
+            var destinationView = segue.destinationViewController as! RecordPayViewController
             destinationView.setValue(selectedItem, forKey: "order_")
             destinationView.setValue(true, forKey: "modifyFlag_")
         }

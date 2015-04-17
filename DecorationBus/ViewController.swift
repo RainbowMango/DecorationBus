@@ -54,7 +54,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     func getOrderSum() -> Float {
         var sum: Float = 0.00
         for item in orders_ {
-            sum += item.valueForKey("money") as Float
+            sum += item.valueForKey("money") as! Float
         }
         
         return sum
@@ -64,7 +64,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     func getBudgetSum() -> Float {
         var sum: Float = 0.00
         for item in budgets_ {
-            sum += item.valueForKey("money") as Float
+            sum += item.valueForKey("money") as! Float
         }
         
         return sum
@@ -78,7 +78,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         let fetchRequest = NSFetchRequest(entityName: "Order")
         
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
         if fetchResult == nil {
             println("获取数据失败: \(error), \(error!.userInfo)")
             return [NSManagedObject]()
@@ -95,7 +95,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         let fetchRequest = NSFetchRequest(entityName: "Budget")
         
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
         if fetchResult == nil {
             println("获取数据失败: \(error), \(error!.userInfo)")
             return [NSManagedObject]()

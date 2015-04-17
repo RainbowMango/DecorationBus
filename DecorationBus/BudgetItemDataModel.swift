@@ -18,11 +18,11 @@ class BudgetItem: NSObject, NSCoding{
     
     required init(coder aDecoder: NSCoder) {
         self.money = aDecoder.decodeFloatForKey("money") as Float
-        self.category = aDecoder.decodeObjectForKey("category") as String
-        self.shop = aDecoder.decodeObjectForKey("shop") as String
-        self.phone = aDecoder.decodeObjectForKey("phone") as String
-        self.addr = aDecoder.decodeObjectForKey("addr") as String
-        self.comment = aDecoder.decodeObjectForKey("comment") as String
+        self.category = aDecoder.decodeObjectForKey("category") as! String
+        self.shop = aDecoder.decodeObjectForKey("shop") as! String
+        self.phone = aDecoder.decodeObjectForKey("phone") as! String
+        self.addr = aDecoder.decodeObjectForKey("addr") as! String
+        self.comment = aDecoder.decodeObjectForKey("comment") as! String
     }
     
     func encodeWithCoder(aCoder: NSCoder) {

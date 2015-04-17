@@ -54,7 +54,7 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel!.text = self.minorCategorys[indexPath.row]
         
         return cell
@@ -81,7 +81,7 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
         if segue.identifier == "addMinorCategory" {
             println("将要转入addMinorCategory页面")
     
-            var destinationView: CategoryMinorAddViewController = segue.destinationViewController as CategoryMinorAddViewController
+            var destinationView: CategoryMinorAddViewController = segue.destinationViewController as! CategoryMinorAddViewController
             destinationView.setValue(self.primeCategorySelected, forKey: "primeCategorySelected")
             destinationView.setValue(self, forKey: "parentView")
         }

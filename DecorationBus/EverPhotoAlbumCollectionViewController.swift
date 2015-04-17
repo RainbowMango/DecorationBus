@@ -41,8 +41,8 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segueImagePlayer" {
-            let selectedRow = (self.collectionView?.indexPathsForSelectedItems() as Array<NSIndexPath>)[0].row
-            var destinationView = segue.destinationViewController as EverPhotoPlayerViewController
+            let selectedRow = (self.collectionView?.indexPathsForSelectedItems() as! Array<NSIndexPath>)[0].row
+            var destinationView = segue.destinationViewController as! EverPhotoPlayerViewController
             destinationView.delegate = self
             destinationView.setCurrentPhotoIndex(UInt(selectedRow))
             destinationView.setValue(self, forKey: "parentView")
@@ -74,7 +74,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let photoCell = self.collectionView?.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as CollectionPhotoCell
+        let photoCell = self.collectionView?.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionPhotoCell
         photoCell.photoImageView.image = UIImage(contentsOfFile: imageURLs[indexPath.row])
         photoCell.photoImageView.alpha = 0
         UIView.animateWithDuration(0.2, animations: {
@@ -107,7 +107,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        var image: UIImage = info["UIImagePickerControllerOriginalImage"] as UIImage
+        var image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         AlbumHandler().saveImageToSandbox(albumName, image: image)
         
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -140,7 +140,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     
     func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
         if (index < UInt(_photos.count)) {
-            return _photos.objectAtIndex(Int(index)) as MWPhotoProtocol
+            return _photos.objectAtIndex(Int(index)) as! MWPhotoProtocol
         }
         
         return nil;

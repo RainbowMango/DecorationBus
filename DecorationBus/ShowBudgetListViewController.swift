@@ -65,7 +65,7 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
         let fetchRequest = NSFetchRequest(entityName: "Budget")
         
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
         if fetchResult == nil {
             println("获取数据失败: \(error), \(error!.userInfo)")
             return [NSManagedObject]()
@@ -83,11 +83,11 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     
     // 设置cell内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
         
-        let primeCategory = budgets_[indexPath.row].valueForKey("primeCategory") as String
-        let minorCategory = budgets_[indexPath.row].valueForKey("minorCategory") as String
-        let money         = budgets_[indexPath.row].valueForKey("money") as Float
+        let primeCategory = budgets_[indexPath.row].valueForKey("primeCategory") as! String
+        let minorCategory = budgets_[indexPath.row].valueForKey("minorCategory") as! String
+        let money         = budgets_[indexPath.row].valueForKey("money") as! Float
         cell.textLabel!.text = "\(primeCategory)-\(minorCategory)   \(money)"
         
         return cell
@@ -127,15 +127,15 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
             // 获得选中cell元素
             var selectedIndex: NSIndexPath = self.deTailTableView.indexPathForSelectedRow()!
             var selectedItem = budgets_[selectedIndex.row]
-            var money: Float  = selectedItem.valueForKey("money")          as Float
-            var primeCategory = selectedItem.valueForKey("primeCategory")  as String
-            var minorCategory = selectedItem.valueForKey("minorCategory")  as String
-            var shop          = selectedItem.valueForKey("shop")           as String
-            var phone         = selectedItem.valueForKey("phone")          as String
-            var address       = selectedItem.valueForKey("address")        as String
-            var comments      = selectedItem.valueForKey("comments")       as String
+            var money: Float  = selectedItem.valueForKey("money")          as! Float
+            var primeCategory = selectedItem.valueForKey("primeCategory")  as! String
+            var minorCategory = selectedItem.valueForKey("minorCategory")  as! String
+            var shop          = selectedItem.valueForKey("shop")           as! String
+            var phone         = selectedItem.valueForKey("phone")          as! String
+            var address       = selectedItem.valueForKey("address")        as! String
+            var comments      = selectedItem.valueForKey("comments")       as! String
             
-            var destinationView: ShowBudgetDetailViewController = segue.destinationViewController as ShowBudgetDetailViewController
+            var destinationView: ShowBudgetDetailViewController = segue.destinationViewController as! ShowBudgetDetailViewController
             destinationView.setValue(money,         forKey: "money_")
             destinationView.setValue(primeCategory, forKey: "primeCategory_")
             destinationView.setValue(minorCategory, forKey: "minorCategory_")

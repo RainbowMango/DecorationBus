@@ -24,11 +24,11 @@ class CategoryDataModel: NSCoding {
     init() {
     }
     
-    required init(coder aDecoder: NSCoder) {
-        self.categoryDic = aDecoder.decodeObjectForKey("categoryDic") as Dictionary<String, Array<String>>
+    @objc required init(coder aDecoder: NSCoder) {
+        self.categoryDic = aDecoder.decodeObjectForKey("categoryDic") as! Dictionary<String, Array<String>>
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
+    @objc func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.categoryDic, forKey: "categoryDic")
     }
 }

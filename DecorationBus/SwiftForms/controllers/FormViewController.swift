@@ -29,7 +29,7 @@ class FormViewController : UITableViewController {
     
     /// MARK: Init
     
-    override convenience init() {
+    convenience init() {
         self.init(style: .Grouped)
     }
     
@@ -136,7 +136,7 @@ class FormViewController : UITableViewController {
         // apply cell custom design
         if let cellConfiguration = rowDescriptor.cellConfiguration {
             for (keyPath, value) in rowDescriptor.cellConfiguration {
-                cell?.setValue(value, forKeyPath: keyPath as String)
+                cell?.setValue(value, forKeyPath: keyPath as! String)
             }            
         }
         

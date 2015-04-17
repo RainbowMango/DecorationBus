@@ -58,7 +58,7 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
     
     // 设置每个cell的内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel!.text = self.primeCatagory[indexPath.row]
         cell.imageView?.image = UIImage(named: CategoryHandler().getIcon(self.primeCatagory[indexPath.row]))
         
@@ -97,10 +97,10 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
         
         switch segueIdentifier {
         case "toMinorCategory":
-            var destinationView = segue.destinationViewController as CatagoryMinorManageViewController
+            var destinationView = segue.destinationViewController as! CatagoryMinorManageViewController
             destinationView.setValue(self.primeCategorySelected, forKey: "primeCategorySelected")
         case "toPrimeAddSegue":
-            var destinationView = segue.destinationViewController as CategoryPrimeAddViewController
+            var destinationView = segue.destinationViewController as! CategoryPrimeAddViewController
             destinationView.setValue(self, forKey: "parentView")
         default:
             println("Warning: 未定义的segue")

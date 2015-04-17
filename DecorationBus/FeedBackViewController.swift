@@ -113,7 +113,7 @@ class FeedBackViewController: UIViewController, MFMailComposeViewControllerDeleg
     //MARK: -UITextView Delegate
     func textViewDidChange(textView: UITextView)
     {
-        let newLength = countElements(textView.text);
+        let newLength = count(textView.text);
         if (newLength == 0)
         {
             placeholderLabel_.text = "请输入您的反馈意见(字数200字以内)"
@@ -125,7 +125,7 @@ class FeedBackViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool
     {
-        let newLength = countElements(textView.text);
+        let newLength = count(textView.text);
         if (newLength>201)
         {
             return false;

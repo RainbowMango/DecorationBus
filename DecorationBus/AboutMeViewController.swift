@@ -8,7 +8,7 @@
 
 import UIKit
 
-let IosAppVersion:NSString =  (NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as NSString);//[[[NSBundle mainBundle]
+let IosAppVersion:NSString =  (NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! NSString);//[[[NSBundle mainBundle]
 
 class AboutMeViewController: UIViewController
 {
@@ -53,7 +53,7 @@ class AboutMeViewController: UIViewController
         logoLabel.font = UIFont.systemFontOfSize(14.0);
         logoLabel.backgroundColor = UIColor.clearColor();
         logoLabel.textColor = UIColor(red: 51.0/255.0, green: 51.0/255.0, blue: 51.0/255.0, alpha: 1.0);
-        logoLabel.text = "当前版本: "+IosAppVersion;
+        logoLabel.text = "当前版本: "+(IosAppVersion as String);
         
         self.view.addSubview(logoImageView);
         self.view.addSubview(logoLabel);

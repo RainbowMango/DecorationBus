@@ -16,7 +16,7 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
     
     /// MARK: Init 
     
-    override init() {
+    init() {
         super.init(style: .Grouped)
     }
 
@@ -59,7 +59,7 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
             cell = UITableViewCell(style: .Default, reuseIdentifier: reuseIdentifier)
         }
         
-        let optionValue = formCell.rowDescriptor.options[indexPath.row] as NSObject
+        let optionValue = formCell.rowDescriptor.options[indexPath.row] as! NSObject
 
         cell!.textLabel!.text = formCell.rowDescriptor.titleForOptionValue(optionValue)
         
@@ -94,7 +94,7 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
         let allowsMultipleSelection = formCell.rowDescriptor.allowsMultipleSelection
-        let optionValue = formCell.rowDescriptor.options[indexPath.row] as NSObject
+        let optionValue = formCell.rowDescriptor.options[indexPath.row] as! NSObject
         
         if allowsMultipleSelection {
             

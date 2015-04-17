@@ -28,7 +28,7 @@ class BudgetRecord: NSObject {
     }
     
     // 描述信息，调试用
-    func description() -> String {
+    func recordDescription() -> String {
         var desc = "id = \(id_), "
         desc    += "money = \(money_) "
         desc    += "primeCategory = \(primeCategory_) "

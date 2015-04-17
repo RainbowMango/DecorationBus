@@ -55,8 +55,8 @@ class AlbumHandler: NSObject {
         assert(plistArry != nil, "获取相册列表失败")
         
         for (index, entry) in enumerate(plistArry!) {
-            if albumName == entry["AlbumName"] as String {
-                (entry["ImageList"] as NSMutableArray).addObject(imageURL)
+            if albumName == entry["AlbumName"] as! String {
+                (entry["ImageList"] as! NSMutableArray).addObject(imageURL)
                 break
             }
         }
@@ -75,8 +75,8 @@ class AlbumHandler: NSObject {
         assert(plistArry != nil, "获取相册列表失败")
         
         for (index, entry) in enumerate(plistArry!) {
-            if albumName == entry["AlbumName"] as String {
-                (entry["ImageList"] as NSMutableArray).removeObject(imageURL)
+            if albumName == entry["AlbumName"] as! String {
+                (entry["ImageList"] as! NSMutableArray).removeObject(imageURL)
                 break
             }
         }
@@ -94,8 +94,8 @@ class AlbumHandler: NSObject {
         assert(plistArry != nil, "获取相册列表失败")
         
         for (index, entry) in enumerate(plistArry!) {
-            if albumName == entry["AlbumName"] as String {
-                return (entry["ImageList"] as NSMutableArray).count
+            if albumName == entry["AlbumName"] as! String {
+                return (entry["ImageList"] as! NSMutableArray).count
             }
         }
         
@@ -109,8 +109,8 @@ class AlbumHandler: NSObject {
         assert(plistArry != nil, "获取相册列表失败")
         
         for (index, entry) in enumerate(plistArry!) {
-            if albumName == entry["AlbumName"] as String {
-                var originURLs = entry["ImageList"] as Array<String>
+            if albumName == entry["AlbumName"] as! String {
+                var originURLs = entry["ImageList"] as! Array<String>
                 
                 /*
                 开发环境中每次编译都会生成唯一的ApplicationID,导致图片URL链接失效，为了方便开发添加过滤条件
@@ -152,7 +152,7 @@ class AlbumHandler: NSObject {
         assert(plistArry != nil, "获取相册列表失败")
         
         for entry in plistArry! {
-            if albumName == entry["AlbumName"] as String {
+            if albumName == entry["AlbumName"] as! String {
                 return true
             }
         }
@@ -208,7 +208,7 @@ class AlbumHandler: NSObject {
     
     /*获取document目录*/
     func getDocumentDirectory() -> String {
-        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as Array<String>
+        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as! Array<String>
         assert(directories.count > 0, "获取document目录失败")
         return directories[0]
     }

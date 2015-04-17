@@ -64,7 +64,7 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         //取得表单信息
         var money:      Float  = 0.0
         if let val = self.form.sections[0].rows[0].value {
-            money = (val as NSString).floatValue
+            money = (val as! NSString).floatValue
         }
         else {
             var alertView = UIAlertView(title: "空值", message: "请输入正确的金额", delegate: self, cancelButtonTitle: "好的")
@@ -86,22 +86,22 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         
         var shop:       String = ""
         if let val = self.form.sections[1].rows[0].value {
-            shop = val as String
+            shop = val as! String
         }
         
         var phone:      String = ""
         if let val = self.form.sections[1].rows[1].value {
-            phone = val as String
+            phone = val as! String
         }
         
         var address:    String = ""
         if let val = self.form.sections[1].rows[2].value {
-            address = val as String
+            address = val as! String
         }
         
         var comments:   String = ""
         if let val = self.form.sections[1].rows[3].value {
-            comments = val as String
+            comments = val as! String
         }
         
         order_.money_           = money
@@ -112,7 +112,7 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
         order_.addr_            = address
         order_.comments_        = comments
         
-        println(order_.description())
+        println(order_.recordDescription())
         
         // 如果是修改记录不重新生成ID，直接修改，否则生成ID并保存
         if modifyFlag_ {

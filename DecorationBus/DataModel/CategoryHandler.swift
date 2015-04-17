@@ -20,8 +20,8 @@ class CategoryHandler: NSObject {
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
-            var prime = entry["PrimeDesc"] as String
-            var minorArray = entry["MinorDesc"] as Array<String>
+            var prime = entry["PrimeDesc"] as! String
+            var minorArray = entry["MinorDesc"] as! Array<String>
             result[prime] = minorArray
         }
         
@@ -35,7 +35,7 @@ class CategoryHandler: NSObject {
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
-            var prime = entry["PrimeDesc"] as String
+            var prime = entry["PrimeDesc"] as! String
             result.append(prime)
         }
         
@@ -49,9 +49,9 @@ class CategoryHandler: NSObject {
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
-            var prime = entry["PrimeDesc"] as String
+            var prime = entry["PrimeDesc"] as! String
             if primeCategory == prime {
-                return entry["MinorDesc"] as Array<String>
+                return entry["MinorDesc"] as! Array<String>
             }
             
         }
@@ -67,8 +67,8 @@ class CategoryHandler: NSObject {
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
-            if primeCategory == entry["PrimeDesc"] as String {
-                return entry["PrimeIcon"] as String
+            if primeCategory == entry["PrimeDesc"] as! String {
+                return entry["PrimeIcon"] as! String
             }
         }
         
@@ -109,7 +109,7 @@ class CategoryHandler: NSObject {
         assert(plistArry != nil, "获取类别列表失败")
         
         for (index, entry) in enumerate(plistArry!) {
-            if category == entry["PrimeDesc"] as String {
+            if category == entry["PrimeDesc"] as! String {
                 plistArry!.removeObjectAtIndex(index)
                 break
             }
@@ -129,8 +129,8 @@ class CategoryHandler: NSObject {
         assert(plistArry != nil, "获取类别列表失败")
         
         for (index, entry) in enumerate(plistArry!) {
-            if primeCategory == entry["PrimeDesc"] as String {
-                (entry["MinorDesc"] as NSMutableArray).addObject(minorCategory)
+            if primeCategory == entry["PrimeDesc"] as! String {
+                (entry["MinorDesc"] as! NSMutableArray).addObject(minorCategory)
                 break
             }
         }
@@ -149,8 +149,8 @@ class CategoryHandler: NSObject {
         assert(plistArry != nil, "获取类别列表失败")
         
         for (index, entry) in enumerate(plistArry!) {
-            if primeCategory == entry["PrimeDesc"] as String {
-                (entry["MinorDesc"] as NSMutableArray).removeObject(minorCategory)
+            if primeCategory == entry["PrimeDesc"] as! String {
+                (entry["MinorDesc"] as! NSMutableArray).removeObject(minorCategory)
                 break
             }
         }
@@ -197,7 +197,7 @@ class CategoryHandler: NSObject {
     
     /*获取document目录*/
     func getDocumentDirectory() -> String {
-        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as Array<String>
+        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as! Array<String>
         assert(directories.count > 0, "获取document目录失败")
         return directories[0]
     }

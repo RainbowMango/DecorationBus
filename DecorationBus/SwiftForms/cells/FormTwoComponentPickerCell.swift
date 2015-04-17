@@ -40,13 +40,13 @@ class FormTwoComponentPickerCell: FormValueCell, UIPickerViewDelegate, UIPickerV
         
         if rowDescriptor.value != nil {
             //valueLabel.text = rowDescriptor.titleForOptionValue(rowDescriptor.value)
-            let value = rowDescriptor.value as Array<String>
+            let value = rowDescriptor.value as! Array<String>
             valueLabel.text = "\(value[0])-\(value[1])"
         }
     }
     
     override class func formViewController(formViewController: FormViewController, didSelectRow selectedRow: FormBaseCell) {
-        let row = selectedRow as FormTwoComponentPickerCell
+        let row = selectedRow as! FormTwoComponentPickerCell
         
         /*Initialize component array and selected value for first time selected */
         if(row.firstComponentArray_ == nil) {

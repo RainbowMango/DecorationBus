@@ -19,7 +19,7 @@ class BudgetArchiver {
             return Array<BudgetItem>()
         }
         
-        var budgets = NSKeyedUnarchiver.unarchiveObjectWithData(encodedBudgets!) as Array<BudgetItem>
+        var budgets = NSKeyedUnarchiver.unarchiveObjectWithData(encodedBudgets!) as! Array<BudgetItem>
         println("getBudgetsFromUserDefault() count = \(budgets.count)")
         
         return budgets

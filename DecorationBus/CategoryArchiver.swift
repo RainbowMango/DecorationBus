@@ -19,7 +19,7 @@ class CategoryArchiver {
             return Dictionary<String, Array<String>>()
         }
         
-        var category = NSKeyedUnarchiver.unarchiveObjectWithData(encodedCategorys!) as Dictionary<String, Array<String>>
+        var category = NSKeyedUnarchiver.unarchiveObjectWithData(encodedCategorys!) as! Dictionary<String, Array<String>>
         println("getCategoryFromUserDefault() count = \(category.count)")
         
         return category

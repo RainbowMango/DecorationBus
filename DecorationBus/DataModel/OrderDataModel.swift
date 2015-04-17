@@ -17,7 +17,7 @@ class OrderDataModel {
         var fetchRequest = NSFetchRequest(entityName: "Order")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@", primeCategory)
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
         if fetchResult == nil {
             println("获取数据失败: \(error), \(error!.userInfo)")
             return [NSManagedObject]()
@@ -32,7 +32,7 @@ class OrderDataModel {
         var fetchRequest = NSFetchRequest(entityName: "Order")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@ AND minorCategory = %@", primeCategory, minorCategory)
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
         if fetchResult == nil {
             println("获取数据失败: \(error), \(error!.userInfo)")
             return [NSManagedObject]()
@@ -46,14 +46,14 @@ class OrderDataModel {
     */
     class func getRecordByManagedObject(manageObj: NSManagedObject) -> OrderRecord {
         var record = OrderRecord()
-        record.id_              = manageObj.valueForKey("id")               as String
-        record.money_           = manageObj.valueForKey("money")            as Float
-        record.primeCategory_   = manageObj.valueForKey("primeCategory")    as String
-        record.minorCategory_   = manageObj.valueForKey("minorCategory")    as String
-        record.shop_            = manageObj.valueForKey("shop")             as String
-        record.phone_           = manageObj.valueForKey("phone")            as String
-        record.addr_            = manageObj.valueForKey("address")          as String
-        record.comments_        = manageObj.valueForKey("comments")         as String
+        record.id_              = manageObj.valueForKey("id")               as! String
+        record.money_           = manageObj.valueForKey("money")            as! Float
+        record.primeCategory_   = manageObj.valueForKey("primeCategory")    as! String
+        record.minorCategory_   = manageObj.valueForKey("minorCategory")    as! String
+        record.shop_            = manageObj.valueForKey("shop")             as! String
+        record.phone_           = manageObj.valueForKey("phone")            as! String
+        record.addr_            = manageObj.valueForKey("address")          as! String
+        record.comments_        = manageObj.valueForKey("comments")         as! String
         
         return record
     }
@@ -66,7 +66,7 @@ class OrderDataModel {
         var fetchRequest = NSFetchRequest(entityName: "Order")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@ AND minorCategory = %@", primeCategory, minorCategory)
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
         if fetchResult == nil {
             println("获取数据失败: \(error), \(error!.userInfo)")
             return records
@@ -91,7 +91,7 @@ class OrderDataModel {
         let fetchRequest = NSFetchRequest(entityName: "Order")
         
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
         if fetchResult == nil {
             println("获取数据失败: \(error), \(error!.userInfo)")
             return records
@@ -110,7 +110,7 @@ class OrderDataModel {
         var managedObjectContext = appDelegate!.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Order")
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
         if fetchResult == nil {
             println("获取数据失败: \(error), \(error!.userInfo)")
             return false
@@ -156,7 +156,7 @@ class OrderDataModel {
         var fetchRequest = NSFetchRequest(entityName: "Order")
         fetchRequest.predicate = NSPredicate(format: "id = %@", uniqueID)
         var error: NSError?
-        var fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        var fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
         if fetchResult == nil {
             println("获取数据失败: \(error), \(error!.userInfo)")
             return false
@@ -183,7 +183,7 @@ class OrderDataModel {
         var fetchRequest = NSFetchRequest(entityName: "Order")
         fetchRequest.predicate = NSPredicate(format: "id = %@", record.id_)
         var error: NSError?
-        var fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
+        var fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
         if fetchResult == nil {
             println("获取数据失败: \(error), \(error!.userInfo)")
             return false

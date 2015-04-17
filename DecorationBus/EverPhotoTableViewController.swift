@@ -42,7 +42,7 @@ class EverPhotoTableViewController: UITableViewController/*, MWPhotoBrowserDeleg
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
 
         // 配置cell，后期可以自定义cell显示每个相册的图片数量以及添加时间
         cell.textLabel?.text = phase_[indexPath.section]
@@ -66,7 +66,7 @@ class EverPhotoTableViewController: UITableViewController/*, MWPhotoBrowserDeleg
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toEverPhotoAlbum" {
-            var destinationView = segue.destinationViewController as EverPhotoAlbumCollectionViewController
+            var destinationView = segue.destinationViewController as! EverPhotoAlbumCollectionViewController
             destinationView.setValue(self.selectedAlbum, forKey: "albumName")
         }
     }

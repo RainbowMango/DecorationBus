@@ -170,7 +170,7 @@ class ShowDetailListTableViewController: UITableViewController {
         }
         
         if tableViewCellArray_[indexPath.row]["cellType"] == "prime" { //展示prime cell
-            var cell = tableView.dequeueReusableCellWithIdentifier("PrimeCategoryTableViewCell", forIndexPath: indexPath) as PrimeCategoryTableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier("PrimeCategoryTableViewCell", forIndexPath: indexPath) as! PrimeCategoryTableViewCell
             
             // 配置cell
             configPrimeCell(&cell, tableViewCellArray_[indexPath.row]["primeCategory"]!)
@@ -178,7 +178,7 @@ class ShowDetailListTableViewController: UITableViewController {
             return cell
         }
         else if tableViewCellArray_[indexPath.row]["cellType"] == "minor" { // 展示minor cell
-            var cell = tableView.dequeueReusableCellWithIdentifier("MinorCategoryTableViewCell", forIndexPath: indexPath) as MinorCategoryTableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier("MinorCategoryTableViewCell", forIndexPath: indexPath) as! MinorCategoryTableViewCell
             
             // 配置cell
             let primeCategory = tableViewCellArray_[indexPath.row]["primeCategory"]
@@ -319,7 +319,7 @@ class ShowDetailListTableViewController: UITableViewController {
             var selectedPrimeCategory = selectedItem["primeCategory"]
             var selectedMinorCategory = selectedItem["minorCategory"]
             
-            var destinationView = segue.destinationViewController as ShowDetailTableViewController
+            var destinationView = segue.destinationViewController as! ShowDetailTableViewController
             destinationView.setValue(selectedPrimeCategory, forKey: "primeCategorySelected_")
             destinationView.setValue(selectedMinorCategory, forKey: "minorCategorySelected_")
             println("传递主类别:\(selectedPrimeCategory), 子类别: \(selectedMinorCategory)到下一个view")

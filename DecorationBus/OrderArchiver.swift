@@ -19,7 +19,7 @@ class OrderArchiver {
             return Array<OrderItem>()
         }
         
-        var orders = NSKeyedUnarchiver.unarchiveObjectWithData(encodedOrders!) as Array<OrderItem>
+        var orders = NSKeyedUnarchiver.unarchiveObjectWithData(encodedOrders!) as! Array<OrderItem>
         println("getOrdesFromUserDefault() count = \(orders.count)")
         
         return orders
