@@ -10,13 +10,19 @@ import UIKit
 
 let reuseIdentifier = "EverPhotoCollectionCell"
 
-class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, MWPhotoBrowserDelegate, EverPhotoPlayerViewControllerDelegate {
+class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, MWPhotoBrowserDelegate, EverPhotoPlayerViewControllerDelegate {
 
     var albumName:String = String()
     var imageURLs: Array<String> = Array<String>()
     
     var _photos = NSMutableArray() //图片展示列表
     var _thumbs = NSMutableArray() //缩略图列表
+    
+    // 定义照片源字符串，方便创建actionSheet和处理代理
+    let actionSheetTitleCancel = "取消"
+    let actionSheetTitleCamera = "拍照"
+    let actionSheetTitlePhotoLibrary = "照片库"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,14 +102,11 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         return CGSizeMake(cellEdge, cellEdge)
     }
 
-    /*添加照片，目前只支持从照片库中添加，后期可以扩展到三种方式：照片库、相册和相机*/
     func addPhotoButtonPressed(_: UIBarButtonItem!) {
-        println("开始导入图片")
-        var imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: actionSheetTitleCancel, destructiveButtonTitle: nil)
+        actionSheet.addButtonWithTitle(actionSheetTitleCamera)
+        actionSheet.addButtonWithTitle(actionSheetTitlePhotoLibrary)
+        actionSheet.showInView(self.view)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
@@ -133,7 +136,29 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         self.collectionView?.reloadData()
     }
     
+    // MARK: -UIActionSheetDelegate
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        let title = actionSheet.buttonTitleAtIndex(buttonIndex)
+        switch title {
+        case actionSheetTitleCamera:
+            println("用户点击拍照")
+        case actionSheetTitlePhotoLibrary:
+            println("用户点击相册库")
+            var imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        case actionSheetTitleCancel:
+            println("Cancelled by user")
+        default:
+            println("Never execute")
+        }
+    }
+    
     // MARK: MWPhotoBrowserDelegate
+    
     func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
         return UInt(_photos.count)
     }
