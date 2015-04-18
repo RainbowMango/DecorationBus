@@ -43,7 +43,23 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
+    func addPhotoButtonPressed(_: UIBarButtonItem!) {
+        let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: actionSheetTitleCancel, destructiveButtonTitle: nil)
+        
+        // 检测是否支持拍照（模拟器不支持会引起crash）
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            actionSheet.addButtonWithTitle(actionSheetTitleCamera)
+        }
+        
+        // 检测是否支持图库
+        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+            actionSheet.addButtonWithTitle(actionSheetTitlePhotoLibrary)
+        }
+        
+        actionSheet.showInView(self.view)
+    }
+    
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segueImagePlayer" {
@@ -101,13 +117,6 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         let cellEdge = (CGRectGetWidth(UIScreen.mainScreen().bounds) - 20) / 3
         return CGSizeMake(cellEdge, cellEdge)
     }
-
-    func addPhotoButtonPressed(_: UIBarButtonItem!) {
-        let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: actionSheetTitleCancel, destructiveButtonTitle: nil)
-        actionSheet.addButtonWithTitle(actionSheetTitleCamera)
-        actionSheet.addButtonWithTitle(actionSheetTitlePhotoLibrary)
-        actionSheet.showInView(self.view)
-    }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         var image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
@@ -142,9 +151,13 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         let title = actionSheet.buttonTitleAtIndex(buttonIndex)
         switch title {
         case actionSheetTitleCamera:
-            println("用户点击拍照")
+            var imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+            
         case actionSheetTitlePhotoLibrary:
-            println("用户点击相册库")
             var imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.allowsEditing = false
