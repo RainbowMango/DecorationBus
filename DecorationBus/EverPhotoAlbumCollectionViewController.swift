@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AssetsLibrary
 
 let reuseIdentifier = "EverPhotoCollectionCell"
 
@@ -44,10 +46,12 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: - User common functions
+    
     func addPhotoButtonPressed(_: UIBarButtonItem!) {
         let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: actionSheetTitleCancel, destructiveButtonTitle: nil)
         
-        // 检测是否支持拍照（模拟器不支持会引起crash）
+        // 检测是否支持拍照（模拟器不支持会引起crash, 真机中访问控制相机被禁后也会crash）
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             actionSheet.addButtonWithTitle(actionSheetTitleCamera)
         }
@@ -59,6 +63,38 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         
         actionSheet.showInView(self.view)
     }
+    
+    // 判断用户隐私设置中是否对本APP禁用相机功能
+    func allowCamera() -> Bool {
+        //IOS7.0引入，需要import AVFoundation
+        let authStatus :AVAuthorizationStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+        if authStatus == AVAuthorizationStatus.Denied ||
+            authStatus == AVAuthorizationStatus.Restricted {
+            return false
+        }
+        
+        return true
+    }
+    
+    // 判断用户隐私设置中是否对本APP禁用照片功能
+    func allowPhotoLibrary() -> Bool {
+        // IOS 6.0提供，需要import AssetsLibrary
+        let authStatus: ALAuthorizationStatus = ALAssetsLibrary.authorizationStatus()
+        if authStatus == ALAuthorizationStatus.Denied ||
+            authStatus == ALAuthorizationStatus.Restricted {
+                return false
+        }
+        
+        // IOS 8.0提供，需要import Photos
+//        let authStatus :PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+//        if authStatus == PHAuthorizationStatus.Denied ||
+//            authStatus == PHAuthorizationStatus.Restricted {
+//            return false
+//        }
+        
+        return true
+    }
+    
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -151,6 +187,12 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         let title = actionSheet.buttonTitleAtIndex(buttonIndex)
         switch title {
         case actionSheetTitleCamera:
+            if !allowCamera() {
+                //用户隐私设置禁用相机，弹出alert
+                var alertView = UIAlertView(title: nil, message: "请在“设置-隐私-相机”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
+                alertView.show()
+                return
+            }
             var imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.allowsEditing = false
@@ -158,6 +200,12 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
             self.presentViewController(imagePicker, animated: true, completion: nil)
             
         case actionSheetTitlePhotoLibrary:
+            if !allowPhotoLibrary() {
+                //用户隐私设置禁用相册，弹出alert
+                var alertView = UIAlertView(title: nil, message: "请在“设置-隐私-照片”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
+                alertView.show()
+                return
+            }
             var imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.allowsEditing = false
