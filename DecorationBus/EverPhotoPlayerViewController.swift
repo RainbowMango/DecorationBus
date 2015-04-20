@@ -53,9 +53,14 @@ class EverPhotoPlayerViewController: MWPhotoBrowser {
         // 给父view发送代理，通知图片删除
         self.myDelegate = parentView
         self.myDelegate?.EverPhotoPlayerView(willRemoveImage: currentIndex)
-        
+
         // 刷新
         reloadData()
+        
+        // 如果没有图片自动返回上一view
+        if self.numberOfPhotos() == 0 {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
 }
 
