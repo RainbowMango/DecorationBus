@@ -17,9 +17,6 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     var albumName:String = String()
     var imageURLs: Array<String> = Array<String>()
     
-    var _photos = NSMutableArray() //图片展示列表
-    var _thumbs = NSMutableArray() //缩略图列表
-    
     // 定义照片源字符串，方便创建actionSheet和处理代理
     let actionSheetTitleCancel = "取消"
     let actionSheetTitleCamera = "拍照"
@@ -112,20 +109,9 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // 取得图片列表
         self.imageURLs = AlbumHandler().getURLList(albumName)
-        println(self.imageURLs)
-        
-        var photo = MWPhoto()
-        _photos.removeAllObjects()
-        for imageURL in imageURLs {
-            var myImage = UIImage(contentsOfFile: imageURL)
-            photo = MWPhoto(image: myImage)
-            photo.caption = ""
-            _photos.addObject(photo)
-        }
         
         return 1
     }
-
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.imageURLs.count
@@ -154,11 +140,12 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         return CGSizeMake(cellEdge, cellEdge)
     }
     
+    // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        self.dismissViewControllerAnimated(true, completion: nil) // 首先释放picker以节省内存
+        
         var image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         AlbumHandler().saveImageToSandbox(albumName, image: image)
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
         
         /*添加图片后刷新view*/
         self.collectionView?.reloadData()
@@ -168,6 +155,8 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // MARK: - EverPhotoPlayerViewControllerDelegate
+    
     func EverPhotoPlayerView(willRemoveImage index: UInt) {
         // 删除sandbox图片
         AlbumHandler().removeImageFromSandbox(albumName, imageURL: imageURLs[Int(index)])
@@ -175,13 +164,10 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         // 从collection列表中删除图片
         imageURLs.removeAtIndex(Int(index))
         
-        // 从player列表中删除图片
-        _photos.removeObjectAtIndex(Int(index))
-        
         self.collectionView?.reloadData()
     }
     
-    // MARK: -UIActionSheetDelegate
+    // MARK: - UIActionSheetDelegate
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         let title = actionSheet.buttonTitleAtIndex(buttonIndex)
@@ -197,6 +183,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
             imagePicker.delegate = self
             imagePicker.allowsEditing = false
             imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            imagePicker.videoQuality = UIImagePickerControllerQualityType.TypeLow // 获取低质量图片已经足够使用，避免内存使用过多引起内存警告
             self.presentViewController(imagePicker, animated: true, completion: nil)
             
         case actionSheetTitlePhotoLibrary:
@@ -218,17 +205,18 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         }
     }
     
-    // MARK: MWPhotoBrowserDelegate
+    // MARK: - MWPhotoBrowserDelegate
     
     func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
-        return UInt(_photos.count)
+        return UInt(imageURLs.count)
     }
     
     func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
-        if (index < UInt(_photos.count)) {
-            return _photos.objectAtIndex(Int(index)) as! MWPhotoProtocol
+        if index < UInt(imageURLs.count) {
+            let photoURL = NSURL(fileURLWithPath: imageURLs[Int(index)])
+            return MWPhoto(URL: photoURL)
         }
-        
+
         return nil;
     }
     
