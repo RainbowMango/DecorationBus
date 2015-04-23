@@ -12,10 +12,14 @@ import AssetsLibrary
 
 let reuseIdentifier = "EverPhotoCollectionCell"
 
-class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, MWPhotoBrowserDelegate, EverPhotoPlayerViewControllerDelegate {
+class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, MWPhotoBrowserDelegate, EverPhotoPlayerViewControllerDelegate, AGImagePickerControllerDelegate {
 
     var albumName:String = String()
     var imageURLs: Array<String> = Array<String>()
+    
+    var ipc = AGImagePickerController()
+    var selectedPhotos = NSMutableArray()
+    var blockSelf = self
     
     // 定义照片源字符串，方便创建actionSheet和处理代理
     let actionSheetTitleCancel = "取消"
@@ -34,6 +38,49 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         // 使用统一的背景颜色
         self.view.backgroundColor = ColorScheme().viewBackgroundColor
         self.collectionView?.backgroundColor = ColorScheme().viewBackgroundColor
+        
+        ipc.delegate = self
+        
+        ipc.didFailBlock = { (error) -> Void in
+            self.selectedPhotos.removeAllObjects()
+            println("User cacelled")
+            // We need to wait for the view controller to appear first.
+            let delayInSeconds :NSTimeInterval = 0.5
+            let minseconds = delayInSeconds * Double(NSEC_PER_SEC)
+            let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
+            
+            dispatch_after(popTime, dispatch_get_main_queue() , {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
+            
+            UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
+        }
+        
+        ipc.didFinishBlock = { (info) -> Void in
+            self.selectedPhotos.setArray(info)
+            
+//            var image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
+//            AlbumHandler().saveImageToSandbox(albumName, image: image)
+//            
+//            /*添加图片后刷新view*/
+//            self.collectionView?.reloadData()
+            
+            for item in info {
+                var result = item as! ALAsset
+//                var ref: Unmanaged<CGImage> = result.defaultRepresentation().fullResolutionImage()
+//                var myImage :CGImage = ref.takeRetainedValue()
+//                var image: UIImage = UIImage(CGImage: myImage)!
+//                AlbumHandler().saveImageToSandbox(self.albumName, image: image)
+                
+                // 读取缩略图
+                var image = UIImage(CGImage: result.thumbnail().takeUnretainedValue())
+                AlbumHandler().saveImageToSandbox(self.albumName, image: image!)
+            }
+            self.collectionView?.reloadData()
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -90,6 +137,38 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
 //        }
         
         return true
+    }
+    
+    func startImportPhotoFromLibrary() {
+        
+        // Show saved photos on top
+        ipc.shouldShowSavedPhotosOnTop = false
+        ipc.shouldChangeStatusBarStyle = true
+        ipc.selection = self.selectedPhotos as [AnyObject]
+        ipc.maximumNumberOfPhotosToBeSelected = 9
+        
+        // Custom toolbar items
+        var selectAllSysButton = UIBarButtonItem(title: "+ Select All", style: .Bordered, target: nil, action: nil)
+        var selectAll = AGIPCToolbarItem(barButtonItem: selectAllSysButton) { (index, asset) -> Bool in
+            return true
+        }
+        
+        var flexibleSysButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        var flexible = AGIPCToolbarItem(barButtonItem: flexibleSysButton, andSelectionBlock: nil)
+        
+        var selectOddSysButton = UIBarButtonItem(title: "+ Select Odd", style: .Bordered, target: nil, action: nil)
+        var selectOdd = AGIPCToolbarItem(barButtonItem: selectOddSysButton) { (index, asset) -> Bool in
+            return true
+        }
+        
+        var deselectAllSysButton = UIBarButtonItem(title: "重选", style: .Bordered, target: nil, action: nil)
+        var deselectAll = AGIPCToolbarItem(barButtonItem: deselectAllSysButton) { (index, asset) -> Bool in
+            return false
+        }
+        
+        ipc.toolbarItemsForManagingTheSelection = [ flexible, deselectAll]
+        
+        self.presentViewController(ipc, animated: true, completion: nil)
     }
     
     
@@ -193,11 +272,12 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
                 alertView.show()
                 return
             }
-            var imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+//            var imagePicker = UIImagePickerController()
+//            imagePicker.delegate = self
+//            imagePicker.allowsEditing = false
+//            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+//            self.presentViewController(imagePicker, animated: true, completion: nil)
+            startImportPhotoFromLibrary()
         case actionSheetTitleCancel:
             println("Cancelled by user")
         default:
@@ -226,5 +306,37 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     
     override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
         return UIStatusBarAnimation.None
+    }
+    
+    //MARK: -AGImagePickerControllerDelegate
+    
+    func agImagePickerController(picker: AGImagePickerController!, numberOfItemsPerRowForDevice deviceType: AGDeviceType, andInterfaceOrientation interfaceOrientation: UIInterfaceOrientation) -> UInt {
+        if deviceType == AGDeviceType.TypeiPad {
+            if UIInterfaceOrientationIsLandscape(interfaceOrientation) {
+                return 7
+            }
+            else {
+                return 6
+            }
+        }
+        
+        if UIInterfaceOrientationIsLandscape(interfaceOrientation) {
+            return 5
+        }
+        else {
+            return 4
+        }
+    }
+    
+    func agImagePickerController(picker: AGImagePickerController!, shouldDisplaySelectionInformationInSelectionMode selectionMode: AGImagePickerControllerSelectionMode) -> Bool {
+        return (selectionMode == AGImagePickerControllerSelectionMode.Single ? false : true)
+    }
+    
+    func agImagePickerController(picker: AGImagePickerController!, shouldShowToolbarForManagingTheSelectionInSelectionMode selectionMode: AGImagePickerControllerSelectionMode) -> Bool {
+        return (selectionMode == AGImagePickerControllerSelectionMode.Single ? false : true)
+    }
+    
+    func selectionBehaviorInSingleSelectionModeForAGImagePickerController(picker: AGImagePickerController!) -> AGImagePickerControllerSelectionBehaviorType {
+        return AGImagePickerControllerSelectionBehaviorType.Radio
     }
 }
