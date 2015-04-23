@@ -76,6 +76,15 @@
 		9B8032C81A35D76A005BA828 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8032C51A35D76A005BA828 /* Default.png */; };
 		9B8032C91A35D76A005BA828 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8032C61A35D76A005BA828 /* Default@2x.png */; };
 		9B8032CA1A35D76A005BA828 /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8032C71A35D76A005BA828 /* Default@3x.png */; };
+		9B86959F1AE93895001D0D7F /* AGImagePickerController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86958E1AE93895001D0D7F /* AGImagePickerController+Helper.m */; };
+		9B8695A01AE93895001D0D7F /* AGImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B86958F1AE93895001D0D7F /* AGImagePickerController.bundle */; };
+		9B8695A11AE93895001D0D7F /* AGImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8695911AE93895001D0D7F /* AGImagePickerController.m */; };
+		9B8695A21AE93895001D0D7F /* AGIPCAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8695941AE93895001D0D7F /* AGIPCAlbumsController.m */; };
+		9B8695A31AE93895001D0D7F /* AGIPCAssetsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8695961AE93895001D0D7F /* AGIPCAssetsController.m */; };
+		9B8695A41AE93895001D0D7F /* AGIPCGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8695981AE93895001D0D7F /* AGIPCGridCell.m */; };
+		9B8695A51AE93895001D0D7F /* AGIPCGridItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86959A1AE93895001D0D7F /* AGIPCGridItem.m */; };
+		9B8695A61AE93895001D0D7F /* AGIPCToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86959C1AE93895001D0D7F /* AGIPCToolbarItem.m */; };
+		9B8695A71AE93895001D0D7F /* ALAsset+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86959E1AE93895001D0D7F /* ALAsset+AGIPC.m */; };
 		9B97DCC91A235933006A94C0 /* RecordBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCC81A235933006A94C0 /* RecordBudgetViewController.swift */; };
 		9B97DCCC1A236161006A94C0 /* BudgetItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCCB1A236161006A94C0 /* BudgetItemDataModel.swift */; };
 		9B97DCCE1A2361AA006A94C0 /* BudgetArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCCD1A2361AA006A94C0 /* BudgetArchiver.swift */; };
@@ -258,6 +267,24 @@
 		9B8032C51A35D76A005BA828 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = pictures/Default.png; sourceTree = "<group>"; };
 		9B8032C61A35D76A005BA828 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "pictures/Default@2x.png"; sourceTree = "<group>"; };
 		9B8032C71A35D76A005BA828 /* Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@3x.png"; path = "pictures/Default@3x.png"; sourceTree = "<group>"; };
+		9B86958D1AE93895001D0D7F /* AGImagePickerController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AGImagePickerController+Helper.h"; sourceTree = "<group>"; };
+		9B86958E1AE93895001D0D7F /* AGImagePickerController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AGImagePickerController+Helper.m"; sourceTree = "<group>"; };
+		9B86958F1AE93895001D0D7F /* AGImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AGImagePickerController.bundle; sourceTree = "<group>"; };
+		9B8695901AE93895001D0D7F /* AGImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGImagePickerController.h; sourceTree = "<group>"; };
+		9B8695911AE93895001D0D7F /* AGImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGImagePickerController.m; sourceTree = "<group>"; };
+		9B8695921AE93895001D0D7F /* AGImagePickerControllerDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGImagePickerControllerDefines.h; sourceTree = "<group>"; };
+		9B8695931AE93895001D0D7F /* AGIPCAlbumsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGIPCAlbumsController.h; sourceTree = "<group>"; };
+		9B8695941AE93895001D0D7F /* AGIPCAlbumsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGIPCAlbumsController.m; sourceTree = "<group>"; };
+		9B8695951AE93895001D0D7F /* AGIPCAssetsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGIPCAssetsController.h; sourceTree = "<group>"; };
+		9B8695961AE93895001D0D7F /* AGIPCAssetsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGIPCAssetsController.m; sourceTree = "<group>"; };
+		9B8695971AE93895001D0D7F /* AGIPCGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGIPCGridCell.h; sourceTree = "<group>"; };
+		9B8695981AE93895001D0D7F /* AGIPCGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGIPCGridCell.m; sourceTree = "<group>"; };
+		9B8695991AE93895001D0D7F /* AGIPCGridItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGIPCGridItem.h; sourceTree = "<group>"; };
+		9B86959A1AE93895001D0D7F /* AGIPCGridItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGIPCGridItem.m; sourceTree = "<group>"; };
+		9B86959B1AE93895001D0D7F /* AGIPCToolbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGIPCToolbarItem.h; sourceTree = "<group>"; };
+		9B86959C1AE93895001D0D7F /* AGIPCToolbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGIPCToolbarItem.m; sourceTree = "<group>"; };
+		9B86959D1AE93895001D0D7F /* ALAsset+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAsset+AGIPC.h"; sourceTree = "<group>"; };
+		9B86959E1AE93895001D0D7F /* ALAsset+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAsset+AGIPC.m"; sourceTree = "<group>"; };
 		9B97DCC81A235933006A94C0 /* RecordBudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordBudgetViewController.swift; sourceTree = "<group>"; };
 		9B97DCCB1A236161006A94C0 /* BudgetItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetItemDataModel.swift; sourceTree = "<group>"; };
 		9B97DCCD1A2361AA006A94C0 /* BudgetArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetArchiver.swift; sourceTree = "<group>"; };
@@ -575,6 +602,7 @@
 		9B37A9D019EEB57A0097F88D /* DecorationBus */ = {
 			isa = PBXGroup;
 			children = (
+				9B86958C1AE93895001D0D7F /* AGImagePickerController */,
 				9BFE54FE1AD6B603003D8795 /* MWPhotoBrowser */,
 				9B151AA21A6FEA0700498ED2 /* DataModel */,
 				9B151A6C1A655B1100498ED2 /* CustomCell */,
@@ -649,6 +677,31 @@
 				9BA6B0471A3DD261003BC35E /* KeyboardAccessory.swift */,
 			);
 			path = Interface;
+			sourceTree = "<group>";
+		};
+		9B86958C1AE93895001D0D7F /* AGImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				9B86958D1AE93895001D0D7F /* AGImagePickerController+Helper.h */,
+				9B86958E1AE93895001D0D7F /* AGImagePickerController+Helper.m */,
+				9B86958F1AE93895001D0D7F /* AGImagePickerController.bundle */,
+				9B8695901AE93895001D0D7F /* AGImagePickerController.h */,
+				9B8695911AE93895001D0D7F /* AGImagePickerController.m */,
+				9B8695921AE93895001D0D7F /* AGImagePickerControllerDefines.h */,
+				9B8695931AE93895001D0D7F /* AGIPCAlbumsController.h */,
+				9B8695941AE93895001D0D7F /* AGIPCAlbumsController.m */,
+				9B8695951AE93895001D0D7F /* AGIPCAssetsController.h */,
+				9B8695961AE93895001D0D7F /* AGIPCAssetsController.m */,
+				9B8695971AE93895001D0D7F /* AGIPCGridCell.h */,
+				9B8695981AE93895001D0D7F /* AGIPCGridCell.m */,
+				9B8695991AE93895001D0D7F /* AGIPCGridItem.h */,
+				9B86959A1AE93895001D0D7F /* AGIPCGridItem.m */,
+				9B86959B1AE93895001D0D7F /* AGIPCToolbarItem.h */,
+				9B86959C1AE93895001D0D7F /* AGIPCToolbarItem.m */,
+				9B86959D1AE93895001D0D7F /* ALAsset+AGIPC.h */,
+				9B86959E1AE93895001D0D7F /* ALAsset+AGIPC.m */,
+			);
+			path = AGImagePickerController;
 			sourceTree = "<group>";
 		};
 		9B97DCCA1A23610B006A94C0 /* dataModel */ = {
@@ -982,6 +1035,7 @@
 				9B0CE7B01AC2FA9600945AE6 /* EverAlbum.plist in Resources */,
 				9BC402091A7FAC8D00FDF4D6 /* Window.png in Resources */,
 				9B1FF5281A33480700FAA985 /* Icon-76@2x.png in Resources */,
+				9B8695A01AE93895001D0D7F /* AGImagePickerController.bundle in Resources */,
 				9BC401F01A7FAA1000FDF4D6 /* Furniture@3x.png in Resources */,
 				9BC401F71A7FAA1000FDF4D6 /* Unknow.png in Resources */,
 				9BC401E21A7FAA1000FDF4D6 /* Artwork.png in Resources */,
@@ -1023,18 +1077,22 @@
 				9BFE55861AD6B603003D8795 /* UIImageView+WebCache.m in Sources */,
 				9BFE557A1AD6B603003D8795 /* SDImageCache.m in Sources */,
 				9BFE55841AD6B603003D8795 /* UIImage+WebP.m in Sources */,
+				9B8695A11AE93895001D0D7F /* AGImagePickerController.m in Sources */,
 				9BFE55661AD6B603003D8795 /* DACircularProgressView.m in Sources */,
 				9BA6B0481A3DD261003BC35E /* KeyboardAccessory.swift in Sources */,
+				9B86959F1AE93895001D0D7F /* AGImagePickerController+Helper.m in Sources */,
 				9BFE55641AD6B603003D8795 /* MWTapDetectingView.m in Sources */,
 				9BFE557F1AD6B603003D8795 /* SDWebImageManager.m in Sources */,
 				9BFE55791AD6B603003D8795 /* NSData+ImageContentType.m in Sources */,
 				9B2491931A5D683700990BA6 /* FormCheckCell.swift in Sources */,
 				9BFE556D1AD6B603003D8795 /* PSTCollectionViewData.m in Sources */,
 				9BFE55851AD6B603003D8795 /* UIImageView+HighlightedWebCache.m in Sources */,
+				9B8695A41AE93895001D0D7F /* AGIPCGridCell.m in Sources */,
 				9B05F5171ADA18560058EF0B /* CollectionPhotoCell.swift in Sources */,
 				9B2491981A5D683700990BA6 /* FormSwitchCell.swift in Sources */,
 				9B2491901A5D683700990BA6 /* FormTitleCell.swift in Sources */,
 				9B2D7B881A63E82800D829EF /* FormTwoComponentPickerCell.swift in Sources */,
+				9B8695A61AE93895001D0D7F /* AGIPCToolbarItem.m in Sources */,
 				9B24919A1A5D683700990BA6 /* FormTextViewCell.swift in Sources */,
 				9B151AAA1A713F3900498ED2 /* PrimeCategoryDetailDataModel.swift in Sources */,
 				9BFE55691AD6B603003D8795 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
@@ -1055,6 +1113,7 @@
 				9BCC42581A3483CA00978841 /* ShowPayListViewController.swift in Sources */,
 				9B0CE7AE1AC1A8E200945AE6 /* AlbumHandler.swift in Sources */,
 				9BFE55811AD6B603003D8795 /* UIButton+WebCache.m in Sources */,
+				9B8695A21AE93895001D0D7F /* AGIPCAlbumsController.m in Sources */,
 				9BC401BA1A7CB3CF00FDF4D6 /* BudgetRecord.swift in Sources */,
 				9BFE55601AD6B603003D8795 /* MWGridViewController.m in Sources */,
 				9B2491991A5D683700990BA6 /* FormTextFieldCell.swift in Sources */,
@@ -1075,11 +1134,13 @@
 				9BFE556E1AD6B603003D8795 /* PSTCollectionViewFlowLayout.m in Sources */,
 				9B985BFD1A178F96009F4435 /* FeedBackViewController.swift in Sources */,
 				9B2491971A5D683700990BA6 /* FormSelectorCell.swift in Sources */,
+				9B8695A71AE93895001D0D7F /* ALAsset+AGIPC.m in Sources */,
 				9B24919F1A5D683700990BA6 /* FormRowDescriptor.swift in Sources */,
 				9BFE556F1AD6B603003D8795 /* PSTCollectionViewItemKey.m in Sources */,
 				9BFE55721AD6B603003D8795 /* PSTGridLayoutInfo.m in Sources */,
 				9B97DCCC1A236161006A94C0 /* BudgetItemDataModel.swift in Sources */,
 				9BFE55671AD6B603003D8795 /* MBProgressHUD.m in Sources */,
+				9B8695A31AE93895001D0D7F /* AGIPCAssetsController.m in Sources */,
 				9BFE55751AD6B603003D8795 /* PSTGridLayoutSection.m in Sources */,
 				9B1E5BF91A2CA0C800615842 /* ColorScheme.swift in Sources */,
 				9B151A701A6A9CA100498ED2 /* MinorCategoryTableViewCell.swift in Sources */,
@@ -1111,6 +1172,7 @@
 				9BFE556B1AD6B603003D8795 /* PSTCollectionViewCell.m in Sources */,
 				9B151AA81A71371D00498ED2 /* MinorCategoryDetailDataModel.swift in Sources */,
 				9BFE556C1AD6B603003D8795 /* PSTCollectionViewController.m in Sources */,
+				9B8695A51AE93895001D0D7F /* AGIPCGridItem.m in Sources */,
 				9B2491941A5D683700990BA6 /* FormDateCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

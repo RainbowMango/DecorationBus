@@ -2,6 +2,7 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 
+// 集成MWPhotoBrowser
 #import "MWPhotoBrowser.h"
 #import "PSTCollectionView.h"
 #import "PSTCollectionViewCell.h"
@@ -34,3 +35,7 @@
 #import "MWTapDetectingImageView.h"
 #import "MWTapDetectingView.h"
 #import "MWZoomingScrollView.h"
+
+//集成AGImagePickerController
+#import "AGIPCToolbarItem.h"
+#import "AGImagePickerController.h"
