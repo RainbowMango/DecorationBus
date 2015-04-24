@@ -17,15 +17,13 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     var albumName:String = String()
     var imageURLs: Array<String> = Array<String>()
     
+    //定义AGImagePickerController实例
     var ipc = AGImagePickerController()
-    var selectedPhotos = NSMutableArray()
-    var blockSelf = self
     
     // 定义照片源字符串，方便创建actionSheet和处理代理
     let actionSheetTitleCancel = "取消"
     let actionSheetTitleCamera = "拍照"
     let actionSheetTitlePhotoLibrary = "照片库"
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,39 +39,20 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         
         ipc.delegate = self
         
+        // AGImagePickerController取消选取图片处理
         ipc.didFailBlock = { (error) -> Void in
-            self.selectedPhotos.removeAllObjects()
-            println("User cacelled")
-            // We need to wait for the view controller to appear first.
-            let delayInSeconds :NSTimeInterval = 0.5
-            let minseconds = delayInSeconds * Double(NSEC_PER_SEC)
-            let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
-            
-            dispatch_after(popTime, dispatch_get_main_queue() , {
-                self.dismissViewControllerAnimated(true, completion: nil)
-            })
-            
+            self.dismissViewControllerAnimated(true, completion: nil)
             UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
         }
         
+        //AGImagePickerController确定选取图片
         ipc.didFinishBlock = { (info) -> Void in
-            self.selectedPhotos.setArray(info)
-            
-//            var image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
-//            AlbumHandler().saveImageToSandbox(albumName, image: image)
-//            
-//            /*添加图片后刷新view*/
-//            self.collectionView?.reloadData()
-            
             for item in info {
                 var result = item as! ALAsset
-//                var ref: Unmanaged<CGImage> = result.defaultRepresentation().fullResolutionImage()
-//                var myImage :CGImage = ref.takeRetainedValue()
-//                var image: UIImage = UIImage(CGImage: myImage)!
-//                AlbumHandler().saveImageToSandbox(self.albumName, image: image)
                 
-                // 读取缩略图
-                var image = UIImage(CGImage: result.thumbnail().takeUnretainedValue())
+                //获取全屏图
+                var cgImage = result.defaultRepresentation().fullScreenImage().takeUnretainedValue()
+                var image = UIImage(CGImage: cgImage)
                 AlbumHandler().saveImageToSandbox(self.albumName, image: image!)
             }
             self.collectionView?.reloadData()
@@ -129,13 +108,6 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
                 return false
         }
         
-        // IOS 8.0提供，需要import Photos
-//        let authStatus :PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-//        if authStatus == PHAuthorizationStatus.Denied ||
-//            authStatus == PHAuthorizationStatus.Restricted {
-//            return false
-//        }
-        
         return true
     }
     
@@ -144,33 +116,21 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         // Show saved photos on top
         ipc.shouldShowSavedPhotosOnTop = false
         ipc.shouldChangeStatusBarStyle = true
-        ipc.selection = self.selectedPhotos as [AnyObject]
         ipc.maximumNumberOfPhotosToBeSelected = 9
         
-        // Custom toolbar items
-        var selectAllSysButton = UIBarButtonItem(title: "+ Select All", style: .Bordered, target: nil, action: nil)
-        var selectAll = AGIPCToolbarItem(barButtonItem: selectAllSysButton) { (index, asset) -> Bool in
-            return true
-        }
-        
+        // 自定义工具栏按钮（官方例子中有全选、奇偶选）
         var flexibleSysButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         var flexible = AGIPCToolbarItem(barButtonItem: flexibleSysButton, andSelectionBlock: nil)
         
-        var selectOddSysButton = UIBarButtonItem(title: "+ Select Odd", style: .Bordered, target: nil, action: nil)
-        var selectOdd = AGIPCToolbarItem(barButtonItem: selectOddSysButton) { (index, asset) -> Bool in
-            return true
-        }
-        
-        var deselectAllSysButton = UIBarButtonItem(title: "重选", style: .Bordered, target: nil, action: nil)
+        var deselectAllSysButton = UIBarButtonItem(title: "重新选择", style: .Bordered, target: nil, action: nil)
         var deselectAll = AGIPCToolbarItem(barButtonItem: deselectAllSysButton) { (index, asset) -> Bool in
             return false
         }
         
-        ipc.toolbarItemsForManagingTheSelection = [ flexible, deselectAll]
+        ipc.toolbarItemsForManagingTheSelection = [ flexible, deselectAll, flexible]
         
         self.presentViewController(ipc, animated: true, completion: nil)
     }
-    
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
