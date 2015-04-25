@@ -269,34 +269,35 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     }
     
     //MARK: -AGImagePickerControllerDelegate
+    // 实现如下代理会导致iPhone 5S(IOS8.3) crash
     
-    func agImagePickerController(picker: AGImagePickerController!, numberOfItemsPerRowForDevice deviceType: AGDeviceType, andInterfaceOrientation interfaceOrientation: UIInterfaceOrientation) -> UInt {
-        if deviceType == AGDeviceType.TypeiPad {
-            if UIInterfaceOrientationIsLandscape(interfaceOrientation) {
-                return 7
-            }
-            else {
-                return 6
-            }
-        }
-        
-        if UIInterfaceOrientationIsLandscape(interfaceOrientation) {
-            return 5
-        }
-        else {
-            return 4
-        }
-    }
+//    func agImagePickerController(picker: AGImagePickerController!, numberOfItemsPerRowForDevice deviceType: AGDeviceType, andInterfaceOrientation interfaceOrientation: UIInterfaceOrientation) -> UInt {
+//        if deviceType == AGDeviceType.TypeiPad {
+//            if UIInterfaceOrientationIsLandscape(interfaceOrientation) {
+//                return 7
+//            }
+//            else {
+//                return 6
+//            }
+//        }
+//        
+//        if UIInterfaceOrientationIsLandscape(interfaceOrientation) {
+//            return 5
+//        }
+//        else {
+//            return 4
+//        }
+//    }
     
-    func agImagePickerController(picker: AGImagePickerController!, shouldDisplaySelectionInformationInSelectionMode selectionMode: AGImagePickerControllerSelectionMode) -> Bool {
-        return (selectionMode == AGImagePickerControllerSelectionMode.Single ? false : true)
-    }
-    
-    func agImagePickerController(picker: AGImagePickerController!, shouldShowToolbarForManagingTheSelectionInSelectionMode selectionMode: AGImagePickerControllerSelectionMode) -> Bool {
-        return (selectionMode == AGImagePickerControllerSelectionMode.Single ? false : true)
-    }
-    
-    func selectionBehaviorInSingleSelectionModeForAGImagePickerController(picker: AGImagePickerController!) -> AGImagePickerControllerSelectionBehaviorType {
-        return AGImagePickerControllerSelectionBehaviorType.Radio
-    }
+//    func agImagePickerController(picker: AGImagePickerController!, shouldDisplaySelectionInformationInSelectionMode selectionMode: AGImagePickerControllerSelectionMode) -> Bool {
+//        return (selectionMode == AGImagePickerControllerSelectionMode.Single ? false : true)
+//    }
+//    
+//    func agImagePickerController(picker: AGImagePickerController!, shouldShowToolbarForManagingTheSelectionInSelectionMode selectionMode: AGImagePickerControllerSelectionMode) -> Bool {
+//        return (selectionMode == AGImagePickerControllerSelectionMode.Single ? false : true)
+//    }
+//    
+//    func selectionBehaviorInSingleSelectionModeForAGImagePickerController(picker: AGImagePickerController!) -> AGImagePickerControllerSelectionBehaviorType {
+//        return AGImagePickerControllerSelectionBehaviorType.Radio
+//    }
 }
