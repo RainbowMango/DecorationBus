@@ -210,7 +210,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         let title = actionSheet.buttonTitleAtIndex(buttonIndex)
-        switch title {
+        switch title! {
         case actionSheetTitleCamera:
             if !allowCamera() {
                 //用户隐私设置禁用相机，弹出alert

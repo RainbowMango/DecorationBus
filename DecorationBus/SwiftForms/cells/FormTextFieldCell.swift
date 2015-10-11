@@ -147,7 +147,7 @@ class FormTextFieldCell: FormBaseCell {
     /// MARK: Actions
     
     func editingChanged(sender: UITextField) {
-        let trimmedText = sender.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let trimmedText = sender.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         rowDescriptor.value = trimmedText.characters.count > 0 ? sender.text : nil
         update()
     }

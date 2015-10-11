@@ -21,7 +21,7 @@ class AlbumHandler: NSObject {
         var imageName = "album_\(albumName)_\(makeUniqueID()).png"
         var imageURL = docPath.stringByAppendingPathComponent(imageName)
         
-        UIImageJPEGRepresentation(image, 0.01).writeToFile(imageURL, atomically: true)
+        UIImageJPEGRepresentation(image, 0.01)!.writeToFile(imageURL, atomically: true)
         
         if !albumExist(albumName) {
             createAlbum(albumName)

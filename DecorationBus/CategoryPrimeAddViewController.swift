@@ -25,7 +25,7 @@ class CategoryPrimeAddViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         self.delegate = parentView
-        self.delegate?.CategoryPrimeAddView(self.newPrimeCategoryTextField.text)
+        self.delegate?.CategoryPrimeAddView(self.newPrimeCategoryTextField.text!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,13 +42,13 @@ class CategoryPrimeAddViewController: UIViewController {
     //TODO：新增大类时，同时也要增加子类
     func barButtonClicked() {
         print("barButtonClicked")
-        if self.newPrimeCategoryTextField.text.isEmpty {
+        if self.newPrimeCategoryTextField.text!.isEmpty {
             // 弹出Alert
             showAlert()
             return
         }
         
-        CategoryHandler().addPrimeCategory(self.newPrimeCategoryTextField.text)
+        CategoryHandler().addPrimeCategory(self.newPrimeCategoryTextField.text!)
         
         // 记录后返回到上层
         self.navigationController?.popViewControllerAnimated(true)
