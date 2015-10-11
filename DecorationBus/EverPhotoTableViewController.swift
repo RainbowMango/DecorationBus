@@ -47,7 +47,7 @@ class EverPhotoTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("albumTableCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("albumTableCell", forIndexPath: indexPath) 
 
         // 配置cell, 显示本相册基本信息并设置图片圆角效果
         let albumName = phase_[indexPath.section]
@@ -77,7 +77,7 @@ class EverPhotoTableViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toEverPhotoAlbum" {
-            var destinationView = segue.destinationViewController as! EverPhotoAlbumCollectionViewController
+            let destinationView = segue.destinationViewController as! EverPhotoAlbumCollectionViewController
             destinationView.setValue(self.selectedAlbum, forKey: "albumName")
         }
     }

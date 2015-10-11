@@ -54,7 +54,7 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) 
         cell.textLabel!.text = self.minorCategorys[indexPath.row]
         
         return cell
@@ -67,7 +67,7 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
     // 滑动删除子类
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            println("Delete \(self.minorCategorys[indexPath.row])")
+            print("Delete \(self.minorCategorys[indexPath.row])")
             CategoryHandler().removeMinorCategory(self.primeCategorySelected, minorCategory: self.minorCategorys[indexPath.row])
             self.minorCategorys.removeAtIndex(indexPath.row)
             minorCategoryTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -79,9 +79,9 @@ class CatagoryMinorManageViewController: UIViewController, UITableViewDataSource
     // 向下个页面传值标准做法
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "addMinorCategory" {
-            println("将要转入addMinorCategory页面")
+            print("将要转入addMinorCategory页面")
     
-            var destinationView: CategoryMinorAddViewController = segue.destinationViewController as! CategoryMinorAddViewController
+            let destinationView: CategoryMinorAddViewController = segue.destinationViewController as! CategoryMinorAddViewController
             destinationView.setValue(self.primeCategorySelected, forKey: "primeCategorySelected")
             destinationView.setValue(self, forKey: "parentView")
         }

@@ -16,12 +16,12 @@ class CategoryHandler: NSObject {
     /*读取类别名列表*/
     func getList() -> Dictionary<String, Array<String>> {
         var result = Dictionary<String, Array<String>>()
-        var plistArry = NSArray(contentsOfFile: getSandboxFile())
+        let plistArry = NSArray(contentsOfFile: getSandboxFile())
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
-            var prime = entry["PrimeDesc"] as! String
-            var minorArray = entry["MinorDesc"] as! Array<String>
+            let prime = entry["PrimeDesc"] as! String
+            let minorArray = entry["MinorDesc"] as! Array<String>
             result[prime] = minorArray
         }
         
@@ -31,11 +31,11 @@ class CategoryHandler: NSObject {
     /*读取主类别列表*/
     func getPrimeCategory() -> Array<String> {
         var result = Array<String>()
-        var plistArry = NSArray(contentsOfFile: getSandboxFile())
+        let plistArry = NSArray(contentsOfFile: getSandboxFile())
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
-            var prime = entry["PrimeDesc"] as! String
+            let prime = entry["PrimeDesc"] as! String
             result.append(prime)
         }
         
@@ -44,12 +44,12 @@ class CategoryHandler: NSObject {
     
     /*读取子类别列表*/
     func getMinorCategory(primeCategory: String) -> Array<String> {
-        var result = Array<String>()
-        var plistArry = NSArray(contentsOfFile: getSandboxFile())
+        let result = Array<String>()
+        let plistArry = NSArray(contentsOfFile: getSandboxFile())
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
-            var prime = entry["PrimeDesc"] as! String
+            let prime = entry["PrimeDesc"] as! String
             if primeCategory == prime {
                 return entry["MinorDesc"] as! Array<String>
             }
@@ -63,7 +63,7 @@ class CategoryHandler: NSObject {
     读取主类别图标,读取不到则返回默认图标
     */
     func getIcon(primeCategory: String) -> String {
-        var plistArry = NSArray(contentsOfFile: getSandboxFile())
+        let plistArry = NSArray(contentsOfFile: getSandboxFile())
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
@@ -86,36 +86,36 @@ class CategoryHandler: NSObject {
     新增主类别
     */
     func addPrimeCategory(category: String) -> Bool {
-        var plistFile = getSandboxFile()
-        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        let plistFile = getSandboxFile()
+        let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取类别列表失败")
         
-        var newItem = NSMutableDictionary()
+        let newItem = NSMutableDictionary()
         newItem.setObject(category, forKey: "PrimeDesc")
         newItem.setObject("Unknow", forKey: "PrimeIcon")
         newItem.setObject(Array<String>(), forKey: "MinorDesc")
         
         plistArry!.addObject(newItem)
         
-        var rc = plistArry!.writeToFile(plistFile, atomically: true)
+        let rc = plistArry!.writeToFile(plistFile, atomically: true)
         assert(rc, "写文件失败")
         return rc
     }
     
     /*删除主类别*/
     func removePrimeCategory(category: String) -> Bool {
-        var plistFile = getSandboxFile()
-        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        let plistFile = getSandboxFile()
+        let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取类别列表失败")
         
-        for (index, entry) in enumerate(plistArry!) {
+        for (index, entry) in (plistArry!).enumerate() {
             if category == entry["PrimeDesc"] as! String {
                 plistArry!.removeObjectAtIndex(index)
                 break
             }
         }
         
-        var rc = plistArry!.writeToFile(plistFile, atomically: true)
+        let rc = plistArry!.writeToFile(plistFile, atomically: true)
         assert(rc, "写文件失败")
         return rc
     }
@@ -124,18 +124,18 @@ class CategoryHandler: NSObject {
     新增子类别
     */
     func addMinorCategory(primeCategory: String, minorCategory: String) -> Bool {
-        var plistFile = getSandboxFile()
-        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        let plistFile = getSandboxFile()
+        let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取类别列表失败")
         
-        for (index, entry) in enumerate(plistArry!) {
+        for (index, entry) in (plistArry!).enumerate() {
             if primeCategory == entry["PrimeDesc"] as! String {
                 (entry["MinorDesc"] as! NSMutableArray).addObject(minorCategory)
                 break
             }
         }
         
-        var rc = plistArry!.writeToFile(plistFile, atomically: true)
+        let rc = plistArry!.writeToFile(plistFile, atomically: true)
         assert(rc, "写文件失败")
         return rc
     }
@@ -144,18 +144,18 @@ class CategoryHandler: NSObject {
     删除子类别
     */
     func removeMinorCategory(primeCategory: String, minorCategory: String) -> Bool {
-        var plistFile = getSandboxFile()
-        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        let plistFile = getSandboxFile()
+        let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取类别列表失败")
         
-        for (index, entry) in enumerate(plistArry!) {
+        for (index, entry) in (plistArry!).enumerate() {
             if primeCategory == entry["PrimeDesc"] as! String {
                 (entry["MinorDesc"] as! NSMutableArray).removeObject(minorCategory)
                 break
             }
         }
         
-        var rc = plistArry!.writeToFile(plistFile, atomically: true)
+        let rc = plistArry!.writeToFile(plistFile, atomically: true)
         assert(rc, "写文件失败")
         return rc
     }
@@ -173,7 +173,14 @@ class CategoryHandler: NSObject {
         }
         
         var error: NSError?
-        var rc = NSFileManager().copyItemAtPath(srcFile, toPath: dstFile, error: &error)
+        var rc: Bool
+        do {
+            try NSFileManager().copyItemAtPath(srcFile, toPath: dstFile)
+            rc = true
+        } catch let error1 as NSError {
+            error = error1
+            rc = false
+        }
         assert(rc, "拷贝列表文件失败")
         
         return true
@@ -189,15 +196,15 @@ class CategoryHandler: NSObject {
     
     /*获取document目录中plist文件*/
     func getSandboxFile() -> String {
-        var docPath = getDocumentDirectory()
-        var file = docPath.stringByAppendingPathComponent("\(resourceFile).plist")
+        let docPath = getDocumentDirectory()
+        let file = docPath.stringByAppendingPathComponent("\(resourceFile).plist")
         
         return file
     }
     
     /*获取document目录*/
     func getDocumentDirectory() -> String {
-        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as! Array<String>
+        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) 
         assert(directories.count > 0, "获取document目录失败")
         return directories[0]
     }

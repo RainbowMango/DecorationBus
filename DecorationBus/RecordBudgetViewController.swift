@@ -59,7 +59,7 @@ class RecordBudgetViewController: FormViewController, FormViewControllerDelegate
             money = (val as! NSString).floatValue
         }
         else {
-            var alertView = UIAlertView(title: "空值", message: "请输入正确的金额", delegate: self, cancelButtonTitle: "好的")
+            let alertView = UIAlertView(title: "空值", message: "请输入正确的金额", delegate: self, cancelButtonTitle: "好的")
             alertView.show()
             return
         }
@@ -71,7 +71,7 @@ class RecordBudgetViewController: FormViewController, FormViewControllerDelegate
             minorCategory = val[1]
         }
         else {
-            var alertView = UIAlertView(title: "空值", message: "请选择一个类别", delegate: self, cancelButtonTitle: "好的")
+            let alertView = UIAlertView(title: "空值", message: "请选择一个类别", delegate: self, cancelButtonTitle: "好的")
             alertView.show()
             return
         }
@@ -86,7 +86,7 @@ class RecordBudgetViewController: FormViewController, FormViewControllerDelegate
         budget_.minorCategory_   = minorCategory
         budget_.comments_        = comments
         
-        println(budget_.recordDescription())
+        print(budget_.recordDescription())
         
         // 如果是修改记录不重新生成ID，直接修改，否则生成ID并保存
         if modifyFlag_ {

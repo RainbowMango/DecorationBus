@@ -19,7 +19,7 @@ class PrimeCategoryDetail {
         orderMoney_    = minorItem.orderMoney_
     }
     class func mergeToDetailList(inout list: Array<PrimeCategoryDetail>, newItem: MinorCategoryDetail) -> Void{
-        for (index, value) in enumerate(list) {
+        for (index, value) in list.enumerate() {
             if value.primeCategory_ == newItem.primeCategory_ {
                 list[index].orderMoney_  += newItem.orderMoney_
                 list[index].budgetMoney_ += newItem.budgetMoney_

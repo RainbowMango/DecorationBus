@@ -24,7 +24,7 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
         super.init(coder: aDecoder)
     }
     
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -64,7 +64,7 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
         cell!.textLabel!.text = formCell.rowDescriptor.titleForOptionValue(optionValue)
         
         if let selectedOptions = formCell.rowDescriptor.value as? [NSObject] {
-            if (find(selectedOptions, optionValue as NSObject) != nil) {
+            if (selectedOptions.indexOf(optionValue as NSObject) != nil) {
                 if formCell.rowDescriptor.cellAccessoryView == nil {
                     cell!.accessoryType = .Checkmark
                 }
@@ -102,7 +102,7 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
                 formCell.rowDescriptor.value = NSMutableArray()
             }
                         
-            if var selectedOptions = formCell.rowDescriptor.value as? NSMutableArray {
+            if let selectedOptions = formCell.rowDescriptor.value as? NSMutableArray {
                 
                 if selectedOptions.containsObject(optionValue) {
                     selectedOptions.removeObject(optionValue)

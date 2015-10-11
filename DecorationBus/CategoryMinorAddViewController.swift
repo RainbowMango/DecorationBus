@@ -40,7 +40,7 @@ class CategoryMinorAddViewController: UIViewController {
     }
 
     func barButtonClicked() {
-        println("barButtonClicked")
+        print("barButtonClicked")
         if self.newMinorCategoryTextField.text.isEmpty {
             // 弹出Alert
             showAlert()
@@ -54,7 +54,7 @@ class CategoryMinorAddViewController: UIViewController {
     }
     
     func showAlert() -> Void {
-        var alertView = UIAlertView(title: "空值", message: "请输入正确的子类名", delegate: self, cancelButtonTitle: "好的")
+        let alertView = UIAlertView(title: "空值", message: "请输入正确的子类名", delegate: self, cancelButtonTitle: "好的")
         alertView.show()
     }
     /*

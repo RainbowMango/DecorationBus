@@ -40,8 +40,10 @@ class AlbumHandler: NSObject {
         let defFileManager = NSFileManager.defaultManager()
         assert(defFileManager.fileExistsAtPath(imageURL), "文件不存在：\(imageURL)")
         
-        if !defFileManager.removeItemAtPath(imageURL, error: nil) {
-            println("文件删除失败：\(imageURL)")
+        do {
+            try defFileManager.removeItemAtPath(imageURL)
+        } catch _ {
+            print("文件删除失败：\(imageURL)")
             return false
         }
         
@@ -50,18 +52,18 @@ class AlbumHandler: NSObject {
     
     /*将图片URL添加到plist文件，前提是相册已经存在*/
     func addImageURLToPlist(albumName: String, imageURL: String) -> Bool {
-        var plistFile = getSandboxFile()
-        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        let plistFile = getSandboxFile()
+        let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取相册列表失败")
         
-        for (index, entry) in enumerate(plistArry!) {
+        for (index, entry) in (plistArry!).enumerate() {
             if albumName == entry["AlbumName"] as! String {
                 (entry["ImageList"] as! NSMutableArray).addObject(imageURL)
                 break
             }
         }
         
-        var rc = plistArry!.writeToFile(plistFile, atomically: true)
+        let rc = plistArry!.writeToFile(plistFile, atomically: true)
         assert(rc, "写文件失败")
         return rc
     }
@@ -70,18 +72,18 @@ class AlbumHandler: NSObject {
     将图片URL从plist文件中删除
     */
     func removeImageFromPlist(albumName: String, imageURL: String) -> Bool {
-        var plistFile = getSandboxFile()
-        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        let plistFile = getSandboxFile()
+        let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取相册列表失败")
         
-        for (index, entry) in enumerate(plistArry!) {
+        for (index, entry) in (plistArry!).enumerate() {
             if albumName == entry["AlbumName"] as! String {
                 (entry["ImageList"] as! NSMutableArray).removeObject(imageURL)
                 break
             }
         }
         
-        var rc = plistArry!.writeToFile(plistFile, atomically: true)
+        let rc = plistArry!.writeToFile(plistFile, atomically: true)
         assert(rc, "写文件失败")
         return rc
         
@@ -89,11 +91,11 @@ class AlbumHandler: NSObject {
     
     /*取得相册中照片数量*/
     func getImageNumber(albumName: String) -> Int {
-        var plistFile = getSandboxFile()
-        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        let plistFile = getSandboxFile()
+        let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取相册列表失败")
         
-        for (index, entry) in enumerate(plistArry!) {
+        for (index, entry) in (plistArry!).enumerate() {
             if albumName == entry["AlbumName"] as! String {
                 return (entry["ImageList"] as! NSMutableArray).count
             }
@@ -104,13 +106,13 @@ class AlbumHandler: NSObject {
     
     /*取得相册中图片URL列表*/
     func getURLList(albumName: String) -> Array<String> {
-        var plistFile = getSandboxFile()
-        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        let plistFile = getSandboxFile()
+        let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取相册列表失败")
         
-        for (index, entry) in enumerate(plistArry!) {
+        for (index, entry) in (plistArry!).enumerate() {
             if albumName == entry["AlbumName"] as! String {
-                var originURLs = entry["ImageList"] as! Array<String>
+                let originURLs = entry["ImageList"] as! Array<String>
                 
                 /*
                 开发环境中每次编译都会生成唯一的ApplicationID,导致图片URL链接失效，为了方便开发添加过滤条件
@@ -132,23 +134,23 @@ class AlbumHandler: NSObject {
     
     /*创建相册*/
     func createAlbum(albumName: String) ->Void {
-        var plistFile = getSandboxFile()
-        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        let plistFile = getSandboxFile()
+        let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取相册列表失败")
         
-        var newItem = NSMutableDictionary()
+        let newItem = NSMutableDictionary()
         newItem.setObject(albumName, forKey: "AlbumName")
         newItem.setObject(Array<String>(), forKey: "ImageList")
         
         plistArry!.addObject(newItem)
         
-        var rc = plistArry!.writeToFile(plistFile, atomically: true)
+        let rc = plistArry!.writeToFile(plistFile, atomically: true)
         assert(rc, "写文件失败")
     }
     
     /*判断相册是否建立*/
     func albumExist(albumName: String) -> Bool {
-        var plistArry = NSArray(contentsOfFile: getSandboxFile())
+        let plistArry = NSArray(contentsOfFile: getSandboxFile())
         assert(plistArry != nil, "获取相册列表失败")
         
         for entry in plistArry! {
@@ -172,7 +174,14 @@ class AlbumHandler: NSObject {
         }
         
         var error: NSError?
-        var rc = NSFileManager().copyItemAtPath(srcFile, toPath: dstFile, error: &error)
+        var rc: Bool
+        do {
+            try NSFileManager().copyItemAtPath(srcFile, toPath: dstFile)
+            rc = true
+        } catch let error1 as NSError {
+            error = error1
+            rc = false
+        }
         assert(rc, "拷贝列表文件失败")
         
         return true
@@ -188,8 +197,8 @@ class AlbumHandler: NSObject {
     
     /*获取document目录中plist文件*/
     func getSandboxFile() -> String {
-        var docPath = getDocumentDirectory()
-        var file = docPath.stringByAppendingPathComponent("\(resourceFile).plist")
+        let docPath = getDocumentDirectory()
+        let file = docPath.stringByAppendingPathComponent("\(resourceFile).plist")
         
         return file
     }
@@ -199,16 +208,16 @@ class AlbumHandler: NSObject {
     根据当前时间(精确到毫秒)生成唯一标示
     */
     func makeUniqueID() -> String {
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmmssSSS"
-        var date          = NSDate()
+        let date          = NSDate()
         
         return dateFormatter.stringFromDate(date)
     }
     
     /*获取document目录*/
     func getDocumentDirectory() -> String {
-        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as! Array<String>
+        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) 
         assert(directories.count > 0, "获取document目录失败")
         return directories[0]
     }

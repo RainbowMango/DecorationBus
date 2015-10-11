@@ -41,7 +41,7 @@ class CategoryPrimeAddViewController: UIViewController {
     //新增大类
     //TODO：新增大类时，同时也要增加子类
     func barButtonClicked() {
-        println("barButtonClicked")
+        print("barButtonClicked")
         if self.newPrimeCategoryTextField.text.isEmpty {
             // 弹出Alert
             showAlert()
@@ -55,7 +55,7 @@ class CategoryPrimeAddViewController: UIViewController {
     }
     
     func showAlert() -> Void {
-        var alertView = UIAlertView(title: "空值", message: "请输入正确的大类名", delegate: self, cancelButtonTitle: "好的")
+        let alertView = UIAlertView(title: "空值", message: "请输入正确的大类名", delegate: self, cancelButtonTitle: "好的")
         alertView.show()
     }
     

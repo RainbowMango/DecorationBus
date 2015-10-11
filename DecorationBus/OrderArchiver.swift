@@ -14,23 +14,23 @@ class OrderArchiver {
     
     // 序列化获取orders
     func getOrdesFromUserDefault() -> Array<OrderItem> {
-        var encodedOrders: NSData? = userDefault.objectForKey(ordersKey) as? NSData
+        let encodedOrders: NSData? = userDefault.objectForKey(ordersKey) as? NSData
         if nil == encodedOrders {
             return Array<OrderItem>()
         }
         
-        var orders = NSKeyedUnarchiver.unarchiveObjectWithData(encodedOrders!) as! Array<OrderItem>
-        println("getOrdesFromUserDefault() count = \(orders.count)")
+        let orders = NSKeyedUnarchiver.unarchiveObjectWithData(encodedOrders!) as! Array<OrderItem>
+        print("getOrdesFromUserDefault() count = \(orders.count)")
         
         return orders
     }
     
     // 序列化存储orders
     func saveOrdersToUserDefault(orders: Array<OrderItem>) -> Void {
-        var archivedOrders = NSKeyedArchiver.archivedDataWithRootObject(orders)
+        let archivedOrders = NSKeyedArchiver.archivedDataWithRootObject(orders)
         userDefault.setObject(archivedOrders, forKey: ordersKey)
         userDefault.synchronize()
-        println("saveOrdersToUserDefault() count = \(orders.count)")
+        print("saveOrdersToUserDefault() count = \(orders.count)")
     }
     
     // 清除所有订单
@@ -42,7 +42,7 @@ class OrderArchiver {
     
     // 获取订单总额
     func getOrderSum() -> Float {
-        var orders = getOrdesFromUserDefault()
+        let orders = getOrdesFromUserDefault()
         var total: Float = 0.00
         
         for order in orders {

@@ -35,9 +35,9 @@ class ShowDetailListTableViewController: UITableViewController {
         primeCategoryDetailList_ = Array<PrimeCategoryDetail>()
         minorCategoryDetailList_ = Array<MinorCategoryDetail>()
         
-        println("更新类别列表")
+        print("更新类别列表")
         for order in orders_ {
-            var newItem = MinorCategoryDetail()
+            let newItem = MinorCategoryDetail()
             newItem.primeCategory_ = order.primeCategory_
             newItem.minorCategory_ = order.minorCategory_
             newItem.orderMoney_    = order.money_
@@ -45,7 +45,7 @@ class ShowDetailListTableViewController: UITableViewController {
             MinorCategoryDetail.mergeToDetailList(&minorCategoryDetailList_, newItem: newItem)
         }
         for budget in budgets_ {
-            var newItem = MinorCategoryDetail()
+            let newItem = MinorCategoryDetail()
             newItem.primeCategory_ = budget.primeCategory_
             newItem.minorCategory_ = budget.minorCategory_
             newItem.budgetMoney_   = budget.money_
@@ -55,10 +55,10 @@ class ShowDetailListTableViewController: UITableViewController {
         
         primeCategoryDetailList_ = PrimeCategoryDetail.getPrimeCategoryDetailList(minorCategoryDetailList_)
         
-        println("orders_.count = \(orders_.count)")
-        println("budgets_.count = \(budgets_.count)")
-        println("minorCategoryDetailList_.count = \(minorCategoryDetailList_.count)")
-        println("primeCategoryDetailList_.count = \(primeCategoryDetailList_.count)")
+        print("orders_.count = \(orders_.count)")
+        print("budgets_.count = \(budgets_.count)")
+        print("minorCategoryDetailList_.count = \(minorCategoryDetailList_.count)")
+        print("primeCategoryDetailList_.count = \(primeCategoryDetailList_.count)")
         
         //初始化cell数组
         initCellArray()
@@ -173,7 +173,7 @@ class ShowDetailListTableViewController: UITableViewController {
             var cell = tableView.dequeueReusableCellWithIdentifier("PrimeCategoryTableViewCell", forIndexPath: indexPath) as! PrimeCategoryTableViewCell
             
             // 配置cell
-            configPrimeCell(&cell, tableViewCellArray_[indexPath.row]["primeCategory"]!)
+            configPrimeCell(&cell, primeCategory: tableViewCellArray_[indexPath.row]["primeCategory"]!)
             
             return cell
         }
@@ -183,7 +183,7 @@ class ShowDetailListTableViewController: UITableViewController {
             // 配置cell
             let primeCategory = tableViewCellArray_[indexPath.row]["primeCategory"]
             let minorCategory = tableViewCellArray_[indexPath.row]["minorCategory"]
-            configMinorCell(&cell, primeCategory!, minorCategory!)
+            configMinorCell(&cell, primeCategory: primeCategory!, minorCategory: minorCategory!)
             return cell
         }
         
@@ -195,10 +195,10 @@ class ShowDetailListTableViewController: UITableViewController {
         // 获取NSIndexPath列表
         func getindexPathArray(basePath: NSIndexPath, count: Int) -> [NSIndexPath] {
             var indexPathArray = Array<NSIndexPath>()
-            var startRow = basePath.row + 1
+            let startRow = basePath.row + 1
             
             for var i = 0; i < count; i++ {
-                var newPath = NSIndexPath(forRow: startRow + i, inSection: basePath.section)
+                let newPath = NSIndexPath(forRow: startRow + i, inSection: basePath.section)
                 indexPathArray.append(newPath)
             }
             
@@ -220,7 +220,7 @@ class ShowDetailListTableViewController: UITableViewController {
             }
             
             // 动态增加cell
-            var indexPaths  = getindexPathArray(indexPath, addCount)
+            var indexPaths  = getindexPathArray(indexPath, count: addCount)
             tableView.beginUpdates()
             tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
             tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle)
@@ -232,7 +232,7 @@ class ShowDetailListTableViewController: UITableViewController {
             var removeIndexArray = Array<Int>()
             
             //获得将要删除的下标列表
-            for (index, value) in enumerate(tableViewCellArray_) {
+            for (index, value) in tableViewCellArray_.enumerate() {
                 if value["cellType"] == "minor" && value["primeCategory"] == primeCategory{
                     removeIndexArray.insert(index, atIndex: 0)
                 }
@@ -244,7 +244,7 @@ class ShowDetailListTableViewController: UITableViewController {
             }
             
             //从table view中删除
-            var indexPaths = getindexPathArray(indexPath, removeIndexArray.count)
+            var indexPaths = getindexPathArray(indexPath, count: removeIndexArray.count)
             tableView.beginUpdates()
             tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
             tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle)
@@ -253,7 +253,7 @@ class ShowDetailListTableViewController: UITableViewController {
         
         //self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        var selectedPrimeCategory = tableViewCellArray_[indexPath.row]["primeCategory"]
+        let selectedPrimeCategory = tableViewCellArray_[indexPath.row]["primeCategory"]
         var selectedMinorCategory = tableViewCellArray_[indexPath.row]["minorCategory"]
         
         if tableViewCellArray_[indexPath.row]["cellType"] == "prime" {
@@ -262,7 +262,7 @@ class ShowDetailListTableViewController: UITableViewController {
                 tableViewCellArray_[indexPath.row].updateValue("true", forKey: "isAttached")
 
                 // 添加下拉cell
-                addMinorCells(selectedPrimeCategory!, indexPath)
+                addMinorCells(selectedPrimeCategory!, baseIndexPath: indexPath)
             }
             else if tableViewCellArray_[indexPath.row]["isAttached"] == "true" { // 收起
                 // 改变状态
@@ -314,15 +314,15 @@ class ShowDetailListTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetailSegue" {
             // 获得选中cell元素
-            var selectedIndex: NSIndexPath = tableView.indexPathForSelectedRow()!
+            let selectedIndex: NSIndexPath = tableView.indexPathForSelectedRow!
             var selectedItem = tableViewCellArray_[selectedIndex.row]
-            var selectedPrimeCategory = selectedItem["primeCategory"]
-            var selectedMinorCategory = selectedItem["minorCategory"]
+            let selectedPrimeCategory = selectedItem["primeCategory"]
+            let selectedMinorCategory = selectedItem["minorCategory"]
             
-            var destinationView = segue.destinationViewController as! ShowDetailTableViewController
+            let destinationView = segue.destinationViewController as! ShowDetailTableViewController
             destinationView.setValue(selectedPrimeCategory, forKey: "primeCategorySelected_")
             destinationView.setValue(selectedMinorCategory, forKey: "minorCategorySelected_")
-            println("传递主类别:\(selectedPrimeCategory), 子类别: \(selectedMinorCategory)到下一个view")
+            print("传递主类别:\(selectedPrimeCategory), 子类别: \(selectedMinorCategory)到下一个view")
         }
     }
 }

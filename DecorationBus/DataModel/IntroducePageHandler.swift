@@ -16,17 +16,17 @@ class IntroducePageHandler: NSObject {
     // 设置引导页已展现标记
     func setIntroShown() -> Void {
         let curVersion = getCurrentVersion()
-        var plistFile = getSandboxFile()
-        var plistArry = NSMutableArray(contentsOfFile: plistFile)
+        let plistFile = getSandboxFile()
+        let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取类别列表失败")
         
-        var newItem = NSMutableDictionary()
+        let newItem = NSMutableDictionary()
         newItem.setObject(curVersion, forKey: "version")
         newItem.setObject(true, forKey: "shown")
         
         plistArry!.addObject(newItem)
         
-        var rc = plistArry!.writeToFile(plistFile, atomically: true)
+        let rc = plistArry!.writeToFile(plistFile, atomically: true)
         assert(rc, "写文件失败")
     }
     
@@ -36,7 +36,7 @@ class IntroducePageHandler: NSObject {
         
         let curVersion = getCurrentVersion()
         
-        var plistArry = NSArray(contentsOfFile: getSandboxFile())
+        let plistArry = NSArray(contentsOfFile: getSandboxFile())
         assert(plistArry != nil, "获取类别列表失败")
         
         for entry in plistArry! {
@@ -64,7 +64,14 @@ class IntroducePageHandler: NSObject {
         }
         
         var error: NSError?
-        var rc = NSFileManager().copyItemAtPath(srcFile, toPath: dstFile, error: &error)
+        var rc: Bool
+        do {
+            try NSFileManager().copyItemAtPath(srcFile, toPath: dstFile)
+            rc = true
+        } catch let error1 as NSError {
+            error = error1
+            rc = false
+        }
         assert(rc, "拷贝列表文件失败")
         
         return true
@@ -80,15 +87,15 @@ class IntroducePageHandler: NSObject {
     
     /*获取document目录中plist文件*/
     func getSandboxFile() -> String {
-        var docPath = getDocumentDirectory()
-        var file = docPath.stringByAppendingPathComponent("\(resourceFile).plist")
+        let docPath = getDocumentDirectory()
+        let file = docPath.stringByAppendingPathComponent("\(resourceFile).plist")
         
         return file
     }
     
     /*获取document目录*/
     func getDocumentDirectory() -> String {
-        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as! Array<String>
+        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) 
         assert(directories.count > 0, "获取document目录失败")
         return directories[0]
     }

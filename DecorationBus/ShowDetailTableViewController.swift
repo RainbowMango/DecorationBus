@@ -77,11 +77,11 @@ class ShowDetailTableViewController: UITableViewController {
 
         var cellData: NSManagedObject!
         if (segment_.selectedSegmentIndex == 0) {
-            var record = budgetArray_[indexPath.row]
+            let record = budgetArray_[indexPath.row]
             cell.categoryLabel_.text = record.minorCategory_
             cell.moneyLable_.text    = record.money_.description
         } else {
-            var record = orderArray_[indexPath.row]
+            let record = orderArray_[indexPath.row]
             cell.categoryLabel_.text = record.minorCategory_
             cell.moneyLable_.text    = record.money_.description
         }
@@ -138,19 +138,19 @@ class ShowDetailTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "modifyBudgetSegue" {
             // 获得选中cell元素
-            var selectedIndex: NSIndexPath = tableView.indexPathForSelectedRow()!
-            var selectedItem = budgetArray_[selectedIndex.row]
+            let selectedIndex: NSIndexPath = tableView.indexPathForSelectedRow!
+            let selectedItem = budgetArray_[selectedIndex.row]
             
-            var destinationView = segue.destinationViewController as! RecordBudgetViewController
+            let destinationView = segue.destinationViewController as! RecordBudgetViewController
             destinationView.setValue(selectedItem, forKey: "budget_")
             destinationView.setValue(true, forKey: "modifyFlag_")
         }
         else if segue.identifier == "modifyOrderSegue" {
             // 获得选中cell元素
-            var selectedIndex: NSIndexPath = tableView.indexPathForSelectedRow()!
-            var selectedItem = orderArray_[selectedIndex.row]
+            let selectedIndex: NSIndexPath = tableView.indexPathForSelectedRow!
+            let selectedItem = orderArray_[selectedIndex.row]
             
-            var destinationView = segue.destinationViewController as! RecordPayViewController
+            let destinationView = segue.destinationViewController as! RecordPayViewController
             destinationView.setValue(selectedItem, forKey: "order_")
             destinationView.setValue(true, forKey: "modifyFlag_")
         }

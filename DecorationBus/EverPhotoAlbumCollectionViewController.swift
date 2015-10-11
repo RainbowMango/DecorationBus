@@ -53,7 +53,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
                 //获取全屏图
                 var cgImage = result.defaultRepresentation().fullScreenImage().takeUnretainedValue()
                 var image = UIImage(CGImage: cgImage)
-                AlbumHandler().saveImageToSandbox(self.albumName, image: image!)
+                AlbumHandler().saveImageToSandbox(self.albumName, image: image)
             }
             self.collectionView?.reloadData()
             
@@ -119,11 +119,11 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         ipc.maximumNumberOfPhotosToBeSelected = 9
         
         // 自定义工具栏按钮（官方例子中有全选、奇偶选）
-        var flexibleSysButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        var flexible = AGIPCToolbarItem(barButtonItem: flexibleSysButton, andSelectionBlock: nil)
+        let flexibleSysButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let flexible = AGIPCToolbarItem(barButtonItem: flexibleSysButton, andSelectionBlock: nil)
         
-        var deselectAllSysButton = UIBarButtonItem(title: "重新选择", style: .Bordered, target: nil, action: nil)
-        var deselectAll = AGIPCToolbarItem(barButtonItem: deselectAllSysButton) { (index, asset) -> Bool in
+        let deselectAllSysButton = UIBarButtonItem(title: "重新选择", style: .Bordered, target: nil, action: nil)
+        let deselectAll = AGIPCToolbarItem(barButtonItem: deselectAllSysButton) { (index, asset) -> Bool in
             return false
         }
         
@@ -180,10 +180,10 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     }
     
     // MARK: - UIImagePickerControllerDelegate
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         self.dismissViewControllerAnimated(true, completion: nil) // 首先释放picker以节省内存
         
-        var image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
+        let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         AlbumHandler().saveImageToSandbox(albumName, image: image)
         
         /*添加图片后刷新view*/
@@ -239,9 +239,9 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
 //            self.presentViewController(imagePicker, animated: true, completion: nil)
             startImportPhotoFromLibrary()
         case actionSheetTitleCancel:
-            println("Cancelled by user")
+            print("Cancelled by user")
         default:
-            println("Never execute")
+            print("Never execute")
         }
     }
     

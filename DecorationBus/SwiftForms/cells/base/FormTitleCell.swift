@@ -19,7 +19,7 @@ class FormTitleCell: FormBaseCell {
     override func configure() {
         super.configure()
         
-        titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         
         // apply constant constraints

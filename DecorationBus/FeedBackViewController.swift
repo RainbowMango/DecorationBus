@@ -44,10 +44,10 @@ class FeedBackViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     @IBAction func DoneButton(sender: AnyObject)
     {
-        println("DoneButton() 用户反馈: \(feedbackTextView_.text)")
+        print("DoneButton() 用户反馈: \(feedbackTextView_.text)")
         
         // 发送邮件
-        var mailController = MFMailComposeViewController()
+        let mailController = MFMailComposeViewController()
         mailController.mailComposeDelegate = self
         
         mailController.setToRecipients(["qdurenhongcai@163.com"])
@@ -113,7 +113,7 @@ class FeedBackViewController: UIViewController, MFMailComposeViewControllerDeleg
     //MARK: -UITextView Delegate
     func textViewDidChange(textView: UITextView)
     {
-        let newLength = count(textView.text);
+        let newLength = textView.text.characters.count;
         if (newLength == 0)
         {
             placeholderLabel_.text = "请输入您的反馈意见(字数200字以内)"
@@ -125,7 +125,7 @@ class FeedBackViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool
     {
-        let newLength = count(textView.text);
+        let newLength = textView.text.characters.count;
         if (newLength>201)
         {
             return false;
@@ -139,9 +139,9 @@ class FeedBackViewController: UIViewController, MFMailComposeViewControllerDeleg
         feedbackTextView_.resignFirstResponder();
     }
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!)
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?)
     {
-        switch(result.value)
+        switch(result.rawValue)
         {
         case 0:
             pointMessageView_.setMessageView(0, withMessage: "邮件发送取消")

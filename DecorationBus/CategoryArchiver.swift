@@ -14,23 +14,23 @@ class CategoryArchiver {
     
     // 序列化获取category dictionary
     func getCategoryFromUserDefault() -> Dictionary<String, Array<String>> {
-        var encodedCategorys: NSData? = userDefault.objectForKey(userDefaultKey) as? NSData
+        let encodedCategorys: NSData? = userDefault.objectForKey(userDefaultKey) as? NSData
         if nil == encodedCategorys {
             return Dictionary<String, Array<String>>()
         }
         
-        var category = NSKeyedUnarchiver.unarchiveObjectWithData(encodedCategorys!) as! Dictionary<String, Array<String>>
-        println("getCategoryFromUserDefault() count = \(category.count)")
+        let category = NSKeyedUnarchiver.unarchiveObjectWithData(encodedCategorys!) as! Dictionary<String, Array<String>>
+        print("getCategoryFromUserDefault() count = \(category.count)")
         
         return category
     }
     
     // 序列化存储category dictionary
     func saveCategoryToUserDefault(category: Dictionary<String, Array<String>>) -> Void {
-        var archivedCategorys = NSKeyedArchiver.archivedDataWithRootObject(category)
+        let archivedCategorys = NSKeyedArchiver.archivedDataWithRootObject(category)
         userDefault.setObject(archivedCategorys, forKey: userDefaultKey)
         userDefault.synchronize()
-        println("saveCategoryToUserDefault() count = \(category.count)")
+        print("saveCategoryToUserDefault() count = \(category.count)")
     }
     
     // 初始化类别表, 用于用户首次使用软件和用户选择初始化软件
@@ -50,7 +50,7 @@ class CategoryArchiver {
         var minorCategoryArray = categoryDic[prime]!
         
         // 过滤重复数据
-        if contains(minorCategoryArray, minor) {
+        if minorCategoryArray.contains(minor) {
             return
         }
         minorCategoryArray.append(minor)
@@ -63,7 +63,7 @@ class CategoryArchiver {
         var categoryDic = getCategoryFromUserDefault()
         var minorCategoryArray = categoryDic[prime]!
         
-        for (index, value) in enumerate(minorCategoryArray) {
+        for (index, value) in minorCategoryArray.enumerate() {
             if value == minor {
                 minorCategoryArray.removeAtIndex(index)
                 break

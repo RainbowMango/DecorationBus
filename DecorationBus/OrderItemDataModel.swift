@@ -16,7 +16,7 @@ class OrderItem: NSObject, NSCoding{
     override init() {
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         self.money = aDecoder.decodeFloatForKey("money") as Float
         self.category = aDecoder.decodeObjectForKey("category") as! String
         self.shop = aDecoder.decodeObjectForKey("shop") as! String

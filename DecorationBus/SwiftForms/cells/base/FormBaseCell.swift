@@ -28,7 +28,7 @@ class FormBaseCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -119,7 +119,7 @@ class FormBaseCell: UITableViewCell {
         }
         
         for visualConstraint in visualConstraints {
-            let constraints = NSLayoutConstraint.constraintsWithVisualFormat(visualConstraint as! String, options: NSLayoutFormatOptions(0), metrics: nil, views: views)
+            let constraints = NSLayoutConstraint.constraintsWithVisualFormat(visualConstraint as! String, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
             for constraint in constraints {
                 customConstraints.append(constraint)
             }

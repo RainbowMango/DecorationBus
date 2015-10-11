@@ -42,7 +42,7 @@ class FormViewController : UITableViewController {
         super.init(style: style)
     }
     
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         baseInit()
     }
@@ -92,8 +92,8 @@ class FormViewController : UITableViewController {
 //            ++sectionIndex
 //        }
         
-        for(sectionIndex, section) in enumerate(form.sections) {
-            for(rowIndex, row) in enumerate(section.rows) {
+        for(sectionIndex, section) in form.sections.enumerate() {
+            for(rowIndex, row) in section.rows.enumerate() {
                 if row.tag == tag {
                     row.value = value
                     if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: rowIndex, inSection: sectionIndex)) as? FormBaseCell {
@@ -119,14 +119,14 @@ class FormViewController : UITableViewController {
         
         let rowDescriptor = formRowDescriptorAtIndexPath(indexPath)
         
-        var formBaseCellClass = formBaseCellClassFromRowDescriptor(rowDescriptor)
+        let formBaseCellClass = formBaseCellClassFromRowDescriptor(rowDescriptor)
         
         let reuseIdentifier = NSStringFromClass(formBaseCellClass)
         
         var cell: FormBaseCell? = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as? FormBaseCell
         if cell == nil {
             
-            cell = formBaseCellClass(style: .Default, reuseIdentifier: reuseIdentifier)
+            cell = formBaseCellClass.init(style: .Default, reuseIdentifier: reuseIdentifier)
             cell?.formViewController = self
             cell?.configure()
         }

@@ -42,7 +42,7 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func initManagedObjectContext() {
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         managedObjectContext_ = appDelegate!.managedObjectContext
     }
 
@@ -62,9 +62,9 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
         let fetchRequest = NSFetchRequest(entityName: "Order")
         
         var error: NSError?
-        let fetchResult = managedObjectContext_!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
+        let fetchResult = managedObjectContext_!.executeFetchRequest(fetchRequest) as! [NSManagedObject]?
         if fetchResult == nil {
-            println("获取数据失败: \(error), \(error!.userInfo)")
+            print("获取数据失败: \(error), \(error!.userInfo)")
             return [NSManagedObject]()
         }
         
@@ -80,7 +80,7 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     
     // 设置cell内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) 
         let primeCategory = orders_[indexPath.row].valueForKey("primeCategory") as! String
         let minorCategory = orders_[indexPath.row].valueForKey("minorCategory") as! String
         let money         = orders_[indexPath.row].valueForKey("money") as! Float
@@ -96,7 +96,7 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     
     // 设定选中时的动作
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("didSelectRowAtIndexPath() \(indexPath.row)")
+        print("didSelectRowAtIndexPath() \(indexPath.row)")
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -109,8 +109,8 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
             managedObjectContext_!.deleteObject(orders_[indexPath.row])
             orders_.removeAtIndex(indexPath.row)
             var error: NSError?
-            if false == managedObjectContext_!.save(&error) {
-                println("写入失败: \(error), \(error!.userInfo)")
+            if false == managedObjectContext_!.save() {
+                print("写入失败: \(error), \(error!.userInfo)")
             }
 
             self.deTailTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -123,17 +123,17 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toShowDetailPay" {
             // 获得选中cell元素
-            var selectedIndex: NSIndexPath = self.deTailTableView.indexPathForSelectedRow()!
-            var selectedItem = orders_[selectedIndex.row]
-            var money: Float  = selectedItem.valueForKey("money")          as! Float
-            var primeCategory = selectedItem.valueForKey("primeCategory")  as! String
-            var minorCategory = selectedItem.valueForKey("minorCategory")  as! String
-            var shop          = selectedItem.valueForKey("shop")           as! String
-            var phone         = selectedItem.valueForKey("phone")          as! String
-            var address       = selectedItem.valueForKey("address")        as! String
-            var comments      = selectedItem.valueForKey("comments")       as! String
+            let selectedIndex: NSIndexPath = self.deTailTableView.indexPathForSelectedRow!
+            let selectedItem = orders_[selectedIndex.row]
+            let money: Float  = selectedItem.valueForKey("money")          as! Float
+            let primeCategory = selectedItem.valueForKey("primeCategory")  as! String
+            let minorCategory = selectedItem.valueForKey("minorCategory")  as! String
+            let shop          = selectedItem.valueForKey("shop")           as! String
+            let phone         = selectedItem.valueForKey("phone")          as! String
+            let address       = selectedItem.valueForKey("address")        as! String
+            let comments      = selectedItem.valueForKey("comments")       as! String
             
-            var destinationView: ShowPayDetailViewController = segue.destinationViewController as! ShowPayDetailViewController
+            let destinationView: ShowPayDetailViewController = segue.destinationViewController as! ShowPayDetailViewController
             destinationView.setValue(money,         forKey: "money_")
             destinationView.setValue(primeCategory, forKey: "primeCategory_")
             destinationView.setValue(minorCategory, forKey: "minorCategory_")

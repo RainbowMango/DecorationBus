@@ -78,9 +78,9 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         let fetchRequest = NSFetchRequest(entityName: "Order")
         
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]?
         if fetchResult == nil {
-            println("获取数据失败: \(error), \(error!.userInfo)")
+            print("获取数据失败: \(error), \(error!.userInfo)")
             return [NSManagedObject]()
         }
         
@@ -95,9 +95,9 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         let fetchRequest = NSFetchRequest(entityName: "Budget")
         
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]?
         if fetchResult == nil {
-            println("获取数据失败: \(error), \(error!.userInfo)")
+            print("获取数据失败: \(error), \(error!.userInfo)")
             return [NSManagedObject]()
         }
         

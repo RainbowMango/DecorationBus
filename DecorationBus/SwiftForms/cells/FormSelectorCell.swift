@@ -39,7 +39,7 @@ class FormSelectorCell: FormValueCell {
             title = rowDescriptor.titleForOptionValue(selectedValue)
         }
         
-        if title != nil && count(title) > 0 {
+        if title != nil && title.characters.count > 0 {
             valueLabel.text = title
             valueLabel.textColor = UIColor.blackColor()
         }
@@ -64,7 +64,7 @@ class FormSelectorCell: FormValueCell {
             }
             
             if selectorClass != nil {
-                let selectorController = selectorClass()
+                let selectorController = selectorClass.init()
                 if let formRowDescriptorViewController = selectorController as? FormSelector {
                     formRowDescriptorViewController.formCell = row
                     formViewController.navigationController?.pushViewController(selectorController, animated: true)

@@ -52,13 +52,13 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
     
     // 设置显示cell的数目
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("显示cell数目：\(self.primeCatagory.count)")
+        print("显示cell数目：\(self.primeCatagory.count)")
         return self.primeCatagory.count
     }
     
     // 设置每个cell的内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) 
         cell.textLabel!.text = self.primeCatagory[indexPath.row]
         cell.imageView?.image = UIImage(named: CategoryHandler().getIcon(self.primeCatagory[indexPath.row]))
         
@@ -82,7 +82,7 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
     // 滑动删cell
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            println("Delete \(self.primeCatagory[indexPath.row])")
+            print("Delete \(self.primeCatagory[indexPath.row])")
             CategoryHandler().removePrimeCategory(self.primeCatagory[indexPath.row])
             self.primeCatagory.removeAtIndex(indexPath.row)
             primeCatagoryTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -93,17 +93,17 @@ class CatagoryPrimeMangeViewController: UIViewController, UITableViewDelegate, U
 
     // 向下个页面传值标准做法
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var segueIdentifier: String = segue.identifier!
+        let segueIdentifier: String = segue.identifier!
         
         switch segueIdentifier {
         case "toMinorCategory":
-            var destinationView = segue.destinationViewController as! CatagoryMinorManageViewController
+            let destinationView = segue.destinationViewController as! CatagoryMinorManageViewController
             destinationView.setValue(self.primeCategorySelected, forKey: "primeCategorySelected")
         case "toPrimeAddSegue":
-            var destinationView = segue.destinationViewController as! CategoryPrimeAddViewController
+            let destinationView = segue.destinationViewController as! CategoryPrimeAddViewController
             destinationView.setValue(self, forKey: "parentView")
         default:
-            println("Warning: 未定义的segue")
+            print("Warning: 未定义的segue")
         }
     }
     

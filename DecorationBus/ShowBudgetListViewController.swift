@@ -42,7 +42,7 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func initManagedObjectContext() {
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         managedObjectContext_ = appDelegate!.managedObjectContext
     }
     
@@ -65,9 +65,9 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
         let fetchRequest = NSFetchRequest(entityName: "Budget")
         
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]?
         if fetchResult == nil {
-            println("获取数据失败: \(error), \(error!.userInfo)")
+            print("获取数据失败: \(error), \(error!.userInfo)")
             return [NSManagedObject]()
         }
         
@@ -83,7 +83,7 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     
     // 设置cell内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) 
         
         let primeCategory = budgets_[indexPath.row].valueForKey("primeCategory") as! String
         let minorCategory = budgets_[indexPath.row].valueForKey("minorCategory") as! String
@@ -100,7 +100,7 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     
     // 设定选中时的动作
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("didSelectRowAtIndexPath() \(indexPath.row)")
+        print("didSelectRowAtIndexPath() \(indexPath.row)")
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -112,8 +112,8 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
         managedObjectContext_!.deleteObject(budgets_[indexPath.row])
         budgets_.removeAtIndex(indexPath.row)
         var error: NSError?
-        if false == managedObjectContext_!.save(&error) {
-            println("写入失败: \(error), \(error!.userInfo)")
+        if false == managedObjectContext_!.save() {
+            print("写入失败: \(error), \(error!.userInfo)")
         }
         
         self.deTailTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -125,17 +125,17 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toShowDetailBudget" {
             // 获得选中cell元素
-            var selectedIndex: NSIndexPath = self.deTailTableView.indexPathForSelectedRow()!
-            var selectedItem = budgets_[selectedIndex.row]
-            var money: Float  = selectedItem.valueForKey("money")          as! Float
-            var primeCategory = selectedItem.valueForKey("primeCategory")  as! String
-            var minorCategory = selectedItem.valueForKey("minorCategory")  as! String
-            var shop          = selectedItem.valueForKey("shop")           as! String
-            var phone         = selectedItem.valueForKey("phone")          as! String
-            var address       = selectedItem.valueForKey("address")        as! String
-            var comments      = selectedItem.valueForKey("comments")       as! String
+            let selectedIndex: NSIndexPath = self.deTailTableView.indexPathForSelectedRow!
+            let selectedItem = budgets_[selectedIndex.row]
+            let money: Float  = selectedItem.valueForKey("money")          as! Float
+            let primeCategory = selectedItem.valueForKey("primeCategory")  as! String
+            let minorCategory = selectedItem.valueForKey("minorCategory")  as! String
+            let shop          = selectedItem.valueForKey("shop")           as! String
+            let phone         = selectedItem.valueForKey("phone")          as! String
+            let address       = selectedItem.valueForKey("address")        as! String
+            let comments      = selectedItem.valueForKey("comments")       as! String
             
-            var destinationView: ShowBudgetDetailViewController = segue.destinationViewController as! ShowBudgetDetailViewController
+            let destinationView: ShowBudgetDetailViewController = segue.destinationViewController as! ShowBudgetDetailViewController
             destinationView.setValue(money,         forKey: "money_")
             destinationView.setValue(primeCategory, forKey: "primeCategory_")
             destinationView.setValue(minorCategory, forKey: "minorCategory_")

@@ -24,7 +24,7 @@ class CategoryDataModel: NSCoding {
     init() {
     }
     
-    @objc required init(coder aDecoder: NSCoder) {
+    @objc required init?(coder aDecoder: NSCoder) {
         self.categoryDic = aDecoder.decodeObjectForKey("categoryDic") as! Dictionary<String, Array<String>>
     }
     

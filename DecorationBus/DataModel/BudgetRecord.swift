@@ -42,9 +42,9 @@ class BudgetRecord: NSObject {
     根据当前时间(精确到毫秒)生成唯一标示
     */
     func makeUniqueID() {
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmmssSSS"
-        var date          = NSDate()
+        let date          = NSDate()
         
         id_ = dateFormatter.stringFromDate(date)
     }

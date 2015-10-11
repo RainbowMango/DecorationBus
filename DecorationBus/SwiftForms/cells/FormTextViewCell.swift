@@ -30,8 +30,8 @@ class FormTextViewCell : FormBaseCell, UITextViewDelegate {
         
         selectionStyle = .None
         
-        titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        textField.setTranslatesAutoresizingMaskIntoConstraints(false)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
         titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         textField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
@@ -72,7 +72,7 @@ class FormTextViewCell : FormBaseCell, UITextViewDelegate {
         
         if self.imageView!.image != nil {
             
-            if titleLabel.text != nil && count(titleLabel.text!) > 0 {
+            if titleLabel.text != nil && (titleLabel.text!).characters.count > 0 {
                 return ["H:[imageView]-[titleLabel]-[textField]-16-|"]
             }
             else {
@@ -80,7 +80,7 @@ class FormTextViewCell : FormBaseCell, UITextViewDelegate {
             }
         }
         else {
-            if titleLabel.text != nil && count(titleLabel.text!) > 0 {
+            if titleLabel.text != nil && (titleLabel.text!).characters.count > 0 {
                 return ["H:|-16-[titleLabel]-[textField]-16-|"]
             }
             else {

@@ -1025,6 +1025,7 @@
 		9B37A9C619EEB57A0097F88D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = ruby;
 				TargetAttributes = {
