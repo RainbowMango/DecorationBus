@@ -43,7 +43,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // AlerView动作
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        switch alertView.buttonTitleAtIndex(buttonIndex) {
+        switch alertView.buttonTitleAtIndex(buttonIndex)! {
         case "确定":
             //CategoryArchiver().initCategoryInUserDefault()
             //OrderArchiver().removeAllOrders()

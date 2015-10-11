@@ -220,7 +220,7 @@ class ShowDetailListTableViewController: UITableViewController {
             }
             
             // 动态增加cell
-            var indexPaths  = getindexPathArray(indexPath, count: addCount)
+            let indexPaths  = getindexPathArray(indexPath, count: addCount)
             tableView.beginUpdates()
             tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
             tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle)
@@ -244,7 +244,7 @@ class ShowDetailListTableViewController: UITableViewController {
             }
             
             //从table view中删除
-            var indexPaths = getindexPathArray(indexPath, count: removeIndexArray.count)
+            let indexPaths = getindexPathArray(indexPath, count: removeIndexArray.count)
             tableView.beginUpdates()
             tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
             tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle)
@@ -254,7 +254,7 @@ class ShowDetailListTableViewController: UITableViewController {
         //self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let selectedPrimeCategory = tableViewCellArray_[indexPath.row]["primeCategory"]
-        var selectedMinorCategory = tableViewCellArray_[indexPath.row]["minorCategory"]
+        //var selectedMinorCategory = tableViewCellArray_[indexPath.row]["minorCategory"]
         
         if tableViewCellArray_[indexPath.row]["cellType"] == "prime" {
             if tableViewCellArray_[indexPath.row]["isAttached"] == "false" { // 展开
