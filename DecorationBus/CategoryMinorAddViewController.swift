@@ -26,7 +26,7 @@ class CategoryMinorAddViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         self.delegate = parentView
-        self.delegate?.CategoryMinorAddView(self.newMinorCategoryTextField.text)
+        self.delegate?.CategoryMinorAddView(self.newMinorCategoryTextField.text!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,13 +41,13 @@ class CategoryMinorAddViewController: UIViewController {
 
     func barButtonClicked() {
         print("barButtonClicked")
-        if self.newMinorCategoryTextField.text.isEmpty {
+        if self.newMinorCategoryTextField.text!.isEmpty {
             // 弹出Alert
             showAlert()
             return
         }
         
-        CategoryHandler().addMinorCategory(self.primeCategorySelected, minorCategory: self.newMinorCategoryTextField.text)
+        CategoryHandler().addMinorCategory(self.primeCategorySelected, minorCategory: self.newMinorCategoryTextField.text!)
         
         // 记录后返回到上层
         self.navigationController?.popViewControllerAnimated(true)
