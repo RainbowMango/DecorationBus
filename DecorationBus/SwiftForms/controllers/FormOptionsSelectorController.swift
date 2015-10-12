@@ -54,7 +54,7 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
         
         let reuseIdentifier = NSStringFromClass(self.dynamicType)
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: reuseIdentifier)
         }

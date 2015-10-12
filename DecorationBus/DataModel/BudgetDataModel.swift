@@ -32,7 +32,7 @@ class BudgetDataModel {
         var fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@ AND minorCategory = %@", primeCategory, minorCategory)
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
         if fetchResult == nil {
             print("获取数据失败: \(error), \(error!.userInfo)")
             return [NSManagedObject]()
@@ -63,7 +63,7 @@ class BudgetDataModel {
         var fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@ AND minorCategory = %@", primeCategory, minorCategory)
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
         if fetchResult == nil {
             print("获取数据失败: \(error), \(error!.userInfo)")
             return records
@@ -88,7 +88,7 @@ class BudgetDataModel {
         let fetchRequest = NSFetchRequest(entityName: "Budget")
         
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
         if fetchResult == nil {
             print("获取数据失败: \(error), \(error!.userInfo)")
             return records
@@ -107,7 +107,7 @@ class BudgetDataModel {
         var managedObjectContext = appDelegate!.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Budget")
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
         if fetchResult == nil {
             print("获取数据失败: \(error), \(error!.userInfo)")
             return false
@@ -154,7 +154,7 @@ class BudgetDataModel {
         var fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "id = %@", uniqueID)
         var error: NSError?
-        var fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]?
+        var fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
         if fetchResult == nil {
             print("获取数据失败: \(error), \(error!.userInfo)")
             return false

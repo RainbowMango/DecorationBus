@@ -110,7 +110,7 @@ class OrderDataModel {
         var managedObjectContext = appDelegate!.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Order")
         
-        var fetchResult = [NSManagedObject]
+        var fetchResult = [NSManagedObject]()
         do {
             try fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
         }catch {
