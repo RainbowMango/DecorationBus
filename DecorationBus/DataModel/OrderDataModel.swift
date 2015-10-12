@@ -23,7 +23,7 @@ class OrderDataModel {
             return [NSManagedObject]()
         }
         
-        return fetchResult!
+        return fetchResult
     }
     
     class func getOrders(primeCategory: String, minorCategory: String) -> [NSManagedObject] {
@@ -38,7 +38,7 @@ class OrderDataModel {
             return [NSManagedObject]()
         }
         
-        return fetchResult!
+        return fetchResult
     }
     
     /*
@@ -72,7 +72,7 @@ class OrderDataModel {
             return records
         }
         
-        for result in fetchResult! {
+        for result in fetchResult {
             records.append(getRecordByManagedObject(result))
         }
         
@@ -97,7 +97,7 @@ class OrderDataModel {
             return records
         }
         
-        for result in fetchResult! {
+        for result in fetchResult {
             records.append(getRecordByManagedObject(result))
         }
         
@@ -115,7 +115,7 @@ class OrderDataModel {
             print("获取数据失败: \(error), \(error!.userInfo)")
             return false
         }
-        for result in fetchResult! {
+        for result in fetchResult {
             managedObjectContext?.deleteObject(result)
         }
         do {
@@ -166,7 +166,7 @@ class OrderDataModel {
             return false
         }
         
-        for result in fetchResult! {
+        for result in fetchResult {
             managedObjectContext?.deleteObject(result)
         }
         let rc: Bool
@@ -200,10 +200,10 @@ class OrderDataModel {
             return false
         }
         
-        assert(fetchResult!.count == 1, "发现多条数据拥有同一ID")
+        assert(fetchResult.count == 1, "发现多条数据拥有同一ID")
         
         // 更新数据
-        var newRecord = fetchResult![0]
+        var newRecord = fetchResult[0]
         newRecord.setValue(record.money_, forKey: "money")
         newRecord.setValue(record.primeCategory_, forKey: "primeCategory")
         newRecord.setValue(record.minorCategory_, forKey: "minorCategory")
