@@ -17,7 +17,7 @@ class BudgetDataModel {
         var fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@", primeCategory)
         var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]?
+        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
         if fetchResult == nil {
             print("获取数据失败: \(error), \(error!.userInfo)")
             return [NSManagedObject]()

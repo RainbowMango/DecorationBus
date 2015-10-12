@@ -135,7 +135,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segueImagePlayer" {
-            let selectedRow = (self.collectionView?.indexPathsForSelectedItems() as! Array<NSIndexPath>)[0].row
+            let selectedRow = (self.collectionView?.indexPathsForSelectedItems())![0].row
             var destinationView = segue.destinationViewController as! EverPhotoPlayerViewController
             destinationView.delegate = self
             destinationView.setCurrentPhotoIndex(UInt(selectedRow))
