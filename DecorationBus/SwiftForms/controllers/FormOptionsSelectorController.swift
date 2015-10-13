@@ -21,7 +21,7 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
     }
 
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -54,7 +54,7 @@ class FormOptionsSelectorController: UITableViewController, FormSelector {
         
         let reuseIdentifier = NSStringFromClass(self.dynamicType)
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier)
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: reuseIdentifier)
         }

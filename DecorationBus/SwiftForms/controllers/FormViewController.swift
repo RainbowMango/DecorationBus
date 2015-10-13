@@ -48,7 +48,7 @@ class FormViewController : UITableViewController {
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         baseInit()
     }
     
