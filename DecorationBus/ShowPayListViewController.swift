@@ -61,14 +61,15 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
     func getOrders() -> [NSManagedObject] {
         let fetchRequest = NSFetchRequest(entityName: "Order")
         
-        var error: NSError?
-        let fetchResult = managedObjectContext_!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-        if fetchResult == nil {
-            print("获取数据失败: \(error), \(error!.userInfo)")
+        var fetchResult = [NSManagedObject]()
+        do{
+            fetchResult = try managedObjectContext_!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        }catch{
+            print("获取数据失败: ")
             return [NSManagedObject]()
         }
         
-        return fetchResult!
+        return fetchResult
     }
     
     // MARK: -TableView data source

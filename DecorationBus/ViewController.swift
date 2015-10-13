@@ -77,14 +77,15 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         
         let fetchRequest = NSFetchRequest(entityName: "Order")
         
-        var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-        if fetchResult == nil {
-            print("获取数据失败: \(error), \(error!.userInfo)")
+        var fetchResult = [NSManagedObject]()
+        do {
+            fetchResult = try managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        }catch {
+            print("获取数据失败:")
             return [NSManagedObject]()
         }
         
-        return fetchResult!
+        return fetchResult
     }
     
     // 从CoreData中读取所有预算
@@ -93,15 +94,15 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         let managedObjectContext = appDelegate!.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Budget")
-        
-        var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-        if fetchResult == nil {
-            print("获取数据失败: \(error), \(error!.userInfo)")
+        var fetchResult = [NSManagedObject]()
+        do {
+            fetchResult = try managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        }catch {
+            print("获取数据失败:")
             return [NSManagedObject]()
         }
         
-        return fetchResult!
+        return fetchResult
     }
     
     // 初始化类别列表，程序启动时拷贝资源文件到沙盒
