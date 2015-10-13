@@ -109,9 +109,12 @@ class ShowPayListViewController: UIViewController, UITableViewDataSource, UITabl
         if editingStyle == UITableViewCellEditingStyle.Delete {
             managedObjectContext_!.deleteObject(orders_[indexPath.row])
             orders_.removeAtIndex(indexPath.row)
-            var error: NSError?
-            if false == managedObjectContext_!.save() {
-                print("写入失败: \(error), \(error!.userInfo)")
+
+            do{
+                try managedObjectContext_!.save()
+            }catch{
+                print("写入失败: ")
+                return
             }
 
             self.deTailTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)

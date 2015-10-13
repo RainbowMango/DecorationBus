@@ -112,9 +112,12 @@ class ShowBudgetListViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         managedObjectContext_!.deleteObject(budgets_[indexPath.row])
         budgets_.removeAtIndex(indexPath.row)
-        var error: NSError?
-        if false == managedObjectContext_!.save() {
-            print("写入失败: \(error), \(error!.userInfo)")
+
+        do{
+            try managedObjectContext_!.save()
+        }catch{
+            print("写入失败: ")
+            return
         }
         
         self.deTailTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
