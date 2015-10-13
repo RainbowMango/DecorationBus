@@ -1027,7 +1027,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = ruby;
 				TargetAttributes = {
 					9B37A9CD19EEB57A0097F88D = {
@@ -1334,6 +1334,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1401,6 +1402,7 @@
 				INFOPLIST_FILE = DecorationBus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruby.DecorationBus;
 				PRODUCT_NAME = DecorationBus;
 				PROVISIONING_PROFILE = "1795b6a1-eb02-47eb-8da0-a1857d9fc73d";
 				SWIFT_OBJC_BRIDGING_HEADER = "DecorationBus/DecorationBus-Bridging-Header.h";
@@ -1418,6 +1420,7 @@
 				INFOPLIST_FILE = DecorationBus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruby.DecorationBus;
 				PRODUCT_NAME = DecorationBus;
 				PROVISIONING_PROFILE = "1795b6a1-eb02-47eb-8da0-a1857d9fc73d";
 				SWIFT_OBJC_BRIDGING_HEADER = "DecorationBus/DecorationBus-Bridging-Header.h";
@@ -1438,6 +1441,7 @@
 				);
 				INFOPLIST_FILE = DecorationBusTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruby.DecorationBus;
 				PRODUCT_NAME = DecorationBusTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DecorationBus.app/DecorationBus";
 			};
@@ -1453,6 +1457,7 @@
 				);
 				INFOPLIST_FILE = DecorationBusTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruby.DecorationBus;
 				PRODUCT_NAME = DecorationBusTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DecorationBus.app/DecorationBus";
 			};
