@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             error = error1
             coordinator = nil
             // Report any error we got.
-            let dict = NSMutableDictionary()
+            var dict = [NSObject : AnyObject]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
