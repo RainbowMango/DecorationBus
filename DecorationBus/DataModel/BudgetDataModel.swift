@@ -16,14 +16,15 @@ class BudgetDataModel {
         var managedObjectContext = appDelegate!.managedObjectContext
         var fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@", primeCategory)
-        var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-        if fetchResult == nil {
-            print("获取数据失败: \(error), \(error!.userInfo)")
+        var fetchResult = [NSManagedObject]()
+        do{
+            fetchResult = try managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        }catch let error as NSError{
+            print("获取数据失败: \(error), \(error.userInfo)")
             return [NSManagedObject]()
         }
         
-        return fetchResult!
+        return fetchResult
     }
     
     class func getBudgets(primeCategory: String, minorCategory: String) -> [NSManagedObject] {
@@ -31,14 +32,16 @@ class BudgetDataModel {
         var managedObjectContext = appDelegate!.managedObjectContext
         var fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@ AND minorCategory = %@", primeCategory, minorCategory)
-        var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-        if fetchResult == nil {
-            print("获取数据失败: \(error), \(error!.userInfo)")
+        
+        var fetchResult = [NSManagedObject]()
+        do{
+            fetchResult = try managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        }catch let error as NSError{
+            print("获取数据失败: \(error), \(error.userInfo)")
             return [NSManagedObject]()
         }
         
-        return fetchResult!
+        return fetchResult
     }
     
     /*
@@ -62,14 +65,16 @@ class BudgetDataModel {
         var managedObjectContext = appDelegate!.managedObjectContext
         var fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@ AND minorCategory = %@", primeCategory, minorCategory)
-        var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-        if fetchResult == nil {
-            print("获取数据失败: \(error), \(error!.userInfo)")
+        
+        var fetchResult = [NSManagedObject]()
+        do{
+            fetchResult = try managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        }catch let error as NSError{
+            print("获取数据失败: \(error), \(error.userInfo)")
             return records
         }
         
-        for result in fetchResult! {
+        for result in fetchResult {
             records.append(getRecordByManagedObject(result))
         }
         
@@ -87,14 +92,15 @@ class BudgetDataModel {
         
         let fetchRequest = NSFetchRequest(entityName: "Budget")
         
-        var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-        if fetchResult == nil {
-            print("获取数据失败: \(error), \(error!.userInfo)")
+        var fetchResult = [NSManagedObject]()
+        do{
+            fetchResult = try managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        }catch let error as NSError{
+            print("获取数据失败: \(error), \(error.userInfo)")
             return records
         }
         
-        for result in fetchResult! {
+        for result in fetchResult {
             records.append(getRecordByManagedObject(result))
         }
         
@@ -106,19 +112,24 @@ class BudgetDataModel {
         var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         var managedObjectContext = appDelegate!.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Budget")
-        var error: NSError?
-        let fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-        if fetchResult == nil {
-            print("获取数据失败: \(error), \(error!.userInfo)")
+        
+        var fetchResult = [NSManagedObject]()
+        do{
+            fetchResult = try managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        }catch let error as NSError{
+            print("获取数据失败: \(error), \(error.userInfo)")
             return false
         }
-        for result in fetchResult! {
+        
+        for result in fetchResult {
             managedObjectContext?.deleteObject(result)
         }
+        
         do {
             try managedObjectContext?.save()
-        } catch var error1 as NSError {
-            error = error1
+        } catch let error as NSError {
+            print("保存数据失败: \(error), \(error.userInfo)")
+            return false
         }
         return true
     }
@@ -136,9 +147,11 @@ class BudgetDataModel {
         manageObj.setValue(record.primeCategory_, forKey: "primeCategory")
         manageObj.setValue(record.minorCategory_, forKey: "minorCategory")
         manageObj.setValue(record.comments_, forKey: "comments")
-        var error: NSError?
-        if false == managedObjectContext!.save() {
-            print("写入失败: \(error), \(error!.userInfo)")
+
+        do{
+            try managedObjectContext!.save()
+        }catch let error as NSError{
+            print("写入失败: \(error), \(error.userInfo)")
             return false
         }
         
@@ -153,26 +166,23 @@ class BudgetDataModel {
         var managedObjectContext = appDelegate!.managedObjectContext
         var fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "id = %@", uniqueID)
-        var error: NSError?
-        var fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-        if fetchResult == nil {
-            print("获取数据失败: \(error), \(error!.userInfo)")
+        
+        var fetchResult = [NSManagedObject]()
+        do{
+            fetchResult = try managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        }catch let error as NSError{
+            print("获取数据失败: \(error), \(error.userInfo)")
             return false
         }
         
-        for result in fetchResult! {
+        for result in fetchResult {
             managedObjectContext?.deleteObject(result)
         }
-        let rc: Bool
+        
         do {
             try managedObjectContext?.save()
-            rc = true
-        } catch var error1 as NSError {
-            error = error1
-            rc = false
-        }
-        if !(rc != nil) {
-            print("删除数据失败: \(error), \(error!.userInfo)")
+        } catch let error as NSError {
+            print("删除数据失败: \(error), \(error.userInfo)")
             return false
         }
         
@@ -187,23 +197,27 @@ class BudgetDataModel {
         var managedObjectContext = appDelegate!.managedObjectContext
         var fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "id = %@", record.id_)
-        var error: NSError?
-        var fetchResult = managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]?
-        if fetchResult == nil {
-            print("获取数据失败: \(error), \(error!.userInfo)")
+        
+        var fetchResult = [NSManagedObject]()
+        do{
+            fetchResult = try managedObjectContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        }catch let error as NSError{
+            print("获取数据失败: \(error), \(error.userInfo)")
             return false
         }
         
-        assert(fetchResult!.count == 1, "发现多条数据拥有同一ID")
+        assert(fetchResult.count == 1, "发现多条数据拥有同一ID")
         
         // 更新数据
-        var newRecord = fetchResult![0]
+        var newRecord = fetchResult[0]
         newRecord.setValue(record.money_, forKey: "money")
         newRecord.setValue(record.primeCategory_, forKey: "primeCategory")
         newRecord.setValue(record.minorCategory_, forKey: "minorCategory")
         newRecord.setValue(record.comments_, forKey: "comments")
-        if false == managedObjectContext!.save() {
-            print("写入失败: \(error), \(error!.userInfo)")
+        do{
+            try managedObjectContext!.save()
+        }catch let error as NSError{
+            print("写入失败: \(error), \(error.userInfo)")
             return false
         }
         
