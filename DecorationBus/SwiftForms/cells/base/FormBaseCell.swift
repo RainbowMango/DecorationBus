@@ -20,7 +20,7 @@ class FormBaseCell: UITableViewCell {
     
     weak var formViewController: FormViewController!
     
-    private var customConstraints: [AnyObject] = []
+    private var customConstraints: [NSLayoutConstraint] = []
     
     /// MARK: Init
     
