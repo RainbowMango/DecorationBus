@@ -134,7 +134,7 @@ class FormViewController : UITableViewController {
         cell?.rowDescriptor = rowDescriptor
         
         // apply cell custom design
-        if let cellConfiguration = rowDescriptor.cellConfiguration {
+        if let _ = rowDescriptor.cellConfiguration {
             for (keyPath, value) in rowDescriptor.cellConfiguration {
                 cell?.setValue(value, forKeyPath: keyPath as! String)
             }            

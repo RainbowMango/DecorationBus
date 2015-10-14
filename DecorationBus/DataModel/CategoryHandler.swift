@@ -128,7 +128,7 @@ class CategoryHandler: NSObject {
         let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取类别列表失败")
         
-        for (index, entry) in (plistArry!).enumerate() {
+        for (_, entry) in (plistArry!).enumerate() {
             if primeCategory == entry["PrimeDesc"] as! String {
                 (entry["MinorDesc"] as! NSMutableArray).addObject(minorCategory)
                 break
@@ -148,7 +148,7 @@ class CategoryHandler: NSObject {
         let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取类别列表失败")
         
-        for (index, entry) in (plistArry!).enumerate() {
+        for (_, entry) in (plistArry!).enumerate() {
             if primeCategory == entry["PrimeDesc"] as! String {
                 (entry["MinorDesc"] as! NSMutableArray).removeObject(minorCategory)
                 break

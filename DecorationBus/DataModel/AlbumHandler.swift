@@ -17,8 +17,8 @@ class AlbumHandler: NSObject {
     保存图片到沙盒,同时加入到plist文件
     */
     func saveImageToSandbox(albumName: String, image: UIImage) ->Bool {
-        var docPath = getDocumentDirectory()
-        var imageName = "album_\(albumName)_\(makeUniqueID()).png"
+        let docPath = getDocumentDirectory()
+        let imageName = "album_\(albumName)_\(makeUniqueID()).png"
         let imageURL = NSURL(string: imageName, relativeToURL: docPath)
         
         UIImageJPEGRepresentation(image, 0.01)!.writeToFile((imageURL?.path)!, atomically: true)
@@ -56,7 +56,7 @@ class AlbumHandler: NSObject {
         let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取相册列表失败")
         
-        for (index, entry) in (plistArry!).enumerate() {
+        for (_, entry) in (plistArry!).enumerate() {
             if albumName == entry["AlbumName"] as! String {
                 (entry["ImageList"] as! NSMutableArray).addObject(imageURL)
                 break
@@ -76,7 +76,7 @@ class AlbumHandler: NSObject {
         let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取相册列表失败")
         
-        for (index, entry) in (plistArry!).enumerate() {
+        for (_, entry) in (plistArry!).enumerate() {
             if albumName == entry["AlbumName"] as! String {
                 (entry["ImageList"] as! NSMutableArray).removeObject(imageURL)
                 break
@@ -95,7 +95,7 @@ class AlbumHandler: NSObject {
         let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取相册列表失败")
         
-        for (index, entry) in (plistArry!).enumerate() {
+        for (_, entry) in (plistArry!).enumerate() {
             if albumName == entry["AlbumName"] as! String {
                 return (entry["ImageList"] as! NSMutableArray).count
             }
@@ -110,7 +110,7 @@ class AlbumHandler: NSObject {
         let plistArry = NSMutableArray(contentsOfFile: plistFile)
         assert(plistArry != nil, "获取相册列表失败")
         
-        for (index, entry) in (plistArry!).enumerate() {
+        for (_, entry) in (plistArry!).enumerate() {
             if albumName == entry["AlbumName"] as! String {
                 let originURLs = entry["ImageList"] as! Array<String>
                 

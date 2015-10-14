@@ -48,11 +48,11 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         //AGImagePickerController确定选取图片
         ipc.didFinishBlock = { (info) -> Void in
             for item in info {
-                var result = item as! ALAsset
+                let result = item as! ALAsset
                 
                 //获取全屏图
-                var cgImage = result.defaultRepresentation().fullScreenImage().takeUnretainedValue()
-                var image = UIImage(CGImage: cgImage)
+                let cgImage = result.defaultRepresentation().fullScreenImage().takeUnretainedValue()
+                let image = UIImage(CGImage: cgImage)
                 AlbumHandler().saveImageToSandbox(self.albumName, image: image)
             }
             self.collectionView?.reloadData()
@@ -136,7 +136,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segueImagePlayer" {
             let selectedRow = (self.collectionView?.indexPathsForSelectedItems())![0].row
-            var destinationView = segue.destinationViewController as! EverPhotoPlayerViewController
+            let destinationView = segue.destinationViewController as! EverPhotoPlayerViewController
             destinationView.delegate = self
             destinationView.setCurrentPhotoIndex(UInt(selectedRow))
             destinationView.setValue(self, forKey: "parentView")
@@ -214,11 +214,11 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         case actionSheetTitleCamera:
             if !allowCamera() {
                 //用户隐私设置禁用相机，弹出alert
-                var alertView = UIAlertView(title: nil, message: "请在“设置-隐私-相机”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
+                let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-相机”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
                 alertView.show()
                 return
             }
-            var imagePicker = UIImagePickerController()
+            let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.allowsEditing = false
             imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
@@ -228,7 +228,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         case actionSheetTitlePhotoLibrary:
             if !allowPhotoLibrary() {
                 //用户隐私设置禁用相册，弹出alert
-                var alertView = UIAlertView(title: nil, message: "请在“设置-隐私-照片”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
+                let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-照片”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
                 alertView.show()
                 return
             }

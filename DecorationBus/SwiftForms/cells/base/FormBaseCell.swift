@@ -105,7 +105,7 @@ class FormBaseCell: UITableViewCell {
             contentView.removeConstraints(customConstraints)
         }
         
-        var views = constraintsViews()
+        let views = constraintsViews()
         
         customConstraints.removeAll()
         

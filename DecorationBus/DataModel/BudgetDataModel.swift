@@ -12,9 +12,9 @@ import CoreData
 
 class BudgetDataModel {
     class func getBudgetsByPrimeCategory(primeCategory: String) -> [NSManagedObject] {
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
-        var fetchRequest = NSFetchRequest(entityName: "Budget")
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@", primeCategory)
         var fetchResult = [NSManagedObject]()
         do{
@@ -28,9 +28,9 @@ class BudgetDataModel {
     }
     
     class func getBudgets(primeCategory: String, minorCategory: String) -> [NSManagedObject] {
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
-        var fetchRequest = NSFetchRequest(entityName: "Budget")
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@ AND minorCategory = %@", primeCategory, minorCategory)
         
         var fetchResult = [NSManagedObject]()
@@ -61,9 +61,9 @@ class BudgetDataModel {
     class func getRecordsByCategory(primeCategory: String, minorCategory: String) -> [BudgetRecord] {
         var records = Array<BudgetRecord>()
         
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
-        var fetchRequest = NSFetchRequest(entityName: "Budget")
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@ AND minorCategory = %@", primeCategory, minorCategory)
         
         var fetchResult = [NSManagedObject]()
@@ -87,8 +87,8 @@ class BudgetDataModel {
     class func getAll() -> Array<BudgetRecord> {
         var records = Array<BudgetRecord>()
         
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Budget")
         
@@ -109,8 +109,8 @@ class BudgetDataModel {
     
     // 删除所有数据，成功true, 失败false
     class func deleteAll() -> Bool {
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Budget")
         
         var fetchResult = [NSManagedObject]()
@@ -162,9 +162,9 @@ class BudgetDataModel {
     删除单条记录
     */
     class func removeRecord(uniqueID: String) -> Bool {
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
-        var fetchRequest = NSFetchRequest(entityName: "Budget")
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "id = %@", uniqueID)
         
         var fetchResult = [NSManagedObject]()
@@ -193,9 +193,9 @@ class BudgetDataModel {
     更新单条记录
     */
     class func updateRecord(record: BudgetRecord) -> Bool {
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
-        var fetchRequest = NSFetchRequest(entityName: "Budget")
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Budget")
         fetchRequest.predicate = NSPredicate(format: "id = %@", record.id_)
         
         var fetchResult = [NSManagedObject]()
@@ -209,7 +209,7 @@ class BudgetDataModel {
         assert(fetchResult.count == 1, "发现多条数据拥有同一ID")
         
         // 更新数据
-        var newRecord = fetchResult[0]
+        let newRecord = fetchResult[0]
         newRecord.setValue(record.money_, forKey: "money")
         newRecord.setValue(record.primeCategory_, forKey: "primeCategory")
         newRecord.setValue(record.minorCategory_, forKey: "minorCategory")

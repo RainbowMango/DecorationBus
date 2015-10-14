@@ -12,9 +12,9 @@ import CoreData
 
 class OrderDataModel {
     class func getOrdersByPrimeCategory(primeCategory: String) -> [NSManagedObject] {
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
-        var fetchRequest = NSFetchRequest(entityName: "Order")
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Order")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@", primeCategory)
         
         var fetchResult = [NSManagedObject]()
@@ -29,9 +29,9 @@ class OrderDataModel {
     }
     
     class func getOrders(primeCategory: String, minorCategory: String) -> [NSManagedObject] {
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
-        var fetchRequest = NSFetchRequest(entityName: "Order")
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Order")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@ AND minorCategory = %@", primeCategory, minorCategory)
         
         var fetchResult = [NSManagedObject]()
@@ -65,9 +65,9 @@ class OrderDataModel {
     class func getRecordsByCategory(primeCategory: String, minorCategory: String) -> [OrderRecord] {
         var records = Array<OrderRecord>()
         
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
-        var fetchRequest = NSFetchRequest(entityName: "Order")
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Order")
         fetchRequest.predicate = NSPredicate(format: "primeCategory = %@ AND minorCategory = %@", primeCategory, minorCategory)
         
         var fetchResult = [NSManagedObject]()
@@ -91,8 +91,8 @@ class OrderDataModel {
     class func getAll() -> Array<OrderRecord> {
         var records = Array<OrderRecord>()
         
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Order")
         
@@ -113,8 +113,8 @@ class OrderDataModel {
     
     // 删除所有数据，成功true, 失败false
     class func deleteAll() -> Bool {
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Order")
         
         var fetchResult = [NSManagedObject]()
@@ -168,9 +168,9 @@ class OrderDataModel {
     删除单条记录
     */
     class func removeRecord(uniqueID: String) -> Bool {
-        var appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-        var managedObjectContext = appDelegate!.managedObjectContext
-        var fetchRequest = NSFetchRequest(entityName: "Order")
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let managedObjectContext = appDelegate!.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Order")
         fetchRequest.predicate = NSPredicate(format: "id = %@", uniqueID)
         
         var fetchResult = [NSManagedObject]()
