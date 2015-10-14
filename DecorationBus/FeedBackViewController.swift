@@ -84,7 +84,6 @@ class FeedBackViewController: UIViewController, MFMailComposeViewControllerDeleg
     func addFeedbackTextView()
     {
         let viewSize:CGSize = self.view.frame.size;
-        let viewHeight:CGFloat = viewSize.height;
         let viewWidth:CGFloat = viewSize.width;
         
         let feedbackTextViewRect:CGRect = CGRectMake(0, 0, viewWidth, 200);

@@ -75,7 +75,6 @@ class ShowDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SegmentCategoryTableViewCell", forIndexPath: indexPath) as! SegmentCategoryTableViewCell
 
-        var cellData: NSManagedObject!
         if (segment_.selectedSegmentIndex == 0) {
             let record = budgetArray_[indexPath.row]
             cell.categoryLabel_.text = record.minorCategory_

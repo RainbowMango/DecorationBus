@@ -36,7 +36,6 @@ class AboutMeViewController: UIViewController
     func addLogoView()
     {
         let viewSize:CGSize = self.view.frame.size;
-        let viewHeight:CGFloat = viewSize.height;
         let viewWidth:CGFloat = viewSize.width;
         
         let logoImageView:UIImageView = UIImageView();

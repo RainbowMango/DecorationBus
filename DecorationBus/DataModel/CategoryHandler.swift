@@ -172,16 +172,12 @@ class CategoryHandler: NSObject {
             return true
         }
         
-        var error: NSError?
-        var rc: Bool
         do {
             try NSFileManager().copyItemAtPath(srcFile, toPath: dstFile)
-            rc = true
-        } catch let error1 as NSError {
-            error = error1
-            rc = false
+        } catch let error as NSError {
+            print("拷贝列表文件失败: \(error.userInfo)")
+            return false
         }
-        assert(rc, "拷贝列表文件失败")
         
         return true
     }

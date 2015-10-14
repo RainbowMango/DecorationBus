@@ -184,15 +184,11 @@ class OrderDataModel {
         for result in fetchResult {
             managedObjectContext?.deleteObject(result)
         }
-        let rc: Bool
+
         do {
             try managedObjectContext?.save()
-            rc = true
-        } catch var error1 as NSError {
-            rc = false
-        }
-        if (!rc) {
-            print("删除数据失败:")
+        } catch let error as NSError {
+            print("删除数据失败: \(error.userInfo)")
             return false
         }
         
