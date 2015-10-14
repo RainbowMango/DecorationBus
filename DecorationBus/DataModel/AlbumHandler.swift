@@ -19,14 +19,14 @@ class AlbumHandler: NSObject {
     func saveImageToSandbox(albumName: String, image: UIImage) ->Bool {
         var docPath = getDocumentDirectory()
         var imageName = "album_\(albumName)_\(makeUniqueID()).png"
-        var imageURL = docPath.stringByAppendingPathComponent(imageName)
+        let imageURL = NSURL(string: imageName, relativeToURL: docPath)
         
-        UIImageJPEGRepresentation(image, 0.01)!.writeToFile(imageURL, atomically: true)
+        UIImageJPEGRepresentation(image, 0.01)!.writeToFile((imageURL?.path)!, atomically: true)
         
         if !albumExist(albumName) {
             createAlbum(albumName)
         }
-        addImageURLToPlist(albumName, imageURL: imageURL)
+        addImageURLToPlist(albumName, imageURL: (imageURL?.path)!)
         
         return true
     }
@@ -198,9 +198,10 @@ class AlbumHandler: NSObject {
     /*获取document目录中plist文件*/
     func getSandboxFile() -> String {
         let docPath = getDocumentDirectory()
-        let file = docPath.stringByAppendingPathComponent("\(resourceFile).plist")
+        let fileName = resourceFile + "." + resourceType
+        let file = NSURL(string: fileName, relativeToURL: docPath)
         
-        return file
+        return (file?.path)!
     }
     
     
@@ -216,9 +217,9 @@ class AlbumHandler: NSObject {
     }
     
     /*获取document目录*/
-    func getDocumentDirectory() -> String {
+    func getDocumentDirectory() -> NSURL {
         let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) 
         assert(directories.count > 0, "获取document目录失败")
-        return directories[0]
+        return NSURL(fileURLWithPath: directories[0], isDirectory: true)
     }
 }

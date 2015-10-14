@@ -197,15 +197,16 @@ class CategoryHandler: NSObject {
     /*获取document目录中plist文件*/
     func getSandboxFile() -> String {
         let docPath = getDocumentDirectory()
-        let file = docPath.stringByAppendingPathComponent("\(resourceFile).plist")
+        let fileName = resourceFile + "." + resourceType
+        let file = NSURL(string: fileName, relativeToURL: docPath)
         
-        return file
+        return (file?.path)!
     }
     
     /*获取document目录*/
-    func getDocumentDirectory() -> String {
+    func getDocumentDirectory() -> NSURL {
         let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) 
         assert(directories.count > 0, "获取document目录失败")
-        return directories[0]
+        return NSURL(fileURLWithPath: directories[0], isDirectory: true)
     }
 }
