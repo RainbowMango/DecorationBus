@@ -184,14 +184,11 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        var direction: ScrollDirection!
         var multiplier: CGFloat = 1.0
         
         let offset: CGFloat = scrollView.contentOffset.x
 
         if self.lastContentOffset > scrollView.contentOffset.x {
-            direction = .Right
-            
             if self.currentPageNumber > 0 {
                 if offset >  CGFloat(self.currentPageNumber - 1) * viewWidth{
                     self.otherPageNumber = self.currentPageNumber + 1
@@ -203,8 +200,6 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
             }
             
         } else if self.lastContentOffset < scrollView.contentOffset.x {
-            direction = .Left
-            
             if offset <  CGFloat(self.currentPageNumber - 1) * viewWidth{
                 self.otherPageNumber = self.currentPageNumber - 1
                 multiplier = -1.0
