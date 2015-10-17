@@ -17,16 +17,16 @@ class AlbumHandler: NSObject {
     保存图片到沙盒,同时加入到plist文件
     */
     func saveImageToSandbox(albumName: String, image: UIImage) ->Bool {
-        let docPath = getDocumentDirectory()
-        let imageName = "album_\(albumName)_\(makeUniqueID()).png"
-        let imageURL = NSURL(string: imageName, relativeToURL: docPath)
+        let docDir = SandboxHandler().getDocumentDirectory()
+        let fileName = "album_\(albumName)_\(makeUniqueID()).png"
+        let fileWithPath = docDir + "/" + fileName
         
-        UIImageJPEGRepresentation(image, 0.01)!.writeToFile((imageURL?.path)!, atomically: true)
+        UIImageJPEGRepresentation(image, 0.01)!.writeToFile(fileWithPath, atomically: true)
         
         if !albumExist(albumName) {
             createAlbum(albumName)
         }
-        addImageURLToPlist(albumName, imageURL: (imageURL?.path)!)
+        addImageURLToPlist(albumName, imageURL: fileWithPath)
         
         return true
     }
@@ -193,11 +193,11 @@ class AlbumHandler: NSObject {
     
     /*获取document目录中plist文件*/
     func getSandboxFile() -> String {
-        let docPath = getDocumentDirectory()
+        let docDir = SandboxHandler().getDocumentDirectory()
         let fileName = resourceFile + "." + resourceType
-        let file = NSURL(string: fileName, relativeToURL: docPath)
+        let file = docDir + "/" + fileName
         
-        return (file?.path)!
+        return file
     }
     
     
@@ -210,12 +210,5 @@ class AlbumHandler: NSObject {
         let date          = NSDate()
         
         return dateFormatter.stringFromDate(date)
-    }
-    
-    /*获取document目录*/
-    func getDocumentDirectory() -> NSURL {
-        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) 
-        assert(directories.count > 0, "获取document目录失败")
-        return NSURL(fileURLWithPath: directories[0], isDirectory: true)
     }
 }

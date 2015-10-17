@@ -88,17 +88,10 @@ class IntroducePageHandler: NSObject {
     
     /*获取document目录中plist文件*/
     func getSandboxFile() -> String {
-        let docPath = getDocumentDirectory()
-        let file = NSURL(string: resourceFile + "." + resourceType, relativeToURL: docPath)
+        let docDir = SandboxHandler().getDocumentDirectory()
+        let fileName = resourceFile + "." + resourceType
+        let fileWithPath = docDir + "/" + fileName
         
-        return (file?.path!)!
-    }
-    
-    /*获取document目录*/
-    func getDocumentDirectory() -> NSURL {
-        let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) 
-        assert(directories.count > 0, "获取document目录失败")
-        
-        return NSURL(fileURLWithPath: directories[0], isDirectory: true)
+        return fileWithPath
     }
 }
