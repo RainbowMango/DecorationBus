@@ -10,6 +10,7 @@ import UIKit
 
 class ShowDetailListTableViewController: UITableViewController {
     @IBOutlet weak var headerView_: UIView!
+    @IBOutlet weak var footView_: UIView!
     
     var orders_: Array<OrderRecord>!
     var budgets_: Array<BudgetRecord>!
@@ -19,6 +20,8 @@ class ShowDetailListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.tableHeaderView = headerView_
+        self.tableView.tableFooterView = footView_
         
         setViewColor()
 
@@ -302,11 +305,16 @@ class ShowDetailListTableViewController: UITableViewController {
 
     // MARK: - Table view delegate
     
-    // 设置表头
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        return headerView_
-    }
+//    // 设置表头
+//    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        
+//        return headerView_
+//    }
+//    
+//    // 设置表尾
+//    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        return footView_
+//    }
     
     // MARK: - Navigation
 
