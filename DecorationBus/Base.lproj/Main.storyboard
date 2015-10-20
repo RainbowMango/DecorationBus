@@ -133,7 +133,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXe-po-ngE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1757" y="-682"/>
+            <point key="canvasLocation" x="1757" y="-686"/>
         </scene>
         <!--Record Budget View Controller-->
         <scene sceneID="Xlt-06-2Eq">
@@ -165,7 +165,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9f-aH-TMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1757" y="-41"/>
+            <point key="canvasLocation" x="1757" y="-25"/>
         </scene>
         <!--明细信息-->
         <scene sceneID="2D3-hP-lJt">
@@ -745,20 +745,30 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQf-TA-vIe">
                                     <rect key="frame" x="10" y="5" width="135" height="34"/>
                                     <animations/>
+                                    <color key="backgroundColor" red="0.80000000000000004" green="0.70980392160000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="记录支出">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <segue destination="EWi-Rl-O3G" kind="push" id="gyQ-hq-BaT"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUw-5b-mM4">
                                     <rect key="frame" x="175" y="5" width="135" height="34"/>
                                     <animations/>
+                                    <color key="backgroundColor" red="0.80000000000000004" green="0.70980392160000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="新增预算">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <segue destination="abh-RE-Qua" kind="push" id="AbX-sv-U58"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <animations/>
-                            <color key="backgroundColor" red="0.80000000000000004" green="0.70980392160000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="uQf-TA-vIe" firstAttribute="leading" secondItem="4sC-GC-iua" secondAttribute="leading" constant="10" id="9JS-hq-Xf9"/>
                                 <constraint firstItem="uQf-TA-vIe" firstAttribute="top" secondItem="4sC-GC-iua" secondAttribute="top" constant="5" id="JQm-5Q-QZp"/>
@@ -1098,7 +1108,7 @@
         <image name="settings.png" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GEv-yq-UPu"/>
-        <segue reference="8Pm-ew-up5"/>
+        <segue reference="gyQ-hq-BaT"/>
+        <segue reference="AbX-sv-U58"/>
     </inferredMetricsTieBreakers>
 </document>
