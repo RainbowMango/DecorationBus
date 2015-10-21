@@ -151,6 +151,14 @@
 		9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */; };
 		9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */; };
 		9BE945F01A1E2BAD0095ACBD /* OrderItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */; };
+		9BF8E0621BD7E39300F3AD9E /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */; settings = {ASSET_TAGS = (); }; };
+		9BF8E0631BD7E39300F3AD9E /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0551BD7E39300F3AD9E /* TAAbstractDotView.m */; settings = {ASSET_TAGS = (); }; };
+		9BF8E0641BD7E39300F3AD9E /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0571BD7E39300F3AD9E /* TAAnimatedDotView.m */; settings = {ASSET_TAGS = (); }; };
+		9BF8E0651BD7E39300F3AD9E /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0591BD7E39300F3AD9E /* TADotView.m */; settings = {ASSET_TAGS = (); }; };
+		9BF8E0661BD7E39300F3AD9E /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E05B1BD7E39300F3AD9E /* TAPageControl.m */; settings = {ASSET_TAGS = (); }; };
+		9BF8E0671BD7E39300F3AD9E /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E05D1BD7E39300F3AD9E /* SDCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		9BF8E0681BD7E39300F3AD9E /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E05F1BD7E39300F3AD9E /* SDCycleScrollView.m */; settings = {ASSET_TAGS = (); }; };
+		9BF8E0691BD7E39300F3AD9E /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0611BD7E39300F3AD9E /* UIView+SDExtension.m */; settings = {ASSET_TAGS = (); }; };
 		9BFE555E1AD6B603003D8795 /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE55011AD6B603003D8795 /* MWCaptionView.m */; };
 		9BFE555F1AD6B603003D8795 /* MWGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE55041AD6B603003D8795 /* MWGridCell.m */; };
 		9BFE55601AD6B603003D8795 /* MWGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE55061AD6B603003D8795 /* MWGridViewController.m */; };
@@ -362,6 +370,22 @@
 		9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryMinorManageViewController.swift; sourceTree = "<group>"; };
 		9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPayViewController.swift; sourceTree = "<group>"; };
 		9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemDataModel.swift; sourceTree = "<group>"; };
+		9BF8E0511BD7E39300F3AD9E /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
+		9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
+		9BF8E0541BD7E39300F3AD9E /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		9BF8E0551BD7E39300F3AD9E /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		9BF8E0561BD7E39300F3AD9E /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		9BF8E0571BD7E39300F3AD9E /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		9BF8E0581BD7E39300F3AD9E /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		9BF8E0591BD7E39300F3AD9E /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		9BF8E05A1BD7E39300F3AD9E /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		9BF8E05B1BD7E39300F3AD9E /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		9BF8E05C1BD7E39300F3AD9E /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
+		9BF8E05D1BD7E39300F3AD9E /* SDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
+		9BF8E05E1BD7E39300F3AD9E /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
+		9BF8E05F1BD7E39300F3AD9E /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
+		9BF8E0601BD7E39300F3AD9E /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
+		9BF8E0611BD7E39300F3AD9E /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
 		9BFE54FA1AD6B59E003D8795 /* DecorationBus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DecorationBus-Bridging-Header.h"; sourceTree = "<group>"; };
 		9BFE55001AD6B603003D8795 /* MWCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCaptionView.h; sourceTree = "<group>"; };
 		9BFE55011AD6B603003D8795 /* MWCaptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCaptionView.m; sourceTree = "<group>"; };
@@ -650,6 +674,7 @@
 		9B37A9D019EEB57A0097F88D /* DecorationBus */ = {
 			isa = PBXGroup;
 			children = (
+				9BF8E0501BD7E39300F3AD9E /* SDCycleScrollView */,
 				9B1DA7041B330233000B128F /* RMParallax */,
 				9B86958C1AE93895001D0D7F /* AGImagePickerController */,
 				9BFE54FE1AD6B603003D8795 /* MWPhotoBrowser */,
@@ -803,6 +828,37 @@
 			);
 			name = category;
 			path = pictures/category;
+			sourceTree = "<group>";
+		};
+		9BF8E0501BD7E39300F3AD9E /* SDCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				9BF8E0511BD7E39300F3AD9E /* NSData+SDDataCache.h */,
+				9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */,
+				9BF8E0531BD7E39300F3AD9E /* PageControl */,
+				9BF8E05C1BD7E39300F3AD9E /* SDCollectionViewCell.h */,
+				9BF8E05D1BD7E39300F3AD9E /* SDCollectionViewCell.m */,
+				9BF8E05E1BD7E39300F3AD9E /* SDCycleScrollView.h */,
+				9BF8E05F1BD7E39300F3AD9E /* SDCycleScrollView.m */,
+				9BF8E0601BD7E39300F3AD9E /* UIView+SDExtension.h */,
+				9BF8E0611BD7E39300F3AD9E /* UIView+SDExtension.m */,
+			);
+			path = SDCycleScrollView;
+			sourceTree = "<group>";
+		};
+		9BF8E0531BD7E39300F3AD9E /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				9BF8E0541BD7E39300F3AD9E /* TAAbstractDotView.h */,
+				9BF8E0551BD7E39300F3AD9E /* TAAbstractDotView.m */,
+				9BF8E0561BD7E39300F3AD9E /* TAAnimatedDotView.h */,
+				9BF8E0571BD7E39300F3AD9E /* TAAnimatedDotView.m */,
+				9BF8E0581BD7E39300F3AD9E /* TADotView.h */,
+				9BF8E0591BD7E39300F3AD9E /* TADotView.m */,
+				9BF8E05A1BD7E39300F3AD9E /* TAPageControl.h */,
+				9BF8E05B1BD7E39300F3AD9E /* TAPageControl.m */,
+			);
+			path = PageControl;
 			sourceTree = "<group>";
 		};
 		9BFE54FE1AD6B603003D8795 /* MWPhotoBrowser */ = {
@@ -1125,6 +1181,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BFE557D1AD6B603003D8795 /* SDWebImageDownloader.m in Sources */,
+				9BF8E0651BD7E39300F3AD9E /* TADotView.m in Sources */,
+				9BF8E0671BD7E39300F3AD9E /* SDCollectionViewCell.m in Sources */,
+				9BF8E0631BD7E39300F3AD9E /* TAAbstractDotView.m in Sources */,
 				9BFE557C1AD6B603003D8795 /* SDWebImageDecoder.m in Sources */,
 				9BFE55701AD6B603003D8795 /* PSTCollectionViewLayout.m in Sources */,
 				9BCEAA301A1212B3002EE82C /* SettingViewController.swift in Sources */,
@@ -1151,6 +1210,7 @@
 				9B2491981A5D683700990BA6 /* FormSwitchCell.swift in Sources */,
 				9B2491901A5D683700990BA6 /* FormTitleCell.swift in Sources */,
 				9B2D7B881A63E82800D829EF /* FormTwoComponentPickerCell.swift in Sources */,
+				9BF8E0641BD7E39300F3AD9E /* TAAnimatedDotView.m in Sources */,
 				9B1DA7071B330233000B128F /* RMParallax.swift in Sources */,
 				9B70714A1BD242C600244474 /* SandboxHandler.swift in Sources */,
 				9B8695A61AE93895001D0D7F /* AGIPCToolbarItem.m in Sources */,
@@ -1164,6 +1224,7 @@
 				9B6E3DFA1AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift in Sources */,
 				9BFE55821AD6B603003D8795 /* UIImage+GIF.m in Sources */,
 				9B8032C41A35CB76005BA828 /* SpinnerViewController.swift in Sources */,
+				9BF8E0661BD7E39300F3AD9E /* TAPageControl.m in Sources */,
 				9B151A6B1A655AFA00498ED2 /* PrimeCategoryTableViewCell.swift in Sources */,
 				9BFE55871AD6B603003D8795 /* UIView+WebCacheOperation.m in Sources */,
 				9B2491911A5D683700990BA6 /* FormValueCell.swift in Sources */,
@@ -1198,6 +1259,7 @@
 				9B985BFD1A178F96009F4435 /* FeedBackViewController.swift in Sources */,
 				9B2491971A5D683700990BA6 /* FormSelectorCell.swift in Sources */,
 				9B8695A71AE93895001D0D7F /* ALAsset+AGIPC.m in Sources */,
+				9BF8E0681BD7E39300F3AD9E /* SDCycleScrollView.m in Sources */,
 				9B24919F1A5D683700990BA6 /* FormRowDescriptor.swift in Sources */,
 				9BFE556F1AD6B603003D8795 /* PSTCollectionViewItemKey.m in Sources */,
 				9BFE55721AD6B603003D8795 /* PSTGridLayoutInfo.m in Sources */,
@@ -1212,6 +1274,7 @@
 				9B239BEB1A753035001BF6DA /* ShowDetailTableViewController.swift in Sources */,
 				9BFE556A1AD6B603003D8795 /* PSTCollectionView.m in Sources */,
 				9B97DCCE1A2361AA006A94C0 /* BudgetArchiver.swift in Sources */,
+				9BF8E0621BD7E39300F3AD9E /* NSData+SDDataCache.m in Sources */,
 				9B9E1ACC1A82556B006D816F /* EverPhotoTableViewController.swift in Sources */,
 				9BFE557B1AD6B603003D8795 /* SDWebImageCompat.m in Sources */,
 				9BC401BE1A7E638400FDF4D6 /* CategoryHandler.swift in Sources */,
@@ -1220,6 +1283,7 @@
 				9BFE55611AD6B603003D8795 /* MWPhoto.m in Sources */,
 				9BFE55831AD6B603003D8795 /* UIImage+MultiFormat.m in Sources */,
 				9B8032C31A35CB76005BA828 /* PointMessageViewController.swift in Sources */,
+				9BF8E0691BD7E39300F3AD9E /* UIView+SDExtension.m in Sources */,
 				9BFE55711AD6B603003D8795 /* PSTCollectionViewUpdateItem.m in Sources */,
 				9B34AB001A20BB8000013C39 /* CategoryArchiver.swift in Sources */,
 				9B2491961A5D683700990BA6 /* FormSegmentedControlCell.swift in Sources */,
