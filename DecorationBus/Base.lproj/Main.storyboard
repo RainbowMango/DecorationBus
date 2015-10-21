@@ -16,88 +16,10 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="index.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lLp-4L-B29">
-                                <rect key="frame" x="0.0" y="64" width="320" height="180"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.79296875" green="0.52507313471547834" blue="0.14654947417023664" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="e0m-Hd-LV9"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支出总额：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ooz-UF-0eD">
-                                <rect key="frame" x="20" y="115" width="65" height="16"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预算余额：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3l-Sz-b6n">
-                                <rect key="frame" x="20" y="146" width="65" height="16"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预算总额：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rg-ex-zHI">
-                                <rect key="frame" x="20" y="177" width="65" height="16"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wu7-AA-a5x">
-                                <rect key="frame" x="20" y="358" width="280" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.80000000000000004" green="0.70980392156862748" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="记录支出">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="EWi-Rl-O3G" kind="push" id="bgI-lF-ORi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90S-x2-9Rz">
-                                <rect key="frame" x="20" y="408" width="280" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.80000000000000004" green="0.70980392156862748" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="新增预算">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="abh-RE-Qua" kind="push" id="3cw-Wa-1Al"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="90S-x2-9Rz" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="12O-Vj-2Qp"/>
-                            <constraint firstItem="lLp-4L-B29" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="64" id="71V-oH-xAF"/>
-                            <constraint firstAttribute="trailing" secondItem="90S-x2-9Rz" secondAttribute="trailing" constant="20" id="7u8-JO-syp"/>
-                            <constraint firstItem="8rg-ex-zHI" firstAttribute="top" secondItem="I3l-Sz-b6n" secondAttribute="bottom" constant="15" id="BiZ-Ja-3sZ"/>
-                            <constraint firstAttribute="bottom" secondItem="90S-x2-9Rz" secondAttribute="bottom" constant="130" id="Ciq-JP-N8I"/>
-                            <constraint firstItem="Ooz-UF-0eD" firstAttribute="leading" secondItem="8rg-ex-zHI" secondAttribute="leading" id="Eah-8I-qxc"/>
-                            <constraint firstItem="Ooz-UF-0eD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="I64-Mr-mRH"/>
-                            <constraint firstItem="lLp-4L-B29" firstAttribute="centerY" secondItem="I3l-Sz-b6n" secondAttribute="centerY" id="UB1-Pn-YVd"/>
-                            <constraint firstAttribute="trailing" secondItem="Wu7-AA-a5x" secondAttribute="trailing" constant="20" id="Usy-a3-opB"/>
-                            <constraint firstAttribute="bottom" secondItem="Wu7-AA-a5x" secondAttribute="bottom" constant="180" id="ZiB-IK-lpt"/>
-                            <constraint firstItem="Ooz-UF-0eD" firstAttribute="leading" secondItem="I3l-Sz-b6n" secondAttribute="leading" id="aGz-Y7-pgy"/>
-                            <constraint firstAttribute="trailing" secondItem="lLp-4L-B29" secondAttribute="trailing" id="cF7-cA-rn8"/>
-                            <constraint firstItem="I3l-Sz-b6n" firstAttribute="top" secondItem="Ooz-UF-0eD" secondAttribute="bottom" constant="15" id="j6j-wl-0G6"/>
-                            <constraint firstItem="lLp-4L-B29" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="oYc-2A-Miz"/>
-                            <constraint firstItem="Wu7-AA-a5x" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="vld-rq-rVy"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="装修巴士" id="KZC-Dl-ino"/>
-                    <connections>
-                        <outlet property="leftBudget" destination="I3l-Sz-b6n" id="ShU-X5-dWR"/>
-                        <outlet property="totalBudget" destination="8rg-ex-zHI" id="idt-Ft-2Fd"/>
-                        <outlet property="totalPaid" destination="Ooz-UF-0eD" id="1bH-9d-wlY"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -1103,12 +1025,11 @@
     <resources>
         <image name="arrow_right.png" width="32" height="32"/>
         <image name="home.png" width="40" height="40"/>
-        <image name="index.jpg" width="320" height="180"/>
         <image name="list.png" width="40" height="40"/>
         <image name="settings.png" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gyQ-hq-BaT"/>
         <segue reference="AbX-sv-U58"/>
+        <segue reference="gyQ-hq-BaT"/>
     </inferredMetricsTieBreakers>
 </document>
