@@ -39,3 +39,14 @@
 //集成AGImagePickerController
 #import "AGIPCToolbarItem.h"
 #import "AGImagePickerController.h"
+
+//集成SDCycleScrollView
+#import "NSData+SDDataCache.h"
+#import "TAAbstractDotView.h"
+#import "TAAnimatedDotView.h"
+#import "TADotView.h"
+#import "TAPageControl.h"
+#import "SDCollectionViewCell.h"
+#import "SDCycleScrollView.h"
+#import "UIView+SDExtension.h"
+
