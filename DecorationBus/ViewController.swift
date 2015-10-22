@@ -11,6 +11,8 @@ import CoreData
 
 class ViewController: UIViewController, UITabBarControllerDelegate, UINavigationControllerDelegate, SDCycleScrollViewDelegate {
     
+    @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         startIntro()
@@ -20,7 +22,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         initCategory()
         initAlbum()
         setupScrollViewWithLocalImages()
-        setupScrollViewWithRemoteImages()
+        //setupScrollViewWithRemoteImages()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -81,15 +83,18 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     
     func setupScrollViewWithLocalImages() -> Void {
         var images = [UIImage]()
-        images.append(UIImage(named: "settings")!)
-        images.append(UIImage(named: "settings")!)
+        images.append(UIImage(named: "index.jpg")!)
+        images.append(UIImage(named: "index.jpg")!)
+        images.append(UIImage(named: "index.jpg")!)
+        images.append(UIImage(named: "index.jpg")!)
         let w = self.view.bounds.size.width;
         let cycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 100, w, 180), imagesGroup: images)
         cycleScrollView.infiniteLoop = true
         cycleScrollView.delegate = self
         cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated
         cycleScrollView.autoScrollTimeInterval = 3.0
-        self.view.addSubview(cycleScrollView)
+        //self.view.addSubview(cycleScrollView)
+        self.tableView.tableHeaderView = cycleScrollView
     }
     
     func setupScrollViewWithRemoteImages() -> Void {
@@ -110,6 +115,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         cycleScrollView.titlesGroup = titles
         cycleScrollView.dotColor = UIColor.blackColor()
         cycleScrollView.placeholderImage = UIImage(named: "settings")
+        
         self.view.addSubview(cycleScrollView)
     }
     
