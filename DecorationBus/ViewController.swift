@@ -94,8 +94,8 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     
     func setupScrollViewWithRemoteImages() -> Void {
         var imagesURLStrings = [String]()
-        imagesURLStrings.append("http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E7%BE%8E%E5%A5%B3%E5%9B%BE%E7%89%87%E5%BA%93&pn=6&spn=0&di=146112292700&pi=&rn=1&tn=baiduimagedetail&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=4075987987%2C2813587320&os=257017418%2C2687922542&adpicid=0&ln=21&fr=ala&sme=&cg=&bdtype=0&objurl=http%3A%2F%2Fimg3.douban.com%2Fview%2Fphoto%2Fraw%2Fpublic%2Fp1569226503.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fftpj_z%26e3B157kwg_z%26e3Bv54AzdH3F89nbllAzdH3Fot12jpAzdH3Fri5p5fAzdH3F0lmn9a0AzdH3Fri5p5AzdH3F8cmlddmcanAzdH3F&gsm=0")
-        imagesURLStrings.append("http://image.baidu.com/search/detail?ct=503316480&z=0&tn=baiduimagedetail&ipn=d&cl=2&cm=1&sc=0&lm=-1&ie=gbk&pn=0&rn=1&di=48745245010&ln=21&word=%C3%C0%C5%AE%CD%BC%C6%AC%BF%E2&os=641242292,2435827036&cs=2253455426,2223617168&objurl=http%3A%2F%2Fc11.eoemarket.com%2Fapp0%2F403%2F403225%2Fscreen%2F2157036.jpg&bdtype=0&fr=ala&ori_query=%E7%BE%8E%E5%A5%B3%E5%9B%BE%E7%89%87%E5%BA%93&ala=0&alatpl=sp&pos=1")
+        imagesURLStrings.append("http://www.sinacloud.com/static/common/image/sinacloud_logo.png")
+        imagesURLStrings.append("http://www.sinacloud.com/static/common/image/sinacloud_logo.png")
         
         var titles = [String]()
         titles.append("谢谢支持")
