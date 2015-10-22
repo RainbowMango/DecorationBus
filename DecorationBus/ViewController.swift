@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UITabBarControllerDelegate, UINavigationControllerDelegate, SDCycleScrollViewDelegate {
+class ViewController: UIViewController, UITabBarControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, SDCycleScrollViewDelegate {
     
     @IBOutlet var tableView: UITableView!
     
@@ -23,6 +23,8 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         initAlbum()
         setupScrollViewWithLocalImages()
         //setupScrollViewWithRemoteImages()
+        
+        self.tableView.tableFooterView = UIView() // 清楚tableView中空白行
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -137,5 +139,19 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     func cycleScrollView(cycleScrollView: SDCycleScrollView!, didSelectItemAtIndex index: Int) {
         print("用户点击了第%d张图片", index)
     }
+    
+    //MARK: - tableView data source
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 0
+    }
+    
 }
 
