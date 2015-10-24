@@ -27,7 +27,17 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         self.tableView.tableFooterView = UIView() // 清楚tableView中空白行
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 启动友盟统计
+        MobClick.beginLogPageView("首页")
+    }
     override func viewDidAppear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // 启动友盟统计
+        MobClick.endLogPageView("首页")
         
     }
     
@@ -152,6 +162,5 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 0
     }
-    
 }
 

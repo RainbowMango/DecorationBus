@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 集成友盟
+        MobClick.startWithAppkey("562b8874e0f55a9afb0005ee", reportPolicy: BATCH, channelId: nil)
+        MobClick.setLogEnabled(true)
+        
         return true
     }
 

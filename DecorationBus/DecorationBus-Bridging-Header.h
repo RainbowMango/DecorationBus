@@ -50,3 +50,5 @@
 #import "SDCycleScrollView.h"
 #import "UIView+SDExtension.h"
 
+//集成友盟
+#import "MobClick.h"
