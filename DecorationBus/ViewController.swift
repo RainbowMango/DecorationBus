@@ -48,9 +48,10 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
             return
         }
         
+        UIApplication.sharedApplication().statusBarHidden = true
         self.navigationController?.navigationBarHidden = true
         self.tabBarController?.tabBar.hidden = true
-        
+
         let item1 = RMParallaxItem(image: UIImage(named: "intr001")!, text: "装修路上处处陷阱...")
         let item2 = RMParallaxItem(image: UIImage(named: "intr002")!, text: "低价往往不是让利促销...")
         let item3 = RMParallaxItem(image: UIImage(named: "intr003")!, text: "设计师的时间总是伴随着利益...")
@@ -60,6 +61,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         
         //定义结束引导页行为，显示导航栏，TAB栏
         rmParallaxViewController.completionHandler = {
+            UIApplication.sharedApplication().statusBarHidden = false
             self.navigationController?.navigationBarHidden = false
             self.tabBarController?.tabBar.hidden = false
             UIView.animateWithDuration(0.4, animations: { () -> Void in
