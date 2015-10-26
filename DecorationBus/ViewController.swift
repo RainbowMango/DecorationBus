@@ -13,6 +13,8 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     
     @IBOutlet var tableView: UITableView!
     
+    var refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         startIntro()
@@ -25,6 +27,12 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         //setupScrollViewWithRemoteImages()
         
         self.tableView.tableFooterView = UIView() // 清楚tableView中空白行
+        
+        //添加下拉刷新
+        refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "下拉自动刷新")
+        self.tableView.addSubview(refreshControl)
+        refreshData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -163,6 +171,15 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 0
+    }
+    
+    // 刷新数据
+    func refreshData() {
+        // 刷新逻辑
+        print("从服务器获取数据成功")
+        
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
     }
 }
 
