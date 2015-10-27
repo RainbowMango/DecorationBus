@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--装修巴士-->
@@ -14,6 +15,54 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="lmt-Nl-whV">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lmt-Nl-whV" id="TEu-nr-4Gj">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9kI-Yz-fKU">
+                                            <rect key="frame" x="8" y="8" width="304" height="27.5"/>
+                                            <animations/>
+                                            <color key="backgroundColor" red="1" green="0.1898922224" blue="0.12674094220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rR7-0H-nue">
+                                                <size key="itemSize" width="50" height="50"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZmA-1G-sMM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <animations/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <animations/>
+                                                </collectionViewCell>
+                                            </cells>
+                                        </collectionView>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="9kI-Yz-fKU" secondAttribute="trailing" id="3dj-Oa-f7z"/>
+                                        <constraint firstItem="9kI-Yz-fKU" firstAttribute="top" secondItem="TEu-nr-4Gj" secondAttribute="topMargin" id="Kce-Gi-FIs"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="9kI-Yz-fKU" secondAttribute="trailing" id="QGd-Mr-lkd"/>
+                                        <constraint firstItem="9kI-Yz-fKU" firstAttribute="leading" secondItem="TEu-nr-4Gj" secondAttribute="leadingMargin" id="dxY-F2-jGq"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="9kI-Yz-fKU" secondAttribute="bottom" id="eQY-0p-yHq"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="9kI-Yz-fKU" secondAttribute="bottom" id="hAk-tI-fSp"/>
+                                        <constraint firstItem="9kI-Yz-fKU" firstAttribute="top" secondItem="TEu-nr-4Gj" secondAttribute="topMargin" id="n9b-dW-0Mf"/>
+                                        <constraint firstItem="9kI-Yz-fKU" firstAttribute="leading" secondItem="TEu-nr-4Gj" secondAttribute="leadingMargin" id="u2m-IO-xxy"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="装修巴士" id="KZC-Dl-ino"/>
                     <connections>

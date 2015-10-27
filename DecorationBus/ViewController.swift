@@ -27,6 +27,8 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         //setupScrollViewWithRemoteImages()
         
         self.tableView.tableFooterView = UIView() // 清楚tableView中空白行
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
         
         //添加下拉刷新
         refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
@@ -161,7 +163,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     
     //MARK: - tableView data source
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -169,7 +171,16 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 0
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "精选服务"
+        default:
+            return "未定义区域"
+        }
     }
     
     // 刷新数据
