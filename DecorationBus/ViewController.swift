@@ -30,7 +30,6 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         
         //添加下拉刷新
         refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
-        refreshControl.attributedTitle = NSAttributedString(string: "下拉自动刷新")
         self.tableView.addSubview(refreshControl)
         refreshData()
     }
@@ -176,6 +175,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     // 刷新数据
     func refreshData() {
         // 刷新逻辑
+        NSThread.sleepForTimeInterval(2.0)
         print("从服务器获取数据成功")
         
         self.tableView.reloadData()
