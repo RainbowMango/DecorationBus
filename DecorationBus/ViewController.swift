@@ -175,15 +175,6 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         return UITableViewCell()
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "精选服务"
-        default:
-            return "未定义区域"
-        }
-    }
-    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:
@@ -193,10 +184,10 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
             leftLable.text = "精选服务"
             headerView.addSubview(leftLable)
             
-            let rightLable = UILabel(frame: CGRectMake(screenWith/2 + 10, 5, screenWith/2 - 20, 20))
-            rightLable.text = "显示更多 >>   "
-            rightLable.textAlignment = NSTextAlignment.Right
-            headerView.addSubview(rightLable)
+//            let rightLable = UILabel(frame: CGRectMake(screenWith/2 + 10, 5, screenWith/2 - 20, 20))
+//            rightLable.text = "显示更多 >>   "
+//            rightLable.textAlignment = NSTextAlignment.Right
+//            headerView.addSubview(rightLable)
             
             return headerView
         default:
