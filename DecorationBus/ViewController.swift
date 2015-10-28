@@ -162,16 +162,17 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     }
     
     //MARK: - tableView data source
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return UITableViewCell()
-    }
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -182,6 +183,28 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
             return "未定义区域"
         }
     }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            let screenWith = self.view.bounds.width
+            let headerView = UIView(frame: CGRectMake(0, 0, screenWith, 20))
+            let leftLable = UILabel(frame: CGRectMake(10, 5, screenWith/2 - 10, 20))
+            leftLable.text = "精选服务"
+            headerView.addSubview(leftLable)
+            
+            let rightLable = UILabel(frame: CGRectMake(screenWith/2 + 10, 5, screenWith/2 - 20, 20))
+            rightLable.text = "显示更多 >>   "
+            rightLable.textAlignment = NSTextAlignment.Right
+            headerView.addSubview(rightLable)
+            
+            return headerView
+        default:
+            return nil
+        }
+    }
+    
+    //MARK: - tableView delegate
     
     // 刷新数据
     func refreshData() {
