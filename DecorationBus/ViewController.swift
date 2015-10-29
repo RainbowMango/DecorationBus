@@ -12,6 +12,7 @@ import CoreData
 class ViewController: UIViewController, UITabBarControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, SDCycleScrollViewDelegate {
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var indexCollectionView: UICollectionView!
     
     var refreshControl = UIRefreshControl()
     
@@ -172,7 +173,23 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        switch indexPath.section{
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("indexCollectionTableViewCell", forIndexPath: indexPath)
+            
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.section{
+        case 0:
+            return self.view.bounds.height * 0.3
+        default:
+            return 0.0
+        }
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
