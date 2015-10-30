@@ -160,6 +160,7 @@
 		9BF8E0671BD7E39300F3AD9E /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E05D1BD7E39300F3AD9E /* SDCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		9BF8E0681BD7E39300F3AD9E /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E05F1BD7E39300F3AD9E /* SDCycleScrollView.m */; settings = {ASSET_TAGS = (); }; };
 		9BF8E0691BD7E39300F3AD9E /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0611BD7E39300F3AD9E /* UIView+SDExtension.m */; settings = {ASSET_TAGS = (); }; };
+		9BFC7EEC1BE3B6550026DB8B /* MainServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC7EEB1BE3B6550026DB8B /* MainServiceTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -347,6 +348,7 @@
 		9BF8E05F1BD7E39300F3AD9E /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
 		9BF8E0601BD7E39300F3AD9E /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		9BF8E0611BD7E39300F3AD9E /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
+		9BFC7EEB1BE3B6550026DB8B /* MainServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainServiceTableViewCell.swift; sourceTree = "<group>"; };
 		9BFE54FA1AD6B59E003D8795 /* DecorationBus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DecorationBus-Bridging-Header.h"; sourceTree = "<group>"; };
 		C64A5122479B78FEEC03D600 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E494FB62F5182D1E078B2EFD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -383,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				9B151A6A1A655AFA00498ED2 /* PrimeCategoryTableViewCell.swift */,
+				9BFC7EEB1BE3B6550026DB8B /* MainServiceTableViewCell.swift */,
 				9B151A6F1A6A9CA100498ED2 /* MinorCategoryTableViewCell.swift */,
 				9B239BEC1A7670F2001BF6DA /* SegmentCategoryTableViewCell.swift */,
 			);
@@ -1002,6 +1005,7 @@
 				9B24919E1A5D683700990BA6 /* FormDescriptor.swift in Sources */,
 				9B24919B1A5D683700990BA6 /* FormOptionsSelectorController.swift in Sources */,
 				9B97DCC91A235933006A94C0 /* RecordBudgetViewController.swift in Sources */,
+				9BFC7EEC1BE3B6550026DB8B /* MainServiceTableViewCell.swift in Sources */,
 				9B24919D1A5D683700990BA6 /* FormViewController.swift in Sources */,
 				9B6E3DFA1AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift in Sources */,
 				9B8032C41A35CB76005BA828 /* SpinnerViewController.swift in Sources */,

@@ -12,7 +12,6 @@ import CoreData
 class ViewController: UIViewController, UITabBarControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, SDCycleScrollViewDelegate {
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var indexCollectionView: UICollectionView!
     
     var refreshControl = UIRefreshControl()
     
@@ -175,7 +174,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section{
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("indexCollectionTableViewCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("MainServiceTableViewCell", forIndexPath: indexPath) as! MainServiceTableViewCell
             
             return cell
         default:
