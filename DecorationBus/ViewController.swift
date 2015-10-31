@@ -23,8 +23,8 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         self.navigationController?.delegate = self
         initCategory()
         initAlbum()
-        setupScrollViewWithLocalImages()
-        //setupScrollViewWithRemoteImages()
+        //setupScrollViewWithLocalImages()
+        setupScrollViewWithRemoteImages()
         
         self.tableView.tableFooterView = UIView() // 清楚tableView中空白行
         self.tableView.dataSource = self
@@ -116,18 +116,22 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         cycleScrollView.delegate = self
         cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated
         cycleScrollView.autoScrollTimeInterval = 3.0
-        //self.view.addSubview(cycleScrollView)
+        
         self.tableView.tableHeaderView = cycleScrollView
     }
     
     func setupScrollViewWithRemoteImages() -> Void {
         var imagesURLStrings = [String]()
-        imagesURLStrings.append("http://www.sinacloud.com/static/common/image/sinacloud_logo.png")
-        imagesURLStrings.append("http://www.sinacloud.com/static/common/image/sinacloud_logo.png")
+        imagesURLStrings.append("http://decorationbus.sinaapp.com/server/images/banner/ser01.jpg")
+        imagesURLStrings.append("http://decorationbus.sinaapp.com/server/images/banner/ser02.jpg")
+        imagesURLStrings.append("http://decorationbus.sinaapp.com/server/images/banner/ser03.jpg")
+        imagesURLStrings.append("http://decorationbus.sinaapp.com/server/images/banner/ser04.jpg")
         
         var titles = [String]()
-        titles.append("谢谢支持")
-        titles.append("谢谢支持")
+        titles.append("该产品属于开源公益项目, 不已盈利为目的")
+        titles.append("目前处于开发内测阶段，功能尚不完善")
+        titles.append("我们只是想让装修简单一点点")
+        titles.append("欢迎加入我们一起开发")
         
         let w = self.view.bounds.size.width;
         
@@ -137,9 +141,10 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         cycleScrollView.delegate = self
         cycleScrollView.titlesGroup = titles
         cycleScrollView.dotColor = UIColor.blackColor()
-        cycleScrollView.placeholderImage = UIImage(named: "settings")
+        cycleScrollView.autoScrollTimeInterval = 3.0
+        cycleScrollView.placeholderImage = UIImage(named: "index.jpg")
         
-        self.view.addSubview(cycleScrollView)
+        self.tableView.tableHeaderView = cycleScrollView
     }
     
     override func didReceiveMemoryWarning() {
