@@ -198,21 +198,21 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         }
     }
     
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        var cellHeight: CGFloat = 44
-//        
-//        switch indexPath.section{
-//        case 0:
-//            cellHeight =  self.view.bounds.height * 0.15
-//        case 1:
-//            cellHeight =  self.view.bounds.height * 0.05
-//            
-//        default:
-//            print("使用默认高度")
-//        }
-//        
-//        return cellHeight
-//    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var cellHeight: CGFloat = 44
+        
+        switch indexPath.section{
+        case 0:
+            cellHeight =  self.view.bounds.height * 0.15
+        case 1:
+            cellHeight =  44
+            
+        default:
+            print("使用默认高度")
+        }
+        
+        return cellHeight
+    }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var title = String()

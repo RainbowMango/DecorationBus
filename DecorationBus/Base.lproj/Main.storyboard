@@ -154,7 +154,6 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
-                                <color key="backgroundColor" red="0.80000000000000004" green="0.70980392160000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
