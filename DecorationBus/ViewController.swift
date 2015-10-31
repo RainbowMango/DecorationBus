@@ -185,7 +185,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.section{
         case 0:
-            return self.view.bounds.height * 0.3
+            return self.view.bounds.height * 0.15
         default:
             return 0.0
         }
