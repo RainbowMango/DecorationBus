@@ -16,7 +16,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainServiceTableViewCell" rowHeight="79" id="lmt-Nl-whV" customClass="MainServiceTableViewCell" customModule="DecorationBus" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainServiceTableViewCell" rowHeight="79" id="lmt-Nl-whV" customClass="MainServiceTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lmt-Nl-whV" id="TEu-nr-4Gj">
@@ -25,23 +25,74 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvf-JW-MLw" userLabel="view1">
                                             <rect key="frame" x="8" y="8" width="76" height="63"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ser01.png" translatesAutoresizingMaskIntoConstraints="NO" id="jM6-84-ODV" userLabel="imageView1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="76" height="63"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
                                             <animations/>
                                             <color key="backgroundColor" red="1" green="0.86765558769999995" blue="0.69125505070000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="jM6-84-ODV" firstAttribute="leading" secondItem="kvf-JW-MLw" secondAttribute="leading" id="B8F-2R-5dw"/>
+                                                <constraint firstItem="jM6-84-ODV" firstAttribute="top" secondItem="kvf-JW-MLw" secondAttribute="top" id="CMQ-oe-kcW"/>
+                                                <constraint firstAttribute="bottom" secondItem="jM6-84-ODV" secondAttribute="bottom" id="RCz-k9-j9p"/>
+                                                <constraint firstAttribute="trailing" secondItem="jM6-84-ODV" secondAttribute="trailing" id="tee-mK-p1t"/>
+                                            </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbe-AL-vUc" userLabel="view2">
                                             <rect key="frame" x="84" y="8" width="76" height="63"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ser01.png" translatesAutoresizingMaskIntoConstraints="NO" id="8qW-A7-ZOC" userLabel="imageView2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="76" height="63"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
                                             <animations/>
                                             <color key="backgroundColor" red="0.89411764709999997" green="0.45882352939999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="8qW-A7-ZOC" firstAttribute="leading" secondItem="jbe-AL-vUc" secondAttribute="leading" id="2E2-Wz-eOh"/>
+                                                <constraint firstItem="8qW-A7-ZOC" firstAttribute="top" secondItem="jbe-AL-vUc" secondAttribute="top" id="hR6-Jc-Ae7"/>
+                                                <constraint firstAttribute="bottom" secondItem="8qW-A7-ZOC" secondAttribute="bottom" id="jhc-OS-IRU"/>
+                                                <constraint firstAttribute="trailing" secondItem="8qW-A7-ZOC" secondAttribute="trailing" id="jof-Nk-UGc"/>
+                                                <constraint firstItem="8qW-A7-ZOC" firstAttribute="leading" secondItem="jbe-AL-vUc" secondAttribute="leading" id="kda-iv-yJe"/>
+                                                <constraint firstItem="8qW-A7-ZOC" firstAttribute="top" secondItem="jbe-AL-vUc" secondAttribute="top" id="tLi-XF-fYV"/>
+                                                <constraint firstAttribute="bottom" secondItem="8qW-A7-ZOC" secondAttribute="bottom" id="ynF-GG-jXE"/>
+                                            </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viu-1r-qnD" userLabel="view3">
                                             <rect key="frame" x="160" y="8" width="76" height="63"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ser01.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xeb-YN-9Nv" userLabel="imageView3">
+                                                    <rect key="frame" x="0.0" y="0.0" width="76" height="63"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
                                             <animations/>
                                             <color key="backgroundColor" red="1" green="0.86765558769999995" blue="0.69125505070000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Xeb-YN-9Nv" secondAttribute="bottom" id="BwG-9Q-FSH"/>
+                                                <constraint firstItem="Xeb-YN-9Nv" firstAttribute="top" secondItem="viu-1r-qnD" secondAttribute="top" id="HCz-jS-gCF"/>
+                                                <constraint firstItem="Xeb-YN-9Nv" firstAttribute="leading" secondItem="viu-1r-qnD" secondAttribute="leading" id="eFH-2G-Wfq"/>
+                                                <constraint firstAttribute="trailing" secondItem="Xeb-YN-9Nv" secondAttribute="trailing" id="jl2-ga-DXG"/>
+                                            </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JT-yO-kGj" userLabel="view4">
                                             <rect key="frame" x="236" y="8" width="76" height="63"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ser01.png" translatesAutoresizingMaskIntoConstraints="NO" id="PlF-EH-yNx" userLabel="imageView4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="76" height="63"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
                                             <animations/>
                                             <color key="backgroundColor" red="0.89411764709999997" green="0.45882352939999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="PlF-EH-yNx" secondAttribute="trailing" id="1pP-TN-GPt"/>
+                                                <constraint firstAttribute="bottom" secondItem="PlF-EH-yNx" secondAttribute="bottom" id="2iw-mH-eFi"/>
+                                                <constraint firstItem="PlF-EH-yNx" firstAttribute="top" secondItem="9JT-yO-kGj" secondAttribute="top" id="IiR-QX-pIn"/>
+                                                <constraint firstItem="PlF-EH-yNx" firstAttribute="leading" secondItem="9JT-yO-kGj" secondAttribute="leading" id="fXN-ZH-qN6"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <animations/>
@@ -1082,6 +1133,7 @@
         <image name="arrow_right.png" width="32" height="32"/>
         <image name="home.png" width="40" height="40"/>
         <image name="list.png" width="40" height="40"/>
+        <image name="ser01.png" width="32" height="32"/>
         <image name="settings.png" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
