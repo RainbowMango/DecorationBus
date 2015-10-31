@@ -164,11 +164,21 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     //MARK: - tableView data source
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        var rowNum = 0
+        switch section {
+        case 0:
+            rowNum = 1
+        case 1:
+            rowNum = 3
+        default:
+            rowNum = 0
+        }
+        
+        return rowNum
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -177,39 +187,74 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
             let cell = tableView.dequeueReusableCellWithIdentifier("MainServiceTableViewCell", forIndexPath: indexPath) as! MainServiceTableViewCell
             
             return cell
+        case 1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("activitiesCell")
+            cell?.imageView?.image = UIImage(named: "ser01.png")
+            cell?.textLabel?.text = "这里是活动内容"
+            cell?.detailTextLabel?.text = "这里是detail活动内容"
+            return cell!
         default:
             return UITableViewCell()
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var cellHeight: CGFloat = 44
+        
         switch indexPath.section{
         case 0:
-            return self.view.bounds.height * 0.15
+            cellHeight =  self.view.bounds.height * 0.15
+        case 1:
+            cellHeight =  self.view.bounds.height * 0.05
+            
         default:
-            return 0.0
+            print("使用默认高度")
         }
+        
+        return cellHeight
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var title = String()
         switch section {
         case 0:
-            let screenWith = self.view.bounds.width
-            let headerView = UIView(frame: CGRectMake(0, 0, screenWith, 20))
-            let leftLable = UILabel(frame: CGRectMake(10, 5, screenWith/2 - 10, 20))
-            leftLable.text = "精选服务"
-            headerView.addSubview(leftLable)
-            
-//            let rightLable = UILabel(frame: CGRectMake(screenWith/2 + 10, 5, screenWith/2 - 20, 20))
-//            rightLable.text = "显示更多 >>   "
-//            rightLable.textAlignment = NSTextAlignment.Right
-//            headerView.addSubview(rightLable)
-            
-            return headerView
+            title = "精选服务"
+        case 1:
+            title = "热门服务"
         default:
-            return nil
+            title = "未定义"
         }
+        
+        return title
     }
+//    
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let screenWith = self.view.bounds.width
+//        
+//        switch section {
+//        case 0:
+//            let headerView = UIView(frame: CGRectMake(0, 0, screenWith, 20))
+//            let leftLable = UILabel(frame: CGRectMake(10, 5, screenWith/2 - 10, 20))
+//            leftLable.text = "精选服务"
+//            headerView.addSubview(leftLable)
+//            
+////            let rightLable = UILabel(frame: CGRectMake(screenWith/2 + 10, 5, screenWith/2 - 20, 20))
+////            rightLable.text = "显示更多 >>   "
+////            rightLable.textAlignment = NSTextAlignment.Right
+////            headerView.addSubview(rightLable)
+//            
+//            return headerView
+//        case 1:
+//            let headerView = UIView(frame: CGRectMake(0, 0, screenWith, 20))
+//            let leftLable = UILabel(frame: CGRectMake(10, 5, screenWith/2 - 10, 20))
+//            leftLable.text = "热门活动"
+//            headerView.addSubview(leftLable)
+//            
+//            return headerView
+//        default:
+//            return nil
+//        }
+//    }
     
     //MARK: - tableView delegate
     
