@@ -127,7 +127,7 @@
                                     <outlet property="imageView4" destination="PlF-EH-yNx" id="DUf-0j-edf"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activitiesCell" textLabel="gcE-Au-sqn" detailTextLabel="0pi-v2-3v7" rowHeight="79" style="IBUITableViewCellStyleSubtitle" id="JRP-AC-GaH" customClass="MainServiceTableViewCell" customModule="DecorationBus" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activitiesCell" textLabel="gcE-Au-sqn" detailTextLabel="0pi-v2-3v7" rowHeight="79" style="IBUITableViewCellStyleSubtitle" id="JRP-AC-GaH" customClass="MainServiceTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="171" width="320" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JRP-AC-GaH" id="qsW-C2-QPT">

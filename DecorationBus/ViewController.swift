@@ -190,8 +190,8 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("activitiesCell")
             cell?.imageView?.image = UIImage(named: "ser01.png")
-            cell?.textLabel?.text = "这里是活动内容"
-            cell?.detailTextLabel?.text = "这里是detail活动内容"
+            cell?.textLabel?.text = "这里是活动内容这里是活动内容这里是活动内容这里是活动内容这里是活动内容这里是活动内容"
+            cell?.detailTextLabel?.text = "这里是detail活动内容这里是活动内容这里是活动内容这里是活动内容这里是活动内容这里是活动内容"
             return cell!
         default:
             return UITableViewCell()
@@ -220,7 +220,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         case 0:
             title = "精选服务"
         case 1:
-            title = "热门服务"
+            title = "热门活动"
         default:
             title = "未定义"
         }
