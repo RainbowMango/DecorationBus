@@ -120,6 +120,12 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.70980392160000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="imageView1" destination="jM6-84-ODV" id="eE2-d2-KYd"/>
+                                    <outlet property="imageView2" destination="8qW-A7-ZOC" id="YTY-U5-8gT"/>
+                                    <outlet property="imageView3" destination="Xeb-YN-9Nv" id="dIs-t3-UxI"/>
+                                    <outlet property="imageView4" destination="PlF-EH-yNx" id="DUf-0j-edf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
