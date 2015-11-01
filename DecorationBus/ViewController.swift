@@ -195,8 +195,21 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("activitiesCell")
             cell?.imageView?.image = UIImage(named: "github.png")
-            cell?.textLabel?.text = "这里是活动内容这里是活动内容这里是活动内容这里是活动内容这里是活动内容这里是活动内容"
-            cell?.detailTextLabel?.text = "这里是detail活动内容这里是活动内容这里是活动内容这里是活动内容这里是活动内容这里是活动内容"
+            switch indexPath.row {
+            case 0:
+                cell?.textLabel?.text = "招募产品经理"
+                cell?.detailTextLabel?.text = "要求不多，只要会画图就行啦~"
+            case 1:
+                cell?.textLabel?.text = "招募IOS开发工程师"
+                cell?.detailTextLabel?.text = "需要Swift工程师，如果也懂OC就更好了！"
+            case 2:
+                cell?.textLabel?.text = "招募视觉设计"
+                cell?.detailTextLabel?.text = "有想法，会抠图，急需，急需！"
+            default:
+                cell?.textLabel?.text = "未定义的活动"
+                cell?.detailTextLabel?.text = "未定义的活动"
+            }
+            
             return cell!
         default:
             return UITableViewCell()
