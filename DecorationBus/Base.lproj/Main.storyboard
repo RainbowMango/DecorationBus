@@ -30,13 +30,22 @@
                                                     <rect key="frame" x="20" y="0.0" width="36" height="23"/>
                                                     <animations/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="装修公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQm-Ab-LHd">
+                                                    <rect key="frame" x="0.0" y="33" width="76" height="30"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" red="1" green="0.86765558769999995" blue="0.69125505070000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
+                                                <constraint firstItem="mQm-Ab-LHd" firstAttribute="leading" secondItem="kvf-JW-MLw" secondAttribute="leading" id="3Lz-yY-bhD"/>
                                                 <constraint firstItem="jM6-84-ODV" firstAttribute="leading" secondItem="kvf-JW-MLw" secondAttribute="leading" constant="20" id="B8F-2R-5dw"/>
                                                 <constraint firstItem="jM6-84-ODV" firstAttribute="top" secondItem="kvf-JW-MLw" secondAttribute="top" id="CMQ-oe-kcW"/>
                                                 <constraint firstAttribute="bottom" secondItem="jM6-84-ODV" secondAttribute="bottom" constant="40" id="RCz-k9-j9p"/>
+                                                <constraint firstItem="mQm-Ab-LHd" firstAttribute="top" secondItem="jM6-84-ODV" secondAttribute="bottom" constant="10" id="aME-Zg-137"/>
+                                                <constraint firstAttribute="bottom" secondItem="mQm-Ab-LHd" secondAttribute="bottom" id="jX7-JU-Kw9"/>
                                                 <constraint firstAttribute="trailing" secondItem="jM6-84-ODV" secondAttribute="trailing" constant="20" id="tee-mK-p1t"/>
                                             </constraints>
                                         </view>
@@ -47,14 +56,24 @@
                                                     <rect key="frame" x="20" y="0.0" width="36" height="23"/>
                                                     <animations/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设计师" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Qa-IF-719">
+                                                    <rect key="frame" x="0.0" y="33" width="76" height="30"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" red="0.89411764709999997" green="0.45882352939999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="8qW-A7-ZOC" firstAttribute="leading" secondItem="jbe-AL-vUc" secondAttribute="leading" constant="20" id="2E2-Wz-eOh"/>
+                                                <constraint firstAttribute="trailing" secondItem="8Qa-IF-719" secondAttribute="trailing" id="GTV-2N-jDl"/>
+                                                <constraint firstItem="8Qa-IF-719" firstAttribute="leading" secondItem="jbe-AL-vUc" secondAttribute="leading" id="Mle-le-gwg"/>
                                                 <constraint firstAttribute="bottom" secondItem="8qW-A7-ZOC" secondAttribute="bottom" constant="40" id="jhc-OS-IRU"/>
                                                 <constraint firstAttribute="trailing" secondItem="8qW-A7-ZOC" secondAttribute="trailing" constant="20" id="jof-Nk-UGc"/>
+                                                <constraint firstAttribute="bottom" secondItem="8Qa-IF-719" secondAttribute="bottom" id="nM1-qT-dvy"/>
                                                 <constraint firstItem="8qW-A7-ZOC" firstAttribute="top" secondItem="jbe-AL-vUc" secondAttribute="top" id="tLi-XF-fYV"/>
+                                                <constraint firstItem="8Qa-IF-719" firstAttribute="top" secondItem="8qW-A7-ZOC" secondAttribute="bottom" constant="10" id="yBw-KC-CFw"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viu-1r-qnD" userLabel="view3">
@@ -64,14 +83,24 @@
                                                     <rect key="frame" x="20" y="0.0" width="36" height="23"/>
                                                     <animations/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="项目经理" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfg-HE-u3T">
+                                                    <rect key="frame" x="0.0" y="33" width="76" height="30"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" red="1" green="0.86765558769999995" blue="0.69125505070000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Xeb-YN-9Nv" secondAttribute="bottom" constant="40" id="BwG-9Q-FSH"/>
+                                                <constraint firstAttribute="bottom" secondItem="Bfg-HE-u3T" secondAttribute="bottom" id="F2p-Re-7ag"/>
                                                 <constraint firstItem="Xeb-YN-9Nv" firstAttribute="top" secondItem="viu-1r-qnD" secondAttribute="top" id="HCz-jS-gCF"/>
+                                                <constraint firstItem="Bfg-HE-u3T" firstAttribute="top" secondItem="Xeb-YN-9Nv" secondAttribute="bottom" constant="10" id="ZeP-Ra-tFZ"/>
                                                 <constraint firstItem="Xeb-YN-9Nv" firstAttribute="leading" secondItem="viu-1r-qnD" secondAttribute="leading" constant="20" id="eFH-2G-Wfq"/>
                                                 <constraint firstAttribute="trailing" secondItem="Xeb-YN-9Nv" secondAttribute="trailing" constant="20" id="jl2-ga-DXG"/>
+                                                <constraint firstItem="Bfg-HE-u3T" firstAttribute="leading" secondItem="viu-1r-qnD" secondAttribute="leading" id="nz8-rK-vkj"/>
+                                                <constraint firstAttribute="trailing" secondItem="Bfg-HE-u3T" secondAttribute="trailing" id="sMN-ct-djA"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JT-yO-kGj" userLabel="view4">
@@ -81,14 +110,24 @@
                                                     <rect key="frame" x="20" y="0.0" width="36" height="23"/>
                                                     <animations/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="装修工人" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gd-7g-zxt">
+                                                    <rect key="frame" x="0.0" y="33" width="76" height="30"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" red="0.89411764709999997" green="0.45882352939999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="PlF-EH-yNx" secondAttribute="trailing" constant="20" id="1pP-TN-GPt"/>
                                                 <constraint firstAttribute="bottom" secondItem="PlF-EH-yNx" secondAttribute="bottom" constant="40" id="2iw-mH-eFi"/>
+                                                <constraint firstItem="2gd-7g-zxt" firstAttribute="leading" secondItem="9JT-yO-kGj" secondAttribute="leading" id="EnR-0a-tFv"/>
+                                                <constraint firstAttribute="trailing" secondItem="2gd-7g-zxt" secondAttribute="trailing" id="HP7-zu-ReE"/>
                                                 <constraint firstItem="PlF-EH-yNx" firstAttribute="top" secondItem="9JT-yO-kGj" secondAttribute="top" id="IiR-QX-pIn"/>
                                                 <constraint firstItem="PlF-EH-yNx" firstAttribute="leading" secondItem="9JT-yO-kGj" secondAttribute="leading" constant="20" id="fXN-ZH-qN6"/>
+                                                <constraint firstAttribute="bottom" secondItem="2gd-7g-zxt" secondAttribute="bottom" id="kvm-W3-tG2"/>
+                                                <constraint firstItem="2gd-7g-zxt" firstAttribute="top" secondItem="PlF-EH-yNx" secondAttribute="bottom" constant="10" id="wfV-On-TYT"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -99,6 +138,7 @@
                                         <constraint firstItem="viu-1r-qnD" firstAttribute="leading" secondItem="jbe-AL-vUc" secondAttribute="trailing" id="BBm-lA-CdT"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="9JT-yO-kGj" secondAttribute="trailing" id="Bzk-cL-L8N"/>
                                         <constraint firstItem="jbe-AL-vUc" firstAttribute="leading" secondItem="kvf-JW-MLw" secondAttribute="trailing" id="CKE-mI-0ZS"/>
+                                        <constraint firstItem="jbe-AL-vUc" firstAttribute="leading" secondItem="mQm-Ab-LHd" secondAttribute="trailing" id="IOC-eC-d5T"/>
                                         <constraint firstItem="kvf-JW-MLw" firstAttribute="leading" secondItem="TEu-nr-4Gj" secondAttribute="leadingMargin" id="KeP-SY-fwW"/>
                                         <constraint firstItem="9JT-yO-kGj" firstAttribute="leading" secondItem="viu-1r-qnD" secondAttribute="trailing" id="Kkb-D7-CYI"/>
                                         <constraint firstItem="jbe-AL-vUc" firstAttribute="top" secondItem="TEu-nr-4Gj" secondAttribute="topMargin" id="MFJ-yc-PaF"/>
@@ -116,7 +156,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
-                                <color key="backgroundColor" red="0.80000000000000004" green="0.70980392160000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="imageView1" destination="jM6-84-ODV" id="eE2-d2-KYd"/>
                                     <outlet property="imageView2" destination="8qW-A7-ZOC" id="YTY-U5-8gT"/>
