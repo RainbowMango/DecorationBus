@@ -194,7 +194,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("activitiesCell")
-            cell?.imageView?.image = UIImage(named: "ser01.png")
+            cell?.imageView?.image = UIImage(named: "github.png")
             cell?.textLabel?.text = "这里是活动内容这里是活动内容这里是活动内容这里是活动内容这里是活动内容这里是活动内容"
             cell?.detailTextLabel?.text = "这里是detail活动内容这里是活动内容这里是活动内容这里是活动内容这里是活动内容这里是活动内容"
             return cell!
