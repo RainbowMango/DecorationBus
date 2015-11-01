@@ -39,6 +39,7 @@
                                                 </label>
                                             </subviews>
                                             <animations/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="mQm-Ab-LHd" firstAttribute="leading" secondItem="kvf-JW-MLw" secondAttribute="leading" id="3Lz-yY-bhD"/>
                                                 <constraint firstItem="jM6-84-ODV" firstAttribute="leading" secondItem="kvf-JW-MLw" secondAttribute="leading" constant="20" id="B8F-2R-5dw"/>
@@ -48,6 +49,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="mQm-Ab-LHd" secondAttribute="bottom" id="jX7-JU-Kw9"/>
                                                 <constraint firstAttribute="trailing" secondItem="jM6-84-ODV" secondAttribute="trailing" constant="20" id="tee-mK-p1t"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="AUU-Mu-izd" appends="YES" id="b4O-Ud-CTY"/>
+                                            </connections>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbe-AL-vUc" userLabel="view2">
                                             <rect key="frame" x="84" y="8" width="76" height="63"/>
@@ -65,6 +69,7 @@
                                                 </label>
                                             </subviews>
                                             <animations/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="8qW-A7-ZOC" firstAttribute="leading" secondItem="jbe-AL-vUc" secondAttribute="leading" constant="20" id="2E2-Wz-eOh"/>
                                                 <constraint firstAttribute="trailing" secondItem="8Qa-IF-719" secondAttribute="trailing" id="GTV-2N-jDl"/>
@@ -75,6 +80,9 @@
                                                 <constraint firstItem="8qW-A7-ZOC" firstAttribute="top" secondItem="jbe-AL-vUc" secondAttribute="top" id="tLi-XF-fYV"/>
                                                 <constraint firstItem="8Qa-IF-719" firstAttribute="top" secondItem="8qW-A7-ZOC" secondAttribute="bottom" constant="10" id="yBw-KC-CFw"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="Knr-B9-fLe" appends="YES" id="ZH3-h9-Uxk"/>
+                                            </connections>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viu-1r-qnD" userLabel="view3">
                                             <rect key="frame" x="160" y="8" width="76" height="63"/>
@@ -92,6 +100,7 @@
                                                 </label>
                                             </subviews>
                                             <animations/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Xeb-YN-9Nv" secondAttribute="bottom" constant="40" id="BwG-9Q-FSH"/>
                                                 <constraint firstAttribute="bottom" secondItem="Bfg-HE-u3T" secondAttribute="bottom" id="F2p-Re-7ag"/>
@@ -102,6 +111,9 @@
                                                 <constraint firstItem="Bfg-HE-u3T" firstAttribute="leading" secondItem="viu-1r-qnD" secondAttribute="leading" id="nz8-rK-vkj"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bfg-HE-u3T" secondAttribute="trailing" id="sMN-ct-djA"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="mjX-ER-QAM" appends="YES" id="c86-q7-DhI"/>
+                                            </connections>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JT-yO-kGj" userLabel="view4">
                                             <rect key="frame" x="236" y="8" width="76" height="63"/>
@@ -119,6 +131,7 @@
                                                 </label>
                                             </subviews>
                                             <animations/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="PlF-EH-yNx" secondAttribute="trailing" constant="20" id="1pP-TN-GPt"/>
                                                 <constraint firstAttribute="bottom" secondItem="PlF-EH-yNx" secondAttribute="bottom" constant="40" id="2iw-mH-eFi"/>
@@ -129,6 +142,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="2gd-7g-zxt" secondAttribute="bottom" id="kvm-W3-tG2"/>
                                                 <constraint firstItem="2gd-7g-zxt" firstAttribute="top" secondItem="PlF-EH-yNx" secondAttribute="bottom" constant="10" id="wfV-On-TYT"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="XvB-V6-dI2" appends="YES" id="IcW-dB-xNY"/>
+                                            </connections>
                                         </view>
                                     </subviews>
                                     <animations/>
@@ -199,6 +215,26 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="AUU-Mu-izd" userLabel="ser1Gesture">
+                    <connections>
+                        <action selector="service1Selected:" destination="vXZ-lx-hvc" id="q8P-ck-gM2"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Knr-B9-fLe" userLabel="serv2Gesture">
+                    <connections>
+                        <action selector="service2Selected:" destination="vXZ-lx-hvc" id="XTH-72-woI"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="mjX-ER-QAM" userLabel="ser3Gesture">
+                    <connections>
+                        <action selector="service3Selected:" destination="vXZ-lx-hvc" id="Rn6-la-bce"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="XvB-V6-dI2" userLabel="ser4Gesture">
+                    <connections>
+                        <action selector="service4Selected:" destination="vXZ-lx-hvc" id="3c9-xN-KVI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="912" y="-332"/>
         </scene>

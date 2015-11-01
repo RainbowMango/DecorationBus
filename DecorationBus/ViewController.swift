@@ -285,5 +285,20 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         self.tableView.reloadData()
         self.refreshControl.endRefreshing()
     }
+    
+    //MARK: - Service跳转
+
+    @IBAction func service1Selected(sender: UITapGestureRecognizer) {
+        print("点击了第一个service")
+    }
+    @IBAction func service2Selected(sender: UITapGestureRecognizer) {
+        print("点击了第二个service")
+    }
+    @IBAction func service3Selected(sender: UITapGestureRecognizer) {
+        print("点击了第三个service")
+    }
+    @IBAction func service4Selected(sender: UITapGestureRecognizer) {
+        print("点击了第四个service")
+    }
 }
 
