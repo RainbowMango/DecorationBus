@@ -51,9 +51,6 @@ class PointMessageViewController: UIViewController
         let viewHeight:CGFloat = viewSize.height;
         let viewWidth:CGFloat = viewSize.width;
         
-        let labelAttributes = NSAttributedString(string:message as String);
-        let attributes = [NSFontAttributeName: [UIFont.systemFontOfSize(12.0)]]
-        let labelFont:UIFont = loadLabel.font;
         let labelRect:CGRect = message.boundingRectWithSize(CGSizeMake(250, CGFloat.max),
             options: (NSStringDrawingOptions.UsesLineFragmentOrigin),
             attributes: nil,

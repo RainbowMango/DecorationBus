@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     @IBOutlet var tableView: UITableView!
     
     var refreshControl = UIRefreshControl()
+    let pointMessageView_ = PointMessageViewController();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         initAlbum()
         //setupScrollViewWithLocalImages()
         setupScrollViewWithRemoteImages()
+        addPointMessageView()
         
         self.tableView.tableFooterView = UIView() // 清楚tableView中空白行
         self.tableView.dataSource = self
@@ -290,15 +292,43 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
 
     @IBAction func service1Selected(sender: UITapGestureRecognizer) {
         print("点击了第一个service")
+        pointMessageView_.setMessageView(0, withMessage: "功能还在开发中")
+        pointMessageView_.removeMessageView(0);
     }
     @IBAction func service2Selected(sender: UITapGestureRecognizer) {
         print("点击了第二个service")
+        pointMessageView_.setMessageView(0, withMessage: "功能还在开发中")
+        pointMessageView_.removeMessageView(0);
     }
     @IBAction func service3Selected(sender: UITapGestureRecognizer) {
         print("点击了第三个service")
+        pointMessageView_.setMessageView(0, withMessage: "功能还在开发中")
+        pointMessageView_.removeMessageView(0);
     }
     @IBAction func service4Selected(sender: UITapGestureRecognizer) {
         print("点击了第四个service")
+        pointMessageView_.setMessageView(0, withMessage: "功能还在开发中")
+        pointMessageView_.removeMessageView(0);
+    }
+    
+    //MARK: - 消息气泡
+    
+    
+    //添加消息弹出界面
+    func addPointMessageView()
+    {
+        let viewSize:CGSize = self.view.frame.size;
+        let viewHeight:CGFloat = viewSize.height;
+        let viewWidth:CGFloat = viewSize.width;
+        
+        let pointMessageViewRect:CGRect = CGRectMake((viewWidth - 120) / 2,
+            (viewHeight - 50) / 2,
+            120,
+            50);
+        pointMessageView_.view.frame = pointMessageViewRect;
+        
+        self.view.addSubview(pointMessageView_.view);
+        
     }
 }
 
