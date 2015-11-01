@@ -18,7 +18,6 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startIntro()
         setViewColor()
         self.tabBarController?.delegate = self
         self.navigationController?.delegate = self
@@ -50,6 +49,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         // 启动友盟统计
         MobClick.endLogPageView("首页")
         
+        startIntro() // 最后显示引导页，防止其他view遮挡
     }
     
     // 启动系统引导页
