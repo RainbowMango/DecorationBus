@@ -130,7 +130,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         imagesURLStrings.append("http://decorationbus.sinaapp.com/server/images/banner/ser04.jpg")
         
         var titles = [String]()
-        titles.append("该产品属于开源公益项目, 不已盈利为目的")
+        titles.append("该产品属于开源公益项目, 不以盈利为目的")
         titles.append("目前处于开发内测阶段，功能尚不完善")
         titles.append("我们只是想让装修简单一点点")
         titles.append("欢迎加入我们一起开发")
@@ -277,6 +277,10 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
 //    }
     
     //MARK: - tableView delegate
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        pointMessageView_.setMessageView(0, withMessage: "可以通过“提交反馈”功能联系我")
+        pointMessageView_.removeMessageView(0);
+    }
     
     // 刷新数据
     func refreshData() {
