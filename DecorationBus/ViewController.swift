@@ -326,7 +326,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         let viewWidth:CGFloat = viewSize.width;
         
         let pointMessageViewRect:CGRect = CGRectMake((viewWidth - 120) / 2,
-            (viewHeight - 50) / 2,
+            (viewHeight - 150) / 1,
             120,
             50);
         pointMessageView_.view.frame = pointMessageViewRect;
