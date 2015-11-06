@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 集成友盟
         MobClick.startWithAppkey("562b8874e0f55a9afb0005ee", reportPolicy: BATCH, channelId: nil)
-        MobClick.setLogEnabled(true)
+        //MobClick.setLogEnabled(true) //只在调试时打开日志
         
         return true
     }
