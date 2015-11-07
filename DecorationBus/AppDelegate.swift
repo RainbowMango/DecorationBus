@@ -22,14 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let infoDictionary = NSBundle.mainBundle().infoDictionary
         let currentAppVersion = infoDictionary!["CFBundleShortVersionString"] as! String
         
-        // 得到上次启动时的版本号
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        let lastAppVersion = userDefaults.stringForKey("lastAppVersion")
+        // 得到上次显示引导页时的版本号
+        let lastShownVersion = UserDefaultHandler().getStringConf(USER_DEFAULT_KEY_INTRODUCE_LAST_SHOWN)
         
         // 如果lastAppVersion为nil说明是第一次启动；如果lastAppVersion不等于currentAppVersion说明是更新了
-        if lastAppVersion == nil || lastAppVersion != currentAppVersion {
+        if lastShownVersion == nil || lastShownVersion != currentAppVersion {
             
-            //userDefaults.setValue(currentAppVersion, forKey: "lastAppVersion")
+            UserDefaultHandler().setStringConf(USER_DEFAULT_KEY_INTRODUCE_LAST_SHOWN, value: currentAppVersion)
             
             // 创建引导页VC
             let item1 = RMParallaxItem(image: UIImage(named: "intr001")!, text: "装修路上处处陷阱...")

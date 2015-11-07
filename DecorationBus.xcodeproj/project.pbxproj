@@ -60,11 +60,11 @@
 		9B24919E1A5D683700990BA6 /* FormDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B24918C1A5D683700990BA6 /* FormDescriptor.swift */; };
 		9B24919F1A5D683700990BA6 /* FormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B24918D1A5D683700990BA6 /* FormRowDescriptor.swift */; };
 		9B2491A01A5D683700990BA6 /* FormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B24918E1A5D683700990BA6 /* FormSectionDescriptor.swift */; };
-		9B2600691BE5F705002E5AC0 /* ser01.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B2600681BE5F705002E5AC0 /* ser01.png */; settings = {ASSET_TAGS = (); }; };
-		9B26006B1BE5F792002E5AC0 /* ser02.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B26006A1BE5F792002E5AC0 /* ser02.png */; settings = {ASSET_TAGS = (); }; };
-		9B26006D1BE5FBA7002E5AC0 /* ser03.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B26006C1BE5FBA7002E5AC0 /* ser03.png */; settings = {ASSET_TAGS = (); }; };
-		9B26006F1BE5FBF7002E5AC0 /* ser04.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B26006E1BE5FBF7002E5AC0 /* ser04.png */; settings = {ASSET_TAGS = (); }; };
-		9B2600711BE5FC75002E5AC0 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B2600701BE5FC75002E5AC0 /* github.png */; settings = {ASSET_TAGS = (); }; };
+		9B2600691BE5F705002E5AC0 /* ser01.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B2600681BE5F705002E5AC0 /* ser01.png */; };
+		9B26006B1BE5F792002E5AC0 /* ser02.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B26006A1BE5F792002E5AC0 /* ser02.png */; };
+		9B26006D1BE5FBA7002E5AC0 /* ser03.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B26006C1BE5FBA7002E5AC0 /* ser03.png */; };
+		9B26006F1BE5FBF7002E5AC0 /* ser04.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B26006E1BE5FBF7002E5AC0 /* ser04.png */; };
+		9B2600711BE5FC75002E5AC0 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B2600701BE5FC75002E5AC0 /* github.png */; };
 		9B2D7B881A63E82800D829EF /* FormTwoComponentPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D7B871A63E82800D829EF /* FormTwoComponentPickerCell.swift */; };
 		9B34AAFC1A1FA33100013C39 /* OrderArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFB1A1FA33100013C39 /* OrderArchiver.swift */; };
 		9B34AAFE1A20B98500013C39 /* CategoryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFD1A20B98500013C39 /* CategoryDataModel.swift */; };
@@ -78,7 +78,7 @@
 		9B37A9ED19EEB57A0097F88D /* DecorationBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9EC19EEB57A0097F88D /* DecorationBusTests.swift */; };
 		9B531CB41A583033008067C3 /* DecorationBus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B531CB21A583032008067C3 /* DecorationBus.xcdatamodeld */; };
 		9B6E3DFA1AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3DF91AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift */; };
-		9B70714A1BD242C600244474 /* SandboxHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7071491BD242C600244474 /* SandboxHandler.swift */; settings = {ASSET_TAGS = (); }; };
+		9B70714A1BD242C600244474 /* SandboxHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7071491BD242C600244474 /* SandboxHandler.swift */; };
 		9B8032B71A35C246005BA828 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8032AE1A35C246005BA828 /* home.png */; };
 		9B8032B81A35C246005BA828 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8032AF1A35C246005BA828 /* home@2x.png */; };
 		9B8032B91A35C246005BA828 /* home@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8032B01A35C246005BA828 /* home@3x.png */; };
@@ -102,6 +102,8 @@
 		9B8695A51AE93895001D0D7F /* AGIPCGridItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86959A1AE93895001D0D7F /* AGIPCGridItem.m */; };
 		9B8695A61AE93895001D0D7F /* AGIPCToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86959C1AE93895001D0D7F /* AGIPCToolbarItem.m */; };
 		9B8695A71AE93895001D0D7F /* ALAsset+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86959E1AE93895001D0D7F /* ALAsset+AGIPC.m */; };
+		9B8695F81BEE4187001B1FA0 /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8695F71BEE4187001B1FA0 /* UserDefaultHandler.swift */; };
+		9B8695FA1BEE4CA2001B1FA0 /* UserDefaultDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8695F91BEE4CA2001B1FA0 /* UserDefaultDef.swift */; };
 		9B97DCC91A235933006A94C0 /* RecordBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCC81A235933006A94C0 /* RecordBudgetViewController.swift */; };
 		9B97DCCC1A236161006A94C0 /* BudgetItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCCB1A236161006A94C0 /* BudgetItemDataModel.swift */; };
 		9B97DCCE1A2361AA006A94C0 /* BudgetArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCCD1A2361AA006A94C0 /* BudgetArchiver.swift */; };
@@ -157,15 +159,15 @@
 		9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */; };
 		9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */; };
 		9BE945F01A1E2BAD0095ACBD /* OrderItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */; };
-		9BF8E0621BD7E39300F3AD9E /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */; settings = {ASSET_TAGS = (); }; };
-		9BF8E0631BD7E39300F3AD9E /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0551BD7E39300F3AD9E /* TAAbstractDotView.m */; settings = {ASSET_TAGS = (); }; };
-		9BF8E0641BD7E39300F3AD9E /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0571BD7E39300F3AD9E /* TAAnimatedDotView.m */; settings = {ASSET_TAGS = (); }; };
-		9BF8E0651BD7E39300F3AD9E /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0591BD7E39300F3AD9E /* TADotView.m */; settings = {ASSET_TAGS = (); }; };
-		9BF8E0661BD7E39300F3AD9E /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E05B1BD7E39300F3AD9E /* TAPageControl.m */; settings = {ASSET_TAGS = (); }; };
-		9BF8E0671BD7E39300F3AD9E /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E05D1BD7E39300F3AD9E /* SDCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		9BF8E0681BD7E39300F3AD9E /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E05F1BD7E39300F3AD9E /* SDCycleScrollView.m */; settings = {ASSET_TAGS = (); }; };
-		9BF8E0691BD7E39300F3AD9E /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0611BD7E39300F3AD9E /* UIView+SDExtension.m */; settings = {ASSET_TAGS = (); }; };
-		9BFC7EEC1BE3B6550026DB8B /* MainServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC7EEB1BE3B6550026DB8B /* MainServiceTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		9BF8E0621BD7E39300F3AD9E /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */; };
+		9BF8E0631BD7E39300F3AD9E /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0551BD7E39300F3AD9E /* TAAbstractDotView.m */; };
+		9BF8E0641BD7E39300F3AD9E /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0571BD7E39300F3AD9E /* TAAnimatedDotView.m */; };
+		9BF8E0651BD7E39300F3AD9E /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0591BD7E39300F3AD9E /* TADotView.m */; };
+		9BF8E0661BD7E39300F3AD9E /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E05B1BD7E39300F3AD9E /* TAPageControl.m */; };
+		9BF8E0671BD7E39300F3AD9E /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E05D1BD7E39300F3AD9E /* SDCollectionViewCell.m */; };
+		9BF8E0681BD7E39300F3AD9E /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E05F1BD7E39300F3AD9E /* SDCycleScrollView.m */; };
+		9BF8E0691BD7E39300F3AD9E /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0611BD7E39300F3AD9E /* UIView+SDExtension.m */; };
+		9BFC7EEC1BE3B6550026DB8B /* MainServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC7EEB1BE3B6550026DB8B /* MainServiceTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -287,6 +289,8 @@
 		9B86959C1AE93895001D0D7F /* AGIPCToolbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGIPCToolbarItem.m; sourceTree = "<group>"; };
 		9B86959D1AE93895001D0D7F /* ALAsset+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAsset+AGIPC.h"; sourceTree = "<group>"; };
 		9B86959E1AE93895001D0D7F /* ALAsset+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAsset+AGIPC.m"; sourceTree = "<group>"; };
+		9B8695F71BEE4187001B1FA0 /* UserDefaultHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
+		9B8695F91BEE4CA2001B1FA0 /* UserDefaultDef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultDef.swift; sourceTree = "<group>"; };
 		9B97DCC81A235933006A94C0 /* RecordBudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordBudgetViewController.swift; sourceTree = "<group>"; };
 		9B97DCCB1A236161006A94C0 /* BudgetItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetItemDataModel.swift; sourceTree = "<group>"; };
 		9B97DCCD1A2361AA006A94C0 /* BudgetArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetArchiver.swift; sourceTree = "<group>"; };
@@ -589,6 +593,7 @@
 		9B37A9D019EEB57A0097F88D /* DecorationBus */ = {
 			isa = PBXGroup;
 			children = (
+				9B8695F61BEE40C7001B1FA0 /* CommonClass */,
 				9BF8E0501BD7E39300F3AD9E /* SDCycleScrollView */,
 				9B1DA7041B330233000B128F /* RMParallax */,
 				9B86958C1AE93895001D0D7F /* AGImagePickerController */,
@@ -691,6 +696,15 @@
 				9B86959E1AE93895001D0D7F /* ALAsset+AGIPC.m */,
 			);
 			path = AGImagePickerController;
+			sourceTree = "<group>";
+		};
+		9B8695F61BEE40C7001B1FA0 /* CommonClass */ = {
+			isa = PBXGroup;
+			children = (
+				9B8695F71BEE4187001B1FA0 /* UserDefaultHandler.swift */,
+				9B8695F91BEE4CA2001B1FA0 /* UserDefaultDef.swift */,
+			);
+			name = CommonClass;
 			sourceTree = "<group>";
 		};
 		9B97DCCA1A23610B006A94C0 /* dataModel */ = {
@@ -1089,6 +1103,8 @@
 				9BC288D31A2964CC005728D5 /* ShowPayDetailViewController.swift in Sources */,
 				9BC288D51A29E041005728D5 /* ShowBudgetDetailViewController.swift in Sources */,
 				9B151AA81A71371D00498ED2 /* MinorCategoryDetailDataModel.swift in Sources */,
+				9B8695FA1BEE4CA2001B1FA0 /* UserDefaultDef.swift in Sources */,
+				9B8695F81BEE4187001B1FA0 /* UserDefaultHandler.swift in Sources */,
 				9B8695A51AE93895001D0D7F /* AGIPCGridItem.m in Sources */,
 				9B2491941A5D683700990BA6 /* FormDateCell.swift in Sources */,
 			);
