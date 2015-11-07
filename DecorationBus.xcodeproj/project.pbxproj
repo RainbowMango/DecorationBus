@@ -31,8 +31,6 @@
 		9B1DA7221B330257000B128F /* intr004.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1DA7131B330257000B128F /* intr004.png */; };
 		9B1DA7251B330257000B128F /* intr005.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1DA7161B330257000B128F /* intr005.png */; };
 		9B1DA7291B3307C1000B128F /* close_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1DA7281B3307C1000B128F /* close_button.png */; };
-		9B1DA72B1B330DBF000B128F /* IntroducePageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1DA72A1B330DBF000B128F /* IntroducePageHandler.swift */; };
-		9B1DA72D1B33109C000B128F /* IntroducePage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B1DA72C1B33109C000B128F /* IntroducePage.plist */; };
 		9B1E5BE71A2B5E1100615842 /* index.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE41A2B5E1100615842 /* index.jpg */; };
 		9B1E5BE81A2B5E1100615842 /* index@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE51A2B5E1100615842 /* index@2x.jpg */; };
 		9B1E5BE91A2B5E1100615842 /* index@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E5BE61A2B5E1100615842 /* index@3x.jpg */; };
@@ -205,8 +203,6 @@
 		9B1DA7131B330257000B128F /* intr004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intr004.png; sourceTree = "<group>"; };
 		9B1DA7161B330257000B128F /* intr005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intr005.png; sourceTree = "<group>"; };
 		9B1DA7281B3307C1000B128F /* close_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_button.png; sourceTree = "<group>"; };
-		9B1DA72A1B330DBF000B128F /* IntroducePageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroducePageHandler.swift; sourceTree = "<group>"; };
-		9B1DA72C1B33109C000B128F /* IntroducePage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IntroducePage.plist; sourceTree = "<group>"; };
 		9B1E5BE41A2B5E1100615842 /* index.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = index.jpg; path = pictures/index.jpg; sourceTree = "<group>"; };
 		9B1E5BE51A2B5E1100615842 /* index@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "index@2x.jpg"; path = "pictures/index@2x.jpg"; sourceTree = "<group>"; };
 		9B1E5BE61A2B5E1100615842 /* index@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "index@3x.jpg"; path = "pictures/index@3x.jpg"; sourceTree = "<group>"; };
@@ -431,7 +427,6 @@
 				9B151AA51A6FEC0000498ED2 /* BudgetDataModel.swift */,
 				9BC401BD1A7E638400FDF4D6 /* CategoryHandler.swift */,
 				9B0CE7AD1AC1A8E200945AE6 /* AlbumHandler.swift */,
-				9B1DA72A1B330DBF000B128F /* IntroducePageHandler.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -641,7 +636,6 @@
 				9B37A9D219EEB57A0097F88D /* Info.plist */,
 				9BC401BB1A7E5ADC00FDF4D6 /* Category.plist */,
 				9B0CE7AF1AC2FA9600945AE6 /* EverAlbum.plist */,
-				9B1DA72C1B33109C000B128F /* IntroducePage.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -945,7 +939,6 @@
 				9B1DA7221B330257000B128F /* intr004.png in Resources */,
 				9BC401E41A7FAA1000FDF4D6 /* Artwork@3x.png in Resources */,
 				9BA6B04C1A3F07D2003BC35E /* Default-414w-736h@3x.png in Resources */,
-				9B1DA72D1B33109C000B128F /* IntroducePage.plist in Resources */,
 				9B26006B1BE5F792002E5AC0 /* ser02.png in Resources */,
 				9B26006F1BE5FBF7002E5AC0 /* ser04.png in Resources */,
 				9B2600691BE5F705002E5AC0 /* ser01.png in Resources */,
@@ -1058,7 +1051,6 @@
 				9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */,
 				9B2491921A5D683700990BA6 /* FormButtonCell.swift in Sources */,
 				9B35492C1A276C510083E0B6 /* CategoryPrimeAddViewController.swift in Sources */,
-				9B1DA72B1B330DBF000B128F /* IntroducePageHandler.swift in Sources */,
 				9BCC42581A3483CA00978841 /* ShowPayListViewController.swift in Sources */,
 				9B0CE7AE1AC1A8E200945AE6 /* AlbumHandler.swift in Sources */,
 				9B1DA7081B330233000B128F /* RMParallaxItem.swift in Sources */,
