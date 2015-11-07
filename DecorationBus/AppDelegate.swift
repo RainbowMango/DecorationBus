@@ -30,16 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             UserDefaultHandler().setStringConf(USER_DEFAULT_KEY_INTRODUCE_LAST_SHOWN, value: currentAppVersion)
             
-            // 创建引导页VC
-            let item1 = RMParallaxItem(image: UIImage(named: "intr001")!, text: "装修路上处处陷阱...")
-            let item2 = RMParallaxItem(image: UIImage(named: "intr002")!, text: "低价往往不是让利促销...")
-            let item3 = RMParallaxItem(image: UIImage(named: "intr003")!, text: "设计师的时间总是伴随着利益...")
-            let item4 = RMParallaxItem(image: UIImage(named: "intr004")!, text: "装修增项让人防不胜防...")
-            let item5 = RMParallaxItem(image: UIImage(named: "intr005")!, text: "我们, 只是想让装修更简单一点点...")
-            let rmParallaxViewController = RMParallax(items: [item1, item2, item3, item4, item5], motion: false)
+            let guideVC = RMParallaxExtend()
             
             //定义结束引导页行为
-            rmParallaxViewController.completionHandler = {
+            guideVC.completionHandler = {
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let mainViewController = storyboard.instantiateViewControllerWithIdentifier("rootVC")
@@ -52,15 +46,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                     Note: 在全面支持IOS8.0时再来试下
                 */
-                rmParallaxViewController.presentViewController(mainViewController, animated: true, completion: nil)
+                guideVC.presentViewController(mainViewController, animated: true, completion: nil)
                 UIView.animateWithDuration(2, animations: { () -> Void in
                     
-                    rmParallaxViewController.view.alpha = 0.2
+                    guideVC.view.alpha = 0.2
                 })
             }
             
 
-            self.window!.rootViewController = rmParallaxViewController
+            self.window!.rootViewController = guideVC
         }
         
         

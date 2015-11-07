@@ -102,6 +102,7 @@
 		9B8695A71AE93895001D0D7F /* ALAsset+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86959E1AE93895001D0D7F /* ALAsset+AGIPC.m */; };
 		9B8695F81BEE4187001B1FA0 /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8695F71BEE4187001B1FA0 /* UserDefaultHandler.swift */; };
 		9B8695FA1BEE4CA2001B1FA0 /* UserDefaultDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8695F91BEE4CA2001B1FA0 /* UserDefaultDef.swift */; };
+		9B8695FD1BEE529C001B1FA0 /* RMParallaxExtend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8695FC1BEE529C001B1FA0 /* RMParallaxExtend.swift */; };
 		9B97DCC91A235933006A94C0 /* RecordBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCC81A235933006A94C0 /* RecordBudgetViewController.swift */; };
 		9B97DCCC1A236161006A94C0 /* BudgetItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCCB1A236161006A94C0 /* BudgetItemDataModel.swift */; };
 		9B97DCCE1A2361AA006A94C0 /* BudgetArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97DCCD1A2361AA006A94C0 /* BudgetArchiver.swift */; };
@@ -287,6 +288,7 @@
 		9B86959E1AE93895001D0D7F /* ALAsset+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAsset+AGIPC.m"; sourceTree = "<group>"; };
 		9B8695F71BEE4187001B1FA0 /* UserDefaultHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
 		9B8695F91BEE4CA2001B1FA0 /* UserDefaultDef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultDef.swift; sourceTree = "<group>"; };
+		9B8695FC1BEE529C001B1FA0 /* RMParallaxExtend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMParallaxExtend.swift; sourceTree = "<group>"; };
 		9B97DCC81A235933006A94C0 /* RecordBudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordBudgetViewController.swift; sourceTree = "<group>"; };
 		9B97DCCB1A236161006A94C0 /* BudgetItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetItemDataModel.swift; sourceTree = "<group>"; };
 		9B97DCCD1A2361AA006A94C0 /* BudgetArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetArchiver.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 		9B37A9D019EEB57A0097F88D /* DecorationBus */ = {
 			isa = PBXGroup;
 			children = (
+				9B8695FB1BEE5278001B1FA0 /* ExtendClasses */,
 				9B8695F61BEE40C7001B1FA0 /* CommonClass */,
 				9BF8E0501BD7E39300F3AD9E /* SDCycleScrollView */,
 				9B1DA7041B330233000B128F /* RMParallax */,
@@ -699,6 +702,14 @@
 				9B8695F91BEE4CA2001B1FA0 /* UserDefaultDef.swift */,
 			);
 			name = CommonClass;
+			sourceTree = "<group>";
+		};
+		9B8695FB1BEE5278001B1FA0 /* ExtendClasses */ = {
+			isa = PBXGroup;
+			children = (
+				9B8695FC1BEE529C001B1FA0 /* RMParallaxExtend.swift */,
+			);
+			name = ExtendClasses;
 			sourceTree = "<group>";
 		};
 		9B97DCCA1A23610B006A94C0 /* dataModel */ = {
@@ -1025,6 +1036,7 @@
 				9B1467E21A260A3C00ACD417 /* CategoryMinorAddViewController.swift in Sources */,
 				9B8695A11AE93895001D0D7F /* AGImagePickerController.m in Sources */,
 				9BA6B0481A3DD261003BC35E /* KeyboardAccessory.swift in Sources */,
+				9B8695FD1BEE529C001B1FA0 /* RMParallaxExtend.swift in Sources */,
 				9B86959F1AE93895001D0D7F /* AGImagePickerController+Helper.m in Sources */,
 				9B2491931A5D683700990BA6 /* FormCheckCell.swift in Sources */,
 				9B8695A41AE93895001D0D7F /* AGIPCGridCell.m in Sources */,
