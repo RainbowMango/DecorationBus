@@ -9,7 +9,7 @@
         <!--装修巴士-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="DecorationBus" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" id="vXZ-lx-hvc" customClass="ViewController" customModule="DecorationBus" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="HEq-9d-RDs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -668,7 +668,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="51y-Ip-rB5">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jTl-Zu-ug9" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="rootVC" automaticallyAdjustsScrollViewInsets="NO" id="jTl-Zu-ug9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Aoz-Ce-F30">

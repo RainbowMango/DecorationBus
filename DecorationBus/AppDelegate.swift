@@ -18,6 +18,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        // 得到当前应用的版本号
+        let infoDictionary = NSBundle.mainBundle().infoDictionary
+        let currentAppVersion = infoDictionary!["CFBundleShortVersionString"] as! String
+        
+        // 得到上次启动时的版本号
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let lastAppVersion = userDefaults.stringForKey("lastAppVersion")
+        
+        // 如果lastAppVersion为nil说明是第一次启动；如果lastAppVersion不等于currentAppVersion说明是更新了
+        if lastAppVersion == nil || lastAppVersion != currentAppVersion {
+            
+            //userDefaults.setValue(currentAppVersion, forKey: "lastAppVersion")
+            
+            // 创建引导页VC
+            let item1 = RMParallaxItem(image: UIImage(named: "intr001")!, text: "装修路上处处陷阱...")
+            let item2 = RMParallaxItem(image: UIImage(named: "intr002")!, text: "低价往往不是让利促销...")
+            let item3 = RMParallaxItem(image: UIImage(named: "intr003")!, text: "设计师的时间总是伴随着利益...")
+            let item4 = RMParallaxItem(image: UIImage(named: "intr004")!, text: "装修增项让人防不胜防...")
+            let item5 = RMParallaxItem(image: UIImage(named: "intr005")!, text: "我们, 只是想让装修更简单一点点...")
+            let rmParallaxViewController = RMParallax(items: [item1, item2, item3, item4, item5], motion: false)
+            
+            //定义结束引导页行为
+            rmParallaxViewController.completionHandler = {
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainViewController = storyboard.instantiateViewControllerWithIdentifier("rootVC")
+                mainViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+                
+                /*
+                    presentViewController展现稍显缓慢，大概需要2s左右，
+                    1. 给引导页rmParallaxViewController做个淡出动画，在用户点击关闭按钮时可以立即响应
+                    2. rmParallaxViewController背景没有设置全透明，防止出现黑屏
+                
+                    Note: 在全面支持IOS8.0时再来试下
+                */
+                rmParallaxViewController.presentViewController(mainViewController, animated: true, completion: nil)
+                UIView.animateWithDuration(2, animations: { () -> Void in
+                    
+                    rmParallaxViewController.view.alpha = 0.2
+                })
+            }
+            
+
+            self.window!.rootViewController = rmParallaxViewController
+        }
+        
+        
         // 集成友盟
         MobClick.startWithAppkey("562b8874e0f55a9afb0005ee", reportPolicy: BATCH, channelId: nil)
         //MobClick.setLogEnabled(true) //只在调试时打开日志
