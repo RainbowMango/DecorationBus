@@ -691,7 +691,7 @@
         <scene sceneID="p91-xA-5Tz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lOY-36-jSd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="首页" image="home.png" id="mFy-Ia-cgK"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="index.png" id="mFy-Ia-cgK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n2c-Xn-ba1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -711,7 +711,7 @@
         <scene sceneID="eM5-Fz-Hak">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sku-lQ-Ena" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="设置" image="settings.png" id="L2W-G5-bqU"/>
+                    <tabBarItem key="tabBarItem" title="设置" image="me.png" id="L2W-G5-bqU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dIW-E8-iNG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -794,7 +794,7 @@
         <scene sceneID="juN-mg-07h">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uvw-p2-L0t" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="装修理财" image="list.png" id="OTj-6B-EQi"/>
+                    <tabBarItem key="tabBarItem" title="装修理财" image="money.png" id="OTj-6B-EQi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LlM-UP-MZL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1095,7 +1095,7 @@
         <scene sceneID="wbl-TB-gK5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xyg-T5-9mL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="留影机" image="list.png" id="Vnd-Lm-in5"/>
+                    <tabBarItem key="tabBarItem" title="留影机" image="photo.png" id="Vnd-Lm-in5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AdK-vO-Lz5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1237,13 +1237,14 @@
     </scenes>
     <resources>
         <image name="arrow_right.png" width="32" height="32"/>
-        <image name="home.png" width="40" height="40"/>
-        <image name="list.png" width="40" height="40"/>
+        <image name="index.png" width="22" height="22"/>
+        <image name="me.png" width="22" height="22"/>
+        <image name="money.png" width="22" height="22"/>
+        <image name="photo.png" width="22" height="22"/>
         <image name="ser01.png" width="32" height="32"/>
         <image name="ser02.png" width="32" height="32"/>
         <image name="ser03.png" width="474" height="457"/>
         <image name="ser04.png" width="474" height="457"/>
-        <image name="settings.png" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AbX-sv-U58"/>
