@@ -459,6 +459,7 @@
 		9B1E5BE31A2B5DAD00615842 /* pictures */ = {
 			isa = PBXGroup;
 			children = (
+				9B8698FE1BEF71A9001B1FA0 /* tabbar */,
 				9B2600611BE3B885002E5AC0 /* service */,
 				9B1DA7091B330257000B128F /* intro */,
 				9BC401C11A7F9BA300FDF4D6 /* category */,
@@ -710,6 +711,14 @@
 				9B8695FC1BEE529C001B1FA0 /* RMParallaxExtend.swift */,
 			);
 			name = ExtendClasses;
+			sourceTree = "<group>";
+		};
+		9B8698FE1BEF71A9001B1FA0 /* tabbar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = tabbar;
+			path = pictures/tabbar;
 			sourceTree = "<group>";
 		};
 		9B97DCCA1A23610B006A94C0 /* dataModel */ = {
