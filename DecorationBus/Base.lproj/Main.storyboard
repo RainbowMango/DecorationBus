@@ -37,7 +37,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ser01.png" translatesAutoresizingMaskIntoConstraints="NO" id="jM6-84-ODV" userLabel="imageView1">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ser01.png" translatesAutoresizingMaskIntoConstraints="NO" id="jM6-84-ODV" userLabel="imageView1">
                                                     <rect key="frame" x="22" y="0.0" width="32" height="32"/>
                                                     <animations/>
                                                     <constraints>
@@ -63,7 +63,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbe-AL-vUc" userLabel="view2">
                                             <rect key="frame" x="84" y="8" width="76" height="63"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ser02.png" translatesAutoresizingMaskIntoConstraints="NO" id="8qW-A7-ZOC" userLabel="imageView2">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ser02.png" translatesAutoresizingMaskIntoConstraints="NO" id="8qW-A7-ZOC" userLabel="imageView2">
                                                     <rect key="frame" x="22" y="0.0" width="32" height="32"/>
                                                     <animations/>
                                                     <constraints>
@@ -109,7 +109,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ser03.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xeb-YN-9Nv" userLabel="imageView3">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ser03.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xeb-YN-9Nv" userLabel="imageView3">
                                                     <rect key="frame" x="22.5" y="0.0" width="32" height="32"/>
                                                     <animations/>
                                                     <constraints>
@@ -135,7 +135,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JT-yO-kGj" userLabel="view4">
                                             <rect key="frame" x="236" y="8" width="76" height="63"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ser04.png" translatesAutoresizingMaskIntoConstraints="NO" id="PlF-EH-yNx" userLabel="imageView4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ser04.png" translatesAutoresizingMaskIntoConstraints="NO" id="PlF-EH-yNx" userLabel="imageView4">
                                                     <rect key="frame" x="22" y="0.0" width="32" height="32"/>
                                                     <animations/>
                                                     <constraints>
