@@ -18,9 +18,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        // 得到当前应用的版本号
+        let infoDictionary = NSBundle.mainBundle().infoDictionary
+        let currentAppVersion = infoDictionary!["CFBundleShortVersionString"] as! String
+        
+        // 得到上次显示引导页时的版本号
+        let lastShownVersion = UserDefaultHandler().getStringConf(USER_DEFAULT_KEY_INTRODUCE_LAST_SHOWN)
+        
+        // 如果lastAppVersion为nil说明是第一次启动；如果lastAppVersion不等于currentAppVersion说明是更新了
+        if lastShownVersion == nil || lastShownVersion != currentAppVersion {
+            
+            UserDefaultHandler().setStringConf(USER_DEFAULT_KEY_INTRODUCE_LAST_SHOWN, value: currentAppVersion)
+            
+            let guideVC = RMParallaxExtend()
+            
+            //定义结束引导页行为
+            guideVC.completionHandler = {
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainViewController = storyboard.instantiateViewControllerWithIdentifier("rootVC")
+                mainViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+                
+                /*
+                    presentViewController展现稍显缓慢，大概需要2s左右，
+                    1. 给引导页rmParallaxViewController做个淡出动画，在用户点击关闭按钮时可以立即响应
+                    2. rmParallaxViewController背景没有设置全透明，防止出现黑屏
+                
+                    Note: 在全面支持IOS8.0时再来试下
+                */
+                guideVC.presentViewController(mainViewController, animated: true, completion: nil)
+                UIView.animateWithDuration(2, animations: { () -> Void in
+                    
+                    guideVC.view.alpha = 0.2
+                })
+            }
+            
+
+            self.window!.rootViewController = guideVC
+        }
+        
+        
         // 集成友盟
         MobClick.startWithAppkey("562b8874e0f55a9afb0005ee", reportPolicy: BATCH, channelId: nil)
-        MobClick.setLogEnabled(true)
+        //MobClick.setLogEnabled(true) //只在调试时打开日志
         
         return true
     }
