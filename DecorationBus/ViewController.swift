@@ -255,9 +255,11 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     //MARK: - Service跳转
 
     @IBAction func service1Selected(sender: UITapGestureRecognizer) {
-        print("点击了第一个service")
-        pointMessageView_.setMessageView(0, withMessage: "功能还在开发中")
-        pointMessageView_.removeMessageView(0);
+//        print("点击了第一个service")
+//        pointMessageView_.setMessageView(0, withMessage: "功能还在开发中")
+//        pointMessageView_.removeMessageView(0);
+        print("service1Selected: 转入装修公司列表view")
+        performSegueWithIdentifier("segueToCompanyList", sender: self.view)
     }
     @IBAction func service2Selected(sender: UITapGestureRecognizer) {
         print("点击了第二个service")
