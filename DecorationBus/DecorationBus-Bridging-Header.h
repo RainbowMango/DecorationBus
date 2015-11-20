@@ -52,3 +52,6 @@
 
 //集成友盟
 #import "MobClick.h"
+
+//集成MJRefresh
+#import "MJRefresh.h"

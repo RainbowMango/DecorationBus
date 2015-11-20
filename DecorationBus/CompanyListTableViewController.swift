@@ -10,9 +10,20 @@ import UIKit
 
 class CompanyListTableViewController: UITableViewController {
 
+    var tableHeader: MJRefreshNormalHeader = MJRefreshNormalHeader()
+    var tableFooter: MJRefreshBackNormalFooter = MJRefreshBackNormalFooter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //添加下拉刷新控件
+        tableHeader = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "tableHeaderRefresh")
+        self.tableView.tableHeaderView = tableHeader
+        
+        //添加上拉刷新控件
+        tableFooter = MJRefreshBackNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
+        self.tableView.tableFooterView = tableFooter
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -34,7 +45,7 @@ class CompanyListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 20
+        return 50
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -91,4 +102,16 @@ class CompanyListTableViewController: UITableViewController {
     }
     */
 
+    // MARK: - MJRefresh
+    func tableHeaderRefresh() {
+        print("下拉刷新了")
+        self.tableHeader.endRefreshing()
+        self.tableView.reloadData()
+    }
+    
+    func tableFooterRefresh() {
+        print("上拉刷新了")
+        self.tableFooter.endRefreshing()
+        self.tableView.reloadData()
+    }
 }
