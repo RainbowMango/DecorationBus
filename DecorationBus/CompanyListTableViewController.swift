@@ -10,8 +10,10 @@ import UIKit
 
 class CompanyListTableViewController: UITableViewController {
 
-    var tableHeader: MJRefreshNormalHeader = MJRefreshNormalHeader()
-    var tableFooter: MJRefreshBackNormalFooter = MJRefreshBackNormalFooter()
+    var tableHeader = MJRefreshNormalHeader()
+    //var tableFooter = MJRefreshBackNormalFooter()
+    var tableFooter = MJRefreshAutoNormalFooter()
+    var companyList = Array<Int>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,7 @@ class CompanyListTableViewController: UITableViewController {
         self.tableView.tableHeaderView = tableHeader
         
         //添加上拉刷新控件
-        tableFooter = MJRefreshBackNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
+        tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
         self.tableView.tableFooterView = tableFooter
     }
 
@@ -51,7 +53,7 @@ class CompanyListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 50
+        return self.companyList.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -111,18 +113,37 @@ class CompanyListTableViewController: UITableViewController {
 
     // MARK: - MJRefresh
     func tableHeaderRefresh() {
-        NSThread.sleepForTimeInterval(2.0)
+        NSThread.sleepForTimeInterval(1.0)
+        
+        //重新请求数据
+        self.companyList.removeAll()
+        for(var i = 0; i < 20; i++) {
+            self.companyList.append(i)
+        }
+        
         print("下拉刷新了")
         self.tableHeader.endRefreshing()
         self.tableView.reloadData()
+        
+        //重置没有更多的数据（消除没有更多数据的状态）
+        self.tableFooter.resetNoMoreData()
     }
     
     func tableFooterRefresh() {
-        NSThread.sleepForTimeInterval(2.0)
+        NSThread.sleepForTimeInterval(1.0)
+        
+        // 追加每次请求到的数据
+        let currentCount = self.companyList.count
+        for(var i = currentCount; i < currentCount + 20; i++) {
+            self.companyList.append(i)
+        }
         print("上拉刷新了")
         
         self.tableFooter.endRefreshing()//后续还有数据
-        self.tableFooter.endRefreshingWithNoMoreData() //没数据了
+        
+        if(self.companyList.count >= 60) {
+            self.tableFooter.endRefreshingWithNoMoreData() //没数据了
+        }
         
         self.tableView.reloadData()
     }
