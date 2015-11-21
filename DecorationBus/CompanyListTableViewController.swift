@@ -15,7 +15,12 @@ class CompanyListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //解决tableview和导航之间留白，留白尺寸=状态栏高度+导航栏的高度+10
+        let navbarHeight = self.navigationController?.navigationBar.frame.height
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+        self.tableView.contentInset = UIEdgeInsetsMake(0 + 10 - statusBarHeight - navbarHeight!, 0, 0, 0)
+        
         //添加下拉刷新控件
         tableHeader = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "tableHeaderRefresh")
         tableHeader.automaticallyChangeAlpha = true
@@ -24,12 +29,6 @@ class CompanyListTableViewController: UITableViewController {
         //添加上拉刷新控件
         tableFooter = MJRefreshBackNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
         self.tableView.tableFooterView = tableFooter
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func viewWillAppear(animated: Bool) {
