@@ -18,6 +18,7 @@ class CompanyListTableViewController: UITableViewController {
 
         //添加下拉刷新控件
         tableHeader = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "tableHeaderRefresh")
+        tableHeader.automaticallyChangeAlpha = true
         self.tableView.tableHeaderView = tableHeader
         
         //添加上拉刷新控件
@@ -31,6 +32,12 @@ class CompanyListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tableHeader.beginRefreshing()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,6 +60,7 @@ class CompanyListTableViewController: UITableViewController {
 
         // Configure the cell...
         cell.textLabel?.text = "这是第\(indexPath.row)个公司"
+        cell.backgroundColor = UIColor.redColor()
 
         return cell
     }
@@ -104,14 +112,19 @@ class CompanyListTableViewController: UITableViewController {
 
     // MARK: - MJRefresh
     func tableHeaderRefresh() {
+        NSThread.sleepForTimeInterval(2.0)
         print("下拉刷新了")
         self.tableHeader.endRefreshing()
         self.tableView.reloadData()
     }
     
     func tableFooterRefresh() {
+        NSThread.sleepForTimeInterval(2.0)
         print("上拉刷新了")
-        self.tableFooter.endRefreshing()
+        
+        self.tableFooter.endRefreshing()//后续还有数据
+        self.tableFooter.endRefreshingWithNoMoreData() //没数据了
+        
         self.tableView.reloadData()
     }
 }
