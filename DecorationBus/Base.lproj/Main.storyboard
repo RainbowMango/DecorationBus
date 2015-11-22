@@ -264,19 +264,71 @@
         <scene sceneID="i3e-sR-aCK">
             <objects>
                 <tableViewController id="vcQ-Jx-X02" customClass="CompanyListTableViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="R5R-ll-Ll8">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="R5R-ll-Ll8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="companyItem" id="sSg-kE-Cf1">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="companyItem" rowHeight="80" id="sSg-kE-Cf1" userLabel="公司列表Cell" customClass="CompanyTableViewCell" customModule="DecorationBus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sSg-kE-Cf1" id="5T6-S2-PxO">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="index.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="U0c-tn-j5c">
+                                            <rect key="frame" x="8" y="8" width="84.5" height="63.5"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="U0c-tn-j5c" secondAttribute="height" multiplier="4:3" id="gZQ-K5-NMo"/>
+                                            </constraints>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bew-UI-DtQ">
+                                            <rect key="frame" x="248" y="8" width="63.5" height="63.5"/>
+                                            <animations/>
+                                            <color key="backgroundColor" red="1" green="0.66115237309999997" blue="0.18740535820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Bew-UI-DtQ" secondAttribute="height" multiplier="1:1" id="Dk0-dj-LxJ"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="巴士装修" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64q-Sm-Nq5">
+                                            <rect key="frame" x="112.5" y="8" width="115.5" height="20"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="PWu-Cr-ek4"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.70103769083969469" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评价数:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIY-lD-Vw4">
+                                            <rect key="frame" x="112.5" y="51" width="115.5" height="20"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="lyI-4P-t0V"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.39536617366412213" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
+                                    <color key="backgroundColor" red="1" green="0.86765558769999995" blue="0.69125505070000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="xIY-lD-Vw4" secondAttribute="bottom" id="KaH-wp-rde"/>
+                                        <constraint firstItem="Bew-UI-DtQ" firstAttribute="leading" secondItem="64q-Sm-Nq5" secondAttribute="trailing" constant="20" id="Ovw-8Y-BYj"/>
+                                        <constraint firstItem="64q-Sm-Nq5" firstAttribute="top" secondItem="5T6-S2-PxO" secondAttribute="topMargin" id="S20-Ba-aKs"/>
+                                        <constraint firstItem="xIY-lD-Vw4" firstAttribute="leading" secondItem="U0c-tn-j5c" secondAttribute="trailing" constant="20" id="S9U-NL-bai"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Bew-UI-DtQ" secondAttribute="bottom" id="Tmy-u0-KTF"/>
+                                        <constraint firstItem="U0c-tn-j5c" firstAttribute="top" secondItem="5T6-S2-PxO" secondAttribute="topMargin" id="UGo-to-que"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="U0c-tn-j5c" secondAttribute="bottom" id="n4J-Vr-MSj"/>
+                                        <constraint firstItem="64q-Sm-Nq5" firstAttribute="leading" secondItem="U0c-tn-j5c" secondAttribute="trailing" constant="20" id="nb4-rT-FNh"/>
+                                        <constraint firstItem="U0c-tn-j5c" firstAttribute="leading" secondItem="5T6-S2-PxO" secondAttribute="leadingMargin" id="qXA-xm-ki6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Bew-UI-DtQ" secondAttribute="trailing" id="r8i-xz-huR"/>
+                                        <constraint firstItem="Bew-UI-DtQ" firstAttribute="top" secondItem="5T6-S2-PxO" secondAttribute="topMargin" id="rJE-Xf-Jg6"/>
+                                        <constraint firstItem="Bew-UI-DtQ" firstAttribute="leading" secondItem="xIY-lD-Vw4" secondAttribute="trailing" constant="20" id="yjF-r5-Ysx"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                             </tableViewCell>
@@ -1291,6 +1343,7 @@
     </scenes>
     <resources>
         <image name="arrow_right.png" width="32" height="32"/>
+        <image name="index.jpg" width="320" height="180"/>
         <image name="index.png" width="22" height="22"/>
         <image name="me.png" width="22" height="22"/>
         <image name="money.png" width="22" height="22"/>

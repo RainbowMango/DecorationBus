@@ -57,11 +57,9 @@ class CompanyListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("companyItem", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("companyItem", forIndexPath: indexPath) as! CompanyTableViewCell
 
         // Configure the cell...
-        cell.textLabel?.text = "这是第\(indexPath.row)个公司"
-        cell.backgroundColor = UIColor.redColor()
 
         return cell
     }
