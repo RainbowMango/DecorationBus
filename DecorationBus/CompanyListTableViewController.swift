@@ -57,9 +57,16 @@ class CompanyListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        //将源数据转换
+        let cellData = CompanyCellData()
+        cellData.name = "测试公司名字"
+        cellData.commentsNum = indexPath.row
+        
+        //从队列中获取cell
         let cell = tableView.dequeueReusableCellWithIdentifier("companyItem", forIndexPath: indexPath) as! CompanyTableViewCell
 
         // Configure the cell...
+        cell.configureViews(cellData)
 
         return cell
     }

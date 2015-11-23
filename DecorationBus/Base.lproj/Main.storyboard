@@ -331,6 +331,12 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="commentsNum" destination="xIY-lD-Vw4" id="HNG-Qp-jSE"/>
+                                    <outlet property="logo" destination="U0c-tn-j5c" id="KX1-bN-aku"/>
+                                    <outlet property="name" destination="64q-Sm-Nq5" id="ye2-yN-2M1"/>
+                                    <outlet property="scoreChart" destination="Bew-UI-DtQ" id="4ow-kh-aY6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
