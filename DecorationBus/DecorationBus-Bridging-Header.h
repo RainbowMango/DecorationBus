@@ -55,3 +55,8 @@
 
 //集成MJRefresh
 #import "MJRefresh.h"
+
+//集成MDRadialProgress
+#import "MDRadialProgressView.h"
+#import "MDRadialProgressTheme.h"
+#import "MDRadialProgressLabel.h"
