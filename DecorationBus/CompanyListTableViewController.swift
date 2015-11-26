@@ -11,9 +11,8 @@ import UIKit
 class CompanyListTableViewController: UITableViewController {
 
     var tableHeader = MJRefreshNormalHeader()
-    //var tableFooter = MJRefreshBackNormalFooter()
     var tableFooter = MJRefreshAutoNormalFooter()
-    var companyList = Array<Int>()
+    var companies   = Array<CompanyCellData>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,21 +52,15 @@ class CompanyListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.companyList.count
+        return self.companies.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //将源数据转换
-        let cellData = CompanyCellData()
-        cellData.name = "测试公司名字"
-        cellData.commentsNum = indexPath.row
-        cellData.score = indexPath.row * 10 + 5
-        
         //从队列中获取cell
         let cell = tableView.dequeueReusableCellWithIdentifier("companyItem", forIndexPath: indexPath) as! CompanyTableViewCell
 
-        // Configure the cell...
-        cell.configureViews(cellData)
+        // 更新cell数据
+        cell.configureViews(self.companies[indexPath.row])
 
         return cell
     }
@@ -122,9 +115,13 @@ class CompanyListTableViewController: UITableViewController {
         NSThread.sleepForTimeInterval(1.0)
         
         //重新请求数据
-        self.companyList.removeAll()
-        for(var i = 0; i < 20; i++) {
-            self.companyList.append(i)
+        self.companies.removeAll()
+        for(var i: UInt = 0; i < 100; i++) {
+            let comp = CompanyCellData()
+            comp.name = "装饰公司\(i)"
+            comp.commentsNum = i
+            comp.score = (i * 15) % 100
+            self.companies.append(comp)
         }
         
         print("下拉刷新了")
@@ -139,15 +136,19 @@ class CompanyListTableViewController: UITableViewController {
         NSThread.sleepForTimeInterval(1.0)
         
         // 追加每次请求到的数据
-        let currentCount = self.companyList.count
+        let currentCount = self.companies.count
         for(var i = currentCount; i < currentCount + 20; i++) {
-            self.companyList.append(i)
+            let comp = CompanyCellData()
+            comp.name = "装饰公司\(i)"
+            comp.commentsNum = UInt(i)
+            comp.score = (UInt(i) * 15) % 100
+            self.companies.append(comp)
         }
         print("上拉刷新了")
         
         self.tableFooter.endRefreshing()//后续还有数据
         
-        if(self.companyList.count >= 60) {
+        if(self.companies.count >= 120) {
             self.tableFooter.endRefreshingWithNoMoreData() //没数据了
         }
         

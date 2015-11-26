@@ -11,8 +11,8 @@ import UIKit
 class CompanyCellData {
     var logoPath: String
     var name: String
-    var commentsNum: Int
-    var score: Int
+    var commentsNum: UInt
+    var score: UInt
     
     init() {
         logoPath = String()
@@ -63,11 +63,11 @@ class CompanyTableViewCell: UITableViewCell {
         self.name.text = name
     }
     
-    func configureCommentsNum(num: Int) -> Void {
+    func configureCommentsNum(num: UInt) -> Void {
         self.commentsNum.text = "评价数: \(num)"
     }
     
-    func configureScoreChart(score: Int) -> Void {
+    func configureScoreChart(score: UInt) -> Void {
         //自定义主题
         let newTheme = MDRadialProgressTheme()
         newTheme.completedColor = UIColor.greenColor()
@@ -79,6 +79,6 @@ class CompanyTableViewCell: UITableViewCell {
         
         self.scoreChart.theme = newTheme
         self.scoreChart.progressTotal = 100
-        self.scoreChart.progressCounter = 80
+        self.scoreChart.progressCounter = score
     }
 }
