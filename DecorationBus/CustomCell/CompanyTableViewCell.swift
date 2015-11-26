@@ -26,14 +26,15 @@ class CompanyTableViewCell: UITableViewCell {
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var commentsNum: UILabel!
-    @IBOutlet weak var scoreChart: UIView!
-
+    @IBOutlet weak var scoreChart: MDRadialProgressView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
+        
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -41,6 +42,7 @@ class CompanyTableViewCell: UITableViewCell {
 
     func configureViews(data: CompanyCellData) -> Void {
         //设置公司logo
+        configureLogo(data.logoPath)
         
         //设置公司名字
         configureName(data.name)
@@ -49,10 +51,12 @@ class CompanyTableViewCell: UITableViewCell {
         configureCommentsNum(data.commentsNum)
         
         //设置评价图表
+        configureScoreChart(data.score)
     }
     
     func configureLogo(imagePath: String) -> Void {
-        self.logo.image = UIImage(contentsOfFile: imagePath)
+        //self.logo.image = UIImage(contentsOfFile: imagePath)
+        self.logo.image = UIImage(named: "github.png")
     }
     
     func configureName(name: String) -> Void {
@@ -64,6 +68,17 @@ class CompanyTableViewCell: UITableViewCell {
     }
     
     func configureScoreChart(score: Int) -> Void {
-        //TODO
+        //自定义主题
+        let newTheme = MDRadialProgressTheme()
+        newTheme.completedColor = UIColor.greenColor()
+        newTheme.incompletedColor = UIColor.grayColor()
+        newTheme.centerColor = UIColor.clearColor()
+        newTheme.sliceDividerHidden = true
+        newTheme.labelColor = UIColor.blackColor()
+        newTheme.labelShadowColor = UIColor.whiteColor()
+        
+        self.scoreChart.theme = newTheme
+        self.scoreChart.progressTotal = 100
+        self.scoreChart.progressCounter = 80
     }
 }

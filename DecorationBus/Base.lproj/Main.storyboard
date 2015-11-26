@@ -284,10 +284,9 @@
                                                 <constraint firstAttribute="width" secondItem="U0c-tn-j5c" secondAttribute="height" multiplier="4:3" id="gZQ-K5-NMo"/>
                                             </constraints>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bew-UI-DtQ" userLabel="chart">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bew-UI-DtQ" userLabel="chart" customClass="MDRadialProgressView">
                                             <rect key="frame" x="248" y="8" width="63.5" height="63.5"/>
                                             <animations/>
-                                            <color key="backgroundColor" red="1" green="0.66115237309999997" blue="0.18740535820000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Bew-UI-DtQ" secondAttribute="height" multiplier="1:1" id="Dk0-dj-LxJ"/>
                                             </constraints>
@@ -314,7 +313,6 @@
                                         </label>
                                     </subviews>
                                     <animations/>
-                                    <color key="backgroundColor" red="1" green="0.86765558769999995" blue="0.69125505070000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="xIY-lD-Vw4" firstAttribute="leading" secondItem="U0c-tn-j5c" secondAttribute="trailing" constant="20" id="9rK-gb-sAR"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="xIY-lD-Vw4" secondAttribute="bottom" id="KaH-wp-rde"/>
@@ -335,7 +333,7 @@
                                     <outlet property="commentsNum" destination="xIY-lD-Vw4" id="HNG-Qp-jSE"/>
                                     <outlet property="logo" destination="U0c-tn-j5c" id="KX1-bN-aku"/>
                                     <outlet property="name" destination="64q-Sm-Nq5" id="ye2-yN-2M1"/>
-                                    <outlet property="scoreChart" destination="Bew-UI-DtQ" id="4ow-kh-aY6"/>
+                                    <outlet property="scoreChart" destination="Bew-UI-DtQ" id="cDl-YU-KKK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

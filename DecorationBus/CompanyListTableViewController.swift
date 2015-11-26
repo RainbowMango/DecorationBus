@@ -61,6 +61,7 @@ class CompanyListTableViewController: UITableViewController {
         let cellData = CompanyCellData()
         cellData.name = "测试公司名字"
         cellData.commentsNum = indexPath.row
+        cellData.score = indexPath.row * 10 + 5
         
         //从队列中获取cell
         let cell = tableView.dequeueReusableCellWithIdentifier("companyItem", forIndexPath: indexPath) as! CompanyTableViewCell
