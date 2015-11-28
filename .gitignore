@@ -2,3 +2,4 @@
 xcshareddata
 xcuserdata
 *.DS_Store
+NetworkResourceDef.swift
