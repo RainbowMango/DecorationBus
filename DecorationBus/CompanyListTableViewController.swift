@@ -60,6 +60,11 @@ class CompanyListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("companyItem", forIndexPath: indexPath) as! CompanyTableViewCell
 
         // 更新cell数据
+        if(indexPath.row > self.companies.count) {
+            print("警告：当前source数量\(self.companies.count), 当前cell行数\(indexPath.row)")
+            return cell
+        }
+        
         cell.configureViews(self.companies[indexPath.row])
 
         return cell
@@ -118,7 +123,6 @@ class CompanyListTableViewController: UITableViewController {
         let request = NSURLRequest(URL: url!)
         do {
             let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
-            print(data)
             return parseComanies(data)
         }catch {
             print("网络异常")
@@ -131,12 +135,9 @@ class CompanyListTableViewController: UITableViewController {
     func parseComanies(jsonData: NSData) -> Int {
         do {
             let jsonStr = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments)
-            //print(jsonStr)
-            
             let itemNum = jsonStr.objectForKey("total") as! Int
             let items = jsonStr.objectForKey("row") as! NSArray
-            print(itemNum)
-            print(items.count)
+
             for item in items {
                 let company = CompanyCellData()
                 company.id = item.objectForKey("id") as! UInt
@@ -154,49 +155,28 @@ class CompanyListTableViewController: UITableViewController {
         return 0
     }
     
+    //下拉刷新
     func tableHeaderRefresh() {
-        //NSThread.sleepForTimeInterval(1.0)
+        //注意：改变data source和reload务必放到一个queue里执行，否则reload时有一定几率crash
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.companies.removeAll()
+            self.requestCompanies(0)
+            self.tableView.reloadData()//重新请求数据
+        }
         
-        //重新请求数据
-        self.companies.removeAll()
-        requestCompanies(0)
-//        for(var i: UInt = 0; i < 100; i++) {
-//            let comp = CompanyCellData()
-//            comp.name = "装饰公司\(i)"
-//            comp.commentsNum = i
-//            comp.score = (i * 15) % 100
-//            self.companies.append(comp)
-//        }
-        
-        print("下拉刷新了")
         self.tableHeader.endRefreshing()
-        self.tableView.reloadData()
         
         //重置没有更多的数据（消除没有更多数据的状态）
         self.tableFooter.resetNoMoreData()
     }
     
+    //上拉刷新
     func tableFooterRefresh() {
-        //NSThread.sleepForTimeInterval(1.0)
-        
         // 追加每次请求到的数据
-        let num = requestCompanies( self.companies.count)
-//        let currentCount = self.companies.count
-//        for(var i = currentCount; i < currentCount + 20; i++) {
-//            let comp = CompanyCellData()
-//            comp.name = "装饰公司\(i)"
-//            comp.commentsNum = UInt(i)
-//            comp.score = (UInt(i) * 15) % 100
-//            self.companies.append(comp)
-//        }
-        print("上拉刷新了")
+        let num = requestCompanies(self.companies.count)
         
-        if(num > 0) {
-            self.tableFooter.endRefreshing()//后续还有数据
-        }
-        else {
-            self.tableFooter.endRefreshingWithNoMoreData() //没数据了
-        }
+        //根据是否还有数据设置footer的状态
+        (num > 0) ? self.tableFooter.endRefreshing() : self.tableFooter.endRefreshingWithNoMoreData()
         
         self.tableView.reloadData()
     }
