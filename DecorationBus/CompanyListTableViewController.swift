@@ -118,8 +118,7 @@ class CompanyListTableViewController: UITableViewController {
     // MARK: - MJRefresh
     
     func requestCompanies(counter: Int) -> Int {
-        let urlStr = "http://localhost/DecorationbusWeb/server/app/getCompanies.php"
-        let url = NSURL(string: urlStr)
+        let url = NSURL(string: REQUEST_COMPANIES_URL_STR)
         let request = NSURLRequest(URL: url!)
         do {
             let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
