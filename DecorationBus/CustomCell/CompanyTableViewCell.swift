@@ -9,8 +9,9 @@
 import UIKit
 
 class CompanyCellData {
-    var logoPath: String
+    var id: UInt
     var name: String
+    var logoPath: String
     var commentsNum: UInt
     var score: UInt
     
@@ -19,6 +20,7 @@ class CompanyCellData {
         name = String()
         commentsNum = 0
         score = 0
+        id = 0
     }
 }
 

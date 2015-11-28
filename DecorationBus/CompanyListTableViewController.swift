@@ -119,8 +119,36 @@ class CompanyListTableViewController: UITableViewController {
         do {
             let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
             print(data)
+            return parseComanies(data)
         }catch {
             print("网络异常")
+        }
+        
+        return 0
+    }
+    
+    // 解析请求到得JSON数据，追加到table view source
+    func parseComanies(jsonData: NSData) -> Int {
+        do {
+            let jsonStr = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments)
+            //print(jsonStr)
+            
+            let itemNum = jsonStr.objectForKey("total") as! Int
+            let items = jsonStr.objectForKey("row") as! NSArray
+            print(itemNum)
+            print(items.count)
+            for item in items {
+                let company = CompanyCellData()
+                company.id = item.objectForKey("id") as! UInt
+                company.name = item.objectForKey("name") as! String
+                company.logoPath = item.objectForKey("logo") as! String
+                company.commentsNum = item.objectForKey("comments") as! UInt
+                company.score = item.objectForKey("score") as! UInt
+                self.companies.append(company)
+            }
+            return itemNum
+        }catch {
+            print("解析JSON数据失败")
         }
         
         return 0
@@ -130,15 +158,15 @@ class CompanyListTableViewController: UITableViewController {
         NSThread.sleepForTimeInterval(1.0)
         
         //重新请求数据
-        requestCompanies(0)
         self.companies.removeAll()
-        for(var i: UInt = 0; i < 100; i++) {
-            let comp = CompanyCellData()
-            comp.name = "装饰公司\(i)"
-            comp.commentsNum = i
-            comp.score = (i * 15) % 100
-            self.companies.append(comp)
-        }
+        requestCompanies(0)
+//        for(var i: UInt = 0; i < 100; i++) {
+//            let comp = CompanyCellData()
+//            comp.name = "装饰公司\(i)"
+//            comp.commentsNum = i
+//            comp.score = (i * 15) % 100
+//            self.companies.append(comp)
+//        }
         
         print("下拉刷新了")
         self.tableHeader.endRefreshing()
@@ -152,20 +180,21 @@ class CompanyListTableViewController: UITableViewController {
         NSThread.sleepForTimeInterval(1.0)
         
         // 追加每次请求到的数据
-        requestCompanies( self.companies.count)
-        let currentCount = self.companies.count
-        for(var i = currentCount; i < currentCount + 20; i++) {
-            let comp = CompanyCellData()
-            comp.name = "装饰公司\(i)"
-            comp.commentsNum = UInt(i)
-            comp.score = (UInt(i) * 15) % 100
-            self.companies.append(comp)
-        }
+        let num = requestCompanies( self.companies.count)
+//        let currentCount = self.companies.count
+//        for(var i = currentCount; i < currentCount + 20; i++) {
+//            let comp = CompanyCellData()
+//            comp.name = "装饰公司\(i)"
+//            comp.commentsNum = UInt(i)
+//            comp.score = (UInt(i) * 15) % 100
+//            self.companies.append(comp)
+//        }
         print("上拉刷新了")
         
-        self.tableFooter.endRefreshing()//后续还有数据
-        
-        if(self.companies.count >= 120) {
+        if(num > 0) {
+            self.tableFooter.endRefreshing()//后续还有数据
+        }
+        else {
             self.tableFooter.endRefreshingWithNoMoreData() //没数据了
         }
         
