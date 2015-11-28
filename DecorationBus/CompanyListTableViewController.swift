@@ -111,10 +111,26 @@ class CompanyListTableViewController: UITableViewController {
     */
 
     // MARK: - MJRefresh
+    
+    func requestCompanies(counter: Int) -> Int {
+        let urlStr = "http://localhost/DecorationbusWeb/server/app/getCompanies.php"
+        let url = NSURL(string: urlStr)
+        let request = NSURLRequest(URL: url!)
+        do {
+            let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
+            print(data)
+        }catch {
+            print("网络异常")
+        }
+        
+        return 0
+    }
+    
     func tableHeaderRefresh() {
         NSThread.sleepForTimeInterval(1.0)
         
         //重新请求数据
+        requestCompanies(0)
         self.companies.removeAll()
         for(var i: UInt = 0; i < 100; i++) {
             let comp = CompanyCellData()
@@ -136,6 +152,7 @@ class CompanyListTableViewController: UITableViewController {
         NSThread.sleepForTimeInterval(1.0)
         
         // 追加每次请求到的数据
+        requestCompanies( self.companies.count)
         let currentCount = self.companies.count
         for(var i = currentCount; i < currentCount + 20; i++) {
             let comp = CompanyCellData()
