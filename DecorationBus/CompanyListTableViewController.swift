@@ -155,7 +155,7 @@ class CompanyListTableViewController: UITableViewController {
     }
     
     func tableHeaderRefresh() {
-        NSThread.sleepForTimeInterval(1.0)
+        //NSThread.sleepForTimeInterval(1.0)
         
         //重新请求数据
         self.companies.removeAll()
@@ -177,7 +177,7 @@ class CompanyListTableViewController: UITableViewController {
     }
     
     func tableFooterRefresh() {
-        NSThread.sleepForTimeInterval(1.0)
+        //NSThread.sleepForTimeInterval(1.0)
         
         // 追加每次请求到的数据
         let num = requestCompanies( self.companies.count)

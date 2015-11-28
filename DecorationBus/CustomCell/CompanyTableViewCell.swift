@@ -57,8 +57,17 @@ class CompanyTableViewCell: UITableViewCell {
     }
     
     func configureLogo(imagePath: String) -> Void {
-        //self.logo.image = UIImage(contentsOfFile: imagePath)
-        self.logo.image = UIImage(named: "github.png")
+        //检查本地是否有缓存
+        
+        //下载图片
+        let url = NSURL(string: imagePath)
+        let request = NSURLRequest(URL: url!)
+        do {
+            let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
+            self.logo.image = UIImage(data: data)
+        }catch {
+            print("网络异常")
+        }
     }
     
     func configureName(name: String) -> Void {
