@@ -66,7 +66,7 @@ class CompanyTableViewCell: UITableViewCell {
             let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
             self.logo.image = UIImage(data: data)
         }catch {
-            print("网络异常")
+            print("网络异常--无法加载图片")
         }
     }
     

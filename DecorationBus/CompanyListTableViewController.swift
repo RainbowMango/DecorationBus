@@ -161,11 +161,10 @@ class CompanyListTableViewController: UITableViewController {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.companies.removeAll()
             self.requestCompanies(0)
+            self.tableHeader.endRefreshing()
             self.tableView.reloadData()//重新请求数据
         }
-        
-        self.tableHeader.endRefreshing()
-        
+
         //重置没有更多的数据（消除没有更多数据的状态）
         self.tableFooter.resetNoMoreData()
     }
