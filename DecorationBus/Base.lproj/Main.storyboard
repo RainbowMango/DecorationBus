@@ -277,10 +277,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="index.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="U0c-tn-j5c" userLabel="logo">
-                                            <rect key="frame" x="8" y="8" width="84.5" height="63.5"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="index.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="U0c-tn-j5c" userLabel="logo">
+                                            <rect key="frame" x="8" y="13" width="71.5" height="53.5"/>
                                             <animations/>
-                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="U0c-tn-j5c" secondAttribute="height" multiplier="4:3" id="gZQ-K5-NMo"/>
                                             </constraints>
@@ -293,7 +292,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评价数:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIY-lD-Vw4" userLabel="comments">
-                                            <rect key="frame" x="112" y="51" width="115.5" height="20"/>
+                                            <rect key="frame" x="99" y="51" width="128.5" height="20"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="lyI-4P-t0V"/>
@@ -303,7 +302,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="巴士装修" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64q-Sm-Nq5" userLabel="name">
-                                            <rect key="frame" x="112.5" y="8" width="115.5" height="20"/>
+                                            <rect key="frame" x="99.5" y="8" width="128.5" height="20"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="PWu-Cr-ek4"/>
@@ -320,8 +319,8 @@
                                         <constraint firstItem="Bew-UI-DtQ" firstAttribute="leading" secondItem="64q-Sm-Nq5" secondAttribute="trailing" constant="20" id="Ovw-8Y-BYj"/>
                                         <constraint firstItem="64q-Sm-Nq5" firstAttribute="top" secondItem="5T6-S2-PxO" secondAttribute="topMargin" id="S20-Ba-aKs"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Bew-UI-DtQ" secondAttribute="bottom" id="Tmy-u0-KTF"/>
-                                        <constraint firstItem="U0c-tn-j5c" firstAttribute="top" secondItem="5T6-S2-PxO" secondAttribute="topMargin" id="UGo-to-que"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="U0c-tn-j5c" secondAttribute="bottom" id="n4J-Vr-MSj"/>
+                                        <constraint firstItem="U0c-tn-j5c" firstAttribute="top" secondItem="5T6-S2-PxO" secondAttribute="topMargin" constant="5" id="UGo-to-que"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="U0c-tn-j5c" secondAttribute="bottom" constant="5" id="n4J-Vr-MSj"/>
                                         <constraint firstItem="U0c-tn-j5c" firstAttribute="leading" secondItem="5T6-S2-PxO" secondAttribute="leadingMargin" id="qXA-xm-ki6"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Bew-UI-DtQ" secondAttribute="trailing" id="r8i-xz-huR"/>
                                         <constraint firstItem="Bew-UI-DtQ" firstAttribute="top" secondItem="5T6-S2-PxO" secondAttribute="topMargin" id="rJE-Xf-Jg6"/>
