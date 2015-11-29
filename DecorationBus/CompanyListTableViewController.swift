@@ -70,6 +70,15 @@ class CompanyListTableViewController: UITableViewController {
         return cell
     }
 
+    // MARK: - table view delegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.mode = MBProgressHUDMode.Text
+        hud.labelText = "敬请期待"
+        hud.detailsLabelText = "功能正在开发中，接下来可以查看和点评"
+        hud.hide(true, afterDelay: 1)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

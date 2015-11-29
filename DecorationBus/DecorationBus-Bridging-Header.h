@@ -60,3 +60,6 @@
 #import "MDRadialProgressView.h"
 #import "MDRadialProgressTheme.h"
 #import "MDRadialProgressLabel.h"
+
+//集成MBProgressHUD(没有重新安装，被先前的组件引用过了)
+#import "MBProgressHUD.h"
