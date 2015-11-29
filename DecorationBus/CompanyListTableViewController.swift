@@ -148,8 +148,8 @@ class CompanyListTableViewController: UITableViewController {
                 self.companies.append(company)
             }
             return itemNum
-        }catch {
-            print("解析JSON数据失败")
+        }catch let error as NSError {
+            print("解析JSON数据失败: " + error.localizedDescription)
         }
         
         return 0
