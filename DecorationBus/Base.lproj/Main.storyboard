@@ -260,10 +260,10 @@
             </objects>
             <point key="canvasLocation" x="1084" y="-1480"/>
         </scene>
-        <!--Company List Table View Controller-->
+        <!--装修公司列表-->
         <scene sceneID="i3e-sR-aCK">
             <objects>
-                <tableViewController id="vcQ-Jx-X02" customClass="CompanyListTableViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="vcQ-Jx-X02" userLabel="装修公司列表" customClass="CompanyListTableViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="R5R-ll-Ll8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,8 +307,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="PWu-Cr-ek4"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.70103769083969469" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
