@@ -67,6 +67,7 @@ class CompanyTableViewCell: UITableViewCell {
             self.logo.image = UIImage(data: data)
         }catch let error as NSError {
             print("网络异常，下载图片失败: " + error.localizedDescription)
+            self.logo.image = UIImage(named: "companyDefaultLogo.png")
         }
     }
     

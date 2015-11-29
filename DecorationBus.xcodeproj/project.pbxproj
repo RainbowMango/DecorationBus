@@ -160,6 +160,7 @@
 		9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */; };
 		9BE401531C0215D2001CDE29 /* CompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE401521C0215D2001CDE29 /* CompanyTableViewCell.swift */; };
 		9BE401571C09EBDA001CDE29 /* NetworkResourceDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE401561C09EBDA001CDE29 /* NetworkResourceDef.swift */; };
+		9BE4015A1C0B3A3F001CDE29 /* companyDefaultLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BE401591C0B3A3F001CDE29 /* companyDefaultLogo.png */; };
 		9BE945F01A1E2BAD0095ACBD /* OrderItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */; };
 		9BF8E0621BD7E39300F3AD9E /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */; };
 		9BF8E0631BD7E39300F3AD9E /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0551BD7E39300F3AD9E /* TAAbstractDotView.m */; };
@@ -349,6 +350,7 @@
 		9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPayViewController.swift; sourceTree = "<group>"; };
 		9BE401521C0215D2001CDE29 /* CompanyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyTableViewCell.swift; sourceTree = "<group>"; };
 		9BE401561C09EBDA001CDE29 /* NetworkResourceDef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResourceDef.swift; sourceTree = "<group>"; };
+		9BE401591C0B3A3F001CDE29 /* companyDefaultLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = companyDefaultLogo.png; path = pictures/default/companyDefaultLogo.png; sourceTree = "<group>"; };
 		9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemDataModel.swift; sourceTree = "<group>"; };
 		9BF8E0511BD7E39300F3AD9E /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 		9B1E5BE31A2B5DAD00615842 /* pictures */ = {
 			isa = PBXGroup;
 			children = (
+				9BE401581C0B3991001CDE29 /* default */,
 				9B8698FE1BEF71A9001B1FA0 /* tabbar */,
 				9B2600611BE3B885002E5AC0 /* service */,
 				9B1DA7091B330257000B128F /* intro */,
@@ -781,6 +784,14 @@
 			path = pictures/category;
 			sourceTree = "<group>";
 		};
+		9BE401581C0B3991001CDE29 /* default */ = {
+			isa = PBXGroup;
+			children = (
+				9BE401591C0B3A3F001CDE29 /* companyDefaultLogo.png */,
+			);
+			name = default;
+			sourceTree = "<group>";
+		};
 		9BF8E0501BD7E39300F3AD9E /* SDCycleScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -932,6 +943,7 @@
 				9BC401E31A7FAA1000FDF4D6 /* Artwork@2x.png in Resources */,
 				9BC401E71A7FAA1000FDF4D6 /* Bathroom@3x.png in Resources */,
 				9BC401EF1A7FAA1000FDF4D6 /* Furniture@2x.png in Resources */,
+				9BE4015A1C0B3A3F001CDE29 /* companyDefaultLogo.png in Resources */,
 				9BC4020A1A7FAC8D00FDF4D6 /* Window@2x.png in Resources */,
 				9B151A9E1A6ABC8800498ED2 /* arrow_down.png in Resources */,
 				9B8699111BEF7860001B1FA0 /* money.png in Resources */,
