@@ -83,12 +83,6 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     }
     
     func setupScrollViewWithRemoteImages() -> Void {
-        var imagesURLStrings = [String]()
-        imagesURLStrings.append("http://decorationbus.sinaapp.com/server/images/banner/ser01.jpg")
-        imagesURLStrings.append("http://decorationbus.sinaapp.com/server/images/banner/ser02.jpg")
-        imagesURLStrings.append("http://decorationbus.sinaapp.com/server/images/banner/ser03.jpg")
-        imagesURLStrings.append("http://decorationbus.sinaapp.com/server/images/banner/ser04.jpg")
-        
         var titles = [String]()
         titles.append("该产品属于开源公益项目, 不以盈利为目的")
         titles.append("目前处于开发内测阶段，功能尚不完善")
@@ -98,7 +92,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         let w = self.view.bounds.size.width;
         
         
-        let cycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 320, w, 180), imageURLStringsGroup: imagesURLStrings)
+        let cycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 320, w, 180), imageURLStringsGroup: REQUEST_INDEX_BANNERS_URL_STR)
         cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight
         cycleScrollView.delegate = self
         cycleScrollView.titlesGroup = titles
