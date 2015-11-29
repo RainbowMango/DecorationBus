@@ -115,7 +115,7 @@ class CompanyListTableViewController: UITableViewController {
     }
     */
 
-    // MARK: - MJRefresh
+    // MARK: - Refresh
     
     func requestCompanies(counter: Int) -> Array<CompanyCellData> {
         let urlStr = REQUEST_COMPANIES_URL_STR + "?counter=\(counter)"
@@ -124,14 +124,14 @@ class CompanyListTableViewController: UITableViewController {
         do {
             let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
             return parseComanies(data)
-        }catch {
-            print("网络异常")
+        }catch let error as NSError{
+            print("网络异常--请求公司信息失败：" + error.localizedDescription)
         }
         
         return Array<CompanyCellData>()
     }
     
-    // 解析请求到得JSON数据
+    // 解析请求到的JSON数据
     func parseComanies(jsonData: NSData) -> Array<CompanyCellData> {
         do {
             let jsonStr = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments)
@@ -149,6 +149,7 @@ class CompanyListTableViewController: UITableViewController {
                 requestedCompanies.append(company)
             }
             
+            //服务端返回的JSON有误时仅打印一条信息
             if(itemNum != requestedCompanies.count) {
                 print("Warning: items number mismatch in json!")
             }
