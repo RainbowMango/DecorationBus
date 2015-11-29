@@ -117,7 +117,7 @@ class CompanyListTableViewController: UITableViewController {
 
     // MARK: - MJRefresh
     
-    func requestCompanies(counter: Int) -> Int {
+    func requestCompanies(counter: Int) -> Array<CompanyCellData> {
         let urlStr = REQUEST_COMPANIES_URL_STR + "?counter=\(counter)"
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
@@ -128,16 +128,17 @@ class CompanyListTableViewController: UITableViewController {
             print("网络异常")
         }
         
-        return 0
+        return Array<CompanyCellData>()
     }
     
-    // 解析请求到得JSON数据，追加到table view source
-    func parseComanies(jsonData: NSData) -> Int {
+    // 解析请求到得JSON数据
+    func parseComanies(jsonData: NSData) -> Array<CompanyCellData> {
         do {
             let jsonStr = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments)
             let itemNum = jsonStr.objectForKey("total") as! Int
             let items = jsonStr.objectForKey("row") as! NSArray
 
+            var requestedCompanies = Array<CompanyCellData>()
             for item in items {
                 let company = CompanyCellData()
                 company.id = item.objectForKey("id") as! UInt
@@ -145,22 +146,32 @@ class CompanyListTableViewController: UITableViewController {
                 company.logoPath = item.objectForKey("logo") as! String
                 company.commentsNum = item.objectForKey("comments") as! UInt
                 company.score = item.objectForKey("score") as! UInt
-                self.companies.append(company)
+                requestedCompanies.append(company)
             }
-            return itemNum
+            
+            if(itemNum != requestedCompanies.count) {
+                print("Warning: items number mismatch in json!")
+            }
+            
+            return requestedCompanies
         }catch let error as NSError {
             print("解析JSON数据失败: " + error.localizedDescription)
         }
         
-        return 0
+        return Array<CompanyCellData>()
     }
     
     //下拉刷新
     func tableHeaderRefresh() {
         //注意：改变data source和reload务必放到一个queue里执行，否则reload时有一定几率crash
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            self.companies.removeAll()
-            self.requestCompanies(0)
+            let requestedCompanies = self.requestCompanies(0)
+            
+            //只有在成功请求到数据时才改变数据源
+            if(!requestedCompanies.isEmpty) {
+                self.companies = requestedCompanies
+            }
+            
             self.tableHeader.endRefreshing()
             self.tableView.reloadData()//重新请求数据
         }
@@ -172,11 +183,16 @@ class CompanyListTableViewController: UITableViewController {
     //上拉刷新
     func tableFooterRefresh() {
         // 追加每次请求到的数据
-        let num = requestCompanies(self.companies.count)
+        let requestedCompanies = requestCompanies(self.companies.count)
+        if(requestedCompanies.isEmpty) {
+            self.tableFooter.endRefreshingWithNoMoreData()
+            return
+        }
+        for company in requestedCompanies {
+            self.companies.append(company)
+        }
         
-        //根据是否还有数据设置footer的状态
-        (num > 0) ? self.tableFooter.endRefreshing() : self.tableFooter.endRefreshingWithNoMoreData()
-        
+        self.tableFooter.endRefreshing()
         self.tableView.reloadData()
     }
 }
