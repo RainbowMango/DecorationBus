@@ -57,18 +57,9 @@ class CompanyTableViewCell: UITableViewCell {
     }
     
     func configureLogo(imagePath: String) -> Void {
-        //检查本地是否有缓存
-        
-        //下载图片
+        //使用SDWebImage可以自动缓存图片，浏览更流畅
         let url = NSURL(string: imagePath)
-        let request = NSURLRequest(URL: url!)
-        do {
-            let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
-            self.logo.image = UIImage(data: data)
-        }catch let error as NSError {
-            print("网络异常，下载图片失败: " + error.localizedDescription)
-            self.logo.image = UIImage(named: "companyDefaultLogo.png")
-        }
+        self.logo.sd_setImageWithURL(url, placeholderImage: UIImage(named: "companyDefaultLogo.png"))
     }
     
     func configureName(name: String) -> Void {

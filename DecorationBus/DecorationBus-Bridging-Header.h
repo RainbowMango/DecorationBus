@@ -63,3 +63,6 @@
 
 //集成MBProgressHUD(没有重新安装，被先前的组件引用过了)
 #import "MBProgressHUD.h"
+
+//集成SDWebImage(没有重新安装，被先前的组件引用过了)
+#import "UIImageView+WebCache.h"
