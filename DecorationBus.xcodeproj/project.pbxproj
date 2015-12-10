@@ -161,6 +161,7 @@
 		9BE401531C0215D2001CDE29 /* CompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE401521C0215D2001CDE29 /* CompanyTableViewCell.swift */; };
 		9BE401571C09EBDA001CDE29 /* NetworkResourceDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE401561C09EBDA001CDE29 /* NetworkResourceDef.swift */; };
 		9BE4015A1C0B3A3F001CDE29 /* companyDefaultLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BE401591C0B3A3F001CDE29 /* companyDefaultLogo.png */; };
+		9BE4015C1C19BA9C001CDE29 /* CompanyCommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE4015B1C19BA9C001CDE29 /* CompanyCommentsTableViewController.swift */; };
 		9BE945F01A1E2BAD0095ACBD /* OrderItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */; };
 		9BF8E0621BD7E39300F3AD9E /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */; };
 		9BF8E0631BD7E39300F3AD9E /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0551BD7E39300F3AD9E /* TAAbstractDotView.m */; };
@@ -351,6 +352,7 @@
 		9BE401521C0215D2001CDE29 /* CompanyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyTableViewCell.swift; sourceTree = "<group>"; };
 		9BE401561C09EBDA001CDE29 /* NetworkResourceDef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResourceDef.swift; sourceTree = "<group>"; };
 		9BE401591C0B3A3F001CDE29 /* companyDefaultLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = companyDefaultLogo.png; path = pictures/default/companyDefaultLogo.png; sourceTree = "<group>"; };
+		9BE4015B1C19BA9C001CDE29 /* CompanyCommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyCommentsTableViewController.swift; sourceTree = "<group>"; };
 		9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemDataModel.swift; sourceTree = "<group>"; };
 		9BF8E0511BD7E39300F3AD9E /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 				9B37A9D319EEB57A0097F88D /* AppDelegate.swift */,
 				9B37A9DA19EEB57A0097F88D /* Main.storyboard */,
 				9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */,
+				9BE4015B1C19BA9C001CDE29 /* CompanyCommentsTableViewController.swift */,
 				9B05F5161ADA18560058EF0B /* CollectionPhotoCell.swift */,
 				9B6E3DF91AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift */,
 				9B0CE7B21AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift */,
@@ -1101,6 +1104,7 @@
 				9BC401BA1A7CB3CF00FDF4D6 /* BudgetRecord.swift in Sources */,
 				9B2491991A5D683700990BA6 /* FormTextFieldCell.swift in Sources */,
 				9B2491951A5D683700990BA6 /* FormPickerCell.swift in Sources */,
+				9BE4015C1C19BA9C001CDE29 /* CompanyCommentsTableViewController.swift in Sources */,
 				9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */,
 				9B24918F1A5D683700990BA6 /* FormBaseCell.swift in Sources */,
 				9B0CE7B31AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift in Sources */,

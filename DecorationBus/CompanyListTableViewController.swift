@@ -118,12 +118,12 @@ class CompanyListTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //let dstVC       = segue.destinationViewController
+        let dstVC       = segue.destinationViewController as! CompanyCommentsTableViewController
         let indexPath   = self.tableView.indexPathForSelectedRow
         self.tableView.deselectRowAtIndexPath(indexPath!, animated: true)
         
         // 传递选中的cell信息到下一个view
-        print("选中了第\(indexPath!.row)行")
+        dstVC._company = companies[indexPath!.row]
     }
 
     // MARK: - Refresh
