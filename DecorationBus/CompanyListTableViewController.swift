@@ -72,12 +72,13 @@ class CompanyListTableViewController: UITableViewController {
 
     // MARK: - table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.mode = MBProgressHUDMode.Text
-        hud.labelText = "敬请期待"
-        hud.detailsLabelText = "功能正在开发中，接下来可以查看和点评"
-        hud.hide(true, afterDelay: 1)
+        performSegueWithIdentifier("showCompanyCommentsSegue", sender: self.view)
+        
+//        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//        hud.mode = MBProgressHUDMode.Text
+//        hud.labelText = "敬请期待"
+//        hud.detailsLabelText = "功能正在开发中，接下来可以查看和点评"
+//        hud.hide(true, afterDelay: 1)
     }
     /*
     // Override to support conditional editing of the table view.
@@ -114,15 +115,16 @@ class CompanyListTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        //let dstVC       = segue.destinationViewController
+        let indexPath   = self.tableView.indexPathForSelectedRow
+        self.tableView.deselectRowAtIndexPath(indexPath!, animated: true)
+        
+        // 传递选中的cell信息到下一个view
+        print("选中了第\(indexPath!.row)行")
     }
-    */
 
     // MARK: - Refresh
     

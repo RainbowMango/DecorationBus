@@ -343,10 +343,45 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="0bV-sg-Zjc"/>
+                    <connections>
+                        <segue destination="Mxs-dA-lGt" kind="push" identifier="showCompanyCommentsSegue" id="P5f-gZ-x0q"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rs-bJ-kgt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1700" y="-1480"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="hb3-U9-RZO">
+            <objects>
+                <tableViewController id="Mxs-dA-lGt" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XkL-Nu-ZfY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VkP-fb-G0q">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VkP-fb-G0q" id="hAE-ca-NOk">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Mxs-dA-lGt" id="cmY-ZL-BGd"/>
+                            <outlet property="delegate" destination="Mxs-dA-lGt" id="iwr-ep-XEm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="aaJ-ju-0ZA"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ngr-Oy-w8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2370" y="-1480"/>
         </scene>
         <!--Record Pay View Controller-->
         <scene sceneID="0wt-U6-bf8">
