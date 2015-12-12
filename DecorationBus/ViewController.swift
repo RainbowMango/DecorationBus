@@ -201,34 +201,6 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         
         return title
     }
-//    
-//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let screenWith = self.view.bounds.width
-//        
-//        switch section {
-//        case 0:
-//            let headerView = UIView(frame: CGRectMake(0, 0, screenWith, 20))
-//            let leftLable = UILabel(frame: CGRectMake(10, 5, screenWith/2 - 10, 20))
-//            leftLable.text = "精选服务"
-//            headerView.addSubview(leftLable)
-//            
-////            let rightLable = UILabel(frame: CGRectMake(screenWith/2 + 10, 5, screenWith/2 - 20, 20))
-////            rightLable.text = "显示更多 >>   "
-////            rightLable.textAlignment = NSTextAlignment.Right
-////            headerView.addSubview(rightLable)
-//            
-//            return headerView
-//        case 1:
-//            let headerView = UIView(frame: CGRectMake(0, 0, screenWith, 20))
-//            let leftLable = UILabel(frame: CGRectMake(10, 5, screenWith/2 - 10, 20))
-//            leftLable.text = "热门活动"
-//            headerView.addSubview(leftLable)
-//            
-//            return headerView
-//        default:
-//            return nil
-//        }
-//    }
     
     //MARK: - tableView delegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -289,6 +261,11 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         
         self.view.addSubview(pointMessageView_.view);
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let dstVC = segue.destinationViewController
+        dstVC.hidesBottomBarWhenPushed = true
     }
 }
 
