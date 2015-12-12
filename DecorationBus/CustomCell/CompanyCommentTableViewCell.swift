@@ -26,6 +26,7 @@ class CompanyComment {
 
 class CompanyCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var nickname: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,7 +43,7 @@ class CompanyCommentTableViewCell: UITableViewCell {
         configureAvatar(data.avatar)
         
         //设置用户昵称
-        //configureNickname(data.nickname)
+        configureNickname(data.nickname)
         
         //设置评论日期
         //configureDate(data.date)
@@ -58,11 +59,11 @@ class CompanyCommentTableViewCell: UITableViewCell {
         let url = NSURL(string: imagePath)
         self.avatar.sd_setImageWithURL(url, placeholderImage: UIImage(named: "companyDefaultLogo.png"))
     }
-//    
-//    func configureNickname(nickname: String) -> Void {
-//        self.nickname.text = nickname
-//    }
-//    
+    
+    func configureNickname(nickname: String) -> Void {
+        self.nickname.text = nickname
+    }
+    
 //    func configureDate(date: String) -> Void {
 //        self.date.text = date
 //    }

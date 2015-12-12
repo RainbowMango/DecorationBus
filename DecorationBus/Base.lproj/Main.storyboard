@@ -376,17 +376,31 @@
                                                 <constraint firstAttribute="width" constant="40" id="jXM-GW-ZuS"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="樱桃小丸子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOE-wG-dJJ" userLabel="nickname">
+                                            <rect key="frame" x="53" y="8" width="120" height="21"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="6GK-hZ-4DN"/>
+                                                <constraint firstAttribute="height" constant="21" id="bce-nb-aS2"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <animations/>
                                     <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="PxC-Mm-vnU" firstAttribute="top" secondItem="hAE-ca-NOk" secondAttribute="topMargin" id="1Ja-Nu-xtl"/>
+                                        <constraint firstItem="AOE-wG-dJJ" firstAttribute="leading" secondItem="PxC-Mm-vnU" secondAttribute="trailing" constant="5" id="870-oM-j75"/>
                                         <constraint firstItem="PxC-Mm-vnU" firstAttribute="leading" secondItem="hAE-ca-NOk" secondAttribute="leadingMargin" id="muH-uK-NYZ"/>
+                                        <constraint firstItem="AOE-wG-dJJ" firstAttribute="top" secondItem="hAE-ca-NOk" secondAttribute="topMargin" id="uM6-1F-IZi"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
                                     <outlet property="avatar" destination="PxC-Mm-vnU" id="lXJ-Ma-jqj"/>
+                                    <outlet property="nickname" destination="AOE-wG-dJJ" id="4Ch-fq-2xw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
