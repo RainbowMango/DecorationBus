@@ -11,17 +11,21 @@ import UIKit
 class CompanyCommentsTableViewController: UITableViewController {
 
     var _company: CompanyCellData = CompanyCellData()
+    var _comments: Array<CompanyComment> = Array<CompanyComment>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.tableView.tableFooterView = UIView() // 清除tableView中空白行
+        
+        //添加测试数据
+        let comment = CompanyComment()
+        comment.avatar   = "http://decorationbus.sinaapp.com/server/images/banner/ser01.jpg"
+        comment.nickname = "用户昵称"
+        comment.date     = "2015-12-11"
+        comment.score    = 87
+        comment.comment  = "还不错哦还不错哦还不错哦还不错哦还不错哦还不错哦还不错哦还不错哦还不错哦"
+        self._comments.append(comment)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,11 +44,10 @@ class CompanyCommentsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("companycommentcell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("companycommentcell", forIndexPath: indexPath) as! CompanyCommentTableViewCell
 
-        // Configure the cell...
-        //let cell = UITableViewCell()
-        //cell.textLabel!.text = _company.name
+        cell.configureViews(self._comments[indexPath.row])
+        
         return cell
     }
 

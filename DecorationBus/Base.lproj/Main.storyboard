@@ -361,7 +361,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="companycommentcell" rowHeight="157" id="VkP-fb-G0q" userLabel="评论Cell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="companycommentcell" rowHeight="157" id="VkP-fb-G0q" userLabel="评论Cell" customClass="CompanyCommentTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="157"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VkP-fb-G0q" id="hAE-ca-NOk">
@@ -385,6 +385,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="avatar" destination="PxC-Mm-vnU" id="lXJ-Ma-jqj"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
