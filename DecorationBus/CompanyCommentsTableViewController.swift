@@ -40,11 +40,11 @@ class CompanyCommentsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("companycommentcell", forIndexPath: indexPath)
 
         // Configure the cell...
-        let cell = UITableViewCell()
-        cell.textLabel!.text = _company.name
+        //let cell = UITableViewCell()
+        //cell.textLabel!.text = _company.name
         return cell
     }
 
