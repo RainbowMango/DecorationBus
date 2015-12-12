@@ -27,6 +27,7 @@ class CompanyComment {
 class CompanyCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var nickname: UILabel!
+    @IBOutlet weak var date: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,7 +47,7 @@ class CompanyCommentTableViewCell: UITableViewCell {
         configureNickname(data.nickname)
         
         //设置评论日期
-        //configureDate(data.date)
+        configureDate(data.date)
         
         //设置评论
         //configureComment(data.comment)
@@ -64,10 +65,10 @@ class CompanyCommentTableViewCell: UITableViewCell {
         self.nickname.text = nickname
     }
     
-//    func configureDate(date: String) -> Void {
-//        self.date.text = date
-//    }
-//    
+    func configureDate(date: String) -> Void {
+        self.date.text = date
+    }
+    
 //    func configureComment(comment: String) -> Void {
 //        self.comments.text = comment
 //    }
