@@ -398,13 +398,24 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gf-IO-hLt" userLabel="score" customClass="MDRadialProgressView">
+                                            <rect key="frame" x="272" y="8" width="40" height="40"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="9fL-bb-sDl"/>
+                                                <constraint firstAttribute="width" constant="40" id="s0Y-gH-WpK"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <animations/>
                                     <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="PxC-Mm-vnU" firstAttribute="top" secondItem="hAE-ca-NOk" secondAttribute="topMargin" id="1Ja-Nu-xtl"/>
                                         <constraint firstItem="AOE-wG-dJJ" firstAttribute="leading" secondItem="PxC-Mm-vnU" secondAttribute="trailing" constant="5" id="870-oM-j75"/>
+                                        <constraint firstItem="4gf-IO-hLt" firstAttribute="trailing" secondItem="hAE-ca-NOk" secondAttribute="trailingMargin" id="9gr-Em-3lr"/>
                                         <constraint firstItem="Vz2-JW-ifl" firstAttribute="leading" secondItem="PxC-Mm-vnU" secondAttribute="trailing" constant="5" id="V98-KL-0Pv"/>
+                                        <constraint firstItem="4gf-IO-hLt" firstAttribute="top" secondItem="hAE-ca-NOk" secondAttribute="topMargin" id="isJ-eu-7Jb"/>
                                         <constraint firstItem="PxC-Mm-vnU" firstAttribute="leading" secondItem="hAE-ca-NOk" secondAttribute="leadingMargin" id="muH-uK-NYZ"/>
                                         <constraint firstItem="AOE-wG-dJJ" firstAttribute="top" secondItem="hAE-ca-NOk" secondAttribute="topMargin" id="uM6-1F-IZi"/>
                                         <constraint firstItem="Vz2-JW-ifl" firstAttribute="top" secondItem="AOE-wG-dJJ" secondAttribute="bottom" id="wm2-MJ-wFu"/>
@@ -415,6 +426,7 @@
                                     <outlet property="avatar" destination="PxC-Mm-vnU" id="lXJ-Ma-jqj"/>
                                     <outlet property="date" destination="Vz2-JW-ifl" id="ndt-a0-xQY"/>
                                     <outlet property="nickname" destination="AOE-wG-dJJ" id="4Ch-fq-2xw"/>
+                                    <outlet property="scoreChart" destination="4gf-IO-hLt" id="wlp-TB-8Ig"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1424,6 +1436,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WbV-Mw-EBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1732" y="1429"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yGc-2g-Lln">
+            <objects>
+                <viewController id="ipm-ib-dsX" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YvC-fL-8s3"/>
+                        <viewControllerLayoutGuide type="bottom" id="kqw-Rl-Z6O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WxY-BC-8YO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uZ3-3e-GxY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

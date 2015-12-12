@@ -28,6 +28,7 @@ class CompanyCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var scoreChart: MDRadialProgressView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,7 +54,7 @@ class CompanyCommentTableViewCell: UITableViewCell {
         //configureComment(data.comment)
         
         //设置分数
-        //configureScore(data.score)
+        configureScore(data.score)
     }
     
     func configureAvatar(imagePath: String) -> Void {
@@ -73,18 +74,18 @@ class CompanyCommentTableViewCell: UITableViewCell {
 //        self.comments.text = comment
 //    }
 //    
-//    func configureScore(score: UInt) -> Void {
-//        //自定义主题
-//        let newTheme = MDRadialProgressTheme()
-//        newTheme.completedColor = UIColor.greenColor()
-//        newTheme.incompletedColor = UIColor.grayColor()
-//        newTheme.centerColor = UIColor.clearColor()
-//        newTheme.sliceDividerHidden = true
-//        newTheme.labelColor = UIColor.blackColor()
-//        newTheme.labelShadowColor = UIColor.whiteColor()
-//        
-//        self.scoreChart.theme = newTheme
-//        self.scoreChart.progressTotal = 100
-//        self.scoreChart.progressCounter = score
-//    }
+    func configureScore(score: UInt) -> Void {
+        //自定义主题
+        let newTheme = MDRadialProgressTheme()
+        newTheme.completedColor = UIColor.greenColor()
+        newTheme.incompletedColor = UIColor.grayColor()
+        newTheme.centerColor = UIColor.clearColor()
+        newTheme.sliceDividerHidden = true
+        newTheme.labelColor = UIColor.blackColor()
+        newTheme.labelShadowColor = UIColor.whiteColor()
+        
+        self.scoreChart.theme = newTheme
+        self.scoreChart.progressTotal = 100
+        self.scoreChart.progressCounter = score
+    }
 }
