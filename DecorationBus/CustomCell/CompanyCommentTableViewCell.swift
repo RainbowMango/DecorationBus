@@ -29,7 +29,8 @@ class CompanyCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var scoreChart: MDRadialProgressView!
-
+    @IBOutlet weak var comment: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -51,7 +52,7 @@ class CompanyCommentTableViewCell: UITableViewCell {
         configureDate(data.date)
         
         //设置评论
-        //configureComment(data.comment)
+        configureComment(data.comment)
         
         //设置分数
         configureScore(data.score)
@@ -70,10 +71,10 @@ class CompanyCommentTableViewCell: UITableViewCell {
         self.date.text = date
     }
     
-//    func configureComment(comment: String) -> Void {
-//        self.comments.text = comment
-//    }
-//    
+    func configureComment(comment: String) -> Void {
+        self.comment.text = comment
+    }
+    
     func configureScore(score: UInt) -> Void {
         //自定义主题
         let newTheme = MDRadialProgressTheme()

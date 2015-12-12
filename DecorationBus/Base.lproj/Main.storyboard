@@ -364,7 +364,7 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="companycommentcell" rowHeight="157" id="VkP-fb-G0q" userLabel="评论Cell" customClass="CompanyCommentTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="157"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VkP-fb-G0q" id="hAE-ca-NOk">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VkP-fb-G0q" id="hAE-ca-NOk" userLabel="comment">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="156.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -407,16 +407,27 @@
                                                 <constraint firstAttribute="width" constant="40" id="s0Y-gH-WpK"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsL-BG-K6z">
+                                            <rect key="frame" x="8" y="53" width="304" height="95.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <animations/>
                                     <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="PxC-Mm-vnU" firstAttribute="top" secondItem="hAE-ca-NOk" secondAttribute="topMargin" id="1Ja-Nu-xtl"/>
                                         <constraint firstItem="AOE-wG-dJJ" firstAttribute="leading" secondItem="PxC-Mm-vnU" secondAttribute="trailing" constant="5" id="870-oM-j75"/>
+                                        <constraint firstItem="OsL-BG-K6z" firstAttribute="top" secondItem="PxC-Mm-vnU" secondAttribute="bottom" constant="5" id="9NA-1Y-zFG"/>
                                         <constraint firstItem="4gf-IO-hLt" firstAttribute="trailing" secondItem="hAE-ca-NOk" secondAttribute="trailingMargin" id="9gr-Em-3lr"/>
                                         <constraint firstItem="Vz2-JW-ifl" firstAttribute="leading" secondItem="PxC-Mm-vnU" secondAttribute="trailing" constant="5" id="V98-KL-0Pv"/>
                                         <constraint firstItem="4gf-IO-hLt" firstAttribute="top" secondItem="hAE-ca-NOk" secondAttribute="topMargin" id="isJ-eu-7Jb"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="OsL-BG-K6z" secondAttribute="bottom" id="jUr-wy-DDZ"/>
+                                        <constraint firstItem="OsL-BG-K6z" firstAttribute="leading" secondItem="hAE-ca-NOk" secondAttribute="leadingMargin" id="kEW-JO-sdi"/>
                                         <constraint firstItem="PxC-Mm-vnU" firstAttribute="leading" secondItem="hAE-ca-NOk" secondAttribute="leadingMargin" id="muH-uK-NYZ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="OsL-BG-K6z" secondAttribute="trailing" id="q2W-kv-TOY"/>
                                         <constraint firstItem="AOE-wG-dJJ" firstAttribute="top" secondItem="hAE-ca-NOk" secondAttribute="topMargin" id="uM6-1F-IZi"/>
                                         <constraint firstItem="Vz2-JW-ifl" firstAttribute="top" secondItem="AOE-wG-dJJ" secondAttribute="bottom" id="wm2-MJ-wFu"/>
                                     </constraints>
@@ -424,6 +435,7 @@
                                 <animations/>
                                 <connections>
                                     <outlet property="avatar" destination="PxC-Mm-vnU" id="lXJ-Ma-jqj"/>
+                                    <outlet property="comment" destination="OsL-BG-K6z" id="j2Q-gx-O8O"/>
                                     <outlet property="date" destination="Vz2-JW-ifl" id="ndt-a0-xQY"/>
                                     <outlet property="nickname" destination="AOE-wG-dJJ" id="4Ch-fq-2xw"/>
                                     <outlet property="scoreChart" destination="4gf-IO-hLt" id="wlp-TB-8Ig"/>
