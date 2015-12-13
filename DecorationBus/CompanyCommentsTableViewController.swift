@@ -13,6 +13,8 @@ class CompanyCommentsTableViewController: UITableViewController {
     var _company: CompanyCellData = CompanyCellData()
     var _comments: Array<CompanyComment> = Array<CompanyComment>()
     
+    var tableFooter = MJRefreshAutoNormalFooter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,14 +22,9 @@ class CompanyCommentsTableViewController: UITableViewController {
         
         self._comments = requestCompanyComments(0, companyId: self._company.id)
         
-//        //添加测试数据
-//        let comment = CompanyComment()
-//        comment.avatar   = "http://decorationbus.sinaapp.com/server/images/banner/ser01.jpg"
-//        comment.nickname = "用户昵称"
-//        comment.date     = "2015-12-11"
-//        comment.score    = 87
-//        comment.comment  = "还不错哦还不错哦还不错哦还不错哦还不错哦还不错哦还不错哦还不错哦还不错哦"
-//        self._comments.append(comment)
+        //添加上拉刷新控件
+        tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
+        self.tableView.tableFooterView = tableFooter
     }
 
     override func didReceiveMemoryWarning() {
@@ -144,5 +141,19 @@ class CompanyCommentsTableViewController: UITableViewController {
         return Array<CompanyComment>()
     }
 
-    
+    //上拉刷新
+    func tableFooterRefresh() {
+        // 追加每次请求到的数据
+        let requestedCompanyComments = requestCompanyComments(self._comments.count, companyId: self._company.id)
+        if(requestedCompanyComments.isEmpty) {
+            self.tableFooter.endRefreshingWithNoMoreData()
+            return
+        }
+        for item in requestedCompanyComments {
+            self._comments.append(item)
+        }
+        
+        self.tableFooter.endRefreshing()
+        self.tableView.reloadData()
+    }
 }
