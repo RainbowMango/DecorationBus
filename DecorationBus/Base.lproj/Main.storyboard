@@ -383,7 +383,6 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="PxC-Mm-vnU" firstAttribute="top" secondItem="hAE-ca-NOk" secondAttribute="topMargin" id="1Ja-Nu-xtl"/>
                                         <constraint firstItem="AOE-wG-dJJ" firstAttribute="leading" secondItem="PxC-Mm-vnU" secondAttribute="trailing" constant="5" id="870-oM-j75"/>
