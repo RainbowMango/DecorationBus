@@ -349,20 +349,20 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="樱桃小丸子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOE-wG-dJJ" userLabel="nickname">
-                                            <rect key="frame" x="53" y="8" width="120" height="21"/>
+                                            <rect key="frame" x="53" y="8" width="120" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="6GK-hZ-4DN"/>
-                                                <constraint firstAttribute="height" constant="21" id="bce-nb-aS2"/>
+                                                <constraint firstAttribute="height" constant="20" id="bce-nb-aS2"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-12-12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz2-JW-ifl">
-                                            <rect key="frame" x="53" y="29" width="120" height="21"/>
+                                            <rect key="frame" x="53" y="28" width="120" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="qsc-uI-dy7"/>
-                                                <constraint firstAttribute="height" constant="21" id="sdz-nM-SRi"/>
+                                                <constraint firstAttribute="height" constant="20" id="sdz-nM-SRi"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
