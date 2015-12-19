@@ -127,6 +127,25 @@ class CompanyCommentsTableViewController: UITableViewController {
                 comment.date     = item.objectForKey("date") as! String
                 comment.comment  = item.objectForKey("comment") as! String
                 comment.score    = item.objectForKey("score") as! UInt
+                //解析缩略图
+                let thumbnail01: String = item.objectForKey("thumbnail01") as! String
+                if(!thumbnail01.isEmpty) {comment.thumbnails.append(thumbnail01)}
+                let thumbnail02: String = item.objectForKey("thumbnail02") as! String
+                if(!thumbnail02.isEmpty) {comment.thumbnails.append(thumbnail02)}
+                let thumbnail03: String = item.objectForKey("thumbnail03") as! String
+                if(!thumbnail03.isEmpty) {comment.thumbnails.append(thumbnail03)}
+                let thumbnail04: String = item.objectForKey("thumbnail04") as! String
+                if(!thumbnail04.isEmpty) {comment.thumbnails.append(thumbnail04)}
+                //解析源图
+                let image01: String = item.objectForKey("image01") as! String
+                if(!image01.isEmpty) {comment.originimages.append(image01)}
+                let image02: String = item.objectForKey("image02") as! String
+                if(!image02.isEmpty) {comment.originimages.append(image02)}
+                let image03: String = item.objectForKey("image03") as! String
+                if(!image03.isEmpty) {comment.originimages.append(image03)}
+                let image04: String = item.objectForKey("image04") as! String
+                if(!image04.isEmpty) {comment.originimages.append(image04)}
+                
                 requestedCompanyComments.append(comment)
             }
             

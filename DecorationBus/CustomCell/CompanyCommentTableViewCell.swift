@@ -9,24 +9,25 @@
 import UIKit
 
 class CompanyComment {
-    var avatar   : String
-    var nickname : String
-    var date     : String
-    var comment  : String
-    var score    : UInt
-    var images   : Array<String>
+    var avatar      : String
+    var nickname    : String
+    var date        : String
+    var comment     : String
+    var score       : UInt
+    var thumbnails  : Array<String>
+    var originimages: Array<String>
     
     init() {
-        avatar   = String()
-        nickname = String()
-        date     = String()
-        comment  = String()
-        score    = 0
-        images   = Array<String>()
+        avatar          = String()
+        nickname        = String()
+        date            = String()
+        comment         = String()
+        score           = 0
+        thumbnails      = Array<String>()
+        originimages    = Array<String>()
     }
 }
 
-var j = 0
 class CompanyCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var nickname: UILabel!
@@ -66,7 +67,7 @@ class CompanyCommentTableViewCell: UITableViewCell {
         configureScore(data.score)
         
         //设置图片
-        configureImages(data.images)
+        configureImages(data.thumbnails)
     }
     
     func configureAvatar(imagePath: String) -> Void {
@@ -102,49 +103,11 @@ class CompanyCommentTableViewCell: UITableViewCell {
     }
     
     func configureImages(var images: Array<String>) -> Void {
-//        if(i % 2 == 0) {
-//            let imageURL = NSURL(string: "http://decorationbus.sinaapp.com/server/images/banner/ser01.jpg")
-//            self.image1.sd_setImageWithURL(imageURL, placeholderImage: UIImage(named: "companyDefaultLogo.png"))
-//        }
-        j++
-        images.append("http://decorationbus.sinaapp.com/server/images/banner/ser01.jpg")
-        images.append("http://decorationbus.sinaapp.com/server/images/banner/ser02.jpg")
-        images.append("http://decorationbus.sinaapp.com/server/images/banner/ser03.jpg")
-        images.append("http://decorationbus.sinaapp.com/server/images/banner/ser04.jpg")
-        if(j % 2 == 0) {
-            return
-        }
+        
         for(var i = 0; i < images.count; i++) {
             let imageURL = NSURL(string: images[i])
             let imageView = self.imageSection.subviews[i].subviews[0] as! UIImageView
             imageView.sd_setImageWithURL(imageURL, placeholderImage: UIImage(named: "companyDefaultLogo.png"))
-        }
-        return
-        //如果没有图片则隐藏图片区
-        if(images.isEmpty) {
-            //self.imageSection.hidden = true
-            //self.imageSection.frame = CGRect.zero
-        }
-        
-        if(images.count > 0) {
-            let imageURL = NSURL(string: images[0])
-            self.image1.sd_setImageWithURL(imageURL, placeholderImage: UIImage(named: "companyDefaultLogo.png"))
-        }
-        
-        if(images.count > 1) {
-            let imageURL = NSURL(string: images[1])
-            self.image2.sd_setImageWithURL(imageURL, placeholderImage: UIImage(named: "companyDefaultLogo.png"))
-        }
-        
-        if(images.count > 2) {
-            let imageURL = NSURL(string: images[2])
-            self.image2.sd_setImageWithURL(imageURL, placeholderImage: UIImage(named: "companyDefaultLogo.png"))
-        }
-        
-        
-        if(images.count > 3) {
-            let imageURL = NSURL(string: images[3])
-            self.image2.sd_setImageWithURL(imageURL, placeholderImage: UIImage(named: "companyDefaultLogo.png"))
         }
     }
 }
