@@ -30,12 +30,12 @@ class CompanyListTableViewController: UITableViewController {
         //添加上拉刷新控件
         tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
         self.tableView.tableFooterView = tableFooter
+        
+        self.tableHeader.beginRefreshing()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.tableHeader.beginRefreshing()
     }
     
     override func didReceiveMemoryWarning() {
