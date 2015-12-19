@@ -20,7 +20,10 @@ class CompanyCommentsTableViewController: UITableViewController {
         
         self.tableView.tableFooterView = UIView() // 清除tableView中空白行
         self.tableView.estimatedRowHeight = 120
-        self.tableView.rowHeight = UITableViewAutomaticDimension // cell 高度自适应
+        
+        if #available(iOS 8, *) {
+            self.tableView.rowHeight = UITableViewAutomaticDimension // cell 高度自适应
+        }
         
         self._comments = requestCompanyComments(0, companyId: self._company.id)
         
