@@ -17,6 +17,7 @@ class CompanyCommentsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = self._company.name //设置导航栏标题
         
         self.tableView.tableFooterView = UIView() // 清除tableView中空白行
         self.tableView.estimatedRowHeight = 120
