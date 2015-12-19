@@ -104,6 +104,14 @@ class CompanyCommentTableViewCell: UITableViewCell {
     
     func configureImages(var images: Array<String>) -> Void {
         
+        //如果没有图片，清空imageview，避免cell重用残留
+        if(images.isEmpty) {
+            for(var i = 0; i < self.imageSection.subviews.count; i++) {
+                let imageView = self.imageSection.subviews[i].subviews[0] as! UIImageView
+                imageView.image = UIImage()
+            }
+        }
+        
         for(var i = 0; i < images.count; i++) {
             let imageURL = NSURL(string: images[i])
             let imageView = self.imageSection.subviews[i].subviews[0] as! UIImageView
