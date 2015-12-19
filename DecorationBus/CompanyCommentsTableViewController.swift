@@ -21,6 +21,7 @@ class CompanyCommentsTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView() // 清除tableView中空白行
         self.tableView.estimatedRowHeight = 120
         
+        //IOS7不能很好支持该设置
         if #available(iOS 8, *) {
             self.tableView.rowHeight = UITableViewAutomaticDimension // cell 高度自适应
         }
@@ -30,6 +31,8 @@ class CompanyCommentsTableViewController: UITableViewController {
         //添加上拉刷新控件
         tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
         self.tableView.tableFooterView = tableFooter
+        
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

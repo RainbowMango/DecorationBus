@@ -212,7 +212,6 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     func refreshData() {
         // 刷新逻辑
         NSThread.sleepForTimeInterval(2.0)
-        print("从服务器获取数据成功")
         
         self.tableView.reloadData()
         self.refreshControl.endRefreshing()
