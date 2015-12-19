@@ -30,6 +30,7 @@ class CompanyCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var scoreChart: MDRadialProgressView!
     @IBOutlet weak var comment: UILabel!
+    @IBOutlet weak var imageSection: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
