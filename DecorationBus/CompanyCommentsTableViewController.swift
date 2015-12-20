@@ -56,9 +56,34 @@ class CompanyCommentsTableViewController: UITableViewController {
 
         cell.configureViews(self._comments[indexPath.row])
         
+        /**
+         给cell内图片添加点击手势
+         注：在SB中添加不成功，原因不明，错误信息如下
+         2015-12-20 14:32:46.155 DecorationBus[26381:1098727] WARNING:
+         A Gesture recognizer (<UITapGestureRecognizer: 0x7fb3f155f070; state = Possible; view = <UIImageView 0x7fb3f39855b0>; target= <(action=imageTapped:, target=<DecorationBus.CompanyCommentsTableViewController 0x7fb3f1725fd0>)>>)
+         was setup in a storyboard/xib to be added to more than one view (-><UIImageView: 0x7fb3f3994650; frame = (0 0; 69 69); autoresize = RM+BM; gestureRecognizers = <NSArray: 0x7fb3f39a2b50>; layer = <CALayer: 0x7fb3f3991700>>) at a time,
+         this was never allowed, and is now enforced.
+         Beginning with iOS 9.0 it will be put in the first view it is loaded into.
+        */
+        let recognizer = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
+        recognizer.cancelsTouchesInView = false
+        recognizer.numberOfTapsRequired = 1
+        cell.image1.tag = indexPath.row //用tag来标示cell行数
+        cell.image1.userInteractionEnabled = true
+        cell.image1.addGestureRecognizer(recognizer)
+        
         return cell
     }
 
+    func imageTapped(gesture: UITapGestureRecognizer) {
+        let indexPath = NSIndexPath(forRow: gesture.view!.tag, inSection: 0)
+        //let cell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
+        print("用户点击了图片所在的cell行数为\(indexPath.row)")
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("用户点击了cell: \(indexPath.row)")
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
