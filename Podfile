@@ -1,5 +1,5 @@
 platform :ios, '7.0'
-    pod 'MWPhotoBrowser', '~> 1.4.1'
+    pod 'MWPhotoBrowser', '~> 2.1.1'
     pod 'UMengAnalytics-NO-IDFA', '~> 3.4.7'
     pod 'MJRefresh', '~> 3.0.4'
     pod 'MDRadialProgress', '~> 1.3.2'
