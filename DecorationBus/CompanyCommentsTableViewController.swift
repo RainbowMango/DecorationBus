@@ -71,14 +71,14 @@ class CompanyCommentsTableViewController: UITableViewController {
         let recognizer03 = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
         let recognizer04 = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
         //recognizer.cancelsTouchesInView = false //这里需要结束touch，避免再传递给tableview
-        cell.image1.tag = 0
-        cell.image2.tag = 1
-        cell.image3.tag = 2
-        cell.image4.tag = 3
-        cell.image1.userInteractionEnabled = true
-        cell.image2.userInteractionEnabled = true
-        cell.image3.userInteractionEnabled = true
-        cell.image4.userInteractionEnabled = true
+        cell.image1.tag = indexPath.row * 100 + 0
+        cell.image2.tag = indexPath.row * 100 + 1
+        cell.image3.tag = indexPath.row * 100 + 2
+        cell.image4.tag = indexPath.row * 100 + 3
+//        cell.image1.userInteractionEnabled = true
+//        cell.image2.userInteractionEnabled = true
+//        cell.image3.userInteractionEnabled = true
+//        cell.image4.userInteractionEnabled = true
         cell.image1.addGestureRecognizer(recognizer01)
         cell.image2.addGestureRecognizer(recognizer02)
         cell.image3.addGestureRecognizer(recognizer03)
@@ -87,12 +87,14 @@ class CompanyCommentsTableViewController: UITableViewController {
         return cell
     }
 
+    /*
+    处理图片点击动作
+    注意：不能使用tableView.indexPathForSelectedRow获取点击cell行数，因为图片获取点击动作后默认不再传递给tableView.
+    */
     func imageTapped(gesture: UITapGestureRecognizer) {
-        //let indexPath = NSIndexPath(forRow: gesture.view!.tag, inSection: 0)
-        //let cell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
-        let indexPath  = self.tableView.indexPathForSelectedRow
-        let imageIndex = gesture.view?.tag
-        print("用户点击了第\(indexPath!.row)行的第\(imageIndex)张图片")
+        let cellRow = (gesture.view?.tag)! / 100
+        let imageIndex = (gesture.view?.tag)! % 100
+        print("用户点击了第\(cellRow)行的第\(imageIndex)张图片")
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
