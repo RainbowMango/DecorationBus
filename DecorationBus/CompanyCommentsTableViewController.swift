@@ -65,20 +65,34 @@ class CompanyCommentsTableViewController: UITableViewController {
          this was never allowed, and is now enforced.
          Beginning with iOS 9.0 it will be put in the first view it is loaded into.
         */
-        let recognizer = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
-        recognizer.cancelsTouchesInView = false
-        recognizer.numberOfTapsRequired = 1
-        cell.image1.tag = indexPath.row //用tag来标示cell行数
+        //给图片添加手势(注：为方便起见，这个给每个imageView都添加了手势，图片展现时需要判断是否有图片)
+        let recognizer01 = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
+        let recognizer02 = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
+        let recognizer03 = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
+        let recognizer04 = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
+        //recognizer.cancelsTouchesInView = false //这里需要结束touch，避免再传递给tableview
+        cell.image1.tag = 0
+        cell.image2.tag = 1
+        cell.image3.tag = 2
+        cell.image4.tag = 3
         cell.image1.userInteractionEnabled = true
-        cell.image1.addGestureRecognizer(recognizer)
+        cell.image2.userInteractionEnabled = true
+        cell.image3.userInteractionEnabled = true
+        cell.image4.userInteractionEnabled = true
+        cell.image1.addGestureRecognizer(recognizer01)
+        cell.image2.addGestureRecognizer(recognizer02)
+        cell.image3.addGestureRecognizer(recognizer03)
+        cell.image4.addGestureRecognizer(recognizer04)
         
         return cell
     }
 
     func imageTapped(gesture: UITapGestureRecognizer) {
-        let indexPath = NSIndexPath(forRow: gesture.view!.tag, inSection: 0)
+        //let indexPath = NSIndexPath(forRow: gesture.view!.tag, inSection: 0)
         //let cell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
-        print("用户点击了图片所在的cell行数为\(indexPath.row)")
+        let indexPath  = self.tableView.indexPathForSelectedRow
+        let imageIndex = gesture.view?.tag
+        print("用户点击了第\(indexPath!.row)行的第\(imageIndex)张图片")
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
