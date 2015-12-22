@@ -8,12 +8,14 @@
 
 import UIKit
 
-class CompanyCommentsTableViewController: UITableViewController {
+class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserDelegate {
 
     var _company: CompanyCellData = CompanyCellData()
     var _comments: Array<CompanyComment> = Array<CompanyComment>()
     
     var tableFooter = MJRefreshAutoNormalFooter()
+    
+    var photoBrowserSource = Array<MWPhoto>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,6 +97,30 @@ class CompanyCommentsTableViewController: UITableViewController {
         let cellRow = (gesture.view?.tag)! / 100
         let imageIndex = (gesture.view?.tag)! % 100
         print("用户点击了第\(cellRow)行的第\(imageIndex)张图片")
+        
+        //将改行的图片URL赋给图片浏览器数据源
+        let originImages = self._comments[cellRow].originimages
+        photoBrowserSource.removeAll()
+        for image in originImages {
+            let imageURL = NSURL(string: image)
+            print("当前URL：\(imageURL)")
+            let mwPhoto = MWPhoto(URL: imageURL)
+            photoBrowserSource.append(mwPhoto)
+        }
+        
+        let browser = MWPhotoBrowser(delegate: self)
+        browser.displayActionButton = true; // Show action button to allow sharing, copying, etc (defaults to YES)
+        browser.displayNavArrows = false; // Whether to display left and right nav arrows on toolbar (defaults to NO)
+        browser.displaySelectionButtons = false; // Whether selection buttons are shown on each image (defaults to NO)
+        browser.zoomPhotosToFill = true; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
+        browser.alwaysShowControls = false; // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
+        browser.enableGrid = false; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
+        browser.startOnGrid = false; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
+        browser.autoPlayOnAppear = false; // Auto-play first video
+        
+        browser.setCurrentPhotoIndex(UInt(imageIndex))
+        self.navigationController?.pushViewController(browser, animated: true)
+        
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -134,7 +160,28 @@ class CompanyCommentsTableViewController: UITableViewController {
         return true
     }
     */
-
+    // MARK: - MWPhotoBrowserDelegate
+    
+    func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
+        return UInt(photoBrowserSource.count)
+    }
+    
+    func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
+        if index < UInt(photoBrowserSource.count) {
+            return self.photoBrowserSource[Int(index)]
+        }
+        
+        return nil;
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
+    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+        return UIStatusBarAnimation.None
+    }
+    
     /*
     // MARK: - Navigation
 
