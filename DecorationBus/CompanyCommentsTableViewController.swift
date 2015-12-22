@@ -77,10 +77,6 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
         cell.image2.tag = indexPath.row * 100 + 1
         cell.image3.tag = indexPath.row * 100 + 2
         cell.image4.tag = indexPath.row * 100 + 3
-//        cell.image1.userInteractionEnabled = true
-//        cell.image2.userInteractionEnabled = true
-//        cell.image3.userInteractionEnabled = true
-//        cell.image4.userInteractionEnabled = true
         cell.image1.addGestureRecognizer(recognizer01)
         cell.image2.addGestureRecognizer(recognizer02)
         cell.image3.addGestureRecognizer(recognizer03)
@@ -108,8 +104,9 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
             photoBrowserSource.append(mwPhoto)
         }
         
+        //创建图片浏览器并设置
         let browser = MWPhotoBrowser(delegate: self)
-        browser.displayActionButton = true; // Show action button to allow sharing, copying, etc (defaults to YES)
+        browser.displayActionButton = false; // Show action button to allow sharing, copying, etc (defaults to YES)
         browser.displayNavArrows = false; // Whether to display left and right nav arrows on toolbar (defaults to NO)
         browser.displaySelectionButtons = false; // Whether selection buttons are shown on each image (defaults to NO)
         browser.zoomPhotosToFill = true; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
@@ -118,6 +115,7 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
         browser.startOnGrid = false; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
         browser.autoPlayOnAppear = false; // Auto-play first video
         
+        //启动浏览器
         browser.setCurrentPhotoIndex(UInt(imageIndex))
         self.navigationController?.pushViewController(browser, animated: true)
         
@@ -126,40 +124,7 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("用户点击了cell: \(indexPath.row)")
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+    
     // MARK: - MWPhotoBrowserDelegate
     
     func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
@@ -172,14 +137,6 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
         }
         
         return nil;
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return false
-    }
-    
-    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
-        return UIStatusBarAnimation.None
     }
     
     /*
