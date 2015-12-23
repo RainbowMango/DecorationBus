@@ -40,9 +40,15 @@ class CompanyCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var image3: UIImageView!
     @IBOutlet weak var image4: UIImageView!
     
+    var imageViews = Array<UIImageView>()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        imageViews.append(self.image1)
+        imageViews.append(self.image2)
+        imageViews.append(self.image3)
+        imageViews.append(self.image4)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -117,5 +123,23 @@ class CompanyCommentTableViewCell: UITableViewCell {
             let imageView = self.imageSection.subviews[i].subviews[0] as! UIImageView
             imageView.sd_setImageWithURL(imageURL, placeholderImage: UIImage(named: "companyDefaultLogo.png"))
         }
+    }
+    
+    func removeImagesGesture() {
+        for view in self.imageViews {
+            
+            guard let currentGestures = view.gestureRecognizers else {
+                continue
+            }
+            for gesture in currentGestures {
+                view.removeGestureRecognizer(gesture)
+            }
+        }
+    }
+    
+    func configureImageGesture(index: Int, target: AnyObject?, action: Selector, tag: Int) {
+        let recognizer01 = UITapGestureRecognizer(target: target, action: action)
+        self.imageViews[index].tag = tag
+        self.imageViews[index].addGestureRecognizer(recognizer01)
     }
 }

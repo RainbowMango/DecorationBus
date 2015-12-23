@@ -56,7 +56,8 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("companycommentcell", forIndexPath: indexPath) as! CompanyCommentTableViewCell
 
-        cell.configureViews(self._comments[indexPath.row])
+        let commentsData = self._comments[indexPath.row]
+        cell.configureViews(commentsData)
         
         /**
          给cell内图片添加点击手势
@@ -67,20 +68,11 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
          this was never allowed, and is now enforced.
          Beginning with iOS 9.0 it will be put in the first view it is loaded into.
         */
-        //给图片添加手势(注：为方便起见，这个给每个imageView都添加了手势，图片展现时需要判断是否有图片)
-        let recognizer01 = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
-        let recognizer02 = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
-        let recognizer03 = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
-        let recognizer04 = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
-        //recognizer.cancelsTouchesInView = false //这里需要结束touch，避免再传递给tableview
-        cell.image1.tag = indexPath.row * 100 + 0
-        cell.image2.tag = indexPath.row * 100 + 1
-        cell.image3.tag = indexPath.row * 100 + 2
-        cell.image4.tag = indexPath.row * 100 + 3
-        cell.image1.addGestureRecognizer(recognizer01)
-        cell.image2.addGestureRecognizer(recognizer02)
-        cell.image3.addGestureRecognizer(recognizer03)
-        cell.image4.addGestureRecognizer(recognizer04)
+        cell.removeImagesGesture()
+        for(var i = 0; i < commentsData.thumbnails.count; i++) {
+            let viewTag = indexPath.row * 100 + i
+            cell.configureImageGesture(i, target: self, action: Selector("imageTapped:"), tag: viewTag)
+        }
         
         return cell
     }
@@ -92,14 +84,12 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
     func imageTapped(gesture: UITapGestureRecognizer) {
         let cellRow = (gesture.view?.tag)! / 100
         let imageIndex = (gesture.view?.tag)! % 100
-        print("用户点击了第\(cellRow)行的第\(imageIndex)张图片")
         
         //将改行的图片URL赋给图片浏览器数据源
         let originImages = self._comments[cellRow].originimages
         photoBrowserSource.removeAll()
         for image in originImages {
             let imageURL = NSURL(string: image)
-            print("当前URL：\(imageURL)")
             let mwPhoto = MWPhoto(URL: imageURL)
             photoBrowserSource.append(mwPhoto)
         }
@@ -122,7 +112,7 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("用户点击了cell: \(indexPath.row)")
+        //print("用户点击了cell: \(indexPath.row)")
     }
     
     // MARK: - MWPhotoBrowserDelegate
@@ -138,16 +128,6 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
         
         return nil;
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: - Request And Refresh
     func requestCompanyComments(counter: Int, companyId: UInt) -> Array<CompanyComment> {
