@@ -244,10 +244,10 @@
             </objects>
             <point key="canvasLocation" x="1084" y="-1480"/>
         </scene>
-        <!--Table View Controller-->
+        <!--设计师列表-->
         <scene sceneID="V95-aL-VWg">
             <objects>
-                <tableViewController id="M9E-P3-yRU" sceneMemberID="viewController">
+                <tableViewController id="M9E-P3-yRU" userLabel="设计师列表" customClass="ArtistListTableViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="onj-1D-c8e">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -267,7 +267,7 @@
                             <outlet property="delegate" destination="M9E-P3-yRU" id="PUu-nf-uIp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ake-M1-0Cu"/>
+                    <navigationItem key="navigationItem" title="设计师" id="ake-M1-0Cu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zdd-tW-dqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
