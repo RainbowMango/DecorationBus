@@ -72,6 +72,7 @@
 		9B37A9ED19EEB57A0097F88D /* DecorationBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9EC19EEB57A0097F88D /* DecorationBusTests.swift */; };
 		9B49927E1BFCCD7200E31FA8 /* CompanyListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */; };
 		9B4A01C41C2AA095004CF788 /* ArtistListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A01C31C2AA095004CF788 /* ArtistListTableViewController.swift */; };
+		9B4A01C61C2C414B004CF788 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A01C51C2C414B004CF788 /* ArtistTableViewCell.swift */; };
 		9B4CC7031C1BD30A00A82A41 /* CompanyCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CC7021C1BD30A00A82A41 /* CompanyCommentTableViewCell.swift */; };
 		9B531CB41A583033008067C3 /* DecorationBus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B531CB21A583032008067C3 /* DecorationBus.xcdatamodeld */; };
 		9B6E3DFA1AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3DF91AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift */; };
@@ -256,6 +257,7 @@
 		9B37A9EC19EEB57A0097F88D /* DecorationBusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationBusTests.swift; sourceTree = "<group>"; };
 		9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyListTableViewController.swift; sourceTree = "<group>"; };
 		9B4A01C31C2AA095004CF788 /* ArtistListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistListTableViewController.swift; sourceTree = "<group>"; };
+		9B4A01C51C2C414B004CF788 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
 		9B4CC7021C1BD30A00A82A41 /* CompanyCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyCommentTableViewCell.swift; sourceTree = "<group>"; };
 		9B531CB31A583033008067C3 /* DecorationBus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DecorationBus.xcdatamodel; sourceTree = "<group>"; };
 		9B6E3DF91AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverPhotoAlbumCollectionViewController.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				9B239BEC1A7670F2001BF6DA /* SegmentCategoryTableViewCell.swift */,
 				9BE401521C0215D2001CDE29 /* CompanyTableViewCell.swift */,
 				9B4CC7021C1BD30A00A82A41 /* CompanyCommentTableViewCell.swift */,
+				9B4A01C51C2C414B004CF788 /* ArtistTableViewCell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -1075,6 +1078,7 @@
 				9B1467E21A260A3C00ACD417 /* CategoryMinorAddViewController.swift in Sources */,
 				9B8695A11AE93895001D0D7F /* AGImagePickerController.m in Sources */,
 				9BA6B0481A3DD261003BC35E /* KeyboardAccessory.swift in Sources */,
+				9B4A01C61C2C414B004CF788 /* ArtistTableViewCell.swift in Sources */,
 				9B8695FD1BEE529C001B1FA0 /* RMParallaxExtend.swift in Sources */,
 				9B86959F1AE93895001D0D7F /* AGImagePickerController+Helper.m in Sources */,
 				9B2491931A5D683700990BA6 /* FormCheckCell.swift in Sources */,
