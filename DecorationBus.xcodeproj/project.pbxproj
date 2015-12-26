@@ -114,6 +114,7 @@
 		9B9E1AD11A826427006D816F /* Album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B9E1ACE1A826427006D816F /* Album@2x.png */; };
 		9B9E1AD21A826427006D816F /* Album@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B9E1ACF1A826427006D816F /* Album@3x.png */; };
 		9BA6B0481A3DD261003BC35E /* KeyboardAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6B0471A3DD261003BC35E /* KeyboardAccessory.swift */; };
+		9BA99EAF1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA99EAE1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift */; };
 		9BC288D31A2964CC005728D5 /* ShowPayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC288D21A2964CC005728D5 /* ShowPayDetailViewController.swift */; };
 		9BC288D51A29E041005728D5 /* ShowBudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC288D41A29E041005728D5 /* ShowBudgetDetailViewController.swift */; };
 		9BC401BA1A7CB3CF00FDF4D6 /* BudgetRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC401B91A7CB3CF00FDF4D6 /* BudgetRecord.swift */; };
@@ -308,6 +309,7 @@
 		9B9E1ACE1A826427006D816F /* Album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Album@2x.png"; sourceTree = "<group>"; };
 		9B9E1ACF1A826427006D816F /* Album@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Album@3x.png"; sourceTree = "<group>"; };
 		9BA6B0471A3DD261003BC35E /* KeyboardAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAccessory.swift; sourceTree = "<group>"; };
+		9BA99EAE1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistCommentsTableViewController.swift; sourceTree = "<group>"; };
 		9BC288D21A2964CC005728D5 /* ShowPayDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPayDetailViewController.swift; sourceTree = "<group>"; };
 		9BC288D41A29E041005728D5 /* ShowBudgetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowBudgetDetailViewController.swift; sourceTree = "<group>"; };
 		9BC401B91A7CB3CF00FDF4D6 /* BudgetRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetRecord.swift; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 				9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */,
 				9B4A01C31C2AA095004CF788 /* ArtistListTableViewController.swift */,
 				9BE4015B1C19BA9C001CDE29 /* CompanyCommentsTableViewController.swift */,
+				9BA99EAE1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift */,
 				9B05F5161ADA18560058EF0B /* CollectionPhotoCell.swift */,
 				9B6E3DF91AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift */,
 				9B0CE7B21AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift */,
@@ -1137,6 +1140,7 @@
 				9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */,
 				9B239BEB1A753035001BF6DA /* ShowDetailTableViewController.swift in Sources */,
 				9B97DCCE1A2361AA006A94C0 /* BudgetArchiver.swift in Sources */,
+				9BA99EAF1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift in Sources */,
 				9BE401531C0215D2001CDE29 /* CompanyTableViewCell.swift in Sources */,
 				9BF8E0621BD7E39300F3AD9E /* NSData+SDDataCache.m in Sources */,
 				9B9E1ACC1A82556B006D816F /* EverPhotoTableViewController.swift in Sources */,
