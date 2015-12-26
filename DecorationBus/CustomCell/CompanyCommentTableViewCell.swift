@@ -8,11 +8,6 @@
 
 import UIKit
 
-//评论信息公用数据结构
-class CommonComment: CompanyComment {
-    
-}
-
 class CompanyComment {
     var avatar      : String
     var nickname    : String

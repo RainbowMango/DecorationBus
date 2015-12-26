@@ -74,8 +74,6 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
             cell.configureImageGesture(i, target: self, action: Selector("imageTapped:"), tag: viewTag)
         }
         
-        print("当前cell 行数：" + "\(indexPath.row);" + " 高度：\(cell.imageSection.frame.height)")
-        
         return cell
     }
 

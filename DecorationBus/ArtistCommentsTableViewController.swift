@@ -10,7 +10,7 @@ import UIKit
 
 class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDelegate {
     var _artist: ArtistCellData = ArtistCellData()
-    var _comments: Array<CommonComment> = Array<CommonComment>()
+    var _comments: Array<ArtistComment> = Array<ArtistComment>()
     
     var tableFooter = MJRefreshAutoNormalFooter()
     
@@ -53,11 +53,10 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        //let cell = tableView.dequeueReusableCellWithIdentifier("artistcommentcell", forIndexPath: indexPath) as! ArtistCommentTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("artistcommentcell", forIndexPath: indexPath) as! ArtistCommentTableViewCell
         
-        //let commentsData = self._comments[indexPath.row]
-        //cell.configureViews(commentsData)
+        let commentsData = self._comments[indexPath.row]
+        cell.configureViews(commentsData)
         
         /**
         给cell内图片添加点击手势
@@ -68,13 +67,11 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
         this was never allowed, and is now enforced.
         Beginning with iOS 9.0 it will be put in the first view it is loaded into.
         */
-//        cell.removeImagesGesture()
-//        for(var i = 0; i < commentsData.thumbnails.count; i++) {
-//            let viewTag = indexPath.row * 100 + i
-//            cell.configureImageGesture(i, target: self, action: Selector("imageTapped:"), tag: viewTag)
-//        }
-//        
-//        print("当前cell 行数：" + "\(indexPath.row);" + " 高度：\(cell.imageSection.frame.height)")
+        cell.removeImagesGesture()
+        for(var i = 0; i < commentsData.thumbnails.count; i++) {
+            let viewTag = indexPath.row * 100 + i
+            cell.configureImageGesture(i, target: self, action: Selector("imageTapped:"), tag: viewTag)
+        }
         
         return cell
     }
@@ -132,7 +129,7 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
     }
     
     // MARK: - Request And Refresh
-    func requestArtistComments(counter: Int, companyId: UInt) -> Array<CommonComment> {
+    func requestArtistComments(counter: Int, companyId: UInt) -> Array<ArtistComment> {
         let urlStr = REQUEST_ARTIST_COMMENTS_URL_STR + "?counter=\(counter)" + "&artist=\(companyId)"
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
@@ -143,19 +140,19 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
             print("网络异常--请求公司评论信息失败：" + error.localizedDescription)
         }
         
-        return Array<CommonComment>()
+        return Array<ArtistComment>()
     }
     
     // 解析请求到的JSON数据
-    func parseArtistComments(jsonData: NSData) -> Array<CommonComment> {
+    func parseArtistComments(jsonData: NSData) -> Array<ArtistComment> {
         do {
             let jsonStr = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments)
             let itemNum = jsonStr.objectForKey("total") as! Int
             let items = jsonStr.objectForKey("row") as! NSArray
             
-            var requestedArtistComments = Array<CommonComment>()
+            var requestedArtistComments = Array<ArtistComment>()
             for item in items {
-                let comment = CommonComment()
+                let comment = ArtistComment()
                 comment.avatar   = item.objectForKey("avatar") as! String
                 comment.nickname = item.objectForKey("nickname") as! String
                 comment.date     = item.objectForKey("date") as! String
@@ -193,7 +190,7 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
             print("解析JSON数据失败: " + error.localizedDescription)
         }
         
-        return Array<CommonComment>()
+        return Array<ArtistComment>()
     }
     
     //上拉刷新

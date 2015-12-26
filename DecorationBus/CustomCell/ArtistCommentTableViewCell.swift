@@ -56,7 +56,7 @@ class ArtistCommentTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    func configureViews(data: CompanyComment) {
+    func configureViews(data: ArtistComment) {
         //设置用户头像
         configureAvatar(data.avatar)
         
