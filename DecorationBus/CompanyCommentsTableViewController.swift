@@ -22,7 +22,7 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
         self.title = self._company.name //设置导航栏标题
         
         self.tableView.tableFooterView = UIView() // 清除tableView中空白行
-        self.tableView.estimatedRowHeight = 120
+        self.tableView.estimatedRowHeight = 160 //预估高度要大于SB中最小高度，否则cell可能被压缩
         
         //IOS7不能很好支持该设置
         if #available(iOS 8, *) {
@@ -73,6 +73,8 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
             let viewTag = indexPath.row * 100 + i
             cell.configureImageGesture(i, target: self, action: Selector("imageTapped:"), tag: viewTag)
         }
+        
+        print("当前cell 行数：" + "\(indexPath.row);" + " 高度：\(cell.imageSection.frame.height)")
         
         return cell
     }
