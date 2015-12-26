@@ -78,7 +78,7 @@ class ArtistCommentTableViewCell: UITableViewCell {
     
     func configureAvatar(imagePath: String) -> Void {
         let url = NSURL(string: imagePath)
-        self.avatar.sd_setImageWithURL(url, placeholderImage: UIImage(named: "companyDefaultLogo.png"))
+        self.avatar.sd_setImageWithURL(url, placeholderImage: UIImage(named: "userDefaultAvatar"))
     }
     
     func configureNickname(nickname: String) -> Void {
