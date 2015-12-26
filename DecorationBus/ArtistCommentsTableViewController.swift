@@ -8,88 +8,207 @@
 
 import UIKit
 
-class ArtistCommentsTableViewController: UITableViewController {
-
+class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDelegate {
+    var _artist: ArtistCellData = ArtistCellData()
+    var _comments: Array<CommonComment> = Array<CommonComment>()
+    
+    var tableFooter = MJRefreshAutoNormalFooter()
+    
+    var photoBrowserSource = Array<MWPhoto>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.title = self._artist.name //设置导航栏标题
+        
+        self.tableView.tableFooterView = UIView() // 清除tableView中空白行
+        self.tableView.estimatedRowHeight = 160 //预估高度要大于SB中最小高度，否则cell可能被压缩
+        
+        //IOS7不能很好支持该设置
+        if #available(iOS 8, *) {
+            self.tableView.rowHeight = UITableViewAutomaticDimension // cell 高度自适应
+        }
+        
+        self._comments = requestArtistComments(0, companyId: self._artist.id)
+        
+        //添加上拉刷新控件
+        tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
+        self.tableView.tableFooterView = tableFooter
+        
+        self.tableView.reloadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self._comments.count
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let cell = UITableViewCell()
+        //let cell = tableView.dequeueReusableCellWithIdentifier("artistcommentcell", forIndexPath: indexPath) as! ArtistCommentTableViewCell
+        
+        //let commentsData = self._comments[indexPath.row]
+        //cell.configureViews(commentsData)
+        
+        /**
+        给cell内图片添加点击手势
+        注：在SB中添加不成功，原因不明，错误信息如下
+        2015-12-20 14:32:46.155 DecorationBus[26381:1098727] WARNING:
+        A Gesture recognizer (<UITapGestureRecognizer: 0x7fb3f155f070; state = Possible; view = <UIImageView 0x7fb3f39855b0>; target= <(action=imageTapped:, target=<DecorationBus.CompanyCommentsTableViewController 0x7fb3f1725fd0>)>>)
+        was setup in a storyboard/xib to be added to more than one view (-><UIImageView: 0x7fb3f3994650; frame = (0 0; 69 69); autoresize = RM+BM; gestureRecognizers = <NSArray: 0x7fb3f39a2b50>; layer = <CALayer: 0x7fb3f3991700>>) at a time,
+        this was never allowed, and is now enforced.
+        Beginning with iOS 9.0 it will be put in the first view it is loaded into.
+        */
+//        cell.removeImagesGesture()
+//        for(var i = 0; i < commentsData.thumbnails.count; i++) {
+//            let viewTag = indexPath.row * 100 + i
+//            cell.configureImageGesture(i, target: self, action: Selector("imageTapped:"), tag: viewTag)
+//        }
+//        
+//        print("当前cell 行数：" + "\(indexPath.row);" + " 高度：\(cell.imageSection.frame.height)")
+        
         return cell
     }
-    */
-
+    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
+    处理图片点击动作
+    注意：不能使用tableView.indexPathForSelectedRow获取点击cell行数，因为图片获取点击动作后默认不再传递给tableView.
     */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    func imageTapped(gesture: UITapGestureRecognizer) {
+        let cellRow = (gesture.view?.tag)! / 100
+        let imageIndex = (gesture.view?.tag)! % 100
+        
+        //将改行的图片URL赋给图片浏览器数据源
+        let originImages = self._comments[cellRow].originimages
+        photoBrowserSource.removeAll()
+        for image in originImages {
+            let imageURL = NSURL(string: image)
+            let mwPhoto = MWPhoto(URL: imageURL)
+            photoBrowserSource.append(mwPhoto)
+        }
+        
+        //创建图片浏览器并设置
+        let browser = MWPhotoBrowser(delegate: self)
+        browser.displayActionButton = false; // Show action button to allow sharing, copying, etc (defaults to YES)
+        browser.displayNavArrows = false; // Whether to display left and right nav arrows on toolbar (defaults to NO)
+        browser.displaySelectionButtons = false; // Whether selection buttons are shown on each image (defaults to NO)
+        browser.zoomPhotosToFill = true; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
+        browser.alwaysShowControls = false; // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
+        browser.enableGrid = false; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
+        browser.startOnGrid = false; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
+        browser.autoPlayOnAppear = false; // Auto-play first video
+        
+        //启动浏览器
+        browser.setCurrentPhotoIndex(UInt(imageIndex))
+        self.navigationController?.pushViewController(browser, animated: true)
+        
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //print("用户点击了cell: \(indexPath.row)")
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    // MARK: - MWPhotoBrowserDelegate
+    
+    func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
+        return UInt(photoBrowserSource.count)
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
+        if index < UInt(photoBrowserSource.count) {
+            return self.photoBrowserSource[Int(index)]
+        }
+        
+        return nil;
     }
-    */
-
+    
+    // MARK: - Request And Refresh
+    func requestArtistComments(counter: Int, companyId: UInt) -> Array<CommonComment> {
+        let urlStr = REQUEST_ARTIST_COMMENTS_URL_STR + "?counter=\(counter)" + "&artist=\(companyId)"
+        let url = NSURL(string: urlStr)
+        let request = NSURLRequest(URL: url!)
+        do {
+            let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
+            return parseArtistComments(data)
+        }catch let error as NSError{
+            print("网络异常--请求公司评论信息失败：" + error.localizedDescription)
+        }
+        
+        return Array<CommonComment>()
+    }
+    
+    // 解析请求到的JSON数据
+    func parseArtistComments(jsonData: NSData) -> Array<CommonComment> {
+        do {
+            let jsonStr = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments)
+            let itemNum = jsonStr.objectForKey("total") as! Int
+            let items = jsonStr.objectForKey("row") as! NSArray
+            
+            var requestedArtistComments = Array<CommonComment>()
+            for item in items {
+                let comment = CommonComment()
+                comment.avatar   = item.objectForKey("avatar") as! String
+                comment.nickname = item.objectForKey("nickname") as! String
+                comment.date     = item.objectForKey("date") as! String
+                comment.comment  = item.objectForKey("comment") as! String
+                comment.score    = item.objectForKey("score") as! UInt
+                //解析缩略图
+                let thumbnail01: String = item.objectForKey("thumbnail01") as! String
+                if(!thumbnail01.isEmpty) {comment.thumbnails.append(thumbnail01)}
+                let thumbnail02: String = item.objectForKey("thumbnail02") as! String
+                if(!thumbnail02.isEmpty) {comment.thumbnails.append(thumbnail02)}
+                let thumbnail03: String = item.objectForKey("thumbnail03") as! String
+                if(!thumbnail03.isEmpty) {comment.thumbnails.append(thumbnail03)}
+                let thumbnail04: String = item.objectForKey("thumbnail04") as! String
+                if(!thumbnail04.isEmpty) {comment.thumbnails.append(thumbnail04)}
+                //解析源图
+                let image01: String = item.objectForKey("image01") as! String
+                if(!image01.isEmpty) {comment.originimages.append(image01)}
+                let image02: String = item.objectForKey("image02") as! String
+                if(!image02.isEmpty) {comment.originimages.append(image02)}
+                let image03: String = item.objectForKey("image03") as! String
+                if(!image03.isEmpty) {comment.originimages.append(image03)}
+                let image04: String = item.objectForKey("image04") as! String
+                if(!image04.isEmpty) {comment.originimages.append(image04)}
+                
+                requestedArtistComments.append(comment)
+            }
+            
+            //服务端返回的JSON有误时仅打印一条信息
+            if(itemNum != requestedArtistComments.count) {
+                print("Warning: items number mismatch in json!")
+            }
+            
+            return requestedArtistComments
+        }catch let error as NSError {
+            print("解析JSON数据失败: " + error.localizedDescription)
+        }
+        
+        return Array<CommonComment>()
+    }
+    
+    //上拉刷新
+    func tableFooterRefresh() {
+        // 追加每次请求到的数据
+        let requestedArtistComments = requestArtistComments(self._comments.count, companyId: self._artist.id)
+        if(requestedArtistComments.isEmpty) {
+            self.tableFooter.endRefreshingWithNoMoreData()
+            return
+        }
+        for item in requestedArtistComments {
+            self._comments.append(item)
+        }
+        
+        self.tableFooter.endRefreshing()
+        self.tableView.reloadData()
+    }
 }

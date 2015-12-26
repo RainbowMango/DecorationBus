@@ -643,18 +643,33 @@
         <!--设计师点评信息-->
         <scene sceneID="oJL-uJ-wmx">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rkB-Bg-Qr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="yev-N9-Pl6" userLabel="设计师点评信息" customClass="ArtistCommentsTableViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ubI-OM-BQ0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="104" sectionHeaderHeight="28" sectionFooterHeight="28" id="ubI-OM-BQ0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qI2-4A-KxI">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="artistcommentcell" rowHeight="157" id="qI2-4A-KxI">
+                                <rect key="frame" x="0.0" y="92" width="320" height="157"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qI2-4A-KxI" id="HmQ-aE-75a">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="156.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kvX-HB-hmk">
+                                            <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="X0M-dd-rXN"/>
+                                                <constraint firstAttribute="width" secondItem="kvX-HB-hmk" secondAttribute="height" multiplier="1:1" id="dlV-Q3-9UH"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.80000000000000004" green="0.70980392160000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="kvX-HB-hmk" firstAttribute="leading" secondItem="HmQ-aE-75a" secondAttribute="leadingMargin" id="2AH-xm-hzw"/>
+                                        <constraint firstItem="kvX-HB-hmk" firstAttribute="top" secondItem="HmQ-aE-75a" secondAttribute="topMargin" id="Oq3-Jd-I3d"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -663,9 +678,8 @@
                             <outlet property="delegate" destination="yev-N9-Pl6" id="w0D-Oc-tl1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="d7I-V0-5Qe"/>
+                    <navigationItem key="navigationItem" title="设计师点评信息" id="d7I-V0-5Qe"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rkB-Bg-Qr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2378" y="-1480"/>
         </scene>

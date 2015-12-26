@@ -1,19 +1,14 @@
 //
-//  CompanyCommentTableViewCell.swift
+//  ArtistCommentTableViewCell.swift
 //  DecorationBus
 //
-//  Created by ruby on 15/12/12.
+//  Created by ruby on 15/12/26.
 //  Copyright © 2015年 ruby. All rights reserved.
 //
 
 import UIKit
 
-//评论信息公用数据结构
-class CommonComment: CompanyComment {
-    
-}
-
-class CompanyComment {
+class ArtistComment {
     var avatar      : String
     var nickname    : String
     var date        : String
@@ -33,7 +28,7 @@ class CompanyComment {
     }
 }
 
-class CompanyCommentTableViewCell: UITableViewCell {
+class ArtistCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var date: UILabel!
@@ -55,10 +50,10 @@ class CompanyCommentTableViewCell: UITableViewCell {
         imageViews.append(self.image3)
         imageViews.append(self.image4)
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     func configureViews(data: CompanyComment) {
