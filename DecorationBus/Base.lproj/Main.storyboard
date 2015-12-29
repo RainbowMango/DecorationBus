@@ -281,9 +281,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="华然装饰有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpK-qb-tN4" userLabel="company">
-                                                    <rect key="frame" x="2" y="25" width="142" height="20"/>
+                                                    <rect key="frame" x="2" y="25" width="142" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="yf2-ea-wkd"/>
+                                                        <constraint firstAttribute="height" constant="21" id="yf2-ea-wkd"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

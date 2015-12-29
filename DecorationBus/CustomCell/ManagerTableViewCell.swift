@@ -43,5 +43,54 @@ class ManagerTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func configureViews(data: ManagerCellData) -> Void {
+        //设置头像
+        configureLogo(data.avatar)
+        
+        //设置名字
+        configureName(data.name)
+        
+        //设置公司
+        configureCompany(data.companyName)
+        
+        //设置评价数
+        configureCommentsNum(data.commentsNum)
+        
+        //设置评价图表
+        configureScoreChart(data.score)
+    }
+    
+    func configureLogo(imagePath: String) -> Void {
+        //使用SDWebImage可以自动缓存图片，浏览更流畅
+        let url = NSURL(string: imagePath)
+        self.avatar.sd_setImageWithURL(url, placeholderImage: UIImage(named: "companyDefaultLogo.png"))
+    }
+    
+    func configureName(name: String) -> Void {
+        self.name.text = name
+    }
+    
+    func configureCompany(company: String) -> Void {
+        self.company.text = "所属公司: \(company)"
+    }
+    
+    func configureCommentsNum(num: UInt) -> Void {
+        self.commentsNum.text = "评价数: \(num)"
+    }
+    
+    func configureScoreChart(score: UInt) -> Void {
+        //自定义主题
+        let newTheme = MDRadialProgressTheme()
+        newTheme.completedColor = UIColor.greenColor()
+        newTheme.incompletedColor = UIColor.grayColor()
+        newTheme.centerColor = UIColor.clearColor()
+        newTheme.sliceDividerHidden = true
+        newTheme.labelColor = UIColor.blackColor()
+        newTheme.labelShadowColor = UIColor.whiteColor()
+        
+        self.scoreChart.theme = newTheme
+        self.scoreChart.progressTotal = 100
+        self.scoreChart.progressCounter = score
+    }
 }
