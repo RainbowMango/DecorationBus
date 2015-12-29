@@ -254,7 +254,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="managerItem" rowHeight="90" id="IQs-3B-IE7" userLabel="managerItem">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="managerItem" rowHeight="90" id="IQs-3B-IE7" userLabel="managerItem" customClass="ManagerTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IQs-3B-IE7" id="pP6-jd-lzK">
@@ -313,7 +313,7 @@
                                                 <constraint firstItem="OpK-qb-tN4" firstAttribute="top" secondItem="k9g-BO-dT3" secondAttribute="bottom" constant="5" id="tfa-x2-2dZ"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VY1-94-oKq" userLabel="Score Chart">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VY1-94-oKq" userLabel="Score Chart" customClass="MDRadialProgressView">
                                             <rect key="frame" x="238" y="8" width="73.5" height="73.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -334,6 +334,13 @@
                                         <constraint firstItem="W2p-sJ-wWa" firstAttribute="leading" secondItem="OnE-t5-pnA" secondAttribute="trailing" constant="5" id="vD2-a9-chn"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatar" destination="OnE-t5-pnA" id="WWO-Q5-NzC"/>
+                                    <outlet property="commentsNum" destination="cMQ-sJ-XNo" id="IWh-AD-6Lm"/>
+                                    <outlet property="company" destination="OpK-qb-tN4" id="Nti-hF-S7B"/>
+                                    <outlet property="name" destination="k9g-BO-dT3" id="c8z-5G-4Ls"/>
+                                    <outlet property="scoreChart" destination="VY1-94-oKq" id="JUw-T1-aIY"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
