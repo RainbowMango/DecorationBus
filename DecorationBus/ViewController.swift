@@ -233,9 +233,10 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         performSegueWithIdentifier("segueToArtistList", sender: self)
     }
     @IBAction func service3Selected(sender: UITapGestureRecognizer) {
-        print("点击了第三个service")
-        pointMessageView_.setMessageView(0, withMessage: "功能还在开发中")
-        pointMessageView_.removeMessageView(0);
+//        print("点击了第三个service")
+//        pointMessageView_.setMessageView(0, withMessage: "功能还在开发中")
+//        pointMessageView_.removeMessageView(0);
+        performSegueWithIdentifier("segueToManager", sender: self)
     }
     @IBAction func service4Selected(sender: UITapGestureRecognizer) {
         print("点击了第四个service")
