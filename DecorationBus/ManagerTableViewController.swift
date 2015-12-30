@@ -72,13 +72,13 @@ class ManagerTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let dstVC       = segue.destinationViewController as! ArtistCommentsTableViewController
-//        let indexPath   = self.tableView.indexPathForSelectedRow
-//        self.tableView.deselectRowAtIndexPath(indexPath!, animated: true)
-//        dstVC.hidesBottomBarWhenPushed = true
-//        
-//        // 传递选中的cell信息到下一个view
-//        dstVC._artist = artists[indexPath!.row]
+        let dstVC       = segue.destinationViewController as! ManagerCommentsTableViewController
+        let indexPath   = self.tableView.indexPathForSelectedRow
+        self.tableView.deselectRowAtIndexPath(indexPath!, animated: true)
+        dstVC.hidesBottomBarWhenPushed = true
+        
+        // 传递选中的cell信息到下一个view
+        dstVC._manager = managers[indexPath!.row]
     }
     
     // MARK: - Refresh

@@ -956,7 +956,7 @@
         <!--项目经理点评信息-->
         <scene sceneID="3zX-Hy-fle">
             <objects>
-                <tableViewController id="2vC-bD-lA0" sceneMemberID="viewController">
+                <tableViewController id="2vC-bD-lA0" customClass="ManagerCommentsTableViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="104" sectionHeaderHeight="28" sectionFooterHeight="28" id="k2Y-4F-xD1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

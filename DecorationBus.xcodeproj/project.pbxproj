@@ -170,6 +170,7 @@
 		9BE902E81C32D1F400519F82 /* ManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE902E71C32D1F400519F82 /* ManagerTableViewController.swift */; };
 		9BE902EC1C32D83900519F82 /* ManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE902EB1C32D83900519F82 /* ManagerTableViewCell.swift */; };
 		9BE902EE1C3436F200519F82 /* ManagerCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE902ED1C3436F200519F82 /* ManagerCommentTableViewCell.swift */; };
+		9BE902F01C34386E00519F82 /* ManagerCommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE902EF1C34386E00519F82 /* ManagerCommentsTableViewController.swift */; };
 		9BE945F01A1E2BAD0095ACBD /* OrderItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */; };
 		9BF8E0621BD7E39300F3AD9E /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */; };
 		9BF8E0631BD7E39300F3AD9E /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0551BD7E39300F3AD9E /* TAAbstractDotView.m */; };
@@ -369,6 +370,7 @@
 		9BE902E71C32D1F400519F82 /* ManagerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerTableViewController.swift; sourceTree = "<group>"; };
 		9BE902EB1C32D83900519F82 /* ManagerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerTableViewCell.swift; sourceTree = "<group>"; };
 		9BE902ED1C3436F200519F82 /* ManagerCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerCommentTableViewCell.swift; sourceTree = "<group>"; };
+		9BE902EF1C34386E00519F82 /* ManagerCommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerCommentsTableViewController.swift; sourceTree = "<group>"; };
 		9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemDataModel.swift; sourceTree = "<group>"; };
 		9BF8E0511BD7E39300F3AD9E /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 				9BE902E71C32D1F400519F82 /* ManagerTableViewController.swift */,
 				9BE4015B1C19BA9C001CDE29 /* CompanyCommentsTableViewController.swift */,
 				9BA99EAE1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift */,
+				9BE902EF1C34386E00519F82 /* ManagerCommentsTableViewController.swift */,
 				9B05F5161ADA18560058EF0B /* CollectionPhotoCell.swift */,
 				9B6E3DF91AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift */,
 				9B0CE7B21AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift */,
@@ -1104,6 +1107,7 @@
 				9B2491901A5D683700990BA6 /* FormTitleCell.swift in Sources */,
 				9B2D7B881A63E82800D829EF /* FormTwoComponentPickerCell.swift in Sources */,
 				9BE902EC1C32D83900519F82 /* ManagerTableViewCell.swift in Sources */,
+				9BE902F01C34386E00519F82 /* ManagerCommentsTableViewController.swift in Sources */,
 				9BF8E0641BD7E39300F3AD9E /* TAAnimatedDotView.m in Sources */,
 				9B1DA7071B330233000B128F /* RMParallax.swift in Sources */,
 				9B70714A1BD242C600244474 /* SandboxHandler.swift in Sources */,
