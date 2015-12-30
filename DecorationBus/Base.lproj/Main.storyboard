@@ -962,7 +962,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="managertcommentcell" rowHeight="157" id="0n0-w2-wTl" userLabel="评论Cell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="managertcommentcell" rowHeight="157" id="0n0-w2-wTl" userLabel="评论Cell" customClass="ManagerCommentTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="157"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0n0-w2-wTl" id="Q8a-eN-nUy" userLabel="comment">
@@ -1128,6 +1128,18 @@
                                         <constraint firstItem="190-Vh-T2a" firstAttribute="leading" secondItem="Q8a-eN-nUy" secondAttribute="leadingMargin" id="oUb-CA-Bp6"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatar" destination="190-Vh-T2a" id="pio-xE-zeg"/>
+                                    <outlet property="comment" destination="ide-Km-IPK" id="tDT-az-pPF"/>
+                                    <outlet property="date" destination="D46-c1-7MB" id="OpF-U3-QU6"/>
+                                    <outlet property="image1" destination="QKY-yt-fBV" id="PL7-En-kuU"/>
+                                    <outlet property="image2" destination="RXK-4z-0HN" id="YnE-3n-pWg"/>
+                                    <outlet property="image3" destination="Uu7-42-eU5" id="lNB-5S-vsK"/>
+                                    <outlet property="image4" destination="gz6-wv-j3c" id="knY-0E-Vjm"/>
+                                    <outlet property="imageSection" destination="BKM-AU-rro" id="8bZ-10-LxP"/>
+                                    <outlet property="nickname" destination="9Qp-60-lHv" id="71D-Au-Un8"/>
+                                    <outlet property="scoreChart" destination="GyG-72-ez8" id="065-9X-Wev"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
