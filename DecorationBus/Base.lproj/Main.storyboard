@@ -349,6 +349,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="项目经理" id="sap-r4-CXD" userLabel="项目经理列表"/>
+                    <connections>
+                        <segue destination="2vC-bD-lA0" kind="push" identifier="showManagerCommentsSegue" id="A1u-1N-aIW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="prO-5J-1TB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -949,6 +952,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkB-Bg-Qr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2354" y="-2080"/>
+        </scene>
+        <!--项目经理点评信息-->
+        <scene sceneID="3zX-Hy-fle">
+            <objects>
+                <tableViewController id="2vC-bD-lA0" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="104" sectionHeaderHeight="28" sectionFooterHeight="28" id="k2Y-4F-xD1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AxQ-pA-6bB">
+                                <rect key="frame" x="0.0" y="92" width="320" height="104"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AxQ-pA-6bB" id="Msk-MI-r61">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="103.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2vC-bD-lA0" id="6mH-Ga-uVF"/>
+                            <outlet property="delegate" destination="2vC-bD-lA0" id="cap-qQ-Jtb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="项目经理点评信息" id="oOh-aJ-EYp"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AJa-0b-yrb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2354" y="-1427"/>
         </scene>
         <!--Record Pay View Controller-->
         <scene sceneID="0wt-U6-bf8">

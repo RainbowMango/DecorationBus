@@ -66,7 +66,7 @@ class ManagerTableViewController: UITableViewController {
     
     // MARK: - table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //performSegueWithIdentifier("showArtistCommentsSegue", sender: self.view)
+        performSegueWithIdentifier("showManagerCommentsSegue", sender: self.view)
     }
     
     // MARK: - Navigation
