@@ -219,6 +219,7 @@
                         <outlet property="tableView" destination="HEq-9d-RDs" id="4kT-SP-sre"/>
                         <segue destination="vcQ-Jx-X02" kind="push" identifier="segueToCompanyList" id="qFC-Hm-h7j"/>
                         <segue destination="v5v-3X-ben" kind="push" identifier="segueToManager" id="A3O-Rb-s3B"/>
+                        <segue destination="33I-E9-sLS" kind="push" identifier="segueToWorker" id="suY-MW-Qh5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -243,7 +244,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1084" y="-1480"/>
+            <point key="canvasLocation" x="1056" y="-2200"/>
         </scene>
         <!--项目经理-->
         <scene sceneID="sel-Ag-9Xl">
@@ -355,7 +356,36 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="prO-5J-1TB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="-1427"/>
+            <point key="canvasLocation" x="1706" y="-1895"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="6lt-ZW-VwN">
+            <objects>
+                <tableViewController id="33I-E9-sLS" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nft-CR-akl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1MX-y7-Wxm">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1MX-y7-Wxm" id="7hi-9h-GQN">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="33I-E9-sLS" id="5xk-eL-K50"/>
+                            <outlet property="delegate" destination="33I-E9-sLS" id="eTu-3W-Yx0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="V9Y-W3-Epp"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rcS-g8-NI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1706" y="-1255"/>
         </scene>
         <!--设计师列表-->
         <scene sceneID="V95-aL-VWg">
@@ -467,7 +497,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zdd-tW-dqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="-2080"/>
+            <point key="canvasLocation" x="1706" y="-2528"/>
         </scene>
         <!--装修公司列表-->
         <scene sceneID="i3e-sR-aCK">
@@ -551,7 +581,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rs-bJ-kgt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="-2726"/>
+            <point key="canvasLocation" x="1706" y="-3158"/>
         </scene>
         <!--装修公司点评信息-->
         <scene sceneID="hb3-U9-RZO">
@@ -751,7 +781,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ngr-Oy-w8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2354" y="-2726"/>
+            <point key="canvasLocation" x="2338" y="-3158"/>
         </scene>
         <!--设计师点评信息-->
         <scene sceneID="oJL-uJ-wmx">
@@ -951,7 +981,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkB-Bg-Qr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2354" y="-2080"/>
+            <point key="canvasLocation" x="2338" y="-2528"/>
         </scene>
         <!--项目经理点评信息-->
         <scene sceneID="3zX-Hy-fle">
@@ -1151,7 +1181,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AJa-0b-yrb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2354" y="-1427"/>
+            <point key="canvasLocation" x="2338" y="-1895"/>
         </scene>
         <!--Record Pay View Controller-->
         <scene sceneID="0wt-U6-bf8">
@@ -1180,7 +1210,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXe-po-ngE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2365" y="-858"/>
+            <point key="canvasLocation" x="2377" y="-546"/>
         </scene>
         <!--Record Budget View Controller-->
         <scene sceneID="Xlt-06-2Eq">
@@ -1209,7 +1239,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9f-aH-TMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2365" y="-194"/>
+            <point key="canvasLocation" x="2377" y="130"/>
         </scene>
         <!--明细信息-->
         <scene sceneID="2D3-hP-lJt">
@@ -1587,7 +1617,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RyB-Nc-1Sp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="440" y="-1480"/>
+            <point key="canvasLocation" x="484" y="-2200"/>
         </scene>
         <!--设置-->
         <scene sceneID="eM5-Fz-Hak">

@@ -239,9 +239,10 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         performSegueWithIdentifier("segueToManager", sender: self)
     }
     @IBAction func service4Selected(sender: UITapGestureRecognizer) {
-        print("点击了第四个service")
-        pointMessageView_.setMessageView(0, withMessage: "功能还在开发中")
-        pointMessageView_.removeMessageView(0);
+//        print("点击了第四个service")
+//        pointMessageView_.setMessageView(0, withMessage: "功能还在开发中")
+//        pointMessageView_.removeMessageView(0);
+        performSegueWithIdentifier("segueToWorker", sender: self)
     }
     
     //MARK: - 消息气泡
