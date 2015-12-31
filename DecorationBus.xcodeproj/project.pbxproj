@@ -173,6 +173,8 @@
 		9BE902F01C34386E00519F82 /* ManagerCommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE902EF1C34386E00519F82 /* ManagerCommentsTableViewController.swift */; };
 		9BE902F21C34EB1100519F82 /* WorkerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE902F11C34EB1100519F82 /* WorkerTableViewCell.swift */; };
 		9BE902F41C34EC2F00519F82 /* WorkerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE902F31C34EC2F00519F82 /* WorkerTableViewController.swift */; };
+		9BE902F61C34EE5B00519F82 /* WorkerCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE902F51C34EE5B00519F82 /* WorkerCommentTableViewCell.swift */; };
+		9BE902F81C34EEE000519F82 /* WorkerCommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE902F71C34EEE000519F82 /* WorkerCommentsTableViewController.swift */; };
 		9BE945F01A1E2BAD0095ACBD /* OrderItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */; };
 		9BF8E0621BD7E39300F3AD9E /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */; };
 		9BF8E0631BD7E39300F3AD9E /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0551BD7E39300F3AD9E /* TAAbstractDotView.m */; };
@@ -375,6 +377,8 @@
 		9BE902EF1C34386E00519F82 /* ManagerCommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerCommentsTableViewController.swift; sourceTree = "<group>"; };
 		9BE902F11C34EB1100519F82 /* WorkerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerTableViewCell.swift; sourceTree = "<group>"; };
 		9BE902F31C34EC2F00519F82 /* WorkerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerTableViewController.swift; sourceTree = "<group>"; };
+		9BE902F51C34EE5B00519F82 /* WorkerCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerCommentTableViewCell.swift; sourceTree = "<group>"; };
+		9BE902F71C34EEE000519F82 /* WorkerCommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerCommentsTableViewController.swift; sourceTree = "<group>"; };
 		9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemDataModel.swift; sourceTree = "<group>"; };
 		9BF8E0511BD7E39300F3AD9E /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
@@ -439,6 +443,7 @@
 				9B4CC7021C1BD30A00A82A41 /* CompanyCommentTableViewCell.swift */,
 				9BA99EB01C2EDFB10035DABC /* ArtistCommentTableViewCell.swift */,
 				9BE902ED1C3436F200519F82 /* ManagerCommentTableViewCell.swift */,
+				9BE902F51C34EE5B00519F82 /* WorkerCommentTableViewCell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -640,6 +645,7 @@
 				9BE4015B1C19BA9C001CDE29 /* CompanyCommentsTableViewController.swift */,
 				9BA99EAE1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift */,
 				9BE902EF1C34386E00519F82 /* ManagerCommentsTableViewController.swift */,
+				9BE902F71C34EEE000519F82 /* WorkerCommentsTableViewController.swift */,
 				9B05F5161ADA18560058EF0B /* CollectionPhotoCell.swift */,
 				9B6E3DF91AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift */,
 				9B0CE7B21AC6E8A000945AE6 /* EverPhotoPlayerViewController.swift */,
@@ -1129,6 +1135,7 @@
 				9BFC7EEC1BE3B6550026DB8B /* MainServiceTableViewCell.swift in Sources */,
 				9BE401571C09EBDA001CDE29 /* NetworkResourceDef.swift in Sources */,
 				9B24919D1A5D683700990BA6 /* FormViewController.swift in Sources */,
+				9BE902F61C34EE5B00519F82 /* WorkerCommentTableViewCell.swift in Sources */,
 				9B6E3DFA1AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift in Sources */,
 				9B8032C41A35CB76005BA828 /* SpinnerViewController.swift in Sources */,
 				9BF8E0661BD7E39300F3AD9E /* TAPageControl.m in Sources */,
@@ -1166,6 +1173,7 @@
 				9B151A701A6A9CA100498ED2 /* MinorCategoryTableViewCell.swift in Sources */,
 				9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */,
 				9B239BEB1A753035001BF6DA /* ShowDetailTableViewController.swift in Sources */,
+				9BE902F81C34EEE000519F82 /* WorkerCommentsTableViewController.swift in Sources */,
 				9B97DCCE1A2361AA006A94C0 /* BudgetArchiver.swift in Sources */,
 				9BA99EAF1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift in Sources */,
 				9BE401531C0215D2001CDE29 /* CompanyTableViewCell.swift in Sources */,

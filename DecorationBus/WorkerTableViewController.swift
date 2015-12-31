@@ -66,19 +66,19 @@ class WorkerTableViewController: UITableViewController {
     
     // MARK: - table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        performSegueWithIdentifier("showWorkerCommentsSegue", sender: self.view)
+        performSegueWithIdentifier("showWorkerCommentsSegue", sender: self.view)
     }
     
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let dstVC       = segue.destinationViewController as! WorkerCommentsTableViewController
-//        let indexPath   = self.tableView.indexPathForSelectedRow
-//        self.tableView.deselectRowAtIndexPath(indexPath!, animated: true)
-//        dstVC.hidesBottomBarWhenPushed = true
-//        
-//        // 传递选中的cell信息到下一个view
-//        dstVC._worker = workers[indexPath!.row]
+        let dstVC       = segue.destinationViewController as! WorkerCommentsTableViewController
+        let indexPath   = self.tableView.indexPathForSelectedRow
+        self.tableView.deselectRowAtIndexPath(indexPath!, animated: true)
+        dstVC.hidesBottomBarWhenPushed = true
+        
+        // 传递选中的cell信息到下一个view
+        dstVC._worker = workers[indexPath!.row]
     }
     
     // MARK: - Refresh
