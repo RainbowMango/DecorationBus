@@ -208,9 +208,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="M9E-P3-yRU" kind="push" identifier="segueToArtistList" id="SIw-4e-Buo"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -220,6 +217,7 @@
                         <segue destination="vcQ-Jx-X02" kind="push" identifier="segueToCompanyList" id="qFC-Hm-h7j"/>
                         <segue destination="v5v-3X-ben" kind="push" identifier="segueToManager" id="A3O-Rb-s3B"/>
                         <segue destination="33I-E9-sLS" kind="push" identifier="segueToWorker" id="suY-MW-Qh5"/>
+                        <segue destination="M9E-P3-yRU" kind="push" identifier="segueToArtistList" id="5O2-BX-5Hc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
