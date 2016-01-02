@@ -122,7 +122,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         let flexibleSysButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         let flexible = AGIPCToolbarItem(barButtonItem: flexibleSysButton, andSelectionBlock: nil)
         
-        let deselectAllSysButton = UIBarButtonItem(title: "重新选择", style: .Bordered, target: nil, action: nil)
+        let deselectAllSysButton = UIBarButtonItem(title: "重新选择", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         let deselectAll = AGIPCToolbarItem(barButtonItem: deselectAllSysButton) { (index, asset) -> Bool in
             return false
         }

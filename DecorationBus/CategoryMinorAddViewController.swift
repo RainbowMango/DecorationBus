@@ -35,7 +35,7 @@ class CategoryMinorAddViewController: UIViewController {
     }
     
     func initBarButton() -> Void {
-        let btn = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Bordered, target: self, action: "barButtonClicked")
+        let btn = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Plain, target: self, action: "barButtonClicked")
         self.navigationItem.rightBarButtonItem = btn
     }
 

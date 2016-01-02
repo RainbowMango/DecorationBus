@@ -1329,7 +1329,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Hongcai Ren (7L22SH92B5)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = DecorationBus/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruby.DecorationBus;
 				PRODUCT_NAME = DecorationBus;
@@ -1350,7 +1350,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hongcai Ren (GPYN6YR9V5)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = DecorationBus/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruby.DecorationBus;
 				PRODUCT_NAME = DecorationBus;

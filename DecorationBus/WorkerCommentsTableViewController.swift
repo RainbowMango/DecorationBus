@@ -22,11 +22,7 @@ class WorkerCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
         
         self.tableView.tableFooterView = UIView() // 清除tableView中空白行
         self.tableView.estimatedRowHeight = 160 //预估高度要大于SB中最小高度，否则cell可能被压缩
-        
-        //IOS7不能很好支持该设置
-        if #available(iOS 8, *) {
-            self.tableView.rowHeight = UITableViewAutomaticDimension // cell 高度自适应
-        }
+        self.tableView.rowHeight = UITableViewAutomaticDimension // cell 高度自适应
         
         self._comments = requestWorkerComments(0, companyId: self._worker.id)
         

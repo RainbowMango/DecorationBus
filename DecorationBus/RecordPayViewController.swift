@@ -39,7 +39,7 @@ class RecordPayViewController: FormViewController, FormViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .Bordered, target: self, action: "submit:")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Plain, target: self, action: "submit:")
     }
     
 //    // 实现改方法后会导致表单无法正常上下滑动以致键盘遮挡控件
