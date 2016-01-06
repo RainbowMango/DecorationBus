@@ -19,4 +19,17 @@ class ColorScheme {
     //View背景色
     //var viewBackgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1.0)
     var viewBackgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1.0)
+    
+    //用户评分主题
+    func getScoreChartTheme() -> MDRadialProgressTheme {
+        let newTheme = MDRadialProgressTheme()
+        newTheme.completedColor = UIColor.greenColor()
+        newTheme.incompletedColor = UIColor.grayColor()
+        newTheme.centerColor = UIColor.clearColor()
+        newTheme.sliceDividerHidden = true
+        newTheme.labelColor = UIColor.blackColor()
+        newTheme.labelShadowColor = UIColor.whiteColor()
+        
+        return newTheme
+    }
 }

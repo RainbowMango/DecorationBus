@@ -80,16 +80,7 @@ class ManagerTableViewCell: UITableViewCell {
     }
     
     func configureScoreChart(score: UInt) -> Void {
-        //自定义主题
-        let newTheme = MDRadialProgressTheme()
-        newTheme.completedColor = UIColor.greenColor()
-        newTheme.incompletedColor = UIColor.grayColor()
-        newTheme.centerColor = UIColor.clearColor()
-        newTheme.sliceDividerHidden = true
-        newTheme.labelColor = UIColor.blackColor()
-        newTheme.labelShadowColor = UIColor.whiteColor()
-        
-        self.scoreChart.theme = newTheme
+        self.scoreChart.theme = ColorScheme().getScoreChartTheme()
         self.scoreChart.progressTotal = 100
         self.scoreChart.progressCounter = score
     }
