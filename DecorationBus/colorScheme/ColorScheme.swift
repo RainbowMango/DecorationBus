@@ -23,9 +23,10 @@ class ColorScheme {
     //用户评分主题
     func getScoreChartTheme() -> MDRadialProgressTheme {
         let newTheme = MDRadialProgressTheme()
-        newTheme.completedColor = UIColor.greenColor()
-        newTheme.incompletedColor = UIColor.grayColor()
+        newTheme.completedColor = UIColor(red: 90/255.0, green: 212/255.0, blue: 39/255.0, alpha: 1.0)
+        newTheme.incompletedColor = UIColor(red: 164/255.0, green: 231/255.0, blue: 134/255.0, alpha: 1.0)
         newTheme.centerColor = UIColor.clearColor()
+        newTheme.centerColor = UIColor(red: 224/255.0, green: 248/255.0, blue: 216/255.0, alpha: 1.0)
         newTheme.sliceDividerHidden = true
         newTheme.labelColor = UIColor.blackColor()
         newTheme.labelShadowColor = UIColor.whiteColor()
