@@ -31,7 +31,8 @@ class WorkerTableViewController: UITableViewController {
         tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
         self.tableView.tableFooterView = tableFooter
         
-        self.tableHeader.beginRefreshing()
+        self.workers = requestWorkers(0)
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

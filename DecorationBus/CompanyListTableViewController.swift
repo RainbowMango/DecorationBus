@@ -31,7 +31,8 @@ class CompanyListTableViewController: UITableViewController {
         tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
         self.tableView.tableFooterView = tableFooter
         
-        self.tableHeader.beginRefreshing()
+        self.companies = requestCompanies(0)
+        self.tableView.reloadData()
     }
 
     override func viewWillAppear(animated: Bool) {

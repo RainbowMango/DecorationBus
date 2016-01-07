@@ -31,7 +31,8 @@ class ManagerTableViewController: UITableViewController {
         tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
         self.tableView.tableFooterView = tableFooter
         
-        self.tableHeader.beginRefreshing()
+        self.managers = requestManagers(0)
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

@@ -31,7 +31,8 @@ class ArtistListTableViewController: UITableViewController {
         tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
         self.tableView.tableFooterView = tableFooter
         
-        self.tableHeader.beginRefreshing()
+        self.artists = requestArtists(0)
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
