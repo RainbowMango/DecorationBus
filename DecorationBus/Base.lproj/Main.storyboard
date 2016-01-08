@@ -260,7 +260,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OnE-t5-pnA" userLabel="avatar">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OnE-t5-pnA" userLabel="avatar">
                                             <rect key="frame" x="8" y="8" width="73.5" height="73.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="0Kr-ek-wat"/>
@@ -371,7 +371,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="471-vJ-d1o" userLabel="avatar">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="471-vJ-d1o" userLabel="avatar">
                                             <rect key="frame" x="8" y="8" width="73.5" height="73.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="471-vJ-d1o" secondAttribute="height" multiplier="1:1" id="Tmu-s1-uch"/>
@@ -458,7 +458,7 @@
                             <outlet property="delegate" destination="33I-E9-sLS" id="eTu-3W-Yx0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="V9Y-W3-Epp"/>
+                    <navigationItem key="navigationItem" title="装修工人" id="V9Y-W3-Epp"/>
                     <connections>
                         <segue destination="dvl-wX-azx" kind="push" identifier="showWorkerCommentsSegue" id="RA3-LI-7MX"/>
                     </connections>
@@ -680,7 +680,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gvl-iz-3mm" userLabel="avatar">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gvl-iz-3mm" userLabel="avatar">
                                             <rect key="frame" x="8" y="8" width="73.5" height="73.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="0ua-kj-nUq"/>
@@ -791,7 +791,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="index.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="U0c-tn-j5c" userLabel="logo">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="index.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="U0c-tn-j5c" userLabel="logo">
                                             <rect key="frame" x="8" y="13" width="71.5" height="53.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="U0c-tn-j5c" secondAttribute="height" multiplier="4:3" id="gZQ-K5-NMo"/>
