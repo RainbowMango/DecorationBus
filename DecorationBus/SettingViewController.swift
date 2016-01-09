@@ -21,6 +21,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         // 设置tableView代理和数据源，否则无法显示，也可以在IB中连线
         settingTableView.delegate = self
         settingTableView.dataSource = self
+        
+        self.settingTableView.tableFooterView = UIView() // 清除tableView中空白行
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,29 +36,29 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.view.backgroundColor = ColorScheme().viewBackgroundColor
     }
     
-    // 点击初始化按钮弹出提醒
-    @IBAction func deleteAllUserData(sender: AnyObject) {
-        let alertView = UIAlertView(title: "软件初始化", message: "这将删除所有数据和自定义类别，确定继续吗？", delegate: self, cancelButtonTitle: "取消")
-        alertView.addButtonWithTitle("确定")
-        alertView.show()
-    }
-    
-    // AlerView动作
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        switch alertView.buttonTitleAtIndex(buttonIndex)! {
-        case "确定":
-            //CategoryArchiver().initCategoryInUserDefault()
-            //OrderArchiver().removeAllOrders()
-            //BudgetArchiver().removeAllBudgets()
-            CategoryHandler().copyFileToSandbox()
-            OrderDataModel.deleteAll()
-            BudgetDataModel.deleteAll()
-        case "取消":
-            print("用户取消")
-        default:
-            print("未定义动作：\(alertView.buttonTitleAtIndex(buttonIndex))")
-        }
-    }
+//    // 点击初始化按钮弹出提醒
+//    @IBAction func deleteAllUserData(sender: AnyObject) {
+//        let alertView = UIAlertView(title: "软件初始化", message: "这将删除所有数据和自定义类别，确定继续吗？", delegate: self, cancelButtonTitle: "取消")
+//        alertView.addButtonWithTitle("确定")
+//        alertView.show()
+//    }
+//    
+//    // AlerView动作
+//    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+//        switch alertView.buttonTitleAtIndex(buttonIndex)! {
+//        case "确定":
+//            //CategoryArchiver().initCategoryInUserDefault()
+//            //OrderArchiver().removeAllOrders()
+//            //BudgetArchiver().removeAllBudgets()
+//            CategoryHandler().copyFileToSandbox()
+//            OrderDataModel.deleteAll()
+//            BudgetDataModel.deleteAll()
+//        case "取消":
+//            print("用户取消")
+//        default:
+//            print("未定义动作：\(alertView.buttonTitleAtIndex(buttonIndex))")
+//        }
+//    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

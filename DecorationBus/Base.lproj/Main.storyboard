@@ -1602,26 +1602,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thU-IN-5xe">
-                                <rect key="frame" x="20" y="438" width="280" height="30"/>
-                                <color key="backgroundColor" red="0.80000000000000004" green="0.70980392160000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="软件初始化">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteAllUserData:" destination="GSu-jP-p3Q" eventType="touchUpInside" id="wvJ-Sq-i9w"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="asq-8s-RI8">
-                                <rect key="frame" x="0.0" y="64" width="320" height="154"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="154" id="cYt-Uj-Wsi"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingItemCell" id="eGe-mg-OAz">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eGe-mg-OAz" id="xXu-ja-sOi">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
@@ -1634,12 +1620,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="asq-8s-RI8" firstAttribute="leading" secondItem="Sl9-9c-CT2" secondAttribute="leading" id="7he-ld-frC"/>
-                            <constraint firstItem="thU-IN-5xe" firstAttribute="leading" secondItem="Sl9-9c-CT2" secondAttribute="leading" constant="20" id="AQT-XG-T4r"/>
-                            <constraint firstAttribute="centerX" secondItem="thU-IN-5xe" secondAttribute="centerX" id="DVb-50-pQN"/>
-                            <constraint firstAttribute="trailing" secondItem="thU-IN-5xe" secondAttribute="trailing" constant="20" id="Lv6-sh-nkx"/>
-                            <constraint firstAttribute="bottom" secondItem="thU-IN-5xe" secondAttribute="bottom" constant="100" id="MRP-8J-jpN"/>
-                            <constraint firstItem="asq-8s-RI8" firstAttribute="top" secondItem="Sl9-9c-CT2" secondAttribute="top" constant="64" id="QkR-pR-bVi"/>
+                            <constraint firstItem="asq-8s-RI8" firstAttribute="top" secondItem="Sl9-9c-CT2" secondAttribute="top" id="QkR-pR-bVi"/>
                             <constraint firstAttribute="trailing" secondItem="asq-8s-RI8" secondAttribute="trailing" id="TV8-BS-R6L"/>
+                            <constraint firstItem="ddd-bH-9Ls" firstAttribute="top" secondItem="asq-8s-RI8" secondAttribute="bottom" id="zbU-wE-PBB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="我" id="yg8-F9-ucY"/>
