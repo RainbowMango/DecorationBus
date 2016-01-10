@@ -657,9 +657,7 @@
 				9B35492B1A276C510083E0B6 /* CategoryPrimeAddViewController.swift */,
 				9B1467E11A260A3B00ACD417 /* CategoryMinorAddViewController.swift */,
 				9B37A9D819EEB57A0097F88D /* ViewController.swift */,
-				9B985BFE1A179525009F4435 /* AboutMeViewController.swift */,
-				9BCEAA2F1A1212B3002EE82C /* SettingViewController.swift */,
-				9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */,
+				9B3F1D4C1C41FE1B001065C2 /* Me */,
 				9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */,
 				9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */,
 				9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */,
@@ -700,6 +698,16 @@
 				9B37A9EB19EEB57A0097F88D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9B3F1D4C1C41FE1B001065C2 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				9B985BFE1A179525009F4435 /* AboutMeViewController.swift */,
+				9BCEAA2F1A1212B3002EE82C /* SettingViewController.swift */,
+				9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */,
+			);
+			name = Me;
 			sourceTree = "<group>";
 		};
 		9B8032C01A35CB76005BA828 /* Interface */ = {
