@@ -22,6 +22,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         settingTableView.delegate = self
         settingTableView.dataSource = self
         
+        self.settingTableView.estimatedRowHeight = 80 //预估高度要大于SB中最小高度，否则cell可能被压缩
+        self.settingTableView.rowHeight = UITableViewAutomaticDimension // cell 高度自适应
+        
         self.settingTableView.tableFooterView = UIView() // 清除tableView中空白行
     }
 
@@ -61,21 +64,38 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 //    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     // 设置显示cell的数目
     // TODO：改方法会被调用两次，使显示的sell数目是预期的两倍
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("显示cell数目：\(self.settingItems.count)")
-        return settingItems.count
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return settingItems.count
+        default:
+            print("未定义的section")
+        }
+        
+        return 0
     }
 
     // 设置每个cell的内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) 
-        cell.textLabel!.text = self.settingItems[indexPath.row]
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("userLoginInfoCell", forIndexPath: indexPath)
+            return cell
+        case 1:
+            let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath)
+            cell.textLabel!.text = self.settingItems[indexPath.row]
+            return cell
+        default:
+            print("未定义的cell")
+        }
         
-        return cell
+        return UITableViewCell()
     }
     
     // 设定选中时的动作
@@ -83,18 +103,21 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("选中cell with index\(indexPath.row)")
         
         self.settingTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        switch indexPath.row {
-        case 0:
-            print("didSelectRowAtIndexPath: 转入类别管理view")
-            performSegueWithIdentifier("CatagoryPrime", sender: self.view)
-        case 1:
-            print("didSelectRowAtIndexPath: 转入收集反馈view")
-            performSegueWithIdentifier("feedback", sender: self.view)
-        case 2:
-            print("didSelectRowAtIndexPath: 转入关于我们view")
-            performSegueWithIdentifier("aboutme", sender: self.view)
-        default:
-            print("不存在该cell index")
+        
+        if(1 == indexPath.section) {
+            switch indexPath.row {
+            case 0:
+                print("didSelectRowAtIndexPath: 转入类别管理view")
+                performSegueWithIdentifier("CatagoryPrime", sender: self.view)
+            case 1:
+                print("didSelectRowAtIndexPath: 转入收集反馈view")
+                performSegueWithIdentifier("feedback", sender: self.view)
+            case 2:
+                print("didSelectRowAtIndexPath: 转入关于我们view")
+                performSegueWithIdentifier("aboutme", sender: self.view)
+            default:
+                print("不存在该cell index")
+            }
         }
     }
     /*
