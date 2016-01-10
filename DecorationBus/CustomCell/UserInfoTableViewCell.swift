@@ -70,13 +70,17 @@ class UserInfoTableViewCell: UITableViewCell {
     }
     
     func configureLogo(imagePath: String) -> Void {
-        //使用SDWebImage可以自动缓存图片，浏览更流畅
         let url = NSURL(string: imagePath)
-        self.avatar.sd_setImageWithURL(url, placeholderImage: UIImage(named: "companyDefaultLogo.png"))
+        self.avatar.sd_setImageWithURL(url, placeholderImage: UIImage(named: "userDefaultAvatar"))
     }
     
     func configureName(name: String) -> Void {
-        self.name.text = name
+        if(name.isEmpty) {
+            self.name.text = "游客"
+        }
+        else {
+            self.name.text = name
+        }
     }
     
     func configureHint(hint: String) -> Void {

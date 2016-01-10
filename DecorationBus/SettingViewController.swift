@@ -85,7 +85,17 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("userInfoCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("userInfoCell", forIndexPath: indexPath) as! UserInfoTableViewCell
+            if let userid = UserDefaultHandler().getStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID) {
+                print("用户已登录, ID: \(userid)")
+                //TODO: 根据用户ID获取用户信息
+                //TODO: 配置cell
+            }
+            else {
+                //配置cell
+                let userData = UserInfo()
+                cell.configureViews(userData)
+            }
             return cell
         case 1:
             let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath)

@@ -9,3 +9,5 @@
 import Foundation
 
 let USER_DEFAULT_KEY_INTRODUCE_LAST_SHOWN = "lastShownVersion"
+
+let USER_DEFAULT_KEY_LOGIN_USER_ID = "loginUserID"
