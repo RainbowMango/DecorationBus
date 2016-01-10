@@ -85,7 +85,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("userLoginInfoCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("userInfoCell", forIndexPath: indexPath)
             return cell
         case 1:
             let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath)

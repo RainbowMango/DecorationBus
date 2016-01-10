@@ -1606,7 +1606,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userLoginInfoCell" rowHeight="87" id="eGe-mg-OAz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userInfoCell" rowHeight="87" id="eGe-mg-OAz" customClass="UserInfoTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="113.5" width="320" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eGe-mg-OAz" id="xXu-ja-sOi">
@@ -1664,6 +1664,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="avatar" destination="cjL-pk-NeR" id="NT1-84-ejV"/>
+                                            <outlet property="hint" destination="SOK-ec-89C" id="C83-Sz-ZO1"/>
+                                            <outlet property="name" destination="eWA-9I-orW" id="24N-UG-MaC"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingItemCell" id="0Cc-ub-9a8">
                                         <rect key="frame" x="0.0" y="200.5" width="320" height="44"/>
