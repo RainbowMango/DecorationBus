@@ -36,3 +36,6 @@
 
 //集成SDWebImage(没有重新安装，被先前的组件引用过了)
 #import "UIImageView+WebCache.h"
+
+//集成MOB
+#import <SMS_SDK/SMSSDK.h>
