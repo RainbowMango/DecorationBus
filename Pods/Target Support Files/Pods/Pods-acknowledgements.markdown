@@ -104,6 +104,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## MOBFoundation_IDFA
+
+Copyright © 2012-2015 mob
+
 ## MWPhotoBrowser
 
 Copyright (c) 2010 Michael Waterfall <michaelwaterfall@gmail.com>
@@ -150,6 +154,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+
+## SMSSDK
+
+Copyright © 2012-2015 mob.com
 
 ## UMengAnalytics-NO-IDFA
 
