@@ -117,14 +117,15 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         if(0 == indexPath.section) {
             switch indexPath.row {
             case 0:
-                SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: "18605811857", zone: "86", customIdentifier: nil, result: { (error) -> Void in
-                    if(error != nil) {
-                        print("获取验证码成功")
-                    }
-                    else{
-                        print("获取验证码失败")
-                    }
-                })
+                performSegueWithIdentifier("segueRegister", sender: self)
+//                SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: "18605811857", zone: "86", customIdentifier: nil, result: { (error) -> Void in
+//                    if(error != nil) {
+//                        print("获取验证码成功")
+//                    }
+//                    else{
+//                        print("获取验证码失败")
+//                    }
+//                })
             default:
                 print("未定义的cell点击行为 section: \(indexPath.section), row: \(indexPath.row)")
             }
