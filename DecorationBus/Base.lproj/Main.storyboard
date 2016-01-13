@@ -1775,7 +1775,7 @@
         <!--手机验证-->
         <scene sceneID="gJf-2M-Cl5">
             <objects>
-                <viewController id="jcJ-rW-o4i" sceneMemberID="viewController">
+                <viewController id="jcJ-rW-o4i" customClass="RegViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wfB-RK-c5G"/>
                         <viewControllerLayoutGuide type="bottom" id="bRc-6d-YIQ"/>
@@ -1823,6 +1823,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="发送验证码"/>
+                                        <connections>
+                                            <action selector="sendVerificationCode:" destination="jcJ-rW-o4i" eventType="touchUpInside" id="Xpv-nl-wAV"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.70980392160000005" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -1884,6 +1887,9 @@
                                 <state key="normal" title="验证">
                                     <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="verifyPhoneNumber:" destination="jcJ-rW-o4i" eventType="touchUpInside" id="yEa-u8-XPC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1907,6 +1913,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="手机验证" id="9Ea-3w-eej"/>
+                    <connections>
+                        <outlet property="hintLabel" destination="6s9-tk-vpH" id="d54-hq-PC8"/>
+                        <outlet property="phoneNumberField" destination="nDY-2V-P9S" id="abc-gT-fpF"/>
+                        <outlet property="verificationCodeField" destination="2x6-Ig-n7F" id="X4c-eo-w4R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0fK-gj-ax5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
