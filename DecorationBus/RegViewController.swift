@@ -9,11 +9,18 @@
 import UIKit
 
 class RegViewController: UIViewController {
+    @IBOutlet weak var phoneView: UIView!
+    @IBOutlet weak var verView: UIView!
     @IBOutlet weak var phoneNumberField: UITextField!
     @IBOutlet weak var verificationCodeField: UITextField!
     @IBOutlet weak var hintLabel: UILabel!
 
     override func viewDidLoad() {
+        
+//        self.phoneView.layer.borderWidth = 1
+//        self.phoneView.layer.borderColor = UIColor.blackColor().CGColor
+//        self.verView.layer.borderWidth = 1
+//        self.phoneView.layer.borderColor = UIColor.blackColor().CGColor
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
