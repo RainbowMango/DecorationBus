@@ -1821,7 +1821,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="jDa-qf-LU0"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                         <state key="normal" title="发送验证码">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>

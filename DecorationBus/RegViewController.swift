@@ -18,8 +18,8 @@ class RegViewController: UIViewController {
 
     override func viewDidLoad() {
         //设置发送验证码button的初始边框
-        self.sendVerButton.layer.borderWidth = 1
-        self.sendVerButton.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.sendVerButton.layer.borderWidth = 0.5
+        self.enableSendButton()
         
         super.viewDidLoad()
 
@@ -33,6 +33,9 @@ class RegViewController: UIViewController {
     
     @IBAction func sendVerificationCode(sender: AnyObject) {
         let phoneNumber = self.phoneNumberField.text
+        print("开始向\(phoneNumber)发送验证码！")
+        disableSendButton()
+        
         if(11 == phoneNumber?.lengthOfBytesUsingEncoding(NSASCIIStringEncoding)) {
             SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: phoneNumber!, zone: "86", customIdentifier: nil, result: { (error) -> Void in
                 if(error != nil) {
@@ -59,6 +62,19 @@ class RegViewController: UIViewController {
             })
         }
     }
+    
+    func enableSendButton() -> Void {
+        self.sendVerButton.layer.borderColor     = UIColor.blueColor().CGColor
+        self.sendVerButton.enabled               = true
+        self.sendVerButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+    }
+    
+    func disableSendButton() -> Void {
+        self.sendVerButton.layer.borderColor     = UIColor.lightGrayColor().CGColor
+        self.sendVerButton.enabled               = false
+        self.sendVerButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Disabled)
+    }
+    
     /*
     // MARK: - Navigation
 
