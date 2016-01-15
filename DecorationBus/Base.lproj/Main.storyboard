@@ -1796,14 +1796,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ByN-df-8QW" userLabel="phoneView">
                                 <rect key="frame" x="0.0" y="95" width="320" height="50"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8uE-HG-Wql">
-                                        <rect key="frame" x="5" y="2" width="46" height="46"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone.png" translatesAutoresizingMaskIntoConstraints="NO" id="8uE-HG-Wql">
+                                        <rect key="frame" x="5" y="15" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="8uE-HG-Wql" secondAttribute="height" multiplier="1:1" id="XeG-0x-X3M"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+86" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgd-Qm-13k">
-                                        <rect key="frame" x="59" y="5" width="40" height="40"/>
+                                        <rect key="frame" x="33" y="5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="HB5-V7-0mB"/>
                                         </constraints>
@@ -1812,7 +1812,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入11位手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nDY-2V-P9S">
-                                        <rect key="frame" x="96" y="15" width="115" height="19"/>
+                                        <rect key="frame" x="70" y="15" width="115" height="19"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     </textField>
@@ -1839,36 +1839,36 @@
                                     <constraint firstAttribute="trailing" secondItem="rZs-jP-8eM" secondAttribute="trailing" constant="5" id="GeF-Ee-DCP"/>
                                     <constraint firstItem="nDY-2V-P9S" firstAttribute="leading" secondItem="fgd-Qm-13k" secondAttribute="trailing" constant="-3" id="PAt-Xj-Coz"/>
                                     <constraint firstItem="fgd-Qm-13k" firstAttribute="top" secondItem="ByN-df-8QW" secondAttribute="top" constant="5" id="YW2-UX-uEd"/>
-                                    <constraint firstAttribute="bottom" secondItem="8uE-HG-Wql" secondAttribute="bottom" constant="2" id="eYS-TS-yl6"/>
+                                    <constraint firstAttribute="bottom" secondItem="8uE-HG-Wql" secondAttribute="bottom" constant="15" id="eYS-TS-yl6"/>
                                     <constraint firstItem="nDY-2V-P9S" firstAttribute="centerY" secondItem="ByN-df-8QW" secondAttribute="centerY" id="oRZ-Q6-p3a"/>
                                     <constraint firstItem="rZs-jP-8eM" firstAttribute="centerY" secondItem="ByN-df-8QW" secondAttribute="centerY" id="t4a-1Y-6HJ"/>
                                     <constraint firstAttribute="bottom" secondItem="fgd-Qm-13k" secondAttribute="bottom" constant="5" id="xTj-3S-ggR"/>
-                                    <constraint firstItem="8uE-HG-Wql" firstAttribute="top" secondItem="ByN-df-8QW" secondAttribute="top" constant="2" id="zH5-mM-GXL"/>
+                                    <constraint firstItem="8uE-HG-Wql" firstAttribute="top" secondItem="ByN-df-8QW" secondAttribute="top" constant="15" id="zH5-mM-GXL"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-j1-Cwh" userLabel="verView">
                                 <rect key="frame" x="0.0" y="146" width="320" height="50"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aBN-34-cmy">
-                                        <rect key="frame" x="5" y="2" width="46" height="46"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="aBN-34-cmy">
+                                        <rect key="frame" x="5" y="15" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="aBN-34-cmy" secondAttribute="height" multiplier="1:1" id="Fx6-7Y-LvV"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入短信验证码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2x6-Ig-n7F">
-                                        <rect key="frame" x="59" y="15" width="261" height="19"/>
+                                        <rect key="frame" x="33" y="15" width="287" height="19"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="aBN-34-cmy" secondAttribute="bottom" constant="2" id="JfY-Gz-TXF"/>
+                                    <constraint firstAttribute="bottom" secondItem="aBN-34-cmy" secondAttribute="bottom" constant="15" id="JfY-Gz-TXF"/>
                                     <constraint firstItem="aBN-34-cmy" firstAttribute="leading" secondItem="IcK-j1-Cwh" secondAttribute="leading" constant="5" id="UKx-lD-aVw"/>
                                     <constraint firstAttribute="trailing" secondItem="2x6-Ig-n7F" secondAttribute="trailing" id="bnJ-3i-XL6"/>
                                     <constraint firstItem="2x6-Ig-n7F" firstAttribute="centerY" secondItem="IcK-j1-Cwh" secondAttribute="centerY" id="suY-Pl-j9h"/>
                                     <constraint firstItem="2x6-Ig-n7F" firstAttribute="leading" secondItem="aBN-34-cmy" secondAttribute="trailing" constant="8" id="utG-Ve-j3p"/>
-                                    <constraint firstItem="aBN-34-cmy" firstAttribute="top" secondItem="IcK-j1-Cwh" secondAttribute="top" constant="2" id="zvt-j3-y2w"/>
+                                    <constraint firstItem="aBN-34-cmy" firstAttribute="top" secondItem="IcK-j1-Cwh" secondAttribute="top" constant="15" id="zvt-j3-y2w"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还需要等待60s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6s9-tk-vpH">
@@ -2581,8 +2581,10 @@
         <image name="arrow_right.png" width="32" height="32"/>
         <image name="index.jpg" width="320" height="180"/>
         <image name="index.png" width="22" height="22"/>
+        <image name="lock.png" width="51" height="69"/>
         <image name="me.png" width="22" height="22"/>
         <image name="money.png" width="22" height="22"/>
+        <image name="phone.png" width="40" height="68"/>
         <image name="photo.png" width="22" height="22"/>
         <image name="ser01.png" width="32" height="32"/>
         <image name="ser02.png" width="32" height="32"/>
