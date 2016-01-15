@@ -14,13 +14,13 @@ class RegViewController: UIViewController {
     @IBOutlet weak var phoneNumberField: UITextField!
     @IBOutlet weak var verificationCodeField: UITextField!
     @IBOutlet weak var hintLabel: UILabel!
+    @IBOutlet weak var sendVerButton: UIButton!
 
     override func viewDidLoad() {
+        //设置发送验证码button的初始边框
+        self.sendVerButton.layer.borderWidth = 1
+        self.sendVerButton.layer.borderColor = UIColor.lightGrayColor().CGColor
         
-//        self.phoneView.layer.borderWidth = 1
-//        self.phoneView.layer.borderColor = UIColor.blackColor().CGColor
-//        self.verView.layer.borderWidth = 1
-//        self.phoneView.layer.borderColor = UIColor.blackColor().CGColor
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
