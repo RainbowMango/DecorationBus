@@ -62,11 +62,13 @@ class RegViewController: UIViewController {
         if(verCode?.lengthOfBytesUsingEncoding(NSASCIIStringEncoding) > 0) {
             SMSSDK.commitVerificationCode(verCode, phoneNumber: self.phoneNumberField.text, zone: "86", result: { (error) -> Void in
                 if(error != nil) {
-                    print("验证成功")
-                }
-                else{
                     print("验证失败")
+                    showSMSAlert(self, title: VERIFY_SMS_FAILED_TITLE, msg: VERIFY_SMS_FAILED_MSG)
+                    return
                 }
+                
+                //TODO: 验证成功，查询用户是否已经注册
+                
             })
         }
     }

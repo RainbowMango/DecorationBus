@@ -35,6 +35,12 @@ let smssdkErrorMap: Dictionary<Int, String> = [
     500: "服务器内部错误"
 ]
 
+let VERIFY_SMS_SUCCESS_TITLE = "验证成功"
+let VERIFY_SMS_SUCCESS_MSG   = "验证码正确"
+let VERIFY_SMS_FAILED_TITLE  = "验证失败"
+let VERIFY_SMS_FAILED_MSG    = "验证码无效"
+
+
 //TODO: 根据SMMSDK error code 返回用户提示信息
 
 func getSMSErrorInfo(ecode: Int) -> String {
@@ -45,4 +51,13 @@ func getSMSErrorInfo(ecode: Int) -> String {
     }
     
     return "未定义的异常:\(ecode)"
+}
+
+func showSMSAlert(sender: AnyObject, title: String, msg: String) -> Void {
+    let alertVC = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+    let alertAction = UIAlertAction(title: "知道了", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
+        print("Alert Action: 取消")
+    })
+    alertVC.addAction(alertAction)
+    sender.presentViewController(alertVC, animated: true, completion: nil)
 }
