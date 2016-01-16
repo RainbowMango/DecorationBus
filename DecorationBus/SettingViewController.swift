@@ -14,18 +14,24 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var settingItems = ["修改类别", "提交反馈", "关于装修巴士"]
     var cellReuseIdentifier: String = "settingItemCell"
+    var userInfo     = UserInfo()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewColor()
+        
         // 设置tableView代理和数据源，否则无法显示，也可以在IB中连线
         settingTableView.delegate = self
         settingTableView.dataSource = self
         
         self.settingTableView.estimatedRowHeight = 80 //预估高度要大于SB中最小高度，否则cell可能被压缩
         self.settingTableView.rowHeight = UITableViewAutomaticDimension // cell 高度自适应
-        
         self.settingTableView.tableFooterView = UIView() // 清除tableView中空白行
+        
+        //判断用户登录状态
+        if(UserDataHandler().isLogin()) {
+            self.userInfo = self.requestUserInformation(UserDataHandler().getUserIDFromConf())
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,10 +92,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("userInfoCell", forIndexPath: indexPath) as! UserInfoTableViewCell
-            if let userid = UserDefaultHandler().getStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID) {
-                print("用户已登录, ID: \(userid)")
-                //TODO: 根据用户ID获取用户信息
-                //TODO: 配置cell
+            if(UserDataHandler().isLogin()) {//用户已经登录
+                if(self.userInfo.userid.isEmpty || self.userInfo.nickname.isEmpty || self.userInfo.avatar.isEmpty) {
+                    print("用户主要信息不完整重新请求信息, userid: \(self.userInfo.userid), nick: \(self.userInfo.nickname), avatar: \(self.userInfo.avatar)")
+                    self.userInfo = requestUserInformation(UserDataHandler().getUserIDFromConf())
+                }
+                
+                cell.configureViews(self.userInfo)
             }
             else {
                 //配置cell
@@ -146,4 +155,21 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
 */
+    
+    func requestUserInformation(userID: String) -> UserInfo{
+        let urlStr = REQUEST_USER_URL_STR + "?filter=id&userid=\(userID)"
+        let url = NSURL(string: urlStr)
+        let request = NSURLRequest(URL: url!)
+        do {
+            let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
+            let users = UserDataHandler().parseJsonData(data)
+            if(users.count > 0) {
+                return users[0]
+            }
+        }catch let error as NSError{
+            print("网络异常--请求项目经理信息失败：" + error.localizedDescription)
+        }
+        
+        return UserInfo()
+    }
 }

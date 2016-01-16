@@ -95,6 +95,24 @@ class UserInfoTableViewCell: UITableViewCell {
 }
 
 class UserDataHandler {
+    
+    func isLogin() -> Bool {
+        if let userid = UserDefaultHandler().getStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID) {
+            return true
+        }
+        
+        return false
+    }
+    
+    //从user default文件读取 user ID
+    func getUserIDFromConf() -> String {
+        if let userid = UserDefaultHandler().getStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID) {
+            return userid
+        }
+        
+        return String()
+    }
+    
     func parseJsonData(jsonData: NSData) -> Array<UserInfo> {
         var userInfoArray = Array<UserInfo>()
         

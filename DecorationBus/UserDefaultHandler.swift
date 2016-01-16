@@ -21,6 +21,7 @@ class UserDefaultHandler {
     
     func setStringConf(key: String, value: String) -> Void {
         userDefaults.setValue(value, forKey: key)
+        userDefaults.synchronize()
     }
 }
 

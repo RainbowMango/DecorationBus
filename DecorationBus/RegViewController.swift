@@ -68,7 +68,8 @@ class RegViewController: UIViewController {
                 }
                 
                 let user = self.requestUserInformation(self.phoneNumberField.text!)
-                if(user.registed) {
+                if(user.registed) {//老用户，记录登录状态
+                    UserDefaultHandler().setStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID, value: user.userid)
                     self.navigationController?.popViewControllerAnimated(true)
                 }
                 else if(!user.registed) {
