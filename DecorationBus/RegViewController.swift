@@ -67,7 +67,13 @@ class RegViewController: UIViewController {
                     return
                 }
                 
-                //TODO: 验证成功，查询用户是否已经注册
+                let user = self.requestUserInformation(self.phoneNumberField.text!)
+                if(user.registed) {
+                    self.navigationController?.popViewControllerAnimated(true)
+                }
+                else if(!user.registed) {
+                    //TODU: 引导注册
+                }
                 
             })
         }
@@ -83,6 +89,23 @@ class RegViewController: UIViewController {
         self.sendVerButton.layer.borderColor     = ColorScheme().buttonDisableColor.CGColor
         self.sendVerButton.enabled               = false
         self.sendVerButton.setTitleColor(ColorScheme().buttonDisableColor, forState: UIControlState.Disabled)
+    }
+    
+    func requestUserInformation(phoneNumber: String) -> UserInfo{
+        let urlStr = REQUEST_USER_URL_STR + "?filter=phone&phonenumber=\(phoneNumber)"
+        let url = NSURL(string: urlStr)
+        let request = NSURLRequest(URL: url!)
+        do {
+            let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
+            let users = UserDataHandler().parseJsonData(data)
+            if(users.count > 0) {
+                return users[0]
+            }
+        }catch let error as NSError{
+            print("网络异常--请求项目经理信息失败：" + error.localizedDescription)
+        }
+        
+        return UserInfo()
     }
     
     /*

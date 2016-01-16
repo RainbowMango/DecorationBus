@@ -9,7 +9,11 @@
 import UIKit
 
 class UserInfo {
-    var userid   : String //用户ID：YYYYMMDDHHMMSSMS
+    var userid   : String {//用户ID：YYYYMMDDHHMMSSMS
+        didSet {
+            self.registed = true
+        }
+    }
     var nickname : String
     var avatar   : String
     var passwd   : String
@@ -19,6 +23,7 @@ class UserInfo {
     var sex      : String
     var job      : String
     var address  : String
+    var registed : Bool
     
     init() {
         userid   = String()
@@ -31,6 +36,7 @@ class UserInfo {
         sex      = String()
         job      = String()
         address  = String()
+        registed = false
     }
 }
 
@@ -85,5 +91,43 @@ class UserInfoTableViewCell: UITableViewCell {
     
     func configureHint(hint: String) -> Void {
         self.hint.text = hint
+    }
+}
+
+class UserDataHandler {
+    func parseJsonData(jsonData: NSData) -> Array<UserInfo> {
+        var userInfoArray = Array<UserInfo>()
+        
+        do {
+            let jsonStr = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments)
+            let itemNum = jsonStr.objectForKey("total") as! Int
+            let items = jsonStr.objectForKey("row") as! NSArray
+            
+            for item in items {
+                let userInfo = UserInfo()
+                userInfo.userid   = item.objectForKey("userid") as! String
+                userInfo.nickname = item.objectForKey("nickname") as! String
+                userInfo.avatar   = item.objectForKey("avatar") as! String
+                userInfo.email    = item.objectForKey("email") as! String
+                userInfo.phone    = item.objectForKey("phone") as! String
+                userInfo.realname = item.objectForKey("realName") as! String
+                userInfo.sex      = item.objectForKey("sex") as! String
+                userInfo.job      = item.objectForKey("job") as! String
+                userInfo.address  = item.objectForKey("address") as! String
+                
+                userInfoArray.append(userInfo)
+            }
+            
+            //服务端返回的JSON有误时仅打印一条信息
+            if(itemNum != userInfoArray.count) {
+                print("Warning: items number mismatch in json!")
+            }
+            
+            return userInfoArray
+        }catch let error as NSError {
+            print("解析JSON数据失败: " + error.localizedDescription)
+        }
+        
+        return userInfoArray
     }
 }
