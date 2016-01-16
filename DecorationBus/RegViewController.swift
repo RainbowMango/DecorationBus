@@ -74,15 +74,15 @@ class RegViewController: UIViewController {
     }
     
     func enableSendButton() -> Void {
-        self.sendVerButton.layer.borderColor     = UIColor.blueColor().CGColor
+        self.sendVerButton.layer.borderColor     = ColorScheme().buttonEnableColor.CGColor
         self.sendVerButton.enabled               = true
-        self.sendVerButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+        self.sendVerButton.setTitleColor(ColorScheme().buttonEnableColor, forState: UIControlState.Normal)
     }
     
     func disableSendButton() -> Void {
-        self.sendVerButton.layer.borderColor     = UIColor.lightGrayColor().CGColor
+        self.sendVerButton.layer.borderColor     = ColorScheme().buttonDisableColor.CGColor
         self.sendVerButton.enabled               = false
-        self.sendVerButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Disabled)
+        self.sendVerButton.setTitleColor(ColorScheme().buttonDisableColor, forState: UIControlState.Disabled)
     }
     
     /*

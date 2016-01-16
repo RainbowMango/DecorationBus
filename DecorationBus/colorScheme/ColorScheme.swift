@@ -33,4 +33,8 @@ class ColorScheme {
         
         return newTheme
     }
+    
+    //获取手机验证码按钮边框及字体颜色
+    var buttonEnableColor = UIColor(red: 40/255, green: 106/255, blue: 168/255, alpha: 1.0)
+    var buttonDisableColor = UIColor.lightGrayColor()
 }
