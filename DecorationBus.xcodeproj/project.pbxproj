@@ -77,6 +77,7 @@
 		9B3F1E161C496DEE001065C2 /* arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3F1E0F1C496DEE001065C2 /* arrow_right.png */; };
 		9B3F1E171C496DEE001065C2 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3F1E101C496DEE001065C2 /* lock.png */; };
 		9B3F1E181C496DEE001065C2 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3F1E111C496DEE001065C2 /* phone.png */; };
+		9B3F1E201C4A08DF001065C2 /* SMSSDKErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1E1F1C4A08DF001065C2 /* SMSSDKErrorHandler.swift */; };
 		9B49927E1BFCCD7200E31FA8 /* CompanyListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */; };
 		9B4A01C41C2AA095004CF788 /* ArtistListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A01C31C2AA095004CF788 /* ArtistListTableViewController.swift */; };
 		9B4A01C61C2C414B004CF788 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A01C51C2C414B004CF788 /* ArtistTableViewCell.swift */; };
@@ -276,6 +277,7 @@
 		9B3F1E0F1C496DEE001065C2 /* arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right.png; sourceTree = "<group>"; };
 		9B3F1E101C496DEE001065C2 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		9B3F1E111C496DEE001065C2 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
+		9B3F1E1F1C4A08DF001065C2 /* SMSSDKErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSSDKErrorHandler.swift; sourceTree = "<group>"; };
 		9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyListTableViewController.swift; sourceTree = "<group>"; };
 		9B4A01C31C2AA095004CF788 /* ArtistListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistListTableViewController.swift; sourceTree = "<group>"; };
 		9B4A01C51C2C414B004CF788 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
@@ -620,6 +622,7 @@
 		9B37A9D019EEB57A0097F88D /* DecorationBus */ = {
 			isa = PBXGroup;
 			children = (
+				9B3F1E1D1C4A08C1001065C2 /* Frameworks */,
 				9B8695FB1BEE5278001B1FA0 /* ExtendClasses */,
 				9B8695F61BEE40C7001B1FA0 /* CommonClass */,
 				9BF8E0501BD7E39300F3AD9E /* SDCycleScrollView */,
@@ -720,6 +723,22 @@
 			);
 			name = common;
 			path = pictures/common;
+			sourceTree = "<group>";
+		};
+		9B3F1E1D1C4A08C1001065C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B3F1E1E1C4A08C1001065C2 /* SMSSDK */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		9B3F1E1E1C4A08C1001065C2 /* SMSSDK */ = {
+			isa = PBXGroup;
+			children = (
+				9B3F1E1F1C4A08DF001065C2 /* SMSSDKErrorHandler.swift */,
+			);
+			path = SMSSDK;
 			sourceTree = "<group>";
 		};
 		9B8032C01A35CB76005BA828 /* Interface */ = {
@@ -1170,6 +1189,7 @@
 				9B35492C1A276C510083E0B6 /* CategoryPrimeAddViewController.swift in Sources */,
 				9BCC42581A3483CA00978841 /* ShowPayListViewController.swift in Sources */,
 				9B0CE7AE1AC1A8E200945AE6 /* AlbumHandler.swift in Sources */,
+				9B3F1E201C4A08DF001065C2 /* SMSSDKErrorHandler.swift in Sources */,
 				9B1DA7081B330233000B128F /* RMParallaxItem.swift in Sources */,
 				9B8695A21AE93895001D0D7F /* AGIPCAlbumsController.m in Sources */,
 				9B4A01C41C2AA095004CF788 /* ArtistListTableViewController.swift in Sources */,

@@ -38,11 +38,19 @@ class RegViewController: UIViewController {
         
         if(11 == phoneNumber?.lengthOfBytesUsingEncoding(NSASCIIStringEncoding)) {
             SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: phoneNumber!, zone: "86", customIdentifier: nil, result: { (error) -> Void in
-                if(error != nil) {
+                if(error == nil) {
                     print("获取验证码成功")
                 }
                 else{
-                    print("获取验证码失败")
+                    let errorCode = error.code
+                    let errorString = getSMSErrorInfo(errorCode)
+                    print("获取验证码失败, code:\(errorCode), info: " + errorString)
+                    let alertVC = UIAlertController(title: "验证码获取失败", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+                    let alertAction = UIAlertAction(title: "知道了", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
+                        print("Alert Action: 取消")
+                    })
+                    alertVC.addAction(alertAction)
+                    self.presentViewController(alertVC, animated: true, completion: nil)
                 }
             })
 
