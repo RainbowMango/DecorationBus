@@ -2588,13 +2588,38 @@
                     <view key="view" contentMode="scaleToFill" id="yEX-aN-qRI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userDefaultAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="e0d-Sy-fRe">
+                                <rect key="frame" x="120" y="94" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="MQh-jc-rY2"/>
+                                    <constraint firstAttribute="height" constant="80" id="dQe-rq-SWD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传头像" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNK-yR-51c">
+                                <rect key="frame" x="0.0" y="179" width="320" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="fhT-rX-5BH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="CNK-yR-51c" secondAttribute="trailing" id="5km-M0-mUf"/>
+                            <constraint firstItem="CNK-yR-51c" firstAttribute="top" secondItem="e0d-Sy-fRe" secondAttribute="bottom" constant="5" id="Lio-Yn-Nha"/>
+                            <constraint firstItem="e0d-Sy-fRe" firstAttribute="top" secondItem="cBK-43-xhj" secondAttribute="bottom" constant="30" id="RTJ-7f-Q2b"/>
+                            <constraint firstItem="CNK-yR-51c" firstAttribute="leading" secondItem="yEX-aN-qRI" secondAttribute="leading" id="UbH-ga-8sd"/>
+                            <constraint firstItem="e0d-Sy-fRe" firstAttribute="centerX" secondItem="yEX-aN-qRI" secondAttribute="centerX" id="tjl-x3-i98"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XOo-zN-eQu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWz-QB-QOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2148" y="1889"/>
+            <point key="canvasLocation" x="2148" y="2417"/>
         </scene>
     </scenes>
     <resources>

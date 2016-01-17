@@ -59,25 +59,27 @@ class RegViewController: UIViewController {
 
     @IBAction func verifyPhoneNumber(sender: AnyObject) {
         let verCode = self.verificationCodeField.text
-        if(verCode?.lengthOfBytesUsingEncoding(NSASCIIStringEncoding) > 0) {
-            SMSSDK.commitVerificationCode(verCode, phoneNumber: self.phoneNumberField.text, zone: "86", result: { (error) -> Void in
-                if(error != nil) {
-                    print("验证失败")
-                    showSMSAlert(self, title: VERIFY_SMS_FAILED_TITLE, msg: VERIFY_SMS_FAILED_MSG)
-                    return
-                }
-                
-                let user = self.requestUserInformation(self.phoneNumberField.text!)
-                if(user.registed) {//老用户，记录登录状态
-                    UserDefaultHandler().setStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID, value: user.userid)
-                    self.navigationController?.popViewControllerAnimated(true)
-                }
-                else if(!user.registed) { // 新用户，引导注册
-                    self.performSegueWithIdentifier("segueNewUserInfo", sender: self)
-                }
-                
-            })
-        }
+//        if(verCode?.lengthOfBytesUsingEncoding(NSASCIIStringEncoding) > 0) {
+//            SMSSDK.commitVerificationCode(verCode, phoneNumber: self.phoneNumberField.text, zone: "86", result: { (error) -> Void in
+//                if(error != nil) {
+//                    print("验证失败")
+//                    showSMSAlert(self, title: VERIFY_SMS_FAILED_TITLE, msg: VERIFY_SMS_FAILED_MSG)
+//                    return
+//                }
+//                
+//                let user = self.requestUserInformation(self.phoneNumberField.text!)
+//                if(user.registed) {//老用户，记录登录状态
+//                    UserDefaultHandler().setStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID, value: user.userid)
+//                    self.navigationController?.popViewControllerAnimated(true)
+//                }
+//                else if(!user.registed) { // 新用户，引导注册
+//                    self.performSegueWithIdentifier("segueNewUserInfo", sender: self)
+//                }
+//                
+//            })
+//        }
+        
+        self.performSegueWithIdentifier("segueNewUserInfo", sender: self)
     }
     
     func enableSendButton() -> Void {
