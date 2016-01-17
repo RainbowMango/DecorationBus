@@ -1770,7 +1770,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CW8-Nj-Oar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518" y="3134"/>
+            <point key="canvasLocation" x="1518" y="3622"/>
         </scene>
         <!--手机验证-->
         <scene sceneID="gJf-2M-Cl5">
@@ -1922,6 +1922,7 @@
                         <outlet property="sendVerButton" destination="rZs-jP-8eM" id="5bc-UH-tUt"/>
                         <outlet property="verView" destination="IcK-j1-Cwh" id="rbn-Th-0FN"/>
                         <outlet property="verificationCodeField" destination="2x6-Ig-n7F" id="X4c-eo-w4R"/>
+                        <segue destination="zxG-z4-kcw" kind="push" identifier="segueNewUserInfo" id="4rb-qd-M86"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0fK-gj-ax5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1978,7 +1979,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wh-DM-jkQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2164" y="2806"/>
+            <point key="canvasLocation" x="2148" y="3210"/>
         </scene>
         <!--新增子类-->
         <scene sceneID="Aqr-yE-Oob">
@@ -2012,7 +2013,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7v-PB-qPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2749" y="2806"/>
+            <point key="canvasLocation" x="2677" y="3210"/>
         </scene>
         <!--新增大类-->
         <scene sceneID="2Sf-TB-pOs">
@@ -2046,7 +2047,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g0k-Qs-oIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2164" y="3513"/>
+            <point key="canvasLocation" x="2148" y="3877"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="51y-Ip-rB5">
@@ -2146,7 +2147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSj-gf-rGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518" y="3884"/>
+            <point key="canvasLocation" x="1518" y="4300"/>
         </scene>
         <!--关于装修巴士-->
         <scene sceneID="PLG-KN-HXv">
@@ -2165,7 +2166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUj-wI-VVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1510" y="4583"/>
+            <point key="canvasLocation" x="1518" y="4963"/>
         </scene>
         <!--装修理财-->
         <scene sceneID="juN-mg-07h">
@@ -2575,6 +2576,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WbV-Mw-EBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1732" y="1429"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ywv-Gk-pHZ">
+            <objects>
+                <viewController id="zxG-z4-kcw" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cBK-43-xhj"/>
+                        <viewControllerLayoutGuide type="bottom" id="oCG-LR-U50"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yEX-aN-qRI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="XOo-zN-eQu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BWz-QB-QOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2148" y="1889"/>
         </scene>
     </scenes>
     <resources>

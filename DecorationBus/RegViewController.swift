@@ -72,8 +72,8 @@ class RegViewController: UIViewController {
                     UserDefaultHandler().setStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID, value: user.userid)
                     self.navigationController?.popViewControllerAnimated(true)
                 }
-                else if(!user.registed) {
-                    //TODU: 引导注册
+                else if(!user.registed) { // 新用户，引导注册
+                    self.performSegueWithIdentifier("segueNewUserInfo", sender: self)
                 }
                 
             })
@@ -109,14 +109,16 @@ class RegViewController: UIViewController {
         return UserInfo()
     }
     
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        switch segue.identifier! {
+        case "segueNewUserInfo":
+            print("跳转到segueNewUserInfo")
+            //let destVC = segue.destinationViewController
+        default:
+            print("Undefined segue: \(segue.identifier)")
+        }
     }
-    */
 
 }
