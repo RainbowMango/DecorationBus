@@ -33,6 +33,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.userInfo = self.requestUserInformation(UserDataHandler().getUserIDFromConf())
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.settingTableView.reloadData() //重新加载，用户登录后可以看到登录信息
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
