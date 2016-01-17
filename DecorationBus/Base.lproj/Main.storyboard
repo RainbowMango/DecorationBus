@@ -1775,7 +1775,7 @@
         <!--手机验证-->
         <scene sceneID="gJf-2M-Cl5">
             <objects>
-                <viewController id="jcJ-rW-o4i" customClass="RegViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jcJ-rW-o4i" customClass="VerifyViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wfB-RK-c5G"/>
                         <viewControllerLayoutGuide type="bottom" id="bRc-6d-YIQ"/>
@@ -2577,10 +2577,10 @@
             </objects>
             <point key="canvasLocation" x="1732" y="1429"/>
         </scene>
-        <!--View Controller-->
+        <!--完善信息-->
         <scene sceneID="ywv-Gk-pHZ">
             <objects>
-                <viewController id="zxG-z4-kcw" sceneMemberID="viewController">
+                <viewController id="zxG-z4-kcw" customClass="RegViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cBK-43-xhj"/>
                         <viewControllerLayoutGuide type="bottom" id="oCG-LR-U50"/>
@@ -2605,17 +2605,64 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNQ-L6-Kma" userLabel="nickView">
+                                <rect key="frame" x="0.0" y="220" width="320" height="45"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="昵称" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="yO3-zH-rhf">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="yO3-zH-rhf" firstAttribute="leading" secondItem="qNQ-L6-Kma" secondAttribute="leading" id="Bb1-Bw-Rzy"/>
+                                    <constraint firstAttribute="trailing" secondItem="yO3-zH-rhf" secondAttribute="trailing" id="Stw-k5-Yh7"/>
+                                    <constraint firstAttribute="bottom" secondItem="yO3-zH-rhf" secondAttribute="bottom" id="kTR-o2-mFb"/>
+                                    <constraint firstItem="yO3-zH-rhf" firstAttribute="top" secondItem="qNQ-L6-Kma" secondAttribute="top" id="lFR-yH-ntB"/>
+                                    <constraint firstAttribute="height" constant="45" id="rx3-qk-Cw7"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uT3-xL-AUp" userLabel="sexView">
+                                <rect key="frame" x="0.0" y="270" width="320" height="45"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="性别" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eAb-ol-iD2">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="eAb-ol-iD2" secondAttribute="bottom" id="CKI-Cl-cfa"/>
+                                    <constraint firstItem="eAb-ol-iD2" firstAttribute="leading" secondItem="uT3-xL-AUp" secondAttribute="leading" id="ahJ-DI-S9E"/>
+                                    <constraint firstAttribute="trailing" secondItem="eAb-ol-iD2" secondAttribute="trailing" id="fwx-TW-qm6"/>
+                                    <constraint firstItem="eAb-ol-iD2" firstAttribute="top" secondItem="uT3-xL-AUp" secondAttribute="top" id="vkD-uz-l8S"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qNQ-L6-Kma" firstAttribute="top" secondItem="e0d-Sy-fRe" secondAttribute="bottom" constant="46" id="5SQ-gx-c8u"/>
                             <constraint firstAttribute="trailing" secondItem="CNK-yR-51c" secondAttribute="trailing" id="5km-M0-mUf"/>
+                            <constraint firstItem="uT3-xL-AUp" firstAttribute="width" secondItem="qNQ-L6-Kma" secondAttribute="width" id="KTC-Pt-k6A"/>
                             <constraint firstItem="CNK-yR-51c" firstAttribute="top" secondItem="e0d-Sy-fRe" secondAttribute="bottom" constant="5" id="Lio-Yn-Nha"/>
+                            <constraint firstItem="qNQ-L6-Kma" firstAttribute="leading" secondItem="yEX-aN-qRI" secondAttribute="leading" id="QoF-mE-hdf"/>
                             <constraint firstItem="e0d-Sy-fRe" firstAttribute="top" secondItem="cBK-43-xhj" secondAttribute="bottom" constant="30" id="RTJ-7f-Q2b"/>
+                            <constraint firstItem="uT3-xL-AUp" firstAttribute="trailing" secondItem="qNQ-L6-Kma" secondAttribute="trailing" id="Ual-0j-qq4"/>
                             <constraint firstItem="CNK-yR-51c" firstAttribute="leading" secondItem="yEX-aN-qRI" secondAttribute="leading" id="UbH-ga-8sd"/>
+                            <constraint firstItem="uT3-xL-AUp" firstAttribute="top" secondItem="yO3-zH-rhf" secondAttribute="bottom" constant="5" id="bGK-7o-3BF"/>
+                            <constraint firstAttribute="trailing" secondItem="qNQ-L6-Kma" secondAttribute="trailing" id="nO3-jG-WpQ"/>
+                            <constraint firstItem="uT3-xL-AUp" firstAttribute="leading" secondItem="qNQ-L6-Kma" secondAttribute="leading" id="pEd-Eb-Iat"/>
+                            <constraint firstItem="uT3-xL-AUp" firstAttribute="height" secondItem="qNQ-L6-Kma" secondAttribute="height" id="t7x-16-PXV"/>
                             <constraint firstItem="e0d-Sy-fRe" firstAttribute="centerX" secondItem="yEX-aN-qRI" secondAttribute="centerX" id="tjl-x3-i98"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="XOo-zN-eQu"/>
+                    <navigationItem key="navigationItem" title="完善信息" id="XOo-zN-eQu">
+                        <barButtonItem key="rightBarButtonItem" title="完成" style="done" id="Ruk-tg-MbK"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWz-QB-QOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

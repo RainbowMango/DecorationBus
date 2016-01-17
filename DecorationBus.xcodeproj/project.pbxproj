@@ -69,7 +69,7 @@
 		9B37A9E119EEB57A0097F88D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B37A9DF19EEB57A0097F88D /* LaunchScreen.xib */; };
 		9B37A9ED19EEB57A0097F88D /* DecorationBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9EC19EEB57A0097F88D /* DecorationBusTests.swift */; };
 		9B3F1D4E1C4290E5001065C2 /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1D4D1C4290E5001065C2 /* UserInfoTableViewCell.swift */; };
-		9B3F1E091C46A7B1001065C2 /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1E081C46A7B1001065C2 /* RegViewController.swift */; };
+		9B3F1E091C46A7B1001065C2 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1E081C46A7B1001065C2 /* VerifyViewController.swift */; };
 		9B3F1E121C496DEE001065C2 /* Album.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3F1E0B1C496DEE001065C2 /* Album.png */; };
 		9B3F1E131C496DEE001065C2 /* Album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3F1E0C1C496DEE001065C2 /* Album@2x.png */; };
 		9B3F1E141C496DEE001065C2 /* Album@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3F1E0D1C496DEE001065C2 /* Album@3x.png */; };
@@ -78,6 +78,7 @@
 		9B3F1E171C496DEE001065C2 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3F1E101C496DEE001065C2 /* lock.png */; };
 		9B3F1E181C496DEE001065C2 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3F1E111C496DEE001065C2 /* phone.png */; };
 		9B3F1E201C4A08DF001065C2 /* SMSSDKErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1E1F1C4A08DF001065C2 /* SMSSDKErrorHandler.swift */; };
+		9B3F1E241C4BDB49001065C2 /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1E231C4BDB49001065C2 /* RegViewController.swift */; };
 		9B49927E1BFCCD7200E31FA8 /* CompanyListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */; };
 		9B4A01C41C2AA095004CF788 /* ArtistListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A01C31C2AA095004CF788 /* ArtistListTableViewController.swift */; };
 		9B4A01C61C2C414B004CF788 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A01C51C2C414B004CF788 /* ArtistTableViewCell.swift */; };
@@ -269,7 +270,7 @@
 		9B37A9EB19EEB57A0097F88D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B37A9EC19EEB57A0097F88D /* DecorationBusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationBusTests.swift; sourceTree = "<group>"; };
 		9B3F1D4D1C4290E5001065C2 /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
-		9B3F1E081C46A7B1001065C2 /* RegViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
+		9B3F1E081C46A7B1001065C2 /* VerifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
 		9B3F1E0B1C496DEE001065C2 /* Album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Album.png; sourceTree = "<group>"; };
 		9B3F1E0C1C496DEE001065C2 /* Album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Album@2x.png"; sourceTree = "<group>"; };
 		9B3F1E0D1C496DEE001065C2 /* Album@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Album@3x.png"; sourceTree = "<group>"; };
@@ -278,6 +279,7 @@
 		9B3F1E101C496DEE001065C2 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		9B3F1E111C496DEE001065C2 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
 		9B3F1E1F1C4A08DF001065C2 /* SMSSDKErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSSDKErrorHandler.swift; sourceTree = "<group>"; };
+		9B3F1E231C4BDB49001065C2 /* RegViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
 		9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyListTableViewController.swift; sourceTree = "<group>"; };
 		9B4A01C31C2AA095004CF788 /* ArtistListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistListTableViewController.swift; sourceTree = "<group>"; };
 		9B4A01C51C2C414B004CF788 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
@@ -704,7 +706,8 @@
 			children = (
 				9B985BFE1A179525009F4435 /* AboutMeViewController.swift */,
 				9BCEAA2F1A1212B3002EE82C /* SettingViewController.swift */,
-				9B3F1E081C46A7B1001065C2 /* RegViewController.swift */,
+				9B3F1E081C46A7B1001065C2 /* VerifyViewController.swift */,
+				9B3F1E231C4BDB49001065C2 /* RegViewController.swift */,
 				9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */,
 			);
 			name = Me;
@@ -1159,6 +1162,7 @@
 				9B05F5171ADA18560058EF0B /* CollectionPhotoCell.swift in Sources */,
 				9B2491981A5D683700990BA6 /* FormSwitchCell.swift in Sources */,
 				9B2491901A5D683700990BA6 /* FormTitleCell.swift in Sources */,
+				9B3F1E241C4BDB49001065C2 /* RegViewController.swift in Sources */,
 				9BE902F41C34EC2F00519F82 /* WorkerTableViewController.swift in Sources */,
 				9B2D7B881A63E82800D829EF /* FormTwoComponentPickerCell.swift in Sources */,
 				9BE902EC1C32D83900519F82 /* ManagerTableViewCell.swift in Sources */,
@@ -1204,7 +1208,7 @@
 				9B151AA61A6FEC0000498ED2 /* BudgetDataModel.swift in Sources */,
 				9B34AAFE1A20B98500013C39 /* CategoryDataModel.swift in Sources */,
 				9B34AAFC1A1FA33100013C39 /* OrderArchiver.swift in Sources */,
-				9B3F1E091C46A7B1001065C2 /* RegViewController.swift in Sources */,
+				9B3F1E091C46A7B1001065C2 /* VerifyViewController.swift in Sources */,
 				9BE945F01A1E2BAD0095ACBD /* OrderItemDataModel.swift in Sources */,
 				9B985BFD1A178F96009F4435 /* FeedBackViewController.swift in Sources */,
 				9B2491971A5D683700990BA6 /* FormSelectorCell.swift in Sources */,
