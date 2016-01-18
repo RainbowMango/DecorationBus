@@ -9,6 +9,8 @@
 import UIKit
 
 class RegViewController: UIViewController {
+    @IBOutlet weak var nickNameTextField: UITextField!
+    @IBOutlet weak var sexTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,9 @@ class RegViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func addAvatarButtonPressed(sender: AnyObject) {
+        print("用户开始设置头像")
+    }
 
     /*
     // MARK: - Navigation

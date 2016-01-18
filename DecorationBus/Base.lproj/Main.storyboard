@@ -2633,6 +2633,9 @@
                                     <constraint firstAttribute="height" constant="80" id="tzB-eo-JsN"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="Album.png"/>
+                                <connections>
+                                    <action selector="addAvatarButtonPressed:" destination="zxG-z4-kcw" eventType="touchUpInside" id="AYO-w5-aej"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2652,6 +2655,10 @@
                     <navigationItem key="navigationItem" title="完善信息" id="XOo-zN-eQu">
                         <barButtonItem key="rightBarButtonItem" title="完成" style="done" id="Ruk-tg-MbK"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nickNameTextField" destination="yO3-zH-rhf" id="IZe-5D-IPo"/>
+                        <outlet property="sexTextField" destination="eAb-ol-iD2" id="p8j-aP-j8g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWz-QB-QOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
