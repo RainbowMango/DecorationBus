@@ -8,7 +8,8 @@
 
 import UIKit
 
-class RegViewController: UIViewController {
+class RegViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    @IBOutlet weak var avatar: UIButton!
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var sexTextField: UITextField!
 
@@ -36,6 +37,19 @@ class RegViewController: UIViewController {
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             let cameraSheet = UIAlertAction(title: actionSheetTitleCamera, style: UIAlertActionStyle.Default) { (action) -> Void in
                 print("用户点击相机")
+                
+                if(!DeviceLimitHandler().allowCamera()) {
+                    //用户隐私设置禁用相机，弹出alert
+                    let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-相机”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
+                    alertView.show()
+                    return
+                }
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.allowsEditing = false
+                imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+                imagePicker.videoQuality = UIImagePickerControllerQualityType.TypeLow // 获取低质量图片已经足够使用，避免内存使用过多引起内存警告
+                self.presentViewController(imagePicker, animated: true, completion: nil)
             }
             alertVC.addAction(cameraSheet)
         }
@@ -66,4 +80,17 @@ class RegViewController: UIViewController {
     }
     */
 
+    // MARK: - UIImagePickerControllerDelegate
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        self.dismissViewControllerAnimated(true, completion: nil) // 首先释放picker以节省内存
+        
+        let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
+        self.avatar.setBackgroundImage(image, forState: UIControlState.Normal)
+        
+        //TODO: 上传图片
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

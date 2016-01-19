@@ -2632,7 +2632,7 @@
                                     <constraint firstAttribute="width" constant="80" id="UfE-wj-Ard"/>
                                     <constraint firstAttribute="height" constant="80" id="tzB-eo-JsN"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="Album.png"/>
+                                <state key="normal" backgroundImage="Album.png"/>
                                 <connections>
                                     <action selector="addAvatarButtonPressed:" destination="zxG-z4-kcw" eventType="touchUpInside" id="AYO-w5-aej"/>
                                 </connections>
@@ -2656,6 +2656,7 @@
                         <barButtonItem key="rightBarButtonItem" title="完成" style="done" id="Ruk-tg-MbK"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="avatar" destination="Jsx-3h-bOk" id="IIj-ds-gA8"/>
                         <outlet property="nickNameTextField" destination="yO3-zH-rhf" id="IZe-5D-IPo"/>
                         <outlet property="sexTextField" destination="eAb-ol-iD2" id="p8j-aP-j8g"/>
                     </connections>
