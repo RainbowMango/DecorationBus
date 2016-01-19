@@ -79,6 +79,7 @@
 		9B3F1E181C496DEE001065C2 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3F1E111C496DEE001065C2 /* phone.png */; };
 		9B3F1E201C4A08DF001065C2 /* SMSSDKErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1E1F1C4A08DF001065C2 /* SMSSDKErrorHandler.swift */; };
 		9B3F1E241C4BDB49001065C2 /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1E231C4BDB49001065C2 /* RegViewController.swift */; };
+		9B3F1E261C4E8914001065C2 /* DeviceLimitHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1E251C4E8914001065C2 /* DeviceLimitHandler.swift */; };
 		9B49927E1BFCCD7200E31FA8 /* CompanyListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */; };
 		9B4A01C41C2AA095004CF788 /* ArtistListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A01C31C2AA095004CF788 /* ArtistListTableViewController.swift */; };
 		9B4A01C61C2C414B004CF788 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A01C51C2C414B004CF788 /* ArtistTableViewCell.swift */; };
@@ -280,6 +281,7 @@
 		9B3F1E111C496DEE001065C2 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
 		9B3F1E1F1C4A08DF001065C2 /* SMSSDKErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSSDKErrorHandler.swift; sourceTree = "<group>"; };
 		9B3F1E231C4BDB49001065C2 /* RegViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
+		9B3F1E251C4E8914001065C2 /* DeviceLimitHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceLimitHandler.swift; sourceTree = "<group>"; };
 		9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyListTableViewController.swift; sourceTree = "<group>"; };
 		9B4A01C31C2AA095004CF788 /* ArtistListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistListTableViewController.swift; sourceTree = "<group>"; };
 		9B4A01C51C2C414B004CF788 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
@@ -785,6 +787,7 @@
 				9B8695F71BEE4187001B1FA0 /* UserDefaultHandler.swift */,
 				9BE401561C09EBDA001CDE29 /* NetworkResourceDef.swift */,
 				9B8695F91BEE4CA2001B1FA0 /* UserDefaultDef.swift */,
+				9B3F1E251C4E8914001065C2 /* DeviceLimitHandler.swift */,
 			);
 			name = CommonClass;
 			sourceTree = "<group>";
@@ -1189,6 +1192,7 @@
 				9B151A6B1A655AFA00498ED2 /* PrimeCategoryTableViewCell.swift in Sources */,
 				9B2491911A5D683700990BA6 /* FormValueCell.swift in Sources */,
 				9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */,
+				9B3F1E261C4E8914001065C2 /* DeviceLimitHandler.swift in Sources */,
 				9B2491921A5D683700990BA6 /* FormButtonCell.swift in Sources */,
 				9B35492C1A276C510083E0B6 /* CategoryPrimeAddViewController.swift in Sources */,
 				9BCC42581A3483CA00978841 /* ShowPayListViewController.swift in Sources */,
