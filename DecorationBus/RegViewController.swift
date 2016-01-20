@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class RegViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var avatar: UIButton!
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var sexTextField: UITextField!
@@ -18,10 +18,16 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
     let actionSheetTitleCamera = "拍照"
     let actionSheetTitlePhotoLibrary = "照片库"
     
+    // 控件tag定义
+    let sexFieldTag = 110
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.sexTextField.delegate = self
+        
+        //设置控件tag
+        self.sexTextField.tag = self.sexFieldTag
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,5 +112,32 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: - UITextFieldDelegate
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        switch textField.tag {
+        case sexFieldTag:
+            let alertVC = UIAlertController(title: "请选择性别", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+            
+            let alertMaleAction = UIAlertAction(title: "男", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                self.sexTextField.text = "男"
+            })
+            let alertFemaleAction = UIAlertAction(title: "女", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                self.sexTextField.text = "女"
+            })
+            
+            let alertCancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+            
+            alertVC.addAction(alertMaleAction)
+            alertVC.addAction(alertFemaleAction)
+            alertVC.addAction(alertCancelAction)
+            
+            presentViewController(alertVC, animated: true, completion: nil)
+            
+            return false
+        default:
+            return true
+        }
     }
 }
