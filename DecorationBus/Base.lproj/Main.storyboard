@@ -2651,7 +2651,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="完善信息" id="XOo-zN-eQu">
-                        <barButtonItem key="rightBarButtonItem" title="完成" style="done" id="Ruk-tg-MbK"/>
+                        <barButtonItem key="rightBarButtonItem" title="完成" style="done" id="Ruk-tg-MbK">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="zxG-z4-kcw" id="3Jg-xR-cXU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="avatar" destination="Jsx-3h-bOk" id="IIj-ds-gA8"/>

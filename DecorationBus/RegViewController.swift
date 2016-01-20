@@ -21,6 +21,8 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
     // 控件tag定义
     let sexFieldTag = 110
     
+    var isAvatarSet = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -90,6 +92,25 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         self.presentViewController(alertVC, animated: true, completion: nil)
     }
 
+    @IBAction func doneButtonPressed(sender: AnyObject) {
+        //检查数据是否完整
+        if(!isAvatarSet) {
+            print("请设置头像图片")
+            return
+        }
+        //if(self.nickNameTextField.text?.characters.count < 4) {
+        if(self.nickNameTextField.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) < 4) {
+            print("请设置不小于4位的用户名")
+            return
+        }
+        if(self.sexTextField.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) < 2) {
+            print("请选择性别")
+            return
+        }
+        
+        print("输入完成")
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -106,6 +127,7 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
         let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         self.avatar.setBackgroundImage(image, forState: UIControlState.Normal)
+        self.isAvatarSet = true
         
         //TODO: 上传图片
     }
