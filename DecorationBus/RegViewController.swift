@@ -58,6 +58,20 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
             let photoLibrarySheet = UIAlertAction(title: actionSheetTitlePhotoLibrary, style: UIAlertActionStyle.Default) { (action) -> Void in
                 print("用户点击照片库")
+                
+                if(!DeviceLimitHandler().allowPhotoLibrary()) {
+                    //用户隐私设置禁用相册，弹出alert
+                    let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-照片”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
+                    alertView.show()
+                    return
+                }
+                
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.allowsEditing = false
+                imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                imagePicker.videoQuality = UIImagePickerControllerQualityType.TypeLow // 获取低质量图片已经足够使用，避免内存使用过多引起内存警告
+                self.presentViewController(imagePicker, animated: true, completion: nil)
             }
             alertVC.addAction(photoLibrarySheet)
         }
