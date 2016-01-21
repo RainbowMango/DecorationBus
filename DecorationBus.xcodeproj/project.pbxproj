@@ -80,6 +80,7 @@
 		9B3F1E201C4A08DF001065C2 /* SMSSDKErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1E1F1C4A08DF001065C2 /* SMSSDKErrorHandler.swift */; };
 		9B3F1E241C4BDB49001065C2 /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1E231C4BDB49001065C2 /* RegViewController.swift */; };
 		9B3F1E261C4E8914001065C2 /* DeviceLimitHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1E251C4E8914001065C2 /* DeviceLimitHandler.swift */; };
+		9B3F1E281C511256001065C2 /* AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F1E271C511256001065C2 /* AlertHandler.swift */; };
 		9B49927E1BFCCD7200E31FA8 /* CompanyListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */; };
 		9B4A01C41C2AA095004CF788 /* ArtistListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A01C31C2AA095004CF788 /* ArtistListTableViewController.swift */; };
 		9B4A01C61C2C414B004CF788 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4A01C51C2C414B004CF788 /* ArtistTableViewCell.swift */; };
@@ -282,6 +283,7 @@
 		9B3F1E1F1C4A08DF001065C2 /* SMSSDKErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSSDKErrorHandler.swift; sourceTree = "<group>"; };
 		9B3F1E231C4BDB49001065C2 /* RegViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
 		9B3F1E251C4E8914001065C2 /* DeviceLimitHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceLimitHandler.swift; sourceTree = "<group>"; };
+		9B3F1E271C511256001065C2 /* AlertHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHandler.swift; sourceTree = "<group>"; };
 		9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyListTableViewController.swift; sourceTree = "<group>"; };
 		9B4A01C31C2AA095004CF788 /* ArtistListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistListTableViewController.swift; sourceTree = "<group>"; };
 		9B4A01C51C2C414B004CF788 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
@@ -788,6 +790,7 @@
 				9BE401561C09EBDA001CDE29 /* NetworkResourceDef.swift */,
 				9B8695F91BEE4CA2001B1FA0 /* UserDefaultDef.swift */,
 				9B3F1E251C4E8914001065C2 /* DeviceLimitHandler.swift */,
+				9B3F1E271C511256001065C2 /* AlertHandler.swift */,
 			);
 			name = CommonClass;
 			sourceTree = "<group>";
@@ -1221,6 +1224,7 @@
 				9B24919F1A5D683700990BA6 /* FormRowDescriptor.swift in Sources */,
 				9B97DCCC1A236161006A94C0 /* BudgetItemDataModel.swift in Sources */,
 				9B8695A31AE93895001D0D7F /* AGIPCAssetsController.m in Sources */,
+				9B3F1E281C511256001065C2 /* AlertHandler.swift in Sources */,
 				9B1E5BF91A2CA0C800615842 /* ColorScheme.swift in Sources */,
 				9B151A701A6A9CA100498ED2 /* MinorCategoryTableViewCell.swift in Sources */,
 				9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */,

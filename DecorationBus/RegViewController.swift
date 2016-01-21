@@ -23,6 +23,20 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
     var isAvatarSet = false
     
+    //常量设置（Note: 1个汉字为3个字节）
+    let MIN_NICKNAME_LEN = 4
+    let MAX_NICKNAME_LEN = 15
+    let SEX_LEN          = 3
+    let NO_AVATAR_ERR_TITLE = "请上传头像"
+    let NO_AVATAR_ERR_MSG   = "点击图片就可以上传头像啦"
+    let NICKNAME_MIN_LEN_ERR_TITLE = "名字太短了"
+    let NICKNAME_MIN_LEN_ERR_MSG = "昵称长度至少需要4个英文字符，或者2个汉字"
+    let NICKNAME_MAX_LEN_ERR_TITLE = "名字太长了"
+    let NICKNAME_MAX_LEN_ERR_MSG = "昵称长度最多15个英文字符，或者5个汉字"
+    let SEX_LEN_ERR_TITLE          = "请设置性别"
+    let SEX_LEN_ERR_MSG            = "请设置性别"
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -95,20 +109,26 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBAction func doneButtonPressed(sender: AnyObject) {
         //检查数据是否完整
         if(!isAvatarSet) {
-            print("请设置头像图片")
-            return
-        }
-        //if(self.nickNameTextField.text?.characters.count < 4) {
-        if(self.nickNameTextField.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) < 4) {
-            print("请设置不小于4位的用户名")
-            return
-        }
-        if(self.sexTextField.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) < 2) {
-            print("请选择性别")
+            showSimpleAlert(self, title: NO_AVATAR_ERR_TITLE, message: NO_AVATAR_ERR_MSG)
             return
         }
         
-        print("输入完成")
+        let nickNameLength = self.nickNameTextField.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        if(nickNameLength < MIN_NICKNAME_LEN) {
+            showSimpleAlert(self, title: NICKNAME_MIN_LEN_ERR_TITLE, message: NICKNAME_MIN_LEN_ERR_MSG)
+            return
+        }
+        if(nickNameLength > MAX_NICKNAME_LEN) {
+            showSimpleAlert(self, title: NICKNAME_MAX_LEN_ERR_TITLE, message: NICKNAME_MAX_LEN_ERR_MSG)
+            return
+        }
+        
+        if(self.sexTextField.text!.isEmpty) {
+            showSimpleAlert(self, title: SEX_LEN_ERR_TITLE, message: SEX_LEN_ERR_MSG)
+            return
+        }
+        
+        showSimpleAlert(self, title: "恭喜", message: "注册完成！")
     }
     
     /*
