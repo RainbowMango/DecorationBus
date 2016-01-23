@@ -129,6 +129,57 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         }
         
         showSimpleAlert(self, title: "恭喜", message: "注册完成！")
+        
+        let avatarImage = self.avatar.backgroundImageForState(UIControlState.Normal)!
+        addUserToServer(UIImage(named: "Album.png")!, name: self.nickNameTextField.text!, sex: self.sexTextField.text!)
+    }
+    
+    func addUserToServer(img: UIImage, name: String, sex: String) -> Void {
+        if(nil == UIImagePNGRepresentation(img)) {
+            showSimpleAlert(self, title: "图片类型不匹配", message: "请使用PNG格式头像！")
+            return
+        }
+        let imageData = UIImagePNGRepresentation(img)!
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: REQUEST_ADD_USER_USR_STR)!)
+        request.HTTPMethod="POST"//设置请求方式
+        let boundary:String="AaB03x"
+        let contentType:String="multipart/form-data;boundary="+boundary
+        request.addValue(contentType, forHTTPHeaderField:"Content-Type")
+        
+        let body=NSMutableData()
+        
+        // 添加图片
+        body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
+        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"useravatar\";filename=\"Albumxxx.png\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format:"Content-Type:image/png\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(imageData)
+        body.appendData(NSString(format:"\r\n--\(boundary)--").dataUsingEncoding(NSUTF8StringEncoding)!)
+        request.HTTPBody=body
+        let que=NSOperationQueue()
+        NSURLConnection.sendAsynchronousRequest(request, queue: que, completionHandler: {
+        (response, data, error) ->Void in
+        
+        if (error != nil){
+        print(error)
+        }else{
+        //Handle data in NSData type
+            //showSimpleAlert(self, title: "成功", message: "注册完成")
+            print("图片上传成功，注册完成！")
+            let info = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print(info)
+            
+            
+//        var tr:String=NSString(data:data,encoding:NSUTF8StringEncoding)!
+//        println(tr)
+//        //在主线程中更新UI风火轮才停止
+//        dispatch_sync(dispatch_get_main_queue(), {
+//        self.av.stopAnimating()
+//        //self.lb.hidden=true
+            }
+        })
+
+
     }
     
     /*
