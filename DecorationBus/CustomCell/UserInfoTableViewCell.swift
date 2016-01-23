@@ -177,4 +177,19 @@ class UserDataHandler {
         
         return true
     }
+    
+    //从沙盒中获取用户头像
+    func getAvatarFromSandbox(imageName: String) -> UIImage? {
+        let docDir       = SandboxHandler().getDocumentDirectory()
+        let userInfoPath = docDir + "/" + self.userInfoPathInSandbox
+        let userAvatar   = userInfoPath + "/" + imageName
+        
+        guard NSFileManager().fileExistsAtPath(userAvatar) else {
+            print("用户头像不存在: \(userAvatar)")
+            return nil
+        }
+        
+        return UIImage(contentsOfFile: userAvatar)
+    }
+    
 }

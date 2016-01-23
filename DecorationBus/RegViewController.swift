@@ -132,8 +132,14 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
         showSimpleAlert(self, title: "恭喜", message: "注册完成！")
         
-        let avatarImage = self.avatar.backgroundImageForState(UIControlState.Normal)!
-        addUserToServer(UIImage(named: "Album.png")!, name: self.nickNameTextField.text!, sex: self.sexTextField.text!)
+        let avatarImage = UserDataHandler().getAvatarFromSandbox(self.verifiedPhoneNumber + ".png")
+        guard nil != avatarImage else{
+            showSimpleAlert(self, title: "获取图片失败", message: "您的头像找不到了，快截图告诉我们吧~")
+            return
+        }
+        
+        addUserToServer(avatarImage!, name: self.nickNameTextField.text!, sex: self.sexTextField.text!)
+        //addUserToServer(UIImage(named: "Album.png")!, name: self.nickNameTextField.text!, sex: self.sexTextField.text!)
     }
     
     func addUserToServer(img: UIImage, name: String, sex: String) -> Void {
@@ -141,7 +147,9 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
             showSimpleAlert(self, title: "图片类型不匹配", message: "请使用PNG格式头像！")
             return
         }
-        let imageData = UIImagePNGRepresentation(img)!
+        //let imageData = UIImagePNGRepresentation(img)!
+        let imageData = UIImageJPEGRepresentation(img, 0.001)!
+        print("将上传的图片大小:\(imageData.bytes)")
         
         let request = NSMutableURLRequest(URL: NSURL(string: REQUEST_ADD_USER_USR_STR)!)
         request.HTTPMethod="POST"//设置请求方式
