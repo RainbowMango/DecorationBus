@@ -96,6 +96,8 @@ class UserInfoTableViewCell: UITableViewCell {
 
 class UserDataHandler {
     
+    let userInfoPathInSandbox = "userinfo";
+    
     func isLogin() -> Bool {
         if let userid = UserDefaultHandler().getStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID) {
             return true
@@ -147,5 +149,32 @@ class UserDataHandler {
         }
         
         return userInfoArray
+    }
+    
+    //保存用户头像到沙盒
+    func saveUserAvatarToSandBox(imageName: String, image: UIImage) -> Bool {
+        let docDir       = SandboxHandler().getDocumentDirectory()
+        let userInfoPath = docDir + "/" + self.userInfoPathInSandbox
+        let userAvatar   = userInfoPath + "/" + imageName
+        
+        guard SandboxHandler().createDirectory(userInfoPath) else {
+            print("保存用户头像\(imageName)到沙盒失败, 创建目录失败: \(userInfoPath)")
+            return false
+        }
+        
+        let jpegData = UIImageJPEGRepresentation(image, 0.01)
+        guard jpegData != nil else {
+            print("保存用户头像\(imageName)到沙盒失败, 图片转化到JPEG失败")
+            return false
+        }
+        
+        guard jpegData!.writeToFile(userAvatar, atomically: true) else {
+            print("保存用户头像\(imageName)到沙盒失败, 写入失败")
+            return false
+        }
+        
+        print("保存用户头像成功: \(userAvatar)")
+        
+        return true
     }
 }

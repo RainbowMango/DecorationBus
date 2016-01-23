@@ -200,7 +200,8 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         self.avatar.setBackgroundImage(image, forState: UIControlState.Normal)
         self.isAvatarSet = true
         
-        //TODO: 上传图片
+        //保存图片到沙盒，方便图片上传
+        UserDataHandler().saveUserAvatarToSandBox("18605811857.png", image: image)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

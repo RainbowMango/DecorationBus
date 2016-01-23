@@ -43,4 +43,23 @@ class SandboxHandler: NSObject {
     func getTmpDirectory() -> String {
         return NSTemporaryDirectory()
     }
+    
+    //创建目录
+    func createDirectory(path: String) -> Bool {
+        let fileManager = NSFileManager()
+        
+        if(fileManager.fileExistsAtPath(path)) {
+            return true
+        }
+        
+        do {
+            try fileManager.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
+        }
+        catch let error as NSError {
+            print("创建沙盒目录\(path)失败: \(error.localizedDescription)")
+            return false
+        }
+        
+        return true
+    }
 }
