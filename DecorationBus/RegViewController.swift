@@ -13,6 +13,8 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var sexTextField: UITextField!
 
+    var verifiedPhoneNumber = String() //已经验证过的用户手机号码(由前个页面传入)
+    
     // 定义照片源字符串，方便创建actionSheet和处理代理
     let actionSheetTitleCancel = "取消"
     let actionSheetTitleCamera = "拍照"
@@ -201,7 +203,8 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         self.isAvatarSet = true
         
         //保存图片到沙盒，方便图片上传
-        UserDataHandler().saveUserAvatarToSandBox("18605811857.png", image: image)
+        let avatarName = self.verifiedPhoneNumber + ".png"
+        UserDataHandler().saveUserAvatarToSandBox(avatarName, image: image)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

@@ -16,6 +16,8 @@ class VerifyViewController: UIViewController {
     @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var sendVerButton: UIButton!
 
+    var phoneNumber = String() //存储用户手机号码，防止用户输入验证码时误修改手机号，导致用户体验下降
+    
     override func viewDidLoad() {
         //设置发送验证码button的初始边框
         self.sendVerButton.layer.borderWidth = 0.5
@@ -32,12 +34,12 @@ class VerifyViewController: UIViewController {
     }
     
     @IBAction func sendVerificationCode(sender: AnyObject) {
-        let phoneNumber = self.phoneNumberField.text
+        self.phoneNumber = self.phoneNumberField.text!
         print("开始向\(phoneNumber)发送验证码！")
         disableSendButton()
         
-        if(11 == phoneNumber?.lengthOfBytesUsingEncoding(NSASCIIStringEncoding)) {
-            SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: phoneNumber!, zone: "86", customIdentifier: nil, result: { (error) -> Void in
+        if(11 == self.phoneNumber.lengthOfBytesUsingEncoding(NSASCIIStringEncoding)) {
+            SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: phoneNumber, zone: "86", customIdentifier: nil, result: { (error) -> Void in
                 if(error == nil) {
                     print("获取验证码成功")
                 }
@@ -116,8 +118,9 @@ class VerifyViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
         case "segueNewUserInfo":
-            print("跳转到segueNewUserInfo")
-            //let destVC = segue.destinationViewController
+            let destVC = segue.destinationViewController as! RegViewController
+            //destVC.verifiedPhoneNumber = self.phoneNumber
+            destVC.verifiedPhoneNumber = "18605811857" //测试阶段hardcode
         default:
             print("Undefined segue: \(segue.identifier)")
         }
