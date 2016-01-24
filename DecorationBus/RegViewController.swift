@@ -138,11 +138,11 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
             return
         }
         
-        addUserToServer(avatarImage!, name: self.nickNameTextField.text!, sex: self.sexTextField.text!)
+        addUserToServer(avatarImage!, name: self.nickNameTextField.text!, sex: self.sexTextField.text!, phone: self.verifiedPhoneNumber)
         //addUserToServer(UIImage(named: "Album.png")!, name: self.nickNameTextField.text!, sex: self.sexTextField.text!)
     }
     
-    func addUserToServer(img: UIImage, name: String, sex: String) -> Void {
+    func addUserToServer(img: UIImage, name: String, sex: String, phone: String) -> Void {
         if(nil == UIImagePNGRepresentation(img)) {
             showSimpleAlert(self, title: "图片类型不匹配", message: "请使用PNG格式头像！")
             return
@@ -159,11 +159,33 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
         let body=NSMutableData()
         
+        
+        
+        //添加用户昵称
+        body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
+        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"nickName\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format:"Content-Type:text/plain\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(string: name).dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        //添加用户性别
+        body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
+        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"sex\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format:"Content-Type:text/plain\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(string: sex).dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        //添加用户手机号
+        body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
+        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"phoneNumber\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format:"Content-Type:text/plain\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(string: phone).dataUsingEncoding(NSUTF8StringEncoding)!)
+        
         // 添加图片
         body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
         body.appendData(NSString(format:"Content-Disposition:form-data;name=\"useravatar\";filename=\"Albumxxx.png\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
         body.appendData(NSString(format:"Content-Type:image/png\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
         body.appendData(imageData)
+        
+        //添加尾部
         body.appendData(NSString(format:"\r\n--\(boundary)--").dataUsingEncoding(NSUTF8StringEncoding)!)
         request.HTTPBody=body
         let que=NSOperationQueue()
