@@ -107,6 +107,29 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         self.presentViewController(alertVC, animated: true, completion: nil)
     }
 
+    func isNickNameValid() -> Bool {
+        let nickNameLength = self.nickNameTextField.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        if(nickNameLength < MIN_NICKNAME_LEN) {
+            showSimpleAlert(self, title: NICKNAME_MIN_LEN_ERR_TITLE, message: NICKNAME_MIN_LEN_ERR_MSG)
+            return false;
+        }
+        
+        if(nickNameLength > MAX_NICKNAME_LEN) {
+            showSimpleAlert(self, title: NICKNAME_MAX_LEN_ERR_TITLE, message: NICKNAME_MAX_LEN_ERR_MSG)
+            return false;
+        }
+        
+        return true;
+    }
+    
+    func isSexValid() -> Bool {
+        if(self.sexTextField.text!.isEmpty) {
+            showSimpleAlert(self, title: SEX_LEN_ERR_TITLE, message: SEX_LEN_ERR_MSG)
+            return false
+        }
+        
+        return true
+    }
     @IBAction func doneButtonPressed(sender: AnyObject) {
         //检查数据是否完整
         if(!isAvatarSet) {
@@ -114,22 +137,15 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
             return
         }
         
-        let nickNameLength = self.nickNameTextField.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-        if(nickNameLength < MIN_NICKNAME_LEN) {
-            showSimpleAlert(self, title: NICKNAME_MIN_LEN_ERR_TITLE, message: NICKNAME_MIN_LEN_ERR_MSG)
-            return
-        }
-        if(nickNameLength > MAX_NICKNAME_LEN) {
-            showSimpleAlert(self, title: NICKNAME_MAX_LEN_ERR_TITLE, message: NICKNAME_MAX_LEN_ERR_MSG)
+        guard isNickNameValid() else {
             return
         }
         
-        if(self.sexTextField.text!.isEmpty) {
-            showSimpleAlert(self, title: SEX_LEN_ERR_TITLE, message: SEX_LEN_ERR_MSG)
+        guard isSexValid() else {
             return
         }
         
-        showSimpleAlert(self, title: "恭喜", message: "注册完成！")
+        //showSimpleAlert(self, title: "恭喜", message: "注册完成！")
         
         let avatarImage = UserDataHandler().getAvatarFromSandbox(self.verifiedPhoneNumber + ".png")
         guard nil != avatarImage else{
@@ -138,7 +154,6 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         }
         
         addUserToServer(avatarImage!, name: self.nickNameTextField.text!, sex: self.sexTextField.text!, phone: self.verifiedPhoneNumber)
-        //addUserToServer(UIImage(named: "Album.png")!, name: self.nickNameTextField.text!, sex: self.sexTextField.text!)
     }
     
     func addUserToServer(img: UIImage, name: String, sex: String, phone: String) -> Void {
