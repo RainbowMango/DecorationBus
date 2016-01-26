@@ -40,6 +40,21 @@ class UserInfo {
     }
 }
 
+let REG_SUCCESS = 0
+let REG_FAILED  = 1
+
+class RegistAck {
+    var status: Int
+    var info  : String
+    var userID: String
+    
+    init() {
+        status = REG_FAILED
+        info   = String()
+        userID = String()
+    }
+}
+
 class UserInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var name: UILabel!
@@ -149,6 +164,23 @@ class UserDataHandler {
         }
         
         return userInfoArray
+    }
+    
+    func parseRegAck(jsonData: NSData) -> RegistAck {
+        let ack = RegistAck()
+        
+        do {
+            let jsonStr = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments)
+            ack.status = jsonStr.objectForKey("status") as! Int
+            ack.info   = jsonStr.objectForKey("info")   as! String
+            ack.userID = jsonStr.objectForKey("userID") as! String
+            
+            return ack
+        }catch let error as NSError {
+            print("解析JSON数据失败: parseRegAck" + error.localizedDescription)
+        }
+        
+        return ack
     }
     
     //保存用户头像到沙盒

@@ -56,7 +56,7 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBAction func addAvatarButtonPressed(sender: AnyObject) {
         print("用户开始设置头像")
         let alertVC = UIAlertController(title: "设置头像", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
+
         // 检测是否支持拍照（模拟器不支持会引起crash, 真机中访问控制相机被禁后也会crash）
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             let cameraSheet = UIAlertAction(title: actionSheetTitleCamera, style: UIAlertActionStyle.Default) { (action) -> Void in
@@ -101,7 +101,6 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         }
         
         let cancelSheet = UIAlertAction(title: actionSheetTitleCancel, style: UIAlertActionStyle.Cancel) { (action) -> Void in
-            print("用户点击取消")
         }
         alertVC.addAction(cancelSheet)
         
@@ -193,21 +192,19 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         (response, data, error) ->Void in
         
         if (error != nil){
-        print(error)
+            print(error)
         }else{
-        //Handle data in NSData type
-            //showSimpleAlert(self, title: "成功", message: "注册完成")
-            print("图片上传成功，注册完成！")
-            let info = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print(info)
+            let ack = UserDataHandler().parseRegAck(data!)
+            if(ack.status != REG_SUCCESS) {
+                showSimpleAlert(self, title: "注册失败", message: ack.info)
+                return;
+            }
             
+            showSimpleAlert(self, title: "成功", message: "注册完成")
             
-//        var tr:String=NSString(data:data,encoding:NSUTF8StringEncoding)!
-//        println(tr)
-//        //在主线程中更新UI风火轮才停止
-//        dispatch_sync(dispatch_get_main_queue(), {
-//        self.av.stopAnimating()
-//        //self.lb.hidden=true
+            //TODO: 保存用户登录信息
+            
+            //TODO: 跳转到首页
             }
         })
 
