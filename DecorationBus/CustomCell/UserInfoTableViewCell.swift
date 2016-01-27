@@ -113,6 +113,12 @@ class UserDataHandler {
     
     let userInfoPathInSandbox = "userinfo";
     
+    //user default中字典key定义
+    let UDH_USER_ID   = "userid"
+    let UDH_NICK_NAME = "nickname"
+    let UDH_PHONE_NUMBER = "phonenumber"
+    let UDH_AVATAR_SANDBOX_URL = "sandboxavatarurl"
+    
     func isLogin() -> Bool {
         if let userid = UserDefaultHandler().getStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID) {
             return true
@@ -224,4 +230,52 @@ class UserDataHandler {
         return UIImage(contentsOfFile: userAvatar)
     }
     
+    /*
+    * 取得用户头像在沙盒中的位置
+    */
+    func getAvatarSandboxURL(userID: String) -> String? {
+        let docDir       = SandboxHandler().getDocumentDirectory()
+        let userInfoPath = docDir + "/" + self.userInfoPathInSandbox
+        let userAvatar   = userInfoPath + "/" + userID + ".png"
+        
+        guard NSFileManager().fileExistsAtPath(userAvatar) else {
+            print("Warning: getAvatarURL() 用户\(userID)头像不存在")
+            return nil
+        }
+        
+        return userAvatar
+    }
+    
+    /*
+    *保存用户基本信息到本地
+    */
+    func saveUserInfoToConf(info: UserInfo) -> Bool {
+        let userConf: NSDictionary = NSDictionary()
+        
+        guard !info.userid.isEmpty else {
+            print("Warning: saveUserInfoToConf() user id is empty!")
+            return false
+        }
+        userConf.setValue(info.userid, forKey: UDH_USER_ID)
+        
+        guard !info.nickname.isEmpty else {
+            print("Warning: saveUserInfoToConf() nick name is empty!")
+            return false
+        }
+        userConf.setValue(info.nickname, forKey: UDH_NICK_NAME)
+        
+        guard !info.phone.isEmpty else {
+            print("Warning: saveUserInfoToConf() phone number is empty!")
+            return false
+        }
+        userConf.setValue(info.phone, forKey: UDH_PHONE_NUMBER)
+      
+        guard (self.getAvatarSandboxURL(info.userid) != nil) else {
+            print("Warning: saveUserInfoToConf() Can't get avatar path in sandbox!")
+            return false
+        }
+        userConf.setValue(getAvatarSandboxURL(info.userid), forKey: UDH_AVATAR_SANDBOX_URL)
+        
+        return true
+    }
 }

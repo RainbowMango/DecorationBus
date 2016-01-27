@@ -23,5 +23,21 @@ class UserDefaultHandler {
         userDefaults.setValue(value, forKey: key)
         userDefaults.synchronize()
     }
+    
+    /*
+    * 除数值类型不能存储外，其他类型都可以存储
+    * 可存储类型：NSDate, NSArray, NSDictionary
+    */
+    func setObjectForKey(value: AnyObject?, key: String) -> Void {
+        userDefaults.setObject(value, forKey: key)
+        userDefaults.synchronize()
+    }
+    
+    /*
+    * 获取字典类型数据
+    */
+    func getDictionaryForKey(key: String) -> [String : AnyObject]? {
+        return userDefaults.dictionaryForKey(key)
+    }
 }
 
