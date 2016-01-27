@@ -190,28 +190,28 @@ class UserDataHandler {
     }
     
     //保存用户头像到沙盒
-    func saveUserAvatarToSandBox(imageName: String, image: UIImage) -> Bool {
+    func saveAvatarToSandBox(phoneNumber: String, image: UIImage) -> Bool {
         let docDir       = SandboxHandler().getDocumentDirectory()
         let userInfoPath = docDir + "/" + self.userInfoPathInSandbox
-        let userAvatar   = userInfoPath + "/" + imageName
+        let userAvatar   = userInfoPath + "/" + phoneNumber + ".png"
         
         guard SandboxHandler().createDirectory(userInfoPath) else {
-            print("保存用户头像\(imageName)到沙盒失败, 创建目录失败: \(userInfoPath)")
+            print("保存用户头像\(phoneNumber)到沙盒失败, 创建目录失败: \(userInfoPath)")
             return false
         }
         
         let jpegData = UIImageJPEGRepresentation(image, 0.01)
         guard jpegData != nil else {
-            print("保存用户头像\(imageName)到沙盒失败, 图片转化到JPEG失败")
+            print("保存用户头像\(phoneNumber)到沙盒失败, 图片转化到JPEG失败")
             return false
         }
         
         guard jpegData!.writeToFile(userAvatar, atomically: true) else {
-            print("保存用户头像\(imageName)到沙盒失败, 写入失败")
+            print("保存用户头像\(phoneNumber)到沙盒失败, 写入失败")
             return false
         }
         
-        print("保存用户头像成功: \(userAvatar)")
+        //print("保存用户头像成功: \(userAvatar)")
         
         return true
     }
@@ -233,13 +233,13 @@ class UserDataHandler {
     /*
     * 取得用户头像在沙盒中的位置
     */
-    func getAvatarSandboxURL(userID: String) -> String? {
+    func getAvatarSandboxURL(phoneNumber: String) -> String? {
         let docDir       = SandboxHandler().getDocumentDirectory()
         let userInfoPath = docDir + "/" + self.userInfoPathInSandbox
-        let userAvatar   = userInfoPath + "/" + userID + ".png"
+        let userAvatar   = userInfoPath + "/" + phoneNumber + ".png"
         
         guard NSFileManager().fileExistsAtPath(userAvatar) else {
-            print("Warning: getAvatarURL() 用户\(userID)头像不存在")
+            print("Warning: getAvatarURL() 用户\(phoneNumber)头像不存在")
             return nil
         }
         
@@ -250,31 +250,36 @@ class UserDataHandler {
     *保存用户基本信息到本地
     */
     func saveUserInfoToConf(info: UserInfo) -> Bool {
-        let userConf: NSDictionary = NSDictionary()
+        var userConf = Dictionary<String, String>()
         
         guard !info.userid.isEmpty else {
             print("Warning: saveUserInfoToConf() user id is empty!")
             return false
         }
-        userConf.setValue(info.userid, forKey: UDH_USER_ID)
+        //userConf.setValue(info.userid, forKey: UDH_USER_ID)
+        userConf[UDH_USER_ID] = info.userid
         
         guard !info.nickname.isEmpty else {
             print("Warning: saveUserInfoToConf() nick name is empty!")
             return false
         }
-        userConf.setValue(info.nickname, forKey: UDH_NICK_NAME)
+        //userConf.setValue(info.nickname, forKey: UDH_NICK_NAME)
+        userConf[UDH_NICK_NAME] = info.nickname
         
         guard !info.phone.isEmpty else {
             print("Warning: saveUserInfoToConf() phone number is empty!")
             return false
         }
-        userConf.setValue(info.phone, forKey: UDH_PHONE_NUMBER)
+        //userConf.setValue(info.phone, forKey: UDH_PHONE_NUMBER)
+        userConf[UDH_PHONE_NUMBER] = info.phone
       
-        guard (self.getAvatarSandboxURL(info.userid) != nil) else {
+        let avatar = getAvatarSandboxURL(info.phone)
+        guard (avatar != nil) else {
             print("Warning: saveUserInfoToConf() Can't get avatar path in sandbox!")
             return false
         }
-        userConf.setValue(getAvatarSandboxURL(info.userid), forKey: UDH_AVATAR_SANDBOX_URL)
+        //userConf.setValue(avatar, forKey: UDH_AVATAR_SANDBOX_URL)
+        userConf[UDH_AVATAR_SANDBOX_URL] = avatar
         
         return true
     }

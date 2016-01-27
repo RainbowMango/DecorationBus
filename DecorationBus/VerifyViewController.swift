@@ -120,7 +120,7 @@ class VerifyViewController: UIViewController {
         case "segueNewUserInfo":
             let destVC = segue.destinationViewController as! RegViewController
             //destVC.verifiedPhoneNumber = self.phoneNumber
-            destVC.verifiedPhoneNumber = "18605811857" //测试阶段hardcode
+            destVC.userInfo.phone = "18605811857"  //测试阶段hardcode
         default:
             print("Undefined segue: \(segue.identifier)")
         }

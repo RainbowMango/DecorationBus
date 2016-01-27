@@ -13,7 +13,7 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var sexTextField: UITextField!
 
-    var verifiedPhoneNumber = String() //已经验证过的用户手机号码(由前个页面传入)
+    var userInfo = UserInfo() //前个页面已经传入用户手机号码
     
     // 定义照片源字符串，方便创建actionSheet和处理代理
     let actionSheetTitleCancel = "取消"
@@ -50,18 +50,14 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func addAvatarButtonPressed(sender: AnyObject) {
-        print("用户开始设置头像")
         let alertVC = UIAlertController(title: "设置头像", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
 
         // 检测是否支持拍照（模拟器不支持会引起crash, 真机中访问控制相机被禁后也会crash）
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             let cameraSheet = UIAlertAction(title: actionSheetTitleCamera, style: UIAlertActionStyle.Default) { (action) -> Void in
-                print("用户点击相机")
-                
                 if(!DeviceLimitHandler().allowCamera()) {
                     //用户隐私设置禁用相机，弹出alert
                     let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-相机”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
@@ -81,11 +77,9 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         // 检测是否支持图库
         if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
             let photoLibrarySheet = UIAlertAction(title: actionSheetTitlePhotoLibrary, style: UIAlertActionStyle.Default) { (action) -> Void in
-                print("用户点击照片库")
-                
                 if(!DeviceLimitHandler().allowPhotoLibrary()) {
                     //用户隐私设置禁用相册，弹出alert
-                    let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-照片”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
+                    let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-照片”选项中允许“装修巴士”访问您的照片。", delegate: self, cancelButtonTitle: "确定")
                     alertView.show()
                     return
                 }
@@ -132,7 +126,7 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
     }
     @IBAction func doneButtonPressed(sender: AnyObject) {
         //检查数据是否完整
-        if(!isAvatarSet) {
+        if(self.userInfo.avatar.isEmpty) {
             showSimpleAlert(self, title: NO_AVATAR_ERR_TITLE, message: NO_AVATAR_ERR_MSG)
             return
         }
@@ -140,6 +134,7 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         guard isNickNameValid() else {
             return
         }
+        self.userInfo.nickname = self.nickNameTextField.text!
         
         guard isSexValid() else {
             return
@@ -147,13 +142,13 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
         //showSimpleAlert(self, title: "恭喜", message: "注册完成！")
         
-        let avatarImage = UserDataHandler().getAvatarFromSandbox(self.verifiedPhoneNumber + ".png")
+        //保存用户图片到服务器
+        let avatarImage = UserDataHandler().getAvatarFromSandbox(self.userInfo.phone + ".png")
         guard nil != avatarImage else{
             showSimpleAlert(self, title: "获取图片失败", message: "您的头像找不到了，快截图告诉我们吧~")
             return
         }
-        
-        addUserToServer(avatarImage!, name: self.nickNameTextField.text!, sex: self.sexTextField.text!, phone: self.verifiedPhoneNumber)
+        addUserToServer(avatarImage!, name: self.nickNameTextField.text!, sex: self.sexTextField.text!, phone: self.userInfo.phone)
     }
     
     func addUserToServer(img: UIImage, name: String, sex: String, phone: String) -> Void {
@@ -172,8 +167,6 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         request.addValue(contentType, forHTTPHeaderField:"Content-Type")
         
         let body=NSMutableData()
-        
-        
         
         //添加用户昵称
         body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
@@ -215,11 +208,15 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
                 return;
             }
             
-            showSimpleAlert(self, title: "成功", message: "注册完成")
+            self.userInfo.userid = ack.userID
             
-            //TODO: 保存用户登录信息
+            //showSimpleAlert(self, title: "成功", message: "注册完成")
             
-            //TODO: 跳转到首页
+            //保存用户登录信息
+            UserDataHandler().saveUserInfoToConf(self.userInfo)
+            
+            //跳转到首页
+            //self.navigationController?.popToRootViewControllerAnimated(true)
             }
         })
 
@@ -237,16 +234,26 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
     */
 
     // MARK: - UIImagePickerControllerDelegate
+    
+    //读取用户选择的图片并保存到沙盒
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         self.dismissViewControllerAnimated(true, completion: nil) // 首先释放picker以节省内存
         
         let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         self.avatar.setBackgroundImage(image, forState: UIControlState.Normal)
-        self.isAvatarSet = true
         
         //保存图片到沙盒，方便图片上传
-        let avatarName = self.verifiedPhoneNumber + ".png"
-        UserDataHandler().saveUserAvatarToSandBox(avatarName, image: image)
+        guard UserDataHandler().saveAvatarToSandBox(self.userInfo.phone, image: image) else {
+            showSimpleAlert(self, title: "保存头像失败", message: "保存头像到本地失败了")
+            return
+        }
+        
+        let avatarURL = UserDataHandler().getAvatarSandboxURL(self.userInfo.phone)
+        guard avatarURL != nil else {
+            showSimpleAlert(self, title: "获取本地头像失败", message: "获取本地头像失败")
+            return
+        }
+        self.userInfo.avatar = avatarURL!
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
