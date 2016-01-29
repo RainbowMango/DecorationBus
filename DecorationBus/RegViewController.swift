@@ -198,27 +198,33 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         let que=NSOperationQueue()
         NSURLConnection.sendAsynchronousRequest(request, queue: que, completionHandler: {
         (response, data, error) ->Void in
-        
-        if (error != nil){
-            print(error)
-        }else{
-            let ack = UserDataHandler().parseRegAck(data!)
-            if(ack.status != REG_SUCCESS) {
-                showSimpleAlert(self, title: "注册失败", message: ack.info)
-                return;
+        /*
+        * 下面操作必须放到dispatch_async中，否则会出现跳转不成功的情况
+        */
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            if (error != nil){
+                print(error)
+            }else{
+                let ack = UserDataHandler().parseRegAck(data!)
+                if(ack.status != REG_SUCCESS) {
+                    showSimpleAlert(self, title: "注册失败", message: ack.info)
+                    return;
+                }
+                
+                self.userInfo.userid = ack.userID
+                
+                //showSimpleAlert(self, title: "成功", message: "注册完成")
+                
+                //保存用户登录信息
+                UserDataHandler().saveUserInfoToConf(self.userInfo)
+                
+                //跳转到首页
+                self.navigationController?.popToRootViewControllerAnimated(true)
+                //self.navigationController?.popViewControllerAnimated(true)
             }
-            
-            self.userInfo.userid = ack.userID
-            
-            //showSimpleAlert(self, title: "成功", message: "注册完成")
-            
-            //保存用户登录信息
-            UserDataHandler().saveUserInfoToConf(self.userInfo)
-            
-            //跳转到首页
-            //self.navigationController?.popToRootViewControllerAnimated(true)
+            })
             }
-        })
+        )
 
 
     }
