@@ -120,20 +120,35 @@ class UserDataHandler {
     let UDH_AVATAR_SANDBOX_URL = "sandboxavatarurl"
     
     func isLogin() -> Bool {
-        if let userid = UserDefaultHandler().getStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID) {
+        if nil != UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO) {
             return true
         }
         
         return false
     }
     
-    //从user default文件读取 user ID
-    func getUserIDFromConf() -> String {
-        if let userid = UserDefaultHandler().getStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID) {
-            return userid
+    func getUserInfoFromConf() -> UserInfo {
+        let userInfo = UserInfo()
+        let userConf = UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO)
+        
+        if nil == userConf {
+            print("Warning: getUserInfoFromConf(), No user info in conf!")
+            return userInfo
         }
         
-        return String()
+        userInfo.userid   = userConf![UDH_USER_ID]            as! String
+        userInfo.nickname = userConf![UDH_NICK_NAME]          as! String
+        userInfo.phone    = userConf![UDH_PHONE_NUMBER]       as! String
+        userInfo.avatar   = userConf![UDH_AVATAR_SANDBOX_URL] as! String
+        
+        return userInfo
+    }
+    
+    //从user default文件读取 user ID
+    func getUserIDFromConf() -> String {
+        let user = getUserInfoFromConf()
+        
+        return user.userid
     }
     
     func parseJsonData(jsonData: NSData) -> Array<UserInfo> {
@@ -280,6 +295,8 @@ class UserDataHandler {
         }
         //userConf.setValue(avatar, forKey: UDH_AVATAR_SANDBOX_URL)
         userConf[UDH_AVATAR_SANDBOX_URL] = avatar
+        
+        UserDefaultHandler().setObjectForKey(userConf, key: USER_DEFAULT_KEY_USER_INFO)
         
         return true
     }

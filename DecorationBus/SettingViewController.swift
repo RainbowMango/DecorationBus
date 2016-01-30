@@ -27,14 +27,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.settingTableView.estimatedRowHeight = 80 //预估高度要大于SB中最小高度，否则cell可能被压缩
         self.settingTableView.rowHeight = UITableViewAutomaticDimension // cell 高度自适应
         self.settingTableView.tableFooterView = UIView() // 清除tableView中空白行
-        
-        //判断用户登录状态
-        if(UserDataHandler().isLogin()) {
-            self.userInfo = self.requestUserInformation(UserDataHandler().getUserIDFromConf())
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.userInfo = UserDataHandler().getUserInfoFromConf()
         self.settingTableView.reloadData() //重新加载，用户登录后可以看到登录信息
     }
 
@@ -77,7 +73,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 2
     }
     // 设置显示cell的数目
-    // TODO：改方法会被调用两次，使显示的sell数目是预期的两倍
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -96,19 +91,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("userInfoCell", forIndexPath: indexPath) as! UserInfoTableViewCell
-            if(UserDataHandler().isLogin()) {//用户已经登录
-                if(self.userInfo.userid.isEmpty || self.userInfo.nickname.isEmpty || self.userInfo.avatar.isEmpty) {
-                    print("用户主要信息不完整重新请求信息, userid: \(self.userInfo.userid), nick: \(self.userInfo.nickname), avatar: \(self.userInfo.avatar)")
-                    self.userInfo = requestUserInformation(UserDataHandler().getUserIDFromConf())
-                }
-                
-                cell.configureViews(self.userInfo)
-            }
-            else {
-                //配置cell
-                let userData = UserInfo()
-                cell.configureViews(userData)
-            }
+            cell.configureViews(self.userInfo)
+            
             return cell
         case 1:
             let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath)
@@ -130,7 +114,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         if(0 == indexPath.section) {
             switch indexPath.row {
             case 0:
-                performSegueWithIdentifier("segueRegister", sender: self)
+                if(UserDataHandler().isLogin()) {
+                    showSimpleAlert(self, title: "客官别急", message: "个人信息查看和修改功能还在开发中...")
+                    return
+                }
+                else {
+                    performSegueWithIdentifier("segueRegister", sender: self)
+                }
             default:
                 print("未定义的cell点击行为 section: \(indexPath.section), row: \(indexPath.row)")
             }
