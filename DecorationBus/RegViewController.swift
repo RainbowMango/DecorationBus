@@ -219,8 +219,8 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
                 UserDataHandler().saveUserInfoToConf(self.userInfo)
                 
                 //跳转到首页
+                self.tabBarController?.selectedIndex = 0
                 self.navigationController?.popToRootViewControllerAnimated(true)
-                //self.navigationController?.popViewControllerAnimated(true)
             }
             })
             }
