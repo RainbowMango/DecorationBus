@@ -69,6 +69,11 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
                 imagePicker.allowsEditing = false
                 imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
                 imagePicker.videoQuality = UIImagePickerControllerQualityType.TypeLow // 获取低质量图片已经足够使用，避免内存使用过多引起内存警告
+                
+                /*
+                * 调用相机时会产生一条log, 应该是IOS8.1的一个bug：
+                  Snapshotting a view that has not been rendered results in an empty snapshot. Ensure your view has been rendered at least once before snapshotting or snapshot after screen updates.
+                */
                 self.presentViewController(imagePicker, animated: true, completion: nil)
             }
             alertVC.addAction(cameraSheet)

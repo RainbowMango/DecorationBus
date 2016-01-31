@@ -30,7 +30,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.userInfo = UserDataHandler().getUserInfoFromConf()
+        if(UserDataHandler().isLogin()) {
+            self.userInfo = UserDataHandler().getUserInfoFromConf()
+        }
+        
         self.settingTableView.reloadData() //重新加载，用户登录后可以看到登录信息
     }
 
@@ -107,8 +110,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // 设定选中时的动作
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("选中cell with index\(indexPath.row)")
-        
         self.settingTableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if(0 == indexPath.section) {
