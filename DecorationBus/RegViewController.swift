@@ -290,6 +290,7 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
             alertVC.addAction(alertFemaleAction)
             alertVC.addAction(alertCancelAction)
             
+            self.nickNameTextField.resignFirstResponder() //取消用户名激活状态
             presentViewController(alertVC, animated: true, completion: nil)
             
             return false
