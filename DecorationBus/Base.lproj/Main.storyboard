@@ -1604,7 +1604,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="asq-8s-RI8">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userInfoCell" rowHeight="87" id="eGe-mg-OAz" customClass="UserInfoTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="113.5" width="320" height="87"/>
@@ -1613,11 +1613,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="86.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userDefaultAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="cjL-pk-NeR" userLabel="avatar">
-                                                    <rect key="frame" x="13" y="13" width="60.5" height="60.5"/>
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userDefaultAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="cjL-pk-NeR" userLabel="avatar">
+                                                    <rect key="frame" x="13" y="13" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="cjL-pk-NeR" secondAttribute="height" multiplier="1:1" id="gYg-Bi-gfK"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="u2D-RA-Stn"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="60" id="u2D-RA-Stn"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sET-ht-kTs">
@@ -1629,7 +1629,7 @@
                                                                 <constraint firstAttribute="height" constant="21" id="9HJ-3z-UbH"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您还没有登录哦~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOK-ec-89C" userLabel="userhint">
@@ -1638,7 +1638,7 @@
                                                                 <constraint firstAttribute="height" constant="21" id="ES5-V9-Vos"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1663,7 +1663,7 @@
                                                 <constraint firstItem="sET-ht-kTs" firstAttribute="bottom" secondItem="xXu-ja-sOi" secondAttribute="bottomMargin" constant="5" id="gVG-iI-X9n"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="avatar" destination="cjL-pk-NeR" id="NT1-84-ejV"/>
                                             <outlet property="hint" destination="SOK-ec-89C" id="C83-Sz-ZO1"/>
@@ -1790,7 +1790,7 @@
                                     <constraint firstAttribute="height" constant="21" id="f8H-cy-eQw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ByN-df-8QW" userLabel="phoneView">
@@ -1808,7 +1808,7 @@
                                             <constraint firstAttribute="width" constant="40" id="HB5-V7-0mB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入11位手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nDY-2V-P9S">
@@ -1877,7 +1877,7 @@
                                     <constraint firstAttribute="height" constant="21" id="ZV4-Ic-7iy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7n-e8-5ep">
@@ -1894,7 +1894,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="NcX-TZ-YBz" firstAttribute="leading" secondItem="XP5-tf-6FM" secondAttribute="leading" id="1KK-H1-l73"/>
                             <constraint firstAttribute="trailing" secondItem="ByN-df-8QW" secondAttribute="trailing" id="Fxa-xK-vfn"/>
