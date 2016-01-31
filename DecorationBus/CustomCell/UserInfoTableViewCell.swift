@@ -214,6 +214,18 @@ class UserDataHandler {
         return ack
     }
     
+    /*
+    * 从服务器缓存头像到本地
+    * 使用场景：老用户退出登录后再次登录， 老用户删除应用再次安装应用并登录，老用户在新设备上登录
+    */
+    func syncAvatarFromRemoteToSandBox(remoteURL: String, phoneNumber: String) -> Bool {
+        let url  = NSURL(string: remoteURL)
+        let data = NSData(contentsOfURL: url!)
+        let image = UIImage(data: data!)
+        
+        return saveAvatarToSandBox(phoneNumber, image: image!)
+    }
+    
     //保存用户头像到沙盒
     func saveAvatarToSandBox(phoneNumber: String, image: UIImage) -> Bool {
         let docDir       = SandboxHandler().getDocumentDirectory()
@@ -237,6 +249,26 @@ class UserDataHandler {
         }
         
         //print("保存用户头像成功: \(userAvatar)")
+        
+        return true
+    }
+    
+    func removeAvatarFromSandbox(phoneNumber: String) -> Bool {
+        let docDir       = SandboxHandler().getDocumentDirectory()
+        let userInfoPath = docDir + "/" + self.userInfoPathInSandbox
+        let userAvatar   = userInfoPath + "/" + phoneNumber + ".png"
+        
+        guard NSFileManager().fileExistsAtPath(userAvatar) else {
+            print("removeAvatarFromSandbox(): No user avatar found! \(userAvatar)")
+            return true
+        }
+        do {
+            try NSFileManager().removeItemAtPath(userAvatar)
+        }
+        catch let error as NSError {
+            print("removeAvatarFromSandbox(): Remove user avatar failed! \(userAvatar), \(error.localizedDescription)")
+            return false
+        }
         
         return true
     }
@@ -312,13 +344,15 @@ class UserDataHandler {
     }
     
     /*
-    * 删除本地用户信息，用于退出登录
+    * 删除本地用户信息，同时删除本地缓存的头像，用于退出登录
     */
     func removeUserInfoFromConf() -> Void {
-        guard (UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO) != nil) else {
+        let userConfDic = UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO)
+        guard userConfDic != nil else {
             return
         }
         
+        removeAvatarFromSandbox(userConfDic![UDH_PHONE_NUMBER] as! String)
         UserDefaultHandler().removeObjectForKey(USER_DEFAULT_KEY_USER_INFO)
     }
 }

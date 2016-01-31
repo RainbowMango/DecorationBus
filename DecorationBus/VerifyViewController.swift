@@ -70,7 +70,9 @@ class VerifyViewController: UIViewController, UITextFieldDelegate {
                 
                 let user = self.requestUserInformation(self.phoneNumber)
                 if(user.registed) {//老用户，记录登录状态
-                    //TODO: 更新conf中用户信息，如果本地没有头像，需要从服务器导入
+                    UserDataHandler().syncAvatarFromRemoteToSandBox(user.avatar, phoneNumber: user.phone)
+                    user.avatar = UserDataHandler().getAvatarSandboxURL(user.phone)!
+                    UserDataHandler().saveUserInfoToConf(user)
                     
                     self.navigationController?.popViewControllerAnimated(true)
                 }
@@ -80,8 +82,6 @@ class VerifyViewController: UIViewController, UITextFieldDelegate {
                 
             })
         }
-        
-        self.performSegueWithIdentifier("segueNewUserInfo", sender: self)
     }
     
     func enableSendButton() -> Void {
