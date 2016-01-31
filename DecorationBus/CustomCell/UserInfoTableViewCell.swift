@@ -300,4 +300,15 @@ class UserDataHandler {
         
         return true
     }
+    
+    /*
+    * 删除本地用户信息，用于退出登录
+    */
+    func removeUserInfoFromConf() -> Void {
+        guard (UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO) != nil) else {
+            return
+        }
+        
+        UserDefaultHandler().removeObjectForKey(USER_DEFAULT_KEY_USER_INFO)
+    }
 }

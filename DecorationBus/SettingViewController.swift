@@ -12,7 +12,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var settingTableView: UITableView!
     
-    var settingItems = ["修改类别", "提交反馈", "关于装修巴士"]
+    var settingItems = ["修改类别", "提交反馈", "关于装修巴士", "退出登录"]
     var cellReuseIdentifier: String = "settingItemCell"
     var userInfo     = UserInfo()
     
@@ -137,6 +137,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             case 2:
                 print("didSelectRowAtIndexPath: 转入关于我们view")
                 performSegueWithIdentifier("aboutme", sender: self.view)
+            case 3:
+                print("didSelectRowAtIndexPath: 退出登录")
+                UserDataHandler().removeUserInfoFromConf()
+                self.userInfo = UserInfo()
+                tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
             default:
                 print("不存在该cell index")
             }
