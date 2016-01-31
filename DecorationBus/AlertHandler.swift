@@ -28,3 +28,11 @@ func showSimpleAlert(sender: AnyObject, title: String, message: String) -> Void 
 //    alert.addAction(alertAction)
 //    sender.presentViewController(alert, animated: true, completion: nil)
 }
+
+func showSimpleHint(targetView: UIView, title: String, message: String) {
+    let hud = MBProgressHUD.showHUDAddedTo(targetView, animated: true)
+    hud.mode = MBProgressHUDMode.Text
+    hud.labelText = title
+    hud.detailsLabelText = message
+    hud.hide(true, afterDelay: 1)
+}

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VerifyViewController: UIViewController {
+class VerifyViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneView: UIView!
     @IBOutlet weak var verView: UIView!
     @IBOutlet weak var phoneNumberField: UITextField!
@@ -18,14 +18,21 @@ class VerifyViewController: UIViewController {
 
     var phoneNumber = String() //存储用户手机号码，防止用户输入验证码时误修改手机号，导致用户体验下降
     
+    let phoneNumberFieldTag = 110
+    let verificationCodeFieldTag = 120
+    
     override func viewDidLoad() {
         //设置发送验证码button的初始边框
         self.sendVerButton.layer.borderWidth = 0.5
-        self.enableSendButton()
+        self.disableSendButton()
         
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //设置输入框
+        self.phoneNumberField.tag           = self.phoneNumberFieldTag
+        self.phoneNumberField.delegate      = self
+        self.verificationCodeField.tag      = self.verificationCodeFieldTag
+        self.verificationCodeField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,18 +48,11 @@ class VerifyViewController: UIViewController {
         if(11 == self.phoneNumber.lengthOfBytesUsingEncoding(NSASCIIStringEncoding)) {
             SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: phoneNumber, zone: "86", customIdentifier: nil, result: { (error) -> Void in
                 if(error == nil) {
-                    print("获取验证码成功")
+                    showSimpleHint(self.view, title: "发送成功", message: "请耐心接收短信")
                 }
                 else{
-                    let errorCode = error.code
-                    let errorString = getSMSErrorInfo(errorCode)
-                    print("获取验证码失败, code:\(errorCode), info: " + errorString)
-                    let alertVC = UIAlertController(title: "验证码获取失败", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-                    let alertAction = UIAlertAction(title: "知道了", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
-                        print("Alert Action: 取消")
-                    })
-                    alertVC.addAction(alertAction)
-                    self.presentViewController(alertVC, animated: true, completion: nil)
+                    let errorString = getSMSErrorInfo(error.code)
+                    showSimpleAlert(self, title: "验证码获取失败", message: errorString)
                 }
             })
 
@@ -61,25 +61,25 @@ class VerifyViewController: UIViewController {
 
     @IBAction func verifyPhoneNumber(sender: AnyObject) {
         let verCode = self.verificationCodeField.text
-//        if(verCode?.lengthOfBytesUsingEncoding(NSASCIIStringEncoding) > 0) {
-//            SMSSDK.commitVerificationCode(verCode, phoneNumber: self.phoneNumberField.text, zone: "86", result: { (error) -> Void in
-//                if(error != nil) {
-//                    print("验证失败")
-//                    showSMSAlert(self, title: VERIFY_SMS_FAILED_TITLE, msg: VERIFY_SMS_FAILED_MSG)
-//                    return
-//                }
-//                
-//                let user = self.requestUserInformation(self.phoneNumberField.text!)
-//                if(user.registed) {//老用户，记录登录状态
-//                    UserDefaultHandler().setStringConf(USER_DEFAULT_KEY_LOGIN_USER_ID, value: user.userid)
-//                    self.navigationController?.popViewControllerAnimated(true)
-//                }
-//                else if(!user.registed) { // 新用户，引导注册
-//                    self.performSegueWithIdentifier("segueNewUserInfo", sender: self)
-//                }
-//                
-//            })
-//        }
+        if(verCode?.lengthOfBytesUsingEncoding(NSASCIIStringEncoding) > 0) {
+            SMSSDK.commitVerificationCode(verCode, phoneNumber: self.phoneNumberField.text, zone: "86", result: { (error) -> Void in
+                if(error != nil) {
+                    showSimpleAlert(self, title: VERIFY_SMS_FAILED_TITLE, message: VERIFY_SMS_FAILED_MSG)
+                    return
+                }
+                
+                let user = self.requestUserInformation(self.phoneNumber)
+                if(user.registed) {//老用户，记录登录状态
+                    //TODO: 更新conf中用户信息，如果本地没有头像，需要从服务器导入
+                    
+                    self.navigationController?.popViewControllerAnimated(true)
+                }
+                else if(!user.registed) { // 新用户，引导注册
+                    self.performSegueWithIdentifier("segueNewUserInfo", sender: self)
+                }
+                
+            })
+        }
         
         self.performSegueWithIdentifier("segueNewUserInfo", sender: self)
     }
@@ -107,11 +107,43 @@ class VerifyViewController: UIViewController {
                 return users[0]
             }
         }catch let error as NSError{
-            print("网络异常--请求项目经理信息失败：" + error.localizedDescription)
+            print("网络异常--请求用户信息失败：" + error.localizedDescription)
         }
         
         return UserInfo()
     }
+    
+    // MARK: - UITextFieldDelegate
+    
+    /*
+    * 监测输入
+    */
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let fieldLength = (textField.text?.characters.count)! - range.length + string.characters.count
+        print("当前字符数为:\(fieldLength)")
+        
+        switch textField.tag {
+        case self.phoneNumberFieldTag:
+            guard fieldLength <= 11 else {
+                return false
+            }
+            
+            if(fieldLength == 11) {
+                enableSendButton()
+            }
+        case self.verificationCodeFieldTag:
+            if(fieldLength >= 4) {
+                //TODO 激活验证按钮
+            }
+        default:
+            print("未处理的UITextFiled, tag= \(textField.tag)")
+            
+        }
+        
+        return true
+    }
+    
     
     // MARK: - Navigation
 

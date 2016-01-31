@@ -52,12 +52,3 @@ func getSMSErrorInfo(ecode: Int) -> String {
     
     return "未定义的异常:\(ecode)"
 }
-
-func showSMSAlert(sender: AnyObject, title: String, msg: String) -> Void {
-    let alertVC = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.Alert)
-    let alertAction = UIAlertAction(title: "知道了", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
-        print("Alert Action: 取消")
-    })
-    alertVC.addAction(alertAction)
-    sender.presentViewController(alertVC, animated: true, completion: nil)
-}
