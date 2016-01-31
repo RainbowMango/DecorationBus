@@ -46,6 +46,12 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
         //设置控件tag
         self.sexTextField.tag = self.sexFieldTag
+        
+        //设置头像圆角
+        self.avatar.layer.masksToBounds = true
+        self.avatar.layer.cornerRadius  = self.avatar.frame.width / 2.0 //设置为图片宽度的一半出来为圆形
+        self.avatar.layer.borderColor   = UIColor.whiteColor().CGColor
+        self.avatar.layer.borderWidth   = 3.0
     }
 
     override func didReceiveMemoryWarning() {
