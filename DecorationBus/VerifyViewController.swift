@@ -202,8 +202,7 @@ class VerifyViewController: UIViewController, UITextFieldDelegate {
         switch segue.identifier! {
         case "segueNewUserInfo":
             let destVC = segue.destinationViewController as! RegViewController
-            //destVC.verifiedPhoneNumber = self.phoneNumber
-            destVC.userInfo.phone = "18605811857"  //测试阶段hardcode
+            destVC.userInfo.phone = self.phoneNumber
         default:
             print("Undefined segue: \(segue.identifier)")
         }
