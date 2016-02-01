@@ -1922,6 +1922,7 @@
                         <outlet property="sendVerButton" destination="rZs-jP-8eM" id="5bc-UH-tUt"/>
                         <outlet property="verView" destination="IcK-j1-Cwh" id="rbn-Th-0FN"/>
                         <outlet property="verificationCodeField" destination="2x6-Ig-n7F" id="X4c-eo-w4R"/>
+                        <outlet property="verifyButton" destination="R7n-e8-5ep" id="P5w-4Z-Sbp"/>
                         <segue destination="zxG-z4-kcw" kind="push" identifier="segueNewUserInfo" id="4rb-qd-M86"/>
                     </connections>
                 </viewController>
