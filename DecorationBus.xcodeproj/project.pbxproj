@@ -171,6 +171,7 @@
 		9BCEAA321A122571002EE82C /* CatagoryPrimeMangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */; };
 		9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */; };
 		9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */; };
+		9BDC5CA41C60A58B00C4FFDB /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDC5CA31C60A58A00C4FFDB /* ImageHandler.swift */; };
 		9BE401531C0215D2001CDE29 /* CompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE401521C0215D2001CDE29 /* CompanyTableViewCell.swift */; };
 		9BE401571C09EBDA001CDE29 /* NetworkResourceDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE401561C09EBDA001CDE29 /* NetworkResourceDef.swift */; };
 		9BE4015A1C0B3A3F001CDE29 /* companyDefaultLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BE401591C0B3A3F001CDE29 /* companyDefaultLogo.png */; };
@@ -383,6 +384,7 @@
 		9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryPrimeMangeViewController.swift; sourceTree = "<group>"; };
 		9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryMinorManageViewController.swift; sourceTree = "<group>"; };
 		9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPayViewController.swift; sourceTree = "<group>"; };
+		9BDC5CA31C60A58A00C4FFDB /* ImageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageHandler.swift; path = CommonClass/ImageHandler.swift; sourceTree = "<group>"; };
 		9BE401521C0215D2001CDE29 /* CompanyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyTableViewCell.swift; sourceTree = "<group>"; };
 		9BE401561C09EBDA001CDE29 /* NetworkResourceDef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResourceDef.swift; sourceTree = "<group>"; };
 		9BE401591C0B3A3F001CDE29 /* companyDefaultLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = companyDefaultLogo.png; path = pictures/default/companyDefaultLogo.png; sourceTree = "<group>"; };
@@ -789,6 +791,7 @@
 				9B8695F71BEE4187001B1FA0 /* UserDefaultHandler.swift */,
 				9BE401561C09EBDA001CDE29 /* NetworkResourceDef.swift */,
 				9B8695F91BEE4CA2001B1FA0 /* UserDefaultDef.swift */,
+				9BDC5CA31C60A58A00C4FFDB /* ImageHandler.swift */,
 				9B3F1E251C4E8914001065C2 /* DeviceLimitHandler.swift */,
 				9B3F1E271C511256001065C2 /* AlertHandler.swift */,
 			);
@@ -1185,6 +1188,7 @@
 				9B97DCC91A235933006A94C0 /* RecordBudgetViewController.swift in Sources */,
 				9B4CC7031C1BD30A00A82A41 /* CompanyCommentTableViewCell.swift in Sources */,
 				9BFC7EEC1BE3B6550026DB8B /* MainServiceTableViewCell.swift in Sources */,
+				9BDC5CA41C60A58B00C4FFDB /* ImageHandler.swift in Sources */,
 				9BE401571C09EBDA001CDE29 /* NetworkResourceDef.swift in Sources */,
 				9B24919D1A5D683700990BA6 /* FormViewController.swift in Sources */,
 				9BE902F61C34EE5B00519F82 /* WorkerCommentTableViewCell.swift in Sources */,

@@ -237,7 +237,10 @@ class UserDataHandler {
             return false
         }
         
-        let jpegData = UIImageJPEGRepresentation(image, 0.01)
+        //缩放图片
+        let scaledImage = ImageHandler().aspectSacleSize(image, targetSize: CGSizeMake(320.0, 320.0))
+        
+        let jpegData = UIImageJPEGRepresentation(scaledImage, 1)
         guard jpegData != nil else {
             print("保存用户头像\(phoneNumber)到沙盒失败, 图片转化到JPEG失败")
             return false

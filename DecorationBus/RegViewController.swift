@@ -72,9 +72,9 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
                 }
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
                 imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-                imagePicker.videoQuality = UIImagePickerControllerQualityType.TypeLow // 获取低质量图片已经足够使用，避免内存使用过多引起内存警告
+                imagePicker.videoQuality = UIImagePickerControllerQualityType.TypeMedium // 获取低质量图片已经足够使用，避免内存使用过多引起内存警告
                 
                 /*
                 * 调用相机时会产生一条log, 应该是IOS8.1的一个bug：
@@ -97,9 +97,9 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
                 
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
                 imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-                imagePicker.videoQuality = UIImagePickerControllerQualityType.TypeLow // 获取低质量图片已经足够使用，避免内存使用过多引起内存警告
+                imagePicker.videoQuality = UIImagePickerControllerQualityType.TypeMedium // 获取低质量图片已经足够使用，避免内存使用过多引起内存警告
                 self.presentViewController(imagePicker, animated: true, completion: nil)
             }
             alertVC.addAction(photoLibrarySheet)
