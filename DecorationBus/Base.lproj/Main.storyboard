@@ -1617,7 +1617,7 @@
                                                     <rect key="frame" x="13" y="13" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="cjL-pk-NeR" secondAttribute="height" multiplier="1:1" id="gYg-Bi-gfK"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="60" id="u2D-RA-Stn"/>
+                                                        <constraint firstAttribute="width" constant="60" id="u2D-RA-Stn"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sET-ht-kTs">
