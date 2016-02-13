@@ -74,6 +74,22 @@ class VerifyViewController: UIViewController, UITextFieldDelegate {
     @IBAction func verifyPhoneNumber(sender: AnyObject) {
         let verCode = self.verificationCodeField.text
         stopHint()
+        if(verCode?.lengthOfBytesUsingEncoding(NSASCIIStringEncoding) < 4) {
+            showSimpleAlert(self, title: VERIFY_SMS_FAILED_TITLE, message: VERIFY_SMS_FAILED_MSG)
+            return
+        }
+        
+        //测试账号，以提供给App Store审核时使用
+        if(self.phoneNumber == "18605811857" && verCode == "1857") {
+            let user = self.requestUserInformation(self.phoneNumber)
+            UserDataHandler().syncAvatarFromRemoteToSandBox(user.avatar, phoneNumber: user.phone)
+            user.avatar = UserDataHandler().getAvatarSandboxURL(user.phone)!
+            UserDataHandler().saveUserInfoToConf(user)
+            
+            self.navigationController?.popViewControllerAnimated(true)
+            return
+        }
+        
         if(verCode?.lengthOfBytesUsingEncoding(NSASCIIStringEncoding) > 0) {
             SMSSDK.commitVerificationCode(verCode, phoneNumber: self.phoneNumberField.text, zone: "86", result: { (error) -> Void in
                 if(error != nil) {
