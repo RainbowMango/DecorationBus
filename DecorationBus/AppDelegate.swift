@@ -59,11 +59,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // 集成友盟
-        MobClick.startWithAppkey("562b8874e0f55a9afb0005ee", reportPolicy: BATCH, channelId: nil)
+        MobClick.startWithAppkey(UMENG_APP_KEY, reportPolicy: BATCH, channelId: nil)
         //MobClick.setLogEnabled(true) //只在调试时打开日志
         
         //集成MOB
-        SMSSDK.registerApp("e7a70d5d59bb", withSecret: "b064ad43ffb67b82781561c0835d8eb7")
+        SMSSDK.registerApp(MOB_APP_KEY, withSecret: MOB_APP_SECRET)
         
         return true
     }
