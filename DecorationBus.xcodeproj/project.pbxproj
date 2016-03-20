@@ -171,6 +171,7 @@
 		9BCEAA321A122571002EE82C /* CatagoryPrimeMangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */; };
 		9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */; };
 		9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */; };
+		9BDB6A251C9EE9CE000D9CEF /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB6A241C9EE9CE000D9CEF /* CommentTableViewController.swift */; };
 		9BDC5CA41C60A58B00C4FFDB /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDC5CA31C60A58A00C4FFDB /* ImageHandler.swift */; };
 		9BE401531C0215D2001CDE29 /* CompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE401521C0215D2001CDE29 /* CompanyTableViewCell.swift */; };
 		9BE401571C09EBDA001CDE29 /* NetworkResourceDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE401561C09EBDA001CDE29 /* NetworkResourceDef.swift */; };
@@ -384,6 +385,7 @@
 		9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryPrimeMangeViewController.swift; sourceTree = "<group>"; };
 		9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryMinorManageViewController.swift; sourceTree = "<group>"; };
 		9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPayViewController.swift; sourceTree = "<group>"; };
+		9BDB6A241C9EE9CE000D9CEF /* CommentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
 		9BDC5CA31C60A58A00C4FFDB /* ImageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageHandler.swift; path = CommonClass/ImageHandler.swift; sourceTree = "<group>"; };
 		9BE401521C0215D2001CDE29 /* CompanyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyTableViewCell.swift; sourceTree = "<group>"; };
 		9BE401561C09EBDA001CDE29 /* NetworkResourceDef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResourceDef.swift; sourceTree = "<group>"; };
@@ -646,6 +648,7 @@
 				9B37A9D319EEB57A0097F88D /* AppDelegate.swift */,
 				9B37A9DA19EEB57A0097F88D /* Main.storyboard */,
 				9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */,
+				9BDB6A241C9EE9CE000D9CEF /* CommentTableViewController.swift */,
 				9B4A01C31C2AA095004CF788 /* ArtistListTableViewController.swift */,
 				9BE902E71C32D1F400519F82 /* ManagerTableViewController.swift */,
 				9BE902F31C34EC2F00519F82 /* WorkerTableViewController.swift */,
@@ -1170,6 +1173,7 @@
 				9B8695A41AE93895001D0D7F /* AGIPCGridCell.m in Sources */,
 				9B05F5171ADA18560058EF0B /* CollectionPhotoCell.swift in Sources */,
 				9B2491981A5D683700990BA6 /* FormSwitchCell.swift in Sources */,
+				9BDB6A251C9EE9CE000D9CEF /* CommentTableViewController.swift in Sources */,
 				9B2491901A5D683700990BA6 /* FormTitleCell.swift in Sources */,
 				9B3F1E241C4BDB49001065C2 /* RegViewController.swift in Sources */,
 				9BE902F41C34EC2F00519F82 /* WorkerTableViewController.swift in Sources */,
