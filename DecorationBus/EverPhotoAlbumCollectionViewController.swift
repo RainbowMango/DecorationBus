@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import AssetsLibrary
+import MWPhotoBrowser
 
 let reuseIdentifier = "EverPhotoCollectionCell"
 

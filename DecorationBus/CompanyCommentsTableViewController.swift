@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MJRefresh
+import MWPhotoBrowser
 
 class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserDelegate {
 

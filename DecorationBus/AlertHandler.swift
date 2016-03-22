@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MBProgressHUD
 
 /*UIAlertController问题记录（IOS8，Xcode7.2）：
 * 同一个view controller内先弹出UIAlertController再弹出UIImagePickerController时会报如下warning

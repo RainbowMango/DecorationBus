@@ -3,8 +3,8 @@
 //
 
 // 集成MWPhotoBrowser
-#import "MWPhotoBrowser.h"
-#import "MWPhotoBrowserPrivate.h"
+#import <MWPhotoBrowser/MWPhotoBrowser.h>
+#import <MWPhotoBrowser/MWPhotoBrowserPrivate.h>
 
 //集成AGImagePickerController
 #import "AGIPCToolbarItem.h"
@@ -24,18 +24,19 @@
 #import "MobClick.h"
 
 //集成MJRefresh
-#import "MJRefresh.h"
+#import <MJRefresh/MJRefresh.h>
 
 //集成MDRadialProgress
-#import "MDRadialProgressView.h"
-#import "MDRadialProgressTheme.h"
-#import "MDRadialProgressLabel.h"
+#import <MDRadialProgress/MDRadialProgressView.h>
+#import <MDRadialProgress/MDRadialProgressTheme.h>
+#import <MDRadialProgress/MDRadialProgressLabel.h>
 
 //集成MBProgressHUD(没有重新安装，被先前的组件引用过了)
-#import "MBProgressHUD.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 //集成SDWebImage(没有重新安装，被先前的组件引用过了)
-#import "UIImageView+WebCache.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 //集成MOB
 #import <SMS_SDK/SMSSDK.h>
+#import <SMS_SDK/Extend/SMSSDK+AddressBookMethods.h>

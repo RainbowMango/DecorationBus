@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MJRefresh
+import MWPhotoBrowser
 
 class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDelegate {
     var _artist: ArtistCellData = ArtistCellData()

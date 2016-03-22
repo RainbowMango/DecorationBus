@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MDRadialProgress
 
 class ArtistComment {
     var avatar      : String

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MDRadialProgress
 
 class CompanyCellData {
     var id: UInt

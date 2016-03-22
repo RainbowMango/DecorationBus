@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MWPhotoBrowser
+import MJRefresh
 
 class WorkerCommentsTableViewController: UITableViewController, MWPhotoBrowserDelegate {
     var _worker: WorkerCellData = WorkerCellData()

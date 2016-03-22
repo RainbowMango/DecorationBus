@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 
 class ManagerTableViewController: UITableViewController {
 

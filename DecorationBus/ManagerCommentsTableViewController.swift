@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MWPhotoBrowser
+import MJRefresh
 
 class ManagerCommentsTableViewController: UITableViewController, MWPhotoBrowserDelegate {
     var _manager: ManagerCellData = ManagerCellData()

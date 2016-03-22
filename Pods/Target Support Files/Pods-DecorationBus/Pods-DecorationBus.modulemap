@@ -1,0 +1,6 @@
+framework module Pods_DecorationBus {
+  umbrella header "Pods-DecorationBus-umbrella.h"
+
+  export *
+  module * { export * }
+}

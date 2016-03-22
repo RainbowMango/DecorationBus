@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MDRadialProgress
 
 class ColorScheme {
     var navigationBarBackgroundColor = UIColor(red: 255/255, green: 287/255, blue: 103/255, alpha: 1.0)

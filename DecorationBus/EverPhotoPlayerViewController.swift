@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MWPhotoBrowser
 
 /*
 本类用于扩展MWPhotoBrowser，以增加删除按钮
