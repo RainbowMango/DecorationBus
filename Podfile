@@ -1,4 +1,4 @@
-platform :ios, '7.0'
+platform :ios, '8.0'
 use_frameworks!
 
 target 'DecorationBus' do
@@ -8,4 +8,5 @@ target 'DecorationBus' do
     pod 'MDRadialProgress', '~> 1.3.2'
     pod 'MOBFoundation_IDFA', '~> 1.5.1'
     pod 'SMSSDK', '~> 2.0.4'
+    pod 'KMPlaceholderTextView', '~> 1.1.2'
 end

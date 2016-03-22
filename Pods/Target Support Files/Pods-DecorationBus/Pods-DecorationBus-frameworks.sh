@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$CONFIGURATION_BUILD_DIR/DACircularProgress/DACircularProgress.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/KMPlaceholderTextView/KMPlaceholderTextView.framework"
   install_framework "$CONFIGURATION_BUILD_DIR/MBProgressHUD/MBProgressHUD.framework"
   install_framework "$CONFIGURATION_BUILD_DIR/MDRadialProgress/MDRadialProgress.framework"
   install_framework "$CONFIGURATION_BUILD_DIR/MJRefresh/MJRefresh.framework"
@@ -93,6 +94,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$CONFIGURATION_BUILD_DIR/DACircularProgress/DACircularProgress.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/KMPlaceholderTextView/KMPlaceholderTextView.framework"
   install_framework "$CONFIGURATION_BUILD_DIR/MBProgressHUD/MBProgressHUD.framework"
   install_framework "$CONFIGURATION_BUILD_DIR/MDRadialProgress/MDRadialProgress.framework"
   install_framework "$CONFIGURATION_BUILD_DIR/MJRefresh/MJRefresh.framework"
