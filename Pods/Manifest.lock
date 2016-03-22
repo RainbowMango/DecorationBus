@@ -3,7 +3,7 @@ PODS:
   - MBProgressHUD (0.9.2)
   - MDRadialProgress (1.3.2)
   - MJRefresh (3.0.8)
-  - MOBFoundation_IDFA (1.3.1)
+  - MOBFoundation_IDFA (1.5.1)
   - MWPhotoBrowser (2.1.1):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
@@ -17,9 +17,9 @@ PODS:
 DEPENDENCIES:
   - MDRadialProgress (~> 1.3.2)
   - MJRefresh (~> 3.0.4)
-  - MOBFoundation_IDFA (~> 1.3.1)
+  - MOBFoundation_IDFA (~> 1.5.1)
   - MWPhotoBrowser (~> 2.1.1)
-  - SMSSDK (~> 2.0.0)
+  - SMSSDK (~> 2.0.4)
   - UMengAnalytics-NO-IDFA (~> 3.4.7)
 
 SPEC CHECKSUMS:
@@ -27,12 +27,12 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MDRadialProgress: 1068574b9b4b870f64b605b07f734385bde5104d
   MJRefresh: fafde8f18f4afd66b434331a9beb67a6c0264056
-  MOBFoundation_IDFA: 0b4f8248e12384fc32b861a9b75a83825e8fb444
+  MOBFoundation_IDFA: f5d3d1f89166f60c6985e34b7d90e6fb5d58fb61
   MWPhotoBrowser: ba0d0c09ffda3a7ea10093518738c502c1c7141c
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SMSSDK: 642b6a8c55fd382be44487cd5e0b0710681895f9
   UMengAnalytics-NO-IDFA: 68a71671c10067315339fc3fd1283be416f02a8b
 
-PODFILE CHECKSUM: fa0338bc9aaa9f59c957805a1684281b59f83b48
+PODFILE CHECKSUM: 4383c1017ce241735859f87afdd1c0e72fd61b3a
 
 COCOAPODS: 1.0.0.beta.4
