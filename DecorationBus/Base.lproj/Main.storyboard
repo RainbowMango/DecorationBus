@@ -1087,7 +1087,7 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="分享您的感受，对他人帮助很大哦~"/>
                                     </userDefinedRuntimeAttributes>
                                 </textView>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hgW-we-jze">
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hgW-we-jze" customClass="InfiniteCollectionView">
                                     <rect key="frame" x="0.0" y="90" width="320" height="57"/>
                                     <color key="backgroundColor" red="1" green="0.86765558769999995" blue="0.69125505070000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zgr-jo-bBk">
@@ -1136,6 +1136,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="T5e-5b-i0R"/>
+                    <connections>
+                        <outlet property="collectionView" destination="hgW-we-jze" id="TY9-GI-aC0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKy-iH-VnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

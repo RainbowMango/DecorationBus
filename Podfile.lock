@@ -1,5 +1,6 @@
 PODS:
   - DACircularProgress (2.3.1)
+  - InfiniteCollectionView (1.0.2)
   - KMPlaceholderTextView (1.1.2)
   - MBProgressHUD (0.9.2)
   - MDRadialProgress (1.3.2)
@@ -16,6 +17,7 @@ PODS:
   - UMengAnalytics-NO-IDFA (3.4.7)
 
 DEPENDENCIES:
+  - InfiniteCollectionView (~> 1.0.2)
   - KMPlaceholderTextView (~> 1.1.2)
   - MDRadialProgress (~> 1.3.2)
   - MJRefresh (~> 3.0.4)
@@ -26,6 +28,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  InfiniteCollectionView: 98f7a81ea0b519e7f33a64306b7c148c996cb023
   KMPlaceholderTextView: 13bbd53116b5d468da9dc145c8f74fa38f0c1070
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MDRadialProgress: 1068574b9b4b870f64b605b07f734385bde5104d
@@ -36,6 +39,6 @@ SPEC CHECKSUMS:
   SMSSDK: 642b6a8c55fd382be44487cd5e0b0710681895f9
   UMengAnalytics-NO-IDFA: 68a71671c10067315339fc3fd1283be416f02a8b
 
-PODFILE CHECKSUM: a62fbf38201e83d059d795f59d6398416b1b48d2
+PODFILE CHECKSUM: 7e677236571f4752990a2410ea235f3c2b36ae4c
 
 COCOAPODS: 1.0.0.beta.4

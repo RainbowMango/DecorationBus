@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import InfiniteCollectionView
 
 class CommentTableViewController: UITableViewController {
+    @IBOutlet weak var collectionView: InfiniteCollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
