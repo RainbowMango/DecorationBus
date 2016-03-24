@@ -186,6 +186,7 @@
 		9BE902F61C34EE5B00519F82 /* WorkerCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE902F51C34EE5B00519F82 /* WorkerCommentTableViewCell.swift */; };
 		9BE902F81C34EEE000519F82 /* WorkerCommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE902F71C34EEE000519F82 /* WorkerCommentsTableViewController.swift */; };
 		9BE945F01A1E2BAD0095ACBD /* OrderItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */; };
+		9BF663CB1CA412DA004FD9AB /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF663CA1CA412DA004FD9AB /* ImageCollectionViewCell.swift */; };
 		9BF8E0621BD7E39300F3AD9E /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */; };
 		9BF8E0631BD7E39300F3AD9E /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0551BD7E39300F3AD9E /* TAAbstractDotView.m */; };
 		9BF8E0641BD7E39300F3AD9E /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF8E0571BD7E39300F3AD9E /* TAAnimatedDotView.m */; };
@@ -401,6 +402,7 @@
 		9BE902F51C34EE5B00519F82 /* WorkerCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerCommentTableViewCell.swift; sourceTree = "<group>"; };
 		9BE902F71C34EEE000519F82 /* WorkerCommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerCommentsTableViewController.swift; sourceTree = "<group>"; };
 		9BE945EF1A1E2BAD0095ACBD /* OrderItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemDataModel.swift; sourceTree = "<group>"; };
+		9BF663CA1CA412DA004FD9AB /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		9BF8E0511BD7E39300F3AD9E /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		9BF8E0521BD7E39300F3AD9E /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		9BF8E0541BD7E39300F3AD9E /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 				9BA99EB01C2EDFB10035DABC /* ArtistCommentTableViewCell.swift */,
 				9BE902ED1C3436F200519F82 /* ManagerCommentTableViewCell.swift */,
 				9BE902F51C34EE5B00519F82 /* WorkerCommentTableViewCell.swift */,
+				9BF663CA1CA412DA004FD9AB /* ImageCollectionViewCell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -1251,6 +1254,7 @@
 				9BF8E0691BD7E39300F3AD9E /* UIView+SDExtension.m in Sources */,
 				9B34AB001A20BB8000013C39 /* CategoryArchiver.swift in Sources */,
 				9B2491961A5D683700990BA6 /* FormSegmentedControlCell.swift in Sources */,
+				9BF663CB1CA412DA004FD9AB /* ImageCollectionViewCell.swift in Sources */,
 				9B24919C1A5D683700990BA6 /* FormSelector.swift in Sources */,
 				9B985BFF1A179525009F4435 /* AboutMeViewController.swift in Sources */,
 				9B151AA41A6FEA3200498ED2 /* OrderDataModel.swift in Sources */,

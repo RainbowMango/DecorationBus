@@ -15,6 +15,14 @@ class CommentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /**
+        设置InfiniteCollectionView
+        必须制定单个cell的宽度
+        */
+        collectionView.infiniteDataSource = self
+        collectionView.infiniteDelegate   = self
+        collectionView.cellWidth          = 80
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -94,4 +102,27 @@ class CommentTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension CommentTableViewController: InfiniteCollectionViewDataSource, InfiniteCollectionViewDelegate {
+    
+    func numberOfItems(collectionView: UICollectionView) -> Int {
+        return 5
+    }
+    
+    func cellForItemAtIndexPath(collectionView: UICollectionView, dequeueIndexPath: NSIndexPath, indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ImageCollectionViewCell.identifier, forIndexPath: dequeueIndexPath) as! ImageCollectionViewCell
+        if(indexPath.row % 2 == 0) {
+            cell.configure("camera")
+        }
+        else{
+            cell.configure("userDefaultAvatar")
+        }
+        
+        return cell
+    }
+    
+    func didSelectCellAtIndexPath(collectionView: UICollectionView, indexPath: NSIndexPath) {
+        print("selected index: \(indexPath.row)")
+    }
 }
