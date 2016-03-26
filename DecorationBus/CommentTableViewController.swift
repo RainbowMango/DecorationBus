@@ -11,6 +11,8 @@ import InfiniteCollectionView
 
 class CommentTableViewController: UITableViewController {
     @IBOutlet weak var collectionView: InfiniteCollectionView!
+    
+    var reviewItems = Array<String>() //评论项目，由前面controller传入
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,8 @@ class CommentTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,24 +42,20 @@ class CommentTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return reviewItems.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("StarReviewCell", forIndexPath: indexPath) as! StarReviewTableViewCell
 
-        // Configure the cell...
+        cell.configure(reviewItems[indexPath.row])
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

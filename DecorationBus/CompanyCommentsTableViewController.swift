@@ -126,7 +126,20 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
         
         return nil;
     }
-
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("Segue from CompanyCommentsTableViewController to CommentTableViewController")
+        if segue.identifier == "commentSegue" {
+            print("Segue from CompanyCommentsTableViewController to CommentTableViewController")
+            
+            let destinationView = segue.destinationViewController as! CommentTableViewController
+            let reviewItems = ["设计水平", "施工质量", "服务", "性价比"]
+            destinationView.setValue(reviewItems, forKey: "reviewItems")
+        }
+    }
+    
     // MARK: - Request And Refresh
     func requestCompanyComments(counter: Int, companyId: UInt) -> Array<CompanyComment> {
         let urlStr = REQUEST_COMPANY_COMMENTS_URL_STR + "?counter=\(counter)" + "&company=\(companyId)"

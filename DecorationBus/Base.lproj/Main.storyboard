@@ -1051,7 +1051,7 @@
                     <navigationItem key="navigationItem" title="装修公司点评" id="aaJ-ju-0ZA">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="nEW-S0-0oV">
                             <connections>
-                                <segue destination="GzJ-Rm-0Za" kind="push" identifier="" id="ZIa-Cy-aXl"/>
+                                <segue destination="GzJ-Rm-0Za" kind="push" identifier="commentSegue" id="ZIa-Cy-aXl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1138,13 +1138,39 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jZK-8v-x6X">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StarReviewCell" id="jZK-8v-x6X" customClass="StarReviewTableViewCell" customModule="DecorationBus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="305" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jZK-8v-x6X" id="WfM-XD-FpW">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评论项目一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYl-NW-NH1">
+                                            <rect key="frame" x="13" y="8" width="149.5" height="27.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddB-a6-dcl" customClass="StarReview" customModule="StarReview">
+                                            <rect key="frame" x="167.5" y="8" width="149.5" height="27.5"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ddB-a6-dcl" firstAttribute="bottom" secondItem="WfM-XD-FpW" secondAttribute="bottomMargin" id="2Fa-yP-JNx"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="HYl-NW-NH1" secondAttribute="bottom" id="56l-q8-dd4"/>
+                                        <constraint firstItem="ddB-a6-dcl" firstAttribute="leading" secondItem="HYl-NW-NH1" secondAttribute="trailing" constant="5" id="8xZ-vh-tdI"/>
+                                        <constraint firstItem="HYl-NW-NH1" firstAttribute="leading" secondItem="WfM-XD-FpW" secondAttribute="leadingMargin" constant="5" id="mFZ-Bc-5el"/>
+                                        <constraint firstItem="ddB-a6-dcl" firstAttribute="trailing" secondItem="WfM-XD-FpW" secondAttribute="trailingMargin" constant="5" id="mVj-8O-Vjj"/>
+                                        <constraint firstItem="ddB-a6-dcl" firstAttribute="top" secondItem="WfM-XD-FpW" secondAttribute="topMargin" id="nm2-sC-Ib8"/>
+                                        <constraint firstItem="HYl-NW-NH1" firstAttribute="top" secondItem="WfM-XD-FpW" secondAttribute="topMargin" id="pm0-9E-c6L"/>
+                                        <constraint firstItem="ddB-a6-dcl" firstAttribute="width" secondItem="HYl-NW-NH1" secondAttribute="width" id="td9-Ck-4xP"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="itemName" destination="HYl-NW-NH1" id="Rs8-rz-1kO"/>
+                                    <outlet property="starView" destination="ddB-a6-dcl" id="mA4-fl-iTq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

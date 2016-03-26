@@ -88,6 +88,7 @@
 		9B531CB41A583033008067C3 /* DecorationBus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B531CB21A583032008067C3 /* DecorationBus.xcdatamodeld */; };
 		9B6E3DFA1AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3DF91AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift */; };
 		9B70714A1BD242C600244474 /* SandboxHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7071491BD242C600244474 /* SandboxHandler.swift */; };
+		9B7984FF1CA6CC1E00814FDB /* StarReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7984FE1CA6CC1E00814FDB /* StarReviewTableViewCell.swift */; };
 		9B8032C31A35CB76005BA828 /* PointMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8032C11A35CB76005BA828 /* PointMessageViewController.swift */; };
 		9B8032C41A35CB76005BA828 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8032C21A35CB76005BA828 /* SpinnerViewController.swift */; };
 		9B86959F1AE93895001D0D7F /* AGImagePickerController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86958E1AE93895001D0D7F /* AGImagePickerController+Helper.m */; };
@@ -295,6 +296,7 @@
 		9B531CB31A583033008067C3 /* DecorationBus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DecorationBus.xcdatamodel; sourceTree = "<group>"; };
 		9B6E3DF91AB4872700910753 /* EverPhotoAlbumCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverPhotoAlbumCollectionViewController.swift; sourceTree = "<group>"; };
 		9B7071491BD242C600244474 /* SandboxHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxHandler.swift; sourceTree = "<group>"; };
+		9B7984FE1CA6CC1E00814FDB /* StarReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarReviewTableViewCell.swift; sourceTree = "<group>"; };
 		9B8032C11A35CB76005BA828 /* PointMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointMessageViewController.swift; sourceTree = "<group>"; };
 		9B8032C21A35CB76005BA828 /* SpinnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		9B86958D1AE93895001D0D7F /* AGImagePickerController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AGImagePickerController+Helper.h"; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				9BE902ED1C3436F200519F82 /* ManagerCommentTableViewCell.swift */,
 				9BE902F51C34EE5B00519F82 /* WorkerCommentTableViewCell.swift */,
 				9BF663CA1CA412DA004FD9AB /* ImageCollectionViewCell.swift */,
+				9B7984FE1CA6CC1E00814FDB /* StarReviewTableViewCell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -1261,6 +1264,7 @@
 				9BCEAA321A122571002EE82C /* CatagoryPrimeMangeViewController.swift in Sources */,
 				9BA99EB11C2EDFB10035DABC /* ArtistCommentTableViewCell.swift in Sources */,
 				9B239BED1A7670F2001BF6DA /* SegmentCategoryTableViewCell.swift in Sources */,
+				9B7984FF1CA6CC1E00814FDB /* StarReviewTableViewCell.swift in Sources */,
 				9BC288D31A2964CC005728D5 /* ShowPayDetailViewController.swift in Sources */,
 				9BC288D51A29E041005728D5 /* ShowBudgetDetailViewController.swift in Sources */,
 				9B151AA81A71371D00498ED2 /* MinorCategoryDetailDataModel.swift in Sources */,
