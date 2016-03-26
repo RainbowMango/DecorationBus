@@ -10,4 +10,5 @@ target 'DecorationBus' do
     pod 'SMSSDK', '~> 2.0.4'
     pod 'KMPlaceholderTextView',  '~> 1.1.2'
     pod 'InfiniteCollectionView', '~> 1.0.2'
+    pod 'StarReview',             '~> 0.0.2'
 end
