@@ -104,13 +104,13 @@ class ManagerCommentTableViewCell: UITableViewCell {
         
         //如果没有图片，清空imageview，避免cell重用残留
         if(images.isEmpty) {
-            for(var i = 0; i < self.imageSection.subviews.count; i++) {
+            for(var i = 0; i < self.imageSection.subviews.count; i += 1) {
                 let imageView = self.imageSection.subviews[i].subviews[0] as! UIImageView
                 imageView.image = UIImage()
             }
         }
         
-        for(var i = 0; i < images.count; i++) {
+        for(var i = 0; i < images.count; i += 1) {
             let imageURL = NSURL(string: images[i])
             let imageView = self.imageSection.subviews[i].subviews[0] as! UIImageView
             imageView.sd_setImageWithURL(imageURL, placeholderImage: UIImage(named: "companyDefaultLogo.png"))

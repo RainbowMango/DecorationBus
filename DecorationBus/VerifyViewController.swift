@@ -169,7 +169,7 @@ class VerifyViewController: UIViewController, UITextFieldDelegate {
         }
         
         print("计时时间已到\(self.timerCount)")
-        self.timerCount++
+        self.timerCount += 1
         self.hintLabel.text = "还需要等待\(60 - timerCount)秒"
     }
     

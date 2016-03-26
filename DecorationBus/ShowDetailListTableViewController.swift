@@ -194,7 +194,7 @@ class ShowDetailListTableViewController: UITableViewController {
             var indexPathArray = Array<NSIndexPath>()
             let startRow = basePath.row + 1
             
-            for var i = 0; i < count; i++ {
+            for var i = 0; i < count; i += 1 {
                 let newPath = NSIndexPath(forRow: startRow + i, inSection: basePath.section)
                 indexPathArray.append(newPath)
             }
@@ -212,7 +212,7 @@ class ShowDetailListTableViewController: UITableViewController {
                 if minorItem.primeCategory_ == primeCategory {
                     dic["minorCategory"] = minorItem.minorCategory_
                     tableViewCellArray_.insert(dic, atIndex: baseIndexPath.row + 1)
-                    addCount++
+                    addCount += 1
                 }
             }
             
