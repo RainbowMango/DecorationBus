@@ -100,7 +100,7 @@ class CompanyCommentTableViewCell: UITableViewCell {
         self.scoreChart.progressCounter = score
     }
     
-    func configureImages(var images: Array<String>) -> Void {
+    func configureImages(images: Array<String>) -> Void {
         
         //如果没有图片，清空imageview，避免cell重用残留
         if(images.isEmpty) {
