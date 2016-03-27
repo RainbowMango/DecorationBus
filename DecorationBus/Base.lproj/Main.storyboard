@@ -1178,7 +1178,13 @@
                             <outlet property="delegate" destination="GzJ-Rm-0Za" id="Zi6-d0-64v"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="T5e-5b-i0R"/>
+                    <navigationItem key="navigationItem" id="T5e-5b-i0R">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="bEN-ls-4rc">
+                            <connections>
+                                <action selector="publishComments:" destination="GzJ-Rm-0Za" id="YhO-v7-wNP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="hgW-we-jze" id="TY9-GI-aC0"/>
                     </connections>

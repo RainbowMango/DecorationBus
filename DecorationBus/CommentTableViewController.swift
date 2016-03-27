@@ -39,6 +39,15 @@ class CommentTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    /**
+     发布评价
+     
+     - parameter sender: 触发事件的view
+     */
+    @IBAction func publishComments(sender: AnyObject) {
+        print("发布评价")
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
