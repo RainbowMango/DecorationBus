@@ -24,3 +24,13 @@ class ImageCollectionViewCell: UICollectionViewCell {
         layoutIfNeeded()
     }
 }
+
+class ImageCollectionViewCellData {
+    var thumbnails  : String
+    var originimages: String
+    
+    init() {
+        thumbnails      = String()
+        originimages    = String()
+    }
+}

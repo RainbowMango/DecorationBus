@@ -10,20 +10,17 @@ import UIKit
 import InfiniteCollectionView
 
 class CommentTableViewController: UITableViewController {
-    @IBOutlet weak var collectionView: InfiniteCollectionView!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var reviewItems = Array<String>() //评论项目，由前面controller传入
+    var images      = Array<ImageCollectionViewCellData>() // 用户选取的图片
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /**
-        设置InfiniteCollectionView
-        必须制定单个cell的宽度
-        */
-        collectionView.infiniteDataSource = self
-        collectionView.infiniteDelegate   = self
-        collectionView.cellWidth          = 80
+        collectionView.delegate   = self
+        collectionView.dataSource = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -113,14 +110,15 @@ class CommentTableViewController: UITableViewController {
 
 }
 
-extension CommentTableViewController: InfiniteCollectionViewDataSource, InfiniteCollectionViewDelegate {
+extension CommentTableViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    func numberOfItems(collectionView: UICollectionView) -> Int {
-        return 5
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.images.count + 1
     }
     
-    func cellForItemAtIndexPath(collectionView: UICollectionView, dequeueIndexPath: NSIndexPath, indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ImageCollectionViewCell.identifier, forIndexPath: dequeueIndexPath) as! ImageCollectionViewCell
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ImageCollectionViewCell.identifier, forIndexPath: indexPath) as! ImageCollectionViewCell
+        
         if(indexPath.row % 2 == 0) {
             cell.configure("camera")
         }
@@ -131,7 +129,7 @@ extension CommentTableViewController: InfiniteCollectionViewDataSource, Infinite
         return cell
     }
     
-    func didSelectCellAtIndexPath(collectionView: UICollectionView, indexPath: NSIndexPath) {
-        print("selected index: \(indexPath.row)")
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("选择的cell index 为\(indexPath.row)")
     }
 }
