@@ -1069,14 +1069,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="fAM-tx-lJO" userLabel="Header">
-                            <rect key="frame" x="0.0" y="64" width="320" height="213"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kU8-Bb-1dQ" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="90" id="Ewl-lm-vU5"/>
+                                        <constraint firstAttribute="height" constant="120" id="Ewl-lm-vU5"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1088,10 +1088,10 @@
                                     </userDefinedRuntimeAttributes>
                                 </textView>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hgW-we-jze">
-                                    <rect key="frame" x="0.0" y="90" width="320" height="123"/>
+                                    <rect key="frame" x="0.0" y="120" width="320" height="80"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="123" id="tML-D4-nsj"/>
+                                        <constraint firstAttribute="height" constant="80" id="tML-D4-nsj"/>
                                     </constraints>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CcU-yr-XEZ">
                                         <size key="itemSize" width="50" height="50"/>
@@ -1101,24 +1101,25 @@
                                     </collectionViewFlowLayout>
                                     <cells>
                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionViewCell" id="7bb-1v-JQ4" customClass="ImageCollectionViewCell" customModule="DecorationBus" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rAs-iz-W7P">
-                                                        <rect key="frame" x="8" y="8" width="34" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                             <constraints>
-                                                <constraint firstItem="rAs-iz-W7P" firstAttribute="trailing" secondItem="7bb-1v-JQ4" secondAttribute="trailingMargin" id="4g4-kO-yZX"/>
-                                                <constraint firstItem="rAs-iz-W7P" firstAttribute="bottom" secondItem="7bb-1v-JQ4" secondAttribute="bottomMargin" id="eiO-gB-DqP"/>
-                                                <constraint firstItem="rAs-iz-W7P" firstAttribute="top" secondItem="7bb-1v-JQ4" secondAttribute="topMargin" id="nVQ-fg-KYA"/>
-                                                <constraint firstItem="rAs-iz-W7P" firstAttribute="leading" secondItem="7bb-1v-JQ4" secondAttribute="leadingMargin" id="zEv-x1-9bO"/>
+                                                <constraint firstItem="rAs-iz-W7P" firstAttribute="trailing" secondItem="7bb-1v-JQ4" secondAttribute="trailing" id="4g4-kO-yZX"/>
+                                                <constraint firstItem="rAs-iz-W7P" firstAttribute="bottom" secondItem="7bb-1v-JQ4" secondAttribute="bottom" id="eiO-gB-DqP"/>
+                                                <constraint firstItem="rAs-iz-W7P" firstAttribute="top" secondItem="7bb-1v-JQ4" secondAttribute="top" id="nVQ-fg-KYA"/>
+                                                <constraint firstItem="rAs-iz-W7P" firstAttribute="leading" secondItem="7bb-1v-JQ4" secondAttribute="leading" id="zEv-x1-9bO"/>
                                             </constraints>
+                                            <size key="customSize" width="60" height="60"/>
                                             <connections>
                                                 <outlet property="imageView" destination="rAs-iz-W7P" id="2iC-2e-g1M"/>
                                             </connections>
@@ -1138,7 +1139,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StarReviewCell" id="jZK-8v-x6X" customClass="StarReviewTableViewCell" customModule="DecorationBus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="305" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="292" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jZK-8v-x6X" id="WfM-XD-FpW">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
