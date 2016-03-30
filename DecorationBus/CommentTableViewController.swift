@@ -130,6 +130,21 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        /**
+         *  判断选择的cell是引导图片还是已经选择的图片
+         *  选取cell的index    用户已经选择的图片数    是否引导图
+         *        0                   0               true
+         *        0                 >=1               false
+         *        1                   1               true
+         *        1                  >1               false
+         */
+        if(indexPath.row == images.count) {
+            print("选择图片")
+        }
+        else {
+            print("展示图片")
+        }
         print("选择的cell index 为\(indexPath.row)")
     }
 }
