@@ -172,6 +172,7 @@
 		9BCEAA321A122571002EE82C /* CatagoryPrimeMangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */; };
 		9BCEAA341A1225CA002EE82C /* CatagoryMinorManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */; };
 		9BD0A6561A0FB047007A5DDA /* RecordPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */; };
+		9BD4530A1CAC1DBB00ED6916 /* HCImagePickerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD453091CAC1DBB00ED6916 /* HCImagePickerHandler.swift */; };
 		9BDB6A251C9EE9CE000D9CEF /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB6A241C9EE9CE000D9CEF /* CommentTableViewController.swift */; };
 		9BDC5CA41C60A58B00C4FFDB /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDC5CA31C60A58A00C4FFDB /* ImageHandler.swift */; };
 		9BE401531C0215D2001CDE29 /* CompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE401521C0215D2001CDE29 /* CompanyTableViewCell.swift */; };
@@ -389,6 +390,7 @@
 		9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryPrimeMangeViewController.swift; sourceTree = "<group>"; };
 		9BCEAA331A1225CA002EE82C /* CatagoryMinorManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryMinorManageViewController.swift; sourceTree = "<group>"; };
 		9BD0A6551A0FB047007A5DDA /* RecordPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordPayViewController.swift; sourceTree = "<group>"; };
+		9BD453091CAC1DBB00ED6916 /* HCImagePickerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCImagePickerHandler.swift; sourceTree = "<group>"; };
 		9BDB6A241C9EE9CE000D9CEF /* CommentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
 		9BDC5CA31C60A58A00C4FFDB /* ImageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageHandler.swift; path = CommonClass/ImageHandler.swift; sourceTree = "<group>"; };
 		9BE401521C0215D2001CDE29 /* CompanyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyTableViewCell.swift; sourceTree = "<group>"; };
@@ -812,6 +814,7 @@
 				9BDC5CA31C60A58A00C4FFDB /* ImageHandler.swift */,
 				9B3F1E251C4E8914001065C2 /* DeviceLimitHandler.swift */,
 				9B3F1E271C511256001065C2 /* AlertHandler.swift */,
+				9BD453091CAC1DBB00ED6916 /* HCImagePickerHandler.swift */,
 			);
 			name = CommonClass;
 			sourceTree = "<group>";
@@ -1270,6 +1273,7 @@
 				9B151AA81A71371D00498ED2 /* MinorCategoryDetailDataModel.swift in Sources */,
 				9B8695FA1BEE4CA2001B1FA0 /* UserDefaultDef.swift in Sources */,
 				9B8695F81BEE4187001B1FA0 /* UserDefaultHandler.swift in Sources */,
+				9BD4530A1CAC1DBB00ED6916 /* HCImagePickerHandler.swift in Sources */,
 				9B49927E1BFCCD7200E31FA8 /* CompanyListTableViewController.swift in Sources */,
 				9B8695A51AE93895001D0D7F /* AGIPCGridItem.m in Sources */,
 				9B2491941A5D683700990BA6 /* FormDateCell.swift in Sources */,
