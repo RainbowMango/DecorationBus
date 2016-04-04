@@ -200,6 +200,26 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
     }
 }
 
+// MARK: - UIImagePickerController的代理方法
 extension CommentTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    /**
+     读取图片并保存到沙盒，同时保存图片URL，最后刷新collection view
+     
+     - parameter picker: picker实例
+     - parameter info:   读取到的图片
+     */
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        self.dismissViewControllerAnimated(true, completion: nil) // 首先释放picker以节省内存
+        
+        let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
+        //AlbumHandler().saveImageToSandbox(albumName, image: image)
+        
+        /*添加图片后刷新view*/
+        //self.collectionView?.reloadData()
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
