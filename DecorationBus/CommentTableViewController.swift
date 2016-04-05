@@ -213,7 +213,7 @@ extension CommentTableViewController: UIImagePickerControllerDelegate, UINavigat
         self.dismissViewControllerAnimated(true, completion: nil) // 首先释放picker以节省内存
         
         let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
-        //AlbumHandler().saveImageToSandbox(albumName, image: image)
+        CommentHandler().saveImageToSandbox(image)
         
         /*添加图片后刷新view*/
         //self.collectionView?.reloadData()
