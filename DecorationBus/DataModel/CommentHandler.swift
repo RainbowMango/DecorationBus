@@ -30,8 +30,11 @@ class Comment {
 
 class CommentHandler: SandboxHandler {
     
+    //缩略图的尺寸
+    private let thumbDefaultSize = CGSizeMake(60.0, 60.0)
+    
     /**
-     保存评论图片到临时目录并返回图片的路径
+     保存评论图片到临时目录,每张图片会保存原图和缩略图，最后返回原图和缩略图的沙盒路径
      注：
      1. 这里使用了AlbumHandler中的方法，后期需要将公共函数抽取出来
      2. 真机中存储路径如下，后期需要优化路径拼接函数，防止出现目录中出现两个斜线
@@ -39,17 +42,23 @@ class CommentHandler: SandboxHandler {
      
      - parameter image: UIImage类型的图片
      
-     - returns: 图片在沙盒中的URL（String结构存储）
+     - returns: 图片在沙盒中的URL（返回复合值包含原图和缩略图）
      */
-    func saveImageToSandbox(image: UIImage) -> String {
-        let docDir = getTmpDirectory()
-        let fileName = "comment_\(AlbumHandler().makeUniqueID()).png"
-        let fileWithPath = docDir + "/" + fileName
+    func saveImageToSandbox(image: UIImage) -> (thumbnails: String, originimages: String) {
+        let sandboxDir  = getTmpDirectory()
+        let imageID     = AlbumHandler().makeUniqueID()
+        let thumbImage  = sandboxDir + "comment_\(imageID)_thumb.png"
+        let originImage = sandboxDir + "comment_\(imageID)_origin.png"
         
-        guard UIImageJPEGRepresentation(image, 0.01)!.writeToFile(fileWithPath, atomically: true) else {
-            return String()
+        guard UIImageJPEGRepresentation(image, 0.01)!.writeToFile(originImage, atomically: true) else {
+            return (String(), String())
         }
         
-        return fileWithPath
+        let scaledImage = ImageHandler().aspectSacleSize(image, targetSize: thumbDefaultSize)
+        guard UIImageJPEGRepresentation(scaledImage, 0.01)!.writeToFile(thumbImage, atomically: true) else {
+            return (String(), originImage)
+        }
+        
+        return (thumbImage, originImage)
     }
 }
