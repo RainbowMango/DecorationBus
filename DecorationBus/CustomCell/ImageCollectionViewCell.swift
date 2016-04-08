@@ -33,4 +33,9 @@ class ImageCollectionViewCellData {
         thumbnails      = String()
         originimages    = String()
     }
+    
+    init(thumb: String, orig: String) {
+        thumbnails      = thumb
+        originimages    = orig
+    }
 }

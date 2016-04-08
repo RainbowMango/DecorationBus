@@ -119,11 +119,11 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ImageCollectionViewCell.identifier, forIndexPath: indexPath) as! ImageCollectionViewCell
         
-        if(indexPath.row % 2 == 0) {
-            cell.configure("camera")
+        if(indexPath.row < images.count) { //首先显示用户已经选取的图片
+            cell.configure(images[indexPath.row].thumbnails)
         }
-        else{
-            cell.configure("userDefaultAvatar")
+        else { //最后添加提示图片
+            cell.configure("camera")
         }
         
         return cell
@@ -213,10 +213,13 @@ extension CommentTableViewController: UIImagePickerControllerDelegate, UINavigat
         self.dismissViewControllerAnimated(true, completion: nil) // 首先释放picker以节省内存
         
         let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
-        CommentHandler().saveImageToSandbox(image)
+        let imagePath = CommentHandler().saveImageToSandbox(image)
+        let collectionCellData = ImageCollectionViewCellData(thumb: imagePath.thumbnails, orig: imagePath.originimages)
+        self.images.insert(collectionCellData, atIndex: 0)
+        
         
         /*添加图片后刷新view*/
-        //self.collectionView?.reloadData()
+        self.collectionView?.reloadData()
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
