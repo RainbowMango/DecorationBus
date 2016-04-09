@@ -134,6 +134,7 @@ class CommentTableViewController: UITableViewController {
 
 }
 
+// MARK: - UICollectionView的数据源和代理方法
 extension CommentTableViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -216,6 +217,22 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
             print("展示图片")
         }
         print("选择的cell index 为\(indexPath.row)")
+    }
+    
+    /**
+     实现代理方法，调整cell大小
+     
+     - parameter collectionView:       <#collectionView description#>
+     - parameter collectionViewLayout: <#collectionViewLayout description#>
+     - parameter indexPath:            <#indexPath description#>
+     
+     - returns: <#return value description#>
+     */
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let cellWidth = UIScreen.mainScreen().bounds.size.width/5 - 5
+        let cellHeight = cellWidth
+        return CGSize(width: cellWidth, height: cellHeight)
     }
 }
 
