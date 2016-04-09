@@ -61,4 +61,13 @@ class CommentHandler: SandboxHandler {
         
         return (thumbImage, originImage)
     }
+    
+    /**
+     删除沙盒中缓存的图片
+     
+     - parameter imagePath: 沙盒中图片位置
+     */
+    func removeImageFromSandbox(imagePath: String) -> Void {
+        removeFile(imagePath)
+    }
 }

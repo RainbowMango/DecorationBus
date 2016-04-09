@@ -62,4 +62,28 @@ class SandboxHandler: NSObject {
         
         return true
     }
+    
+    /**
+     删除指定的文件
+     
+     - parameter path: 文件在沙盒中的路径
+     
+     - returns: 删除成功返回true,否则返回false(文件不存在同样返回成功)
+     */
+    func removeFile(path: String) -> Bool {
+        
+        let defFileManager = NSFileManager.defaultManager()
+        if(!defFileManager.fileExistsAtPath(path)) {
+            return true
+        }
+        
+        do {
+            try defFileManager.removeItemAtPath(path)
+        } catch let error as NSError {
+            print("删除文件\(path)失败: \(error.userInfo)")
+            return false
+        }
+        
+        return true
+    }
 }
