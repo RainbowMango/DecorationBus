@@ -194,7 +194,7 @@ class ShowDetailListTableViewController: UITableViewController {
             var indexPathArray = Array<NSIndexPath>()
             let startRow = basePath.row + 1
             
-            for var i = 0; i < count; i += 1 {
+            for i in 0..<count {
                 let newPath = NSIndexPath(forRow: startRow + i, inSection: basePath.section)
                 indexPathArray.append(newPath)
             }

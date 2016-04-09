@@ -66,7 +66,7 @@ class WorkerCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
         Beginning with iOS 9.0 it will be put in the first view it is loaded into.
         */
         cell.removeImagesGesture()
-        for(var i = 0; i < commentsData.thumbnails.count; i += 1) {
+        for i in 0..<commentsData.thumbnails.count {
             let viewTag = indexPath.row * 100 + i
             cell.configureImageGesture(i, target: self, action: Selector("imageTapped:"), tag: viewTag)
         }
