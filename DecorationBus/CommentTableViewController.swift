@@ -74,7 +74,7 @@ class CommentTableViewController: UITableViewController {
         //取得评价得分
         for row in 0..<self.tableView.numberOfRowsInSection(0) {
             let tableViewCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) as! StarReviewTableViewCell
-            self.comment.itemScore.setValue(tableViewCell.score, forKey: tableViewCell.itemName.text!)
+            self.comment.itemScore.updateValue(tableViewCell.score, forKey: tableViewCell.itemName.text!)
         }
     }
     

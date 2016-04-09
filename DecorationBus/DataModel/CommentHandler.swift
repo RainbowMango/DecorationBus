@@ -20,13 +20,13 @@ class Comment {
     var target: CommentTargetType
     var textContent: String
     var imageArray : Array<ImageCollectionViewCellData>
-    var itemScore  : NSMutableDictionary
+    var itemScore  : Dictionary<String, Int>
     
     init() {
         textContent = String()
         target      = CommentTargetType.TypeUnknown
         imageArray  = Array<ImageCollectionViewCellData>()
-        itemScore   = NSMutableDictionary()
+        itemScore   = Dictionary<String, Int>()
     }
 }
 
