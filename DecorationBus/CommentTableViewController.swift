@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import InfiniteCollectionView
+import SKPhotoBrowser
 
 class CommentTableViewController: UITableViewController {
     
@@ -214,7 +214,7 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
             self.presentViewController(alertVC, animated: true, completion: nil)
         }
         else { //浏览图片
-            print("展示图片")
+            startBrowse(indexPath.row)
         }
         print("选择的cell index 为\(indexPath.row)")
     }
@@ -283,5 +283,35 @@ extension CommentTableViewController: AGImagePickerControllerDelegate {
         ipc.toolbarItemsForManagingTheSelection = [ flexible, deselectAll, flexible]
         
         self.presentViewController(ipc, animated: true, completion: nil)
+    }
+}
+
+// MARK: - SKPhotoBrowserDelegate
+extension CommentTableViewController: SKPhotoBrowserDelegate {
+    
+    func startBrowse(startIndex: Int) -> Void {
+        var skImages = [SKPhoto]()
+        
+        for image in images {
+            let skPhoto = SKPhoto.photoWithImage(UIImage(contentsOfFile: image.originimages)!)
+            skImages.append(skPhoto)
+        }
+        
+        let browser = SKPhotoBrowser(photos: skImages)
+        browser.initializePageIndex(startIndex)
+        browser.delegate = self
+        browser.displayDeleteButton = true
+        browser.statusBarStyle = .LightContent
+        browser.bounceAnimation = true
+        browser.displayAction = false
+        browser.displayDeleteButton = true
+        
+        presentViewController(browser, animated: true, completion: {})
+    }
+    
+    func removePhoto(browser: SKPhotoBrowser, index: Int, reload: (() -> Void)) {
+        images.removeAtIndex(index)
+        self.collectionView.reloadData()
+        reload()
     }
 }
