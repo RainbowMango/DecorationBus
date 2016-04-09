@@ -17,7 +17,7 @@ class CommentTableViewController: UITableViewController {
     var ipc = AGImagePickerController()
     
     var reviewItems = Array<String>() //评论项目，由前面controller传入
-    var images      = Array<ImageCollectionViewCellData>() // 用户选取的图片
+    var comment     = Comment()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ class CommentTableViewController: UITableViewController {
                 let image = UIImage(CGImage: cgImage)
                 let imagePath = CommentHandler().saveImageToSandbox(image)
                 let collectionCellData = ImageCollectionViewCellData(thumb: imagePath.thumbnails, orig: imagePath.originimages)
-                self.images.insert(collectionCellData, atIndex: 0)
+                self.comment.imageArray.insert(collectionCellData, atIndex: 0)
             }
             self.collectionView?.reloadData()
             
@@ -138,14 +138,14 @@ class CommentTableViewController: UITableViewController {
 extension CommentTableViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.images.count + 1
+        return self.comment.imageArray.count + 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ImageCollectionViewCell.identifier, forIndexPath: indexPath) as! ImageCollectionViewCell
         
-        if(indexPath.row < images.count) { //首先显示用户已经选取的图片
-            cell.configure(images[indexPath.row].thumbnails)
+        if(indexPath.row < self.comment.imageArray.count) { //首先显示用户已经选取的图片
+            cell.configure(self.comment.imageArray[indexPath.row].thumbnails)
         }
         else { //最后添加提示图片
             cell.configure("camera")
@@ -164,7 +164,7 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
          *        1                   1               true
          *        1                  >1               false
          */
-        if(indexPath.row == images.count) { //添加图片
+        if(indexPath.row == self.comment.imageArray.count) { //添加图片
             
             let alertVC = UIAlertController(title: "添加图片", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
             
@@ -251,7 +251,7 @@ extension CommentTableViewController: UIImagePickerControllerDelegate, UINavigat
         let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         let imagePath = CommentHandler().saveImageToSandbox(image)
         let collectionCellData = ImageCollectionViewCellData(thumb: imagePath.thumbnails, orig: imagePath.originimages)
-        self.images.insert(collectionCellData, atIndex: 0)
+        self.comment.imageArray.insert(collectionCellData, atIndex: 0)
         
         
         /*添加图片后刷新view*/
@@ -292,7 +292,7 @@ extension CommentTableViewController: SKPhotoBrowserDelegate {
     func startBrowse(startIndex: Int) -> Void {
         var skImages = [SKPhoto]()
         
-        for image in images {
+        for image in self.comment.imageArray {
             let skPhoto = SKPhoto.photoWithImage(UIImage(contentsOfFile: image.originimages)!)
             skImages.append(skPhoto)
         }
@@ -310,7 +310,7 @@ extension CommentTableViewController: SKPhotoBrowserDelegate {
     }
     
     func removePhoto(browser: SKPhotoBrowser, index: Int, reload: (() -> Void)) {
-        images.removeAtIndex(index)
+        self.comment.imageArray.removeAtIndex(index)
         self.collectionView.reloadData()
         reload()
     }

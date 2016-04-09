@@ -19,12 +19,12 @@ public enum CommentTargetType : Int {
 class Comment {
     var textContent: String
     var target: CommentTargetType
-    var imageArray : Array<String>
+    var imageArray : Array<ImageCollectionViewCellData>
     
     init() {
         textContent = String()
         target      = CommentTargetType.TypeUnknown
-        imageArray  = Array<String>()
+        imageArray  = Array<ImageCollectionViewCellData>()
     }
 }
 
