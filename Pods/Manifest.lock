@@ -13,6 +13,7 @@ PODS:
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
+  - SKPhotoBrowser (1.7.6)
   - SMSSDK (2.0.4)
   - StarReview (0.0.2)
   - UMengAnalytics-NO-IDFA (3.4.7)
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - MJRefresh (~> 3.0.4)
   - MOBFoundation_IDFA (~> 1.5.1)
   - MWPhotoBrowser (~> 2.1.1)
+  - SKPhotoBrowser (~> 1.7.6)
   - SMSSDK (~> 2.0.4)
   - StarReview (~> 0.0.2)
   - UMengAnalytics-NO-IDFA (~> 3.4.7)
@@ -38,10 +40,11 @@ SPEC CHECKSUMS:
   MOBFoundation_IDFA: f5d3d1f89166f60c6985e34b7d90e6fb5d58fb61
   MWPhotoBrowser: ba0d0c09ffda3a7ea10093518738c502c1c7141c
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SKPhotoBrowser: e4ed63940e2b4241971e393db6031a62b62e2d87
   SMSSDK: 642b6a8c55fd382be44487cd5e0b0710681895f9
   StarReview: 75ab16909450dbcbac5c46707aeddd124aad462b
   UMengAnalytics-NO-IDFA: 68a71671c10067315339fc3fd1283be416f02a8b
 
-PODFILE CHECKSUM: 19217c0684478ccd23bd07c5f1d1be565ed4e376
+PODFILE CHECKSUM: 3a7267b531b169761ef82a123b13b1297f48745f
 
 COCOAPODS: 1.0.0.beta.4

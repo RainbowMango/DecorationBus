@@ -11,4 +11,5 @@ target 'DecorationBus' do
     pod 'KMPlaceholderTextView',  '~> 1.1.2'
     pod 'InfiniteCollectionView', '~> 1.0.2'
     pod 'StarReview',             '~> 0.0.2'
+    pod 'SKPhotoBrowser',         '~> 1.7.6'
 end

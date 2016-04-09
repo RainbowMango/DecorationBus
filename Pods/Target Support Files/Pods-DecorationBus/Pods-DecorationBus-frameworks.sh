@@ -92,6 +92,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$CONFIGURATION_BUILD_DIR/MJRefresh/MJRefresh.framework"
   install_framework "$CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.framework"
   install_framework "$CONFIGURATION_BUILD_DIR/SDWebImage/SDWebImage.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/SKPhotoBrowser/SKPhotoBrowser.framework"
   install_framework "$CONFIGURATION_BUILD_DIR/StarReview/StarReview.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -103,5 +104,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$CONFIGURATION_BUILD_DIR/MJRefresh/MJRefresh.framework"
   install_framework "$CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.framework"
   install_framework "$CONFIGURATION_BUILD_DIR/SDWebImage/SDWebImage.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/SKPhotoBrowser/SKPhotoBrowser.framework"
   install_framework "$CONFIGURATION_BUILD_DIR/StarReview/StarReview.framework"
 fi
