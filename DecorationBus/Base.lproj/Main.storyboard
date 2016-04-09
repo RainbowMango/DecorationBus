@@ -1187,6 +1187,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="hgW-we-jze" id="Vzq-TF-njP"/>
+                        <outlet property="textView" destination="kU8-Bb-1dQ" id="3CY-RT-Lc3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKy-iH-VnS" userLabel="First Responder" sceneMemberID="firstResponder"/>

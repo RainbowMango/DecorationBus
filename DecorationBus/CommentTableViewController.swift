@@ -8,9 +8,11 @@
 
 import UIKit
 import SKPhotoBrowser
+import KMPlaceholderTextView
 
 class CommentTableViewController: UITableViewController {
     
+    @IBOutlet weak var textView: KMPlaceholderTextView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     //定义AGImagePickerController实例
@@ -67,6 +69,13 @@ class CommentTableViewController: UITableViewController {
      */
     @IBAction func publishComments(sender: AnyObject) {
         print("发布评价")
+        self.comment.textContent = self.textView.text
+        
+        //取得评价得分
+        for row in 0..<self.tableView.numberOfRowsInSection(0) {
+            let tableViewCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) as! StarReviewTableViewCell
+            self.comment.itemScore.setValue(tableViewCell.score, forKey: tableViewCell.itemName.text!)
+        }
     }
     
     // MARK: - Table view data source

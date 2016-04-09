@@ -17,14 +17,16 @@ public enum CommentTargetType : Int {
 }
 
 class Comment {
-    var textContent: String
     var target: CommentTargetType
+    var textContent: String
     var imageArray : Array<ImageCollectionViewCellData>
+    var itemScore  : NSMutableDictionary
     
     init() {
         textContent = String()
         target      = CommentTargetType.TypeUnknown
         imageArray  = Array<ImageCollectionViewCellData>()
+        itemScore   = NSMutableDictionary()
     }
 }
 
