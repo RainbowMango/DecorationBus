@@ -3,3 +3,5 @@ xcshareddata
 xcuserdata
 *.DS_Store
 NetworkResourceDef.swift
+Podfile.lock
+Pods
