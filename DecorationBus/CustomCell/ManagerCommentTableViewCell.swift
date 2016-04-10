@@ -101,15 +101,6 @@ class ManagerCommentTableViewCell: UITableViewCell {
     }
     
     func configureImages(images: Array<String>) -> Void {
-        
-        //如果没有图片，清空imageview，避免cell重用残留
-        if(images.isEmpty) {
-            for view in self.imageSection.subviews {
-                let imageView = view.subviews[0] as! UIImageView
-                imageView.image = UIImage()
-            }
-        }
-        
         for (i, image) in images.enumerate() {
             let imageURL = NSURL(string: image)
             let imageView = self.imageSection.subviews[i].subviews[0] as! UIImageView
@@ -133,5 +124,15 @@ class ManagerCommentTableViewCell: UITableViewCell {
         let recognizer01 = UITapGestureRecognizer(target: target, action: action)
         self.imageViews[index].tag = tag
         self.imageViews[index].addGestureRecognizer(recognizer01)
+    }
+    
+    /**
+     Cell被重用时清除原内容
+     */
+    override func prepareForReuse() {
+        for view in self.imageSection.subviews {
+            let imageView = view.subviews[0] as! UIImageView
+            imageView.image = nil
+        }
     }
 }
