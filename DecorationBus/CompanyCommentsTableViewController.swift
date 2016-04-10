@@ -30,7 +30,7 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
         self._comments = requestCompanyComments(0, companyId: self._company.id)
         
         //添加上拉刷新控件
-        tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
+        tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(CompanyCommentsTableViewController.tableFooterRefresh))
         self.tableView.tableFooterView = tableFooter
         
         self.tableView.reloadData()

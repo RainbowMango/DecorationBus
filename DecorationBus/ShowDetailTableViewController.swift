@@ -22,7 +22,7 @@ class ShowDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        segment_.addTarget(self, action: "segmentChangeHandler", forControlEvents: UIControlEvents.ValueChanged)
+        segment_.addTarget(self, action: #selector(ShowDetailTableViewController.segmentChangeHandler), forControlEvents: UIControlEvents.ValueChanged)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

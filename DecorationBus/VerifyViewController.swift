@@ -146,7 +146,7 @@ class VerifyViewController: UIViewController, UITextFieldDelegate {
     * 启动计时器并显示等待秒数
     */
     func startHint() {
-        self.hintTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateHintTime", userInfo: nil, repeats: true)
+        self.hintTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(VerifyViewController.updateHintTime), userInfo: nil, repeats: true)
         self.hintLabel.hidden = false
         self.timerCount = 0
     }

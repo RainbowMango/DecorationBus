@@ -28,7 +28,7 @@ class EverPhotoPlayerViewController: MWPhotoBrowser {
     
     override func viewDidLoad() {
         // 添加删除按钮
-        let delButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Trash, target: self, action: "deleteButtonPressed")
+        let delButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Trash, target: self, action: #selector(EverPhotoPlayerViewController.deleteButtonPressed))
         self.navigationItem.rightBarButtonItem = delButton
         
         // 设置MWPhotoBrowser属性

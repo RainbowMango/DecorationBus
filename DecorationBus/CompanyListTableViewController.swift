@@ -24,12 +24,12 @@ class CompanyListTableViewController: UITableViewController {
         self.tableView.contentInset = UIEdgeInsetsMake(0 + 10 - statusBarHeight - navbarHeight!, 0, 0, 0)
         
         //添加下拉刷新控件
-        tableHeader = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "tableHeaderRefresh")
+        tableHeader = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(CompanyListTableViewController.tableHeaderRefresh))
         tableHeader.automaticallyChangeAlpha = true
         self.tableView.tableHeaderView = tableHeader
         
         //添加上拉刷新控件
-        tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
+        tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(CompanyListTableViewController.tableFooterRefresh))
         self.tableView.tableFooterView = tableFooter
         
         self.companies = requestCompanies(0)

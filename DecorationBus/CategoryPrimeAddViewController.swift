@@ -34,7 +34,7 @@ class CategoryPrimeAddViewController: UIViewController {
     }
     
     func initBarButton() -> Void {
-        let btn = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Plain, target: self, action: "barButtonClicked")
+        let btn = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CategoryPrimeAddViewController.barButtonClicked))
         self.navigationItem.rightBarButtonItem = btn
     }
     

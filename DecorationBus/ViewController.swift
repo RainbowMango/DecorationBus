@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         self.tableView.delegate = self
         
         //添加下拉刷新
-        refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(ViewController.refreshData), forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl)
         refreshData()
     }

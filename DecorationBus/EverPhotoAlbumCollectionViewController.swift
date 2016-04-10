@@ -29,7 +29,7 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     override func viewDidLoad() {
         super.viewDidLoad()
         // 放置添加按钮到导航栏
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Camera, target: self, action: "addPhotoButtonPressed:")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Camera, target: self, action: #selector(EverPhotoAlbumCollectionViewController.addPhotoButtonPressed(_:)))
         
         // 将相册名称放入导航栏标题中
         self.navigationItem.title = albumName

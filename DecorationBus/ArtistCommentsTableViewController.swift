@@ -29,7 +29,7 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
         self._comments = requestArtistComments(0, companyId: self._artist.id)
         
         //添加上拉刷新控件
-        tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "tableFooterRefresh")
+        tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(ArtistCommentsTableViewController.tableFooterRefresh))
         self.tableView.tableFooterView = tableFooter
         
         self.tableView.reloadData()
