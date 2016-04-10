@@ -68,7 +68,7 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
         cell.removeImagesGesture()
         for i in 0..<commentsData.thumbnails.count {
             let viewTag = indexPath.row * 100 + i
-            cell.configureImageGesture(i, target: self, action: Selector("imageTapped:"), tag: viewTag)
+            cell.configureImageGesture(i, target: self, action: #selector(ArtistCommentsTableViewController.imageTapped(_:)), tag: viewTag)
         }
         
         return cell

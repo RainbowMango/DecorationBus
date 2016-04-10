@@ -69,7 +69,7 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
         cell.removeImagesGesture()
         for index in 0..<commentsData.thumbnails.count {
             let viewTag = indexPath.row * 100 + index
-            cell.configureImageGesture(index, target: self, action: Selector("imageTapped:"), tag: viewTag)
+            cell.configureImageGesture(index, target: self, action: #selector(CompanyCommentsTableViewController.imageTapped(_:)), tag: viewTag)
         }
         
         return cell
