@@ -17,6 +17,9 @@ public enum CommentTargetType : Int {
 }
 
 class Comment {
+    let MINIMUM_LENGTH_OF_TEXT_CONTENT = 15
+    let MAXIMUM_LENGTH_OF_TEXT_CONTENT = 512
+    
     var target: CommentTargetType
     var textContent: String
     var imageArray : Array<ImageCollectionViewCellData>
@@ -27,6 +30,43 @@ class Comment {
         target      = CommentTargetType.TypeUnknown
         imageArray  = Array<ImageCollectionViewCellData>()
         itemScore   = Dictionary<String, Int>()
+    }
+    
+    func validate() -> (valid: Bool, info: String) {
+        var validResult = validateTextContent()
+        if(!validResult.valid) {
+            return validResult
+        }
+        
+        validResult = validateScore()
+        if(!validResult.valid) {
+            return validResult
+        }
+        
+        return (true, String())
+    }
+    
+    private func validateTextContent() -> (valid: Bool, info: String) {
+        if(self.textContent.characters.count < MINIMUM_LENGTH_OF_TEXT_CONTENT) {
+            return (false, "写够15字才是好同志~")
+        }
+        
+        if(self.textContent.characters.count > MAXIMUM_LENGTH_OF_TEXT_CONTENT) {
+            let exceedCount = self.textContent.characters.count - MAXIMUM_LENGTH_OF_TEXT_CONTENT
+            return (false, "亲，写的太多了，请删除\(exceedCount)个字")
+        }
+        
+        return (true, String())
+    }
+    
+    private func validateScore() -> (valid: Bool, info: String) {
+        for (item, score) in itemScore {
+            if(score == 0) {
+                return (false, "您好像忘了给<\(item)>评分~")
+            }
+        }
+        
+        return (true, String())
     }
 }
 

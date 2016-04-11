@@ -76,6 +76,14 @@ class CommentTableViewController: UITableViewController {
             let tableViewCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) as! StarReviewTableViewCell
             self.comment.itemScore.updateValue(tableViewCell.score, forKey: tableViewCell.itemName.text!)
         }
+        
+        let validationResult = self.comment.validate()
+        if(!validationResult.valid) {
+            showSimpleHint(self.view, title: "", message: validationResult.info)
+            return
+        }
+        
+        print("验证完成，准备提交")
     }
     
     // MARK: - Table view data source
