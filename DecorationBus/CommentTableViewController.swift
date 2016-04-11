@@ -15,6 +15,8 @@ class CommentTableViewController: UITableViewController {
     @IBOutlet weak var textView: KMPlaceholderTextView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var delegate: CommentTableViewControllerDelegate?
+    
     //定义AGImagePickerController实例
     var ipc = AGImagePickerController()
     
@@ -84,6 +86,9 @@ class CommentTableViewController: UITableViewController {
         }
         
         print("验证完成，准备提交")
+        if(self.delegate != nil && self.delegate!.SubmitComments(self.comment)) {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     // MARK: - Table view data source
@@ -331,4 +336,11 @@ extension CommentTableViewController: SKPhotoBrowserDelegate {
         self.collectionView.reloadData()
         reload()
     }
+}
+
+/**
+ *  定义代理方法
+ */
+protocol CommentTableViewControllerDelegate {
+    func SubmitComments(comment: Comment) -> Bool
 }

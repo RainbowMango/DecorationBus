@@ -130,13 +130,11 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("Segue from CompanyCommentsTableViewController to CommentTableViewController")
         if segue.identifier == "commentSegue" {
-            print("Segue from CompanyCommentsTableViewController to CommentTableViewController")
-            
             let destinationView = segue.destinationViewController as! CommentTableViewController
             let reviewItems = ["设计水平", "施工质量", "服务", "性价比"]
             destinationView.setValue(reviewItems, forKey: "reviewItems")
+            destinationView.delegate = self
         }
     }
     
@@ -219,5 +217,12 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
         
         self.tableFooter.endRefreshing()
         self.tableView.reloadData()
+    }
+}
+
+extension CompanyCommentsTableViewController: CommentTableViewControllerDelegate {
+    func SubmitComments(comment: Comment) -> Bool {
+        print("收到代理方法，我自己提交comments")
+        return true
     }
 }
