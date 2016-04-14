@@ -224,6 +224,47 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
 extension CompanyCommentsTableViewController: CommentTableViewControllerDelegate {
     func SubmitComments(comment: Comment) -> Bool {
         print("收到代理方法，我自己提交comments")
+        
+//        Alamofire.upload(
+//            Method.POST,
+//            "https://httpbin.org/post",
+//            multipartFormData: { (multipartFormData) in
+//                for (index, image) in comment.imageArray.enumerate() {
+//                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.thumbnails, isDirectory: false)  , name: "image\(index)thumbnails")
+//                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.originimages, isDirectory: false)  , name: "image\(index)originimages")
+//                }
+//            }) { (encodingResult) in
+//                switch encodingResult {
+//                case .Success(let upload, _, _):
+//                    upload.responseJSON(completionHandler: { (response) in
+//                        debugPrint(response)
+//                    })
+//                case .Failure(let encodingError):
+//                    print(encodingError)
+//                }
+//        }
+        
+        Alamofire.upload(
+            Method.POST,
+            "https://httpbin.org/post",
+            multipartFormData: { (multipartFormData) in
+                for (index, image) in comment.imageArray.enumerate() {
+                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.thumbnails, isDirectory: false)  , name: "image\(index)thumbnails")
+                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.originimages, isDirectory: false)  , name: "image\(index)originimages")
+                }
+            },
+            encodingCompletion: { (encodingResult) in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON(completionHandler: { (response) in
+                        debugPrint(response)
+                    })
+                case .Failure(let encodingError):
+                    print(encodingError)
+                }
+            }
+        )
+        
         return true
     }
 }
