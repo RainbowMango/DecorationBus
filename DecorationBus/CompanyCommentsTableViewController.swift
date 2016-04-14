@@ -9,6 +9,7 @@
 import UIKit
 import MJRefresh
 import MWPhotoBrowser
+import Alamofire
 
 class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserDelegate {
 

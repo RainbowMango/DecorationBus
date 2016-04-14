@@ -12,4 +12,5 @@ target 'DecorationBus' do
     pod 'InfiniteCollectionView', '~> 1.0.2'
     pod 'StarReview',             '~> 0.0.2'
     pod 'SKPhotoBrowser',         '~> 1.7.6'
+    pod 'Alamofire',              '~> 3.3.0'
 end
