@@ -9,11 +9,11 @@
 import Foundation
 
 public enum CommentTargetType : Int {
-    case TypeCompany
-    case TypeArtist
-    case TypeManager
-    case TypeWorker
-    case TypeUnknown
+    case TypeUnknown = 0
+    case TypeCompany = 1
+    case TypeArtist  = 2
+    case TypeManager = 3
+    case TypeWorker  = 4
 }
 
 class Comment {
@@ -67,6 +67,36 @@ class Comment {
         }
         
         return (true, String())
+    }
+}
+
+extension Comment {
+    
+    /**
+     生成评论对象ID，用于数据上传
+     
+     - returns: NSData
+     */
+    func targetParm() -> NSData{
+        let targetID: Int = target.rawValue
+        let data          = String(targetID).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        return data!
+    }
+    
+    /**
+     将单项评分字典转成JSON，用于数据上传
+     
+     - returns: NSData
+     */
+    func itemScoreParm() -> NSData {
+        do {
+            return try NSJSONSerialization.dataWithJSONObject(self.itemScore, options: .PrettyPrinted)
+        }
+        catch let error as NSError {
+            showSimpleAlert(self, title: "您太幸运了", message: error.localizedDescription)
+        }
+        
+        return NSData()
     }
 }
 

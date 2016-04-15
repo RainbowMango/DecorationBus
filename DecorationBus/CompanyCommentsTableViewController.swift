@@ -246,11 +246,23 @@ extension CompanyCommentsTableViewController: CommentTableViewControllerDelegate
         
         Alamofire.upload(
             Method.POST,
-            "https://httpbin.org/post",
+            REQUEST_POST_COMMENTS_URL_STR,
             multipartFormData: { (multipartFormData) in
+                
+                //添加评论对象
+                let target = comment.targetParm()
+                multipartFormData.appendBodyPart(data: target, name: "target")
+                
+                //添加文字评论内容
+                multipartFormData.appendBodyPart(data: comment.textContent.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, name: "textContent")
+                
+                //添加分项评分
+                multipartFormData.appendBodyPart(data: comment.itemScoreParm(), name: "itemScore")
+                
+                //添加图片数据
                 for (index, image) in comment.imageArray.enumerate() {
-                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.thumbnails, isDirectory: false)  , name: "image\(index)thumbnails")
-                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.originimages, isDirectory: false)  , name: "image\(index)originimages")
+                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.thumbnails, isDirectory: false)  , name: "image\(index)thumb")
+                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.originimages, isDirectory: false)  , name: "image\(index)origin")
                 }
             },
             encodingCompletion: { (encodingResult) in
@@ -258,9 +270,11 @@ extension CompanyCommentsTableViewController: CommentTableViewControllerDelegate
                 case .Success(let upload, _, _):
                     upload.responseJSON(completionHandler: { (response) in
                         debugPrint(response)
+                        showSimpleHint(self.view, title: "恭喜", message: "保存成功")
                     })
                 case .Failure(let encodingError):
-                    print(encodingError)
+                    showSimpleAlert(self, title: "提交失败", message: "错误代码\(encodingError)")
+                    print("抱歉，提交失败了")
                 }
             }
         )
