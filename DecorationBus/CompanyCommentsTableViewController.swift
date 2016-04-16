@@ -268,7 +268,7 @@ extension CompanyCommentsTableViewController: CommentTableViewControllerDelegate
                 multipartFormData.appendBodyPart(data: comment.textContent.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, name: "textContent")
                 
                 //添加分项评分
-                multipartFormData.appendBodyPart(data: comment.itemScoreParm(), name: "itemScore")
+                multipartFormData.appendBodyPart(data: comment.makeParmDataForScore(), name: "itemScore")
                 
                 //添加图片数据
                 for (index, image) in comment.imageArray.enumerate() {

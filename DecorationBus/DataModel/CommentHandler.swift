@@ -108,12 +108,27 @@ extension Comment {
     
     /**
      将单项评分字典转成JSON，用于数据上传
+     将字典中key值转成中文，方便服务端解析
      
      - returns: NSData
      */
-    func itemScoreParm() -> NSData {
+    func makeParmDataForScore() -> NSData {
+        var parmDic = Dictionary<String, Int>();
+        
+        for(key, value) in self.itemScore {
+            if(key == "设计水平") {
+                parmDic.updateValue(value, forKey: "designscore")
+            }else if(key == "施工质量"){
+                parmDic.updateValue(value, forKey: "constrccore")
+            }else if(key == "服务") {
+                parmDic.updateValue(value, forKey: "servicecore")
+            }else if(key == "性价比") {
+                parmDic.updateValue(value, forKey: "costpfmcore")
+            }
+        }
+        
         do {
-            return try NSJSONSerialization.dataWithJSONObject(self.itemScore, options: .PrettyPrinted)
+            return try NSJSONSerialization.dataWithJSONObject(parmDic, options: .PrettyPrinted)
         }
         catch let error as NSError {
             showSimpleAlert(self, title: "您太幸运了", message: error.localizedDescription)
@@ -137,7 +152,8 @@ extension Comment {
             
             return (status, info)
         }catch let error as NSError {
-            print("解析服务器数据失败\(error.localizedDescription)")
+            let readbleString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
+            print("解析服务器数据失败\(error.localizedDescription): \(readbleString)")
             return (1, String())
         }
     }
