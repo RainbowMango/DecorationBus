@@ -132,10 +132,13 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "commentSegue" {
-            let destinationView = segue.destinationViewController as! CommentTableViewController
+            let destinationVC = segue.destinationViewController as! CommentTableViewController
             let reviewItems = ["设计水平", "施工质量", "服务", "性价比"]
-            destinationView.setValue(reviewItems, forKey: "reviewItems")
-            destinationView.delegate = self
+            destinationVC.setValue(reviewItems, forKey: "reviewItems")
+            destinationVC.comment.userID = UserDataHandler().getUserIDFromConf()
+            destinationVC.comment.targetType = CommentTargetType.TypeCompany
+            destinationVC.comment.targetID   = self._company.id
+            destinationVC.delegate = self
         }
     }
     
@@ -249,9 +252,17 @@ extension CompanyCommentsTableViewController: CommentTableViewControllerDelegate
             REQUEST_POST_COMMENTS_URL_STR,
             multipartFormData: { (multipartFormData) in
                 
-                //添加评论对象
-                let target = comment.targetParm()
-                multipartFormData.appendBodyPart(data: target, name: "target")
+                //添加用户ID
+                let user = comment.makeParmDataForUserID()
+                multipartFormData.appendBodyPart(data: user, name: "userID")
+                
+                //添加评论对象类型
+                let targetType = comment.makeParmDataForTargetType()
+                multipartFormData.appendBodyPart(data: targetType, name: "targetType")
+                
+                //添加评论对象ID
+                let targetID = comment.makeParmDataForTargetID()
+                multipartFormData.appendBodyPart(data: targetID, name: "targetID")
                 
                 //添加文字评论内容
                 multipartFormData.appendBodyPart(data: comment.textContent.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, name: "textContent")
@@ -269,6 +280,7 @@ extension CompanyCommentsTableViewController: CommentTableViewControllerDelegate
                 switch encodingResult {
                 case .Success(let upload, _, _):
                     upload.responseJSON(completionHandler: { (response) in
+                        debugPrint(response)
                         if(!comment.commentAccept(response.data!)) {
                             debugPrint(response.data)
                             return

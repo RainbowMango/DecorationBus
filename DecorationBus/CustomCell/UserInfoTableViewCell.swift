@@ -9,7 +9,7 @@
 import UIKit
 
 class UserInfo {
-    var userid   : String {//用户ID：YYYYMMDDHHMMSSMS
+    var userid   : String {//用户ID：YYYYMMDDHHMMSS+3位毫秒+5位随机数
         didSet {
             self.registed = true
         }

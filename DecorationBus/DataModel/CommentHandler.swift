@@ -20,14 +20,18 @@ class Comment {
     let MINIMUM_LENGTH_OF_TEXT_CONTENT = 15
     let MAXIMUM_LENGTH_OF_TEXT_CONTENT = 512
     
-    var target: CommentTargetType
+    var userID     : String
+    var targetType : CommentTargetType
+    var targetID   : UInt
     var textContent: String
     var imageArray : Array<ImageCollectionViewCellData>
     var itemScore  : Dictionary<String, Int>
     
     init() {
+        userID      = String()
         textContent = String()
-        target      = CommentTargetType.TypeUnknown
+        targetType  = CommentTargetType.TypeUnknown
+        targetID    = 0
         imageArray  = Array<ImageCollectionViewCellData>()
         itemScore   = Dictionary<String, Int>()
     }
@@ -73,14 +77,33 @@ class Comment {
 extension Comment {
     
     /**
+     生成HTTP请求参数数据
+     
+     - returns: NSData
+     */
+    func makeParmDataForUserID() -> NSData {
+        let user = String(userID)
+        return user.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
+    }
+    
+    /**
+     生成评论对象类型，用于数据上传
+     
+     - returns: NSData
+     */
+    func makeParmDataForTargetType() -> NSData{
+        let type = String(targetType.rawValue)
+        return type.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
+    }
+    
+    /**
      生成评论对象ID，用于数据上传
      
      - returns: NSData
      */
-    func targetParm() -> NSData{
-        let targetID: Int = target.rawValue
-        let data          = String(targetID).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        return data!
+    func makeParmDataForTargetID() -> NSData {
+        let id = String(targetID)
+        return id.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
     }
     
     /**
