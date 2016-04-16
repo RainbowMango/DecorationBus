@@ -269,7 +269,11 @@ extension CompanyCommentsTableViewController: CommentTableViewControllerDelegate
                 switch encodingResult {
                 case .Success(let upload, _, _):
                     upload.responseJSON(completionHandler: { (response) in
-                        debugPrint(response)
+                        if(!comment.commentAccept(response.data!)) {
+                            debugPrint(response.data)
+                            return
+                        }
+                        
                         showSimpleHint(self.view, title: "恭喜", message: "保存成功")
                     })
                 case .Failure(let encodingError):

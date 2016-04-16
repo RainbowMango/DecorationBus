@@ -98,6 +98,42 @@ extension Comment {
         
         return NSData()
     }
+    
+    /**
+     解析服务端返回的JSON数据
+     
+     - parameter jsonData: 服务端返回的数据
+     
+     - returns: status: 0-成功 1-失败  info: 错误信息
+     */
+    func parseResponsJSON(jsonData: NSData) -> (status: Int, info: String) {
+        do {
+            let jsonStr = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments)
+            let status  = jsonStr.objectForKey("status") as! Int
+            let info    = jsonStr.objectForKey("info") as! String
+            
+            return (status, info)
+        }catch let error as NSError {
+            print("解析服务器数据失败\(error.localizedDescription)")
+            return (1, String())
+        }
+    }
+    
+    /**
+     判断服务器是否已经接收评论
+     
+     - parameter jsonData: 服务端返回的数据
+     
+     - returns: Bool
+     */
+    func commentAccept(jsonData: NSData) -> Bool {
+        let result = parseResponsJSON(jsonData)
+        if result.status != 0 {
+            print("服务器返回错误\(result.info)")
+            return false
+        }
+        return true
+    }
 }
 
 class CommentHandler: SandboxHandler {
