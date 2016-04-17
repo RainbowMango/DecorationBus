@@ -270,6 +270,9 @@ extension CompanyCommentsTableViewController: CommentTableViewControllerDelegate
                 //添加分项评分
                 multipartFormData.appendBodyPart(data: comment.makeParmDataForScore(), name: "itemScore")
                 
+                //添加图片张数数据
+                multipartFormData.appendBodyPart(data: comment.makeParmDataForImageCount(), name: "imageCount")
+                
                 //添加图片数据
                 for (index, image) in comment.imageArray.enumerate() {
                     multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.thumbnails, isDirectory: false)  , name: "image\(index)thumb")

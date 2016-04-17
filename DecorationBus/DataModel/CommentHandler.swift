@@ -137,6 +137,11 @@ extension Comment {
         return NSData()
     }
     
+    func makeParmDataForImageCount() -> NSData {
+        let count = String(self.imageArray.count)
+        return count.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
+    }
+    
     /**
      解析服务端返回的JSON数据
      
