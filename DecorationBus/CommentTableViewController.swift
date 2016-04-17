@@ -15,6 +15,8 @@ class CommentTableViewController: UITableViewController {
     @IBOutlet weak var textView: KMPlaceholderTextView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let MAXIMUM_NUMBER_OF_PHOTOS = 4 //最多可以上传的图片数
+    
     var delegate: CommentTableViewControllerDelegate?
     
     //定义AGImagePickerController实例
@@ -70,7 +72,6 @@ class CommentTableViewController: UITableViewController {
      - parameter sender: 触发事件的view
      */
     @IBAction func publishComments(sender: AnyObject) {
-        print("发布评价")
         self.comment.textContent = self.textView.text
         
         //取得评价得分
@@ -85,7 +86,6 @@ class CommentTableViewController: UITableViewController {
             return
         }
         
-        print("验证完成，准备提交")
         if(self.delegate != nil && self.delegate!.SubmitComments(self.comment)) {
             self.navigationController?.popViewControllerAnimated(true)
         }
@@ -108,59 +108,18 @@ class CommentTableViewController: UITableViewController {
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 // MARK: - UICollectionView的数据源和代理方法
 extension CommentTableViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.comment.imageArray.count + 1
+        if(self.comment.imageArray.count >= MAXIMUM_NUMBER_OF_PHOTOS) { //如果超出允许的最大图片数，则不再显示提示图片
+            return self.comment.imageArray.count
+        }
+        else { //除了显示已经选取的图片外，再显示提示图片
+            return self.comment.imageArray.count + 1
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -224,7 +183,7 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
                         return
                     }
 
-                    self.startImportPhotoFromLibrary()
+                    self.startImportPhotoFromLibrary(UInt(self.MAXIMUM_NUMBER_OF_PHOTOS - self.comment.imageArray.count))
                 }
                 alertVC.addAction(photoLibrarySheet)
             }
@@ -238,7 +197,6 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
         else { //浏览图片
             startBrowse(indexPath.row)
         }
-        print("选择的cell index 为\(indexPath.row)")
     }
     
     /**
@@ -286,12 +244,12 @@ extension CommentTableViewController: UIImagePickerControllerDelegate, UINavigat
 }
 
 extension CommentTableViewController: AGImagePickerControllerDelegate {
-    func startImportPhotoFromLibrary() {
+    func startImportPhotoFromLibrary(maxNumber: UInt) {
         
         // Show saved photos on top
         ipc.shouldShowSavedPhotosOnTop = false
         ipc.shouldChangeStatusBarStyle = true
-        ipc.maximumNumberOfPhotosToBeSelected = 9
+        ipc.maximumNumberOfPhotosToBeSelected = maxNumber
         
         // 自定义工具栏按钮（官方例子中有全选、奇偶选）
         let flexibleSysButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
