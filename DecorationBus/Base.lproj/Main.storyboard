@@ -1051,10 +1051,13 @@
                     <navigationItem key="navigationItem" title="装修公司点评" id="aaJ-ju-0ZA">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="nEW-S0-0oV">
                             <connections>
-                                <segue destination="GzJ-Rm-0Za" kind="push" identifier="commentSegue" id="ZIa-Cy-aXl"/>
+                                <action selector="addCommentButtonAction:" destination="Mxs-dA-lGt" id="G4Y-dh-QqZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="GzJ-Rm-0Za" kind="push" identifier="commentSegue" id="krl-cx-xvL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ngr-Oy-w8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

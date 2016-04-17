@@ -130,6 +130,21 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
     
     // MARK: - Navigation
     
+    /**
+     用户点击提交评论按钮动作实现
+     需要检查用户是否登录，如果未登录提示用户并跳转到登录页面
+     
+     - parameter sender: <#sender description#>
+     */
+    @IBAction func addCommentButtonAction(sender: AnyObject) {
+        if(!UserDataHandler().isLogin()) {
+            showSimpleAlert(self, title: "请您先登录", message: "每条评论都需要有个主人~")
+            return
+        }
+        
+        performSegueWithIdentifier("commentSegue", sender: self)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "commentSegue" {
             let destinationVC = segue.destinationViewController as! CommentTableViewController
