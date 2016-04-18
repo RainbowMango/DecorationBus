@@ -210,7 +210,7 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
      */
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        let cellWidth = UIScreen.mainScreen().bounds.size.width/5 - 5
+        let cellWidth = UIScreen.mainScreen().bounds.size.width/4 - 5
         let cellHeight = cellWidth
         return CGSize(width: cellWidth, height: cellHeight)
     }

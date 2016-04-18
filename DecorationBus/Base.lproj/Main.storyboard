@@ -1091,7 +1091,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </textView>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hgW-we-jze">
-                                    <rect key="frame" x="0.0" y="120" width="320" height="80"/>
+                                    <rect key="frame" x="5" y="120" width="310" height="80"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="80" id="tML-D4-nsj"/>
@@ -1133,10 +1133,10 @@
                             <constraints>
                                 <constraint firstItem="kU8-Bb-1dQ" firstAttribute="top" secondItem="fAM-tx-lJO" secondAttribute="top" id="7Jj-BQ-pTc"/>
                                 <constraint firstItem="kU8-Bb-1dQ" firstAttribute="leading" secondItem="fAM-tx-lJO" secondAttribute="leading" id="C5f-RJ-Et9"/>
-                                <constraint firstItem="hgW-we-jze" firstAttribute="leading" secondItem="fAM-tx-lJO" secondAttribute="leading" id="ILh-PK-HLL"/>
+                                <constraint firstItem="hgW-we-jze" firstAttribute="leading" secondItem="fAM-tx-lJO" secondAttribute="leading" constant="5" id="ILh-PK-HLL"/>
                                 <constraint firstItem="hgW-we-jze" firstAttribute="top" secondItem="kU8-Bb-1dQ" secondAttribute="bottom" id="UhO-7U-tN8"/>
                                 <constraint firstAttribute="bottom" secondItem="hgW-we-jze" secondAttribute="bottom" id="VIs-1n-Ywa"/>
-                                <constraint firstAttribute="trailing" secondItem="hgW-we-jze" secondAttribute="trailing" id="okL-x0-Bnd"/>
+                                <constraint firstAttribute="trailing" secondItem="hgW-we-jze" secondAttribute="trailing" constant="5" id="okL-x0-Bnd"/>
                                 <constraint firstAttribute="trailing" secondItem="kU8-Bb-1dQ" secondAttribute="trailing" id="ytC-DG-E3c"/>
                             </constraints>
                         </view>
