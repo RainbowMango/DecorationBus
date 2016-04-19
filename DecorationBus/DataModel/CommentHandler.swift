@@ -183,7 +183,7 @@ extension Comment {
 class CommentHandler: SandboxHandler {
     
     //缩略图的尺寸
-    private let thumbDefaultSize = CGSizeMake(60.0, 60.0)
+    private let thumbDefaultSize = CGSizeMake(120.0, 120.0)
     
     /**
      保存评论图片到临时目录,每张图片会保存原图和缩略图，最后返回原图和缩略图的沙盒路径
@@ -202,12 +202,12 @@ class CommentHandler: SandboxHandler {
         let thumbImage  = sandboxDir + "comment_\(imageID)_thumb.png"
         let originImage = sandboxDir + "comment_\(imageID)_origin.png"
         
-        guard UIImageJPEGRepresentation(image, 0.01)!.writeToFile(originImage, atomically: true) else {
+        guard UIImageJPEGRepresentation(image, 1.0)!.writeToFile(originImage, atomically: true) else {
             return (String(), String())
         }
         
         let scaledImage = ImageHandler().aspectSacleSize(image, targetSize: thumbDefaultSize)
-        guard UIImageJPEGRepresentation(scaledImage, 0.01)!.writeToFile(thumbImage, atomically: true) else {
+        guard UIImageJPEGRepresentation(scaledImage, 1.0)!.writeToFile(thumbImage, atomically: true) else {
             return (String(), originImage)
         }
         
