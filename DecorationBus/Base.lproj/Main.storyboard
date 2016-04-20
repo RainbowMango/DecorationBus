@@ -2774,7 +2774,7 @@
                                     <constraint firstAttribute="width" constant="80" id="UfE-wj-Ard"/>
                                     <constraint firstAttribute="height" constant="80" id="tzB-eo-JsN"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="Album.png"/>
+                                <state key="normal" backgroundImage="emptyavatar"/>
                                 <connections>
                                     <action selector="addAvatarButtonPressed:" destination="zxG-z4-kcw" eventType="touchUpInside" id="AYO-w5-aej"/>
                                 </connections>
@@ -2813,8 +2813,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Album.png" width="85" height="85"/>
         <image name="arrow_right.png" width="32" height="32"/>
+        <image name="emptyavatar" width="50" height="50"/>
         <image name="index.jpg" width="320" height="180"/>
         <image name="index.png" width="22" height="22"/>
         <image name="lock.png" width="51" height="69"/>
