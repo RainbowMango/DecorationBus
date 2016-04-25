@@ -159,7 +159,7 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
     
     // MARK: - Request And Refresh
     func requestCompanyComments(counter: Int, companyId: UInt) -> Array<CompanyComment> {
-        let urlStr = REQUEST_COMPANY_COMMENTS_URL_STR + "?counter=\(counter)" + "&company=\(companyId)"
+        let urlStr = REQUEST_COMMENTS_URL_STR + "?targetType=\(CommentTargetType.TypeCompany.rawValue)" + "&targetID=\(companyId)" + "&sindex=\(counter)"
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
         do {
