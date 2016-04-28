@@ -239,7 +239,9 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
 }
 
 extension CompanyCommentsTableViewController: CommentTableViewControllerDelegate {
-    func SubmitComments(comment: Comment) -> Bool {
-        return true
+    
+    func commentSubmitted(submittedComment comment: Comment) {
+        self._comments.removeAll()
+        tableFooterRefresh()
     }
 }

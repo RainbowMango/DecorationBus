@@ -130,6 +130,10 @@ class CommentTableViewController: UITableViewController {
                             return
                         }
                         
+                        if(self.delegate != nil) {
+                            self.delegate!.commentSubmitted(submittedComment: self.comment)
+                        }
+                        
                         self.navigationController?.popViewControllerAnimated(true)
                     })
                 case .Failure(let encodingError):
@@ -347,6 +351,14 @@ extension CommentTableViewController: SKPhotoBrowserDelegate {
 /**
  *  定义代理方法
  */
-protocol CommentTableViewControllerDelegate {
-    func SubmitComments(comment: Comment) -> Bool
+protocol CommentTableViewControllerDelegate: NSObjectProtocol {
+    
+    /**
+     提交评论成功代理方法，客户可以执行页面刷新等
+     
+     - parameter comment: 已经提交的评论
+     
+     - returns: Void
+     */
+    func commentSubmitted(submittedComment comment: Comment) -> Void
 }
