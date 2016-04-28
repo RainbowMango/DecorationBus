@@ -27,6 +27,8 @@ class Comment {
     var imageArray : Array<ImageCollectionViewCellData>
     var itemScore  : Dictionary<String, Int>
     
+    var serverAckInfo: String = String() //记录服务器返回的错误信息
+    
     init() {
         userID      = String()
         textContent = String()
@@ -174,6 +176,7 @@ extension Comment {
         let result = parseResponsJSON(jsonData)
         if result.status != 0 {
             print("服务器返回错误\(result.info)")
+            self.serverAckInfo = result.info
             return false
         }
         return true

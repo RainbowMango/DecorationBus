@@ -9,6 +9,7 @@
 import UIKit
 import SKPhotoBrowser
 import KMPlaceholderTextView
+import Alamofire
 
 class CommentTableViewController: UITableViewController {
     
@@ -86,9 +87,56 @@ class CommentTableViewController: UITableViewController {
             return
         }
         
-        if(self.delegate != nil && self.delegate!.SubmitComments(self.comment)) {
-            self.navigationController?.popViewControllerAnimated(true)
-        }
+        Alamofire.upload(
+            Method.POST,
+            REQUEST_POST_COMMENTS_URL_STR,
+            multipartFormData: { (multipartFormData) in
+                
+                //添加用户ID
+                let user = self.comment.makeParmDataForUserID()
+                multipartFormData.appendBodyPart(data: user, name: "userID")
+                
+                //添加评论对象类型
+                let targetType = self.comment.makeParmDataForTargetType()
+                multipartFormData.appendBodyPart(data: targetType, name: "targetType")
+                
+                //添加评论对象ID
+                let targetID = self.comment.makeParmDataForTargetID()
+                multipartFormData.appendBodyPart(data: targetID, name: "targetID")
+                
+                //添加文字评论内容
+                multipartFormData.appendBodyPart(data: self.comment.textContent.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, name: "textContent")
+                
+                //添加分项评分
+                multipartFormData.appendBodyPart(data: self.comment.makeParmDataForScore(), name: "itemScore")
+                
+                //添加图片张数数据
+                multipartFormData.appendBodyPart(data: self.comment.makeParmDataForImageCount(), name: "imageCount")
+                
+                //添加图片数据
+                for (index, image) in self.comment.imageArray.enumerate() {
+                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.thumbnails, isDirectory: false)  , name: "image\(index)thumb")
+                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.originimages, isDirectory: false)  , name: "image\(index)origin")
+                }
+            },
+            encodingCompletion: { (encodingResult) in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON(completionHandler: { (response) in
+                        debugPrint(response)
+                        if(!self.comment.commentAccept(response.data!)) {
+                            debugPrint(response.data)
+                            showSimpleAlert(self, title: "提交失败", message: self.comment.serverAckInfo)
+                            return
+                        }
+                        
+                        self.navigationController?.popViewControllerAnimated(true)
+                    })
+                case .Failure(let encodingError):
+                    showSimpleAlert(self, title: "提交失败", message: "错误代码\(encodingError)")
+                }
+            }
+        )
     }
     
     // MARK: - Table view data source

@@ -9,7 +9,6 @@
 import UIKit
 import MJRefresh
 import MWPhotoBrowser
-import Alamofire
 
 class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserDelegate {
 
@@ -241,78 +240,6 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
 
 extension CompanyCommentsTableViewController: CommentTableViewControllerDelegate {
     func SubmitComments(comment: Comment) -> Bool {
-        print("收到代理方法，我自己提交comments")
-        
-//        Alamofire.upload(
-//            Method.POST,
-//            "https://httpbin.org/post",
-//            multipartFormData: { (multipartFormData) in
-//                for (index, image) in comment.imageArray.enumerate() {
-//                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.thumbnails, isDirectory: false)  , name: "image\(index)thumbnails")
-//                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.originimages, isDirectory: false)  , name: "image\(index)originimages")
-//                }
-//            }) { (encodingResult) in
-//                switch encodingResult {
-//                case .Success(let upload, _, _):
-//                    upload.responseJSON(completionHandler: { (response) in
-//                        debugPrint(response)
-//                    })
-//                case .Failure(let encodingError):
-//                    print(encodingError)
-//                }
-//        }
-        
-        Alamofire.upload(
-            Method.POST,
-            REQUEST_POST_COMMENTS_URL_STR,
-            multipartFormData: { (multipartFormData) in
-                
-                //添加用户ID
-                let user = comment.makeParmDataForUserID()
-                multipartFormData.appendBodyPart(data: user, name: "userID")
-                
-                //添加评论对象类型
-                let targetType = comment.makeParmDataForTargetType()
-                multipartFormData.appendBodyPart(data: targetType, name: "targetType")
-                
-                //添加评论对象ID
-                let targetID = comment.makeParmDataForTargetID()
-                multipartFormData.appendBodyPart(data: targetID, name: "targetID")
-                
-                //添加文字评论内容
-                multipartFormData.appendBodyPart(data: comment.textContent.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, name: "textContent")
-                
-                //添加分项评分
-                multipartFormData.appendBodyPart(data: comment.makeParmDataForScore(), name: "itemScore")
-                
-                //添加图片张数数据
-                multipartFormData.appendBodyPart(data: comment.makeParmDataForImageCount(), name: "imageCount")
-                
-                //添加图片数据
-                for (index, image) in comment.imageArray.enumerate() {
-                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.thumbnails, isDirectory: false)  , name: "image\(index)thumb")
-                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.originimages, isDirectory: false)  , name: "image\(index)origin")
-                }
-            },
-            encodingCompletion: { (encodingResult) in
-                switch encodingResult {
-                case .Success(let upload, _, _):
-                    upload.responseJSON(completionHandler: { (response) in
-                        debugPrint(response)
-                        if(!comment.commentAccept(response.data!)) {
-                            debugPrint(response.data)
-                            return
-                        }
-                        
-                        showSimpleHint(self.view, title: "恭喜", message: "保存成功")
-                    })
-                case .Failure(let encodingError):
-                    showSimpleAlert(self, title: "提交失败", message: "错误代码\(encodingError)")
-                    print("抱歉，提交失败了")
-                }
-            }
-        )
-        
         return true
     }
 }
