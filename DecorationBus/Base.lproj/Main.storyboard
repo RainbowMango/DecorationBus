@@ -1389,7 +1389,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="设计师点评信息" id="d7I-V0-5Qe">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="jp6-rI-m58"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="jp6-rI-m58">
+                            <connections>
+                                <action selector="addCommentButtonAction:" destination="yev-N9-Pl6" id="5UK-d8-2Wc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="GzJ-Rm-0Za" kind="push" identifier="commentSegue" id="9B5-uS-6yH"/>

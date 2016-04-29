@@ -123,7 +123,6 @@
 		9B985BFF1A179525009F4435 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B985BFE1A179525009F4435 /* AboutMeViewController.swift */; };
 		9B9E1ACC1A82556B006D816F /* EverPhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9E1ACB1A82556B006D816F /* EverPhotoTableViewController.swift */; };
 		9BA6B0481A3DD261003BC35E /* KeyboardAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6B0471A3DD261003BC35E /* KeyboardAccessory.swift */; };
-		9BA99EAF1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA99EAE1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift */; };
 		9BA99EB11C2EDFB10035DABC /* ArtistCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA99EB01C2EDFB10035DABC /* ArtistCommentTableViewCell.swift */; };
 		9BB1B8DE1CB3BB0D007283F9 /* CommentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB1B8DD1CB3BB0D007283F9 /* CommentHandler.swift */; };
 		9BC288D31A2964CC005728D5 /* ShowPayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC288D21A2964CC005728D5 /* ShowPayDetailViewController.swift */; };
@@ -168,6 +167,7 @@
 		9BC75BC01BF7A4C100DF81CD /* ser04@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BC75BBE1BF7A4C100DF81CD /* ser04@3x.png */; };
 		9BC75BC31BF7A5DE00DF81CD /* ser02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BC75BC11BF7A5DE00DF81CD /* ser02@2x.png */; };
 		9BC75BC41BF7A5DE00DF81CD /* ser02@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BC75BC21BF7A5DE00DF81CD /* ser02@3x.png */; };
+		9BCAAF581CD3AD8000D868DD /* ArtistCommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCAAF571CD3AD8000D868DD /* ArtistCommentsTableViewController.swift */; };
 		9BCC42581A3483CA00978841 /* ShowPayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCC42571A3483CA00978841 /* ShowPayListViewController.swift */; };
 		9BCEAA301A1212B3002EE82C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA2F1A1212B3002EE82C /* SettingViewController.swift */; };
 		9BCEAA321A122571002EE82C /* CatagoryPrimeMangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */; };
@@ -342,7 +342,6 @@
 		9B985BFE1A179525009F4435 /* AboutMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
 		9B9E1ACB1A82556B006D816F /* EverPhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverPhotoTableViewController.swift; sourceTree = "<group>"; };
 		9BA6B0471A3DD261003BC35E /* KeyboardAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAccessory.swift; sourceTree = "<group>"; };
-		9BA99EAE1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistCommentsTableViewController.swift; sourceTree = "<group>"; };
 		9BA99EB01C2EDFB10035DABC /* ArtistCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistCommentTableViewCell.swift; sourceTree = "<group>"; };
 		9BB1B8DD1CB3BB0D007283F9 /* CommentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentHandler.swift; sourceTree = "<group>"; };
 		9BC288D21A2964CC005728D5 /* ShowPayDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPayDetailViewController.swift; sourceTree = "<group>"; };
@@ -387,6 +386,7 @@
 		9BC75BBE1BF7A4C100DF81CD /* ser04@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ser04@3x.png"; sourceTree = "<group>"; };
 		9BC75BC11BF7A5DE00DF81CD /* ser02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ser02@2x.png"; sourceTree = "<group>"; };
 		9BC75BC21BF7A5DE00DF81CD /* ser02@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ser02@3x.png"; sourceTree = "<group>"; };
+		9BCAAF571CD3AD8000D868DD /* ArtistCommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistCommentsTableViewController.swift; sourceTree = "<group>"; };
 		9BCC42571A3483CA00978841 /* ShowPayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPayListViewController.swift; sourceTree = "<group>"; };
 		9BCEAA2F1A1212B3002EE82C /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		9BCEAA311A122571002EE82C /* CatagoryPrimeMangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoryPrimeMangeViewController.swift; sourceTree = "<group>"; };
@@ -673,7 +673,7 @@
 				9BE902E71C32D1F400519F82 /* ManagerTableViewController.swift */,
 				9BE902F31C34EC2F00519F82 /* WorkerTableViewController.swift */,
 				9BE4015B1C19BA9C001CDE29 /* CompanyCommentsTableViewController.swift */,
-				9BA99EAE1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift */,
+				9BCAAF571CD3AD8000D868DD /* ArtistCommentsTableViewController.swift */,
 				9BE902EF1C34386E00519F82 /* ManagerCommentsTableViewController.swift */,
 				9BE902F71C34EEE000519F82 /* WorkerCommentsTableViewController.swift */,
 				9B05F5161ADA18560058EF0B /* CollectionPhotoCell.swift */,
@@ -1227,6 +1227,7 @@
 				9B4A01C41C2AA095004CF788 /* ArtistListTableViewController.swift in Sources */,
 				9BC401BA1A7CB3CF00FDF4D6 /* BudgetRecord.swift in Sources */,
 				9B2491991A5D683700990BA6 /* FormTextFieldCell.swift in Sources */,
+				9BCAAF581CD3AD8000D868DD /* ArtistCommentsTableViewController.swift in Sources */,
 				9B2491951A5D683700990BA6 /* FormPickerCell.swift in Sources */,
 				9BE4015C1C19BA9C001CDE29 /* CompanyCommentsTableViewController.swift in Sources */,
 				9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */,
@@ -1253,7 +1254,6 @@
 				9BE902F81C34EEE000519F82 /* WorkerCommentsTableViewController.swift in Sources */,
 				9B3F1D4E1C4290E5001065C2 /* UserInfoTableViewCell.swift in Sources */,
 				9B97DCCE1A2361AA006A94C0 /* BudgetArchiver.swift in Sources */,
-				9BA99EAF1C2EBBF50035DABC /* ArtistCommentsTableViewController.swift in Sources */,
 				9BE401531C0215D2001CDE29 /* CompanyTableViewCell.swift in Sources */,
 				9BF8E0621BD7E39300F3AD9E /* NSData+SDDataCache.m in Sources */,
 				9B9E1ACC1A82556B006D816F /* EverPhotoTableViewController.swift in Sources */,
