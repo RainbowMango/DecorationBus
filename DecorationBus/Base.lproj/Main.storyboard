@@ -1388,7 +1388,12 @@
                             <outlet property="delegate" destination="yev-N9-Pl6" id="w0D-Oc-tl1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="设计师点评信息" id="d7I-V0-5Qe"/>
+                    <navigationItem key="navigationItem" title="设计师点评信息" id="d7I-V0-5Qe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="jp6-rI-m58"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="GzJ-Rm-0Za" kind="push" identifier="commentSegue" id="9B5-uS-6yH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkB-Bg-Qr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2829,6 +2834,7 @@
         <image name="userDefaultAvatar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="9B5-uS-6yH"/>
         <segue reference="8Pm-ew-up5"/>
         <segue reference="GEv-yq-UPu"/>
     </inferredMetricsTieBreakers>
