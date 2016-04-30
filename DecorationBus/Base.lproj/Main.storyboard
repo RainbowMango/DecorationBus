@@ -1196,7 +1196,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKy-iH-VnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2911" y="-3211"/>
+            <point key="canvasLocation" x="3211" y="-2255"/>
         </scene>
         <!--设计师点评信息-->
         <scene sceneID="oJL-uJ-wmx">
@@ -1595,7 +1595,16 @@
                             <outlet property="delegate" destination="2vC-bD-lA0" id="cap-qQ-Jtb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="项目经理点评信息" id="oOh-aJ-EYp"/>
+                    <navigationItem key="navigationItem" title="项目经理点评信息" id="oOh-aJ-EYp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="T70-vY-LKT">
+                            <connections>
+                                <action selector="addCommentButtonAction:" destination="2vC-bD-lA0" id="zW5-Om-wQ5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="GzJ-Rm-0Za" kind="push" identifier="commentSegue" id="Lua-sO-OyD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AJa-0b-yrb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2839,7 +2848,7 @@
         <image name="userDefaultAvatar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9B5-uS-6yH"/>
+        <segue reference="Lua-sO-OyD"/>
         <segue reference="8Pm-ew-up5"/>
         <segue reference="GEv-yq-UPu"/>
     </inferredMetricsTieBreakers>

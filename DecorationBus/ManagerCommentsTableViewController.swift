@@ -40,6 +40,33 @@ class ManagerCommentsTableViewController: UITableViewController, MWPhotoBrowserD
         // Dispose of any resources that can be recreated.
     }
     
+    /**
+     用户点击提交评论按钮动作实现
+     需要检查用户是否登录，如果未登录提示用户并跳转到登录页面
+     
+     - parameter sender: <#sender description#>
+     */
+    @IBAction func addCommentButtonAction(sender: AnyObject) {
+        if(!UserDataHandler().isLogin()) {
+            showSimpleAlert(self, title: "请您先登录", message: "每条评论都需要有个主人~")
+            return
+        }
+        
+        performSegueWithIdentifier("commentSegue", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "commentSegue" {
+            let destinationVC = segue.destinationViewController as! CommentTableViewController
+            let reviewItems = ["预算控制", "沟通能力", "服务态度", "责任心"]
+            destinationVC.setValue(reviewItems, forKey: "reviewItems")
+            destinationVC.comment.userID = UserDataHandler().getUserIDFromConf()
+            destinationVC.comment.targetType = CommentTargetType.TypeManager
+            destinationVC.comment.targetID   = self._manager.id
+            destinationVC.delegate = self
+        }
+    }
+    
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -205,5 +232,13 @@ class ManagerCommentsTableViewController: UITableViewController, MWPhotoBrowserD
         
         self.tableFooter.endRefreshing()
         self.tableView.reloadData()
+    }
+}
+
+extension ManagerCommentsTableViewController: CommentTableViewControllerDelegate {
+    
+    func commentSubmitted(submittedComment comment: Comment) {
+        self._comments.removeAll()
+        tableFooterRefresh()
     }
 }
