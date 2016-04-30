@@ -155,7 +155,7 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
     
     // MARK: - Request And Refresh
     func requestArtistComments(counter: Int, target: UInt) -> Array<ArtistComment> {
-        let urlStr = REQUEST_ARTIST_COMMENTS_URL_STR + "?counter=\(counter)" + "&artist=\(target)"
+        let urlStr = REQUEST_COMMENTS_URL_STR + "?targetType=\(CommentTargetType.TypeArtist.rawValue)" + "&targetID=\(target)" + "&sindex=\(counter)"
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
         do {
