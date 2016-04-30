@@ -157,7 +157,17 @@ extension Comment {
             }
         }
         else if(self.targetType == CommentTargetType.TypeWorker) {
-            
+            for(key, value) in self.itemScore {
+                if(key == "技术水平") {
+                    parmDic.updateValue(value, forKey: "item1score")
+                }else if(key == "沟通能力"){
+                    parmDic.updateValue(value, forKey: "item2score")
+                }else if(key == "服务态度") {
+                    parmDic.updateValue(value, forKey: "item3score")
+                }else if(key == "责任心") {
+                    parmDic.updateValue(value, forKey: "item4score")
+                }
+            }
         }
         
         do {

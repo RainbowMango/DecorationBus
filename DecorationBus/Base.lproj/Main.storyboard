@@ -658,7 +658,16 @@
                             <outlet property="delegate" destination="dvl-wX-azx" id="Xnt-SC-w43"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="工人点评信息" id="GSz-oQ-x8p"/>
+                    <navigationItem key="navigationItem" title="工人点评信息" id="GSz-oQ-x8p">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="yon-Zb-g3l">
+                            <connections>
+                                <action selector="addCommentButtonAction:" destination="dvl-wX-azx" id="gQW-G1-krX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="GzJ-Rm-0Za" kind="push" identifier="commentSegue" id="pWz-eB-tMR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pl0-Cj-1iP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2848,8 +2857,8 @@
         <image name="userDefaultAvatar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Lua-sO-OyD"/>
-        <segue reference="8Pm-ew-up5"/>
         <segue reference="GEv-yq-UPu"/>
+        <segue reference="8Pm-ew-up5"/>
+        <segue reference="pWz-eB-tMR"/>
     </inferredMetricsTieBreakers>
 </document>
