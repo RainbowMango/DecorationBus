@@ -15,6 +15,7 @@ class CommentTableViewController: UITableViewController {
     
     @IBOutlet weak var textView: KMPlaceholderTextView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     let MAXIMUM_NUMBER_OF_PHOTOS = 4 //最多可以上传的图片数
     
@@ -87,60 +88,71 @@ class CommentTableViewController: UITableViewController {
             return
         }
         
-        Alamofire.upload(
-            Method.POST,
-            REQUEST_POST_COMMENTS_URL_STR,
-            multipartFormData: { (multipartFormData) in
-                
-                //添加用户ID
-                let user = self.comment.makeParmDataForUserID()
-                multipartFormData.appendBodyPart(data: user, name: "userID")
-                
-                //添加评论对象类型
-                let targetType = self.comment.makeParmDataForTargetType()
-                multipartFormData.appendBodyPart(data: targetType, name: "targetType")
-                
-                //添加评论对象ID
-                let targetID = self.comment.makeParmDataForTargetID()
-                multipartFormData.appendBodyPart(data: targetID, name: "targetID")
-                
-                //添加文字评论内容
-                multipartFormData.appendBodyPart(data: self.comment.textContent.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, name: "textContent")
-                
-                //添加分项评分
-                multipartFormData.appendBodyPart(data: self.comment.makeParmDataForScore(), name: "itemScore")
-                
-                //添加图片张数数据
-                multipartFormData.appendBodyPart(data: self.comment.makeParmDataForImageCount(), name: "imageCount")
-                
-                //添加图片数据
-                for (index, image) in self.comment.imageArray.enumerate() {
-                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.thumbnails, isDirectory: false)  , name: "image\(index)thumb")
-                    multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.originimages, isDirectory: false)  , name: "image\(index)origin")
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)) {
+            
+            disableBarButton(self.doneButton) //提交过程中禁用button，防止重复提交
+            
+            Alamofire.upload(
+                Method.POST,
+                REQUEST_POST_COMMENTS_URL_STR,
+                multipartFormData: { (multipartFormData) in
+                    
+                    //添加用户ID
+                    let user = self.comment.makeParmDataForUserID()
+                    multipartFormData.appendBodyPart(data: user, name: "userID")
+                    
+                    //添加评论对象类型
+                    let targetType = self.comment.makeParmDataForTargetType()
+                    multipartFormData.appendBodyPart(data: targetType, name: "targetType")
+                    
+                    //添加评论对象ID
+                    let targetID = self.comment.makeParmDataForTargetID()
+                    multipartFormData.appendBodyPart(data: targetID, name: "targetID")
+                    
+                    //添加文字评论内容
+                    multipartFormData.appendBodyPart(data: self.comment.textContent.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, name: "textContent")
+                    
+                    //添加分项评分
+                    multipartFormData.appendBodyPart(data: self.comment.makeParmDataForScore(), name: "itemScore")
+                    
+                    //添加图片张数数据
+                    multipartFormData.appendBodyPart(data: self.comment.makeParmDataForImageCount(), name: "imageCount")
+                    
+                    //添加图片数据
+                    for (index, image) in self.comment.imageArray.enumerate() {
+                        multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.thumbnails, isDirectory: false)  , name: "image\(index)thumb")
+                        multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.originimages, isDirectory: false)  , name: "image\(index)origin")
+                    }
+                },
+                encodingCompletion: { (encodingResult) in
+                    switch encodingResult {
+                    case .Success(let upload, _, _):
+                        upload.responseJSON(completionHandler: { (response) in
+                            debugPrint(response)
+                            if(!self.comment.commentAccept(response.data!)) {
+                                debugPrint(response.data)
+                                showSimpleAlert(self, title: "提交失败", message: self.comment.serverAckInfo)
+                                enableBarButton(self.doneButton) //提交失败重新激活提交按钮，方便重试
+                                return
+                            }
+                            
+                            if(self.delegate != nil) {
+                                self.delegate!.commentSubmitted(submittedComment: self.comment)
+                            }
+                            dispatch_async(dispatch_get_main_queue(), { 
+                                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                                self.navigationController?.popViewControllerAnimated(true)
+                            })
+                        })
+                    case .Failure(let encodingError):
+                        showSimpleAlert(self, title: "提交失败", message: "错误代码\(encodingError)")
+                        enableBarButton(self.doneButton) //提交失败重新激活提交按钮，方便重试
+                    }
                 }
-            },
-            encodingCompletion: { (encodingResult) in
-                switch encodingResult {
-                case .Success(let upload, _, _):
-                    upload.responseJSON(completionHandler: { (response) in
-                        debugPrint(response)
-                        if(!self.comment.commentAccept(response.data!)) {
-                            debugPrint(response.data)
-                            showSimpleAlert(self, title: "提交失败", message: self.comment.serverAckInfo)
-                            return
-                        }
-                        
-                        if(self.delegate != nil) {
-                            self.delegate!.commentSubmitted(submittedComment: self.comment)
-                        }
-                        
-                        self.navigationController?.popViewControllerAnimated(true)
-                    })
-                case .Failure(let encodingError):
-                    showSimpleAlert(self, title: "提交失败", message: "错误代码\(encodingError)")
-                }
-            }
-        )
+            )
+        }
+        
     }
     
     // MARK: - Table view data source
