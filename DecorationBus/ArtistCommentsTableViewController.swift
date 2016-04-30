@@ -26,7 +26,7 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
         self.tableView.estimatedRowHeight = 160 //预估高度要大于SB中最小高度，否则cell可能被压缩
         self.tableView.rowHeight = UITableViewAutomaticDimension // cell 高度自适应
         
-        self._comments = requestArtistComments(0, companyId: self._artist.id)
+        self._comments = requestArtistComments(0, target: self._artist.id)
         
         //添加上拉刷新控件
         tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(ArtistCommentsTableViewController.tableFooterRefresh))
@@ -154,8 +154,8 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
     }
     
     // MARK: - Request And Refresh
-    func requestArtistComments(counter: Int, companyId: UInt) -> Array<ArtistComment> {
-        let urlStr = REQUEST_ARTIST_COMMENTS_URL_STR + "?counter=\(counter)" + "&artist=\(companyId)"
+    func requestArtistComments(counter: Int, target: UInt) -> Array<ArtistComment> {
+        let urlStr = REQUEST_ARTIST_COMMENTS_URL_STR + "?counter=\(counter)" + "&artist=\(target)"
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
         do {
@@ -221,7 +221,7 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
     //上拉刷新
     func tableFooterRefresh() {
         // 追加每次请求到的数据
-        let requestedArtistComments = requestArtistComments(self._comments.count, companyId: self._artist.id)
+        let requestedArtistComments = requestArtistComments(self._comments.count, target: self._artist.id)
         if(requestedArtistComments.isEmpty) {
             self.tableFooter.endRefreshingWithNoMoreData()
             return

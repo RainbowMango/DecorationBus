@@ -26,7 +26,7 @@ class ManagerCommentsTableViewController: UITableViewController, MWPhotoBrowserD
         self.tableView.estimatedRowHeight = 160 //预估高度要大于SB中最小高度，否则cell可能被压缩
         self.tableView.rowHeight = UITableViewAutomaticDimension // cell 高度自适应
         
-        self._comments = requestManagerComments(0, companyId: self._manager.id)
+        self._comments = requestManagerComments(0, target: self._manager.id)
         
         //添加上拉刷新控件
         tableFooter = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(ManagerCommentsTableViewController.tableFooterRefresh))
@@ -127,8 +127,8 @@ class ManagerCommentsTableViewController: UITableViewController, MWPhotoBrowserD
     }
     
     // MARK: - Request And Refresh
-    func requestManagerComments(counter: Int, companyId: UInt) -> Array<ManagerComment> {
-        let urlStr = REQUEST_MANAGER_COMMENTS_URL_STR + "?counter=\(counter)" + "&manager=\(companyId)"
+    func requestManagerComments(counter: Int, target: UInt) -> Array<ManagerComment> {
+        let urlStr = REQUEST_MANAGER_COMMENTS_URL_STR + "?counter=\(counter)" + "&manager=\(target)"
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
         do {
@@ -194,7 +194,7 @@ class ManagerCommentsTableViewController: UITableViewController, MWPhotoBrowserD
     //上拉刷新
     func tableFooterRefresh() {
         // 追加每次请求到的数据
-        let requestedManagerComments = requestManagerComments(self._comments.count, companyId: self._manager.id)
+        let requestedManagerComments = requestManagerComments(self._comments.count, target: self._manager.id)
         if(requestedManagerComments.isEmpty) {
             self.tableFooter.endRefreshingWithNoMoreData()
             return
