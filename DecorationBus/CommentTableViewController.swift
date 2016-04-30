@@ -134,6 +134,7 @@ class CommentTableViewController: UITableViewController {
                                 debugPrint(response.data)
                                 showSimpleAlert(self, title: "提交失败", message: self.comment.serverAckInfo)
                                 enableBarButton(self.doneButton) //提交失败重新激活提交按钮，方便重试
+                                stopProgressHUD(self.view, animated: true)
                                 return
                             }
                             
@@ -148,6 +149,7 @@ class CommentTableViewController: UITableViewController {
                     case .Failure(let encodingError):
                         showSimpleAlert(self, title: "提交失败", message: "错误代码\(encodingError)")
                         enableBarButton(self.doneButton) //提交失败重新激活提交按钮，方便重试
+                        stopProgressHUD(self.view, animated: true)
                     }
                 }
             )

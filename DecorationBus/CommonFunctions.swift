@@ -30,3 +30,16 @@ func enableBarButton(button: UIBarButtonItem) -> Void {
         button.enabled = true
     }
 }
+
+/**
+ 停止过渡提示
+ 
+ - parameter view:     过渡提示所在的view
+ - parameter animated: 是否使用动画
+ */
+func stopProgressHUD(view: UIView, animated: Bool) -> Void {
+    dispatch_async(dispatch_get_main_queue(), {
+        MBProgressHUD.hideHUDForView(view, animated: animated)
+
+    })
+}
