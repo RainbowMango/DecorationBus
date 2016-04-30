@@ -155,7 +155,7 @@ class ManagerCommentsTableViewController: UITableViewController, MWPhotoBrowserD
     
     // MARK: - Request And Refresh
     func requestManagerComments(counter: Int, target: UInt) -> Array<ManagerComment> {
-        let urlStr = REQUEST_MANAGER_COMMENTS_URL_STR + "?counter=\(counter)" + "&manager=\(target)"
+        let urlStr = REQUEST_COMMENTS_URL_STR + "?targetType=\(CommentTargetType.TypeManager.rawValue)" + "&targetID=\(target)" + "&sindex=\(counter)"
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
         do {

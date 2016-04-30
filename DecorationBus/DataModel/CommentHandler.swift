@@ -144,7 +144,17 @@ extension Comment {
             }
         }
         else if(self.targetType == CommentTargetType.TypeManager) {
-            
+            for(key, value) in self.itemScore {
+                if(key == "预算控制") {
+                    parmDic.updateValue(value, forKey: "budgetscore")
+                }else if(key == "沟通能力"){
+                    parmDic.updateValue(value, forKey: "commutscore")
+                }else if(key == "服务态度") {
+                    parmDic.updateValue(value, forKey: "mannerscore")
+                }else if(key == "责任心") {
+                    parmDic.updateValue(value, forKey: "responscore")
+                }
+            }
         }
         else if(self.targetType == CommentTargetType.TypeWorker) {
             
