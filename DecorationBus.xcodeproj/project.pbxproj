@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		596FC9008C40F7FD2D9AC446 /* Pods_MyApp_DecorationBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C8242E0A048BDB987E3842 /* Pods_MyApp_DecorationBus.framework */; };
 		5CC433D129F6BF294B64C2B6 /* Pods_MyApp_DecorationBus_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03555C33B6FBA460F51F215 /* Pods_MyApp_DecorationBus_Dev.framework */; };
-		65B39544CBA25C854326590D /* Pods_DecorationBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48A49D71115F34A36586F98F /* Pods_DecorationBus.framework */; };
 		9B05F5171ADA18560058EF0B /* CollectionPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B05F5161ADA18560058EF0B /* CollectionPhotoCell.swift */; };
 		9B0CE7AE1AC1A8E200945AE6 /* AlbumHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CE7AD1AC1A8E200945AE6 /* AlbumHandler.swift */; };
 		9B0CE7B01AC2FA9600945AE6 /* EverAlbum.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B0CE7AF1AC2FA9600945AE6 /* EverAlbum.plist */; };
@@ -286,7 +285,6 @@
 		9BCAAFCE1CD64DE000D868DD /* CompanyListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49927D1BFCCD7200E31FA8 /* CompanyListTableViewController.swift */; };
 		9BCAAFCF1CD64DE000D868DD /* AGIPCGridItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86959A1AE93895001D0D7F /* AGIPCGridItem.m */; };
 		9BCAAFD01CD64DE000D868DD /* FormDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2491801A5D683700990BA6 /* FormDateCell.swift */; };
-		9BCAAFD21CD64DE000D868DD /* Pods_DecorationBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48A49D71115F34A36586F98F /* Pods_DecorationBus.framework */; };
 		9BCAAFD41CD64DE000D868DD /* me@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8699011BEF7481001B1FA0 /* me@3x.png */; };
 		9BCAAFD51CD64DE000D868DD /* ser03.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B26006C1BE5FBA7002E5AC0 /* ser03.png */; };
 		9BCAAFD61CD64DE000D868DD /* Floor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BC402021A7FAC8000FDF4D6 /* Floor@3x.png */; };
@@ -639,7 +637,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65B39544CBA25C854326590D /* Pods_DecorationBus.framework in Frameworks */,
 				596FC9008C40F7FD2D9AC446 /* Pods_MyApp_DecorationBus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,7 +652,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BCAAFD21CD64DE000D868DD /* Pods_DecorationBus.framework in Frameworks */,
 				5CC433D129F6BF294B64C2B6 /* Pods_MyApp_DecorationBus_Dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
