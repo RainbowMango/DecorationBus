@@ -120,39 +120,39 @@ extension Comment {
         if(self.targetType == CommentTargetType.TypeCompany) {
             for(key, value) in self.itemScore {
                 if(key == "设计水平") {
-                    parmDic.updateValue(value, forKey: "designscore")
+                    parmDic.updateValue(value, forKey: "item1score")
                 }else if(key == "施工质量"){
-                    parmDic.updateValue(value, forKey: "constrccore")
+                    parmDic.updateValue(value, forKey: "item2score")
                 }else if(key == "服务") {
-                    parmDic.updateValue(value, forKey: "servicecore")
+                    parmDic.updateValue(value, forKey: "item3score")
                 }else if(key == "性价比") {
-                    parmDic.updateValue(value, forKey: "costpfmcore")
+                    parmDic.updateValue(value, forKey: "item4score")
                 }
             }
         }
         else if(self.targetType == CommentTargetType.TypeArtist) {
             for(key, value) in self.itemScore {
                 if(key == "设计能力") {
-                    parmDic.updateValue(value, forKey: "designscore")
+                    parmDic.updateValue(value, forKey: "item1score")
                 }else if(key == "沟通能力"){
-                    parmDic.updateValue(value, forKey: "commutscore")
+                    parmDic.updateValue(value, forKey: "item2score")
                 }else if(key == "服务态度") {
-                    parmDic.updateValue(value, forKey: "mannerscore")
-                }else if(key == "综合素质") {
-                    parmDic.updateValue(value, forKey: "culturescore")
+                    parmDic.updateValue(value, forKey: "item3score")
+                }else if(key == "责任心") {
+                    parmDic.updateValue(value, forKey: "item4score")
                 }
             }
         }
         else if(self.targetType == CommentTargetType.TypeManager) {
             for(key, value) in self.itemScore {
                 if(key == "预算控制") {
-                    parmDic.updateValue(value, forKey: "budgetscore")
+                    parmDic.updateValue(value, forKey: "item1score")
                 }else if(key == "沟通能力"){
-                    parmDic.updateValue(value, forKey: "commutscore")
+                    parmDic.updateValue(value, forKey: "item2score")
                 }else if(key == "服务态度") {
-                    parmDic.updateValue(value, forKey: "mannerscore")
+                    parmDic.updateValue(value, forKey: "item3score")
                 }else if(key == "责任心") {
-                    parmDic.updateValue(value, forKey: "responscore")
+                    parmDic.updateValue(value, forKey: "item4score")
                 }
             }
         }

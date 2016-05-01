@@ -58,7 +58,7 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "commentSegue" {
             let destinationVC = segue.destinationViewController as! CommentTableViewController
-            let reviewItems = ["设计能力", "沟通能力", "服务态度", "综合素质"]
+            let reviewItems = ["设计能力", "沟通能力", "服务态度", "责任心"]
             destinationVC.setValue(reviewItems, forKey: "reviewItems")
             destinationVC.comment.userID = UserDataHandler().getUserIDFromConf()
             destinationVC.comment.targetType = CommentTargetType.TypeArtist
