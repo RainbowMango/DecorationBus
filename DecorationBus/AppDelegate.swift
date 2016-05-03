@@ -34,25 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             //定义结束引导页行为
             guideVC.completionHandler = {
-                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let mainViewController = storyboard.instantiateViewControllerWithIdentifier("rootVC")
                 mainViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-                
-                /*
-                    presentViewController展现稍显缓慢，大概需要2s左右，
-                    1. 给引导页rmParallaxViewController做个淡出动画，在用户点击关闭按钮时可以立即响应
-                    2. rmParallaxViewController背景没有设置全透明，防止出现黑屏
-                
-                    Note: 在全面支持IOS8.0时再来试下
-                */
-                guideVC.presentViewController(mainViewController, animated: true, completion: nil)
-                UIView.animateWithDuration(2, animations: { () -> Void in
-                    
-                    guideVC.view.alpha = 0.2
+                dispatch_async(dispatch_get_main_queue(), { 
+                    guideVC.presentViewController(mainViewController, animated: true, completion: nil)
                 })
             }
-            
 
             self.window!.rootViewController = guideVC
         }

@@ -13,7 +13,6 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     
     @IBOutlet var tableView: UITableView!
     
-    var refreshControl = UIRefreshControl()
     let pointMessageView_ = PointMessageViewController();
     
     override func viewDidLoad() {
@@ -30,11 +29,6 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
         self.tableView.tableFooterView = UIView() // 清楚tableView中空白行
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
-        //添加下拉刷新
-        refreshControl.addTarget(self, action: #selector(ViewController.refreshData), forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView.addSubview(refreshControl)
-        refreshData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -206,15 +200,6 @@ class ViewController: UIViewController, UITabBarControllerDelegate, UINavigation
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         pointMessageView_.setMessageView(0, withMessage: "可以通过“提交反馈”功能联系我")
         pointMessageView_.removeMessageView(0);
-    }
-    
-    // 刷新数据
-    func refreshData() {
-        // 刷新逻辑
-        NSThread.sleepForTimeInterval(2.0)
-        
-        self.tableView.reloadData()
-        self.refreshControl.endRefreshing()
     }
     
     //MARK: - Service跳转
