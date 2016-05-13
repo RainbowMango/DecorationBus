@@ -86,7 +86,7 @@ class WorkerTableViewController: UITableViewController {
     // MARK: - Refresh
     
     func requestWorkers(counter: Int) -> Array<WorkerCellData> {
-        let urlStr = REQUEST_WORKERS_URL_STR + "?counter=\(counter)"
+        let urlStr = REQUEST_COMMENT_TARGET_URL + "?targetType=4&area=0571&sindex=\(counter)"
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
         do {
