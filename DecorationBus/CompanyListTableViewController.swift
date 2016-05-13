@@ -132,7 +132,7 @@ class CompanyListTableViewController: UITableViewController {
     // MARK: - Refresh
     
     func requestCompanies(counter: Int) -> Array<CompanyCellData> {
-        let urlStr = REQUEST_COMPANIES_URL_STR + "?counter=\(counter)"
+        let urlStr = REQUEST_COMMENT_TARGET_URL + "?targetType=1&area=0571&sindex=\(counter)"
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
         do {
@@ -157,7 +157,7 @@ class CompanyListTableViewController: UITableViewController {
                 let company = CompanyCellData()
                 company.id = item.objectForKey("id") as! UInt
                 company.name = item.objectForKey("name") as! String
-                company.logoPath = item.objectForKey("logo") as! String
+                company.logoPath = item.objectForKey("avatar") as! String
                 company.commentsNum = item.objectForKey("comments") as! UInt
                 company.score = item.objectForKey("score") as! UInt
                 requestedCompanies.append(company)
