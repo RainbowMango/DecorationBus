@@ -86,7 +86,7 @@ class ArtistListTableViewController: UITableViewController {
     // MARK: - Refresh
     
     func requestArtists(counter: Int) -> Array<ArtistCellData> {
-        let urlStr = REQUEST_ARTISTS_URL_STR + "?counter=\(counter)"
+        let urlStr = REQUEST_COMMENT_TARGET_URL + "?targetType=2&area=0571&sindex=\(counter)"
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
         do {
