@@ -10,6 +10,7 @@ import UIKit
 import SKPhotoBrowser
 import KMPlaceholderTextView
 import Alamofire
+import DKImagePickerController
 
 class CommentTableViewController: UITableViewController {
     
@@ -20,6 +21,8 @@ class CommentTableViewController: UITableViewController {
     let MAXIMUM_NUMBER_OF_PHOTOS = 4 //最多可以上传的图片数
     
     var delegate: CommentTableViewControllerDelegate?
+    
+    var imagePicker = DKImagePickerController()
     
     //定义AGImagePickerController实例
     var ipc = AGImagePickerController()
@@ -32,6 +35,8 @@ class CommentTableViewController: UITableViewController {
         
         collectionView.delegate   = self
         collectionView.dataSource = self
+        
+        setupImagePicker()
         
         ipc.delegate = self
         
@@ -249,7 +254,7 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
                         return
                     }
 
-                    self.startImportPhotoFromLibrary(UInt(self.MAXIMUM_NUMBER_OF_PHOTOS - self.comment.imageArray.count))
+                    self.pickPhoto(UInt(self.MAXIMUM_NUMBER_OF_PHOTOS - self.comment.imageArray.count))
                 }
                 alertVC.addAction(photoLibrarySheet)
             }
@@ -329,6 +334,44 @@ extension CommentTableViewController: AGImagePickerControllerDelegate {
         ipc.toolbarItemsForManagingTheSelection = [ flexible, deselectAll, flexible]
         
         self.presentViewController(ipc, animated: true, completion: nil)
+    }
+}
+
+extension CommentTableViewController {
+    
+    func setupImagePicker() -> Void {
+        
+        //选取结束动作
+        self.imagePicker.didSelectAssets = { (assets: [DKAsset]) in
+            for item in assets {
+                item.fetchOriginalImage(false, completeBlock: { (image, info) in
+                    guard image != nil else {
+                        print("获取原始图片失败")
+                        return
+                    }
+                    
+                    let imagePath = CommentHandler().saveImageToSandbox(image!)
+                    let collectionCellData = ImageCollectionViewCellData(thumb: imagePath.thumbnails, orig: imagePath.originimages)
+                    self.comment.imageArray.insert(collectionCellData, atIndex: 0)
+                    self.collectionView?.reloadData()
+                })
+            }
+        }
+    }
+    
+    func pickPhoto(maxNumber: UInt) {
+        self.imagePicker.sourceType = .Photo
+        self.imagePicker.allowMultipleTypes = false
+        self.imagePicker.showsEmptyAlbums   = false
+        self.imagePicker.maxSelectableCount = Int(maxNumber)
+        self.imagePicker.assetType          = .AllPhotos
+        self.imagePicker.showsCancelButton  = true
+        
+        self.presentViewController(self.imagePicker, animated: true, completion: nil)
+    }
+    
+    func importPhoto(vc: AnyObject, source: UIImagePickerControllerSourceType, number: Int) -> Void {
+        
     }
 }
 
