@@ -86,7 +86,7 @@ class ManagerTableViewController: UITableViewController {
     // MARK: - Refresh
     
     func requestManagers(counter: Int) -> Array<ManagerCellData> {
-        let urlStr = REQUEST_MANAGERS_URL_STR + "?counter=\(counter)"
+        let urlStr = REQUEST_COMMENT_TARGET_URL + "?targetType=3&area=0571&sindex=\(counter)"
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
         do {
