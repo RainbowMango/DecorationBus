@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DKImagePickerController
 
 public enum CommentTargetType : Int {
     case TypeUnknown = 0
@@ -25,6 +26,7 @@ class Comment {
     var targetID   : UInt
     var textContent: String
     var imageArray : Array<ImageCollectionViewCellData>
+    var assets     : Array<DKAsset> //使用DKAsset管理评论图片资源
     var itemScore  : Dictionary<String, Int>
     
     var serverAckInfo: String = String() //记录服务器返回的错误信息
@@ -35,6 +37,7 @@ class Comment {
         targetType  = CommentTargetType.TypeUnknown
         targetID    = 0
         imageArray  = Array<ImageCollectionViewCellData>()
+        assets      = Array<DKAsset>()
         itemScore   = Dictionary<String, Int>()
     }
     
