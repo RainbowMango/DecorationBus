@@ -24,9 +24,6 @@ class CommentTableViewController: UITableViewController {
     
     var imagePicker = DKImagePickerController()
     
-    //定义AGImagePickerController实例
-    var ipc = AGImagePickerController()
-    
     var reviewItems = Array<String>() //评论项目，由前面controller传入
     var comment     = Comment()
 
@@ -37,33 +34,6 @@ class CommentTableViewController: UITableViewController {
         collectionView.dataSource = self
         
         setupImagePicker()
-        
-        ipc.delegate = self
-        
-        
-        // AGImagePickerController取消选取图片处理
-        ipc.didFailBlock = { (error) -> Void in
-            self.dismissViewControllerAnimated(true, completion: nil)
-            UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
-        }
-        
-        //AGImagePickerController确定选取图片
-        ipc.didFinishBlock = { (info) -> Void in
-            for item in info {
-                let result = item as! ALAsset
-                
-                //获取全屏图
-                let cgImage = result.defaultRepresentation().fullScreenImage().takeUnretainedValue()
-                let image = UIImage(CGImage: cgImage)
-                let imagePath = CommentHandler().saveImageToSandbox(image)
-                let collectionCellData = ImageCollectionViewCellData(thumb: imagePath.thumbnails, orig: imagePath.originimages)
-                self.comment.imageArray.insert(collectionCellData, atIndex: 0)
-            }
-            self.collectionView?.reloadData()
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
-            UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
-        }
         
         self.tableView.tableFooterView = UIView()
     }
@@ -314,29 +284,6 @@ extension CommentTableViewController: UIImagePickerControllerDelegate, UINavigat
     }
 }
 
-extension CommentTableViewController: AGImagePickerControllerDelegate {
-    func startImportPhotoFromLibrary(maxNumber: UInt) {
-        
-        // Show saved photos on top
-        ipc.shouldShowSavedPhotosOnTop = false
-        ipc.shouldChangeStatusBarStyle = true
-        ipc.maximumNumberOfPhotosToBeSelected = maxNumber
-        
-        // 自定义工具栏按钮（官方例子中有全选、奇偶选）
-        let flexibleSysButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let flexible = AGIPCToolbarItem(barButtonItem: flexibleSysButton, andSelectionBlock: nil)
-        
-        let deselectAllSysButton = UIBarButtonItem(title: "重新选择", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        let deselectAll = AGIPCToolbarItem(barButtonItem: deselectAllSysButton) { (index, asset) -> Bool in
-            return false
-        }
-        
-        ipc.toolbarItemsForManagingTheSelection = [ flexible, deselectAll, flexible]
-        
-        self.presentViewController(ipc, animated: true, completion: nil)
-    }
-}
-
 extension CommentTableViewController {
     
     func setupImagePicker() -> Void {
@@ -366,6 +313,8 @@ extension CommentTableViewController {
         self.imagePicker.maxSelectableCount = Int(maxNumber)
         self.imagePicker.assetType          = .AllPhotos
         self.imagePicker.showsCancelButton  = true
+        
+        self.imagePicker.defaultSelectedAssets = nil
         
         self.presentViewController(self.imagePicker, animated: true, completion: nil)
     }
