@@ -184,7 +184,7 @@ extension Comment {
     }
     
     func makeParmDataForImageCount() -> NSData {
-        let count = String(self.imageArray.count)
+        let count = String(self.assets.count)
         return count.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
     }
     

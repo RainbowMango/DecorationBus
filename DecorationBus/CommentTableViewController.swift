@@ -165,7 +165,8 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ImageCollectionViewCell.identifier, forIndexPath: indexPath) as! ImageCollectionViewCell
         
         if(indexPath.row < comment.assets.count) {
-            comment.assets[indexPath.row].fetchOriginalImage(true, completeBlock: { (image, info) in
+            let thumbSize = CGSizeMake(120, 120)
+            comment.assets[indexPath.row].fetchImageWithSize(thumbSize, completeBlock: { (image, info) in
                 cell.configureWithImage(image)
             })
         }
@@ -326,8 +327,9 @@ extension CommentTableViewController: SKPhotoBrowserDelegate {
     func startBrowse(startIndex: Int) -> Void {
         var skImages = [SKPhoto]()
         for asset in self.comment.assets {
-            asset.fetchOriginalImage(false, completeBlock: { (image, info) in
+            asset.fetchFullScreenImage(true, completeBlock: { (image, info) in
                 if(image == nil) {
+                    print("无法获取original image ")
                     return
                 }
                 
