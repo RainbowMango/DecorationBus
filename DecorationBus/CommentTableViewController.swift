@@ -23,6 +23,7 @@ class CommentTableViewController: UITableViewController {
     var delegate: CommentTableViewControllerDelegate?
     
     var imagePicker = DKImagePickerController()
+    var assets      = Array<DKAsset>()
     
     var reviewItems = Array<String>() //评论项目，由前面controller传入
     var comment     = Comment()
@@ -155,23 +156,36 @@ class CommentTableViewController: UITableViewController {
 extension CommentTableViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(self.comment.imageArray.count >= MAXIMUM_NUMBER_OF_PHOTOS) { //如果超出允许的最大图片数，则不再显示提示图片
-            return self.comment.imageArray.count
-        }
-        else { //除了显示已经选取的图片外，再显示提示图片
-            return self.comment.imageArray.count + 1
-        }
+        
+        let number = self.assets.count >= MAXIMUM_NUMBER_OF_PHOTOS ? self.assets.count : self.assets.count + 1
+        return number
+        
+//        if(self.comment.imageArray.count >= MAXIMUM_NUMBER_OF_PHOTOS) { //如果超出允许的最大图片数，则不再显示提示图片
+//            return self.comment.imageArray.count
+//        }
+//        else { //除了显示已经选取的图片外，再显示提示图片
+//            return self.comment.imageArray.count + 1
+//        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ImageCollectionViewCell.identifier, forIndexPath: indexPath) as! ImageCollectionViewCell
         
-        if(indexPath.row < self.comment.imageArray.count) { //首先显示用户已经选取的图片
-            cell.configure(self.comment.imageArray[indexPath.row].thumbnails)
+        if(indexPath.row < assets.count) {
+            assets[indexPath.row].fetchOriginalImage(true, completeBlock: { (image, info) in
+                cell.configureWithImage(image)
+            })
         }
         else { //最后添加提示图片
             cell.configure("camera")
         }
+        
+//        if(indexPath.row < self.comment.imageArray.count) { //首先显示用户已经选取的图片
+//            cell.configure(self.comment.imageArray[indexPath.row].thumbnails)
+//        }
+//        else { //最后添加提示图片
+//            cell.configure("camera")
+//        }
         
         return cell
     }
@@ -186,7 +200,7 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
          *        1                   1               true
          *        1                  >1               false
          */
-        if(indexPath.row == self.comment.imageArray.count) { //添加图片
+        if(indexPath.row == self.assets.count) { //添加图片
             
             let alertVC = UIAlertController(title: "添加图片", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
             
@@ -224,7 +238,7 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
                         return
                     }
 
-                    self.pickPhoto(UInt(self.MAXIMUM_NUMBER_OF_PHOTOS - self.comment.imageArray.count))
+                    self.pickPhoto(UInt(self.MAXIMUM_NUMBER_OF_PHOTOS - self.assets.count))
                 }
                 alertVC.addAction(photoLibrarySheet)
             }
@@ -290,19 +304,29 @@ extension CommentTableViewController {
         
         //选取结束动作
         self.imagePicker.didSelectAssets = { (assets: [DKAsset]) in
-            for item in assets {
-                item.fetchOriginalImage(false, completeBlock: { (image, info) in
-                    guard image != nil else {
-                        print("获取原始图片失败")
-                        return
-                    }
-                    
-                    let imagePath = CommentHandler().saveImageToSandbox(image!)
-                    let collectionCellData = ImageCollectionViewCellData(thumb: imagePath.thumbnails, orig: imagePath.originimages)
-                    self.comment.imageArray.insert(collectionCellData, atIndex: 0)
-                    self.collectionView?.reloadData()
-                })
+            
+            for asset in assets {
+                if(self.assets.contains(asset)) {
+                    continue
+                }
+                
+                self.assets.append(asset)
             }
+            self.collectionView.reloadData()
+            
+//            for item in assets {
+//                item.fetchOriginalImage(false, completeBlock: { (image, info) in
+//                    guard image != nil else {
+//                        print("获取原始图片失败")
+//                        return
+//                    }
+//                    
+//                    let imagePath = CommentHandler().saveImageToSandbox(image!)
+//                    let collectionCellData = ImageCollectionViewCellData(thumb: imagePath.thumbnails, orig: imagePath.originimages)
+//                    self.comment.imageArray.insert(collectionCellData, atIndex: 0)
+//                    self.collectionView?.reloadData()
+//                })
+//            }
         }
     }
     
@@ -310,11 +334,11 @@ extension CommentTableViewController {
         self.imagePicker.sourceType = .Photo
         self.imagePicker.allowMultipleTypes = false
         self.imagePicker.showsEmptyAlbums   = false
-        self.imagePicker.maxSelectableCount = Int(maxNumber)
+        self.imagePicker.maxSelectableCount = MAXIMUM_NUMBER_OF_PHOTOS
         self.imagePicker.assetType          = .AllPhotos
         self.imagePicker.showsCancelButton  = true
         
-        self.imagePicker.defaultSelectedAssets = nil
+        self.imagePicker.defaultSelectedAssets = self.assets
         
         self.presentViewController(self.imagePicker, animated: true, completion: nil)
     }
@@ -330,9 +354,19 @@ extension CommentTableViewController: SKPhotoBrowserDelegate {
     func startBrowse(startIndex: Int) -> Void {
         var skImages = [SKPhoto]()
         
-        for image in self.comment.imageArray {
-            let skPhoto = SKPhoto.photoWithImage(UIImage(contentsOfFile: image.originimages)!)
-            skImages.append(skPhoto)
+//        for image in self.comment.imageArray {
+//            let skPhoto = SKPhoto.photoWithImage(UIImage(contentsOfFile: image.originimages)!)
+//            skImages.append(skPhoto)
+//        }
+        
+        for asset in self.assets {
+            asset.fetchOriginalImage(false, completeBlock: { (image, info) in
+                if(image == nil) {
+                    return
+                }
+                
+                skImages.append(SKPhoto.photoWithImage(image!))
+            })
         }
         
         let browser = SKPhotoBrowser(photos: skImages)
@@ -348,7 +382,8 @@ extension CommentTableViewController: SKPhotoBrowserDelegate {
     }
     
     func removePhoto(browser: SKPhotoBrowser, index: Int, reload: (() -> Void)) {
-        self.comment.imageArray.removeAtIndex(index)
+        //self.comment.imageArray.removeAtIndex(index)
+        self.assets.removeAtIndex(index)
         self.collectionView.reloadData()
         reload()
     }

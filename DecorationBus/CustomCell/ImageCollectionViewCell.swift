@@ -23,6 +23,15 @@ class ImageCollectionViewCell: UICollectionViewCell {
         setNeedsLayout()
         layoutIfNeeded()
     }
+    
+    func configureWithImage(image: UIImage?) -> Void {
+        guard image != nil else {
+            print("无法配置cell，image 为nil")
+            return
+        }
+        
+        imageView.image = image
+    }
 }
 
 class ImageCollectionViewCellData {
