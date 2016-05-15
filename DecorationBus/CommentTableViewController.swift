@@ -22,7 +22,7 @@ class CommentTableViewController: UITableViewController {
     
     var delegate: CommentTableViewControllerDelegate?
     
-    var imagePicker = DKImagePickerController()
+    private var didSelectBlock: ((assets: [DKAsset]) -> Void)?  //picker回调
     
     var reviewItems = Array<String>() //评论项目，由前面controller传入
     var comment     = Comment()
@@ -206,17 +206,7 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
                         alertView.show()
                         return
                     }
-                    let imagePicker = UIImagePickerController()
-                    imagePicker.delegate = self
-                    imagePicker.allowsEditing = true
-                    imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-                    imagePicker.videoQuality = UIImagePickerControllerQualityType.TypeMedium // 获取低质量图片已经足够使用，避免内存使用过多引起内存警告
-                    
-                    /*
-                     * 调用相机时会产生一条log, 应该是IOS8.1的一个bug：
-                     Snapshotting a view that has not been rendered results in an empty snapshot. Ensure your view has been rendered at least once before snapshotting or snapshot after screen updates.
-                     */
-                    self.presentViewController(imagePicker, animated: true, completion: nil)
+                    HCImagePickerHandler().importPhotoFromCamera(self, didSelectAssets: self.didSelectBlock)
                 }
                 alertVC.addAction(cameraSheet)
             }
@@ -231,7 +221,7 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
                         return
                     }
 
-                    self.pickPhoto(UInt(self.MAXIMUM_NUMBER_OF_PHOTOS - self.comment.assets.count))
+                    HCImagePickerHandler().importPhotoFromAlbum(self, maxCount: self.MAXIMUM_NUMBER_OF_PHOTOS, defaultAssets: self.comment.assets, didSelectAssets: self.didSelectBlock)
                 }
                 alertVC.addAction(photoLibrarySheet)
             }
@@ -264,39 +254,12 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
     }
 }
 
-// MARK: - UIImagePickerController的代理方法
-extension CommentTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    /**
-     读取图片并保存到沙盒，同时保存图片URL，最后刷新collection view
-     
-     - parameter picker: picker实例
-     - parameter info:   读取到的图片
-     */
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        self.dismissViewControllerAnimated(true, completion: nil) // 首先释放picker以节省内存
-        
-        let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
-        let imagePath = CommentHandler().saveImageToSandbox(image)
-        let collectionCellData = ImageCollectionViewCellData(thumb: imagePath.thumbnails, orig: imagePath.originimages)
-        self.comment.imageArray.insert(collectionCellData, atIndex: 0)
-        
-        
-        /*添加图片后刷新view*/
-        self.collectionView?.reloadData()
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-}
-
+// MARK: - DKImagePickerController
 extension CommentTableViewController {
     
     func setupImagePicker() -> Void {
         
-        //选取结束动作
-        self.imagePicker.didSelectAssets = { (assets: [DKAsset]) in
+        self.didSelectBlock = { (assets: [DKAsset]) in
             
             for asset in assets {
                 if(self.comment.assets.contains(asset)) {
@@ -307,14 +270,6 @@ extension CommentTableViewController {
             }
             self.collectionView.reloadData()
         }
-    }
-    
-    func pickPhoto(maxNumber: UInt) {
-        HCImagePickerHandler().showImagePicker(self, picker: self.imagePicker, source: DKImagePickerControllerSourceType.Photo, maxCount: MAXIMUM_NUMBER_OF_PHOTOS, defaultAssets: self.comment.assets)
-    }
-    
-    func importPhoto(vc: AnyObject, source: UIImagePickerControllerSourceType, number: Int) -> Void {
-        
     }
 }
 
