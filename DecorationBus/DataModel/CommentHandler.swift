@@ -189,6 +189,39 @@ extension Comment {
     }
     
     /**
+     将图片存入临时文件，并返回文件的URL
+     注：由于DKAsset没提供获取指定size图片的同步方法，所以缩略图也使用了大图
+     
+     - parameter index: <#index description#>
+     - parameter thumb: <#thumb description#>
+     
+     - returns: <#return value description#>
+     */
+    func makeImageURL(index: Int, thumb: Bool) -> NSURL {
+        var url : NSURL?
+        var fetchedImage : UIImage?
+        
+        if(thumb) {
+            assets[index].fetchFullScreenImage(true, completeBlock: { (image, info) in
+                fetchedImage = image
+                let path = CommentHandler().saveThumbImageToSandbox(fetchedImage!)
+                url = NSURL(fileURLWithPath: path, isDirectory: false)
+                print("获得thumb的image")
+            })
+        }
+        else {
+            assets[index].fetchFullScreenImage(true, completeBlock: { (image, info) in
+                fetchedImage = image
+                let path = CommentHandler().saveBigImageToSandbox(fetchedImage!)
+                url = NSURL(fileURLWithPath: path, isDirectory: false)
+                print("获得origin的image")
+            })
+        }
+        
+        return url!
+    }
+    
+    /**
      解析服务端返回的JSON数据
      
      - parameter jsonData: 服务端返回的数据
@@ -259,6 +292,45 @@ class CommentHandler: SandboxHandler {
         }
         
         return (thumbImage, originImage)
+    }
+    
+    /**
+     存储缩略图到沙盒，返回文件URL
+     
+     - parameter image: <#image description#>
+     
+     - returns: <#return value description#>
+     */
+    func saveThumbImageToSandbox(image: UIImage) -> String {
+        let sandboxDir  = getTmpDirectory()
+        let imageID     = AlbumHandler().makeUniqueID()
+        let thumbImage  = sandboxDir + "comment_\(imageID)_thumb.png"
+        
+        let scaledImage = ImageHandler().aspectSacleSize(image, targetSize: thumbDefaultSize)
+        guard UIImageJPEGRepresentation(scaledImage, 1.0)!.writeToFile(thumbImage, atomically: true) else {
+            return String()
+        }
+        
+        return thumbImage
+    }
+    
+    /**
+     存储原图到沙盒，返回文件URL
+     
+     - parameter image: <#image description#>
+     
+     - returns: <#return value description#>
+     */
+    func saveBigImageToSandbox(image: UIImage) -> String {
+        let sandboxDir  = getTmpDirectory()
+        let imageID     = AlbumHandler().makeUniqueID()
+        let originImage = sandboxDir + "comment_\(imageID)_origin.png"
+        
+        guard UIImageJPEGRepresentation(image, 1.0)!.writeToFile(originImage, atomically: true) else {
+            return String()
+        }
+        
+        return originImage
     }
     
     /**

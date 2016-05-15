@@ -95,9 +95,15 @@ class CommentTableViewController: UITableViewController {
                     multipartFormData.appendBodyPart(data: self.comment.makeParmDataForImageCount(), name: "imageCount")
                     
                     //添加图片数据
-                    for (index, image) in self.comment.imageArray.enumerate() {
-                        multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.thumbnails, isDirectory: false)  , name: "image\(index)thumb")
-                        multipartFormData.appendBodyPart(fileURL: NSURL(fileURLWithPath: image.originimages, isDirectory: false)  , name: "image\(index)origin")
+                    for index in 0..<self.comment.assets.count {
+//                        multipartFormData.appendBodyPart(data: self.comment.makeParmDataForImage(index, thumb: true), name: "image\(index)thumb")
+//                        multipartFormData.appendBodyPart(data: self.comment.makeParmDataForImage(index, thumb: false), name: "image\(index)origin")
+                        
+//                        multipartFormData.appendBodyPart(data: self.comment.makeParmDataForImage(index, thumb: true), name: "image\(index)thumb", mimeType: "image/png")
+//                        multipartFormData.appendBodyPart(data: self.comment.makeParmDataForImage(index, thumb: false), name: "image\(index)origin", mimeType: "image/png")
+                        //TODO：不了解如何直接上传图片，所以将图片以文件形式上传
+                        multipartFormData.appendBodyPart(fileURL: self.comment.makeImageURL(index, thumb: true), name: "image\(index)thumb")
+                        multipartFormData.appendBodyPart(fileURL: self.comment.makeImageURL(index, thumb: false), name: "image\(index)origin")
                     }
                 },
                 encodingCompletion: { (encodingResult) in
