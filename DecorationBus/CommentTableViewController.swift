@@ -310,16 +310,7 @@ extension CommentTableViewController {
     }
     
     func pickPhoto(maxNumber: UInt) {
-        self.imagePicker.sourceType = .Photo
-        self.imagePicker.allowMultipleTypes = false
-        self.imagePicker.showsEmptyAlbums   = false
-        self.imagePicker.maxSelectableCount = MAXIMUM_NUMBER_OF_PHOTOS
-        self.imagePicker.assetType          = .AllPhotos
-        self.imagePicker.showsCancelButton  = true
-        
-        self.imagePicker.defaultSelectedAssets = self.comment.assets
-        
-        self.presentViewController(self.imagePicker, animated: true, completion: nil)
+        HCImagePickerHandler().showImagePicker(self, picker: self.imagePicker, source: DKImagePickerControllerSourceType.Photo, maxCount: MAXIMUM_NUMBER_OF_PHOTOS, defaultAssets: self.comment.assets)
     }
     
     func importPhoto(vc: AnyObject, source: UIImagePickerControllerSourceType, number: Int) -> Void {
