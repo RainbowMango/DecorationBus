@@ -261,6 +261,7 @@ extension CommentTableViewController {
         
         self.didSelectBlock = { (assets: [DKAsset]) in
             
+            //新选择的图片加入列表中
             for asset in assets {
                 if(self.comment.assets.contains(asset)) {
                     continue
@@ -268,6 +269,12 @@ extension CommentTableViewController {
                 
                 self.comment.assets.append(asset)
             }
+            
+            //如果总张数超过限定数则将最早的图片删除
+            while self.comment.assets.count > self.MAXIMUM_NUMBER_OF_PHOTOS {
+                self.comment.assets.removeFirst()
+            }
+            
             self.collectionView.reloadData()
         }
     }
