@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AssetsLibrary
 import MWPhotoBrowser
 import DKImagePickerController
 

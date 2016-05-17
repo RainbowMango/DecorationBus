@@ -6,10 +6,6 @@
 #import <MWPhotoBrowser/MWPhotoBrowser.h>
 #import <MWPhotoBrowser/MWPhotoBrowserPrivate.h>
 
-//集成AGImagePickerController
-#import "AGIPCToolbarItem.h"
-#import "AGImagePickerController.h"
-
 //集成SDCycleScrollView
 #import "NSData+SDDataCache.h"
 #import "TAAbstractDotView.h"
