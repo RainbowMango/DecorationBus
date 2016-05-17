@@ -7,27 +7,22 @@
 //
 
 import UIKit
-import AVFoundation
-import AssetsLibrary
 import MWPhotoBrowser
+import DKImagePickerController
 
 let reuseIdentifier = "EverPhotoCollectionCell"
 
-class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, MWPhotoBrowserDelegate, EverPhotoPlayerViewControllerDelegate, AGImagePickerControllerDelegate {
+class EverPhotoAlbumCollectionViewController: UICollectionViewController, UIActionSheetDelegate, MWPhotoBrowserDelegate, EverPhotoPlayerViewControllerDelegate {
 
+    private var didSelectBlock: ((assets: [DKAsset]) -> Void)?  //picker回调
     var albumName:String = String()
     var imageURLs: Array<String> = Array<String>()
     
-    //定义AGImagePickerController实例
-    var ipc = AGImagePickerController()
-    
-    // 定义照片源字符串，方便创建actionSheet和处理代理
-    let actionSheetTitleCancel = "取消"
-    let actionSheetTitleCamera = "拍照"
-    let actionSheetTitlePhotoLibrary = "照片库"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupImagePicker()
+        
         // 放置添加按钮到导航栏
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Camera, target: self, action: #selector(EverPhotoAlbumCollectionViewController.addPhotoButtonPressed(_:)))
         
@@ -37,33 +32,6 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         // 使用统一的背景颜色
         self.view.backgroundColor = ColorScheme().viewBackgroundColor
         self.collectionView?.backgroundColor = ColorScheme().viewBackgroundColor
-        
-        ipc.delegate = self
-        
-        // AGImagePickerController取消选取图片处理
-        ipc.didFailBlock = { (error) -> Void in
-            self.dismissViewControllerAnimated(true, completion: nil)
-            UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
-        }
-        
-        //AGImagePickerController确定选取图片
-        ipc.didFinishBlock = { (info) -> Void in
-            for item in info {
-                let result = item as! ALAsset
-                
-                //获取全屏图
-                let cgImage = result.defaultRepresentation().fullScreenImage().takeUnretainedValue()
-                let image = UIImage(CGImage: cgImage)
-                AlbumHandler().saveImageToSandbox(self.albumName, image: image)
-            }
-            self.collectionView?.reloadData()
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
-            UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
-        }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,16 +41,16 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     // MARK: - User common functions
     
     func addPhotoButtonPressed(_: UIBarButtonItem!) {
-        let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: actionSheetTitleCancel, destructiveButtonTitle: nil)
+        let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: HCImagePickerHandler().actionSheetTitleCancel, destructiveButtonTitle: nil)
         
         // 检测是否支持拍照（模拟器不支持会引起crash, 真机中访问控制相机被禁后也会crash）
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            actionSheet.addButtonWithTitle(actionSheetTitleCamera)
+            actionSheet.addButtonWithTitle(HCImagePickerHandler().actionSheetTitleCamera)
         }
         
         // 检测是否支持图库
         if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
-            actionSheet.addButtonWithTitle(actionSheetTitlePhotoLibrary)
+            actionSheet.addButtonWithTitle(HCImagePickerHandler().actionSheetTitlePhotoLibrary)
         }
         
         actionSheet.showInView(self.view)
@@ -110,27 +78,6 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         }
         
         return true
-    }
-    
-    func startImportPhotoFromLibrary() {
-        
-        // Show saved photos on top
-        ipc.shouldShowSavedPhotosOnTop = false
-        ipc.shouldChangeStatusBarStyle = true
-        ipc.maximumNumberOfPhotosToBeSelected = 9
-        
-        // 自定义工具栏按钮（官方例子中有全选、奇偶选）
-        let flexibleSysButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let flexible = AGIPCToolbarItem(barButtonItem: flexibleSysButton, andSelectionBlock: nil)
-        
-        let deselectAllSysButton = UIBarButtonItem(title: "重新选择", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        let deselectAll = AGIPCToolbarItem(barButtonItem: deselectAllSysButton) { (index, asset) -> Bool in
-            return false
-        }
-        
-        ipc.toolbarItemsForManagingTheSelection = [ flexible, deselectAll, flexible]
-        
-        self.presentViewController(ipc, animated: true, completion: nil)
     }
     
     // MARK: - Navigation
@@ -180,21 +127,6 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
         return CGSizeMake(cellEdge, cellEdge)
     }
     
-    // MARK: - UIImagePickerControllerDelegate
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        self.dismissViewControllerAnimated(true, completion: nil) // 首先释放picker以节省内存
-        
-        let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
-        AlbumHandler().saveImageToSandbox(albumName, image: image)
-        
-        /*添加图片后刷新view*/
-        self.collectionView?.reloadData()
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     // MARK: - EverPhotoPlayerViewControllerDelegate
     
     func EverPhotoPlayerView(willRemoveImage index: UInt) {
@@ -212,34 +144,26 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         let title = actionSheet.buttonTitleAtIndex(buttonIndex)
         switch title! {
-        case actionSheetTitleCamera:
+        case HCImagePickerHandler().actionSheetTitleCamera:
             if !allowCamera() {
                 //用户隐私设置禁用相机，弹出alert
                 let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-相机”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
                 alertView.show()
                 return
             }
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-            imagePicker.videoQuality = UIImagePickerControllerQualityType.TypeLow // 获取低质量图片已经足够使用，避免内存使用过多引起内存警告
-            self.presentViewController(imagePicker, animated: true, completion: nil)
             
-        case actionSheetTitlePhotoLibrary:
+            HCImagePickerHandler().importPhotoFromCamera(self, didSelectAssets: self.didSelectBlock)
+            
+        case HCImagePickerHandler().actionSheetTitlePhotoLibrary:
             if !allowPhotoLibrary() {
                 //用户隐私设置禁用相册，弹出alert
                 let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-照片”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
                 alertView.show()
                 return
             }
-//            var imagePicker = UIImagePickerController()
-//            imagePicker.delegate = self
-//            imagePicker.allowsEditing = false
-//            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-//            self.presentViewController(imagePicker, animated: true, completion: nil)
-            startImportPhotoFromLibrary()
-        case actionSheetTitleCancel:
+            HCImagePickerHandler().importPhotoFromAlbum(self, maxCount: 9, defaultAssets: nil, didSelectAssets: self.didSelectBlock)
+            
+        case HCImagePickerHandler().actionSheetTitleCancel:
             print("Cancelled by user")
         default:
             print("Never execute")
@@ -268,37 +192,19 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UINavi
     override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
         return UIStatusBarAnimation.None
     }
+}
+
+// MARK: - DKImagePickerController
+extension EverPhotoAlbumCollectionViewController {
     
-    //MARK: -AGImagePickerControllerDelegate
-    // 实现如下代理会导致iPhone 5S(IOS8.3) crash
-    
-//    func agImagePickerController(picker: AGImagePickerController!, numberOfItemsPerRowForDevice deviceType: AGDeviceType, andInterfaceOrientation interfaceOrientation: UIInterfaceOrientation) -> UInt {
-//        if deviceType == AGDeviceType.TypeiPad {
-//            if UIInterfaceOrientationIsLandscape(interfaceOrientation) {
-//                return 7
-//            }
-//            else {
-//                return 6
-//            }
-//        }
-//        
-//        if UIInterfaceOrientationIsLandscape(interfaceOrientation) {
-//            return 5
-//        }
-//        else {
-//            return 4
-//        }
-//    }
-    
-//    func agImagePickerController(picker: AGImagePickerController!, shouldDisplaySelectionInformationInSelectionMode selectionMode: AGImagePickerControllerSelectionMode) -> Bool {
-//        return (selectionMode == AGImagePickerControllerSelectionMode.Single ? false : true)
-//    }
-//    
-//    func agImagePickerController(picker: AGImagePickerController!, shouldShowToolbarForManagingTheSelectionInSelectionMode selectionMode: AGImagePickerControllerSelectionMode) -> Bool {
-//        return (selectionMode == AGImagePickerControllerSelectionMode.Single ? false : true)
-//    }
-//    
-//    func selectionBehaviorInSingleSelectionModeForAGImagePickerController(picker: AGImagePickerController!) -> AGImagePickerControllerSelectionBehaviorType {
-//        return AGImagePickerControllerSelectionBehaviorType.Radio
-//    }
+    func setupImagePicker() -> Void {
+        self.didSelectBlock = { (assets: [DKAsset]) in
+            for asset in assets {
+                asset.fetchFullScreenImage(false, completeBlock: { (image, info) in
+                    AlbumHandler().saveImageToSandbox(self.albumName, image: image!)
+                    self.collectionView?.reloadData()
+                })
+            }
+        }
+    }
 }
