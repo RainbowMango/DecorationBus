@@ -43,7 +43,7 @@ class AboutMeViewController: UIViewController
         logoImageView.frame = logoImageViewRect;
         logoImageView.layer.cornerRadius = 10.0;
         logoImageView.layer.masksToBounds = true;
-        logoImageView.image = UIImage(named:"Icon-76@3x");
+        logoImageView.image = UIImage(named:"about_me");
         
         let logoLabel:UILabel = UILabel();
         let logoLabelRect:CGRect = CGRectMake(0, 44+deviceHeight+80+20+110, viewWidth, 20);
