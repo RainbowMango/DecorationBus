@@ -63,6 +63,12 @@
 		9B34AAFE1A20B98500013C39 /* CategoryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFD1A20B98500013C39 /* CategoryDataModel.swift */; };
 		9B34AB001A20BB8000013C39 /* CategoryArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B34AAFF1A20BB8000013C39 /* CategoryArchiver.swift */; };
 		9B35492C1A276C510083E0B6 /* CategoryPrimeAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B35492B1A276C510083E0B6 /* CategoryPrimeAddViewController.swift */; };
+		9B3753461D02B4E500F7D562 /* AccountSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3753451D02B4E500F7D562 /* AccountSettingTableViewController.swift */; };
+		9B3753471D02B4EE00F7D562 /* AccountSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3753451D02B4E500F7D562 /* AccountSettingTableViewController.swift */; };
+		9B3753491D02C16100F7D562 /* AccountSettingAvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3753481D02C16100F7D562 /* AccountSettingAvatarTableViewCell.swift */; };
+		9B37534A1D02C16100F7D562 /* AccountSettingAvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3753481D02C16100F7D562 /* AccountSettingAvatarTableViewCell.swift */; };
+		9B37534C1D02C27300F7D562 /* AccountSettingDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37534B1D02C27300F7D562 /* AccountSettingDefaultTableViewCell.swift */; };
+		9B37534D1D02C27300F7D562 /* AccountSettingDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37534B1D02C27300F7D562 /* AccountSettingDefaultTableViewCell.swift */; };
 		9B37A9D419EEB57A0097F88D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9D319EEB57A0097F88D /* AppDelegate.swift */; };
 		9B37A9D919EEB57A0097F88D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B37A9D819EEB57A0097F88D /* ViewController.swift */; };
 		9B37A9DC19EEB57A0097F88D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B37A9DA19EEB57A0097F88D /* Main.storyboard */; };
@@ -447,6 +453,9 @@
 		9B34AAFD1A20B98500013C39 /* CategoryDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDataModel.swift; sourceTree = "<group>"; };
 		9B34AAFF1A20BB8000013C39 /* CategoryArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryArchiver.swift; sourceTree = "<group>"; };
 		9B35492B1A276C510083E0B6 /* CategoryPrimeAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPrimeAddViewController.swift; sourceTree = "<group>"; };
+		9B3753451D02B4E500F7D562 /* AccountSettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingTableViewController.swift; sourceTree = "<group>"; };
+		9B3753481D02C16100F7D562 /* AccountSettingAvatarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingAvatarTableViewCell.swift; sourceTree = "<group>"; };
+		9B37534B1D02C27300F7D562 /* AccountSettingDefaultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingDefaultTableViewCell.swift; sourceTree = "<group>"; };
 		9B37A9CE19EEB57A0097F88D /* DecorationBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecorationBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B37A9D219EEB57A0097F88D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B37A9D319EEB57A0097F88D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -664,6 +673,8 @@
 				9BE902F51C34EE5B00519F82 /* WorkerCommentTableViewCell.swift */,
 				9BF663CA1CA412DA004FD9AB /* ImageCollectionViewCell.swift */,
 				9B7984FE1CA6CC1E00814FDB /* StarReviewTableViewCell.swift */,
+				9B3753481D02C16100F7D562 /* AccountSettingAvatarTableViewCell.swift */,
+				9B37534B1D02C27300F7D562 /* AccountSettingDefaultTableViewCell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -919,6 +930,7 @@
 				9B3F1E081C46A7B1001065C2 /* VerifyViewController.swift */,
 				9B3F1E231C4BDB49001065C2 /* RegViewController.swift */,
 				9B985BFC1A178F96009F4435 /* FeedBackViewController.swift */,
+				9B3753451D02B4E500F7D562 /* AccountSettingTableViewController.swift */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -1490,6 +1502,7 @@
 				9B2491901A5D683700990BA6 /* FormTitleCell.swift in Sources */,
 				9B3F1E241C4BDB49001065C2 /* RegViewController.swift in Sources */,
 				9BE902F41C34EC2F00519F82 /* WorkerTableViewController.swift in Sources */,
+				9B3753491D02C16100F7D562 /* AccountSettingAvatarTableViewCell.swift in Sources */,
 				9BB1B8DE1CB3BB0D007283F9 /* CommentHandler.swift in Sources */,
 				9B2D7B881A63E82800D829EF /* FormTwoComponentPickerCell.swift in Sources */,
 				9BE902EC1C32D83900519F82 /* ManagerTableViewCell.swift in Sources */,
@@ -1520,6 +1533,7 @@
 				9B3F1E261C4E8914001065C2 /* DeviceLimitHandler.swift in Sources */,
 				9B2491921A5D683700990BA6 /* FormButtonCell.swift in Sources */,
 				9B35492C1A276C510083E0B6 /* CategoryPrimeAddViewController.swift in Sources */,
+				9B37534C1D02C27300F7D562 /* AccountSettingDefaultTableViewCell.swift in Sources */,
 				9BCC42581A3483CA00978841 /* ShowPayListViewController.swift in Sources */,
 				9B0CE7AE1AC1A8E200945AE6 /* AlbumHandler.swift in Sources */,
 				9B3F1E201C4A08DF001065C2 /* SMSSDKErrorHandler.swift in Sources */,
@@ -1559,6 +1573,7 @@
 				9B37A9D419EEB57A0097F88D /* AppDelegate.swift in Sources */,
 				9B2491A01A5D683700990BA6 /* FormSectionDescriptor.swift in Sources */,
 				9B8032C31A35CB76005BA828 /* PointMessageViewController.swift in Sources */,
+				9B3753461D02B4E500F7D562 /* AccountSettingTableViewController.swift in Sources */,
 				9BF8E0691BD7E39300F3AD9E /* UIView+SDExtension.m in Sources */,
 				9B34AB001A20BB8000013C39 /* CategoryArchiver.swift in Sources */,
 				9B2491961A5D683700990BA6 /* FormSegmentedControlCell.swift in Sources */,
@@ -1612,6 +1627,7 @@
 				9BCAAF711CD64DE000D868DD /* FormTitleCell.swift in Sources */,
 				9BCAAF721CD64DE000D868DD /* RegViewController.swift in Sources */,
 				9BCAAF731CD64DE000D868DD /* WorkerTableViewController.swift in Sources */,
+				9B37534A1D02C16100F7D562 /* AccountSettingAvatarTableViewCell.swift in Sources */,
 				9BCAAF741CD64DE000D868DD /* CommentHandler.swift in Sources */,
 				9BCAAF751CD64DE000D868DD /* FormTwoComponentPickerCell.swift in Sources */,
 				9BCAAF761CD64DE000D868DD /* ManagerTableViewCell.swift in Sources */,
@@ -1642,6 +1658,7 @@
 				9BCAAF901CD64DE000D868DD /* DeviceLimitHandler.swift in Sources */,
 				9BCAAF911CD64DE000D868DD /* FormButtonCell.swift in Sources */,
 				9BCAAF921CD64DE000D868DD /* CategoryPrimeAddViewController.swift in Sources */,
+				9B37534D1D02C27300F7D562 /* AccountSettingDefaultTableViewCell.swift in Sources */,
 				9BCAAF931CD64DE000D868DD /* ShowPayListViewController.swift in Sources */,
 				9BCAAF941CD64DE000D868DD /* AlbumHandler.swift in Sources */,
 				9BCAAF951CD64DE000D868DD /* SMSSDKErrorHandler.swift in Sources */,
@@ -1681,6 +1698,7 @@
 				9BCAAFBA1CD64DE000D868DD /* AppDelegate.swift in Sources */,
 				9BCAAFBB1CD64DE000D868DD /* FormSectionDescriptor.swift in Sources */,
 				9BCAAFBC1CD64DE000D868DD /* PointMessageViewController.swift in Sources */,
+				9B3753471D02B4EE00F7D562 /* AccountSettingTableViewController.swift in Sources */,
 				9BCAAFBD1CD64DE000D868DD /* UIView+SDExtension.m in Sources */,
 				9BCAAFBE1CD64DE000D868DD /* CategoryArchiver.swift in Sources */,
 				9BCAAFBF1CD64DE000D868DD /* FormSegmentedControlCell.swift in Sources */,

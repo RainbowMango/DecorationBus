@@ -116,8 +116,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             switch indexPath.row {
             case 0:
                 if(UserDataHandler().isLogin()) {
-                    showSimpleAlert(self, title: "客官别急", message: "个人信息查看和修改功能还在开发中...")
-                    return
+                    //showSimpleAlert(self, title: "客官别急", message: "个人信息查看和修改功能还在开发中...")
+                    //return
+                    performSegueWithIdentifier("account_setting_segue", sender: self)
                 }
                 else {
                     performSegueWithIdentifier("segueRegister", sender: self)

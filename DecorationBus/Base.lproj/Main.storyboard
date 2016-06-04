@@ -1867,11 +1867,109 @@
                         <segue destination="nFx-M7-WZB" kind="push" identifier="feedback" id="xOC-Ns-Gjy"/>
                         <segue destination="DPa-PE-TNl" kind="push" identifier="aboutme" id="uLK-qy-4Lh"/>
                         <segue destination="jcJ-rW-o4i" kind="push" identifier="segueRegister" id="NRx-hO-xM7"/>
+                        <segue destination="fsk-3n-DBf" kind="push" identifier="account_setting_segue" id="2dk-Cg-Ghh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJf-rY-N76" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="912" y="2848"/>
+        </scene>
+        <!--Account Setting Table View Controller-->
+        <scene sceneID="OrB-vF-KFo">
+            <objects>
+                <tableViewController id="fsk-3n-DBf" customClass="AccountSettingTableViewController" customModule="DecorationBus" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GLT-hG-bWw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="account_setting_avatar_cell" id="M2z-p6-LVO" customClass="AccountSettingAvatarTableViewCell" customModule="DecorationBus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M2z-p6-LVO" id="5nf-Vq-XUF">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7s-yP-dO6">
+                                            <rect key="frame" x="8" y="8" width="100" height="27.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="EaO-PS-bmb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oqv-Hs-JZm">
+                                            <rect key="frame" x="251.5" y="8" width="27.5" height="27.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="oqv-Hs-JZm" secondAttribute="height" multiplier="1:1" id="GWz-LF-0ft"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="G7s-yP-dO6" firstAttribute="top" secondItem="5nf-Vq-XUF" secondAttribute="topMargin" id="1QB-fK-tnc"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="oqv-Hs-JZm" secondAttribute="trailing" id="1R7-2R-1gU"/>
+                                        <constraint firstItem="oqv-Hs-JZm" firstAttribute="top" secondItem="5nf-Vq-XUF" secondAttribute="topMargin" id="7Tz-1N-b6F"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="G7s-yP-dO6" secondAttribute="bottom" id="ZSO-le-Uad"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="oqv-Hs-JZm" secondAttribute="bottom" id="sh0-mZ-JXn"/>
+                                        <constraint firstItem="G7s-yP-dO6" firstAttribute="leading" secondItem="5nf-Vq-XUF" secondAttribute="leadingMargin" id="zRc-zP-uwG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="oqv-Hs-JZm" id="jdh-Xu-i5Z"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="account_setting_default_cell" id="pje-Bl-8cA" customClass="AccountSettingDefaultTableViewCell" customModule="DecorationBus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pje-Bl-8cA" id="Duu-zX-3Nc">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIi-2g-idK">
+                                            <rect key="frame" x="8" y="8" width="100" height="27.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="Xp3-2u-Wdc"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2L-RF-o0C">
+                                            <rect key="frame" x="179" y="8" width="100" height="27.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="MEq-Rb-biJ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bIi-2g-idK" firstAttribute="top" secondItem="Duu-zX-3Nc" secondAttribute="topMargin" id="3Ec-Qf-eDk"/>
+                                        <constraint firstItem="f2L-RF-o0C" firstAttribute="top" secondItem="Duu-zX-3Nc" secondAttribute="topMargin" id="4RU-xz-Y1f"/>
+                                        <constraint firstItem="f2L-RF-o0C" firstAttribute="trailing" secondItem="Duu-zX-3Nc" secondAttribute="trailingMargin" id="8bP-gL-BA6"/>
+                                        <constraint firstItem="bIi-2g-idK" firstAttribute="leading" secondItem="Duu-zX-3Nc" secondAttribute="leadingMargin" id="NJH-GG-ky3"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="bIi-2g-idK" secondAttribute="bottom" id="Utl-SN-rqP"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="f2L-RF-o0C" secondAttribute="bottom" id="z2c-Aq-pYg"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contentLable" destination="f2L-RF-o0C" id="ufb-3e-0Eq"/>
+                                    <outlet property="titleLabel" destination="bIi-2g-idK" id="KWR-o9-ACP"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fsk-3n-DBf" id="WYA-ji-XG4"/>
+                            <outlet property="delegate" destination="fsk-3n-DBf" id="T5r-QO-jOd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="WQm-Eh-Qxc"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="coT-Rz-xdx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1518" y="2848"/>
         </scene>
         <!--类别管理-->
         <scene sceneID="oQP-Dj-Egl">
@@ -1941,7 +2039,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CW8-Nj-Oar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518" y="3622"/>
+            <point key="canvasLocation" x="1518" y="4030"/>
         </scene>
         <!--手机验证-->
         <scene sceneID="gJf-2M-Cl5">
@@ -2099,7 +2197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0fK-gj-ax5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518" y="2417"/>
+            <point key="canvasLocation" x="1518" y="2161"/>
         </scene>
         <!--子类管理-->
         <scene sceneID="3ky-sG-f5d">
@@ -2151,7 +2249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wh-DM-jkQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2148" y="3210"/>
+            <point key="canvasLocation" x="2164" y="3626"/>
         </scene>
         <!--新增子类-->
         <scene sceneID="Aqr-yE-Oob">
@@ -2185,7 +2283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7v-PB-qPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2677" y="3210"/>
+            <point key="canvasLocation" x="2673" y="3626"/>
         </scene>
         <!--新增大类-->
         <scene sceneID="2Sf-TB-pOs">
@@ -2219,7 +2317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g0k-Qs-oIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2148" y="3877"/>
+            <point key="canvasLocation" x="2164" y="4333"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="51y-Ip-rB5">
@@ -2319,7 +2417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSj-gf-rGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518" y="4300"/>
+            <point key="canvasLocation" x="1518" y="4760"/>
         </scene>
         <!--关于装修巴士-->
         <scene sceneID="PLG-KN-HXv">
@@ -2338,7 +2436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUj-wI-VVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518" y="4963"/>
+            <point key="canvasLocation" x="1518" y="5443"/>
         </scene>
         <!--装修理财-->
         <scene sceneID="juN-mg-07h">
@@ -2837,7 +2935,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWz-QB-QOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2148" y="2417"/>
+            <point key="canvasLocation" x="2132" y="2161"/>
         </scene>
     </scenes>
     <resources>
