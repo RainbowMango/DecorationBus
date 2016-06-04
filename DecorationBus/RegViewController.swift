@@ -150,6 +150,7 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         guard isSexValid() else {
             return
         }
+        self.userInfo.sex = self.sexTextField.text!
         
         //showSimpleAlert(self, title: "恭喜", message: "注册完成！")
         
