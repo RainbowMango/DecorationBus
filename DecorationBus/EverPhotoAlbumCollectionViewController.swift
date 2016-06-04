@@ -57,30 +57,6 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UIActi
         actionSheet.showInView(self.view)
     }
     
-    // 判断用户隐私设置中是否对本APP禁用相机功能
-    func allowCamera() -> Bool {
-        //IOS7.0引入，需要import AVFoundation
-        let authStatus :AVAuthorizationStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
-        if authStatus == AVAuthorizationStatus.Denied ||
-            authStatus == AVAuthorizationStatus.Restricted {
-            return false
-        }
-        
-        return true
-    }
-    
-    // 判断用户隐私设置中是否对本APP禁用照片功能
-    func allowPhotoLibrary() -> Bool {
-        // IOS 6.0提供，需要import AssetsLibrary
-        let authStatus: ALAuthorizationStatus = ALAssetsLibrary.authorizationStatus()
-        if authStatus == ALAuthorizationStatus.Denied ||
-            authStatus == ALAuthorizationStatus.Restricted {
-                return false
-        }
-        
-        return true
-    }
-    
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segueImagePlayer" {
@@ -146,20 +122,16 @@ class EverPhotoAlbumCollectionViewController: UICollectionViewController, UIActi
         let title = actionSheet.buttonTitleAtIndex(buttonIndex)
         switch title! {
         case HCImagePickerHandler().actionSheetTitleCamera:
-            if !allowCamera() {
-                //用户隐私设置禁用相机，弹出alert
-                let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-相机”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
-                alertView.show()
+            if !DeviceLimitHandler().allowCamera() {
+                DeviceLimitHandler().showAlertForCameraRestriction(self)
                 return
             }
             
             HCImagePickerHandler().importPhotoFromCamera(self, didSelectAssets: self.didSelectBlock)
             
         case HCImagePickerHandler().actionSheetTitlePhotoLibrary:
-            if !allowPhotoLibrary() {
-                //用户隐私设置禁用相册，弹出alert
-                let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-照片”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
-                alertView.show()
+            if !DeviceLimitHandler().allowPhotoLibrary() {
+                DeviceLimitHandler().showAlertForPhotoRestriction(self)
                 return
             }
             HCImagePickerHandler().importPhotoFromAlbum(self, maxCount: 9, defaultAssets: nil, didSelectAssets: self.didSelectBlock)

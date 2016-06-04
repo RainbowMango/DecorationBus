@@ -65,9 +65,7 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             let cameraSheet = UIAlertAction(title: actionSheetTitleCamera, style: UIAlertActionStyle.Default) { (action) -> Void in
                 if(!DeviceLimitHandler().allowCamera()) {
-                    //用户隐私设置禁用相机，弹出alert
-                    let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-相机”选项中允许“装修巴士”访问您的相机。", delegate: self, cancelButtonTitle: "确定")
-                    alertView.show()
+                    DeviceLimitHandler().showAlertForCameraRestriction(self)
                     return
                 }
                 let imagePicker = UIImagePickerController()
@@ -89,9 +87,7 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
             let photoLibrarySheet = UIAlertAction(title: actionSheetTitlePhotoLibrary, style: UIAlertActionStyle.Default) { (action) -> Void in
                 if(!DeviceLimitHandler().allowPhotoLibrary()) {
-                    //用户隐私设置禁用相册，弹出alert
-                    let alertView = UIAlertView(title: nil, message: "请在“设置-隐私-照片”选项中允许“装修巴士”访问您的照片。", delegate: self, cancelButtonTitle: "确定")
-                    alertView.show()
+                    DeviceLimitHandler().showAlertForPhotoRestriction(self)
                     return
                 }
                 
