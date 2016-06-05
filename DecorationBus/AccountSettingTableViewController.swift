@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import DKImagePickerController
 
 class AccountSettingTableViewController: UITableViewController {
 
     var userInfo     = UserInfo()
+    private var didSelectBlock: ((assets: [DKAsset]) -> Void)?  //picker回调
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewColor()
 
         userInfo = UserDataHandler().getUserInfoFromConf()
+        
+        setupImagePicker()
         
         tableView.tableFooterView = UIView() // 清除tableView中空白行
     }
@@ -76,7 +80,8 @@ class AccountSettingTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.row {
         case 0:
-            showSimpleAlert(self, title: "客官别急", message: "个人信息修改功能还在开发中...")
+            let alertVC = HCImagePickerHandler().makeAlertController(self, maxCount: 1, defaultAssets: nil, didSelectAssets: self.didSelectBlock)
+            self.presentViewController(alertVC, animated: true, completion: nil)
             break
         case 1:
             showSimpleAlert(self, title: "客官别急", message: "个人信息修改功能还在开发中...")
@@ -91,5 +96,21 @@ class AccountSettingTableViewController: UITableViewController {
             return
         }
     }
-
+    
+    
+    // MARK: - DKImagePickerController
+    
+    func setupImagePicker() -> Void {
+        
+        self.didSelectBlock = { (assets: [DKAsset]) in
+            
+            //新选择的图片加入列表中
+            for asset in assets {
+                asset.fetchFullScreenImage(false, completeBlock: { (image, info) in
+                    showSimpleAlert(self, title: "客观别急", message: "已经读取到图片")
+                })
+                
+            }
+        }
+    }
 }
