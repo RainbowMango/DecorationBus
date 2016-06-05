@@ -108,4 +108,53 @@ class HCImagePickerHandler {
         pickerVC.didSelectAssets = didSelectAssets
         parent.presentViewController(pickerVC, animated: true, completion: nil)
     }
+    
+    /**
+     生成alert controller提示用户从相机或图库中导入图片。
+     
+     - parameter parent:          父controller,用于启动新的controller
+     - parameter maxCount:        最大允许导入图片，仅适用于从图库导入的场景
+     - parameter defaultAssets:   默认选取的图片，仅适用于从图库导入的场景
+     - parameter didSelectAssets: 调用结束回调函数
+     
+     - returns: UIAlertController
+     */
+    func makeAlertController(parent: UIViewController,
+                             maxCount: Int,
+                             defaultAssets: Array<DKAsset>?,
+                             didSelectAssets: ((assets: [DKAsset]) -> Void)?) -> UIAlertController {
+        
+        let alertVC = UIAlertController(title: "添加图片", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        // 检测是否支持拍照（模拟器不支持会引起crash, 真机中访问控制相机被禁后也会crash）
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            let cameraSheet = UIAlertAction(title: actionSheetTitleCamera, style: UIAlertActionStyle.Default) { (action) -> Void in
+                if(!DeviceLimitHandler().allowCamera()) {
+                    DeviceLimitHandler().showAlertForCameraRestriction(parent)
+                    return
+                }
+                self.importPhotoFromCamera(parent, didSelectAssets: didSelectAssets)
+            }
+            alertVC.addAction(cameraSheet)
+        }
+        
+        // 检测是否支持图库
+        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+            let photoLibrarySheet = UIAlertAction(title: actionSheetTitlePhotoLibrary, style: UIAlertActionStyle.Default) { (action) -> Void in
+                if(!DeviceLimitHandler().allowPhotoLibrary()) {
+                    DeviceLimitHandler().showAlertForPhotoRestriction(parent)
+                    return
+                }
+                
+                self.importPhotoFromAlbum(parent, maxCount: maxCount, defaultAssets: defaultAssets, didSelectAssets: didSelectAssets)
+            }
+            alertVC.addAction(photoLibrarySheet)
+        }
+        
+        //添加取消action
+        let cancelSheet = UIAlertAction(title: actionSheetTitleCancel, style: .Cancel, handler: nil)
+        alertVC.addAction(cancelSheet)
+        
+        return alertVC
+    }
 }

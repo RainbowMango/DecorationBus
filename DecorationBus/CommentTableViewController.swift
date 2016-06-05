@@ -194,37 +194,7 @@ extension CommentTableViewController: UICollectionViewDataSource, UICollectionVi
          *        1                  >1               false
          */
         if(indexPath.row == self.comment.assets.count) { //添加图片
-            
-            let alertVC = UIAlertController(title: "添加图片", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-            
-            // 检测是否支持拍照（模拟器不支持会引起crash, 真机中访问控制相机被禁后也会crash）
-            if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-                let cameraSheet = UIAlertAction(title: HCImagePickerHandler().actionSheetTitleCamera, style: UIAlertActionStyle.Default) { (action) -> Void in
-                    if(!DeviceLimitHandler().allowCamera()) {
-                        DeviceLimitHandler().showAlertForCameraRestriction(self)
-                        return
-                    }
-                    HCImagePickerHandler().importPhotoFromCamera(self, didSelectAssets: self.didSelectBlock)
-                }
-                alertVC.addAction(cameraSheet)
-            }
-            
-            // 检测是否支持图库
-            if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
-                let photoLibrarySheet = UIAlertAction(title: HCImagePickerHandler().actionSheetTitlePhotoLibrary, style: UIAlertActionStyle.Default) { (action) -> Void in
-                    if(!DeviceLimitHandler().allowPhotoLibrary()) {
-                        DeviceLimitHandler().showAlertForPhotoRestriction(self)
-                        return
-                    }
-
-                    HCImagePickerHandler().importPhotoFromAlbum(self, maxCount: self.MAXIMUM_NUMBER_OF_PHOTOS, defaultAssets: self.comment.assets, didSelectAssets: self.didSelectBlock)
-                }
-                alertVC.addAction(photoLibrarySheet)
-            }
-            
-            let cancelSheet = UIAlertAction(title: HCImagePickerHandler().actionSheetTitleCancel, style: UIAlertActionStyle.Cancel) { (action) -> Void in
-            }
-            alertVC.addAction(cancelSheet)
+            let alertVC = HCImagePickerHandler().makeAlertController(self, maxCount: self.MAXIMUM_NUMBER_OF_PHOTOS, defaultAssets: self.comment.assets, didSelectAssets: self.didSelectBlock)
             
             self.presentViewController(alertVC, animated: true, completion: nil)
         }
