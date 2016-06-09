@@ -47,7 +47,7 @@ class ManagerCommentsTableViewController: UITableViewController, MWPhotoBrowserD
      - parameter sender: <#sender description#>
      */
     @IBAction func addCommentButtonAction(sender: AnyObject) {
-        if(!UserDataHandler().isLogin()) {
+        if(!UserInfo.sharedUserInfo.isLogin()) {
             showSimpleAlert(self, title: "请您先登录", message: "每条评论都需要有个主人~")
             return
         }

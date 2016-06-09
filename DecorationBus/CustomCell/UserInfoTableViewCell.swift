@@ -102,14 +102,6 @@ class UserDataHandler {
     let UDH_AVATAR_SANDBOX_URL = "sandboxavatarurl"
     let UDH_USER_SEX           = "usersex"
     
-    func isLogin() -> Bool {
-        if nil != UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO) {
-            return true
-        }
-        
-        return false
-    }
-    
     func getUserInfoFromConf() -> UserInfo {
         let userInfo = UserInfo.sharedUserInfo
         let userConf = UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO)

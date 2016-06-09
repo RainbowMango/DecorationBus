@@ -32,11 +32,15 @@ class UserInfo: NSObject {
     var job      : String = String()
     var address  : String = String()
     var registed : Bool   = false
+    private var hasLogin: Bool  = false
     
     private var newAvatarImage : UIImage? = nil
     private var newAvatarPath  : String?  = nil
     
     override private init() { //将构造函数设为私有，禁止外部创建对象
+        if nil != UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO) {
+            hasLogin = true
+        }
     }
     
     class var sharedUserInfo: UserInfo {
@@ -127,6 +131,15 @@ class UserInfo: NSObject {
         self.newAvatarPath = userAvatar
         
         return true
+    }
+    
+    /**
+     检查是否已登录
+     
+     - returns: bool
+     */
+    func isLogin() -> Bool {
+        return self.hasLogin
     }
     
     /**
