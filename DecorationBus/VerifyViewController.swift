@@ -139,7 +139,7 @@ class VerifyViewController: UIViewController, UITextFieldDelegate {
             print("网络异常--请求用户信息失败：" + error.localizedDescription)
         }
         
-        return UserInfo()
+        return UserInfo.sharedUserInfo
     }
     
     /*

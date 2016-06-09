@@ -13,7 +13,7 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var sexTextField: UITextField!
 
-    var userInfo = UserInfo() //前个页面已经传入用户手机号码
+    var userInfo = UserInfo.sharedUserInfo //前个页面已经传入用户手机号码
     
     // 定义照片源字符串，方便创建actionSheet和处理代理
     let actionSheetTitleCancel = "取消"

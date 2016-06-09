@@ -66,4 +66,32 @@ class ImageHandler {
         
         return newImage
     }
+    
+    /**
+     将UIImage转换成NSData
+     
+     - parameter image:              将转换的图片
+     - parameter compressionQuality: 压缩比例，压缩比只针对PNG图片有效
+     
+     - returns: NSData(输出的二进制数据)，String(mine类型)
+     */
+    func getImageBinary(image: UIImage, compressionQuality: CGFloat) -> (data: NSData?, mine: String?) {
+        var data : NSData?
+        var mineType: String?
+        
+        if let tmpData = UIImagePNGRepresentation(image) {
+            data = tmpData
+            mineType = "png"
+        }
+        else if let tmpData = UIImageJPEGRepresentation(image, compressionQuality) {
+            data = tmpData
+            mineType = "jpeg"
+        }
+        
+        if nil == data {
+            print("转换图片失败")
+        }
+        
+        return (data, mineType)
+    }
 }

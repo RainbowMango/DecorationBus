@@ -14,7 +14,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var settingItems = ["修改类别", "提交反馈", "关于装修巴士", "退出登录"]
     var cellReuseIdentifier: String = "settingItemCell"
-    var userInfo     = UserInfo()
+    var userInfo     = UserInfo.sharedUserInfo
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,7 +142,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             case 3:
                 print("didSelectRowAtIndexPath: 退出登录")
                 UserDataHandler().removeUserInfoFromConf()
-                self.userInfo = UserInfo()
+                self.userInfo = UserInfo.sharedUserInfo
                 tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
             default:
                 print("不存在该cell index")
@@ -171,6 +171,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             print("网络异常--请求项目经理信息失败：" + error.localizedDescription)
         }
         
-        return UserInfo()
+        return UserInfo.sharedUserInfo
     }
 }

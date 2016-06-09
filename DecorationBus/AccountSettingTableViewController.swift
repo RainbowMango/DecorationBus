@@ -11,7 +11,7 @@ import DKImagePickerController
 
 class AccountSettingTableViewController: UITableViewController {
 
-    var userInfo     = UserInfo()
+    var userInfo     = UserInfo.sharedUserInfo
     private var didSelectBlock: ((assets: [DKAsset]) -> Void)?  //picker回调
     
     override func viewDidLoad() {
@@ -104,10 +104,19 @@ class AccountSettingTableViewController: UITableViewController {
         
         self.didSelectBlock = { (assets: [DKAsset]) in
             
+            if assets.count != 1 {
+                showSimpleAlert(self, title: "您真幸运", message: "一定是哪里出错了，头像只能是一张图片")
+                return
+            }
+            
             //新选择的图片加入列表中
             for asset in assets {
                 asset.fetchFullScreenImage(false, completeBlock: { (image, info) in
-                    showSimpleAlert(self, title: "客观别急", message: "已经读取到图片")
+                    if nil == image {
+                        showSimpleAlert(self, title: "您真幸运", message: "获取图片失败了")
+                        return
+                    }
+                    UserInfo.sharedUserInfo.setNewAvatar(image!)
                 })
                 
             }

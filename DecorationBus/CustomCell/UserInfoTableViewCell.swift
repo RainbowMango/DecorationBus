@@ -7,38 +7,7 @@
 //
 
 import UIKit
-
-class UserInfo {
-    var userid   : String {//用户ID：YYYYMMDDHHMMSS+3位毫秒+5位随机数
-        didSet {
-            self.registed = true
-        }
-    }
-    var nickname : String
-    var avatar   : String
-    var passwd   : String
-    var email    : String
-    var phone    : String
-    var realname : String
-    var sex      : String
-    var job      : String
-    var address  : String
-    var registed : Bool
-    
-    init() {
-        userid   = String()
-        nickname = String()
-        avatar   = String()
-        passwd   = String()
-        email    = String()
-        phone    = String()
-        realname = String()
-        sex      = String()
-        job      = String()
-        address  = String()
-        registed = false
-    }
-}
+import Alamofire
 
 let REG_SUCCESS = 0
 let REG_FAILED  = 1
@@ -119,6 +88,9 @@ class UserInfoTableViewCell: UITableViewCell {
     }
 }
 
+// MARK: - 用户类相关通知
+public let USER_INFO_UPDATED = "UserInfomationUpdated"
+
 class UserDataHandler {
     
     let userInfoPathInSandbox = "userinfo";
@@ -139,7 +111,7 @@ class UserDataHandler {
     }
     
     func getUserInfoFromConf() -> UserInfo {
-        let userInfo = UserInfo()
+        let userInfo = UserInfo.sharedUserInfo
         let userConf = UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO)
         
         if nil == userConf {
@@ -172,7 +144,7 @@ class UserDataHandler {
             let items = jsonStr.objectForKey("row") as! NSArray
             
             for item in items {
-                let userInfo = UserInfo()
+                let userInfo = UserInfo.sharedUserInfo
                 userInfo.userid   = item.objectForKey("userid") as! String
                 userInfo.nickname = item.objectForKey("nickname") as! String
                 userInfo.avatar   = item.objectForKey("avatar") as! String
@@ -308,9 +280,13 @@ class UserDataHandler {
         return userAvatar
     }
     
-    /*
-    *保存用户基本信息到本地
-    */
+    /**
+     保存用户信息到沙盒
+     
+     - parameter info: 用户信息对象
+     
+     - returns: bool
+     */
     func saveUserInfoToConf(info: UserInfo) -> Bool {
         var userConf = Dictionary<String, String>()
         
