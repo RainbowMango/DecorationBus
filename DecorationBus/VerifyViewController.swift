@@ -81,10 +81,8 @@ class VerifyViewController: UIViewController, UITextFieldDelegate {
         
         //测试账号，以提供给App Store审核时使用
         if(self.phoneNumber == "18605811857" && verCode == "1857") {
-            let user = self.requestUserInformation(self.phoneNumber)
-            UserDataHandler().syncAvatarFromRemoteToSandBox(user.avatar, phoneNumber: user.phone)
-            user.avatar = UserDataHandler().getAvatarSandboxURL(user.phone)!
-            UserDataHandler().saveUserInfoToConf(user)
+            UserInfo.sharedUserInfo.syncInfoFromRemoteByPhone(self.phoneNumber)
+            UserInfo.sharedUserInfo.saveUserInfoToConf()
             
             self.navigationController?.popViewControllerAnimated(true)
             return
@@ -97,15 +95,13 @@ class VerifyViewController: UIViewController, UITextFieldDelegate {
                     return
                 }
                 
-                let user = self.requestUserInformation(self.phoneNumber)
-                if(user.registed) {//老用户，记录登录状态
-                    UserDataHandler().syncAvatarFromRemoteToSandBox(user.avatar, phoneNumber: user.phone)
-                    user.avatar = UserDataHandler().getAvatarSandboxURL(user.phone)!
-                    UserDataHandler().saveUserInfoToConf(user)
-                    
+                let userInstance = UserInfo.sharedUserInfo
+                userInstance.syncInfoFromRemoteByPhone(self.phoneNumber)
+                if(userInstance.registed) {//老用户，记录登录状态
+                    userInstance.saveUserInfoToConf()
                     self.navigationController?.popViewControllerAnimated(true)
                 }
-                else if(!user.registed) { // 新用户，引导注册
+                else { // 新用户，引导注册
                     self.performSegueWithIdentifier("segueNewUserInfo", sender: self)
                 }
                 

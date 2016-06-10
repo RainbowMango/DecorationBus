@@ -63,7 +63,7 @@ class UserInfoTableViewCell: UITableViewCell {
     * 用户头像统一使用本地存储头像，如使用网络头像响应应使用NSURL(string: <#T##String#>)
     */
     func configureLogo(imagePath: String) -> Void {
-        let url = NSURL(fileURLWithPath: imagePath, isDirectory: false)
+        let url = NSURL(string: imagePath)
         self.avatar.sd_setImageWithURL(url, placeholderImage: UIImage(named: "userDefaultAvatar"))
         //print("configureLogo：\(imagePath)")
         

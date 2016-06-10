@@ -48,6 +48,7 @@ class UserInfo: NSObject {
     override private init() { //将构造函数设为私有，禁止外部创建对象
         super.init()
         loadInfoFromConf()
+        //syncInfoFromRemoteByPhone("18605811967")
     }
     
     class var sharedUserInfo: UserInfo {
@@ -273,16 +274,114 @@ class UserInfo: NSObject {
         return true
     }
     
+    /**
+     根据用户手机号同步信息到instance(注意：这是个同步方法)
+     使用场景：验证用户手机号时查询是否已经注册
+     
+     - parameter phone: 用户手机号
+     */
     func syncInfoFromRemoteByPhone(phone: String) -> Void {
-//        self.requestInfoFromRemote(userID) { (successful) in
-//            if(!successful) {
-//                //TODO
-//                print("sync user infomation from server failed!")
-//                return
-//            }
-//            
-//            print("sync user infomation from server successfull")
-//        }
+        let urlStr = REQUEST_USER_URL_STR + "?filter=phone&phonenumber=\(phone)"
+        let url = NSURL(string: urlStr)
+        let request = NSURLRequest(URL: url!)
+        do {
+            let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
+            let jsonStr = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            if(self.parseUserInfo(jsonStr)) {
+                //TODO:同步用户信息到本地
+            }
+        }catch let error as NSError{
+            print("网络异常--请求用户信息失败：" + error.localizedDescription)
+        }
+    }
+    
+    /*
+     * 从服务器缓存头像到本地
+     * 使用场景：老用户退出登录后再次登录， 老用户删除应用再次安装应用并登录，老用户在新设备上登录
+     */
+    func syncAvatarFromRemoteToSandBox(remoteURL: String, phoneNumber: String) -> Bool {
+        let url  = NSURL(string: remoteURL)
+        let data = NSData(contentsOfURL: url!)
+        let image = UIImage(data: data!)
+        
+        return saveAvatarToSandBox(phoneNumber, image: image!)
+    }
+    
+    //保存用户头像到沙盒
+    func saveAvatarToSandBox(phoneNumber: String, image: UIImage) -> Bool {
+        let docDir       = SandboxHandler().getDocumentDirectory()
+        let userInfoPath = docDir + "/" + self.userInfoPathInSandbox
+        let userAvatar   = userInfoPath + "/" + phoneNumber + ".png"
+        
+        guard SandboxHandler().createDirectory(userInfoPath) else {
+            print("保存用户头像\(phoneNumber)到沙盒失败, 创建目录失败: \(userInfoPath)")
+            return false
+        }
+        
+        //缩放图片
+        let scaledImage = ImageHandler().aspectSacleSize(image, targetSize: CGSizeMake(320.0, 320.0))
+        
+        let jpegData = UIImageJPEGRepresentation(scaledImage, 1)
+        guard jpegData != nil else {
+            print("保存用户头像\(phoneNumber)到沙盒失败, 图片转化到JPEG失败")
+            return false
+        }
+        
+        guard jpegData!.writeToFile(userAvatar, atomically: true) else {
+            print("保存用户头像\(phoneNumber)到沙盒失败, 写入失败")
+            return false
+        }
+        
+        self.avatarInSandbox = userAvatar
+        
+        return true
+    }
+    
+    /**
+     保存用户信息到userDefault
+     
+     - parameter info: 用户信息对象
+     
+     - returns: bool
+     */
+    func saveUserInfoToConf() -> Bool {
+        var userConf = Dictionary<String, String>()
+        
+        guard !self.userid.isEmpty else {
+            print("Warning: saveUserInfoToConf() user id is empty!")
+            return false
+        }
+        userConf[UDH_USER_ID] = self.userid
+        
+        guard !self.nickname.isEmpty else {
+            print("Warning: saveUserInfoToConf() nick name is empty!")
+            return false
+        }
+        userConf[UDH_NICK_NAME] = self.nickname
+        
+        guard !self.phone.isEmpty else {
+            print("Warning: saveUserInfoToConf() phone number is empty!")
+            return false
+        }
+        userConf[UDH_PHONE_NUMBER] = self.phone
+        
+        guard !self.sex.isEmpty else {
+            print("Warning: saveUserInfoToConf() user sex is empty!")
+            return false
+        }
+        userConf[UDH_USER_SEX] = self.sex
+        
+        self.syncAvatarFromRemoteToSandBox(self.avatar, phoneNumber: self.phone)
+        guard (self.avatarInSandbox != nil) else {
+            print("Warning: saveUserInfoToConf() Can't get avatar path in sandbox!")
+            return false
+        }
+        userConf[UDH_AVATAR_SANDBOX_URL] = self.avatarInSandbox
+        
+        UserDefaultHandler().setObjectForKey(userConf, key: USER_DEFAULT_KEY_USER_INFO)
+        self.hasLogin = true
+        
+        return true
     }
     
     /**
