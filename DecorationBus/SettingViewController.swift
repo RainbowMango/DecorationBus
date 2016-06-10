@@ -30,10 +30,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(animated: Bool) {
-        if(UserInfo.sharedUserInfo.isLogin()) {
-            self.userInfo = UserDataHandler().getUserInfoFromConf()
-        }
-        
         self.settingTableView.reloadData() //重新加载，用户登录后可以看到登录信息
     }
 
@@ -94,7 +90,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("userInfoCell", forIndexPath: indexPath) as! UserInfoTableViewCell
-            cell.configureViews(self.userInfo)
+            cell.configureViews(UserInfo.sharedUserInfo)
             
             return cell
         case 1:
@@ -116,8 +112,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             switch indexPath.row {
             case 0:
                 if(UserInfo.sharedUserInfo.isLogin()) {
-                    //showSimpleAlert(self, title: "客官别急", message: "个人信息查看和修改功能还在开发中...")
-                    //return
                     performSegueWithIdentifier("account_setting_segue", sender: self)
                 }
                 else {

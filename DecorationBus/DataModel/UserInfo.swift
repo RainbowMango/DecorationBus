@@ -14,6 +14,13 @@ class UserInfo: NSObject {
     
     private static let sharedInstance = UserInfo()
     
+    //user default中字典key定义
+    private let UDH_USER_ID            = "userid"
+    private let UDH_NICK_NAME          = "nickname"
+    private let UDH_PHONE_NUMBER       = "phonenumber"
+    private let UDH_AVATAR_SANDBOX_URL = "sandboxavatarurl"
+    private let UDH_USER_SEX           = "usersex"
+    
     private let userInfoPathInSandbox = "userinfo";
     private let newAvatarTempPathInSanbox = "newAvatar";
     
@@ -38,15 +45,50 @@ class UserInfo: NSObject {
     private var newAvatarPath  : String?  = nil
     
     override private init() { //将构造函数设为私有，禁止外部创建对象
-        if nil != UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO) {
-            hasLogin = true
-        }
+        super.init()
+        loadInfoFromConf()
     }
     
     class var sharedUserInfo: UserInfo {
         return sharedInstance
     }
 
+    /**
+     从本地加载用户信息
+     */
+    private func loadInfoFromConf() -> Void {
+        let userConf = UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO)
+        
+        //本地没有用户信息，说明是未注册用户或者删除应用后重装
+        if nil == userConf {
+            return
+        }
+        
+        for key in userConf!.keys {
+            switch key {
+            case UDH_USER_ID:
+                self.userid = userConf![key] as! String
+            case UDH_NICK_NAME:
+                self.nickname = userConf![key] as! String
+            case UDH_PHONE_NUMBER:
+                self.phone = userConf![key] as! String
+            case UDH_AVATAR_SANDBOX_URL:
+                self.avatar = userConf![key] as! String
+            case UDH_USER_SEX:
+                self.sex = userConf![key] as! String
+            default:
+                print("Undefined key(\(key)) for user.")
+            }
+        }
+        
+        if self.userid.isEmpty || self.nickname.isEmpty || self.phone.isEmpty || self.avatar.isEmpty || self.sex.isEmpty {
+            //如果本地用户信息不完整，从服务器同步用户信息。使用场景：版本升级后用户信息扩展
+            //TODO
+        }
+        
+        self.hasLogin = true
+    }
+    
     // MARK: - HTTP参数生成私有函数
     
     /**

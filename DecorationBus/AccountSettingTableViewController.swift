@@ -18,7 +18,7 @@ class AccountSettingTableViewController: UITableViewController {
         super.viewDidLoad()
         setViewColor()
 
-        userInfo = UserDataHandler().getUserInfoFromConf()
+        userInfo = UserInfo.sharedUserInfo
         
         setupImagePicker()
         
