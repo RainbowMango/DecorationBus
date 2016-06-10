@@ -17,8 +17,6 @@ class AccountSettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewColor()
-
-        userInfo = UserInfo.sharedUserInfo
         
         setupImagePicker()
         

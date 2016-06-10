@@ -143,28 +143,4 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-    /*
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "CatagoryPrime" {
-            var destination = segue.destinationViewController as CatagoryPrimeMangeViewController
-        }
-    }
-*/
-    
-    func requestUserInformation(userID: String) -> UserInfo{
-        let urlStr = REQUEST_USER_URL_STR + "?filter=id&userid=\(userID)"
-        let url = NSURL(string: urlStr)
-        let request = NSURLRequest(URL: url!)
-        do {
-            let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
-            let users = UserDataHandler().parseJsonData(data)
-            if(users.count > 0) {
-                return users[0]
-            }
-        }catch let error as NSError{
-            print("网络异常--请求项目经理信息失败：" + error.localizedDescription)
-        }
-        
-        return UserInfo.sharedUserInfo
-    }
 }

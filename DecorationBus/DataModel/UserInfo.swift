@@ -83,7 +83,7 @@ class UserInfo: NSObject {
         
         if self.userid.isEmpty || self.nickname.isEmpty || self.phone.isEmpty || self.avatar.isEmpty || self.sex.isEmpty {
             //如果本地用户信息不完整，从服务器同步用户信息。使用场景：版本升级后用户信息扩展
-            //TODO
+            self.syncInfoFromRemote(userid)
         }
         
         self.hasLogin = true
@@ -101,6 +101,8 @@ class UserInfo: NSObject {
         return userid.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
     }
     
+    // MARK: - 私有函数
+    
     /**
      将String路径转成URL
      
@@ -110,6 +112,62 @@ class UserInfo: NSObject {
      */
     private func getURLBySting(stringPath: String) -> NSURL {
         return NSURL(fileURLWithPath: stringPath, isDirectory: false)
+    }
+    
+    /**
+     根据用户ID向服务器请求用户信息
+     
+     - parameter userID:            用户ID
+     - parameter completionHandler: 执行结果闭包
+     */
+    private func requestInfoFromRemote(userID: String, completionHandler: ((successful: Bool) -> Void)?) -> Void {
+        let param = ["filter": "id", "userid" : userID]
+        
+        Alamofire.request(.GET, REQUEST_USER_URL_STR, parameters: param)
+            .responseJSON { response in
+//                print(response.request)  // original URL request
+//                print(response.response) // URL response
+//                print(response.data)     // server data
+//                print(response.result)   // result of response serialization
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                    //检查是否查询到结果
+                    if let itemNum = JSON.objectForKey("total") as? Int {
+                        if 0 == itemNum {
+                            completionHandler?(successful: false)
+                            return
+                        }
+                    }
+                    
+                    let items = JSON.objectForKey("row") as? NSArray
+                    if(nil == items) {
+                        print("用户协议不匹配，缺少<row>")
+                        completionHandler?(successful: false)
+                        return
+                    }
+                    if items!.count != 1 {
+                        print("Warning: 查询到<\(items!.count)>条用户拥有相同的ID(\(userID))")
+                        completionHandler?(successful: false)
+                        return
+                    }
+                    
+                    let item = items![0]
+                    
+                    //TODO：为安全起见，建议下面也需要做检查，防止协议变化导致崩溃
+                    self.userid   = item.objectForKey("userid") as! String
+                    self.nickname = item.objectForKey("nickname") as! String
+                    self.avatar   = item.objectForKey("avatar") as! String
+                    self.email    = item.objectForKey("email") as! String
+                    self.phone    = item.objectForKey("phone") as! String
+                    self.realname = item.objectForKey("realName") as! String
+                    self.sex      = item.objectForKey("sex") as! String
+                    self.job      = item.objectForKey("job") as! String
+                    self.address  = item.objectForKey("address") as! String
+                    
+                    completionHandler?(successful: true)
+                }
+        }
     }
     
     /**
@@ -175,6 +233,8 @@ class UserInfo: NSObject {
         return true
     }
     
+    // MARK: - 公共函数区
+    
     /**
      检查是否已登录
      
@@ -182,6 +242,26 @@ class UserInfo: NSObject {
      */
     func isLogin() -> Bool {
         return self.hasLogin
+    }
+    
+    /**
+     根据用户ID同步用户信息到instance（注意：不会自动同步到本地）
+     
+     - parameter userID: 用户ID
+     
+     - returns: bool
+     */
+    func syncInfoFromRemote(userID: String) -> Bool {
+        self.requestInfoFromRemote(userID) { (successful) in
+            if(!successful) {
+                //TODO
+                print("sync user infomation from server failed!")
+                return
+            }
+            
+            print("sync user infomation from server successfull")
+        }
+        return true
     }
     
     /**
