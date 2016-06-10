@@ -123,16 +123,36 @@ class UserInfo: NSObject {
      
      - returns: bool
      */
-    private func parseUserInfo(info: AnyObject) -> Bool {
-        self.userid   = info.objectForKey("userid") as! String
-        self.nickname = info.objectForKey("nickname") as! String
-        self.avatar   = info.objectForKey("avatar") as! String
-        self.email    = info.objectForKey("email") as! String
-        self.phone    = info.objectForKey("phone") as! String
-        self.realname = info.objectForKey("realName") as! String
-        self.sex      = info.objectForKey("sex") as! String
-        self.job      = info.objectForKey("job") as! String
-        self.address  = info.objectForKey("address") as! String
+    private func parseUserInfo(JSON: AnyObject) -> Bool {
+        //检查是否查询到结果
+        if let itemNum = JSON.objectForKey("total") as? Int {
+            if 0 == itemNum {
+                print("No user info found in json result")
+                return false
+            }
+        }
+        
+        let items = JSON.objectForKey("row") as? NSArray
+        if(nil == items) {
+            print("用户协议不匹配，缺少<row>")
+            return false
+        }
+        if items!.count != 1 {
+            print("Warning: 查询到<\(items!.count)>条用户")
+            return false
+        }
+        
+        let item = items![0]
+        
+        self.userid   = item.objectForKey("userid") as! String
+        self.nickname = item.objectForKey("nickname") as! String
+        self.avatar   = item.objectForKey("avatar") as! String
+        self.email    = item.objectForKey("email") as! String
+        self.phone    = item.objectForKey("phone") as! String
+        self.realname = item.objectForKey("realName") as! String
+        self.sex      = item.objectForKey("sex") as! String
+        self.job      = item.objectForKey("job") as! String
+        self.address  = item.objectForKey("address") as! String
         
         return true
     }
@@ -154,28 +174,7 @@ class UserInfo: NSObject {
 //                print(response.result)   // result of response serialization
                 
                 if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
-                    //检查是否查询到结果
-                    if let itemNum = JSON.objectForKey("total") as? Int {
-                        if 0 == itemNum {
-                            completionHandler?(successful: false)
-                            return
-                        }
-                    }
-                    
-                    let items = JSON.objectForKey("row") as? NSArray
-                    if(nil == items) {
-                        print("用户协议不匹配，缺少<row>")
-                        completionHandler?(successful: false)
-                        return
-                    }
-                    if items!.count != 1 {
-                        print("Warning: 查询到<\(items!.count)>条用户拥有相同的ID(\(userID))")
-                        completionHandler?(successful: false)
-                        return
-                    }
-                    
-                    completionHandler?(successful: self.parseUserInfo(items![0]))
+                    completionHandler?(successful: self.parseUserInfo(JSON))
                 }
         }
     }
