@@ -60,7 +60,7 @@ class WorkerCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
             let destinationVC = segue.destinationViewController as! CommentTableViewController
             let reviewItems = ["技术水平", "沟通能力", "服务态度", "责任心"]
             destinationVC.setValue(reviewItems, forKey: "reviewItems")
-            destinationVC.comment.userID = UserDataHandler().getUserIDFromConf()
+            destinationVC.comment.userID = UserInfo.sharedUserInfo.userid
             destinationVC.comment.targetType = CommentTargetType.TypeWorker
             destinationVC.comment.targetID   = self._worker.id
             destinationVC.delegate = self

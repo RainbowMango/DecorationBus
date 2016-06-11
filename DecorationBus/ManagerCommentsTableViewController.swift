@@ -60,7 +60,7 @@ class ManagerCommentsTableViewController: UITableViewController, MWPhotoBrowserD
             let destinationVC = segue.destinationViewController as! CommentTableViewController
             let reviewItems = ["预算控制", "沟通能力", "服务态度", "责任心"]
             destinationVC.setValue(reviewItems, forKey: "reviewItems")
-            destinationVC.comment.userID = UserDataHandler().getUserIDFromConf()
+            destinationVC.comment.userID = UserInfo.sharedUserInfo.userid
             destinationVC.comment.targetType = CommentTargetType.TypeManager
             destinationVC.comment.targetID   = self._manager.id
             destinationVC.delegate = self

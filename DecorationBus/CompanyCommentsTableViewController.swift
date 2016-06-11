@@ -149,7 +149,7 @@ class CompanyCommentsTableViewController: UITableViewController, MWPhotoBrowserD
             let destinationVC = segue.destinationViewController as! CommentTableViewController
             let reviewItems = ["设计水平", "施工质量", "服务", "性价比"]
             destinationVC.setValue(reviewItems, forKey: "reviewItems")
-            destinationVC.comment.userID = UserDataHandler().getUserIDFromConf()
+            destinationVC.comment.userID = UserInfo.sharedUserInfo.userid
             destinationVC.comment.targetType = CommentTargetType.TypeCompany
             destinationVC.comment.targetID   = self._company.id
             destinationVC.delegate = self

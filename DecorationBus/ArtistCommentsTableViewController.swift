@@ -60,7 +60,7 @@ class ArtistCommentsTableViewController: UITableViewController, MWPhotoBrowserDe
             let destinationVC = segue.destinationViewController as! CommentTableViewController
             let reviewItems = ["设计能力", "沟通能力", "服务态度", "责任心"]
             destinationVC.setValue(reviewItems, forKey: "reviewItems")
-            destinationVC.comment.userID = UserDataHandler().getUserIDFromConf()
+            destinationVC.comment.userID = UserInfo.sharedUserInfo.userid
             destinationVC.comment.targetType = CommentTargetType.TypeArtist
             destinationVC.comment.targetID   = self._artist.id
             destinationVC.delegate = self
