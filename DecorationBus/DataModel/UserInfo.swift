@@ -384,6 +384,56 @@ class UserInfo: NSObject {
         return true
     }
     
+    func removeAvatarFromSandbox(phoneNumber: String) -> Bool {
+        let docDir       = SandboxHandler().getDocumentDirectory()
+        let userInfoPath = docDir + "/" + self.userInfoPathInSandbox
+        let userAvatar   = userInfoPath + "/" + phoneNumber + ".png"
+        
+        guard NSFileManager().fileExistsAtPath(userAvatar) else {
+            print("removeAvatarFromSandbox(): No user avatar found! \(userAvatar)")
+            return true
+        }
+        do {
+            try NSFileManager().removeItemAtPath(userAvatar)
+        }
+        catch let error as NSError {
+            print("removeAvatarFromSandbox(): Remove user avatar failed! \(userAvatar), \(error.localizedDescription)")
+            return false
+        }
+        
+        return true
+    }
+    
+    /*
+     * 删除本地用户信息，同时删除本地缓存的头像，用于退出登录
+     */
+    func removeUserInfoFromConf() -> Void {
+        let userConfDic = UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO)
+        guard userConfDic != nil else {
+            return
+        }
+        
+        removeAvatarFromSandbox(userConfDic![UDH_PHONE_NUMBER] as! String)
+        UserDefaultHandler().removeObjectForKey(USER_DEFAULT_KEY_USER_INFO)
+    }
+    
+    func unLogin() -> Void {
+        self.userid = String()
+        self.nickname = String()
+        self.avatar   = String()
+        self.passwd   = String()
+        self.email    = String()
+        self.phone    = String()
+        self.realname = String()
+        self.sex      = String()
+        self.job      = String()
+        self.address  = String()
+        self.registed = false
+        self.hasLogin = false
+        
+        self.removeUserInfoFromConf()
+    }
+    
     /**
      更新用户头像.
      先更新服务器端头像，更新成功后从服务器端同步或更新本地数据

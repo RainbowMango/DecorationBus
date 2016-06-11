@@ -121,23 +121,6 @@ class VerifyViewController: UIViewController, UITextFieldDelegate {
         self.sendVerButton.setTitleColor(ColorScheme().buttonDisableColor, forState: UIControlState.Disabled)
     }
     
-    func requestUserInformation(phoneNumber: String) -> UserInfo{
-        let urlStr = REQUEST_USER_URL_STR + "?filter=phone&phonenumber=\(phoneNumber)"
-        let url = NSURL(string: urlStr)
-        let request = NSURLRequest(URL: url!)
-        do {
-            let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
-            let users = UserDataHandler().parseJsonData(data)
-            if(users.count > 0) {
-                return users[0]
-            }
-        }catch let error as NSError{
-            print("网络异常--请求用户信息失败：" + error.localizedDescription)
-        }
-        
-        return UserInfo.sharedUserInfo
-    }
-    
     /*
     * 启动计时器并显示等待秒数
     */
