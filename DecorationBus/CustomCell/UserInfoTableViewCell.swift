@@ -120,13 +120,6 @@ class UserDataHandler {
         return userInfo
     }
     
-    //从user default文件读取 user ID
-    func getUserIDFromConf() -> String {
-        let user = getUserInfoFromConf()
-        
-        return user.userid
-    }
-    
     func parseJsonData(jsonData: NSData) -> Array<UserInfo> {
         var userInfoArray = Array<UserInfo>()
         
@@ -316,18 +309,5 @@ class UserDataHandler {
         UserDefaultHandler().setObjectForKey(userConf, key: USER_DEFAULT_KEY_USER_INFO)
         
         return true
-    }
-    
-    /*
-    * 删除本地用户信息，同时删除本地缓存的头像，用于退出登录
-    */
-    func removeUserInfoFromConf() -> Void {
-        let userConfDic = UserDefaultHandler().getDictionaryForKey(USER_DEFAULT_KEY_USER_INFO)
-        guard userConfDic != nil else {
-            return
-        }
-        
-        removeAvatarFromSandbox(userConfDic![UDH_PHONE_NUMBER] as! String)
-        UserDefaultHandler().removeObjectForKey(USER_DEFAULT_KEY_USER_INFO)
     }
 }
