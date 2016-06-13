@@ -90,13 +90,21 @@ class UserInfo: NSObject {
             }
         }
         
-        if self.userid.isEmpty || self.nickname.isEmpty || self.phone.isEmpty || self.avatar.isEmpty || self.sex.isEmpty {
-            //如果本地用户信息不完整，从服务器同步用户信息。使用场景：版本升级后用户信息扩展
-            //TODO: 需重新审视有务必要同步
-            self.syncInfoFromRemoteByID(userid)
+        //如果本地用户信息不完整，从服务器同步用户信息。使用场景：版本升级后用户信息扩展
+        if ((!self.userid.isEmpty) &&
+            (self.nickname.isEmpty || self.phone.isEmpty || self.avatar.isEmpty || self.sex.isEmpty)) {
+            self.requestInfoFromRemoteByID(self.userid, completionHandler: { (successful) in
+                if(successful) {
+                    //保存用户信息到本地
+                    self.saveUserInfoToConf()
+                    
+                    self.hasLogin = true
+                }
+            })
         }
-        
-        self.hasLogin = true
+        else { // 如果用户信息齐全则标记已经登录
+            self.hasLogin = true
+        }
     }
     
     // MARK: - HTTP参数生成私有函数
@@ -262,26 +270,6 @@ class UserInfo: NSObject {
     }
     
     /**
-     根据用户ID同步用户信息到instance（注意：不会自动同步到本地）
-     
-     - parameter userID: 用户ID
-     
-     - returns: bool
-     */
-    func syncInfoFromRemoteByID(userID: String) -> Bool {
-        self.requestInfoFromRemoteByID(userID) { (successful) in
-            if(!successful) {
-                //TODO
-                print("sync user infomation from server failed!")
-                return
-            }
-            
-            print("sync user infomation from server successfull")
-        }
-        return true
-    }
-    
-    /**
      根据用户手机号同步信息到instance(注意：这是个同步方法)
      使用场景：验证用户手机号时查询是否已经注册
      
@@ -304,7 +292,10 @@ class UserInfo: NSObject {
     
     /*
      * 从服务器缓存头像到本地
-     * 使用场景：老用户退出登录后再次登录， 老用户删除应用再次安装应用并登录，老用户在新设备上登录
+     * 使用场景：
+            -老用户退出登录后再次登录
+            -老用户删除应用再次安装应用并登录
+            -老用户在新设备上登录
      */
     func syncAvatarFromRemoteToSandBox(remoteURL: String, phoneNumber: String) -> Bool {
         let url  = NSURL(string: remoteURL)
@@ -315,6 +306,14 @@ class UserInfo: NSObject {
     }
     
     //保存用户头像到沙盒
+    /**
+     保存用户头像到沙盒
+     
+     - parameter phoneNumber: 用户手机号，沙盒中图片已手机号命名
+     - parameter image:       用户头像
+     
+     - returns: bool
+     */
     func saveAvatarToSandBox(phoneNumber: String, image: UIImage) -> Bool {
         let docDir       = SandboxHandler().getDocumentDirectory()
         let userInfoPath = docDir + "/" + self.userInfoPathInSandbox
@@ -380,7 +379,7 @@ class UserInfo: NSObject {
         
         self.syncAvatarFromRemoteToSandBox(self.avatar, phoneNumber: self.phone)
         guard (self.avatarInSandbox != nil) else {
-            print("Warning: saveUserInfoToConf() Can't get avatar path in sandbox!")
+            print("Warning: saveUserInfoToConf() Sync user avatar failed!")
             return false
         }
         userConf[UDH_AVATAR_SANDBOX_URL] = self.avatarInSandbox
