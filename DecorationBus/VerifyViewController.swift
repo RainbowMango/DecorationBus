@@ -196,8 +196,7 @@ class VerifyViewController: UIViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
         case "segueNewUserInfo":
-            let destVC = segue.destinationViewController as! RegViewController
-            destVC.userInfo.phone = self.phoneNumber
+            UserInfo.sharedUserInfo.registeringPhoneNumber = self.phoneNumber
         default:
             print("Undefined segue: \(segue.identifier)")
         }

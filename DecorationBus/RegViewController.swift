@@ -12,8 +12,6 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBOutlet weak var avatar: UIButton!
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var sexTextField: UITextField!
-
-    var userInfo = UserInfo.sharedUserInfo
     
     // 定义照片源字符串，方便创建actionSheet和处理代理
     let actionSheetTitleCancel = "取消"
@@ -132,120 +130,26 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         return true
     }
     @IBAction func doneButtonPressed(sender: AnyObject) {
-        //检查数据是否完整
-        if(self.userInfo.avatar.isEmpty) {
-            showSimpleAlert(self, title: NO_AVATAR_ERR_TITLE, message: NO_AVATAR_ERR_MSG)
-            return
-        }
-        
         guard isNickNameValid() else {
             return
         }
-        self.userInfo.nickname = self.nickNameTextField.text!
         
         guard isSexValid() else {
             return
         }
-        self.userInfo.sex = self.sexTextField.text!
         
-        //showSimpleAlert(self, title: "恭喜", message: "注册完成！")
+        UserInfo.sharedUserInfo.registeringNickName    = self.nickNameTextField.text!
+        UserInfo.sharedUserInfo.registeringSex         = self.sexTextField.text!
         
-        //保存用户图片到服务器
-        let avatarImage = UserDataHandler().getAvatarFromSandbox(self.userInfo.phone + ".png")
-        guard nil != avatarImage else{
-            showSimpleAlert(self, title: "获取图片失败", message: "您的头像找不到了，快截图告诉我们吧~")
-            return
-        }
-        addUserToServer(avatarImage!, name: self.nickNameTextField.text!, sex: self.sexTextField.text!, phone: self.userInfo.phone)
-    }
-    
-    func addUserToServer(img: UIImage, name: String, sex: String, phone: String) -> Void {
-        if(nil == UIImagePNGRepresentation(img)) {
-            showSimpleAlert(self, title: "图片类型不匹配", message: "请使用PNG格式头像！")
-            return
-        }
-        //let imageData = UIImagePNGRepresentation(img)!
-        let imageData = UIImageJPEGRepresentation(img, 0.001)!
-        print("将上传的图片大小:\(imageData.bytes)")
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: REQUEST_ADD_USER_USR_STR)!)
-        request.HTTPMethod="POST"//设置请求方式
-        let boundary:String="AaB03x"
-        let contentType:String="multipart/form-data;boundary="+boundary
-        request.addValue(contentType, forHTTPHeaderField:"Content-Type")
-        
-        let body=NSMutableData()
-        
-        //添加用户昵称
-        body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
-        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"nickName\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData(NSString(format:"Content-Type:text/plain\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData(NSString(string: name).dataUsingEncoding(NSUTF8StringEncoding)!)
-        
-        //添加用户性别
-        body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
-        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"sex\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData(NSString(format:"Content-Type:text/plain\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData(NSString(string: sex).dataUsingEncoding(NSUTF8StringEncoding)!)
-        
-        //添加用户手机号
-        body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
-        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"phoneNumber\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData(NSString(format:"Content-Type:text/plain\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData(NSString(string: phone).dataUsingEncoding(NSUTF8StringEncoding)!)
-        
-        // 添加图片
-        body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
-        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"useravatar\";filename=\"Albumxxx.png\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData(NSString(format:"Content-Type:image/png\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData(imageData)
-        
-        //添加尾部
-        body.appendData(NSString(format:"\r\n--\(boundary)--").dataUsingEncoding(NSUTF8StringEncoding)!)
-        request.HTTPBody=body
-        let que=NSOperationQueue()
-        NSURLConnection.sendAsynchronousRequest(request, queue: que, completionHandler: {
-        (response, data, error) ->Void in
-        /*
-        * 下面操作必须放到dispatch_async中，否则会出现跳转不成功的情况
-        */
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            if (error != nil){
-                print(error)
-            }else{
-                let ack = UserDataHandler().parseRegAck(data!)
-                if(ack.status != REG_SUCCESS) {
-                    showSimpleAlert(self, title: "注册失败", message: ack.info)
-                    return;
-                }
-                
-                self.userInfo.userid = ack.userID
-                
-                //showSimpleAlert(self, title: "成功", message: "注册完成")
-                
-                //保存用户登录信息
-                UserDataHandler().saveUserInfoToConf(self.userInfo)
-                
-                //跳转到首页
-                self.tabBarController?.selectedIndex = 0
-                self.navigationController?.popToRootViewControllerAnimated(true)
+        UserInfo.sharedUserInfo.register { (successful, info) in
+            if(!successful) {
+                showSimpleAlert(self, title: "注册失败", message: info!)
+                return
             }
-            })
-            }
-        )
-
-
+            self.tabBarController?.selectedIndex = 0
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: - UIImagePickerControllerDelegate
     
@@ -256,18 +160,7 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         self.avatar.setBackgroundImage(image, forState: UIControlState.Normal)
         
-        //保存图片到沙盒，方便图片上传
-        guard UserDataHandler().saveAvatarToSandBox(self.userInfo.phone, image: image) else {
-            showSimpleAlert(self, title: "保存头像失败", message: "保存头像到本地失败了")
-            return
-        }
-        
-        let avatarURL = UserDataHandler().getAvatarSandboxURL(self.userInfo.phone)
-        guard avatarURL != nil else {
-            showSimpleAlert(self, title: "获取本地头像失败", message: "获取本地头像失败")
-            return
-        }
-        self.userInfo.avatar = avatarURL!
+        UserInfo.sharedUserInfo.registeringAvatarImage = image
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

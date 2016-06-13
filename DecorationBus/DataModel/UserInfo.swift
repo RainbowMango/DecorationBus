@@ -41,7 +41,14 @@ class UserInfo: NSObject {
     var registed : Bool   = false
     private var hasLogin: Bool  = false
     
+    //新用户注册信息,仅限新用户注册时使用
+    internal var registeringAvatarImage   : UIImage? = nil
+    internal var registeringNickName      : String?  = nil
+    internal var registeringPhoneNumber   : String?  = nil
+    internal var registeringSex           : String?  = nil
+    
     private var avatarInSandbox: String?  = nil
+    
     private var newAvatarImage : UIImage? = nil
     private var newAvatarPath  : String?  = nil
     
@@ -462,5 +469,90 @@ class UserInfo: NSObject {
         }
         
         return true
+    }
+    
+    /**
+     新用户注册。
+     必填信息：
+        -registeringNickName      : 用户昵称
+        -registeringSex           : 性别
+        -registeringPhoneNumber   : 手机号
+        -registeringAvatarImage   : 用户头像
+     选填信息：<暂无>
+     
+     - parameter completionHandler: 注册结束回调
+     */
+    func register(completionHandler: ((successful: Bool, info: String?) -> Void)?) -> Void {
+        let request = NSMutableURLRequest(URL: NSURL(string: REQUEST_ADD_USER_USR_STR)!)
+        request.HTTPMethod="POST"//设置请求方式
+        let boundary:String="AaB03x"
+        let contentType:String="multipart/form-data;boundary="+boundary
+        request.addValue(contentType, forHTTPHeaderField:"Content-Type")
+        
+        let body=NSMutableData()
+        
+        //添加用户昵称
+        body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
+        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"nickName\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format:"Content-Type:text/plain\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(string: registeringNickName!).dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        //添加用户性别
+        body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
+        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"sex\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format:"Content-Type:text/plain\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(string: registeringSex!).dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        //添加用户手机号
+        body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
+        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"phoneNumber\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format:"Content-Type:text/plain\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(string: registeringPhoneNumber!).dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        // 添加图片
+        let scaledImage = ImageHandler().aspectSacleSize(registeringAvatarImage!, targetSize: CGSizeMake(320, 320))
+        let imageData = ImageHandler().getImageBinary(scaledImage, compressionQuality: 1.0).data
+        body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
+        body.appendData(NSString(format:"Content-Disposition:form-data;name=\"useravatar\";filename=\"Albumxxx.png\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(NSString(format:"Content-Type:image/png\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(imageData!)
+        
+        //添加尾部
+        body.appendData(NSString(format:"\r\n--\(boundary)--").dataUsingEncoding(NSUTF8StringEncoding)!)
+        request.HTTPBody=body
+        let que=NSOperationQueue()
+        NSURLConnection.sendAsynchronousRequest(request, queue: que, completionHandler: {
+            (response, data, error) ->Void in
+            /*
+             * 下面操作必须放到dispatch_async中，否则会出现跳转不成功的情况
+             */
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if (error != nil){
+                    print(error)
+                }else{
+                    let ack = UserDataHandler().parseRegAck(data!)
+                    if(ack.status != REG_SUCCESS) {
+                        completionHandler!(successful: false, info: ack.info)
+                        return;
+                    }
+                    
+                    //注册成功 TODO: 清空注册过程中变量，节省内存
+                    self.userid = ack.userID
+                    self.nickname = self.registeringNickName!
+                    self.phone    = self.registeringPhoneNumber!
+                    
+                    //保存用户登录信息
+//                    UserDataHandler().saveUserInfoToConf(self.userInfo)
+                    
+                    completionHandler!(successful: true, info: "")
+                    //跳转到首页
+//                    self.tabBarController?.selectedIndex = 0
+//                    self.navigationController?.popToRootViewControllerAnimated(true)
+                }
+            })
+            }
+        )
+        
+        
     }
 }
