@@ -130,11 +130,17 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
         return true
     }
     @IBAction func doneButtonPressed(sender: AnyObject) {
-        guard isNickNameValid() else {
+        
+        if(nil == UserInfo.sharedUserInfo.registeringAvatarImage) {
+            showSimpleAlert(self, title: NO_AVATAR_ERR_TITLE, message: NO_AVATAR_ERR_MSG)
             return
         }
         
-        guard isSexValid() else {
+        if(!isNickNameValid()) {
+            return
+        }
+        
+        if(!isSexValid()) {
             return
         }
         
@@ -153,14 +159,21 @@ class RegViewController: UIViewController, UINavigationControllerDelegate, UIIma
 
     // MARK: - UIImagePickerControllerDelegate
     
-    //读取用户选择的图片并保存到沙盒
+    /**
+     读取用户选取的图片，压缩后存入用户信息单例
+     
+     - parameter picker: picker controller实例
+     - parameter info:   选取的图片信息，据此获取响应尺寸图片
+     */
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         self.dismissViewControllerAnimated(true, completion: nil) // 首先释放picker以节省内存
         
         let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         self.avatar.setBackgroundImage(image, forState: UIControlState.Normal)
         
-        UserInfo.sharedUserInfo.registeringAvatarImage = image
+        let scaledImage = ImageHandler().aspectSacleSize(image, targetSize: AVATAR_SIZE)
+        
+        UserInfo.sharedUserInfo.registeringAvatarImage = scaledImage
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

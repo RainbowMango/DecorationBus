@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 
+let AVATAR_SIZE            = CGSizeMake(320, 320)
+
 /// 用户信息单例类
 class UserInfo: NSObject {
     
@@ -298,6 +300,7 @@ class UserInfo: NSObject {
             -老用户在新设备上登录
      */
     func syncAvatarFromRemoteToSandBox(remoteURL: String, phoneNumber: String) -> Bool {
+        
         let url  = NSURL(string: remoteURL)
         let data = NSData(contentsOfURL: url!)
         let image = UIImage(data: data!)
@@ -377,7 +380,6 @@ class UserInfo: NSObject {
         }
         userConf[UDH_USER_SEX] = self.sex
         
-        self.syncAvatarFromRemoteToSandBox(self.avatar, phoneNumber: self.phone)
         guard (self.avatarInSandbox != nil) else {
             print("Warning: saveUserInfoToConf() Sync user avatar failed!")
             return false
@@ -509,8 +511,7 @@ class UserInfo: NSObject {
         body.appendData(NSString(string: registeringPhoneNumber!).dataUsingEncoding(NSUTF8StringEncoding)!)
         
         // 添加图片
-        let scaledImage = ImageHandler().aspectSacleSize(registeringAvatarImage!, targetSize: CGSizeMake(320, 320))
-        let imageData = ImageHandler().getImageBinary(scaledImage, compressionQuality: 1.0).data
+        let imageData = ImageHandler().getImageBinary(registeringAvatarImage!, compressionQuality: 1.0).data
         body.appendData(NSString(format:"\r\n--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!) // 添加分界线
         body.appendData(NSString(format:"Content-Disposition:form-data;name=\"useravatar\";filename=\"Albumxxx.png\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
         body.appendData(NSString(format:"Content-Type:image/png\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
@@ -535,18 +536,26 @@ class UserInfo: NSObject {
                         return;
                     }
                     
-                    //注册成功 TODO: 清空注册过程中变量，节省内存
-                    self.userid = ack.userID
+                    //注册成功
+                    //TODO: 注册成功应该返回已经保存的信息，不仅仅是userid
+                    self.userid   = ack.userID
                     self.nickname = self.registeringNickName!
                     self.phone    = self.registeringPhoneNumber!
+                    self.sex      = self.registeringSex!
+                    self.saveAvatarToSandBox(self.registeringPhoneNumber!, image: self.registeringAvatarImage!)
+                    self.avatar   = self.avatarInSandbox!
                     
                     //保存用户登录信息
-//                    UserDataHandler().saveUserInfoToConf(self.userInfo)
+                    self.saveUserInfoToConf()
+                    self.hasLogin = true
+                    
+                    //清空注册过程中变量，节省内存
+                    self.registeringPhoneNumber = nil
+                    self.registeringAvatarImage = nil
+                    self.registeringSex         = nil
+                    self.registeringNickName    = nil
                     
                     completionHandler!(successful: true, info: "")
-                    //跳转到首页
-//                    self.tabBarController?.selectedIndex = 0
-//                    self.navigationController?.popToRootViewControllerAnimated(true)
                 }
             })
             }
