@@ -11,6 +11,21 @@ import Alamofire
 
 let AVATAR_SIZE            = CGSizeMake(320, 320)
 
+let REG_SUCCESS = 0
+let REG_FAILED  = 1
+
+class RegistAck {
+    var status: Int
+    var info  : String
+    var userID: String
+    
+    init() {
+        status = REG_FAILED
+        info   = String()
+        userID = String()
+    }
+}
+
 /// 用户信息单例类
 class UserInfo: NSObject {
     
@@ -258,6 +273,30 @@ class UserInfo: NSObject {
         self.newAvatarPath = userAvatar
         
         return true
+    }
+    
+    /**
+     解析注册请求返回信息
+     
+     - parameter jsonData: 未序列化的JSON数据
+     
+     - returns: 返回RegistAck
+     */
+    func parseRegAck(jsonData: NSData) -> RegistAck {
+        let ack = RegistAck()
+        
+        do {
+            let jsonStr = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments)
+            ack.status = jsonStr.objectForKey("status") as! Int
+            ack.info   = jsonStr.objectForKey("info")   as! String
+            ack.userID = jsonStr.objectForKey("userID") as! String
+            
+            return ack
+        }catch let error as NSError {
+            print("解析JSON数据失败: parseRegAck" + error.localizedDescription)
+        }
+        
+        return ack
     }
     
     // MARK: - 公共函数区
@@ -530,7 +569,7 @@ class UserInfo: NSObject {
                 if (error != nil){
                     print(error)
                 }else{
-                    let ack = UserDataHandler().parseRegAck(data!)
+                    let ack = self.parseRegAck(data!)
                     if(ack.status != REG_SUCCESS) {
                         completionHandler!(successful: false, info: ack.info)
                         return;
