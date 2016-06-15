@@ -49,7 +49,8 @@ class AccountSettingTableViewController: UITableViewController {
         switch indexPath.row {
         case 0: // 头像
             let cell = tableView.dequeueReusableCellWithIdentifier("account_setting_avatar_cell", forIndexPath: indexPath) as! AccountSettingAvatarTableViewCell
-            cell.avatarImageView.image = UIImage(contentsOfFile: self.userInfo.avatar)
+            let url = NSURL(fileURLWithPath: self.userInfo.avatar, isDirectory: false)
+            cell.avatarImageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "userDefaultAvatar"))
             return cell
         case 1: // 昵称
             let cell = tableView.dequeueReusableCellWithIdentifier("account_setting_default_cell", forIndexPath: indexPath) as! AccountSettingDefaultTableViewCell
