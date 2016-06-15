@@ -217,7 +217,7 @@ class UserInfo: NSObject {
      
      - parameter completionHandler: 闭包函数，返回执行结果
      */
-    private func updateRemoteAvatar(completionHandler: ((successful: Bool) -> Void)?) -> Void {
+    private func updateRemoteAvatar(completionHandler: ((successful: Bool, info: String?) -> Void)?) -> Void {
         Alamofire.upload(.POST,
                          REQUEST_UPDATE_ACCOUNT_AVATAR_URL_STR,
                          multipartFormData: { (multipartFormData) in
@@ -231,11 +231,10 @@ class UserInfo: NSObject {
             case .Success(let upload, _, _):
                 upload.responseJSON(completionHandler: { (response) in
                     debugPrint(response)
-                    completionHandler?(successful: true)
+                    completionHandler?(successful: true, info: nil)
                 })
             case .Failure(let encodingError):
-                completionHandler?(successful: false)
-                showSimpleAlert(self, title: "提交失败", message: "错误代码\(encodingError)")
+                completionHandler?(successful: false, info: "\(encodingError)")
             }
         }
     }
@@ -489,26 +488,34 @@ class UserInfo: NSObject {
      
      - returns: bool
      */
-    func setNewAvatar(newAvatar: UIImage) -> Bool {
-        self.newAvatarImage = newAvatar
+    func setNewAvatar(newAvatar: UIImage, completionHandler: ((successful: Bool, info: String?) -> Void)?) -> Void {
         
         if !saveNewAvatarToSandBox(newAvatar) {
-            return false
+            if((completionHandler) != nil) {
+                completionHandler!(successful: false, info: "保存图片到沙盒失败")
+            }
+            
+            return
         }
+        self.newAvatarImage = newAvatar
         
         //更新服务器端头像
-        print("开始更新服务器端")
-        self.updateRemoteAvatar { (successful) in
+        self.updateRemoteAvatar { (successful, info) in
             if(successful) {
-                print("结束更新服务器端：成功")
+                self.saveAvatarToSandBox(self.phone, image: newAvatar)
+                self.avatar = self.avatarInSandbox!
+                self.saveUserInfoToConf()
                 self.newAvatarImage = nil
-                //发送通知，通知到后同步服务器信息
+                if((completionHandler) != nil) {
+                    completionHandler!(successful: true, info: nil)
+                }
                 return
             }
-            print("结束更新服务器端：失败")
+            
+            if((completionHandler) != nil) {
+                completionHandler!(successful: false, info: "更新图片失败\(info)")
+            }
         }
-        
-        return true
     }
     
     /**

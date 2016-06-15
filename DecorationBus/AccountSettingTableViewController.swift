@@ -115,7 +115,16 @@ class AccountSettingTableViewController: UITableViewController {
                         showSimpleAlert(self, title: "您真幸运", message: "获取图片失败了")
                         return
                     }
-                    UserInfo.sharedUserInfo.setNewAvatar(image!)
+                    let scaledImage = ImageHandler().aspectSacleSize(image!, targetSize: AVATAR_SIZE)
+                    UserInfo.sharedUserInfo.setNewAvatar(scaledImage, completionHandler: { (successful, info) in
+                        if(!successful) {
+                            showSimpleAlert(self, title: "更新失败", message: info!)
+                        }
+                        else {
+                            showSimpleHint(self.tableView, title: "更新成功", message: "更新成功")
+                            self.tableView.reloadData()
+                        }
+                    })
                 })
                 
             }
