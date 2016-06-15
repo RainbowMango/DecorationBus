@@ -323,7 +323,8 @@ class UserInfo: NSObject {
             let data = try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
             let jsonStr = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
             if(self.parseUserInfo(jsonStr)) {
-                //TODO:同步用户信息到本地
+                self.syncAvatarFromRemoteToSandBox(self.avatar, phoneNumber: self.phone)
+                self.saveUserInfoToConf()
             }
         }catch let error as NSError{
             print("网络异常--请求用户信息失败：" + error.localizedDescription)
