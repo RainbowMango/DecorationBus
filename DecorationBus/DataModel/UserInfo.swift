@@ -48,6 +48,7 @@ class UserInfo: NSObject {
     }
     var nickname : String = String()
     var avatar   : String = String() //服务器端头像地址
+    var avatarInSandbox: String = String() //沙盒中头像
     var passwd   : String = String()
     var email    : String = String()
     var phone    : String = String()
@@ -64,8 +65,7 @@ class UserInfo: NSObject {
     internal var registeringPhoneNumber   : String?  = nil
     internal var registeringSex           : String?  = nil
     
-    private var avatarInSandbox: String?  = nil
-    
+    //仅限更新用户信息时使用
     private var newAvatarImage : UIImage? = nil
     private var newAvatarPath  : String?  = nil
     
@@ -99,7 +99,7 @@ class UserInfo: NSObject {
             case UDH_PHONE_NUMBER:
                 self.phone = userConf![key] as! String
             case UDH_AVATAR_SANDBOX_URL:
-                self.avatar = userConf![key] as! String
+                self.avatarInSandbox = userConf![key] as! String
             case UDH_USER_SEX:
                 self.sex = userConf![key] as! String
             default:
@@ -109,9 +109,13 @@ class UserInfo: NSObject {
         
         //如果本地用户信息不完整，从服务器同步用户信息。使用场景：版本升级后用户信息扩展
         if ((!self.userid.isEmpty) &&
-            (self.nickname.isEmpty || self.phone.isEmpty || self.avatar.isEmpty || self.sex.isEmpty)) {
+            (self.nickname.isEmpty || self.phone.isEmpty || self.avatarInSandbox.isEmpty || self.sex.isEmpty)) {
             self.requestInfoFromRemoteByID(self.userid, completionHandler: { (successful) in
                 if(successful) {
+                    
+                    //获取头像并保存到沙盒
+                    self.syncAvatarFromRemoteToSandBox(self.avatar, phoneNumber: self.phone)
+                    
                     //保存用户信息到本地
                     self.saveUserInfoToConf()
                     
@@ -132,7 +136,6 @@ class UserInfo: NSObject {
      - returns: NSData
      */
     private func makeParmDataForUserID() -> NSData {
-        self.userid = "20160609191522464ANkKx" //临时测试用
         return userid.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
     }
     
@@ -347,7 +350,6 @@ class UserInfo: NSObject {
         return saveAvatarToSandBox(phoneNumber, image: image!)
     }
     
-    //保存用户头像到沙盒
     /**
      保存用户头像到沙盒
      
@@ -367,7 +369,7 @@ class UserInfo: NSObject {
         }
         
         //缩放图片
-        let scaledImage = ImageHandler().aspectSacleSize(image, targetSize: CGSizeMake(320.0, 320.0))
+        let scaledImage = ImageHandler().aspectSacleSize(image, targetSize: AVATAR_SIZE)
         
         let jpegData = UIImageJPEGRepresentation(scaledImage, 1)
         guard jpegData != nil else {
@@ -419,14 +421,13 @@ class UserInfo: NSObject {
         }
         userConf[UDH_USER_SEX] = self.sex
         
-        guard (self.avatarInSandbox != nil) else {
+        if(self.avatarInSandbox.isEmpty) {
             print("Warning: saveUserInfoToConf() Sync user avatar failed!")
             return false
         }
         userConf[UDH_AVATAR_SANDBOX_URL] = self.avatarInSandbox
         
         UserDefaultHandler().setObjectForKey(userConf, key: USER_DEFAULT_KEY_USER_INFO)
-        self.hasLogin = true
         
         return true
     }
@@ -504,7 +505,7 @@ class UserInfo: NSObject {
         self.updateRemoteAvatar { (successful, info) in
             if(successful) {
                 self.saveAvatarToSandBox(self.phone, image: newAvatar)
-                self.avatar = self.avatarInSandbox!
+                self.avatar = self.avatarInSandbox
                 self.saveUserInfoToConf()
                 self.newAvatarImage = nil
                 if((completionHandler) != nil) {
@@ -590,7 +591,7 @@ class UserInfo: NSObject {
                     self.phone    = self.registeringPhoneNumber!
                     self.sex      = self.registeringSex!
                     self.saveAvatarToSandBox(self.registeringPhoneNumber!, image: self.registeringAvatarImage!)
-                    self.avatar   = self.avatarInSandbox!
+                    self.avatar   = self.avatarInSandbox
                     
                     //保存用户登录信息
                     self.saveUserInfoToConf()

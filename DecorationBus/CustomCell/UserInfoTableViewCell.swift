@@ -29,7 +29,7 @@ class UserInfoTableViewCell: UITableViewCell {
     
     func configureViews(data: UserInfo) -> Void {
         //设置头像
-        configureLogo(data.avatar)
+        configureLogo(data.avatarInSandbox)
         
         //设置名字
         configureName(data.nickname)
