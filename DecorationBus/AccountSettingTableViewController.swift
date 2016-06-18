@@ -49,7 +49,7 @@ class AccountSettingTableViewController: UITableViewController {
         switch indexPath.row {
         case 0: // 头像
             let cell = tableView.dequeueReusableCellWithIdentifier("account_setting_avatar_cell", forIndexPath: indexPath) as! AccountSettingAvatarTableViewCell
-            let url = NSURL(fileURLWithPath: self.userInfo.avatar, isDirectory: false)
+            let url = NSURL(fileURLWithPath: self.userInfo.avatarInSandbox, isDirectory: false)
             cell.avatarImageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "userDefaultAvatar"))
             return cell
         case 1: // 昵称
@@ -79,8 +79,9 @@ class AccountSettingTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.row {
         case 0:
-            let alertVC = HCImagePickerHandler().makeAlertController(self, maxCount: 1, defaultAssets: nil, didSelectAssets: self.didSelectBlock)
-            self.presentViewController(alertVC, animated: true, completion: nil)
+            showSimpleAlert(self, title: "客官别急", message: "个人信息修改功能还在开发中...")
+//            let alertVC = HCImagePickerHandler().makeAlertController(self, maxCount: 1, defaultAssets: nil, didSelectAssets: self.didSelectBlock)
+//            self.presentViewController(alertVC, animated: true, completion: nil)
             break
         case 1:
             showSimpleAlert(self, title: "客官别急", message: "个人信息修改功能还在开发中...")

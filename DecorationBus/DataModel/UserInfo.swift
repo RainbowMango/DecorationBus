@@ -505,7 +505,6 @@ class UserInfo: NSObject {
         self.updateRemoteAvatar { (successful, info) in
             if(successful) {
                 self.saveAvatarToSandBox(self.phone, image: newAvatar)
-                self.avatar = self.avatarInSandbox
                 self.saveUserInfoToConf()
                 self.newAvatarImage = nil
                 if((completionHandler) != nil) {
