@@ -19,6 +19,12 @@ class UserInfoTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        //设置头像圆角
+        self.avatar.layer.masksToBounds = true
+        self.avatar.layer.cornerRadius  = self.avatar.frame.width / 2.0 //设置为图片宽度的一半出来为圆形
+        self.avatar.layer.borderColor   = UIColor.whiteColor().CGColor
+        self.avatar.layer.borderWidth   = 3.0
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -41,7 +47,6 @@ class UserInfoTableViewCell: UITableViewCell {
         else {
             configureHint(loginHint)
         }
-        
     }
     
     /*
@@ -50,12 +55,6 @@ class UserInfoTableViewCell: UITableViewCell {
     func configureLogo(imagePath: String) -> Void {
         let url = NSURL(fileURLWithPath: imagePath, isDirectory: false)
         self.avatar.sd_setImageWithURL(url, placeholderImage: UIImage(named: "userDefaultAvatar"))
-        
-        //设置头像圆角
-        self.avatar.layer.masksToBounds = true
-        self.avatar.layer.cornerRadius  = self.avatar.frame.width / 2.0 //设置为图片宽度的一半出来为圆形
-        self.avatar.layer.borderColor   = UIColor.whiteColor().CGColor
-        self.avatar.layer.borderWidth   = 3.0
     }
     
     func configureName(name: String) -> Void {

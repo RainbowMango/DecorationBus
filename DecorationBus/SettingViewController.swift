@@ -23,8 +23,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         settingTableView.delegate = self
         settingTableView.dataSource = self
         
-        self.settingTableView.estimatedRowHeight = 80 //预估高度要大于SB中最小高度，否则cell可能被压缩
-        self.settingTableView.rowHeight = UITableViewAutomaticDimension // cell 高度自适应
         self.settingTableView.tableFooterView = UIView() // 清除tableView中空白行
     }
     
@@ -101,6 +99,14 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         return UITableViewCell()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if 0 == indexPath.section && 0 == indexPath.row{
+            return 80.0
+        }
+        
+        return 44.0
     }
     
     // 设定选中时的动作
